@@ -1,10 +1,422 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Lanthir.cz</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lanthir — Monitoring Solutions</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Vítejte na Lanthir.cz</h1>
-    <p>Tento web běží na Netlify!</p>
+
+  <!-- ═══ NAVIGATION ═══ -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">
+        <img src="logo.png" alt="Lanthir" class="logo-img">
+        <span class="logo-text">Lanthir</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why-us">Why Us</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn-primary nav-cta">Get Started</a>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero" id="home">
+    <canvas id="heroCanvas" class="hero-canvas"></canvas>
+    <div class="hero-inner">
+
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="badge-pulse"></span>
+          Zabbix Certified Partner
+        </div>
+        <h1 class="hero-heading">
+          Monitor <span class="grad-text">Everything.</span><br>
+          Miss <span class="grad-text">Nothing.</span>
+        </h1>
+        <p class="hero-sub">
+          Enterprise-grade monitoring powered by Zabbix. Real-time visibility
+          into your entire infrastructure — servers, networks, cloud and applications.
+        </p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-primary btn-lg">Start Monitoring</a>
+          <a href="#services" class="btn-ghost btn-lg">Explore Services</a>
+        </div>
+        <div class="hero-chips">
+          <div class="chip"><span class="chip-val">500+</span><span class="chip-lbl">Monitored Hosts</span></div>
+          <div class="chip-sep"></div>
+          <div class="chip"><span class="chip-val">99.9%</span><span class="chip-lbl">Uptime SLA</span></div>
+          <div class="chip-sep"></div>
+          <div class="chip"><span class="chip-val">24/7</span><span class="chip-lbl">Expert Support</span></div>
+        </div>
+      </div>
+
+      <div class="hero-widget">
+        <div class="widget-card">
+          <div class="widget-titlebar">
+            <div class="titlebar-dots"><span></span><span></span><span></span></div>
+            <span class="titlebar-name">System Overview</span>
+            <span class="titlebar-live"><span class="live-dot"></span>LIVE</span>
+          </div>
+          <div class="widget-metrics">
+            <div class="wm-row">
+              <span class="wm-label">CPU Usage</span>
+              <div class="wm-bar"><div class="wm-fill" style="--w:42%;--c:var(--cyan)"></div></div>
+              <span class="wm-val">42%</span>
+            </div>
+            <div class="wm-row">
+              <span class="wm-label">Memory</span>
+              <div class="wm-bar"><div class="wm-fill" style="--w:67%;--c:var(--blue)"></div></div>
+              <span class="wm-val">67%</span>
+            </div>
+            <div class="wm-row">
+              <span class="wm-label">Network I/O</span>
+              <div class="wm-bar"><div class="wm-fill" style="--w:28%;--c:var(--purple)"></div></div>
+              <span class="wm-val">28%</span>
+            </div>
+            <div class="wm-row">
+              <span class="wm-label">Disk I/O</span>
+              <div class="wm-bar"><div class="wm-fill" style="--w:55%;--c:var(--cyan)"></div></div>
+              <span class="wm-val">55%</span>
+            </div>
+          </div>
+          <div class="widget-graph">
+            <svg viewBox="0 0 300 70" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#00d4c8" stop-opacity=".35"/>
+                  <stop offset="100%" stop-color="#00d4c8" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path class="sg-area" d="M0,55 C20,48 40,52 60,40 C80,28 100,35 120,22 C140,9 160,18 180,14 C200,10 220,20 240,12 C260,4 280,10 300,8 L300,70 L0,70 Z"/>
+              <path class="sg-line" d="M0,55 C20,48 40,52 60,40 C80,28 100,35 120,22 C140,9 160,18 180,14 C200,10 220,20 240,12 C260,4 280,10 300,8"/>
+            </svg>
+          </div>
+          <div class="widget-alerts">
+            <div class="wa-row ok">
+              <svg class="wa-icon" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+              <span>web-server-01 — All systems normal</span>
+            </div>
+            <div class="wa-row warn">
+              <svg class="wa-icon" viewBox="0 0 16 16"><path d="M8 2L15 14H1Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><line x1="8" y1="7" x2="8" y2="10" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="12.5" r=".5" fill="currentColor"/></svg>
+              <span>db-cluster-02 — High memory usage</span>
+            </div>
+            <div class="wa-row ok">
+              <svg class="wa-icon" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+              <span>firewall-01 — Operational</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    </div>
+  </section>
+
+  <!-- ═══ SERVICES ═══ -->
+  <section class="section services" id="services">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">What We Do</span>
+        <h2>Comprehensive <span class="grad-text">Monitoring Services</span></h2>
+        <p>From initial deployment to ongoing optimization, we cover every aspect of your monitoring needs.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="svc-card" data-reveal>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <h3>Zabbix Implementation</h3>
+          <p>Full-scale Zabbix deployment tailored to your infrastructure. From architecture design to production rollout.</p>
+          <a href="#contact" class="svc-more">Learn more <span>→</span></a>
+        </div>
+
+        <div class="svc-card" data-reveal>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>
+            </svg>
+          </div>
+          <h3>Infrastructure Monitoring</h3>
+          <p>End-to-end visibility across servers, networks, cloud environments, and applications in real time.</p>
+          <a href="#contact" class="svc-more">Learn more <span>→</span></a>
+        </div>
+
+        <div class="svc-card" data-reveal>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+          </div>
+          <h3>Alert Management</h3>
+          <p>Intelligent alerting with escalation policies, on-call scheduling, and integration with your existing toolstack.</p>
+          <a href="#contact" class="svc-more">Learn more <span>→</span></a>
+        </div>
+
+        <div class="svc-card" data-reveal>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+            </svg>
+          </div>
+          <h3>Custom Dashboards</h3>
+          <p>Tailor-made Zabbix dashboards that surface the metrics that matter most to your team.</p>
+          <a href="#contact" class="svc-more">Learn more <span>→</span></a>
+        </div>
+
+        <div class="svc-card" data-reveal>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <h3>Performance Analysis</h3>
+          <p>Deep-dive analytics and capacity planning to keep your systems healthy and ahead of demand.</p>
+          <a href="#contact" class="svc-more">Learn more <span>→</span></a>
+        </div>
+
+        <div class="svc-card" data-reveal>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3>Managed Monitoring</h3>
+          <p>Fully managed 24/7 monitoring — we watch your infrastructure so you can focus on your business.</p>
+          <a href="#contact" class="svc-more">Learn more <span>→</span></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WHY US ═══ -->
+  <section class="section why-us" id="why-us">
+    <div class="container">
+      <div class="why-grid">
+
+        <div class="why-text">
+          <span class="section-tag">Why Lanthir</span>
+          <h2>Built for <span class="grad-text">mission-critical</span> environments</h2>
+          <div class="why-feats">
+            <div class="wf-item" data-reveal>
+              <div class="wf-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div class="wf-body">
+                <h4>Rapid Deployment</h4>
+                <p>Go from zero to full monitoring coverage in days, not weeks.</p>
+              </div>
+            </div>
+            <div class="wf-item" data-reveal>
+              <div class="wf-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+              </div>
+              <div class="wf-body">
+                <h4>Deep Zabbix Expertise</h4>
+                <p>Certified engineers with years of hands-on Zabbix experience across complex environments.</p>
+              </div>
+            </div>
+            <div class="wf-item" data-reveal>
+              <div class="wf-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div class="wf-body">
+                <h4>Dedicated Support</h4>
+                <p>A named engineer who knows your environment, available when you need them.</p>
+              </div>
+            </div>
+            <div class="wf-item" data-reveal>
+              <div class="wf-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              </div>
+              <div class="wf-body">
+                <h4>Scalable Architecture</h4>
+                <p>Solutions designed to grow with you — from 50 hosts to 50,000 and beyond.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="why-visual" data-reveal>
+          <div class="radar-wrap">
+            <div class="radar-ring rr1"></div>
+            <div class="radar-ring rr2"></div>
+            <div class="radar-ring rr3"></div>
+            <div class="radar-sweep"></div>
+            <div class="radar-dot rd1"></div>
+            <div class="radar-dot rd2"></div>
+            <div class="radar-dot rd3"></div>
+            <div class="radar-logo">
+              <img src="logo.png" alt="Lanthir" class="radar-logo-img">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ RESULTS / STATS ═══ -->
+  <section class="section stats-section" id="results">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Results</span>
+        <h2>Numbers that <span class="grad-text">speak for themselves</span></h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card" data-reveal>
+          <div class="stat-num-wrap">
+            <span class="stat-count" data-target="150">0</span>
+            <span class="stat-sfx">+</span>
+          </div>
+          <span class="stat-lbl">Happy Clients</span>
+        </div>
+        <div class="stat-card" data-reveal>
+          <div class="stat-num-wrap">
+            <span class="stat-count" data-target="25000">0</span>
+            <span class="stat-sfx">+</span>
+          </div>
+          <span class="stat-lbl">Monitored Hosts</span>
+        </div>
+        <div class="stat-card" data-reveal>
+          <div class="stat-num-wrap">
+            <span class="stat-count" data-target="99">0</span>
+            <span class="stat-sfx">.9%</span>
+          </div>
+          <span class="stat-lbl">Uptime Delivered</span>
+        </div>
+        <div class="stat-card" data-reveal>
+          <div class="stat-num-wrap">
+            <span class="stat-count" data-target="8">0</span>
+            <span class="stat-sfx">+</span>
+          </div>
+          <span class="stat-lbl">Years Experience</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA BANNER ═══ -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-glow"></div>
+        <h2>Ready to see everything <span class="grad-text">in real time?</span></h2>
+        <p>Let's build a monitoring solution tailored to your infrastructure.</p>
+        <a href="#contact" class="btn-primary btn-lg">Talk to an Expert</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Get In Touch</span>
+        <h2>Let's start <span class="grad-text">monitoring</span></h2>
+      </div>
+      <div class="contact-grid">
+
+        <div class="contact-info">
+          <div class="ci-item">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div><span class="ci-label">Email</span><span class="ci-val">contact@lanthir.com</span></div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div><span class="ci-label">Phone</span><span class="ci-val">+420 000 000 000</span></div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div><span class="ci-label">Location</span><span class="ci-val">Czech Republic</span></div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Name</label>
+              <input id="fname" type="text" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="femail">Email</label>
+              <input id="femail" type="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fcompany">Company</label>
+            <input id="fcompany" type="text" placeholder="Your company">
+          </div>
+          <div class="form-group">
+            <label for="fmsg">Message</label>
+            <textarea id="fmsg" rows="5" placeholder="Tell us about your monitoring needs..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-lg btn-full">Send Message</button>
+          <div class="form-success" id="formSuccess">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+            Message sent! We'll get back to you shortly.
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="logo.png" alt="Lanthir" class="footer-logo">
+          <span class="footer-name">Lanthir</span>
+          <p>Enterprise monitoring solutions<br>powered by Zabbix.</p>
+        </div>
+        <div class="footer-nav">
+          <div class="footer-col">
+            <h5>Services</h5>
+            <a href="#services">Zabbix Implementation</a>
+            <a href="#services">Infrastructure Monitoring</a>
+            <a href="#services">Alert Management</a>
+            <a href="#services">Managed Monitoring</a>
+          </div>
+          <div class="footer-col">
+            <h5>Company</h5>
+            <a href="#why-us">About Us</a>
+            <a href="#results">Results</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bar">
+        <span>© 2026 Lanthir Monitoring Solutions. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
