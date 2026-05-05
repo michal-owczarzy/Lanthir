@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,12 +20,18 @@
         <span class="logo-text">Lanthir</span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#why-us">Why Us</a></li>
-        <li><a href="#results">Results</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#services"  data-i18n="nav.services">Služby</a></li>
+        <li><a href="#about"     data-i18n="nav.about">O nás</a></li>
+        <li><a href="#why-us"    data-i18n="nav.why">Proč my</a></li>
+        <li><a href="#results"   data-i18n="nav.results">Výsledky</a></li>
+        <li><a href="#contact"   data-i18n="nav.contact">Kontakt</a></li>
       </ul>
-      <a href="#contact" class="btn-primary nav-cta">Get Started</a>
+      <div class="lang-switch" id="langSwitch">
+        <button class="ls-btn active" data-lang="cs">CZ</button>
+        <button class="ls-btn" data-lang="en">EN</button>
+        <button class="ls-btn" data-lang="pl">PL</button>
+      </div>
+      <a href="#contact" class="btn-primary nav-cta" data-i18n="nav.cta">Začít</a>
       <button class="burger" id="burger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -40,26 +46,33 @@
       <div class="hero-text">
         <div class="hero-badge">
           <span class="badge-pulse"></span>
-          Zabbix Certified Partner
+          <span data-i18n="hero.badge">Certifikovaný partner Zabbix</span>
         </div>
-        <h1 class="hero-heading">
-          Monitor <span class="grad-text">Everything.</span><br>
-          Miss <span class="grad-text">Nothing.</span>
+        <h1 class="hero-heading" data-i18n="hero.h1">
+          Monitorujte <span class="grad-text">Vše.</span><br>Nezameškejte <span class="grad-text">Nic.</span>
         </h1>
-        <p class="hero-sub">
-          Enterprise-grade monitoring powered by Zabbix. Real-time visibility
-          into your entire infrastructure — servers, networks, cloud and applications.
+        <p class="hero-sub" data-i18n="hero.sub">
+          Monitoring na podnikové úrovni poháněný Zabbixem. Přehled v reálném čase o celé infrastruktuře — servery, sítě, cloud i aplikace.
         </p>
         <div class="hero-btns">
-          <a href="#contact" class="btn-primary btn-lg">Start Monitoring</a>
-          <a href="#services" class="btn-ghost btn-lg">Explore Services</a>
+          <a href="#contact" class="btn-primary btn-lg" data-i18n="hero.btn1">Začít monitorovat</a>
+          <a href="#services" class="btn-ghost btn-lg" data-i18n="hero.btn2">Prozkoumat služby</a>
         </div>
         <div class="hero-chips">
-          <div class="chip"><span class="chip-val">500+</span><span class="chip-lbl">Monitored Hosts</span></div>
+          <div class="chip">
+            <span class="chip-val">500+</span>
+            <span class="chip-lbl" data-i18n="hero.chip1">Monitorovaných hostů</span>
+          </div>
           <div class="chip-sep"></div>
-          <div class="chip"><span class="chip-val">99.9%</span><span class="chip-lbl">Uptime SLA</span></div>
+          <div class="chip">
+            <span class="chip-val">99.9%</span>
+            <span class="chip-lbl" data-i18n="hero.chip2">Záruční dostupnost</span>
+          </div>
           <div class="chip-sep"></div>
-          <div class="chip"><span class="chip-val">24/7</span><span class="chip-lbl">Expert Support</span></div>
+          <div class="chip">
+            <span class="chip-val">24/7</span>
+            <span class="chip-lbl" data-i18n="hero.chip3">Expertní podpora</span>
+          </div>
         </div>
       </div>
 
@@ -67,27 +80,27 @@
         <div class="widget-card">
           <div class="widget-titlebar">
             <div class="titlebar-dots"><span></span><span></span><span></span></div>
-            <span class="titlebar-name">System Overview</span>
+            <span class="titlebar-name" data-i18n="widget.title">Přehled systému</span>
             <span class="titlebar-live"><span class="live-dot"></span>LIVE</span>
           </div>
           <div class="widget-metrics">
             <div class="wm-row">
-              <span class="wm-label">CPU Usage</span>
+              <span class="wm-label" data-i18n="widget.cpu">Využití CPU</span>
               <div class="wm-bar"><div class="wm-fill" style="--w:42%;--c:var(--cyan)"></div></div>
               <span class="wm-val">42%</span>
             </div>
             <div class="wm-row">
-              <span class="wm-label">Memory</span>
+              <span class="wm-label" data-i18n="widget.mem">Paměť</span>
               <div class="wm-bar"><div class="wm-fill" style="--w:67%;--c:var(--blue)"></div></div>
               <span class="wm-val">67%</span>
             </div>
             <div class="wm-row">
-              <span class="wm-label">Network I/O</span>
+              <span class="wm-label" data-i18n="widget.net">Síť I/O</span>
               <div class="wm-bar"><div class="wm-fill" style="--w:28%;--c:var(--purple)"></div></div>
               <span class="wm-val">28%</span>
             </div>
             <div class="wm-row">
-              <span class="wm-label">Disk I/O</span>
+              <span class="wm-label" data-i18n="widget.disk">Disk I/O</span>
               <div class="wm-bar"><div class="wm-fill" style="--w:55%;--c:var(--cyan)"></div></div>
               <span class="wm-val">55%</span>
             </div>
@@ -107,15 +120,15 @@
           <div class="widget-alerts">
             <div class="wa-row ok">
               <svg class="wa-icon" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-              <span>web-server-01 — All systems normal</span>
+              <span data-i18n="widget.alert1">web-server-01 — Vše v pořádku</span>
             </div>
             <div class="wa-row warn">
               <svg class="wa-icon" viewBox="0 0 16 16"><path d="M8 2L15 14H1Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><line x1="8" y1="7" x2="8" y2="10" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="12.5" r=".5" fill="currentColor"/></svg>
-              <span>db-cluster-02 — High memory usage</span>
+              <span data-i18n="widget.alert2">db-cluster-02 — Vysoké využití paměti</span>
             </div>
             <div class="wa-row ok">
               <svg class="wa-icon" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-              <span>firewall-01 — Operational</span>
+              <span data-i18n="widget.alert3">firewall-01 — Provozuschopný</span>
             </div>
           </div>
         </div>
@@ -128,12 +141,12 @@
   </section>
 
   <!-- ═══ SERVICES ═══ -->
-  <section class="section services" id="services">
+  <section class="section" id="services">
     <div class="container">
       <div class="section-head">
-        <span class="section-tag">What We Do</span>
-        <h2>Comprehensive <span class="grad-text">Monitoring Services</span></h2>
-        <p>From initial deployment to ongoing optimization, we cover every aspect of your monitoring needs.</p>
+        <span class="section-tag" data-i18n="svc.tag">Co děláme</span>
+        <h2 data-i18n="svc.heading">Komplexní <span class="grad-text">monitorovací služby</span></h2>
+        <p data-i18n="svc.sub">Od prvotního nasazení až po průběžnou optimalizaci — pokrýváme každý aspekt vašich monitorovacích potřeb.</p>
       </div>
       <div class="services-grid">
 
@@ -143,9 +156,9 @@
               <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
             </svg>
           </div>
-          <h3>Zabbix Implementation</h3>
-          <p>Full-scale Zabbix deployment tailored to your infrastructure. From architecture design to production rollout.</p>
-          <a href="#contact" class="svc-more">Learn more <span>→</span></a>
+          <h3 data-i18n="svc.1.title">Implementace Zabbix</h3>
+          <p data-i18n="svc.1.desc">Kompletní nasazení Zabbixu na míru vaší infrastruktuře — od návrhu architektury po produkční spuštění.</p>
+          <a href="#contact" class="svc-more" data-i18n="svc.more">Zjistit více <span>→</span></a>
         </div>
 
         <div class="svc-card" data-reveal>
@@ -154,9 +167,9 @@
               <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>
             </svg>
           </div>
-          <h3>Infrastructure Monitoring</h3>
-          <p>End-to-end visibility across servers, networks, cloud environments, and applications in real time.</p>
-          <a href="#contact" class="svc-more">Learn more <span>→</span></a>
+          <h3 data-i18n="svc.2.title">Monitoring infrastruktury</h3>
+          <p data-i18n="svc.2.desc">Komplexní přehled napříč servery, sítěmi, cloudovými prostředími a aplikacemi v reálném čase.</p>
+          <a href="#contact" class="svc-more" data-i18n="svc.more">Zjistit více <span>→</span></a>
         </div>
 
         <div class="svc-card" data-reveal>
@@ -165,9 +178,9 @@
               <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
             </svg>
           </div>
-          <h3>Alert Management</h3>
-          <p>Intelligent alerting with escalation policies, on-call scheduling, and integration with your existing toolstack.</p>
-          <a href="#contact" class="svc-more">Learn more <span>→</span></a>
+          <h3 data-i18n="svc.3.title">Správa upozornění</h3>
+          <p data-i18n="svc.3.desc">Inteligentní alerting s eskalačními politikami, rozvrhem pohotovosti a integrací do vašich nástrojů.</p>
+          <a href="#contact" class="svc-more" data-i18n="svc.more">Zjistit více <span>→</span></a>
         </div>
 
         <div class="svc-card" data-reveal>
@@ -176,9 +189,9 @@
               <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
             </svg>
           </div>
-          <h3>Custom Dashboards</h3>
-          <p>Tailor-made Zabbix dashboards that surface the metrics that matter most to your team.</p>
-          <a href="#contact" class="svc-more">Learn more <span>→</span></a>
+          <h3 data-i18n="svc.4.title">Vlastní dashboardy</h3>
+          <p data-i18n="svc.4.desc">Dashboardy Zabbix na míru, které zobrazují metriky nejdůležitější právě pro váš tým.</p>
+          <a href="#contact" class="svc-more" data-i18n="svc.more">Zjistit více <span>→</span></a>
         </div>
 
         <div class="svc-card" data-reveal>
@@ -187,9 +200,9 @@
               <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
             </svg>
           </div>
-          <h3>Performance Analysis</h3>
-          <p>Deep-dive analytics and capacity planning to keep your systems healthy and ahead of demand.</p>
-          <a href="#contact" class="svc-more">Learn more <span>→</span></a>
+          <h3 data-i18n="svc.5.title">Analýza výkonu</h3>
+          <p data-i18n="svc.5.desc">Hloubková analytika a kapacitní plánování, aby vaše systémy zvládaly rostoucí požadavky.</p>
+          <a href="#contact" class="svc-more" data-i18n="svc.more">Zjistit více <span>→</span></a>
         </div>
 
         <div class="svc-card" data-reveal>
@@ -198,9 +211,179 @@
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             </svg>
           </div>
-          <h3>Managed Monitoring</h3>
-          <p>Fully managed 24/7 monitoring — we watch your infrastructure so you can focus on your business.</p>
-          <a href="#contact" class="svc-more">Learn more <span>→</span></a>
+          <h3 data-i18n="svc.6.title">Spravovaný monitoring</h3>
+          <p data-i18n="svc.6.desc">Plně spravovaná služba 24/7 — hlídáme vaši infrastrukturu, vy se soustředíte na byznys.</p>
+          <a href="#contact" class="svc-more" data-i18n="svc.more">Zjistit více <span>→</span></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT US ═══ -->
+  <section class="section about-section" id="about">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag" data-i18n="about.tag">O nás</span>
+        <h2 data-i18n="about.heading">Poznejte <span class="grad-text">tým za Lanthirem</span></h2>
+      </div>
+      <div class="about-grid">
+
+        <div class="about-photo-col" data-reveal>
+          <div class="about-photo-wrap">
+            <img src="photo.jpg" alt="Founder" class="about-photo"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="about-photo-fallback">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="about-photo-glow"></div>
+          </div>
+          <div class="about-socials">
+            <a href="#" class="social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <a href="mailto:contact@lanthir.com" class="social-btn" aria-label="Email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Email
+            </a>
+          </div>
+        </div>
+
+        <div class="about-content" data-reveal>
+          <div class="about-name-wrap">
+            <h3 class="about-name">Jméno Příjmení</h3>
+            <span class="about-role" data-i18n="about.role">Zakladatel & Zabbix Specialista</span>
+          </div>
+          <p class="about-bio" data-i18n="about.bio">
+            Zakladatel společnosti Lanthir a přední odborník na monitorovací řešení postavená na platformě Zabbix. S více než 8 lety zkušeností v oblasti IT infrastruktury pomohl stovkám firem získat přehled nad jejich systémy a zajistit jejich spolehlivý provoz. Specializuje se na rozsáhlé Zabbix implementace, návrh monitorovacích architektur a integraci s podnikovými ITSM nástroji.
+          </p>
+          <div class="about-tags">
+            <span class="skill-tag">Zabbix</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">Cisco / SNMP</span>
+            <span class="skill-tag">Azure</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">ServiceNow</span>
+            <span class="skill-tag">Grafana</span>
+          </div>
+          <div class="about-highlights">
+            <div class="ah-item">
+              <span class="ah-num grad-text">8+</span>
+              <span class="ah-lbl" data-i18n="about.hl1">Let v oboru</span>
+            </div>
+            <div class="ah-item">
+              <span class="ah-num grad-text">150+</span>
+              <span class="ah-lbl" data-i18n="about.hl2">Projektů dokončeno</span>
+            </div>
+            <div class="ah-item">
+              <span class="ah-num grad-text">25k+</span>
+              <span class="ah-lbl" data-i18n="about.hl3">Monitorovaných hostů</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EXPERTISE ═══ -->
+  <section class="section expertise-section" id="expertise">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag" data-i18n="exp.tag">Naše odbornost</span>
+        <h2 data-i18n="exp.heading">Technologie &amp; <span class="grad-text">certifikace</span></h2>
+        <p data-i18n="exp.sub">Hluboká specializace v oblasti enterprise monitoringu — od síťové vrstvy až po cloudové prostředí.</p>
+      </div>
+      <div class="exp-grid">
+
+        <div class="exp-card" data-reveal>
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <div class="exp-badge expert" data-i18n="badge.expert">Expert</div>
+          <h4 data-i18n="exp.1.title">Zabbix Platform</h4>
+          <p data-i18n="exp.1.desc">Hluboká znalost Zabbixu — od instalace a šablon po HA clustering a výkonnostní ladění.</p>
+        </div>
+
+        <div class="exp-card" data-reveal>
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/>
+            </svg>
+          </div>
+          <div class="exp-badge expert" data-i18n="badge.expert">Expert</div>
+          <h4 data-i18n="exp.2.title">Síťový monitoring</h4>
+          <p data-i18n="exp.2.desc">SNMP, NetFlow, IPAM — monitoring zařízení Cisco, HP, Juniper a dalších síťových prvků.</p>
+        </div>
+
+        <div class="exp-card" data-reveal>
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="exp-badge advanced" data-i18n="badge.advanced">Pokročilý</div>
+          <h4 data-i18n="exp.3.title">Servery &amp; Virtualizace</h4>
+          <p data-i18n="exp.3.desc">Linux, Windows Server, VMware, Hyper-V — fyzická i virtuální prostředí bez výjimky.</p>
+        </div>
+
+        <div class="exp-card" data-reveal>
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <div class="exp-badge advanced" data-i18n="badge.advanced">Pokročilý</div>
+          <h4 data-i18n="exp.4.title">Cloud monitoring</h4>
+          <p data-i18n="exp.4.desc">Microsoft Azure, AWS, Google Cloud — hybridní i plně cloudová prostředí pod kontrolou.</p>
+        </div>
+
+        <div class="exp-card" data-reveal>
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+            </svg>
+          </div>
+          <div class="exp-badge expert" data-i18n="badge.expert">Expert</div>
+          <h4 data-i18n="exp.5.title">Databáze &amp; Aplikace</h4>
+          <p data-i18n="exp.5.desc">MySQL, MSSQL, Oracle, PostgreSQL, MongoDB — monitoring výkonu databází i aplikací.</p>
+        </div>
+
+        <div class="exp-card" data-reveal>
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </div>
+          <div class="exp-badge advanced" data-i18n="badge.advanced">Pokročilý</div>
+          <h4 data-i18n="exp.6.title">Vlastní vývoj</h4>
+          <p data-i18n="exp.6.desc">Vlastní šablony Zabbix, skripty, API integrace a automatizace pro jedinečné potřeby.</p>
+        </div>
+
+        <div class="exp-card" data-reveal>
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="exp-badge advanced" data-i18n="badge.advanced">Pokročilý</div>
+          <h4 data-i18n="exp.7.title">ITSM integrace</h4>
+          <p data-i18n="exp.7.desc">ServiceNow, Jira, PagerDuty, Slack, Teams — monitoring propojený s vaším toolstackem.</p>
+        </div>
+
+        <div class="exp-card" data-reveal>
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div class="exp-badge advanced" data-i18n="badge.advanced">Pokročilý</div>
+          <h4 data-i18n="exp.8.title">Bezpečnostní monitoring</h4>
+          <p data-i18n="exp.8.desc">Detekce anomálií, log monitoring, upozornění na bezpečnostní incidenty a compliance reporting.</p>
         </div>
 
       </div>
@@ -208,21 +391,21 @@
   </section>
 
   <!-- ═══ WHY US ═══ -->
-  <section class="section why-us" id="why-us">
+  <section class="section why-section" id="why-us">
     <div class="container">
       <div class="why-grid">
 
         <div class="why-text">
-          <span class="section-tag">Why Lanthir</span>
-          <h2>Built for <span class="grad-text">mission-critical</span> environments</h2>
+          <span class="section-tag" data-i18n="why.tag">Proč Lanthir</span>
+          <h2 data-i18n="why.heading">Navrženo pro <span class="grad-text">kritická prostředí</span></h2>
           <div class="why-feats">
             <div class="wf-item" data-reveal>
               <div class="wf-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
               </div>
               <div class="wf-body">
-                <h4>Rapid Deployment</h4>
-                <p>Go from zero to full monitoring coverage in days, not weeks.</p>
+                <h4 data-i18n="why.1.title">Rychlé nasazení</h4>
+                <p data-i18n="why.1.desc">Od nuly k plnému monitorovacímu pokrytí za dny, ne týdny.</p>
               </div>
             </div>
             <div class="wf-item" data-reveal>
@@ -230,8 +413,8 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
               </div>
               <div class="wf-body">
-                <h4>Deep Zabbix Expertise</h4>
-                <p>Certified engineers with years of hands-on Zabbix experience across complex environments.</p>
+                <h4 data-i18n="why.2.title">Hluboká odbornost Zabbix</h4>
+                <p data-i18n="why.2.desc">Certifikovaní inženýři s letitými zkušenostmi napříč komplexními prostředími.</p>
               </div>
             </div>
             <div class="wf-item" data-reveal>
@@ -239,8 +422,8 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               </div>
               <div class="wf-body">
-                <h4>Dedicated Support</h4>
-                <p>A named engineer who knows your environment, available when you need them.</p>
+                <h4 data-i18n="why.3.title">Dedikovaná podpora</h4>
+                <p data-i18n="why.3.desc">Jmenovaný inženýr, který zná vaše prostředí — dostupný, kdy ho potřebujete.</p>
               </div>
             </div>
             <div class="wf-item" data-reveal>
@@ -248,8 +431,8 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
               </div>
               <div class="wf-body">
-                <h4>Scalable Architecture</h4>
-                <p>Solutions designed to grow with you — from 50 hosts to 50,000 and beyond.</p>
+                <h4 data-i18n="why.4.title">Škálovatelná architektura</h4>
+                <p data-i18n="why.4.desc">Řešení navržená tak, aby rostla s vámi — od 50 hostů po 50 000 a více.</p>
               </div>
             </div>
           </div>
@@ -274,12 +457,12 @@
     </div>
   </section>
 
-  <!-- ═══ RESULTS / STATS ═══ -->
+  <!-- ═══ STATS ═══ -->
   <section class="section stats-section" id="results">
     <div class="container">
       <div class="section-head">
-        <span class="section-tag">Results</span>
-        <h2>Numbers that <span class="grad-text">speak for themselves</span></h2>
+        <span class="section-tag" data-i18n="stats.tag">Výsledky</span>
+        <h2 data-i18n="stats.heading">Čísla, která <span class="grad-text">mluví za vše</span></h2>
       </div>
       <div class="stats-grid">
         <div class="stat-card" data-reveal>
@@ -287,28 +470,28 @@
             <span class="stat-count" data-target="150">0</span>
             <span class="stat-sfx">+</span>
           </div>
-          <span class="stat-lbl">Happy Clients</span>
+          <span class="stat-lbl" data-i18n="stats.1">Spokojených klientů</span>
         </div>
         <div class="stat-card" data-reveal>
           <div class="stat-num-wrap">
             <span class="stat-count" data-target="25000">0</span>
             <span class="stat-sfx">+</span>
           </div>
-          <span class="stat-lbl">Monitored Hosts</span>
+          <span class="stat-lbl" data-i18n="stats.2">Monitorovaných hostů</span>
         </div>
         <div class="stat-card" data-reveal>
           <div class="stat-num-wrap">
             <span class="stat-count" data-target="99">0</span>
             <span class="stat-sfx">.9%</span>
           </div>
-          <span class="stat-lbl">Uptime Delivered</span>
+          <span class="stat-lbl" data-i18n="stats.3">Dostupnost zajištěna</span>
         </div>
         <div class="stat-card" data-reveal>
           <div class="stat-num-wrap">
             <span class="stat-count" data-target="8">0</span>
             <span class="stat-sfx">+</span>
           </div>
-          <span class="stat-lbl">Years Experience</span>
+          <span class="stat-lbl" data-i18n="stats.4">Let zkušeností</span>
         </div>
       </div>
     </div>
@@ -319,9 +502,9 @@
     <div class="container">
       <div class="cta-card">
         <div class="cta-glow"></div>
-        <h2>Ready to see everything <span class="grad-text">in real time?</span></h2>
-        <p>Let's build a monitoring solution tailored to your infrastructure.</p>
-        <a href="#contact" class="btn-primary btn-lg">Talk to an Expert</a>
+        <h2 data-i18n="cta.h2">Chcete vidět vše <span class="grad-text">v reálném čase?</span></h2>
+        <p data-i18n="cta.p">Vytvořme monitorovací řešení přesně na míru vaší infrastruktuře.</p>
+        <a href="#contact" class="btn-primary btn-lg" data-i18n="cta.btn">Pomluvit s expertem</a>
       </div>
     </div>
   </section>
@@ -330,8 +513,8 @@
   <section class="section contact-section" id="contact">
     <div class="container">
       <div class="section-head">
-        <span class="section-tag">Get In Touch</span>
-        <h2>Let's start <span class="grad-text">monitoring</span></h2>
+        <span class="section-tag" data-i18n="contact.tag">Kontaktujte nás</span>
+        <h2 data-i18n="contact.heading">Začněme <span class="grad-text">monitorovat</span></h2>
       </div>
       <div class="contact-grid">
 
@@ -340,45 +523,54 @@
             <div class="ci-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
-            <div><span class="ci-label">Email</span><span class="ci-val">contact@lanthir.com</span></div>
+            <div>
+              <span class="ci-label" data-i18n="contact.email.lbl">E-mail</span>
+              <span class="ci-val">contact@lanthir.com</span>
+            </div>
           </div>
           <div class="ci-item">
             <div class="ci-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </div>
-            <div><span class="ci-label">Phone</span><span class="ci-val">+420 000 000 000</span></div>
+            <div>
+              <span class="ci-label" data-i18n="contact.phone.lbl">Telefon</span>
+              <span class="ci-val">+420 000 000 000</span>
+            </div>
           </div>
           <div class="ci-item">
             <div class="ci-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
-            <div><span class="ci-label">Location</span><span class="ci-val">Czech Republic</span></div>
+            <div>
+              <span class="ci-label" data-i18n="contact.loc.lbl">Místo</span>
+              <span class="ci-val" data-i18n="contact.loc.val">Česká republika</span>
+            </div>
           </div>
         </div>
 
         <form class="contact-form" id="contactForm" novalidate>
           <div class="form-row">
             <div class="form-group">
-              <label for="fname">Name</label>
-              <input id="fname" type="text" placeholder="Your name" required>
+              <label for="fname" data-i18n="form.name.lbl">Jméno</label>
+              <input id="fname" type="text" data-i18n-ph="form.name.ph" placeholder="Vaše jméno" required>
             </div>
             <div class="form-group">
-              <label for="femail">Email</label>
-              <input id="femail" type="email" placeholder="your@email.com" required>
+              <label for="femail" data-i18n="form.email.lbl">E-mail</label>
+              <input id="femail" type="email" data-i18n-ph="form.email.ph" placeholder="váš@email.com" required>
             </div>
           </div>
           <div class="form-group">
-            <label for="fcompany">Company</label>
-            <input id="fcompany" type="text" placeholder="Your company">
+            <label for="fcompany" data-i18n="form.company.lbl">Firma</label>
+            <input id="fcompany" type="text" data-i18n-ph="form.company.ph" placeholder="Vaše firma">
           </div>
           <div class="form-group">
-            <label for="fmsg">Message</label>
-            <textarea id="fmsg" rows="5" placeholder="Tell us about your monitoring needs..." required></textarea>
+            <label for="fmsg" data-i18n="form.msg.lbl">Zpráva</label>
+            <textarea id="fmsg" rows="5" data-i18n-ph="form.msg.ph" placeholder="Popište vaše potřeby v oblasti monitoringu..." required></textarea>
           </div>
-          <button type="submit" class="btn-primary btn-lg btn-full">Send Message</button>
+          <button type="submit" class="btn-primary btn-lg btn-full" data-i18n="form.send">Odeslat zprávu</button>
           <div class="form-success" id="formSuccess">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
-            Message sent! We'll get back to you shortly.
+            <span data-i18n="form.success">Zpráva odeslána! Ozveme se co nejdříve.</span>
           </div>
         </form>
 
@@ -391,28 +583,31 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="logo.png" alt="Lanthir" class="footer-logo">
-          <span class="footer-name">Lanthir</span>
-          <p>Enterprise monitoring solutions<br>powered by Zabbix.</p>
+          <div class="footer-brand-row">
+            <img src="logo.png" alt="Lanthir" class="footer-logo">
+            <span class="footer-name">Lanthir</span>
+          </div>
+          <p data-i18n="footer.tagline">Podniková monitorovací řešení poháněná Zabbixem.</p>
         </div>
         <div class="footer-nav">
           <div class="footer-col">
-            <h5>Services</h5>
-            <a href="#services">Zabbix Implementation</a>
-            <a href="#services">Infrastructure Monitoring</a>
-            <a href="#services">Alert Management</a>
-            <a href="#services">Managed Monitoring</a>
+            <h5 data-i18n="footer.col1.h">Služby</h5>
+            <a href="#services" data-i18n="svc.1.title">Implementace Zabbix</a>
+            <a href="#services" data-i18n="svc.2.title">Monitoring infrastruktury</a>
+            <a href="#services" data-i18n="svc.3.title">Správa upozornění</a>
+            <a href="#services" data-i18n="svc.6.title">Spravovaný monitoring</a>
           </div>
           <div class="footer-col">
-            <h5>Company</h5>
-            <a href="#why-us">About Us</a>
-            <a href="#results">Results</a>
-            <a href="#contact">Contact</a>
+            <h5 data-i18n="footer.col2.h">Společnost</h5>
+            <a href="#about"   data-i18n="nav.about">O nás</a>
+            <a href="#why-us"  data-i18n="nav.why">Proč my</a>
+            <a href="#results" data-i18n="nav.results">Výsledky</a>
+            <a href="#contact" data-i18n="nav.contact">Kontakt</a>
           </div>
         </div>
       </div>
       <div class="footer-bar">
-        <span>© 2026 Lanthir Monitoring Solutions. All rights reserved.</span>
+        <span data-i18n="footer.copy">© 2026 Lanthir Monitoring Solutions. Všechna práva vyhrazena.</span>
       </div>
     </div>
   </footer>
