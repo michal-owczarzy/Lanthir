@@ -49,11 +49,9 @@ input, textarea, select, button { font-family: inherit; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 .grad-text {
   background: var(--grad-text);
-  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: gradShift 5s linear infinite;
 }
 .section { padding: 100px 0; }
 
@@ -234,10 +232,8 @@ input, textarea, select, button { font-family: inherit; }
 .chip-val {
   font-size: 1.4rem; font-weight: 800;
   background: var(--grad-text);
-  background-size: 200% auto;
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   line-height: 1;
-  animation: gradShift 5s linear infinite;
 }
 .chip-lbl { font-size: .75rem; color: var(--text-dim); margin-top: 3px; }
 .chip-sep { width: 1px; height: 36px; background: var(--border); }
@@ -385,15 +381,14 @@ input, textarea, select, button { font-family: inherit; }
 .price-from { font-size: .8rem; color: var(--text-dim); }
 .price-num {
   font-size: 2.4rem; font-weight: 900; letter-spacing: -.04em;
-  background: var(--grad-text); background-size: 200% auto;
+  background: var(--grad-text);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  line-height: 1; animation: gradShift 5s linear infinite;
+  line-height: 1;
 }
 .price-custom {
   font-size: 1.5rem !important;
-  background: var(--grad-text); background-size: 200% auto;
+  background: var(--grad-text);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  animation: gradShift 5s linear infinite;
 }
 .price-currency { font-size: 1rem; font-weight: 600; color: var(--text-dim); }
 
@@ -658,10 +653,7 @@ input, textarea, select, button { font-family: inherit; }
 /* ═══════════════════════════════════════════
    KEYFRAMES
 ═══════════════════════════════════════════ */
-@keyframes gradShift {
-  0%   { background-position: 0% center; }
-  100% { background-position: 200% center; }
-}
+
 @keyframes pulse {
   0%  { box-shadow: 0 0 0 0 rgba(31,205,237,.6); }
   70% { box-shadow: 0 0 0 10px rgba(31,205,237,0); }
