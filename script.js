@@ -1,117 +1,128 @@
 /* ═══════════════════════════════════════════
    LANTHIR — script.js
-   i18n · Canvas Network · Scroll Animations · Counters
+   i18n (CS/EN/PL) · Canvas · Reveal · Form
 ═══════════════════════════════════════════ */
 
-// ── Translations ─────────────────────────
 const T = {
   cs: {
-    // Nav
-    'nav.services':  'Služby',
-    'nav.about':     'O nás',
-    'nav.why':       'Proč my',
-    'nav.results':   'Výsledky',
-    'nav.contact':   'Kontakt',
-    'nav.cta':       'Začít',
+    'nav.services': 'Služby',
+    'nav.pricing':  'Ceník',
+    'nav.process':  'Postup',
+    'nav.about':    'O nás',
+    'nav.contact':  'Kontakt',
+    'nav.cta':      'Nezávazná poptávka',
 
-    // Hero
-    'hero.badge':  'Certifikovaný partner Zabbix',
-    'hero.h1':     'Monitorujte <span class="grad-text">Vše.</span><br>Nezameškejte <span class="grad-text">Nic.</span>',
-    'hero.sub':    'Monitoring na podnikové úrovni poháněný Zabbixem. Přehled v reálném čase o celé infrastruktuře — servery, sítě, cloud i aplikace.',
-    'hero.btn1':   'Začít monitorovat',
-    'hero.btn2':   'Prozkoumat služby',
-    'hero.chip1':  'Monitorovaných hostů',
-    'hero.chip2':  'Záruční dostupnost',
-    'hero.chip3':  'Expertní podpora',
+    'hero.badge':    'Profesionální tvorba webů',
+    'hero.h1':       'Navrhujeme weby.<br><span class="grad-text">Budujeme úspěch.</span>',
+    'hero.sub':      'Profesionální webové stránky na míru — od jednoduché vizitky po komplexní rezervační systém. Rychle, spolehlivě a s péčí o každý detail.',
+    'hero.btn1':     'Zobrazit ceník',
+    'hero.btn2':     'Nezávazná konzultace',
+    'hero.chip1':    'Projektů',
+    'hero.chip2':    'Dní průměrná dodávka',
+    'hero.chip3':    'Spokojených zákazníků',
+    'hero.building': 'Váš web se připravuje...',
 
-    // Widget
-    'widget.title':  'Přehled systému',
-    'widget.cpu':    'Využití CPU',
-    'widget.mem':    'Paměť',
-    'widget.net':    'Síť I/O',
-    'widget.disk':   'Disk I/O',
-    'widget.alert1': 'web-server-01 — Vše v pořádku',
-    'widget.alert2': 'db-cluster-02 — Vysoké využití paměti',
-    'widget.alert3': 'firewall-01 — Provozuschopný',
+    'svc.tag':     'Co tvoříme',
+    'svc.heading': 'Webové stránky pro <span class="grad-text">každou potřebu</span>',
+    'svc.sub':     'Od vizitky po komplexní systém — navrhujeme a vyvíjíme weby, které fungují a přinášejí výsledky.',
+    'svc.more':    'Zobrazit ceník <span>→</span>',
+    'svc.1.title': 'Prezentační web',
+    'svc.1.desc':  'Profesionální webové stránky, které představují vaši firmu nebo produkt. Moderní design, rychlé načítání, perfektní na mobilu.',
+    'svc.2.title': 'E-shop',
+    'svc.2.desc':  'Plně funkční online obchod s košíkem, platební bránou a správou objednávek. Prodávejte 24/7 bez omezení.',
+    'svc.3.title': 'Rezervační systém',
+    'svc.3.desc':  'Online rezervace pro restaurace, hotely, salony, lékaře a další. Zákazníci si zarezervují sami — vy šetříte čas.',
+    'svc.4.title': 'Landing page',
+    'svc.4.desc':  'Efektivní stránka zaměřená na jeden cíl — kampaň, produkt nebo získání kontaktů. Maximální konverze.',
+    'svc.5.title': 'Webová aplikace',
+    'svc.5.desc':  'Komplexní webová aplikace s přihlášením, databází a vlastní logikou. Portály, dashboardy, interní nástroje.',
+    'svc.6.title': 'Redesign webu',
+    'svc.6.desc':  'Zastaralý web vám škodí. Obnovíme jeho design, výkon a SEO — bez ztráty obsahu a pozic ve vyhledávačích.',
 
-    // Services
-    'svc.tag':     'Co děláme',
-    'svc.heading': 'Komplexní <span class="grad-text">monitorovací služby</span>',
-    'svc.sub':     'Od prvotního nasazení až po průběžnou optimalizaci — pokrýváme každý aspekt vašich monitorovacích potřeb.',
-    'svc.more':    'Zjistit více <span>→</span>',
-    'svc.1.title': 'Implementace Zabbix',
-    'svc.1.desc':  'Kompletní nasazení Zabbixu na míru vaší infrastruktuře — od návrhu architektury po produkční spuštění.',
-    'svc.2.title': 'Monitoring infrastruktury',
-    'svc.2.desc':  'Komplexní přehled napříč servery, sítěmi, cloudovými prostředími a aplikacemi v reálném čase.',
-    'svc.3.title': 'Správa upozornění',
-    'svc.3.desc':  'Inteligentní alerting s eskalačními politikami, rozvrhem pohotovosti a integrací do vašich nástrojů.',
-    'svc.4.title': 'Vlastní dashboardy',
-    'svc.4.desc':  'Dashboardy Zabbix na míru, které zobrazují metriky nejdůležitější právě pro váš tým.',
-    'svc.5.title': 'Analýza výkonu',
-    'svc.5.desc':  'Hloubková analytika a kapacitní plánování, aby vaše systémy zvládaly rostoucí požadavky.',
-    'svc.6.title': 'Spravovaný monitoring',
-    'svc.6.desc':  'Plně spravovaná služba 24/7 — hlídáme vaši infrastrukturu, vy se soustředíte na byznys.',
+    'price.tag':      'Ceník',
+    'price.heading':  'Balíčky <span class="grad-text">pro každého</span>',
+    'price.sub':      'Transparentní ceny bez skrytých poplatků. Platíte za výsledek, ne za hodiny.',
+    'price.from':     'od',
+    'price.currency': 'Kč',
+    'price.popular':  'Nejpopulárnější',
+    'price.cta':      'Mám zájem',
+    'price.cta.main': 'Začít projekt',
+    'price.note':     '* Všechny ceny jsou bez DPH. Cena závisí na rozsahu projektu. Rádi vám připravíme přesnou nabídku.',
+    'price.1.tier':   'Starter',
+    'price.1.name':   'Statická stránka',
+    'price.1.desc':   'Ideální pro prezentaci firmy, živnostníka nebo produktu.',
+    'price.1.price':  '9 990',
+    'price.1.f1': 'Až 1 stránka (landing page)',
+    'price.1.f2': 'Moderní responzivní design',
+    'price.1.f3': 'Optimalizace pro mobilní zařízení',
+    'price.1.f4': 'Základní SEO nastavení',
+    'price.1.f5': 'Kontaktní formulář',
+    'price.1.f6': 'Dodání do 2 týdnů',
+    'price.1.f7': '3 měsíce bezplatné podpory',
+    'price.2.tier':   'Business',
+    'price.2.name':   'Pokročilý web',
+    'price.2.desc':   'Pro firmy potřebující více — rezervace, e-shop, správu obsahu.',
+    'price.2.price':  '29 990',
+    'price.2.f1': 'Neomezený počet stránek',
+    'price.2.f2': 'Rezervační systém nebo e-shop',
+    'price.2.f3': 'CMS — snadná správa obsahu',
+    'price.2.f4': 'Pokročilé SEO + Google Analytics',
+    'price.2.f5': 'Integrace platební brány',
+    'price.2.f6': 'Vlastní funkcionalita na míru',
+    'price.2.f7': '6 měsíců bezplatné podpory',
+    'price.3.tier':   'Enterprise',
+    'price.3.name':   'Na míru',
+    'price.3.desc':   'Komplexní řešení bez omezení — libovolná složitost a rozsah.',
+    'price.3.price':  'Na vyžádání',
+    'price.3.f1': 'Libovolná složitost projektu',
+    'price.3.f2': 'Webová aplikace / vlastní API',
+    'price.3.f3': 'Vlastní CMS / admin panel',
+    'price.3.f4': 'Integrace externích systémů',
+    'price.3.f5': 'Prioritní podpora & SLA',
+    'price.3.f6': 'Individuální cenotvorba',
+    'price.3.f7': 'Dlouhodobá spolupráce',
 
-    // About
-    'about.tag':     'O nás',
-    'about.heading': 'Poznejte <span class="grad-text">tým za Lanthirem</span>',
-    'about.role':    'Zakladatel & Zabbix Specialista',
-    'about.bio':     'Zakladatel společnosti Lanthir a přední odborník na monitorovací řešení postavená na platformě Zabbix. S více než 8 lety zkušeností v oblasti IT infrastruktury pomohl stovkám firem získat přehled nad jejich systémy a zajistit jejich spolehlivý provoz. Specializuje se na rozsáhlé Zabbix implementace, návrh monitorovacích architektur a integraci s podnikovými ITSM nástroji.',
-    'about.hl1':     'Let v oboru',
-    'about.hl2':     'Projektů dokončeno',
-    'about.hl3':     'Monitorovaných hostů',
+    'proc.tag':     'Jak pracujeme',
+    'proc.heading': 'Čtyři kroky k <span class="grad-text">vašemu webu</span>',
+    'proc.sub':     'Transparentní proces od první schůzky po spuštění. Vždy víte, ve které fázi se projekt nachází.',
+    'proc.1.title': 'Konzultace',
+    'proc.1.desc':  'Poznáme vás, vaše cíle a potřeby. Bezplatná konzultace bez závazků — osobně nebo online.',
+    'proc.2.title': 'Návrh',
+    'proc.2.desc':  'Vytvoříme vizuální podobu vašeho webu — layout a design odsouhlasíme před tím, než začneme kódovat.',
+    'proc.3.title': 'Vývoj',
+    'proc.3.desc':  'Kódujeme, testujeme a ladíme. Průběžně vás informujeme o postupu a zapracováváme zpětnou vazbu.',
+    'proc.4.title': 'Spuštění',
+    'proc.4.desc':  'Publikujeme web, nastavíme analytiku a jsme tu pro vás i po spuštění — podpora zahrnuta v ceně.',
 
-    // Expertise
-    'exp.tag':     'Naše odbornost',
-    'exp.heading': 'Technologie &amp; <span class="grad-text">certifikace</span>',
-    'exp.sub':     'Hluboká specializace v oblasti enterprise monitoringu — od síťové vrstvy až po cloudové prostředí.',
-    'badge.expert':   'Expert',
-    'badge.advanced': 'Pokročilý',
-    'exp.1.title': 'Zabbix Platform',
-    'exp.1.desc':  'Hluboká znalost Zabbixu — od instalace a šablon po HA clustering a výkonnostní ladění.',
-    'exp.2.title': 'Síťový monitoring',
-    'exp.2.desc':  'SNMP, NetFlow, IPAM — monitoring zařízení Cisco, HP, Juniper a dalších síťových prvků.',
-    'exp.3.title': 'Servery &amp; Virtualizace',
-    'exp.3.desc':  'Linux, Windows Server, VMware, Hyper-V — fyzická i virtuální prostředí bez výjimky.',
-    'exp.4.title': 'Cloud monitoring',
-    'exp.4.desc':  'Microsoft Azure, AWS, Google Cloud — hybridní i plně cloudová prostředí pod kontrolou.',
-    'exp.5.title': 'Databáze &amp; Aplikace',
-    'exp.5.desc':  'MySQL, MSSQL, Oracle, PostgreSQL, MongoDB — monitoring výkonu databází i aplikací.',
-    'exp.6.title': 'Vlastní vývoj',
-    'exp.6.desc':  'Vlastní šablony Zabbix, skripty, API integrace a automatizace pro jedinečné potřeby.',
-    'exp.7.title': 'ITSM integrace',
-    'exp.7.desc':  'ServiceNow, Jira, PagerDuty, Slack, Teams — monitoring propojený s vaším toolstackem.',
-    'exp.8.title': 'Bezpečnostní monitoring',
-    'exp.8.desc':  'Detekce anomálií, log monitoring, upozornění na bezpečnostní incidenty a compliance reporting.',
-
-    // Why Us
     'why.tag':     'Proč Lanthir',
-    'why.heading': 'Navrženo pro <span class="grad-text">kritická prostředí</span>',
-    'why.1.title': 'Rychlé nasazení',
-    'why.1.desc':  'Od nuly k plnému monitorovacímu pokrytí za dny, ne týdny.',
-    'why.2.title': 'Hluboká odbornost Zabbix',
-    'why.2.desc':  'Certifikovaní inženýři s letitými zkušenostmi napříč komplexními prostředími.',
-    'why.3.title': 'Dedikovaná podpora',
-    'why.3.desc':  'Jmenovaný inženýr, který zná vaše prostředí — dostupný, kdy ho potřebujete.',
-    'why.4.title': 'Škálovatelná architektura',
-    'why.4.desc':  'Řešení navržená tak, aby rostla s vámi — od 50 hostů po 50 000 a více.',
+    'why.heading': 'Web, který <span class="grad-text">pracuje pro vás</span>',
+    'why.1.title': 'Rychlé dodání',
+    'why.1.desc':  'Průměrná doba dodání webu je 14 dní. U jednoduchých projektů i méně.',
+    'why.2.title': 'Bezpečnost & výkon',
+    'why.2.desc':  'SSL, optimalizace rychlosti, SEO základ — vše zahrnuto v každém balíčku.',
+    'why.3.title': 'Vlastní design',
+    'why.3.desc':  'Žádné šablony. Každý web navrhujeme od základu podle vašich potřeb a identity.',
+    'why.4.title': 'Podpora po spuštění',
+    'why.4.desc':  'Nezmizíme po předání. Jsme tu pro úpravy, aktualizace a rozvoj webu.',
+    'wstat.1': 'Dokončených projektů',
+    'wstat.2': 'Dní průměrné dodání',
+    'wstat.3': 'Spokojených zákazníků',
+    'wstat.4': 'Roky zkušeností',
 
-    // Stats
-    'stats.tag':     'Výsledky',
-    'stats.heading': 'Čísla, která <span class="grad-text">mluví za vše</span>',
-    'stats.1': 'Spokojených klientů',
-    'stats.2': 'Monitorovaných hostů',
-    'stats.3': 'Dostupnost zajištěna',
-    'stats.4': 'Let zkušeností',
+    'about.tag':     'O nás',
+    'about.heading': 'Kdo stojí <span class="grad-text">za Lanthirem</span>',
+    'about.role':    'Zakladatel & Web Developer',
+    'about.bio':     'Zakladatel společnosti Lanthir a vášnivý tvůrce webových stránek. Specializuji se na moderní, rychlé a funkční weby, které přinášejí zákazníkům skutečné výsledky. Každý projekt beru jako příležitost vytvořit něco výjimečného — od návrhu po spuštění.',
+    'about.hl1':     'Projektů',
+    'about.hl2':     'Roky praxe',
+    'about.hl3':     'Spokojenost',
 
-    // CTA
-    'cta.h2': 'Chcete vidět vše <span class="grad-text">v reálném čase?</span>',
-    'cta.p':  'Vytvořme monitorovací řešení přesně na míru vaší infrastruktuře.',
-    'cta.btn':'Pomluvit s expertem',
+    'cta.h2': 'Máte projekt? <span class="grad-text">Pojďme na to.</span>',
+    'cta.p':  'Bezplatná konzultace bez závazků. Řekněte nám o svém projektu a my se ozveme do 24 hodin.',
+    'cta.btn':'Nezávazná poptávka',
 
-    // Contact
-    'contact.tag':       'Kontaktujte nás',
-    'contact.heading':   'Začněme <span class="grad-text">monitorovat</span>',
+    'contact.tag':       'Kontakt',
+    'contact.heading':   'Začněme <span class="grad-text">spolupracovat</span>',
     'contact.email.lbl': 'E-mail',
     'contact.phone.lbl': 'Telefon',
     'contact.loc.lbl':   'Místo',
@@ -122,115 +133,141 @@ const T = {
     'form.email.ph':     'váš@email.com',
     'form.company.lbl':  'Firma',
     'form.company.ph':   'Vaše firma',
+    'form.bundle.lbl':   'Balíček',
+    'form.bundle.opt0':  'Vyberte balíček...',
+    'form.bundle.opt1':  'Starter — Statická stránka',
+    'form.bundle.opt2':  'Business — Pokročilý web',
+    'form.bundle.opt3':  'Enterprise — Na míru',
     'form.msg.lbl':      'Zpráva',
-    'form.msg.ph':       'Popište vaše potřeby v oblasti monitoringu...',
-    'form.send':         'Odeslat zprávu',
-    'form.success':      'Zpráva odeslána! Ozveme se co nejdříve.',
+    'form.msg.ph':       'Popište váš projekt...',
+    'form.send':         'Odeslat poptávku',
+    'form.success':      'Odesláno! Ozveme se vám do 24 hodin.',
 
-    // Footer
-    'footer.tagline': 'Podniková monitorovací řešení poháněná Zabbixem.',
+    'footer.tagline': 'Profesionální tvorba webových stránek na míru.',
     'footer.col1.h':  'Služby',
     'footer.col2.h':  'Společnost',
-    'footer.copy':    '© 2026 Lanthir Monitoring Solutions. Všechna práva vyhrazena.',
+    'footer.copy':    '© 2026 Lanthir. Všechna práva vyhrazena.',
   },
 
   en: {
-    'nav.services':  'Services',
-    'nav.about':     'About',
-    'nav.why':       'Why Us',
-    'nav.results':   'Results',
-    'nav.contact':   'Contact',
-    'nav.cta':       'Get Started',
+    'nav.services': 'Services',
+    'nav.pricing':  'Pricing',
+    'nav.process':  'Process',
+    'nav.about':    'About',
+    'nav.contact':  'Contact',
+    'nav.cta':      'Get a Quote',
 
-    'hero.badge':  'Zabbix Certified Partner',
-    'hero.h1':     'Monitor <span class="grad-text">Everything.</span><br>Miss <span class="grad-text">Nothing.</span>',
-    'hero.sub':    'Enterprise-grade monitoring powered by Zabbix. Real-time visibility into your entire infrastructure — servers, networks, cloud and applications.',
-    'hero.btn1':   'Start Monitoring',
-    'hero.btn2':   'Explore Services',
-    'hero.chip1':  'Monitored Hosts',
-    'hero.chip2':  'Uptime SLA',
-    'hero.chip3':  'Expert Support',
+    'hero.badge':    'Professional Web Development',
+    'hero.h1':       'We design websites.<br><span class="grad-text">We build success.</span>',
+    'hero.sub':      'Professional custom websites — from a simple business card to a complex booking system. Fast, reliable, with attention to every detail.',
+    'hero.btn1':     'View Pricing',
+    'hero.btn2':     'Free Consultation',
+    'hero.chip1':    'Projects',
+    'hero.chip2':    'Days avg. delivery',
+    'hero.chip3':    'Happy clients',
+    'hero.building': 'Your website is being prepared...',
 
-    'widget.title':  'System Overview',
-    'widget.cpu':    'CPU Usage',
-    'widget.mem':    'Memory',
-    'widget.net':    'Network I/O',
-    'widget.disk':   'Disk I/O',
-    'widget.alert1': 'web-server-01 — All systems normal',
-    'widget.alert2': 'db-cluster-02 — High memory usage',
-    'widget.alert3': 'firewall-01 — Operational',
+    'svc.tag':     'What We Build',
+    'svc.heading': 'Websites for <span class="grad-text">every need</span>',
+    'svc.sub':     'From a business card to a complex system — we design and develop websites that work and deliver results.',
+    'svc.more':    'View pricing <span>→</span>',
+    'svc.1.title': 'Business Website',
+    'svc.1.desc':  'Professional websites that present your company or product. Modern design, fast loading, perfect on mobile.',
+    'svc.2.title': 'E-commerce',
+    'svc.2.desc':  'Fully functional online store with cart, payment gateway and order management. Sell 24/7 without limits.',
+    'svc.3.title': 'Booking System',
+    'svc.3.desc':  'Online booking for restaurants, hotels, salons, doctors and more. Customers book themselves — you save time.',
+    'svc.4.title': 'Landing Page',
+    'svc.4.desc':  'Effective page focused on one goal — a campaign, product or lead generation. Maximum conversion.',
+    'svc.5.title': 'Web Application',
+    'svc.5.desc':  'Complex web app with login, database and custom logic. Portals, dashboards, internal tools.',
+    'svc.6.title': 'Website Redesign',
+    'svc.6.desc':  'An outdated website hurts you. We\'ll refresh its design, performance and SEO — without losing content or rankings.',
 
-    'svc.tag':     'What We Do',
-    'svc.heading': 'Comprehensive <span class="grad-text">Monitoring Services</span>',
-    'svc.sub':     'From initial deployment to ongoing optimization, we cover every aspect of your monitoring needs.',
-    'svc.more':    'Learn more <span>→</span>',
-    'svc.1.title': 'Zabbix Implementation',
-    'svc.1.desc':  'Full-scale Zabbix deployment tailored to your infrastructure. From architecture design to production rollout.',
-    'svc.2.title': 'Infrastructure Monitoring',
-    'svc.2.desc':  'End-to-end visibility across servers, networks, cloud environments, and applications in real time.',
-    'svc.3.title': 'Alert Management',
-    'svc.3.desc':  'Intelligent alerting with escalation policies, on-call scheduling, and integration with your existing toolstack.',
-    'svc.4.title': 'Custom Dashboards',
-    'svc.4.desc':  'Tailor-made Zabbix dashboards that surface the metrics that matter most to your team.',
-    'svc.5.title': 'Performance Analysis',
-    'svc.5.desc':  'Deep-dive analytics and capacity planning to keep your systems healthy and ahead of demand.',
-    'svc.6.title': 'Managed Monitoring',
-    'svc.6.desc':  'Fully managed 24/7 monitoring — we watch your infrastructure so you can focus on your business.',
+    'price.tag':      'Pricing',
+    'price.heading':  'Packages <span class="grad-text">for everyone</span>',
+    'price.sub':      'Transparent pricing with no hidden fees. You pay for results, not hours.',
+    'price.from':     'from',
+    'price.currency': 'CZK',
+    'price.popular':  'Most Popular',
+    'price.cta':      'I\'m Interested',
+    'price.cta.main': 'Start Project',
+    'price.note':     '* All prices are excluding VAT. Price depends on project scope. We\'ll happily prepare a precise quote.',
+    'price.1.tier':   'Starter',
+    'price.1.name':   'Static Website',
+    'price.1.desc':   'Ideal for presenting a company, freelancer or product.',
+    'price.1.price':  '9,990',
+    'price.1.f1': 'Up to 1 page (landing page)',
+    'price.1.f2': 'Modern responsive design',
+    'price.1.f3': 'Mobile optimization',
+    'price.1.f4': 'Basic SEO setup',
+    'price.1.f5': 'Contact form',
+    'price.1.f6': 'Delivery within 2 weeks',
+    'price.1.f7': '3 months free support',
+    'price.2.tier':   'Business',
+    'price.2.name':   'Advanced Website',
+    'price.2.desc':   'For businesses that need more — booking, e-shop, content management.',
+    'price.2.price':  '29,990',
+    'price.2.f1': 'Unlimited pages',
+    'price.2.f2': 'Booking system or e-shop',
+    'price.2.f3': 'CMS — easy content management',
+    'price.2.f4': 'Advanced SEO + Google Analytics',
+    'price.2.f5': 'Payment gateway integration',
+    'price.2.f6': 'Custom functionality',
+    'price.2.f7': '6 months free support',
+    'price.3.tier':   'Enterprise',
+    'price.3.name':   'Custom',
+    'price.3.desc':   'Complex solutions without limits — any complexity and scope.',
+    'price.3.price':  'On Request',
+    'price.3.f1': 'Any project complexity',
+    'price.3.f2': 'Web application / custom API',
+    'price.3.f3': 'Custom CMS / admin panel',
+    'price.3.f4': 'External systems integration',
+    'price.3.f5': 'Priority support & SLA',
+    'price.3.f6': 'Individual pricing',
+    'price.3.f7': 'Long-term partnership',
 
-    'about.tag':     'About Us',
-    'about.heading': 'Meet the <span class="grad-text">team behind Lanthir</span>',
-    'about.role':    'Founder & Zabbix Specialist',
-    'about.bio':     'Founder of Lanthir and a leading expert in monitoring solutions built on the Zabbix platform. With over 8 years of experience in IT infrastructure, he has helped hundreds of companies gain visibility into their systems and ensure their reliable operation. He specializes in large-scale Zabbix implementations, monitoring architecture design, and integration with enterprise ITSM tools.',
-    'about.hl1':     'Years in the field',
-    'about.hl2':     'Projects completed',
-    'about.hl3':     'Monitored hosts',
-
-    'exp.tag':     'Our Expertise',
-    'exp.heading': 'Technology &amp; <span class="grad-text">Certifications</span>',
-    'exp.sub':     'Deep specialization in enterprise monitoring — from the network layer all the way to cloud environments.',
-    'badge.expert':   'Expert',
-    'badge.advanced': 'Advanced',
-    'exp.1.title': 'Zabbix Platform',
-    'exp.1.desc':  'Deep Zabbix knowledge — from installation and templates to HA clustering and performance tuning.',
-    'exp.2.title': 'Network Monitoring',
-    'exp.2.desc':  'SNMP, NetFlow, IPAM — monitoring of Cisco, HP, Juniper and other network devices.',
-    'exp.3.title': 'Servers &amp; Virtualization',
-    'exp.3.desc':  'Linux, Windows Server, VMware, Hyper-V — physical and virtual environments covered.',
-    'exp.4.title': 'Cloud Monitoring',
-    'exp.4.desc':  'Microsoft Azure, AWS, Google Cloud — hybrid and fully cloud environments under control.',
-    'exp.5.title': 'Databases &amp; Applications',
-    'exp.5.desc':  'MySQL, MSSQL, Oracle, PostgreSQL, MongoDB — database and application performance monitoring.',
-    'exp.6.title': 'Custom Development',
-    'exp.6.desc':  'Custom Zabbix templates, scripts, API integrations and automation for unique requirements.',
-    'exp.7.title': 'ITSM Integration',
-    'exp.7.desc':  'ServiceNow, Jira, PagerDuty, Slack, Teams — monitoring connected to your toolstack.',
-    'exp.8.title': 'Security Monitoring',
-    'exp.8.desc':  'Anomaly detection, log monitoring, security incident alerts and compliance reporting.',
+    'proc.tag':     'How We Work',
+    'proc.heading': 'Four steps to <span class="grad-text">your website</span>',
+    'proc.sub':     'Transparent process from first meeting to launch. You always know which phase the project is in.',
+    'proc.1.title': 'Consultation',
+    'proc.1.desc':  'We get to know you, your goals and needs. Free consultation with no commitment — in person or online.',
+    'proc.2.title': 'Design',
+    'proc.2.desc':  'We create the visual look of your website — layout and design approved before we start coding.',
+    'proc.3.title': 'Development',
+    'proc.3.desc':  'We code, test and refine. We keep you updated on progress and incorporate your feedback.',
+    'proc.4.title': 'Launch',
+    'proc.4.desc':  'We publish the site, set up analytics and are here for you after launch — support included in the price.',
 
     'why.tag':     'Why Lanthir',
-    'why.heading': 'Built for <span class="grad-text">mission-critical</span> environments',
-    'why.1.title': 'Rapid Deployment',
-    'why.1.desc':  'Go from zero to full monitoring coverage in days, not weeks.',
-    'why.2.title': 'Deep Zabbix Expertise',
-    'why.2.desc':  'Certified engineers with years of hands-on Zabbix experience across complex environments.',
-    'why.3.title': 'Dedicated Support',
-    'why.3.desc':  'A named engineer who knows your environment — available when you need them.',
-    'why.4.title': 'Scalable Architecture',
-    'why.4.desc':  'Solutions designed to grow with you — from 50 hosts to 50,000 and beyond.',
+    'why.heading': 'A website that <span class="grad-text">works for you</span>',
+    'why.1.title': 'Fast Delivery',
+    'why.1.desc':  'Average delivery time is 14 days. Less for simple projects.',
+    'why.2.title': 'Security & Performance',
+    'why.2.desc':  'SSL, speed optimization, SEO foundation — all included in every package.',
+    'why.3.title': 'Custom Design',
+    'why.3.desc':  'No templates. We design every website from scratch based on your needs and identity.',
+    'why.4.title': 'Post-launch Support',
+    'why.4.desc':  'We don\'t disappear after handover. We\'re here for edits, updates and website growth.',
+    'wstat.1': 'Completed projects',
+    'wstat.2': 'Days avg. delivery',
+    'wstat.3': 'Satisfied clients',
+    'wstat.4': 'Years of experience',
 
-    'stats.tag':     'Results',
-    'stats.heading': 'Numbers that <span class="grad-text">speak for themselves</span>',
-    'stats.1': 'Happy Clients',
-    'stats.2': 'Monitored Hosts',
-    'stats.3': 'Uptime Delivered',
-    'stats.4': 'Years Experience',
+    'about.tag':     'About Us',
+    'about.heading': 'Who is behind <span class="grad-text">Lanthir</span>',
+    'about.role':    'Founder & Web Developer',
+    'about.bio':     'Founder of Lanthir and passionate web developer. I specialize in modern, fast and functional websites that bring real results to clients. I approach every project as an opportunity to create something exceptional — from design to launch.',
+    'about.hl1':     'Projects',
+    'about.hl2':     'Years experience',
+    'about.hl3':     'Satisfaction',
 
-    'cta.h2': 'Ready to see everything <span class="grad-text">in real time?</span>',
-    'cta.p':  'Let\'s build a monitoring solution tailored to your infrastructure.',
-    'cta.btn':'Talk to an Expert',
+    'cta.h2': 'Have a project? <span class="grad-text">Let\'s go.</span>',
+    'cta.p':  'Free consultation with no commitment. Tell us about your project and we\'ll get back to you within 24 hours.',
+    'cta.btn':'Get a Free Quote',
 
-    'contact.tag':       'Get In Touch',
-    'contact.heading':   'Let\'s start <span class="grad-text">monitoring</span>',
+    'contact.tag':       'Contact',
+    'contact.heading':   'Let\'s start <span class="grad-text">working together</span>',
     'contact.email.lbl': 'Email',
     'contact.phone.lbl': 'Phone',
     'contact.loc.lbl':   'Location',
@@ -241,114 +278,141 @@ const T = {
     'form.email.ph':     'your@email.com',
     'form.company.lbl':  'Company',
     'form.company.ph':   'Your company',
+    'form.bundle.lbl':   'Package',
+    'form.bundle.opt0':  'Select a package...',
+    'form.bundle.opt1':  'Starter — Static Website',
+    'form.bundle.opt2':  'Business — Advanced Website',
+    'form.bundle.opt3':  'Enterprise — Custom',
     'form.msg.lbl':      'Message',
-    'form.msg.ph':       'Tell us about your monitoring needs...',
-    'form.send':         'Send Message',
-    'form.success':      'Message sent! We\'ll get back to you shortly.',
+    'form.msg.ph':       'Describe your project...',
+    'form.send':         'Send Enquiry',
+    'form.success':      'Sent! We\'ll get back to you within 24 hours.',
 
-    'footer.tagline': 'Enterprise monitoring solutions powered by Zabbix.',
+    'footer.tagline': 'Professional custom web development.',
     'footer.col1.h':  'Services',
     'footer.col2.h':  'Company',
-    'footer.copy':    '© 2026 Lanthir Monitoring Solutions. All rights reserved.',
+    'footer.copy':    '© 2026 Lanthir. All rights reserved.',
   },
 
   pl: {
-    'nav.services':  'Usługi',
-    'nav.about':     'O nas',
-    'nav.why':       'Dlaczego My',
-    'nav.results':   'Wyniki',
-    'nav.contact':   'Kontakt',
-    'nav.cta':       'Zaczynamy',
+    'nav.services': 'Usługi',
+    'nav.pricing':  'Cennik',
+    'nav.process':  'Proces',
+    'nav.about':    'O nas',
+    'nav.contact':  'Kontakt',
+    'nav.cta':      'Bezpłatna wycena',
 
-    'hero.badge':  'Certyfikowany Partner Zabbix',
-    'hero.h1':     'Monitoruj <span class="grad-text">Wszystko.</span><br>Nie przegap <span class="grad-text">Niczego.</span>',
-    'hero.sub':    'Monitoring klasy enterprise oparty na Zabbixie. Wgląd w czasie rzeczywistym w całą infrastrukturę — serwery, sieci, chmurę i aplikacje.',
-    'hero.btn1':   'Zacznij monitorować',
-    'hero.btn2':   'Poznaj usługi',
-    'hero.chip1':  'Monitorowanych hostów',
-    'hero.chip2':  'Gwarantowana dostępność',
-    'hero.chip3':  'Wsparcie ekspertów',
+    'hero.badge':    'Profesjonalne tworzenie stron',
+    'hero.h1':       'Projektujemy strony.<br><span class="grad-text">Budujemy sukces.</span>',
+    'hero.sub':      'Profesjonalne strony internetowe na zamówienie — od prostej wizytówki po złożony system rezerwacji. Szybko, niezawodnie i z dbałością o każdy detal.',
+    'hero.btn1':     'Zobacz cennik',
+    'hero.btn2':     'Bezpłatna konsultacja',
+    'hero.chip1':    'Projektów',
+    'hero.chip2':    'Dni średnia realizacja',
+    'hero.chip3':    'Zadowolonych klientów',
+    'hero.building': 'Twoja strona jest przygotowywana...',
 
-    'widget.title':  'Przegląd systemu',
-    'widget.cpu':    'Użycie CPU',
-    'widget.mem':    'Pamięć',
-    'widget.net':    'Sieć I/O',
-    'widget.disk':   'Dysk I/O',
-    'widget.alert1': 'web-server-01 — Wszystko w porządku',
-    'widget.alert2': 'db-cluster-02 — Wysokie użycie pamięci',
-    'widget.alert3': 'firewall-01 — Działa prawidłowo',
+    'svc.tag':     'Co tworzymy',
+    'svc.heading': 'Strony internetowe dla <span class="grad-text">każdej potrzeby</span>',
+    'svc.sub':     'Od wizytówki po złożony system — projektujemy i rozwijamy strony, które działają i przynoszą wyniki.',
+    'svc.more':    'Zobacz cennik <span>→</span>',
+    'svc.1.title': 'Strona firmowa',
+    'svc.1.desc':  'Profesjonalne strony prezentujące Twoją firmę lub produkt. Nowoczesny design, szybkie ładowanie, idealne na mobile.',
+    'svc.2.title': 'Sklep internetowy',
+    'svc.2.desc':  'W pełni funkcjonalny sklep z koszykiem, bramką płatności i zarządzaniem zamówieniami. Sprzedawaj 24/7.',
+    'svc.3.title': 'System rezerwacji',
+    'svc.3.desc':  'Rezerwacje online dla restauracji, hoteli, salonów, lekarzy i innych. Klienci rezerwują sami — Ty oszczędzasz czas.',
+    'svc.4.title': 'Landing page',
+    'svc.4.desc':  'Efektywna strona skupiona na jednym celu — kampania, produkt lub pozyskanie kontaktów. Maksymalna konwersja.',
+    'svc.5.title': 'Aplikacja webowa',
+    'svc.5.desc':  'Złożona aplikacja z logowaniem, bazą danych i własną logiką. Portale, dashboardy, narzędzia wewnętrzne.',
+    'svc.6.title': 'Redesign strony',
+    'svc.6.desc':  'Przestarzała strona Ci szkodzi. Odświeżymy jej design, wydajność i SEO — bez utraty treści i pozycji.',
 
-    'svc.tag':     'Co robimy',
-    'svc.heading': 'Kompleksowe <span class="grad-text">usługi monitoringu</span>',
-    'svc.sub':     'Od pierwszego wdrożenia po ciągłą optymalizację — obsługujemy każdy aspekt Twoich potrzeb monitoringowych.',
-    'svc.more':    'Dowiedz się więcej <span>→</span>',
-    'svc.1.title': 'Wdrożenie Zabbix',
-    'svc.1.desc':  'Pełne wdrożenie Zabbix dostosowane do Twojej infrastruktury — od projektu architektury po uruchomienie produkcyjne.',
-    'svc.2.title': 'Monitoring infrastruktury',
-    'svc.2.desc':  'Pełna widoczność serwerów, sieci, środowisk chmurowych i aplikacji w czasie rzeczywistym.',
-    'svc.3.title': 'Zarządzanie alertami',
-    'svc.3.desc':  'Inteligentne alerty z politykami eskalacji, harmonogramem dyżurów i integracją z istniejącymi narzędziami.',
-    'svc.4.title': 'Własne dashboardy',
-    'svc.4.desc':  'Dashboardy Zabbix na miarę, które pokazują metryki najważniejsze dla Twojego zespołu.',
-    'svc.5.title': 'Analiza wydajności',
-    'svc.5.desc':  'Dogłębna analityka i planowanie pojemności, by systemy nadążały za rosnącymi wymaganiami.',
-    'svc.6.title': 'Zarządzany monitoring',
-    'svc.6.desc':  'W pełni zarządzana usługa 24/7 — pilnujemy infrastruktury, Ty skupiasz się na biznesie.',
+    'price.tag':      'Cennik',
+    'price.heading':  'Pakiety <span class="grad-text">dla każdego</span>',
+    'price.sub':      'Przejrzyste ceny bez ukrytych opłat. Płacisz za wynik, nie za godziny.',
+    'price.from':     'od',
+    'price.currency': 'CZK',
+    'price.popular':  'Najpopularniejszy',
+    'price.cta':      'Jestem zainteresowany',
+    'price.cta.main': 'Rozpocznij projekt',
+    'price.note':     '* Wszystkie ceny są bez VAT. Cena zależy od zakresu projektu. Chętnie przygotujemy dokładną wycenę.',
+    'price.1.tier':   'Starter',
+    'price.1.name':   'Strona statyczna',
+    'price.1.desc':   'Idealna do prezentacji firmy, freelancera lub produktu.',
+    'price.1.price':  '9 990',
+    'price.1.f1': 'Do 1 strony (landing page)',
+    'price.1.f2': 'Nowoczesny responsywny design',
+    'price.1.f3': 'Optymalizacja mobilna',
+    'price.1.f4': 'Podstawowe ustawienia SEO',
+    'price.1.f5': 'Formularz kontaktowy',
+    'price.1.f6': 'Realizacja w 2 tygodnie',
+    'price.1.f7': '3 miesiące bezpłatnego wsparcia',
+    'price.2.tier':   'Business',
+    'price.2.name':   'Zaawansowana strona',
+    'price.2.desc':   'Dla firm potrzebujących więcej — rezerwacje, sklep, zarządzanie treścią.',
+    'price.2.price':  '29 990',
+    'price.2.f1': 'Nieograniczona liczba stron',
+    'price.2.f2': 'System rezerwacji lub sklep',
+    'price.2.f3': 'CMS — łatwe zarządzanie treścią',
+    'price.2.f4': 'Zaawansowane SEO + Google Analytics',
+    'price.2.f5': 'Integracja bramki płatności',
+    'price.2.f6': 'Własna funkcjonalność na miarę',
+    'price.2.f7': '6 miesięcy bezpłatnego wsparcia',
+    'price.3.tier':   'Enterprise',
+    'price.3.name':   'Na zamówienie',
+    'price.3.desc':   'Kompleksowe rozwiązania bez ograniczeń — dowolna złożoność i zakres.',
+    'price.3.price':  'Na zapytanie',
+    'price.3.f1': 'Dowolna złożoność projektu',
+    'price.3.f2': 'Aplikacja webowa / własne API',
+    'price.3.f3': 'Własny CMS / panel admina',
+    'price.3.f4': 'Integracja systemów zewnętrznych',
+    'price.3.f5': 'Priorytetowe wsparcie & SLA',
+    'price.3.f6': 'Indywidualna wycena',
+    'price.3.f7': 'Długoterminowa współpraca',
 
-    'about.tag':     'O nas',
-    'about.heading': 'Poznaj <span class="grad-text">zespół Lanthira</span>',
-    'about.role':    'Założyciel & Specjalista Zabbix',
-    'about.bio':     'Założyciel Lanthira i czołowy ekspert w zakresie rozwiązań monitorujących opartych na platformie Zabbix. Posiadając ponad 8 lat doświadczenia w infrastrukturze IT, pomógł setkom firm zyskać wgląd w ich systemy i zapewnić ich niezawodne działanie. Specjalizuje się w dużych wdrożeniach Zabbix, projektowaniu architektury monitoringu i integracji z korporacyjnymi narzędziami ITSM.',
-    'about.hl1':     'Lat w branży',
-    'about.hl2':     'Ukończonych projektów',
-    'about.hl3':     'Monitorowanych hostów',
-
-    'exp.tag':     'Nasza wiedza',
-    'exp.heading': 'Technologie &amp; <span class="grad-text">Certyfikaty</span>',
-    'exp.sub':     'Głoka specjalizacja w monitoringu enterprise — od warstwy sieciowej aż po środowiska chmurowe.',
-    'badge.expert':   'Ekspert',
-    'badge.advanced': 'Zaawansowany',
-    'exp.1.title': 'Platforma Zabbix',
-    'exp.1.desc':  'Głęboka znajomość Zabbix — od instalacji i szablonów po klastrowanie HA i strojenie wydajności.',
-    'exp.2.title': 'Monitoring sieci',
-    'exp.2.desc':  'SNMP, NetFlow, IPAM — monitoring urządzeń Cisco, HP, Juniper i innych elementów sieciowych.',
-    'exp.3.title': 'Serwery &amp; Wirtualizacja',
-    'exp.3.desc':  'Linux, Windows Server, VMware, Hyper-V — środowiska fizyczne i wirtualne bez wyjątku.',
-    'exp.4.title': 'Monitoring chmury',
-    'exp.4.desc':  'Microsoft Azure, AWS, Google Cloud — środowiska hybrydowe i w pełni chmurowe pod kontrolą.',
-    'exp.5.title': 'Bazy danych &amp; Aplikacje',
-    'exp.5.desc':  'MySQL, MSSQL, Oracle, PostgreSQL, MongoDB — monitoring wydajności baz danych i aplikacji.',
-    'exp.6.title': 'Własny rozwój',
-    'exp.6.desc':  'Własne szablony Zabbix, skrypty, integracje API i automatyzacja dla unikalnych potrzeb.',
-    'exp.7.title': 'Integracja ITSM',
-    'exp.7.desc':  'ServiceNow, Jira, PagerDuty, Slack, Teams — monitoring połączony z Twoim toolstackiem.',
-    'exp.8.title': 'Monitoring bezpieczeństwa',
-    'exp.8.desc':  'Wykrywanie anomalii, monitoring logów, alerty bezpieczeństwa i raportowanie zgodności.',
+    'proc.tag':     'Jak pracujemy',
+    'proc.heading': 'Cztery kroki do <span class="grad-text">Twojej strony</span>',
+    'proc.sub':     'Transparentny proces od pierwszego spotkania do uruchomienia. Zawsze wiesz, w której fazie jest projekt.',
+    'proc.1.title': 'Konsultacja',
+    'proc.1.desc':  'Poznajemy Cię, Twoje cele i potrzeby. Bezpłatna konsultacja bez zobowiązań — osobiście lub online.',
+    'proc.2.title': 'Projekt',
+    'proc.2.desc':  'Tworzymy wizualną postać Twojej strony — layout i design zatwierdzamy przed rozpoczęciem kodowania.',
+    'proc.3.title': 'Rozwój',
+    'proc.3.desc':  'Kodujemy, testujemy i dopracowujemy. Na bieżąco informujemy o postępach i wdrażamy feedback.',
+    'proc.4.title': 'Uruchomienie',
+    'proc.4.desc':  'Publikujemy stronę, konfigurujemy analitykę i jesteśmy do dyspozycji po uruchomieniu — wsparcie w cenie.',
 
     'why.tag':     'Dlaczego Lanthir',
-    'why.heading': 'Zbudowane dla <span class="grad-text">środowisk krytycznych</span>',
-    'why.1.title': 'Szybkie wdrożenie',
-    'why.1.desc':  'Od zera do pełnego pokrycia monitoringowego w dni, nie tygodnie.',
-    'why.2.title': 'Głęboka wiedza Zabbix',
-    'why.2.desc':  'Certyfikowani inżynierowie z wieloletnim doświadczeniem w złożonych środowiskach.',
-    'why.3.title': 'Dedykowane wsparcie',
-    'why.3.desc':  'Dedykowany inżynier, który zna Twoje środowisko — dostępny, gdy go potrzebujesz.',
-    'why.4.title': 'Skalowalna architektura',
-    'why.4.desc':  'Rozwiązania zaprojektowane do wzrostu razem z Tobą — od 50 hostów do 50 000 i więcej.',
+    'why.heading': 'Strona, która <span class="grad-text">pracuje dla Ciebie</span>',
+    'why.1.title': 'Szybka realizacja',
+    'why.1.desc':  'Średni czas realizacji to 14 dni. Przy prostych projektach nawet krócej.',
+    'why.2.title': 'Bezpieczeństwo & wydajność',
+    'why.2.desc':  'SSL, optymalizacja szybkości, podstawy SEO — wszystko w każdym pakiecie.',
+    'why.3.title': 'Własny design',
+    'why.3.desc':  'Żadnych szablonów. Każdą stronę projektujemy od podstaw według Twoich potrzeb.',
+    'why.4.title': 'Wsparcie po uruchomieniu',
+    'why.4.desc':  'Nie znikamy po przekazaniu. Jesteśmy tu dla poprawek, aktualizacji i rozwoju strony.',
+    'wstat.1': 'Ukończonych projektów',
+    'wstat.2': 'Dni średnia realizacja',
+    'wstat.3': 'Zadowolonych klientów',
+    'wstat.4': 'Lata doświadczenia',
 
-    'stats.tag':     'Wyniki',
-    'stats.heading': 'Liczby, które <span class="grad-text">mówią same za siebie</span>',
-    'stats.1': 'Zadowolonych klientów',
-    'stats.2': 'Monitorowanych hostów',
-    'stats.3': 'Zapewniona dostępność',
-    'stats.4': 'Lat doświadczenia',
+    'about.tag':     'O nas',
+    'about.heading': 'Kto stoi <span class="grad-text">za Lanthirem</span>',
+    'about.role':    'Założyciel & Web Developer',
+    'about.bio':     'Założyciel Lanthira i pasjonat tworzenia stron internetowych. Specjalizuję się w nowoczesnych, szybkich i funkcjonalnych stronach, które przynoszą klientom prawdziwe wyniki. Każdy projekt traktuję jako okazję do stworzenia czegoś wyjątkowego — od projektu po uruchomienie.',
+    'about.hl1':     'Projektów',
+    'about.hl2':     'Lata praktyki',
+    'about.hl3':     'Satysfakcja',
 
-    'cta.h2': 'Chcesz widzieć wszystko <span class="grad-text">w czasie rzeczywistym?</span>',
-    'cta.p':  'Zbudujmy rozwiązanie monitorujące dostosowane do Twojej infrastruktury.',
-    'cta.btn':'Porozmawiaj z ekspertem',
+    'cta.h2': 'Masz projekt? <span class="grad-text">Działajmy.</span>',
+    'cta.p':  'Bezpłatna konsultacja bez zobowiązań. Opowiedz nam o projekcie, a odezwiemy się w ciągu 24 godzin.',
+    'cta.btn':'Bezpłatna wycena',
 
-    'contact.tag':       'Skontaktuj się',
-    'contact.heading':   'Zacznijmy <span class="grad-text">monitorować</span>',
+    'contact.tag':       'Kontakt',
+    'contact.heading':   'Zacznijmy <span class="grad-text">współpracę</span>',
     'contact.email.lbl': 'E-mail',
     'contact.phone.lbl': 'Telefon',
     'contact.loc.lbl':   'Lokalizacja',
@@ -359,15 +423,20 @@ const T = {
     'form.email.ph':     'twoj@email.com',
     'form.company.lbl':  'Firma',
     'form.company.ph':   'Twoja firma',
+    'form.bundle.lbl':   'Pakiet',
+    'form.bundle.opt0':  'Wybierz pakiet...',
+    'form.bundle.opt1':  'Starter — Strona statyczna',
+    'form.bundle.opt2':  'Business — Zaawansowana strona',
+    'form.bundle.opt3':  'Enterprise — Na zamówienie',
     'form.msg.lbl':      'Wiadomość',
-    'form.msg.ph':       'Opisz swoje potrzeby w zakresie monitoringu...',
-    'form.send':         'Wyślij wiadomość',
-    'form.success':      'Wiadomość wysłana! Odezwiemy się wkrótce.',
+    'form.msg.ph':       'Opisz swój projekt...',
+    'form.send':         'Wyślij zapytanie',
+    'form.success':      'Wysłano! Odezwiemy się w ciągu 24 godzin.',
 
-    'footer.tagline': 'Korporacyjne rozwiązania monitorujące oparte na Zabbixie.',
+    'footer.tagline': 'Profesjonalne tworzenie stron internetowych na zamówienie.',
     'footer.col1.h':  'Usługi',
     'footer.col2.h':  'Firma',
-    'footer.copy':    '© 2026 Lanthir Monitoring Solutions. Wszelkie prawa zastrzeżone.',
+    'footer.copy':    '© 2026 Lanthir. Wszelkie prawa zastrzeżone.',
   }
 };
 
@@ -379,193 +448,95 @@ function applyLang(lang) {
   currentLang = lang;
   localStorage.setItem('lanthir-lang', lang);
   document.documentElement.lang = lang;
-
-  // Update text content (innerHTML to support gradient spans)
   document.querySelectorAll('[data-i18n]').forEach(el => {
-    const val = T[lang][el.dataset.i18n];
-    if (val !== undefined) el.innerHTML = val;
+    const v = T[lang][el.dataset.i18n];
+    if (v !== undefined) el.innerHTML = v;
   });
-
-  // Update placeholder attributes
   document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-    const val = T[lang][el.dataset.i18nPh];
-    if (val !== undefined) el.placeholder = val;
+    const v = T[lang][el.dataset.i18nPh];
+    if (v !== undefined) el.placeholder = v;
   });
-
-  // Update active lang button
-  document.querySelectorAll('.ls-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.lang === lang);
-  });
+  document.querySelectorAll('.ls-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
 }
 
-// ── Language Switcher Init ───────────────
-document.querySelectorAll('.ls-btn').forEach(btn => {
-  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
-});
+document.querySelectorAll('.ls-btn').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
 applyLang(currentLang);
 
-// ── Nav scroll effect ────────────────────
+// ── Nav scroll ───────────────────────────
 const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-}, { passive: true });
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20), { passive: true });
 
 // ── Mobile burger ────────────────────────
 const burger   = document.getElementById('burger');
 const navLinks = document.getElementById('navLinks');
-burger.addEventListener('click', () => {
-  burger.classList.toggle('open');
-  navLinks.classList.toggle('open');
-});
-navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    burger.classList.remove('open');
-    navLinks.classList.remove('open');
-  });
-});
+burger.addEventListener('click', () => { burger.classList.toggle('open'); navLinks.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); navLinks.classList.remove('open'); }));
 
-// ── Hero Canvas — Particle Network ───────
-(function initCanvas() {
+// ── Hero Canvas ──────────────────────────
+(function() {
   const canvas = document.getElementById('heroCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-
   let W, H, nodes = [];
-  const NODE_COUNT   = 70;
-  const CONNECT_DIST = 160;
-  const COLORS = ['#7c3aff','#2060ff','#00d4c8','#4090ff','#9b6aff'];
-
-  function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-  }
-
-  function makeNode() {
-    return {
-      x:   Math.random() * W,
-      y:   Math.random() * H,
-      vx:  (Math.random() - .5) * .4,
-      vy:  (Math.random() - .5) * .4,
-      r:   Math.random() * 2 + 1,
-      col: COLORS[Math.floor(Math.random() * COLORS.length)],
-    };
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const dx = nodes[i].x - nodes[j].x;
-        const dy = nodes[i].y - nodes[j].y;
-        const d  = Math.sqrt(dx * dx + dy * dy);
-        if (d < CONNECT_DIST) {
-          ctx.beginPath();
-          ctx.moveTo(nodes[i].x, nodes[i].y);
-          ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.strokeStyle = `rgba(32,140,255,${(1 - d / CONNECT_DIST) * .22})`;
-          ctx.lineWidth = .8;
-          ctx.stroke();
-        }
-      }
-    }
-    for (const n of nodes) {
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-      ctx.fillStyle = n.col;
-      ctx.globalAlpha = .7;
-      ctx.fill();
-      ctx.globalAlpha = 1;
-    }
-  }
-
-  let mx = -9999, my = -9999;
-  canvas.addEventListener('mousemove', e => {
-    const r = canvas.getBoundingClientRect();
-    mx = e.clientX - r.left; my = e.clientY - r.top;
-  }, { passive: true });
-  canvas.addEventListener('mouseleave', () => { mx = -9999; my = -9999; });
-
+  const N = 65, D = 155;
+  const COLS = ['#3a2ee0','#1e7be5','#1fcded','#5050ff','#36f0d6'];
+  function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+  function mk() { return { x: Math.random()*W, y: Math.random()*H, vx: (Math.random()-.5)*.4, vy: (Math.random()-.5)*.4, r: Math.random()*2+1, c: COLS[Math.floor(Math.random()*COLS.length)] }; }
+  let mx=-9999, my=-9999;
+  canvas.addEventListener('mousemove', e => { const r=canvas.getBoundingClientRect(); mx=e.clientX-r.left; my=e.clientY-r.top; }, {passive:true});
+  canvas.addEventListener('mouseleave', () => { mx=-9999; my=-9999; });
   function loop() {
-    for (const n of nodes) {
-      n.x += n.vx; n.y += n.vy;
-      if (n.x < -20) n.x = W + 20;
-      if (n.x > W + 20) n.x = -20;
-      if (n.y < -20) n.y = H + 20;
-      if (n.y > H + 20) n.y = -20;
-      const dx = n.x - mx, dy = n.y - my;
-      const d  = Math.sqrt(dx * dx + dy * dy);
-      if (d < 100) {
-        n.vx += (dx / d) * .06; n.vy += (dy / d) * .06;
-        const spd = Math.sqrt(n.vx * n.vx + n.vy * n.vy);
-        if (spd > 1.5) { n.vx = (n.vx / spd) * 1.5; n.vy = (n.vy / spd) * 1.5; }
-      }
+    ctx.clearRect(0,0,W,H);
+    for (let i=0;i<nodes.length;i++) for (let j=i+1;j<nodes.length;j++) {
+      const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y, d=Math.sqrt(dx*dx+dy*dy);
+      if(d<D) { ctx.beginPath(); ctx.moveTo(nodes[i].x,nodes[i].y); ctx.lineTo(nodes[j].x,nodes[j].y); ctx.strokeStyle=`rgba(30,123,229,${(1-d/D)*.2})`; ctx.lineWidth=.8; ctx.stroke(); }
     }
-    draw();
+    for (const n of nodes) {
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2); ctx.fillStyle=n.c; ctx.globalAlpha=.65; ctx.fill(); ctx.globalAlpha=1;
+      n.x+=n.vx; n.y+=n.vy;
+      if(n.x<-20) n.x=W+20; if(n.x>W+20) n.x=-20; if(n.y<-20) n.y=H+20; if(n.y>H+20) n.y=-20;
+      const dx=n.x-mx,dy=n.y-my,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<100) { n.vx+=(dx/d)*.06; n.vy+=(dy/d)*.06; const s=Math.sqrt(n.vx*n.vx+n.vy*n.vy); if(s>1.5){n.vx=n.vx/s*1.5;n.vy=n.vy/s*1.5;} }
+    }
     requestAnimationFrame(loop);
   }
-
-  resize();
-  nodes = Array.from({ length: NODE_COUNT }, makeNode);
-  loop();
-
+  resize(); nodes=Array.from({length:N},mk); loop();
   new ResizeObserver(resize).observe(canvas.parentElement);
 })();
 
 // ── Scroll Reveal ────────────────────────
-(function initReveal() {
-  const io = new IntersectionObserver((entries) => {
+(function() {
+  const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
       const siblings = Array.from(e.target.parentElement.querySelectorAll('[data-reveal]'));
-      const idx = siblings.indexOf(e.target);
-      setTimeout(() => e.target.classList.add('revealed'), idx * 80);
+      setTimeout(() => e.target.classList.add('revealed'), siblings.indexOf(e.target) * 80);
       io.unobserve(e.target);
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
   document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
 })();
 
-// ── Animated Stat Counters ───────────────
-(function initCounters() {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const target = parseInt(e.target.dataset.target, 10);
-      const start  = performance.now();
-      const dur    = 1800;
-      (function step(now) {
-        const p = Math.min((now - start) / dur, 1);
-        e.target.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * target).toLocaleString();
-        if (p < 1) requestAnimationFrame(step);
-        else e.target.textContent = target.toLocaleString();
-      })(start);
-      io.unobserve(e.target);
-    });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('.stat-count[data-target]').forEach(c => io.observe(c));
-})();
-
 // ── Contact Form ─────────────────────────
-(function initForm() {
-  const form    = document.getElementById('contactForm');
-  const success = document.getElementById('formSuccess');
+(function() {
+  const form = document.getElementById('contactForm');
+  const suc  = document.getElementById('formSuccess');
   if (!form) return;
   form.addEventListener('submit', e => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    btn.textContent = '…';
+    btn.disabled = true; btn.textContent = '…';
     setTimeout(() => {
-      form.querySelectorAll('input, textarea').forEach(el => el.value = '');
+      form.querySelectorAll('input,textarea,select').forEach(el => el.value = '');
       btn.style.display = 'none';
-      success.classList.add('show');
+      suc.classList.add('show');
     }, 1200);
   });
 })();
 
-// ── Active Nav Highlight ─────────────────
-(function initActiveNav() {
-  const io = new IntersectionObserver((entries) => {
+// ── Active Nav Link ──────────────────────
+(function() {
+  const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
       document.querySelectorAll('.nav-links a').forEach(l => l.style.color = '');
