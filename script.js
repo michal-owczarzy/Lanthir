@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════
    LANTHIR — script.js
-   i18n (CS/EN/PL) · Canvas · Reveal · Form
+   i18n (CS/EN/PL) · Canvas · Logo · Reveal · Form
 ═══════════════════════════════════════════ */
 
 const T = {
@@ -41,33 +41,33 @@ const T = {
 
     'price.tag':      'Ceník',
     'price.heading':  'Balíčky <span class="grad-text">pro každého</span>',
-    'price.sub':      'Transparentní ceny bez skrytých poplatků. Platíte za výsledek, ne za hodiny.',
+    'price.sub':      'Kompletní řešení na klíč — doména, hosting, SSL i nasazení jsou součástí každého balíčku. Objednáte, my zařídíme zbytek.',
     'price.from':     'od',
     'price.currency': 'Kč',
     'price.popular':  'Nejpopulárnější',
     'price.cta':      'Mám zájem',
     'price.cta.main': 'Začít projekt',
-    'price.note':     '* Všechny ceny jsou bez DPH. Cena závisí na rozsahu projektu. Rádi vám připravíme přesnou nabídku.',
+    'price.note':     '* Ceny jsou bez DPH. Každý balíček zahrnuje doménu, hosting, SSL i nasazení — zákazník nemusí řešit nic navíc. Rádi připravíme přesnou nabídku.',
     'price.1.tier':   'Starter',
     'price.1.name':   'Statická stránka',
     'price.1.desc':   'Ideální pro prezentaci firmy, živnostníka nebo produktu.',
-    'price.1.price':  '9 990',
-    'price.1.f1': 'Až 1 stránka (landing page)',
+    'price.1.price':  '7 990',
+    'price.1.f1': 'Prezentační web (1 landing page)',
     'price.1.f2': 'Moderní responzivní design',
     'price.1.f3': 'Optimalizace pro mobilní zařízení',
     'price.1.f4': 'Základní SEO nastavení',
     'price.1.f5': 'Kontaktní formulář',
-    'price.1.f6': 'Dodání do 2 týdnů',
+    'price.1.f6': 'Doména, hosting & SSL v ceně',
     'price.1.f7': '3 měsíce bezplatné podpory',
     'price.2.tier':   'Business',
     'price.2.name':   'Pokročilý web',
     'price.2.desc':   'Pro firmy potřebující více — rezervace, e-shop, správu obsahu.',
-    'price.2.price':  '29 990',
+    'price.2.price':  '19 990',
     'price.2.f1': 'Neomezený počet stránek',
     'price.2.f2': 'Rezervační systém nebo e-shop',
     'price.2.f3': 'CMS — snadná správa obsahu',
     'price.2.f4': 'Pokročilé SEO + Google Analytics',
-    'price.2.f5': 'Integrace platební brány',
+    'price.2.f5': 'Doména, hosting, SSL & nasazení v ceně',
     'price.2.f6': 'Vlastní funkcionalita na míru',
     'price.2.f7': '6 měsíců bezplatné podpory',
     'price.3.tier':   'Enterprise',
@@ -92,14 +92,14 @@ const T = {
     'proc.3.title': 'Vývoj',
     'proc.3.desc':  'Kódujeme, testujeme a ladíme. Průběžně vás informujeme o postupu a zapracováváme zpětnou vazbu.',
     'proc.4.title': 'Spuštění',
-    'proc.4.desc':  'Publikujeme web, nastavíme analytiku a jsme tu pro vás i po spuštění — podpora zahrnuta v ceně.',
+    'proc.4.desc':  'Nasadíme web i s doménou a hostingem — zákazník nemusí řešit nic technického. Podpora zahrnuta v ceně.',
 
     'why.tag':     'Proč Lanthir',
     'why.heading': 'Web, který <span class="grad-text">pracuje pro vás</span>',
     'why.1.title': 'Rychlé dodání',
     'why.1.desc':  'Průměrná doba dodání webu je 14 dní. U jednoduchých projektů i méně.',
-    'why.2.title': 'Bezpečnost & výkon',
-    'why.2.desc':  'SSL, optimalizace rychlosti, SEO základ — vše zahrnuto v každém balíčku.',
+    'why.2.title': 'Vše na klíč',
+    'why.2.desc':  'Doména, hosting, SSL, nasazení — postaráme se o všechno. Vy se staráte o svůj byznys.',
     'why.3.title': 'Vlastní design',
     'why.3.desc':  'Žádné šablony. Každý web navrhujeme od základu podle vašich potřeb a identity.',
     'why.4.title': 'Podpora po spuštění',
@@ -186,33 +186,33 @@ const T = {
 
     'price.tag':      'Pricing',
     'price.heading':  'Packages <span class="grad-text">for everyone</span>',
-    'price.sub':      'Transparent pricing with no hidden fees. You pay for results, not hours.',
+    'price.sub':      'Complete turnkey solution — domain, hosting, SSL and deployment are included in every package. You order, we handle the rest.',
     'price.from':     'from',
     'price.currency': 'CZK',
     'price.popular':  'Most Popular',
     'price.cta':      'I\'m Interested',
     'price.cta.main': 'Start Project',
-    'price.note':     '* All prices are excluding VAT. Price depends on project scope. We\'ll happily prepare a precise quote.',
+    'price.note':     '* All prices are excluding VAT. Every package includes domain, hosting, SSL & deployment — no technical hassle for you. We\'ll happily prepare a precise quote.',
     'price.1.tier':   'Starter',
     'price.1.name':   'Static Website',
     'price.1.desc':   'Ideal for presenting a company, freelancer or product.',
-    'price.1.price':  '9,990',
-    'price.1.f1': 'Up to 1 page (landing page)',
+    'price.1.price':  '7,990',
+    'price.1.f1': 'Business website (1 landing page)',
     'price.1.f2': 'Modern responsive design',
     'price.1.f3': 'Mobile optimization',
     'price.1.f4': 'Basic SEO setup',
     'price.1.f5': 'Contact form',
-    'price.1.f6': 'Delivery within 2 weeks',
+    'price.1.f6': 'Domain, hosting & SSL included',
     'price.1.f7': '3 months free support',
     'price.2.tier':   'Business',
     'price.2.name':   'Advanced Website',
     'price.2.desc':   'For businesses that need more — booking, e-shop, content management.',
-    'price.2.price':  '29,990',
+    'price.2.price':  '19,990',
     'price.2.f1': 'Unlimited pages',
     'price.2.f2': 'Booking system or e-shop',
     'price.2.f3': 'CMS — easy content management',
     'price.2.f4': 'Advanced SEO + Google Analytics',
-    'price.2.f5': 'Payment gateway integration',
+    'price.2.f5': 'Domain, hosting, SSL & deployment included',
     'price.2.f6': 'Custom functionality',
     'price.2.f7': '6 months free support',
     'price.3.tier':   'Enterprise',
@@ -237,14 +237,14 @@ const T = {
     'proc.3.title': 'Development',
     'proc.3.desc':  'We code, test and refine. We keep you updated on progress and incorporate your feedback.',
     'proc.4.title': 'Launch',
-    'proc.4.desc':  'We publish the site, set up analytics and are here for you after launch — support included in the price.',
+    'proc.4.desc':  'We deploy with domain and hosting included — no technical setup for you. Support included in the price.',
 
     'why.tag':     'Why Lanthir',
     'why.heading': 'A website that <span class="grad-text">works for you</span>',
     'why.1.title': 'Fast Delivery',
     'why.1.desc':  'Average delivery time is 14 days. Less for simple projects.',
-    'why.2.title': 'Security & Performance',
-    'why.2.desc':  'SSL, speed optimization, SEO foundation — all included in every package.',
+    'why.2.title': 'All Inclusive',
+    'why.2.desc':  'Domain, hosting, SSL, deployment — we handle everything. You focus on your business.',
     'why.3.title': 'Custom Design',
     'why.3.desc':  'No templates. We design every website from scratch based on your needs and identity.',
     'why.4.title': 'Post-launch Support',
@@ -331,33 +331,33 @@ const T = {
 
     'price.tag':      'Cennik',
     'price.heading':  'Pakiety <span class="grad-text">dla każdego</span>',
-    'price.sub':      'Przejrzyste ceny bez ukrytych opłat. Płacisz za wynik, nie za godziny.',
+    'price.sub':      'Kompletne rozwiązanie pod klucz — domena, hosting, SSL i wdrożenie są wliczone w każdy pakiet. Zamawiasz, my zajmujemy się resztą.',
     'price.from':     'od',
     'price.currency': 'CZK',
     'price.popular':  'Najpopularniejszy',
     'price.cta':      'Jestem zainteresowany',
     'price.cta.main': 'Rozpocznij projekt',
-    'price.note':     '* Wszystkie ceny są bez VAT. Cena zależy od zakresu projektu. Chętnie przygotujemy dokładną wycenę.',
+    'price.note':     '* Wszystkie ceny są bez VAT. Każdy pakiet zawiera domenę, hosting, SSL i wdrożenie — klient nie musi nic konfigurować. Chętnie przygotujemy dokładną wycenę.',
     'price.1.tier':   'Starter',
     'price.1.name':   'Strona statyczna',
     'price.1.desc':   'Idealna do prezentacji firmy, freelancera lub produktu.',
-    'price.1.price':  '9 990',
-    'price.1.f1': 'Do 1 strony (landing page)',
+    'price.1.price':  '7 990',
+    'price.1.f1': 'Strona firmowa (1 landing page)',
     'price.1.f2': 'Nowoczesny responsywny design',
     'price.1.f3': 'Optymalizacja mobilna',
     'price.1.f4': 'Podstawowe ustawienia SEO',
     'price.1.f5': 'Formularz kontaktowy',
-    'price.1.f6': 'Realizacja w 2 tygodnie',
+    'price.1.f6': 'Domena, hosting & SSL w cenie',
     'price.1.f7': '3 miesiące bezpłatnego wsparcia',
     'price.2.tier':   'Business',
     'price.2.name':   'Zaawansowana strona',
     'price.2.desc':   'Dla firm potrzebujących więcej — rezerwacje, sklep, zarządzanie treścią.',
-    'price.2.price':  '29 990',
+    'price.2.price':  '19 990',
     'price.2.f1': 'Nieograniczona liczba stron',
     'price.2.f2': 'System rezerwacji lub sklep',
     'price.2.f3': 'CMS — łatwe zarządzanie treścią',
     'price.2.f4': 'Zaawansowane SEO + Google Analytics',
-    'price.2.f5': 'Integracja bramki płatności',
+    'price.2.f5': 'Domena, hosting, SSL & wdrożenie w cenie',
     'price.2.f6': 'Własna funkcjonalność na miarę',
     'price.2.f7': '6 miesięcy bezpłatnego wsparcia',
     'price.3.tier':   'Enterprise',
@@ -382,14 +382,14 @@ const T = {
     'proc.3.title': 'Rozwój',
     'proc.3.desc':  'Kodujemy, testujemy i dopracowujemy. Na bieżąco informujemy o postępach i wdrażamy feedback.',
     'proc.4.title': 'Uruchomienie',
-    'proc.4.desc':  'Publikujemy stronę, konfigurujemy analitykę i jesteśmy do dyspozycji po uruchomieniu — wsparcie w cenie.',
+    'proc.4.desc':  'Wdrażamy z domeną i hostingiem w cenie — klient nie musi nic konfigurować. Wsparcie wliczone w cenę.',
 
     'why.tag':     'Dlaczego Lanthir',
     'why.heading': 'Strona, która <span class="grad-text">pracuje dla Ciebie</span>',
     'why.1.title': 'Szybka realizacja',
     'why.1.desc':  'Średni czas realizacji to 14 dni. Przy prostych projektach nawet krócej.',
-    'why.2.title': 'Bezpieczeństwo & wydajność',
-    'why.2.desc':  'SSL, optymalizacja szybkości, podstawy SEO — wszystko w każdym pakiecie.',
+    'why.2.title': 'Wszystko w cenie',
+    'why.2.desc':  'Domena, hosting, SSL, wdrożenie — zajmujemy się wszystkim. Ty skupiasz się na swoim biznesie.',
     'why.3.title': 'Własny design',
     'why.3.desc':  'Żadnych szablonów. Każdą stronę projektujemy od podstaw według Twoich potrzeb.',
     'why.4.title': 'Wsparcie po uruchomieniu',
@@ -504,16 +504,105 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { 
   new ResizeObserver(resize).observe(canvas.parentElement);
 })();
 
+// ── Animated Logo ────────────────────────
+(function() {
+  const container = document.getElementById('heroLogoContainer');
+  if (!container) return;
+
+  fetch('logo.svg')
+    .then(r => r.text())
+    .then(svgText => {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = svgText.trim();
+      const svg = tmp.querySelector('svg');
+      if (!svg) return;
+
+      svg.removeAttribute('width');
+      svg.removeAttribute('height');
+      svg.classList.add('hero-logo-svg');
+
+      const polylines = Array.from(svg.querySelectorAll('polyline'));
+
+      polylines.forEach((pl, i) => {
+        const raw = pl.getAttribute('points') || '';
+        const nums = raw.match(/[-\d.eE]+/g);
+        if (!nums || nums.length < 4) return;
+
+        let len = 0;
+        for (let k = 2; k + 1 < nums.length; k += 2) {
+          const dx = +nums[k]   - +nums[k-2];
+          const dy = +nums[k+1] - +nums[k-1];
+          len += Math.sqrt(dx*dx + dy*dy);
+        }
+        len = Math.max(len, 1);
+
+        pl.style.strokeDasharray  = len;
+        pl.style.strokeDashoffset = len;
+        pl.style.animation = `logoDraw 1.4s cubic-bezier(.4,0,.2,1) ${i * 10}ms forwards`;
+      });
+
+      container.appendChild(svg);
+
+      // After all lines are drawn, begin slow rotation
+      const totalMs = polylines.length * 10 + 1500;
+      setTimeout(() => {
+        svg.classList.add('logo-ready');
+      }, totalMs);
+    })
+    .catch(() => {
+      // Fallback for environments without fetch (local file://)
+      container.innerHTML = '<img src="logo.svg" alt="Lanthir" style="width:100%;height:100%">';
+    });
+})();
+
+// ── Hero Logo Parallax ───────────────────
+(function() {
+  const wrap = document.getElementById('heroLogoWrap');
+  if (!wrap) return;
+  window.addEventListener('scroll', () => {
+    wrap.style.transform = `translateY(${window.scrollY * 0.12}px)`;
+  }, { passive: true });
+})();
+
+// ── Stat Counters ─────────────────────────
+(function() {
+  const els = document.querySelectorAll('.ws-num, .chip-val, .ah-num');
+  if (!els.length) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const orig = el.textContent.trim();
+      const match = orig.match(/^([\d.]+)(.*)$/);
+      if (!match) return;
+      const target = parseFloat(match[1]);
+      const suffix = match[2];
+      const isInt  = Number.isInteger(target);
+      const dur    = 1600;
+      const t0     = performance.now();
+      (function tick(t) {
+        const p = Math.min((t - t0) / dur, 1);
+        const v = 1 - Math.pow(1 - p, 3);
+        el.textContent = (isInt ? Math.floor(v * target) : (v * target).toFixed(1)) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      })(performance.now());
+      io.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  els.forEach(el => io.observe(el));
+})();
+
 // ── Scroll Reveal ────────────────────────
 (function() {
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
       const siblings = Array.from(e.target.parentElement.querySelectorAll('[data-reveal]'));
-      setTimeout(() => e.target.classList.add('revealed'), siblings.indexOf(e.target) * 80);
+      const delay = siblings.indexOf(e.target) * 90;
+      setTimeout(() => e.target.classList.add('revealed'), delay);
       io.unobserve(e.target);
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
   document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
 })();
 

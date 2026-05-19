@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lanthir — Tvorba webových stránek</title>
-  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="#home" class="nav-logo">
-        <img src="logo.png" alt="Lanthir" class="logo-img">
+        <img src="logo.svg" alt="Lanthir" class="logo-img">
         <span class="logo-text">Lanthir</span>
       </a>
       <ul class="nav-links" id="navLinks">
@@ -76,48 +76,14 @@
         </div>
       </div>
 
-      <!-- Browser Mockup -->
-      <div class="hero-browser-wrap">
-        <div class="hero-browser">
-          <div class="hb-bar">
-            <div class="hb-dots"><span></span><span></span><span></span></div>
-            <div class="hb-url">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              vasweb.cz
-            </div>
-          </div>
-          <div class="hb-content">
-            <div class="mock-nav-bar">
-              <div class="mock-logo-pill"></div>
-              <div class="mock-nav-links">
-                <div class="mock-link"></div>
-                <div class="mock-link"></div>
-                <div class="mock-link"></div>
-                <div class="mock-cta-pill"></div>
-              </div>
-            </div>
-            <div class="mock-hero-block">
-              <div class="mock-h1"></div>
-              <div class="mock-h2"></div>
-              <div class="mock-p-line"></div>
-              <div class="mock-p-line short"></div>
-              <div class="mock-btn-row">
-                <div class="mock-btn-fill"></div>
-                <div class="mock-btn-out"></div>
-              </div>
-            </div>
-            <div class="mock-cards-row">
-              <div class="mock-c"><div class="mock-icon-sq"></div><div class="mock-c-h"></div><div class="mock-c-p"></div></div>
-              <div class="mock-c"><div class="mock-icon-sq"></div><div class="mock-c-h"></div><div class="mock-c-p"></div></div>
-              <div class="mock-c"><div class="mock-icon-sq"></div><div class="mock-c-h"></div><div class="mock-c-p"></div></div>
-            </div>
-            <div class="mock-build-row">
-              <span class="mbr-dot"></span>
-              <span class="mbr-text" data-i18n="hero.building">Váš web se připravuje...</span>
-              <div class="mbr-bar"><div class="mbr-fill"></div></div>
-            </div>
-          </div>
+      <!-- Animated Logo -->
+      <div class="hero-logo-wrap" id="heroLogoWrap">
+        <div class="logo-glow-outer"></div>
+        <div class="logo-glow-inner"></div>
+        <div class="logo-orbit">
+          <div class="orbit-dot"></div>
         </div>
+        <div class="hero-logo-container" id="heroLogoContainer"></div>
       </div>
 
     </div>
@@ -553,7 +519,7 @@
       <div class="footer-top">
         <div class="footer-brand">
           <div class="footer-brand-row">
-            <img src="logo.png" alt="Lanthir" class="footer-logo">
+            <img src="logo.svg" alt="Lanthir" class="footer-logo">
             <span class="footer-name">Lanthir</span>
           </div>
           <p data-i18n="footer.tagline">Profesionální tvorba webových stránek na míru.</p>
