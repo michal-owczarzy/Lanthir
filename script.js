@@ -111,11 +111,10 @@ const T = {
 
     'about.tag':     'O nás',
     'about.heading': 'Kdo stojí <span class="grad-text">za Lanthirem</span>',
-    'about.role':    'Zakladatel & Web Developer',
-    'about.bio':     'Zakladatel společnosti Lanthir a vášnivý tvůrce webových stránek. Specializuji se na moderní, rychlé a funkční weby, které přinášejí zákazníkům skutečné výsledky. Každý projekt beru jako příležitost vytvořit něco výjimečného — od návrhu po spuštění.',
-    'about.hl1':     'Projektů',
-    'about.hl2':     'Roky praxe',
-    'about.hl3':     'Spokojenost',
+    'about.1.role':  'Zakladatel &amp; Web Developer',
+    'about.1.bio':   'Zakladatel Lanthiru se specializací na moderní webové technologie. Navrhuje a vyvíjí weby na míru, které kombinují výjimečný design s reálnými výsledky pro klienty.',
+    'about.2.role':  'Sales Manager',
+    'about.2.bio':   'Zodpovídá za rozvoj obchodních vztahů a pomáhá klientům najít ideální řešení pro jejich projekt. Váš první kontakt, když zvažujete spolupráci s Lanthirem.',
 
     'cta.h2': 'Máte projekt? <span class="grad-text">Pojďme na to.</span>',
     'cta.p':  'Bezplatná konzultace bez závazků. Řekněte nám o svém projektu a my se ozveme do 24 hodin.',
@@ -256,11 +255,10 @@ const T = {
 
     'about.tag':     'About Us',
     'about.heading': 'Who is behind <span class="grad-text">Lanthir</span>',
-    'about.role':    'Founder & Web Developer',
-    'about.bio':     'Founder of Lanthir and passionate web developer. I specialize in modern, fast and functional websites that bring real results to clients. I approach every project as an opportunity to create something exceptional — from design to launch.',
-    'about.hl1':     'Projects',
-    'about.hl2':     'Years experience',
-    'about.hl3':     'Satisfaction',
+    'about.1.role':  'Founder &amp; Web Developer',
+    'about.1.bio':   'Founder of Lanthir, specialized in modern web technologies. Designs and develops custom websites that combine exceptional design with real results for clients.',
+    'about.2.role':  'Sales Manager',
+    'about.2.bio':   'Responsible for business development and helping clients find the ideal solution for their project. Your first point of contact when considering working with Lanthir.',
 
     'cta.h2': 'Have a project? <span class="grad-text">Let\'s go.</span>',
     'cta.p':  'Free consultation with no commitment. Tell us about your project and we\'ll get back to you within 24 hours.',
@@ -401,11 +399,10 @@ const T = {
 
     'about.tag':     'O nas',
     'about.heading': 'Kto stoi <span class="grad-text">za Lanthirem</span>',
-    'about.role':    'Założyciel & Web Developer',
-    'about.bio':     'Założyciel Lanthira i pasjonat tworzenia stron internetowych. Specjalizuję się w nowoczesnych, szybkich i funkcjonalnych stronach, które przynoszą klientom prawdziwe wyniki. Każdy projekt traktuję jako okazję do stworzenia czegoś wyjątkowego — od projektu po uruchomienie.',
-    'about.hl1':     'Projektów',
-    'about.hl2':     'Lata praktyki',
-    'about.hl3':     'Satysfakcja',
+    'about.1.role':  'Założyciel &amp; Web Developer',
+    'about.1.bio':   'Założyciel Lanthira specjalizujący się w nowoczesnych technologiach webowych. Projektuje i rozwija strony na zamówienie łączące wyjątkowy design z realnymi wynikami dla klientów.',
+    'about.2.role':  'Sales Manager',
+    'about.2.bio':   'Odpowiada za rozwój relacji biznesowych i pomaga klientom znaleźć idealne rozwiązanie dla ich projektu. Twój pierwszy kontakt, gdy rozważasz współpracę z Lanthirem.',
 
     'cta.h2': 'Masz projekt? <span class="grad-text">Działajmy.</span>',
     'cta.p':  'Bezpłatna konsultacja bez zobowiązań. Opowiedz nam o projekcie, a odezwiemy się w ciągu 24 godzin.',
