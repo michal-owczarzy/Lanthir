@@ -441,6 +441,50 @@
         #login-screen { display: flex; }
         #app-screen   { display: none; }
 
+        /* ── MODALS ─────────────────────────────────────── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            padding: 1rem;
+        }
+        .modal-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem 1.75rem;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+        }
+        .modal-card h2 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 0.4rem;
+        }
+        .modal-sub {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+            line-height: 1.5;
+        }
+        .modal-footer {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 1.25rem;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--border);
+            color: var(--text-muted);
+            flex: 1;
+        }
+        .btn-outline:hover { background: #f5f1eb; }
+
         /* ── RESPONSIVE ────────────────────────────────── */
         @media (max-width: 640px) {
             header { flex-wrap: wrap; gap: 0.6rem; padding: 0.75rem 1rem; }
@@ -478,7 +522,7 @@
                 <circle cx="57" cy="16" r="2.2" fill="rgba(180,180,180,0.35)"/>
             </svg>
             <h1>Chata</h1>
-            <p>Rezervační systém pobytu</p>
+            <p>Rezerwujmy se termin na naszóm chate 😊</p>
         </div>
 
         <div id="login-error" class="alert alert-error" style="display:none"></div>
@@ -502,6 +546,9 @@
         <button class="btn btn-primary btn-block" onclick="doLogin()" style="margin-top:0.5rem">
             Přihlásit se
         </button>
+        <p style="text-align:center;margin-top:0.9rem">
+            <a href="#" onclick="showResetModal();return false" style="font-size:0.83rem;color:var(--primary);text-decoration:none">Zapomenuté heslo?</a>
+        </p>
     </div>
 </div>
 
@@ -644,16 +691,73 @@
     </main>
 </div>
 
+<!-- Reset Password Modal -->
+<div id="modal-reset" class="modal-overlay" style="display:none">
+    <div class="modal-card">
+        <h2>Zapomenuté heslo</h2>
+        <p class="modal-sub">Vyberte uživatele a potvrďte reset. Heslo bude obnoveno na výchozí a při dalším přihlášení budete vyzváni ke změně.</p>
+        <div id="reset-alert" class="alert" style="display:none"></div>
+        <div class="form-group">
+            <label>Uživatel</label>
+            <select id="reset-user">
+                <option value="">— Vyberte uživatele —</option>
+                <option value="OwczarzyStarsi">OwczarzyStarsi</option>
+                <option value="Muchowie">Muchowie</option>
+                <option value="OwczarzyMlodsi">OwczarzyMlodsi</option>
+                <option value="Bartosky">Bartosky</option>
+            </select>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline" onclick="closeResetModal()">Zrušit</button>
+            <button class="btn btn-primary" style="flex:1" onclick="doReset()">Resetovat heslo</button>
+        </div>
+    </div>
+</div>
+
+<!-- Change Password Modal -->
+<div id="modal-changepw" class="modal-overlay" style="display:none">
+    <div class="modal-card">
+        <h2>Nastavení nového hesla</h2>
+        <p class="modal-sub" id="changepw-sub">Pro pokračování prosím nastavte nové heslo.</p>
+        <div id="changepw-alert" class="alert" style="display:none"></div>
+        <div class="form-group">
+            <label>Nové heslo</label>
+            <input type="password" id="changepw-new" placeholder="Nové heslo (min. 8 znaků)" autocomplete="new-password"/>
+        </div>
+        <div class="form-group">
+            <label>Potvrzení hesla</label>
+            <input type="password" id="changepw-confirm" placeholder="Zopakujte heslo" autocomplete="new-password"/>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary btn-block" onclick="doChangePw()">Uložit heslo</button>
+        </div>
+    </div>
+</div>
+
 <script>
 'use strict';
 
 /* ── USERS ──────────────────────────────────────────────────────── */
-const USERS = {
-    'OwczarzyStarsi': { pw: 'Chata@Star26', color: '#2d6a4f' },
-    'Muchowie':       { pw: 'Chata@Much26', color: '#c1121f' },
-    'OwczarzyMlodsi': { pw: 'Chata@Mlad26', color: '#d4700a' },
-    'Bartosky':       { pw: 'Chata@Bart26', color: '#2b4acb' }
+const DEFAULTS = {
+    'OwczarzyStarsi': 'Chata@Star26',
+    'Muchowie':       'Chata@Much26',
+    'OwczarzyMlodsi': 'Chata@Mlad26',
+    'Bartosky':       'Chata@Bart26'
 };
+const USERS = {
+    'OwczarzyStarsi': { color: '#2d6a4f', admin: true },
+    'Muchowie':       { color: '#c1121f' },
+    'OwczarzyMlodsi': { color: '#d4700a' },
+    'Bartosky':       { color: '#2b4acb' }
+};
+
+function getPassword(user) {
+    return localStorage.getItem('chata_pwd_' + user) || DEFAULTS[user];
+}
+function mustChangePw(user) {
+    return !localStorage.getItem('chata_pwd_' + user)
+        || localStorage.getItem('chata_must_change_' + user) === '1';
+}
 
 const EMAIL_PRIMARY = 'michal.owczarzy@lanthir.cz';
 const EMAIL_CC      = 'andrea.owczarzyova@seznam.cz';
@@ -700,7 +804,7 @@ function doLogin() {
     err.style.display = 'none';
 
     if (!user) { err.textContent = 'Vyberte prosím uživatele.'; err.style.display = 'block'; return; }
-    if (!USERS[user] || USERS[user].pw !== pw) {
+    if (!USERS[user] || getPassword(user) !== pw) {
         err.textContent = 'Nesprávné heslo. Zkuste to znovu.';
         err.style.display = 'block';
         document.getElementById('login-password').select();
@@ -708,6 +812,7 @@ function doLogin() {
     }
     currentUser = user;
     sessionStorage.setItem('chata_user', user);
+    if (mustChangePw(user)) { showChangePwModal(); return; }
     showApp();
 }
 
@@ -910,7 +1015,7 @@ function renderTable() {
     tbody.innerHTML = reservations.map(r => {
         const color    = (USERS[r.user] || {}).color || '#999';
         const isPast   = r.to <= todayIso;
-        const canDel   = r.user === currentUser;
+        const canDel   = r.user === currentUser || USERS[currentUser]?.admin;
         const opacity  = isPast ? 'opacity:0.55' : '';
         return `<tr style="${opacity}">
             <td><span class="user-badge" style="background:${color}">${r.user}</span></td>
@@ -931,6 +1036,72 @@ function deleteRes(id) {
     renderCalendar();
 }
 
+/* ── RESET PASSWORD ─────────────────────────────────────────────── */
+function showResetModal() {
+    document.getElementById('reset-user').value = '';
+    document.getElementById('reset-alert').style.display = 'none';
+    document.getElementById('modal-reset').style.display = 'flex';
+}
+
+function closeResetModal() {
+    document.getElementById('modal-reset').style.display = 'none';
+}
+
+function doReset() {
+    const user    = document.getElementById('reset-user').value;
+    const alertEl = document.getElementById('reset-alert');
+    alertEl.style.display = 'none';
+
+    if (!user) {
+        alertEl.className = 'alert alert-error';
+        alertEl.textContent = 'Vyberte prosím uživatele.';
+        alertEl.style.display = 'block';
+        return;
+    }
+
+    localStorage.removeItem('chata_pwd_' + user);
+    localStorage.setItem('chata_must_change_' + user, '1');
+
+    alertEl.className = 'alert alert-success';
+    alertEl.innerHTML = `Heslo bylo resetováno.<br>Výchozí heslo: <strong>${DEFAULTS[user]}</strong><br>Při dalším přihlášení bude uživatel vyzván ke změně.`;
+    alertEl.style.display = 'block';
+    document.getElementById('reset-user').value = '';
+}
+
+/* ── CHANGE PASSWORD ────────────────────────────────────────────── */
+function showChangePwModal() {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('changepw-new').value = '';
+    document.getElementById('changepw-confirm').value = '';
+    document.getElementById('changepw-alert').style.display = 'none';
+    document.getElementById('modal-changepw').style.display = 'flex';
+}
+
+function doChangePw() {
+    const newPw   = document.getElementById('changepw-new').value;
+    const confirm = document.getElementById('changepw-confirm').value;
+    const alertEl = document.getElementById('changepw-alert');
+    alertEl.style.display = 'none';
+
+    if (newPw.length < 8) {
+        alertEl.className = 'alert alert-error';
+        alertEl.textContent = 'Heslo musí mít alespoň 8 znaků.';
+        alertEl.style.display = 'block';
+        return;
+    }
+    if (newPw !== confirm) {
+        alertEl.className = 'alert alert-error';
+        alertEl.textContent = 'Hesla se neshodují.';
+        alertEl.style.display = 'block';
+        return;
+    }
+
+    localStorage.setItem('chata_pwd_' + currentUser, newPw);
+    localStorage.removeItem('chata_must_change_' + currentUser);
+    document.getElementById('modal-changepw').style.display = 'none';
+    showApp();
+}
+
 /* ── KEYBOARD ───────────────────────────────────────────────────── */
 document.getElementById('login-password').addEventListener('keydown', e => {
     if (e.key === 'Enter') doLogin();
@@ -939,7 +1110,10 @@ document.getElementById('login-password').addEventListener('keydown', e => {
 /* ── AUTO-LOGIN FROM SESSION ────────────────────────────────────── */
 (function () {
     const saved = sessionStorage.getItem('chata_user');
-    if (saved && USERS[saved]) { currentUser = saved; showApp(); }
+    if (saved && USERS[saved]) {
+        currentUser = saved;
+        if (mustChangePw(saved)) { showChangePwModal(); } else { showApp(); }
+    }
 })();
 </script>
 </body>
