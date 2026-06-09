@@ -12,9 +12,9 @@ const T = {
     'nav.contact':  'Kontakt',
     'nav.cta':      'Nezávazná poptávka',
 
-    'hero.badge':    'Monitoring & webové řešení na míru',
+    'hero.badge':    'Weby · Monitoring · Správa webu',
     'hero.h1':       'Technologický partner<br><span class="grad-text">pro růst a provoz firmy.</span>',
-    'hero.sub':      'Profesionální webové stránky na míru — od jednoduché vizitky po komplexní rezervační systém. Rychle, spolehlivě a s péčí o každý detail.',
+    'hero.sub':      'Navrhujeme webové stránky na míru a staráme se o jejich provoz. Landing page, firemní web nebo webová aplikace — s SSL, hostingem, SEO optimalizací a monitoringem dostupnosti.',
     'hero.btn1':     'Zobrazit ceník',
     'hero.btn2':     'Nezávazná konzultace',
     'hero.chip2':    'Dní průměrná dodávka',
@@ -22,7 +22,7 @@ const T = {
 
     'svc.tag':     'Co tvoříme',
     'svc.heading': 'Webové stránky pro <span class="grad-text">každou potřebu</span>',
-    'svc.sub':     'Od vizitky po komplexní systém — navrhujeme a vyvíjíme weby, které fungují a přinášejí výsledky.',
+    'svc.sub':     'Tvorba webových stránek pro živnostníky i firmy — od jednoduché landing page po plnohodnotnou webovou aplikaci. Každý web dodáváme včetně domény, hostingu a SSL certifikátu.',
     'svc.more':    'Zobrazit ceník <span>→</span>',
     'svc.1.title': 'Prezentační web',
     'svc.1.desc':  'Profesionální webové stránky, které představují vaši firmu nebo produkt. Moderní design, rychlé načítání, perfektní na mobilu.',
@@ -39,7 +39,7 @@ const T = {
 
     'price.tag':      'Ceník',
     'price.heading':  'Řešení <span class="grad-text">pro každého</span>',
-    'price.sub':      'Transparentní ceny bez skrytých poplatků. Vyberte jednorázovou tvorbu nebo pravidelnou správu.',
+    'price.sub':      'Transparentní ceny tvorby webových stránek bez skrytých poplatků. Vyberte jednorázové vytvoření webu — nebo pravidelnou správu, monitoring a SEO optimalizaci.',
     'price.dev.label':'A — Jednorázová tvorba webu',
     'price.sub.label':'B — Měsíční správa, monitoring a marketing',
     'price.from':     'od',
@@ -188,9 +188,9 @@ const T = {
     'nav.contact':  'Contact',
     'nav.cta':      'Get a Quote',
 
-    'hero.badge':    'Monitoring & custom web solutions',
+    'hero.badge':    'Websites · Monitoring · Web Management',
     'hero.h1':       'Technology partner<br><span class="grad-text">for growth and operations.</span>',
-    'hero.sub':      'Professional custom websites — from a simple business card to a complex booking system. Fast, reliable, with attention to every detail.',
+    'hero.sub':      'We design custom websites and keep them running. Landing page, corporate website or web application — with SSL, hosting, SEO optimisation and uptime monitoring included.',
     'hero.btn1':     'View Pricing',
     'hero.btn2':     'Free Consultation',
     'hero.chip2':    'Days avg. delivery',
@@ -198,7 +198,7 @@ const T = {
 
     'svc.tag':     'What We Build',
     'svc.heading': 'Websites for <span class="grad-text">every need</span>',
-    'svc.sub':     'From a business card to a complex system — we design and develop websites that work and deliver results.',
+    'svc.sub':     'Custom web development for freelancers and businesses — from a simple landing page to a full web application. Every website includes domain, hosting and SSL certificate.',
     'svc.more':    'View pricing <span>→</span>',
     'svc.1.title': 'Business Website',
     'svc.1.desc':  'Professional websites that present your company or product. Modern design, fast loading, perfect on mobile.',
@@ -364,9 +364,9 @@ const T = {
     'nav.contact':  'Kontakt',
     'nav.cta':      'Bezpłatna wycena',
 
-    'hero.badge':    'Monitoring & rozwiązania webowe na miarę',
+    'hero.badge':    'Strony · Monitoring · Zarządzanie',
     'hero.h1':       'Partner technologiczny<br><span class="grad-text">dla wzrostu i operacji firmy.</span>',
-    'hero.sub':      'Profesjonalne strony internetowe na zamówienie — od prostej wizytówki po złożony system rezerwacji. Szybko, niezawodnie i z dbałością o każdy detal.',
+    'hero.sub':      'Projektujemy strony internetowe na zamówienie i dbamy o ich działanie. Landing page, strona firmowa lub aplikacja webowa — z SSL, hostingiem, optymalizacją SEO i monitoringiem dostępności.',
     'hero.btn1':     'Zobacz cennik',
     'hero.btn2':     'Bezpłatna konsultacja',
     'hero.chip2':    'Dni średnia realizacja',
@@ -374,7 +374,7 @@ const T = {
 
     'svc.tag':     'Co tworzymy',
     'svc.heading': 'Strony internetowe dla <span class="grad-text">każdej potrzeby</span>',
-    'svc.sub':     'Od wizytówki po złożony system — projektujemy i rozwijamy strony, które działają i przynoszą wyniki.',
+    'svc.sub':     'Tworzenie stron internetowych dla freelancerów i firm — od prostej strony wizytówki po rozbudowaną aplikację webową. Każda strona zawiera domenę, hosting i certyfikat SSL.',
     'svc.more':    'Zobacz cennik <span>→</span>',
     'svc.1.title': 'Strona firmowa',
     'svc.1.desc':  'Profesjonalne strony prezentujące Twoją firmę lub produkt. Nowoczesny design, szybkie ładowanie, idealne na mobile.',
