@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chata – Rezervační systém</title>
+    <style>
+        :root {
+            --primary: #2d6a4f;
+            --primary-dark: #1b4332;
+            --primary-light: #40916c;
+            --accent: #c8963a;
+            --bg: #f5f1eb;
+            --card: #ffffff;
+            --text: #2c2416;
+            --text-muted: #6b5e4e;
+            --border: #d5c9b8;
+            --shadow: 0 2px 16px rgba(44,36,22,0.10);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ── LOGIN ─────────────────────────────────────── */
+        #login-screen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(160deg, #0d2618 0%, #1b4332 45%, #2d6a4f 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #login-screen::before {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 220px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 220'%3E%3Cpolygon points='0,220 200,60 380,160 520,20 700,120 880,30 1050,140 1200,50 1200,220' fill='rgba(255,255,255,0.04)'/%3E%3Cpolygon points='0,220 150,100 300,180 450,70 600,150 750,60 900,160 1050,80 1200,140 1200,220' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 2.25rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-brand {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-brand .cabin-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 0.75rem;
+        }
+
+        .login-brand h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .login-brand p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 0.2rem;
+        }
+
+        /* ── FORMS ─────────────────────────────────────── */
+        .form-group { margin-bottom: 1.1rem; }
+
+        label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.65rem 0.9rem;
+            border: 1.5px solid var(--border);
+            border-radius: 9px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            color: var(--text);
+            background: white;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            appearance: auto;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(64,145,108,0.18);
+        }
+
+        textarea { resize: vertical; min-height: 80px; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.7rem 1.4rem;
+            border: none;
+            border-radius: 9px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 700;
+            font-family: inherit;
+            transition: transform 0.1s, box-shadow 0.2s, background 0.15s;
+            text-decoration: none;
+        }
+
+        .btn:active { transform: scale(0.98); }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 3px 10px rgba(45,106,79,0.35);
+        }
+
+        .btn-primary:hover { background: var(--primary-light); }
+
+        .btn-ghost {
+            background: transparent;
+            color: white;
+            border: 1.5px solid rgba(255,255,255,0.35);
+        }
+
+        .btn-ghost:hover { background: rgba(255,255,255,0.12); }
+
+        .btn-danger {
+            background: #c9184a;
+            color: white;
+            font-size: 0.78rem;
+            padding: 0.28rem 0.65rem;
+            border-radius: 6px;
+        }
+
+        .btn-danger:hover { background: #a4133c; }
+        .btn-block { width: 100%; }
+
+        /* ── ALERTS ────────────────────────────────────── */
+        .alert {
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            margin-bottom: 1rem;
+            line-height: 1.45;
+        }
+
+        .alert-error   { background: #fce4ec; color: #880e4f; border: 1px solid #f8bbd0; }
+        .alert-success { background: #e8f5e9; color: #1b5e20; border: 1px solid #c8e6c9; }
+        .alert-warn    { background: #fff8e1; color: #6d4c00; border: 1px solid #ffe082; }
+
+        /* ── HEADER ────────────────────────────────────── */
+        header {
+            background: var(--primary-dark);
+            color: white;
+            padding: 0.85rem 1.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        .header-brand svg { width: 28px; height: 28px; flex-shrink: 0; }
+
+        header nav {
+            display: flex;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+        }
+
+        header nav button {
+            background: transparent;
+            border: 1.5px solid rgba(255,255,255,0.25);
+            color: white;
+            padding: 0.4rem 0.9rem;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: inherit;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        header nav button:hover     { background: rgba(255,255,255,0.12); }
+        header nav button.nav-active { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.55); }
+
+        .header-user {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.88rem;
+            white-space: nowrap;
+        }
+
+        .user-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        /* ── MAIN ──────────────────────────────────────── */
+        main {
+            max-width: 1120px;
+            margin: 2rem auto;
+            padding: 0 1.25rem 3rem;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        .section-title svg { opacity: 0.75; }
+
+        /* ── CARD ──────────────────────────────────────── */
+        .card {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        /* ── CALENDAR ──────────────────────────────────── */
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            padding: 1rem 1.25rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            align-items: center;
+        }
+
+        .legend-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-right: 0.25rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .legend-dot {
+            width: 14px; height: 14px;
+            border-radius: 5px;
+            flex-shrink: 0;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .month-card {
+            background: white;
+            border-radius: 14px;
+            padding: 1.25rem 1rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .month-header {
+            text-align: center;
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.85rem;
+            text-transform: capitalize;
+            letter-spacing: 0.01em;
+        }
+
+        .cal-dow {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 0.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .cal-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+        }
+
+        .cal-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            border-radius: 7px;
+            position: relative;
+            user-select: none;
+        }
+
+        .cal-day.today {
+            font-weight: 800;
+            box-shadow: inset 0 0 0 2px var(--primary);
+        }
+
+        .cal-day.reserved {
+            color: white;
+            font-weight: 700;
+        }
+
+        .cal-day.past { opacity: 0.38; }
+
+        /* ── NEW RESERVATION ───────────────────────────── */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        /* ── RESERVATIONS TABLE ────────────────────────── */
+        .table-wrap {
+            overflow-x: auto;
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            min-width: 580px;
+        }
+
+        thead th {
+            background: var(--primary-dark);
+            color: white;
+            padding: 0.8rem 1rem;
+            text-align: left;
+            font-size: 0.73rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 700;
+        }
+
+        thead th:first-child { border-radius: 13px 0 0 0; }
+        thead th:last-child  { border-radius: 0 13px 0 0; }
+
+        tbody td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            background: white;
+            vertical-align: middle;
+        }
+
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:last-child td:first-child { border-radius: 0 0 0 13px; }
+        tbody tr:last-child td:last-child  { border-radius: 0 0 13px 0; }
+        tbody tr:hover td { background: #f8f5f0; }
+
+        .user-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.2rem 0.65rem;
+            border-radius: 20px;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-muted);
+        }
+
+        .empty-state svg { width: 44px; height: 44px; opacity: 0.35; display: block; margin: 0 auto 0.75rem; }
+
+        /* ── SCREENS ───────────────────────────────────── */
+        .screen { display: none; }
+        .screen.active { display: block; }
+        #login-screen { display: flex; }
+        #app-screen   { display: none; }
+
+        /* ── RESPONSIVE ────────────────────────────────── */
+        @media (max-width: 640px) {
+            header { flex-wrap: wrap; gap: 0.6rem; padding: 0.75rem 1rem; }
+            .header-user { order: 3; width: 100%; justify-content: flex-end; }
+            .form-row { grid-template-columns: 1fr; }
+            main { padding: 0 0.75rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ LOGIN ════════════════════════════ -->
+<div id="login-screen">
+    <div class="login-card">
+        <div class="login-brand">
+            <svg class="cabin-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- sky -->
+                <rect width="80" height="80" rx="16" fill="#e8f5e9"/>
+                <!-- mountain bg -->
+                <polygon points="0,80 30,30 55,55 80,20 80,80" fill="#a5d6a7" opacity="0.5"/>
+                <!-- cabin body -->
+                <rect x="22" y="44" width="36" height="28" rx="2" fill="#c8963a"/>
+                <!-- roof -->
+                <polygon points="16,46 40,18 64,46" fill="#2d6a4f"/>
+                <!-- door -->
+                <rect x="34" y="56" width="12" height="16" rx="2" fill="#1b4332"/>
+                <!-- window L -->
+                <rect x="26" y="50" width="8" height="7" rx="1" fill="#bbdefb"/>
+                <!-- window R -->
+                <rect x="46" y="50" width="8" height="7" rx="1" fill="#bbdefb"/>
+                <!-- chimney -->
+                <rect x="50" y="26" width="6" height="14" rx="1" fill="#795548"/>
+                <!-- smoke dots -->
+                <circle cx="53" cy="21" r="3" fill="rgba(180,180,180,0.55)"/>
+                <circle cx="57" cy="16" r="2.2" fill="rgba(180,180,180,0.35)"/>
+            </svg>
+            <h1>Chata</h1>
+            <p>Rezervační systém pobytu</p>
+        </div>
+
+        <div id="login-error" class="alert alert-error" style="display:none"></div>
+
+        <div class="form-group">
+            <label>Uživatel</label>
+            <select id="login-user">
+                <option value="">— Vyberte uživatele —</option>
+                <option value="OwczarzyStarsi">OwczarzyStarsi</option>
+                <option value="Muchowie">Muchowie</option>
+                <option value="OwczarzyMlodsi">OwczarzyMlodsi</option>
+                <option value="Bartosky">Bartosky</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Heslo</label>
+            <input type="password" id="login-password" placeholder="Zadejte heslo" autocomplete="current-password"/>
+        </div>
+
+        <button class="btn btn-primary btn-block" onclick="doLogin()" style="margin-top:0.5rem">
+            Přihlásit se
+        </button>
+    </div>
+</div>
+
+<!-- ════════════════════════════ APP ════════════════════════════ -->
+<div id="app-screen">
+
+    <header>
+        <div class="header-brand">
+            <svg viewBox="0 0 28 28" fill="none">
+                <polygon points="4,26 14,6 24,26" fill="rgba(255,255,255,0.12)"/>
+                <rect x="9" y="16" width="10" height="10" fill="rgba(255,255,255,0.65)"/>
+                <rect x="11.5" y="18.5" width="5" height="5" fill="#1b4332"/>
+                <polygon points="7,17 14,5 21,17" fill="white"/>
+                <rect x="17" y="9" width="3" height="6" fill="rgba(255,255,255,0.7)"/>
+            </svg>
+            Chata
+        </div>
+
+        <nav>
+            <button id="nav-calendar" class="nav-active" onclick="showSection('calendar')">Kalendář</button>
+            <button id="nav-new" onclick="showSection('new')">Nová rezervace</button>
+            <button id="nav-all" onclick="showSection('all')">Přehled</button>
+        </nav>
+
+        <div class="header-user">
+            <span id="hdr-dot" class="user-dot"></span>
+            <span id="hdr-name"></span>
+            <button class="btn btn-ghost" style="font-size:0.8rem;padding:0.35rem 0.8rem" onclick="doLogout()">Odhlásit</button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ── CALENDAR ── -->
+        <div id="section-calendar" class="screen active">
+            <div class="section-title">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <rect x="3" y="4" width="18" height="18" rx="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                Kalendář pobytů
+            </div>
+            <div class="legend" id="cal-legend"></div>
+            <div class="calendar-grid" id="cal-grid"></div>
+        </div>
+
+        <!-- ── NEW RESERVATION ── -->
+        <div id="section-new" class="screen">
+            <div class="section-title">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="16"/>
+                    <line x1="8" y1="12" x2="16" y2="12"/>
+                </svg>
+                Nová rezervace
+            </div>
+            <div class="card" style="max-width:580px">
+                <div id="res-conflict" class="alert alert-warn" style="display:none"></div>
+                <div id="res-success" class="alert alert-success" style="display:none"></div>
+                <div id="res-error"   class="alert alert-error"   style="display:none"></div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Datum příjezdu</label>
+                        <input type="date" id="res-from" onchange="onDateChange()"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Datum odjezdu</label>
+                        <input type="date" id="res-to" onchange="onDateChange()"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Počet osob</label>
+                    <select id="res-guests">
+                        <option value="1">1 osoba</option>
+                        <option value="2" selected>2 osoby</option>
+                        <option value="3">3 osoby</option>
+                        <option value="4">4 osoby</option>
+                        <option value="5">5 osob</option>
+                        <option value="6">6 osob</option>
+                        <option value="7">7 a více osob</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Poznámka <span style="font-weight:400;text-transform:none">(nepovinné)</span></label>
+                    <textarea id="res-note" placeholder="Plánované aktivity, zvláštní požadavky…"></textarea>
+                </div>
+
+                <button class="btn btn-primary btn-block" onclick="createReservation()">
+                    Vytvořit rezervaci
+                </button>
+            </div>
+        </div>
+
+        <!-- ── ALL RESERVATIONS ── -->
+        <div id="section-all" class="screen">
+            <div class="section-title">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <line x1="8" y1="6" x2="21" y2="6"/>
+                    <line x1="8" y1="12" x2="21" y2="12"/>
+                    <line x1="8" y1="18" x2="21" y2="18"/>
+                    <line x1="3" y1="6" x2="3.01" y2="6"/>
+                    <line x1="3" y1="12" x2="3.01" y2="12"/>
+                    <line x1="3" y1="18" x2="3.01" y2="18"/>
+                </svg>
+                Přehled rezervací
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Uživatel</th>
+                            <th>Příjezd</th>
+                            <th>Odjezd</th>
+                            <th>Nocí</th>
+                            <th>Osob</th>
+                            <th>Poznámka</th>
+                            <th>Akce</th>
+                        </tr>
+                    </thead>
+                    <tbody id="res-tbody"></tbody>
+                </table>
+                <div id="no-res" class="empty-state" style="display:none">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="4" width="18" height="18" rx="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    <p>Zatím žádné rezervace.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script>
+'use strict';
+
+/* ── USERS ──────────────────────────────────────────────────────── */
+const USERS = {
+    'OwczarzyStarsi': { pw: 'Chata@Star26', color: '#2d6a4f' },
+    'Muchowie':       { pw: 'Chata@Much26', color: '#c1121f' },
+    'OwczarzyMlodsi': { pw: 'Chata@Mlad26', color: '#d4700a' },
+    'Bartosky':       { pw: 'Chata@Bart26', color: '#2b4acb' }
+};
+
+const EMAIL_PRIMARY = 'michal.owczarzy@lanthir.cz';
+const EMAIL_CC      = 'andrea.owczarzyova@seznam.cz';
+
+let currentUser = null;
+
+/* ── STORAGE ────────────────────────────────────────────────────── */
+function loadRes() {
+    try { return JSON.parse(localStorage.getItem('chata_res') || '[]'); } catch { return []; }
+}
+function storeRes(arr) { localStorage.setItem('chata_res', JSON.stringify(arr)); }
+
+/* ── DATE HELPERS ───────────────────────────────────────────────── */
+function fmtDate(iso) {
+    const [y, m, d] = iso.split('-');
+    return `${d}.${m}.${y}`;
+}
+
+function nights(from, to) {
+    return Math.round((new Date(to) - new Date(from)) / 86400000);
+}
+
+function datesInRange(from, to) {
+    const out = [], d = new Date(from), end = new Date(to);
+    while (d < end) { out.push(d.toISOString().slice(0, 10)); d.setDate(d.getDate() + 1); }
+    return out;
+}
+
+function buildReservedMap() {
+    const map = {};
+    loadRes().forEach(r => {
+        datesInRange(r.from, r.to).forEach(d => {
+            map[d] = { user: r.user, color: (USERS[r.user] || {}).color || '#999' };
+        });
+    });
+    return map;
+}
+
+/* ── AUTH ───────────────────────────────────────────────────────── */
+function doLogin() {
+    const user = document.getElementById('login-user').value;
+    const pw   = document.getElementById('login-password').value;
+    const err  = document.getElementById('login-error');
+    err.style.display = 'none';
+
+    if (!user) { err.textContent = 'Vyberte prosím uživatele.'; err.style.display = 'block'; return; }
+    if (!USERS[user] || USERS[user].pw !== pw) {
+        err.textContent = 'Nesprávné heslo. Zkuste to znovu.';
+        err.style.display = 'block';
+        document.getElementById('login-password').select();
+        return;
+    }
+    currentUser = user;
+    sessionStorage.setItem('chata_user', user);
+    showApp();
+}
+
+function doLogout() {
+    currentUser = null;
+    sessionStorage.removeItem('chata_user');
+    document.getElementById('login-password').value = '';
+    document.getElementById('login-user').value = '';
+    document.getElementById('login-error').style.display = 'none';
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('app-screen').style.display = 'none';
+}
+
+function showApp() {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app-screen').style.display = 'block';
+    const color = USERS[currentUser].color;
+    document.getElementById('hdr-dot').style.background = color;
+    document.getElementById('hdr-name').textContent = currentUser;
+    const today = new Date().toISOString().slice(0, 10);
+    document.getElementById('res-from').min = today;
+    document.getElementById('res-to').min = today;
+    showSection('calendar');
+}
+
+/* ── NAVIGATION ─────────────────────────────────────────────────── */
+function showSection(name) {
+    ['calendar', 'new', 'all'].forEach(s => {
+        document.getElementById('section-' + s).classList.toggle('active', s === name);
+        document.getElementById('nav-' + s).classList.toggle('nav-active', s === name);
+    });
+    if (name === 'calendar') renderCalendar();
+    if (name === 'all')      renderTable();
+    if (name === 'new') {
+        ['res-success', 'res-error', 'res-conflict'].forEach(id => {
+            document.getElementById(id).style.display = 'none';
+        });
+    }
+}
+
+/* ── CALENDAR ───────────────────────────────────────────────────── */
+function renderCalendar() {
+    const grid    = document.getElementById('cal-grid');
+    const legend  = document.getElementById('cal-legend');
+    const resMap  = buildReservedMap();
+    const today   = new Date(); today.setHours(0,0,0,0);
+    const todayIso = today.toISOString().slice(0, 10);
+
+    legend.innerHTML = '<span class="legend-label">Legenda:</span>' +
+        Object.entries(USERS).map(([name, u]) =>
+            `<div class="legend-item"><span class="legend-dot" style="background:${u.color}"></span>${name}</div>`
+        ).join('');
+
+    grid.innerHTML = '';
+
+    for (let mi = 0; mi < 4; mi++) {
+        const base = new Date(today.getFullYear(), today.getMonth() + mi, 1);
+        const y = base.getFullYear(), m = base.getMonth();
+        const daysInMonth = new Date(y, m + 1, 0).getDate();
+        const firstDow = (new Date(y, m, 1).getDay() + 6) % 7; // Mon=0
+        const monthName = base.toLocaleDateString('cs-CZ', { month: 'long', year: 'numeric' });
+
+        let html = `<div class="month-card">
+            <div class="month-header">${monthName}</div>
+            <div class="cal-dow"><span>Po</span><span>Út</span><span>St</span><span>Čt</span><span>Pá</span><span>So</span><span>Ne</span></div>
+            <div class="cal-days">`;
+
+        for (let i = 0; i < firstDow; i++) html += '<div></div>';
+
+        for (let d = 1; d <= daysInMonth; d++) {
+            const iso = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+            const r   = resMap[iso];
+            const isToday = iso === todayIso;
+            const isPast  = iso < todayIso;
+            let cls = 'cal-day';
+            if (isPast)  cls += ' past';
+            if (isToday) cls += ' today';
+            if (r)       cls += ' reserved';
+            const style = r ? `background:${r.color};` : '';
+            const title = r ? `title="${r.user}"` : '';
+            html += `<div class="${cls}" style="${style}" ${title}>${d}</div>`;
+        }
+
+        html += '</div></div>';
+        grid.innerHTML += html;
+    }
+}
+
+/* ── CONFLICT CHECK ─────────────────────────────────────────────── */
+function onDateChange() {
+    const from = document.getElementById('res-from').value;
+    const to   = document.getElementById('res-to').value;
+    const warn = document.getElementById('res-conflict');
+    warn.style.display = 'none';
+
+    if (!from || !to) return;
+    if (to <= from) {
+        warn.textContent = 'Datum odjezdu musí být po datu příjezdu.';
+        warn.style.display = 'block';
+        return;
+    }
+
+    const myDates = new Set(datesInRange(from, to));
+    const conflicts = loadRes().filter(r => datesInRange(r.from, r.to).some(d => myDates.has(d)));
+    if (conflicts.length) {
+        const info = conflicts.map(r => `${r.user} (${fmtDate(r.from)}–${fmtDate(r.to)})`).join(', ');
+        warn.textContent = `⚠ Termín se kryje s existující rezervací: ${info}`;
+        warn.style.display = 'block';
+    }
+}
+
+/* ── CREATE RESERVATION ─────────────────────────────────────────── */
+function createReservation() {
+    const from   = document.getElementById('res-from').value;
+    const to     = document.getElementById('res-to').value;
+    const guests = document.getElementById('res-guests').value;
+    const note   = document.getElementById('res-note').value.trim();
+    const sucEl  = document.getElementById('res-success');
+    const errEl  = document.getElementById('res-error');
+
+    sucEl.style.display = 'none';
+    errEl.style.display = 'none';
+
+    if (!from || !to) { errEl.textContent = 'Vyplňte datum příjezdu i odjezdu.'; errEl.style.display = 'block'; return; }
+    if (to <= from)   { errEl.textContent = 'Datum odjezdu musí být po datu příjezdu.'; errEl.style.display = 'block'; return; }
+
+    const res = {
+        id:      Date.now().toString(36),
+        user:    currentUser,
+        from, to,
+        guests:  parseInt(guests, 10),
+        note:    note,
+        created: new Date().toISOString()
+    };
+
+    const all = loadRes();
+    all.push(res);
+    storeRes(all);
+
+    document.getElementById('res-from').value  = '';
+    document.getElementById('res-to').value    = '';
+    document.getElementById('res-guests').value = '2';
+    document.getElementById('res-note').value  = '';
+    document.getElementById('res-conflict').style.display = 'none';
+
+    sucEl.textContent = `Rezervace vytvořena! ${fmtDate(res.from)} – ${fmtDate(res.to)}, ${nights(res.from, res.to)} nocí.`;
+    sucEl.style.display = 'block';
+
+    sendEmail(res);
+}
+
+/* ── EMAIL VIA FORMSUBMIT.CO ────────────────────────────────────── */
+function sendEmail(r) {
+    const subject = `Rezervace chaty – ${r.user}: ${fmtDate(r.from)} – ${fmtDate(r.to)}`;
+    const message =
+        `Nová rezervace chaty\n` +
+        `────────────────────\n` +
+        `Uživatel:  ${r.user}\n` +
+        `Příjezd:   ${fmtDate(r.from)}\n` +
+        `Odjezd:    ${fmtDate(r.to)}\n` +
+        `Počet nocí: ${nights(r.from, r.to)}\n` +
+        `Počet osob: ${r.guests}\n` +
+        `Poznámka:  ${r.note || '–'}\n\n` +
+        `Vytvořeno: ${new Date(r.created).toLocaleString('cs-CZ')}`;
+
+    fetch(`https://formsubmit.co/ajax/${EMAIL_PRIMARY}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+            _subject:  subject,
+            _cc:       EMAIL_CC,
+            _captcha:  'false',
+            _template: 'table',
+            Uživatel:  r.user,
+            Příjezd:   fmtDate(r.from),
+            Odjezd:    fmtDate(r.to),
+            Nocí:      nights(r.from, r.to),
+            Osob:      r.guests,
+            Poznámka:  r.note || '–',
+            message
+        })
+    }).catch(() => {});
+}
+
+/* ── TABLE ──────────────────────────────────────────────────────── */
+function renderTable() {
+    const reservations = loadRes().sort((a, b) => a.from.localeCompare(b.from));
+    const tbody = document.getElementById('res-tbody');
+    const empty = document.getElementById('no-res');
+
+    if (!reservations.length) {
+        tbody.innerHTML = '';
+        empty.style.display = 'block';
+        return;
+    }
+    empty.style.display = 'none';
+
+    const todayIso = new Date().toISOString().slice(0, 10);
+
+    tbody.innerHTML = reservations.map(r => {
+        const color    = (USERS[r.user] || {}).color || '#999';
+        const isPast   = r.to <= todayIso;
+        const canDel   = r.user === currentUser;
+        const opacity  = isPast ? 'opacity:0.55' : '';
+        return `<tr style="${opacity}">
+            <td><span class="user-badge" style="background:${color}">${r.user}</span></td>
+            <td>${fmtDate(r.from)}</td>
+            <td>${fmtDate(r.to)}</td>
+            <td>${nights(r.from, r.to)}</td>
+            <td>${r.guests}</td>
+            <td style="max-width:200px;word-break:break-word">${r.note || '–'}</td>
+            <td>${canDel ? `<button class="btn btn-danger" onclick="deleteRes('${r.id}')">Smazat</button>` : ''}</td>
+        </tr>`;
+    }).join('');
+}
+
+function deleteRes(id) {
+    if (!confirm('Opravdu chcete smazat tuto rezervaci?')) return;
+    storeRes(loadRes().filter(r => r.id !== id));
+    renderTable();
+    renderCalendar();
+}
+
+/* ── KEYBOARD ───────────────────────────────────────────────────── */
+document.getElementById('login-password').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+});
+
+/* ── AUTO-LOGIN FROM SESSION ────────────────────────────────────── */
+(function () {
+    const saved = sessionStorage.getItem('chata_user');
+    if (saved && USERS[saved]) { currentUser = saved; showApp(); }
+})();
+</script>
+</body>
+</html>
