@@ -409,6 +409,22 @@ input, textarea, select, button { font-family: inherit; }
   text-align: center; font-size: .8rem;
   color: var(--text-faint); margin-top: 8px;
 }
+.pricing-subsect-hd {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 28px;
+}
+.pricing-subsect-hd--second { margin-top: 56px; }
+.pricing-subsect-hd::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(to right, var(--border), transparent);
+}
+.price-sect-label {
+  font-size: .7rem; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--cyan); white-space: nowrap;
+}
+.price-per-month {
+  font-size: .85rem; font-weight: 600; color: var(--text-dim); margin-left: 2px;
+}
 
 /* ── Process ───────────────────────────── */
 .process-grid {
