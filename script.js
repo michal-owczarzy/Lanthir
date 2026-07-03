@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════
-   LANTHIR — script.js
-   i18n (CS/EN/PL) · Canvas · Logo · Reveal · Form
+   LANTHIR — script.js (Aurora Glass)
+   i18n (CS/EN/PL) · Kinetic engine · Form
 ═══════════════════════════════════════════ */
 
 const T = {
@@ -175,6 +175,7 @@ const T = {
     'form.success':      'Odesláno! Ozveme se vám do 24 hodin.',
 
     'footer.tagline': 'Technologický partner pro růst a provoz firmy.',
+    'footer.status':  'všechny systémy online',
     'footer.col1.h':  'Služby',
     'footer.col2.h':  'Společnost',
     'footer.copy':    '© 2026 Lanthir. Všechna práva vyhrazena.',
@@ -351,6 +352,7 @@ const T = {
     'form.success':      'Sent! We\'ll get back to you within 24 hours.',
 
     'footer.tagline': 'Technology partner for growth and operations.',
+    'footer.status':  'all systems operational',
     'footer.col1.h':  'Services',
     'footer.col2.h':  'Company',
     'footer.copy':    '© 2026 Lanthir. All rights reserved.',
@@ -473,7 +475,7 @@ const T = {
     'proc.3.title': 'Rozwój',
     'proc.3.desc':  'Kodujemy, testujemy i dopracowujemy. Na bieżąco informujemy o postępach i wdrażamy feedback.',
     'proc.4.title': 'Uruchomienie',
-    'proc.4.desc':  'Wdrażamy z domeną i hostingem w cenie — klient nie musi nic konfigurować. Wsparcie wliczone w cenę.',
+    'proc.4.desc':  'Wdrażamy z domeną i hostingiem w cenie — klient nie musi nic konfigurować. Wsparcie wliczone w cenę.',
 
     'why.tag':     'Dlaczego Lanthir',
     'why.heading': 'Strona, która <span class="grad-text">pracuje dla Ciebie</span>',
@@ -527,13 +529,28 @@ const T = {
     'form.success':      'Wysłano! Odezwiemy się w ciągu 24 godzin.',
 
     'footer.tagline': 'Partner technologiczny dla wzrostu i operacji firmy.',
+    'footer.status':  'wszystkie systemy działają',
     'footer.col1.h':  'Usługi',
     'footer.col2.h':  'Firma',
     'footer.copy':    '© 2026 Lanthir. Wszelkie prawa zastrzeżone.',
   }
 };
 
-// ── i18n Engine ──────────────────────────
+/* ── Motion / input capability gates ─────── */
+const RM   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const FINE = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+/* ── Shared rAF loop ──────────────────────
+   Every scroll/pointer-driven effect registers one
+   cheap function here; reads early-exit off-screen. */
+const K = { fns: [] };
+function kAdd(fn) { K.fns.push(fn); }
+(function kLoop() {
+  for (let i = 0; i < K.fns.length; i++) K.fns[i]();
+  requestAnimationFrame(kLoop);
+})();
+
+/* ── i18n Engine ──────────────────────────── */
 let currentLang = localStorage.getItem('lanthir-lang') || 'cs';
 
 function applyLang(lang) {
@@ -550,58 +567,83 @@ function applyLang(lang) {
     if (v !== undefined) el.placeholder = v;
   });
   document.querySelectorAll('.ls-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  refreshKinetic();
 }
 
 document.querySelectorAll('.ls-btn').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
-applyLang(currentLang);
 
-// ── Nav scroll ───────────────────────────
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20), { passive: true });
-
-// ── Mobile burger ────────────────────────
-const burger   = document.getElementById('burger');
-const navLinks = document.getElementById('navLinks');
-burger.addEventListener('click', () => { burger.classList.toggle('open'); navLinks.classList.toggle('open'); });
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); navLinks.classList.remove('open'); }));
-
-// ── Hero Canvas ──────────────────────────
-(function() {
-  const canvas = document.getElementById('heroCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let W, H, nodes = [];
-  const N = 65, D = 155;
-  const COLS = ['#3a2ee0','#1e7be5','#1fcded','#5050ff','#36f0d6'];
-  function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
-  function mk() { return { x: Math.random()*W, y: Math.random()*H, vx: (Math.random()-.5)*.4, vy: (Math.random()-.5)*.4, r: Math.random()*2+1, c: COLS[Math.floor(Math.random()*COLS.length)] }; }
-  let mx=-9999, my=-9999;
-  canvas.addEventListener('mousemove', e => { const r=canvas.getBoundingClientRect(); mx=e.clientX-r.left; my=e.clientY-r.top; }, {passive:true});
-  canvas.addEventListener('mouseleave', () => { mx=-9999; my=-9999; });
-  function loop() {
-    ctx.clearRect(0,0,W,H);
-    for (let i=0;i<nodes.length;i++) for (let j=i+1;j<nodes.length;j++) {
-      const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y, d=Math.sqrt(dx*dx+dy*dy);
-      if(d<D) { ctx.beginPath(); ctx.moveTo(nodes[i].x,nodes[i].y); ctx.lineTo(nodes[j].x,nodes[j].y); ctx.strokeStyle=`rgba(30,123,229,${(1-d/D)*.2})`; ctx.lineWidth=.8; ctx.stroke(); }
-    }
-    for (const n of nodes) {
-      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2); ctx.fillStyle=n.c; ctx.globalAlpha=.65; ctx.fill(); ctx.globalAlpha=1;
-      n.x+=n.vx; n.y+=n.vy;
-      if(n.x<-20) n.x=W+20; if(n.x>W+20) n.x=-20; if(n.y<-20) n.y=H+20; if(n.y>H+20) n.y=-20;
-      const dx=n.x-mx,dy=n.y-my,d=Math.sqrt(dx*dx+dy*dy);
-      if(d<100) { n.vx+=(dx/d)*.06; n.vy+=(dy/d)*.06; const s=Math.sqrt(n.vx*n.vx+n.vy*n.vy); if(s>1.5){n.vx=n.vx/s*1.5;n.vy=n.vy/s*1.5;} }
-    }
-    requestAnimationFrame(loop);
+/* ── Film grain (runtime noise tile) ──────── */
+(function () {
+  const el = document.getElementById('grain');
+  if (!el) return;
+  const c = document.createElement('canvas');
+  c.width = c.height = 128;
+  const ctx = c.getContext('2d');
+  const img = ctx.createImageData(128, 128);
+  for (let i = 0; i < img.data.length; i += 4) {
+    const v = (Math.random() * 255) | 0;
+    img.data[i] = v; img.data[i + 1] = v; img.data[i + 2] = v; img.data[i + 3] = 255;
   }
-  resize(); nodes=Array.from({length:N},mk); loop();
-  new ResizeObserver(resize).observe(canvas.parentElement);
+  ctx.putImageData(img, 0, 0);
+  el.style.backgroundImage = 'url(' + c.toDataURL() + ')';
 })();
 
-// ── Animated Logo ────────────────────────
-(function() {
+/* ── Nav scroll state ─────────────────────── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 24), { passive: true });
+
+/* ── Mobile burger + full-screen sheet ────── */
+const burger   = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open);
+  document.body.classList.toggle('no-scroll', open);
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  burger.classList.remove('open');
+  navLinks.classList.remove('open');
+  burger.setAttribute('aria-expanded', 'false');
+  document.body.classList.remove('no-scroll');
+}));
+
+/* ── Hero H1: per-word mask reveal ────────── */
+function splitHeading() {
+  const h = document.getElementById('heroHeading');
+  if (!h || RM) return;
+  let idx = 0;
+  const frag = document.createDocumentFragment();
+  const wrap = (content, isNode) => {
+    const w  = document.createElement('span'); w.className = 'w';
+    const wi = document.createElement('span'); wi.className = 'wi';
+    wi.style.setProperty('--i', idx++);
+    if (isNode) wi.appendChild(content); else wi.textContent = content;
+    w.appendChild(wi);
+    return w;
+  };
+  Array.from(h.childNodes).forEach(node => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      node.textContent.split(/\s+/).filter(Boolean).forEach(word => {
+        frag.appendChild(wrap(word, false));
+        frag.appendChild(document.createTextNode(' '));
+      });
+    } else if (node.nodeName === 'BR') {
+      frag.appendChild(document.createElement('br'));
+    } else {
+      // element (e.g. .grad-text) stays atomic so background-clip survives
+      frag.appendChild(wrap(node, true));
+      frag.appendChild(document.createTextNode(' '));
+    }
+  });
+  h.innerHTML = '';
+  h.appendChild(frag);
+}
+
+/* ── Hero logo: stroke draw-in (once) ─────── */
+(function () {
   const container = document.getElementById('heroLogoContainer');
   if (!container) return;
-
   fetch('logo.svg')
     .then(r => r.text())
     .then(svgText => {
@@ -609,105 +651,423 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { 
       tmp.innerHTML = svgText.trim();
       const svg = tmp.querySelector('svg');
       if (!svg) return;
-
       svg.removeAttribute('width');
       svg.removeAttribute('height');
-      svg.classList.add('hero-logo-svg');
-
-      const polylines = Array.from(svg.querySelectorAll('polyline'));
-
-      polylines.forEach((pl, i) => {
-        const raw = pl.getAttribute('points') || '';
-        const nums = raw.match(/[-\d.eE]+/g);
-        if (!nums || nums.length < 4) return;
-
-        let len = 0;
-        for (let k = 2; k + 1 < nums.length; k += 2) {
-          const dx = +nums[k]   - +nums[k-2];
-          const dy = +nums[k+1] - +nums[k-1];
-          len += Math.sqrt(dx*dx + dy*dy);
-        }
-        len = Math.max(len, 1);
-
-        pl.style.strokeDasharray  = len;
-        pl.style.strokeDashoffset = len;
-        pl.style.animation = `logoDraw 1.4s cubic-bezier(.4,0,.2,1) ${i * 10}ms forwards`;
-      });
-
+      if (!RM) {
+        Array.from(svg.querySelectorAll('polyline')).forEach((pl, i) => {
+          const nums = (pl.getAttribute('points') || '').match(/[-\d.eE]+/g);
+          if (!nums || nums.length < 4) return;
+          let len = 0;
+          for (let k = 2; k + 1 < nums.length; k += 2) {
+            const dx = +nums[k] - +nums[k - 2];
+            const dy = +nums[k + 1] - +nums[k - 1];
+            len += Math.sqrt(dx * dx + dy * dy);
+          }
+          len = Math.max(len, 1);
+          pl.style.strokeDasharray  = len;
+          pl.style.strokeDashoffset = len;
+          pl.style.animation = 'logoDraw 1.5s cubic-bezier(.4,0,.2,1) ' + (i * 9) + 'ms forwards';
+        });
+      }
       container.appendChild(svg);
-
-      // After all lines are drawn, begin slow rotation
-      const totalMs = polylines.length * 10 + 1500;
-      setTimeout(() => {
-        svg.classList.add('logo-ready');
-      }, totalMs);
     })
     .catch(() => {
-      // Fallback for environments without fetch (local file://)
       container.innerHTML = '<img src="logo.svg" alt="Lanthir" style="width:100%;height:100%">';
     });
 })();
 
-// ── Hero Logo Parallax ───────────────────
-(function() {
-  const wrap = document.getElementById('heroLogoWrap');
-  if (!wrap) return;
-  window.addEventListener('scroll', () => {
-    wrap.style.transform = `translateY(${window.scrollY * 0.12}px)`;
+/* ── Hero: sheet recede (desktop only) ────── */
+(function () {
+  const inner = document.getElementById('heroInner');
+  if (!inner || RM) return;
+  const mq = window.matchMedia('(min-width: 900px)');
+  let last = -1;
+  kAdd(() => {
+    if (!mq.matches) {
+      if (last !== 0) { inner.style.setProperty('--recede', '0'); last = 0; }
+      return;
+    }
+    const v = Math.min(Math.max(window.scrollY / (window.innerHeight * .9), 0), 1);
+    if (Math.abs(v - last) > .002) {
+      inner.style.setProperty('--recede', v.toFixed(3));
+      last = v;
+    }
+  });
+})();
+
+/* ── Hero: scroll hint fades after first scroll ── */
+(function () {
+  const hint = document.getElementById('scrollHint');
+  if (!hint) return;
+  const onScroll = () => {
+    if (window.scrollY > 60) {
+      hint.classList.add('hidden');
+      window.removeEventListener('scroll', onScroll);
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+/* ── Hero: fragment pointer parallax ──────── */
+(function () {
+  if (!FINE || RM) return;
+  const hero = document.getElementById('home');
+  const els = Array.from(document.querySelectorAll('#heroVisual [data-depth]'));
+  if (!hero || !els.length) return;
+  let tx = 0, ty = 0, px = 0, py = 0;
+  hero.addEventListener('pointermove', e => {
+    tx = (e.clientX / window.innerWidth - .5) * 2;
+    ty = (e.clientY / window.innerHeight - .5) * 2;
   }, { passive: true });
-})();
-
-// ── Stat Counters ─────────────────────────
-(function() {
-  const els = document.querySelectorAll('.ws-num, .chip-val, .ah-num');
-  if (!els.length) return;
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const el = e.target;
-      const orig = el.textContent.trim();
-      const match = orig.match(/^([\d.]+)(.*)$/);
-      if (!match) return;
-      const target = parseFloat(match[1]);
-      const suffix = match[2];
-      const isInt  = Number.isInteger(target);
-      const dur    = 1600;
-      const t0     = performance.now();
-      (function tick(t) {
-        const p = Math.min((t - t0) / dur, 1);
-        const v = 1 - Math.pow(1 - p, 3);
-        el.textContent = (isInt ? Math.floor(v * target) : (v * target).toFixed(1)) + suffix;
-        if (p < 1) requestAnimationFrame(tick);
-      })(performance.now());
-      io.unobserve(el);
+  hero.addEventListener('pointerleave', () => { tx = 0; ty = 0; }, { passive: true });
+  kAdd(() => {
+    px += (tx - px) * .06;
+    py += (ty - py) * .06;
+    if (Math.abs(px) + Math.abs(py) < .001 && tx === 0 && ty === 0) return;
+    els.forEach(el => {
+      const d = parseFloat(el.dataset.depth) * 400;
+      el.style.translate = (-px * d).toFixed(1) + 'px ' + (-py * d).toFixed(1) + 'px';
     });
-  }, { threshold: 0.5 });
-  els.forEach(el => io.observe(el));
+  });
 })();
 
-// ── Scroll Reveal ────────────────────────
-(function() {
+/* ── Scroll reveal (3D tilt-up, staggered) ── */
+(function () {
+  const els = document.querySelectorAll('[data-reveal]');
+  if (RM) { els.forEach(el => el.classList.add('revealed', 'settled')); return; }
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
       const siblings = Array.from(e.target.parentElement.querySelectorAll('[data-reveal]'));
-      const delay = siblings.indexOf(e.target) * 90;
+      const delay = Math.max(siblings.indexOf(e.target), 0) * 80;
       setTimeout(() => e.target.classList.add('revealed'), delay);
       io.unobserve(e.target);
     });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+  }, { threshold: .08 });
+  els.forEach(el => {
+    el.addEventListener('transitionend', function onEnd(ev) {
+      if (ev.propertyName === 'transform' && el.classList.contains('revealed')) {
+        el.classList.add('settled');
+        el.removeEventListener('transitionend', onEnd);
+      }
+    });
+    io.observe(el);
+  });
 })();
 
-// ── Contact Form ─────────────────────────
-(function() {
+/* ── Service icons: hover stroke re-draw ──── */
+document.querySelectorAll('.svc-icon svg *').forEach(el => {
+  el.setAttribute('pathLength', '1');
+  el.setAttribute('class', 'draw');
+});
+
+/* ── Board FX: tilt + glare + proximity border glow ── */
+function boardFX(board, cardSel, opts) {
+  if (!board || !FINE || RM) return;
+  const cards = Array.from(board.querySelectorAll(cardSel));
+  if (!cards.length) return;
+  let ev = null, pending = false;
+
+  function apply() {
+    pending = false;
+    if (!ev) return;
+    const rects = cards.map(c => c.getBoundingClientRect()); // batch reads
+    cards.forEach((c, i) => {                                 // then writes
+      const r = rects[i];
+      const x = ev.clientX - r.left;
+      const y = ev.clientY - r.top;
+      c.style.setProperty('--gx', x.toFixed(0) + 'px');
+      c.style.setProperty('--gy', y.toFixed(0) + 'px');
+      if (opts.glare) {
+        c.style.setProperty('--mx', x.toFixed(0) + 'px');
+        c.style.setProperty('--my', y.toFixed(0) + 'px');
+      }
+      if (opts.tilt) {
+        if (x >= 0 && y >= 0 && x <= r.width && y <= r.height) {
+          c.style.setProperty('--ry', (((x / r.width) - .5) * 6).toFixed(2) + 'deg');
+          c.style.setProperty('--rx', (((.5 - y / r.height)) * 6).toFixed(2) + 'deg');
+        } else {
+          c.style.setProperty('--rx', '0deg');
+          c.style.setProperty('--ry', '0deg');
+        }
+      }
+    });
+  }
+  board.addEventListener('pointermove', e => {
+    ev = e;
+    if (!pending) { pending = true; requestAnimationFrame(apply); }
+  }, { passive: true });
+  board.addEventListener('pointerleave', () => {
+    cards.forEach(c => {
+      c.style.setProperty('--rx', '0deg');
+      c.style.setProperty('--ry', '0deg');
+      c.style.setProperty('--gx', '-400px');
+      c.style.setProperty('--gy', '-400px');
+      c.style.setProperty('--mx', '-300px');
+      c.style.setProperty('--my', '-300px');
+    });
+  }, { passive: true });
+}
+boardFX(document.getElementById('servicesGrid'), '.svc-card',    { tilt: true, glare: true });
+boardFX(document.getElementById('pricingGridA'), '.price-card',  {});
+boardFX(document.getElementById('pricingGridB'), '.price-card',  {});
+boardFX(document.getElementById('aboutGrid'),    '.person-card', { tilt: true });
+
+/* ── Featured pricing: conic border runs only in view ── */
+(function () {
+  const cards = document.querySelectorAll('.price-card.featured');
+  if (!cards.length) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => e.target.classList.toggle('in-view', e.isIntersecting));
+  }, { threshold: .1 });
+  cards.forEach(c => io.observe(c));
+})();
+
+/* ── Price count-up (format-preserving) ───── */
+const priceCounters = [];
+(function () {
+  document.querySelectorAll('.price-num:not(.price-custom)').forEach(el => {
+    priceCounters.push({ el, running: false, cancelled: false });
+  });
+  if (RM || !priceCounters.length) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      const c = priceCounters.find(k => k.el === e.target);
+      if (c) runCount(c);
+    });
+  }, { threshold: .6 });
+  priceCounters.forEach(c => io.observe(c.el));
+})();
+function runCount(c) {
+  const original = c.el.textContent.trim();
+  const digits = original.replace(/\D/g, '');
+  if (!digits) return;
+  const target = parseInt(digits, 10);
+  const sepMatch = original.match(/[\s,.  ](?=\d{3})/);
+  const sep = sepMatch ? sepMatch[0] : '';
+  const t0 = performance.now(), dur = 900;
+  c.running = true;
+  c.cancelled = false;
+  (function tick(t) {
+    if (c.cancelled) { c.running = false; return; }
+    const p = Math.min((t - t0) / dur, 1);
+    const v = Math.round((1 - Math.pow(1 - p, 3)) * target);
+    c.el.textContent = sep ? String(v).replace(/\B(?=(\d{3})+(?!\d))/g, sep) : String(v);
+    if (p < 1) requestAnimationFrame(tick);
+    else { c.el.textContent = original; c.running = false; }
+  })(t0);
+}
+
+/* ── Process: scrubbed line + active step + odometer ── */
+(function () {
+  const stepsCol = document.getElementById('procSteps');
+  const wrap = document.getElementById('processWrap');
+  if (!stepsCol || !wrap) return;
+  const steps = Array.from(stepsCol.querySelectorAll('.proc-step'));
+  const nodes = steps.map(s => s.querySelector('.proc-node'));
+  const pgCur = document.getElementById('pgCur');
+  const pgNext = document.getElementById('pgNext');
+
+  if (RM) {
+    steps.forEach(s => s.classList.add('active'));
+    return;
+  }
+
+  /* scroll-scrubbed progress */
+  kAdd(() => {
+    const r = stepsCol.getBoundingClientRect();
+    const vh = window.innerHeight;
+    if (r.bottom < -100 || r.top > vh + 100) return;
+    const p = Math.min(Math.max((vh * .72 - r.top) / (r.height - vh * .3), 0), 1);
+    stepsCol.style.setProperty('--p', p.toFixed(4));
+    nodes.forEach((n, i) => {
+      const np = Math.min(Math.max(p * steps.length - i, 0), 1);
+      n.style.setProperty('--np', np.toFixed(3));
+    });
+  });
+
+  /* active step + giant odometer numeral */
+  let animating = false, pendingN = null;
+  function rollTo(n) {
+    const txt = '0' + n;
+    if (animating) { pendingN = n; return; }
+    if (pgCur.textContent === txt) return;
+    if (!pgCur.animate) { pgCur.textContent = txt; return; }
+    animating = true;
+    pgNext.textContent = txt;
+    const opts = { duration: 550, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'forwards' };
+    const a1 = pgCur.animate(
+      [{ transform: 'translateY(0)', opacity: 1 }, { transform: 'translateY(-55%)', opacity: 0 }], opts);
+    const a2 = pgNext.animate(
+      [{ transform: 'translateY(55%)', opacity: 0 }, { transform: 'translateY(0)', opacity: 1 }], opts);
+    a2.onfinish = () => {
+      pgCur.textContent = txt;
+      a1.cancel(); a2.cancel();
+      animating = false;
+      if (pendingN !== null) { const q = pendingN; pendingN = null; rollTo(q); }
+    };
+  }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const n = +e.target.dataset.step;
+      steps.forEach(s => s.classList.toggle('active', +s.dataset.step === n));
+      rollTo(n);
+    });
+  }, { rootMargin: '-42% 0px -42% 0px' });
+  steps.forEach(s => io.observe(s));
+})();
+
+/* ── About: watermark parallax ────────────── */
+(function () {
+  const wm = document.getElementById('aboutWatermark');
+  if (!wm || RM) return;
+  kAdd(() => {
+    const r = wm.parentElement.getBoundingClientRect();
+    const vh = window.innerHeight;
+    if (r.bottom < 0 || r.top > vh) return;
+    const p = (vh - r.top) / (vh + r.height);
+    wm.style.transform = 'translateY(' + ((p - .5) * -70).toFixed(1) + 'px)';
+  });
+})();
+
+/* ── CTA banner: aurora ignition + magnetic button ── */
+(function () {
+  const banner = document.querySelector('.cta-banner');
+  if (!banner) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => banner.classList.toggle('lit', e.isIntersecting));
+  }, { threshold: .3 });
+  io.observe(banner);
+
+  const btn = document.getElementById('ctaMagnet');
+  const card = document.getElementById('ctaCard');
+  if (!btn || !card) return;
+
+  /* click squash — tactile feedback on the highest-value click */
+  btn.addEventListener('click', () => {
+    if (RM || !btn.animate) return;
+    btn.animate(
+      [{ transform: 'scale(1)' }, { transform: 'scale(.94)' }, { transform: 'scale(1.03)' }, { transform: 'scale(1)' }],
+      { duration: 320, easing: 'ease-out', composite: 'add' }
+    );
+  });
+
+  if (!FINE || RM) return;
+  let tx = 0, ty = 0, cx = 0, cy = 0;
+  card.addEventListener('pointermove', e => {
+    const r = btn.getBoundingClientRect();
+    const dx = e.clientX - (r.left + r.width / 2);
+    const dy = e.clientY - (r.top + r.height / 2);
+    const d = Math.hypot(dx, dy);
+    if (d < 140) {
+      const pull = Math.min(10 / (d || 1), .16);
+      tx = dx * Math.min(.16, pull * 2.2);
+      ty = dy * Math.min(.16, pull * 2.2);
+    } else { tx = 0; ty = 0; }
+  }, { passive: true });
+  card.addEventListener('pointerleave', () => { tx = 0; ty = 0; }, { passive: true });
+  kAdd(() => {
+    cx += (tx - cx) * .14;
+    cy += (ty - cy) * .14;
+    if (Math.abs(cx) < .05 && Math.abs(cy) < .05 && tx === 0 && ty === 0) return;
+    btn.style.translate = cx.toFixed(1) + 'px ' + cy.toFixed(1) + 'px';
+  });
+})();
+
+/* ── Footer: wordmark rise + back-to-top arc ── */
+(function () {
+  const wm = document.getElementById('footerWordmark');
+  const tt = document.getElementById('toTop');
+  kAdd(() => {
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - window.innerHeight;
+    if (tt) {
+      const sp = max > 0 ? window.scrollY / max : 0;
+      tt.style.setProperty('--sp', (sp * 360).toFixed(1) + 'deg');
+    }
+    if (wm && !RM) {
+      const r = wm.parentElement.getBoundingClientRect();
+      const vh = window.innerHeight;
+      if (r.top > vh + 60) return;
+      const p = Math.min(Math.max((vh - r.top) / (r.height + vh * .2), 0), 1);
+      wm.style.setProperty('--wm', p.toFixed(3));
+    }
+  });
+  if (tt) tt.addEventListener('click', () =>
+    window.scrollTo({ top: 0, behavior: RM ? 'auto' : 'smooth' }));
+})();
+
+/* ── Nav: active-section lamp + lang thumb ── */
+const navLamp = document.getElementById('navLamp');
+const lsThumb = document.getElementById('lsThumb');
+let activeNavLink = null;
+
+function setLamp(link) {
+  if (!navLamp) return;
+  if (!link || getComputedStyle(navLamp).display === 'none') { navLamp.classList.remove('on'); return; }
+  const lr = link.getBoundingClientRect();
+  const ur = navLinks.getBoundingClientRect();
+  if (!lr.width) { navLamp.classList.remove('on'); return; }
+  navLamp.style.width = lr.width + 'px';
+  navLamp.style.transform = 'translateY(-50%) translateX(' + (lr.left - ur.left) + 'px)';
+  navLamp.classList.add('on');
+}
+function setThumb() {
+  if (!lsThumb) return;
+  const act = document.querySelector('.ls-btn.active');
+  if (!act) return;
+  const tr = act.getBoundingClientRect();
+  const pr = document.getElementById('langSwitch').getBoundingClientRect();
+  lsThumb.style.width = tr.width + 'px';
+  lsThumb.style.transform = 'translateX(' + (tr.left - pr.left) + 'px)';
+}
+
+(function () {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+      const a = document.querySelector('.nav-links a[href="#' + e.target.id + '"]');
+      activeNavLink = a || null;
+      if (a) a.classList.add('active');
+      setLamp(activeNavLink);
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  document.querySelectorAll('section[id]').forEach(s => io.observe(s));
+})();
+
+/* ── Kinetic refresh: re-sync after language switch / resize ── */
+function refreshKinetic() {
+  splitHeading();
+  priceCounters.forEach(c => { if (c.running) c.cancelled = true; });
+  requestAnimationFrame(() => {
+    setThumb();
+    setLamp(activeNavLink);
+  });
+}
+
+let resizeT;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeT);
+  resizeT = setTimeout(() => { setThumb(); setLamp(activeNavLink); }, 150);
+});
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(() => { setThumb(); setLamp(activeNavLink); });
+}
+
+/* ── Contact form ─────────────────────────── */
+(function () {
   const form = document.getElementById('contactForm');
   const suc  = document.getElementById('formSuccess');
   if (!form) return;
   form.addEventListener('submit', async e => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true; btn.textContent = '…';
+    btn.disabled = true;
+    btn.classList.add('sending');
     const bundleSel  = document.getElementById('fbundle');
     const bundleText = bundleSel.options[bundleSel.selectedIndex]?.text || '';
     try {
@@ -728,20 +1088,11 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { 
       });
     } catch {}
     form.querySelectorAll('input,textarea,select').forEach(el => el.value = '');
+    btn.classList.remove('sending');
     btn.style.display = 'none';
     suc.classList.add('show');
   });
 })();
 
-// ── Active Nav Link ──────────────────────
-(function() {
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      document.querySelectorAll('.nav-links a').forEach(l => l.style.color = '');
-      const a = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-      if (a) a.style.color = 'var(--text)';
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-  document.querySelectorAll('section[id]').forEach(s => io.observe(s));
-})();
+/* ── Init ─────────────────────────────────── */
+applyLang(currentLang);

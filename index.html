@@ -61,7 +61,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 
   <!-- Google tag (gtag.js) -->
@@ -75,6 +75,15 @@
 </head>
 <body>
 
+  <!-- ═══ AMBIENT LAYERS ═══ -->
+  <div class="aurora" aria-hidden="true">
+    <i class="au au-1"></i>
+    <i class="au au-2"></i>
+    <i class="au au-3"></i>
+    <i class="au au-4"></i>
+  </div>
+  <div class="grain" id="grain" aria-hidden="true"></div>
+
   <!-- ═══ NAV ═══ -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
@@ -83,6 +92,7 @@
         <span class="logo-text">Lanthir</span>
       </a>
       <ul class="nav-links" id="navLinks">
+        <span class="nav-lamp" id="navLamp" aria-hidden="true"></span>
         <li><a href="#sluzby"  data-i18n="nav.services">Služby</a></li>
         <li><a href="#cenik"   data-i18n="nav.pricing">Ceník</a></li>
         <li><a href="#postup"  data-i18n="nav.process">Postup</a></li>
@@ -90,12 +100,13 @@
         <li><a href="#kontakt" data-i18n="nav.contact">Kontakt</a></li>
       </ul>
       <div class="lang-switch" id="langSwitch">
+        <span class="ls-thumb" id="lsThumb" aria-hidden="true"></span>
         <button class="ls-btn active" data-lang="cs">CZ</button>
         <button class="ls-btn" data-lang="en">EN</button>
         <button class="ls-btn" data-lang="pl">PL</button>
       </div>
       <a href="#kontakt" class="btn-primary nav-cta" data-i18n="nav.cta">Nezávazná poptávka</a>
-      <button class="burger" id="burger" aria-label="Menu">
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -103,15 +114,15 @@
 
   <!-- ═══ HERO ═══ -->
   <section class="hero" id="home">
-    <canvas id="heroCanvas" class="hero-canvas"></canvas>
-    <div class="hero-inner">
+    <div class="dotgrid" aria-hidden="true"></div>
+    <div class="hero-inner" id="heroInner">
 
       <div class="hero-text">
         <div class="hero-badge">
           <span class="badge-pulse"></span>
           <span data-i18n="hero.badge">Profesionální tvorba webů</span>
         </div>
-        <h1 class="hero-heading" data-i18n="hero.h1">
+        <h1 class="hero-heading" id="heroHeading" data-i18n="hero.h1">
           Navrhujeme weby.<br><span class="grad-text">Budujeme úspěch.</span>
         </h1>
         <p class="hero-sub" data-i18n="hero.sub">
@@ -123,33 +134,53 @@
         </div>
       </div>
 
-      <!-- Animated Logo -->
-      <div class="hero-logo-wrap" id="heroLogoWrap">
-        <div class="logo-glow-outer"></div>
-        <div class="logo-glow-inner"></div>
-        <div class="logo-orbit">
-          <div class="orbit-dot"></div>
+      <!-- Fragment constellation -->
+      <div class="hero-visual" id="heroVisual">
+        <div class="logo-slab" data-depth="0.018">
+          <div class="hero-logo-container" id="heroLogoContainer"></div>
+          <span class="orbit-chip" aria-hidden="true"></span>
         </div>
-        <div class="hero-logo-container" id="heroLogoContainer"></div>
+        <div class="fragment frag-status" data-depth="0.05" aria-hidden="true">
+          <div class="frag-inner">
+            <span class="frag-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8.5 12.2l2.4 2.4 4.6-4.8"/></svg>
+            </span>
+            <span class="frag-lines"><i></i><i></i></span>
+          </div>
+        </div>
+        <div class="fragment frag-chart" data-depth="0.035" aria-hidden="true">
+          <div class="frag-inner">
+            <div class="frag-bars"><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="fragment frag-sliver" data-depth="0.06" aria-hidden="true">
+          <div class="frag-inner">
+            <span class="frag-track"><span class="frag-fill"></span></span>
+            <span class="frag-dot"></span>
+          </div>
+        </div>
       </div>
 
     </div>
-    <div class="hero-scroll-hint">
-      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <div class="hero-scroll-hint" id="scrollHint" aria-hidden="true">
+      <span class="shint-line"><span class="shint-dot"></span></span>
     </div>
   </section>
+
+  <!-- ═══ SHEET (content slides over hero) ═══ -->
+  <main class="sheet">
 
   <!-- ═══ SERVICES ═══ -->
   <section class="section" id="sluzby">
     <div class="container">
       <div class="section-head">
-        <span class="section-tag" data-i18n="svc.tag">Co tvoříme</span>
+        <span class="section-tag"><span class="chap">01</span><span data-i18n="svc.tag">Co tvoříme</span></span>
         <h2 data-i18n="svc.heading">Webové stránky pro <span class="grad-text">každou potřebu</span></h2>
         <p data-i18n="svc.sub">Od vizitky po komplexní systém — navrhujeme a vyvíjíme weby, které fungují a přinášejí výsledky.</p>
       </div>
-      <div class="services-grid">
+      <div class="services-grid" id="servicesGrid">
 
-        <div class="svc-card" data-reveal>
+        <div class="svc-card glow-card" data-reveal>
           <div class="svc-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
@@ -160,7 +191,8 @@
           <a href="#cenik" class="svc-more" data-i18n="svc.more">Zobrazit ceník <span>→</span></a>
         </div>
 
-        <div class="svc-card" data-reveal>
+        <div class="svc-card glow-card svc-wide" data-reveal>
+          <span class="svc-wisp" aria-hidden="true"></span>
           <div class="svc-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
@@ -171,7 +203,7 @@
           <a href="#cenik" class="svc-more" data-i18n="svc.more">Zobrazit ceník <span>→</span></a>
         </div>
 
-        <div class="svc-card" data-reveal>
+        <div class="svc-card glow-card" data-reveal>
           <div class="svc-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
@@ -182,7 +214,7 @@
           <a href="#cenik" class="svc-more" data-i18n="svc.more">Zobrazit ceník <span>→</span></a>
         </div>
 
-        <div class="svc-card" data-reveal>
+        <div class="svc-card glow-card" data-reveal>
           <div class="svc-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
@@ -193,7 +225,8 @@
           <a href="#cenik" class="svc-more" data-i18n="svc.more">Zobrazit ceník <span>→</span></a>
         </div>
 
-        <div class="svc-card" data-reveal>
+        <div class="svc-card glow-card svc-wide" data-reveal>
+          <span class="svc-wisp" aria-hidden="true"></span>
           <div class="svc-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
@@ -204,7 +237,7 @@
           <a href="#cenik" class="svc-more" data-i18n="svc.more">Zobrazit ceník <span>→</span></a>
         </div>
 
-        <div class="svc-card" data-reveal>
+        <div class="svc-card glow-card" data-reveal>
           <div class="svc-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
@@ -223,7 +256,7 @@
   <section class="section pricing-section" id="cenik">
     <div class="container">
       <div class="section-head">
-        <span class="section-tag" data-i18n="price.tag">Ceník</span>
+        <span class="section-tag"><span class="chap">02</span><span data-i18n="price.tag">Ceník</span></span>
         <h2 data-i18n="price.heading">Řešení <span class="grad-text">pro každého</span></h2>
         <p data-i18n="price.sub">Transparentní ceny bez skrytých poplatků. Vyberte jednorázovou tvorbu nebo pravidelnou správu.</p>
       </div>
@@ -232,10 +265,10 @@
       <div class="pricing-subsect-hd">
         <span class="price-sect-label" data-i18n="price.dev.label">A — Jednorázová tvorba webu</span>
       </div>
-      <div class="pricing-grid">
+      <div class="pricing-grid" id="pricingGridA">
 
         <!-- START -->
-        <div class="price-card" data-reveal>
+        <div class="price-card glow-card" data-reveal>
           <div class="price-top">
             <span class="price-tier" data-i18n="price.1.tier">START</span>
             <h3 class="price-name" data-i18n="price.1.name">Landing Page</h3>
@@ -284,7 +317,7 @@
         </div>
 
         <!-- PRO -->
-        <div class="price-card" data-reveal>
+        <div class="price-card glow-card" data-reveal>
           <div class="price-top">
             <span class="price-tier" data-i18n="price.3.tier">PRO</span>
             <h3 class="price-name" data-i18n="price.3.name">Custom &amp; Lead Generation</h3>
@@ -307,14 +340,16 @@
 
       </div>
 
+      <hr class="pricing-divider" aria-hidden="true">
+
       <!-- B: Měsíční správa -->
       <div class="pricing-subsect-hd pricing-subsect-hd--second">
         <span class="price-sect-label" data-i18n="price.sub.label">B — Měsíční správa, monitoring a marketing</span>
       </div>
-      <div class="pricing-grid">
+      <div class="pricing-grid" id="pricingGridB">
 
         <!-- ZÁKLAD -->
-        <div class="price-card" data-reveal>
+        <div class="price-card glow-card" data-reveal>
           <div class="price-top">
             <span class="price-tier" data-i18n="sub.1.tier">ZÁKLAD</span>
             <h3 class="price-name" data-i18n="sub.1.name">Klidné spaní</h3>
@@ -359,7 +394,7 @@
         </div>
 
         <!-- KOMPLEX -->
-        <div class="price-card" data-reveal>
+        <div class="price-card glow-card" data-reveal>
           <div class="price-top">
             <span class="price-tier" data-i18n="sub.3.tier">KOMPLEX</span>
             <h3 class="price-name" data-i18n="sub.3.name">Růst a Observabilita</h3>
@@ -391,53 +426,59 @@
   <section class="section process-section" id="postup">
     <div class="container">
       <div class="section-head">
-        <span class="section-tag" data-i18n="proc.tag">Jak pracujeme</span>
+        <span class="section-tag"><span class="chap">03</span><span data-i18n="proc.tag">Jak pracujeme</span></span>
         <h2 data-i18n="proc.heading">Čtyři kroky k <span class="grad-text">vašemu webu</span></h2>
         <p data-i18n="proc.sub">Transparentní proces od první schůzky po spuštění. Vždy víte, ve které fázi se projekt nachází.</p>
       </div>
-      <div class="process-grid">
-        <div class="proc-step" data-reveal>
-          <div class="proc-num-wrap">
-            <div class="proc-num">01</div>
-            <div class="proc-connector"></div>
+
+      <div class="process-wrap" id="processWrap">
+        <div class="proc-sticky" aria-hidden="true">
+          <div class="proc-giant" id="procGiant">
+            <span class="pg-num pg-cur" id="pgCur">01</span>
+            <span class="pg-num pg-next" id="pgNext">02</span>
           </div>
-          <div class="proc-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h4 data-i18n="proc.1.title">Konzultace</h4>
-          <p data-i18n="proc.1.desc">Poznáme vás, vaše cíle a potřeby. Bezplatná konzultace bez závazků — osobně nebo online.</p>
+          <span class="proc-sticky-label" data-i18n="proc.tag">Jak pracujeme</span>
         </div>
-        <div class="proc-step" data-reveal>
-          <div class="proc-num-wrap">
-            <div class="proc-num">02</div>
-            <div class="proc-connector"></div>
+
+        <div class="proc-steps" id="procSteps">
+          <span class="proc-line" aria-hidden="true"><span class="proc-line-fill" id="procLineFill"></span></span>
+
+          <div class="proc-step" data-step="1">
+            <div class="proc-node">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <span class="proc-step-num">01</span>
+            <h4 data-i18n="proc.1.title">Konzultace</h4>
+            <p data-i18n="proc.1.desc">Poznáme vás, vaše cíle a potřeby. Bezplatná konzultace bez závazků — osobně nebo online.</p>
           </div>
-          <div class="proc-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+
+          <div class="proc-step" data-step="2">
+            <div class="proc-node">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+            </div>
+            <span class="proc-step-num">02</span>
+            <h4 data-i18n="proc.2.title">Návrh</h4>
+            <p data-i18n="proc.2.desc">Vytvoříme vizuální podobu vašeho webu — layout a design odsouhlasíme před tím, než začneme kódovat.</p>
           </div>
-          <h4 data-i18n="proc.2.title">Návrh</h4>
-          <p data-i18n="proc.2.desc">Vytvoříme vizuální podobu vašeho webu — layout a design odsouhlasíme před tím, než začneme kódovat.</p>
-        </div>
-        <div class="proc-step" data-reveal>
-          <div class="proc-num-wrap">
-            <div class="proc-num">03</div>
-            <div class="proc-connector"></div>
+
+          <div class="proc-step" data-step="3">
+            <div class="proc-node">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <span class="proc-step-num">03</span>
+            <h4 data-i18n="proc.3.title">Vývoj</h4>
+            <p data-i18n="proc.3.desc">Kódujeme, testujeme a ladíme. Průběžně vás informujeme o postupu a zapracováváme zpětnou vazbu.</p>
           </div>
-          <div class="proc-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+
+          <div class="proc-step" data-step="4">
+            <div class="proc-node">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <span class="proc-step-num">04</span>
+            <h4 data-i18n="proc.4.title">Spuštění</h4>
+            <p data-i18n="proc.4.desc">Publikujeme web, nastavíme analytiku a jsme tu pro vás i po spuštění — podpora zahrnuta v ceně.</p>
           </div>
-          <h4 data-i18n="proc.3.title">Vývoj</h4>
-          <p data-i18n="proc.3.desc">Kódujeme, testujeme a ladíme. Průběžně vás informujeme o postupu a zapracováváme zpětnou vazbu.</p>
-        </div>
-        <div class="proc-step" data-reveal>
-          <div class="proc-num-wrap">
-            <div class="proc-num">04</div>
-          </div>
-          <div class="proc-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
-          <h4 data-i18n="proc.4.title">Spuštění</h4>
-          <p data-i18n="proc.4.desc">Publikujeme web, nastavíme analytiku a jsme tu pro vás i po spuštění — podpora zahrnuta v ceně.</p>
+
         </div>
       </div>
     </div>
@@ -445,15 +486,16 @@
 
   <!-- ═══ ABOUT ═══ -->
   <section class="section about-section" id="about">
+    <img src="logo.svg" alt="" class="about-watermark" id="aboutWatermark" aria-hidden="true">
     <div class="container">
       <div class="section-head">
-        <span class="section-tag" data-i18n="about.tag">O nás</span>
+        <span class="section-tag"><span class="chap">04</span><span data-i18n="about.tag">O nás</span></span>
         <h2 data-i18n="about.heading">Kdo stojí <span class="grad-text">za Lanthirem</span></h2>
       </div>
-      <div class="about-people-grid">
+      <div class="about-people-grid" id="aboutGrid">
 
         <!-- Michal Owczarzy -->
-        <div class="person-card" data-reveal>
+        <div class="person-card glow-card" data-reveal>
           <div class="person-photo-ring">
             <img src="michal.jpg" alt="Michal Owczarzy" class="person-photo"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -484,7 +526,7 @@
         </div>
 
         <!-- Mariusz Chmiel -->
-        <div class="person-card" data-reveal>
+        <div class="person-card glow-card" data-reveal>
           <div class="person-photo-ring">
             <img src="mariusz.jpg" alt="Mariusz Chmiel" class="person-photo"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -519,12 +561,12 @@
 
   <!-- ═══ CTA BANNER ═══ -->
   <section class="cta-banner">
+    <span class="cta-aurora" aria-hidden="true"></span>
     <div class="container">
-      <div class="cta-card">
-        <div class="cta-glow"></div>
+      <div class="cta-card" id="ctaCard">
         <h2 data-i18n="cta.h2">Máte projekt? <span class="grad-text">Pojďme na to.</span></h2>
         <p data-i18n="cta.p">Bezplatná konzultace bez závazků. Řekněte nám o svém projektu a my se ozveme do 24 hodin.</p>
-        <a href="#kontakt" class="btn-primary btn-lg" data-i18n="cta.btn">Nezávazná poptávka</a>
+        <a href="#kontakt" class="btn-primary btn-lg" id="ctaMagnet" data-i18n="cta.btn">Nezávazná poptávka</a>
       </div>
     </div>
   </section>
@@ -533,25 +575,25 @@
   <section class="section contact-section" id="kontakt">
     <div class="container">
       <div class="section-head">
-        <span class="section-tag" data-i18n="contact.tag">Kontakt</span>
+        <span class="section-tag"><span class="chap">05</span><span data-i18n="contact.tag">Kontakt</span></span>
         <h2 data-i18n="contact.heading">Začněme <span class="grad-text">spolupracovat</span></h2>
       </div>
       <div class="contact-grid">
         <div class="contact-info">
-          <div class="ci-item">
+          <div class="ci-item" data-reveal>
             <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
             <div><span class="ci-label" data-i18n="contact.email.lbl">E-mail</span><span class="ci-val">kontakt@lanthir.cz</span></div>
           </div>
-          <div class="ci-item">
+          <div class="ci-item" data-reveal>
             <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
             <div><span class="ci-label" data-i18n="contact.phone.lbl">Telefon</span><span class="ci-val">+420 725 528 165</span></div>
           </div>
-          <div class="ci-item">
+          <div class="ci-item" data-reveal>
             <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
             <div><span class="ci-label" data-i18n="contact.loc.lbl">Místo</span><span class="ci-val" data-i18n="contact.loc.val">Česká republika</span></div>
           </div>
         </div>
-        <form class="contact-form" id="contactForm" novalidate>
+        <form class="contact-form" id="contactForm" data-reveal novalidate>
           <div class="form-row">
             <div class="form-group">
               <label for="fname" data-i18n="form.name.lbl">Jméno</label>
@@ -604,6 +646,7 @@
             <span class="footer-name">Lanthir</span>
           </div>
           <p data-i18n="footer.tagline">Profesionální tvorba webových stránek na míru.</p>
+          <span class="status-chip"><span class="status-dot" aria-hidden="true"></span><span data-i18n="footer.status">všechny systémy online</span></span>
         </div>
         <div class="footer-nav">
           <div class="footer-col">
@@ -622,11 +665,19 @@
           </div>
         </div>
       </div>
+      <div class="footer-wordmark-wrap" aria-hidden="true">
+        <span class="footer-wordmark" id="footerWordmark">LANTHIR</span>
+      </div>
       <div class="footer-bar">
         <span data-i18n="footer.copy">© 2026 Lanthir. Všechna práva vyhrazena.</span>
+        <button class="to-top" id="toTop" aria-label="Zpět nahoru">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+        </button>
       </div>
     </div>
   </footer>
+
+  </main>
 
   <script src="script.js"></script>
 </body>
