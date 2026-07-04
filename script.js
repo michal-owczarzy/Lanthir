@@ -540,6 +540,17 @@ const T = {
 const RM   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const FINE = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
+/* ── Intro gate — decided before first paint ──
+   Skipped for reduced motion and deep links (#hash). */
+const INTRO_RUNS = (() => {
+  const overlay = document.getElementById('intro');
+  if (!overlay) return false;
+  /* skip for reduced motion, deep links, and restored mid-page scroll */
+  if (RM || location.hash || window.scrollY > 60) { overlay.remove(); return false; }
+  document.body.classList.add('intro-active');
+  return true;
+})();
+
 /* ── Shared rAF loop ──────────────────────
    Every scroll/pointer-driven effect registers one
    cheap function here; reads early-exit off-screen. */
@@ -640,40 +651,111 @@ function splitHeading() {
   h.appendChild(frag);
 }
 
-/* ── Hero logo: stroke draw-in (once) ─────── */
-(function () {
+/* ── Logo loader (shared by intro + hero) ─── */
+const logoPromise = fetch('logo.svg').then(r => r.text()).catch(() => null);
+
+function buildLogo(svgText, animate, dur, stagger) {
+  const tmp = document.createElement('div');
+  tmp.innerHTML = svgText.trim();
+  const svg = tmp.querySelector('svg');
+  if (!svg) return null;
+  svg.removeAttribute('width');
+  svg.removeAttribute('height');
+  if (animate && !RM) {
+    Array.from(svg.querySelectorAll('polyline')).forEach((pl, i) => {
+      const nums = (pl.getAttribute('points') || '').match(/[-\d.eE]+/g);
+      if (!nums || nums.length < 4) return;
+      let len = 0;
+      for (let k = 2; k + 1 < nums.length; k += 2) {
+        const dx = +nums[k] - +nums[k - 2];
+        const dy = +nums[k + 1] - +nums[k - 1];
+        len += Math.sqrt(dx * dx + dy * dy);
+      }
+      len = Math.max(len, 1);
+      pl.style.strokeDasharray  = len;
+      pl.style.strokeDashoffset = len;
+      pl.style.animation = 'logoDraw ' + dur + 's cubic-bezier(.4,0,.2,1) ' + (i * stagger) + 'ms forwards';
+    });
+  }
+  return svg;
+}
+
+/* ── Hero logo (draws itself only when no intro plays) ── */
+logoPromise.then(svgText => {
   const container = document.getElementById('heroLogoContainer');
   if (!container) return;
-  fetch('logo.svg')
-    .then(r => r.text())
-    .then(svgText => {
-      const tmp = document.createElement('div');
-      tmp.innerHTML = svgText.trim();
-      const svg = tmp.querySelector('svg');
-      if (!svg) return;
-      svg.removeAttribute('width');
-      svg.removeAttribute('height');
-      if (!RM) {
-        Array.from(svg.querySelectorAll('polyline')).forEach((pl, i) => {
-          const nums = (pl.getAttribute('points') || '').match(/[-\d.eE]+/g);
-          if (!nums || nums.length < 4) return;
-          let len = 0;
-          for (let k = 2; k + 1 < nums.length; k += 2) {
-            const dx = +nums[k] - +nums[k - 2];
-            const dy = +nums[k + 1] - +nums[k - 1];
-            len += Math.sqrt(dx * dx + dy * dy);
-          }
-          len = Math.max(len, 1);
-          pl.style.strokeDasharray  = len;
-          pl.style.strokeDashoffset = len;
-          pl.style.animation = 'logoDraw 1.5s cubic-bezier(.4,0,.2,1) ' + (i * 9) + 'ms forwards';
-        });
-      }
-      container.appendChild(svg);
-    })
-    .catch(() => {
-      container.innerHTML = '<img src="logo.svg" alt="Lanthir" style="width:100%;height:100%">';
-    });
+  if (!svgText) {
+    container.innerHTML = '<img src="logo.svg" alt="Lanthir" style="width:100%;height:100%">';
+    return;
+  }
+  const svg = buildLogo(svgText, !INTRO_RUNS, 1.5, 9);
+  if (svg) container.appendChild(svg);
+});
+
+/* ── Intro sequence: draw → bloom → ring → wordmark → fly to hero ── */
+(function () {
+  if (!INTRO_RUNS) return;
+  const overlay = document.getElementById('intro');
+  const logoBox = document.getElementById('introLogo');
+  const word    = document.getElementById('introWord');
+  let finished = false;
+
+  /* wordmark letters */
+  const letters = word.textContent.trim().split('');
+  word.textContent = '';
+  letters.forEach((ch, i) => {
+    const s = document.createElement('span');
+    s.className = 'il';
+    s.style.setProperty('--i', i);
+    s.textContent = ch;
+    word.appendChild(s);
+  });
+
+  function finish(fast) {
+    if (finished) return;
+    finished = true;
+    document.body.classList.remove('intro-active');
+    document.body.classList.add('intro-done');
+    const heroTarget = document.getElementById('heroLogoContainer');
+    const t = heroTarget ? heroTarget.getBoundingClientRect() : null;
+    const canFly = !fast && logoBox.firstElementChild && logoBox.animate &&
+                   t && t.width > 40 && t.top >= 0 && t.bottom <= window.innerHeight;
+    overlay.classList.add('exit');
+    if (canFly) {
+      const s = logoBox.getBoundingClientRect();
+      const dx = (t.left + t.width / 2) - (s.left + s.width / 2);
+      const dy = (t.top + t.height / 2) - (s.top + s.height / 2);
+      const k  = t.width / s.width;
+      logoBox.animate(
+        [{ transform: 'translate(0px, 0px) scale(1)' },
+         { transform: 'translate(' + dx + 'px, ' + dy + 'px) scale(' + k + ')' }],
+        { duration: 720, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'forwards' }
+      ).onfinish = () => overlay.remove();
+      setTimeout(() => { if (overlay.isConnected) overlay.remove(); }, 1400);
+    } else {
+      if (logoBox.animate) logoBox.animate(
+        [{ transform: 'scale(1)', opacity: 1 }, { transform: 'scale(1.12)', opacity: 0 }],
+        { duration: 450, easing: 'ease-in', fill: 'forwards' });
+      setTimeout(() => overlay.remove(), 620);
+    }
+  }
+
+  /* impatient users skip straight to the site */
+  ['click', 'keydown', 'wheel', 'touchstart'].forEach(evt =>
+    overlay.addEventListener(evt, () => finish(true), { once: true, passive: true }));
+
+  logoPromise.then(svgText => {
+    if (finished) return;
+    if (svgText) {
+      const svg = buildLogo(svgText, true, 1.25, 6);
+      if (svg) logoBox.insertBefore(svg, logoBox.firstChild);
+      setTimeout(() => finish(false), 2400);
+    } else {
+      setTimeout(() => finish(true), 500);
+    }
+  });
+  /* hard cap — never trap the visitor on the overlay */
+  setTimeout(() => finish(true), 4200);
 })();
 
 /* ── Hero: sheet recede (desktop only) ────── */
@@ -737,7 +819,15 @@ function splitHeading() {
   if (RM) { els.forEach(el => el.classList.add('revealed', 'settled')); return; }
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (!e.isIntersecting) return;
+      /* scrolled past between frames (fast scroll / restored position):
+         reveal instantly so content is never left hidden */
+      if (!e.isIntersecting) {
+        if (e.boundingClientRect.top < 0) {
+          e.target.classList.add('revealed');
+          io.unobserve(e.target);
+        }
+        return;
+      }
       const siblings = Array.from(e.target.parentElement.querySelectorAll('[data-reveal]'));
       const delay = Math.max(siblings.indexOf(e.target), 0) * 80;
       setTimeout(() => e.target.classList.add('revealed'), delay);
@@ -977,15 +1067,20 @@ function runCount(c) {
   });
 })();
 
-/* ── Footer: wordmark rise + back-to-top arc ── */
+/* ── Scroll choreography: progress bar, aurora parallax,
+      footer wordmark rise, back-to-top arc ── */
 (function () {
-  const wm = document.getElementById('footerWordmark');
-  const tt = document.getElementById('toTop');
+  const wm  = document.getElementById('footerWordmark');
+  const tt  = document.getElementById('toTop');
+  const bar = document.getElementById('scrollProgress');
+  const aur = document.querySelector('.aurora');
   kAdd(() => {
     const doc = document.documentElement;
     const max = doc.scrollHeight - window.innerHeight;
+    const sp = max > 0 ? window.scrollY / max : 0;
+    if (bar) bar.style.transform = 'scaleX(' + sp.toFixed(4) + ')';
+    if (aur && !RM) aur.style.transform = 'translateY(' + (-sp * 380).toFixed(1) + 'px)';
     if (tt) {
-      const sp = max > 0 ? window.scrollY / max : 0;
       tt.style.setProperty('--sp', (sp * 360).toFixed(1) + 'deg');
     }
     if (wm && !RM) {

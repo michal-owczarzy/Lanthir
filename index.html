@@ -75,6 +75,22 @@
 </head>
 <body>
 
+  <!-- ═══ INTRO SEQUENCE ═══ -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro-bg"></div>
+    <div class="intro-center">
+      <div class="intro-glow"></div>
+      <div class="intro-logo" id="introLogo">
+        <span class="intro-ring"></span>
+        <span class="intro-ring intro-ring--2"></span>
+      </div>
+      <div class="intro-word" id="introWord">Lanthir</div>
+    </div>
+  </div>
+
+  <!-- ═══ SCROLL PROGRESS ═══ -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
   <!-- ═══ AMBIENT LAYERS ═══ -->
   <div class="aurora" aria-hidden="true">
     <i class="au au-1"></i>
@@ -173,7 +189,7 @@
   <!-- ═══ SERVICES ═══ -->
   <section class="section" id="sluzby">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <span class="section-tag"><span class="chap">01</span><span data-i18n="svc.tag">Co tvoříme</span></span>
         <h2 data-i18n="svc.heading">Webové stránky pro <span class="grad-text">každou potřebu</span></h2>
         <p data-i18n="svc.sub">Od vizitky po komplexní systém — navrhujeme a vyvíjíme weby, které fungují a přinášejí výsledky.</p>
@@ -255,14 +271,14 @@
   <!-- ═══ PRICING ═══ -->
   <section class="section pricing-section" id="cenik">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <span class="section-tag"><span class="chap">02</span><span data-i18n="price.tag">Ceník</span></span>
         <h2 data-i18n="price.heading">Řešení <span class="grad-text">pro každého</span></h2>
         <p data-i18n="price.sub">Transparentní ceny bez skrytých poplatků. Vyberte jednorázovou tvorbu nebo pravidelnou správu.</p>
       </div>
 
       <!-- A: Jednorázová tvorba -->
-      <div class="pricing-subsect-hd">
+      <div class="pricing-subsect-hd" data-reveal>
         <span class="price-sect-label" data-i18n="price.dev.label">A — Jednorázová tvorba webu</span>
       </div>
       <div class="pricing-grid" id="pricingGridA">
@@ -343,7 +359,7 @@
       <hr class="pricing-divider" aria-hidden="true">
 
       <!-- B: Měsíční správa -->
-      <div class="pricing-subsect-hd pricing-subsect-hd--second">
+      <div class="pricing-subsect-hd pricing-subsect-hd--second" data-reveal>
         <span class="price-sect-label" data-i18n="price.sub.label">B — Měsíční správa, monitoring a marketing</span>
       </div>
       <div class="pricing-grid" id="pricingGridB">
@@ -425,7 +441,7 @@
   <!-- ═══ PROCESS ═══ -->
   <section class="section process-section" id="postup">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <span class="section-tag"><span class="chap">03</span><span data-i18n="proc.tag">Jak pracujeme</span></span>
         <h2 data-i18n="proc.heading">Čtyři kroky k <span class="grad-text">vašemu webu</span></h2>
         <p data-i18n="proc.sub">Transparentní proces od první schůzky po spuštění. Vždy víte, ve které fázi se projekt nachází.</p>
@@ -488,7 +504,7 @@
   <section class="section about-section" id="about">
     <img src="logo.svg" alt="" class="about-watermark" id="aboutWatermark" aria-hidden="true">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <span class="section-tag"><span class="chap">04</span><span data-i18n="about.tag">O nás</span></span>
         <h2 data-i18n="about.heading">Kdo stojí <span class="grad-text">za Lanthirem</span></h2>
       </div>
@@ -563,7 +579,7 @@
   <section class="cta-banner">
     <span class="cta-aurora" aria-hidden="true"></span>
     <div class="container">
-      <div class="cta-card" id="ctaCard">
+      <div class="cta-card" id="ctaCard" data-reveal>
         <h2 data-i18n="cta.h2">Máte projekt? <span class="grad-text">Pojďme na to.</span></h2>
         <p data-i18n="cta.p">Bezplatná konzultace bez závazků. Řekněte nám o svém projektu a my se ozveme do 24 hodin.</p>
         <a href="#kontakt" class="btn-primary btn-lg" id="ctaMagnet" data-i18n="cta.btn">Nezávazná poptávka</a>
@@ -574,7 +590,7 @@
   <!-- ═══ CONTACT ═══ -->
   <section class="section contact-section" id="kontakt">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <span class="section-tag"><span class="chap">05</span><span data-i18n="contact.tag">Kontakt</span></span>
         <h2 data-i18n="contact.heading">Začněme <span class="grad-text">spolupracovat</span></h2>
       </div>
