@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Elektrika Svoboda — Elektroinstalace Třinec | Tepelná čerpadla, hromosvody</title>
+<meta name="description" content="Elektrika Svoboda — elektroinstalace, tepelná čerpadla a hromosvody v Třinci a okolí. Spolehlivý elektrikář na telefonu 731 913 034.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d1420; --panel:#131c2b; --ink:#eaf1fb; --soft:#93a6c0; --line:rgba(234,241,251,.12);
+    --blue:#2f7ff0; --blue-hi:#4d95ff; --amber:#ffb43a; --deep:#0a0f18;
+    --display:'Space Grotesk',system-ui,sans-serif; --sans:'Inter',system-ui,sans-serif; --max:1160px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-weight:300;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.06;letter-spacing:-.02em}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:8px;background:var(--blue);color:#fff;font-size:13px;font-weight:600;letter-spacing:.04em;transition:.3s}
+  .btn:hover{background:var(--blue-hi);transform:translateY(-2px)}
+  .btn-out{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn-out:hover{border-color:var(--blue);color:var(--blue-hi)}
+  .eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:600;font-family:var(--display)}
+
+  .demo-ribbon{position:fixed;top:0;left:0;right:0;z-index:100;background:linear-gradient(90deg,#3a2ee0,#1fcded);color:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.04em;text-align:center;padding:7px 16px;font-weight:500}
+  .demo-ribbon a{text-decoration:underline;font-weight:600}
+
+  header.nav{position:sticky;top:0;z-index:90;background:rgba(13,20,32,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .logo{font-family:var(--display);font-size:22px;font-weight:700;display:flex;align-items:center;gap:10px}
+  .logo .bolt{color:var(--amber)}
+  .nav-links{display:flex;gap:32px;list-style:none;font-size:14px}
+  .nav-links a{color:var(--soft);transition:.2s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{font-size:13px;padding:11px 22px}
+  .burger{display:none;background:none;border:0;font-size:24px;cursor:pointer;color:var(--ink)}
+
+  .hero{position:relative;overflow:hidden;padding:100px 0 90px}
+  .hero::before{content:'';position:absolute;top:-30%;right:-10%;width:60%;height:120%;background:radial-gradient(circle,rgba(47,127,240,.22),transparent 65%);pointer-events:none}
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .hero h1{font-size:clamp(42px,6.4vw,78px);margin:20px 0 22px}
+  .hero h1 span{color:var(--amber)}
+  .hero p{font-size:19px;color:var(--soft);max-width:480px;margin-bottom:32px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-img{position:relative}
+  .hero-img img{border-radius:14px;width:100%;height:440px;object-fit:cover;border:1px solid var(--line)}
+  .hero-badge{position:absolute;bottom:-16px;left:-16px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 22px}
+  .hero-badge b{font-family:var(--display);font-size:26px;color:var(--amber);display:block}
+  .hero-badge span{font-size:12px;color:var(--soft)}
+
+  .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--deep)}
+  .trust-in{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:34px 0;text-align:center}
+  .trust b{font-family:var(--display);font-size:30px;color:var(--ink);display:block}
+  .trust span{font-size:13px;color:var(--soft)}
+
+  section{padding:clamp(64px,9vw,110px) 0}
+  .sec-head{max-width:620px;margin-bottom:52px}
+  .sec-head h2{font-size:clamp(32px,4.8vw,52px);margin:12px 0 14px}
+  .sec-head p{color:var(--soft);font-size:16px}
+
+  .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+  .svc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:34px 30px;transition:.3s}
+  .svc:hover{border-color:var(--blue);transform:translateY(-4px)}
+  .svc .ic{width:46px;height:46px;border-radius:10px;background:rgba(47,127,240,.14);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px}
+  .svc h3{font-size:21px;margin-bottom:8px}
+  .svc p{color:var(--soft);font-size:14px}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .split img{border-radius:14px;width:100%;height:100%;min-height:380px;object-fit:cover;border:1px solid var(--line)}
+  .split h2{font-size:clamp(30px,4.4vw,48px);margin:14px 0 20px}
+  .split p{color:var(--soft);margin-bottom:15px}
+  .feats{list-style:none;margin-top:22px;display:grid;gap:13px}
+  .feats li{padding-left:30px;position:relative;color:var(--ink)}
+  .feats li::before{content:'✓';position:absolute;left:0;color:var(--amber);font-weight:700}
+
+  .cta-band{background:linear-gradient(120deg,var(--blue),#1c4fa8);border-radius:20px;padding:56px;text-align:center}
+  .cta-band h2{font-size:clamp(28px,4vw,44px);color:#fff;margin-bottom:14px}
+  .cta-band p{color:#d5e4ff;margin-bottom:26px;font-size:17px}
+  .cta-band .btn{background:#fff;color:var(--blue)}
+  .cta-band .btn:hover{background:var(--amber);color:#161616}
+
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  .hours{list-style:none}
+  .hours li{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);color:var(--soft)}
+  .hours li b{color:var(--ink);font-weight:500}
+  .cbox{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:42px}
+  .cbox h3{font-size:26px;margin-bottom:22px}
+  .cbox a.big{display:block;font-family:var(--display);font-size:34px;color:var(--amber);margin:6px 0 22px}
+  .cbox .row{margin-bottom:14px;font-size:15px;color:var(--soft)}
+  .cbox .row span{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-hi);margin-bottom:3px}
+
+  footer{border-top:1px solid var(--line);text-align:center;padding:44px 24px;font-size:13px;color:var(--soft);background:var(--deep)}
+  footer .logo{justify-content:center;margin-bottom:10px}
+  footer .made{margin-top:16px;opacity:.85}
+  footer .made a{color:#8fb4ff;text-decoration:underline}
+
+  @media(max-width:820px){
+    .nav-links,.nav-cta{display:none}
+    .burger{display:block}
+    .hero-grid,.split,.contact-grid{grid-template-columns:1fr;gap:38px}
+    .trust-in{grid-template-columns:repeat(2,1fr);gap:28px}
+    .cta-band{padding:40px 26px}
+    .nav-links.open{display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;background:var(--bg);padding:22px 24px;gap:18px;border-bottom:1px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+<div class="demo-ribbon">⚡ Nezávazný náhled webu připravený studiem <b>Lanthir</b> — líbí se vám? <a href="mailto:kontakt@lanthir.cz">Napište nám</a> a spustíme ho.</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="logo"><span class="bolt">⚡</span> Elektrika Svoboda</a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#sluzby">Služby</a></li>
+      <li><a href="#onas">O nás</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="tel:+420731913034" class="btn nav-cta">Nezávazná poptávka</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Elektroinstalace · Třinec a okolí</span>
+      <h1>Elektřina, na kterou se <span>spolehnete</span></h1>
+      <p>Elektroinstalace, tepelná čerpadla a hromosvody pro rodinné domy, byty i firmy. Čistá práce, jasná domluva, spolehlivý termín.</p>
+      <div class="hero-actions">
+        <a href="tel:+420731913034" class="btn">Zavolat elektrikáře</a>
+        <a href="#sluzby" class="btn btn-out">Co nabízíme</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=900&q=80" alt="Elektroinstalační práce">
+      <div class="hero-badge"><b>10+ let</b><span>zkušeností v oboru</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap trust-in">
+    <div><b>Domy</b><span>Rodinné domy i byty</span></div>
+    <div><b>Firmy</b><span>Provozovny a dílny</span></div>
+    <div><b>⚡</b><span>Tepelná čerpadla</span></div>
+    <div><b>✓</b><span>Revize a hromosvody</span></div>
+  </div>
+</div>
+
+<section id="sluzby">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Služby</span>
+      <h2>Co pro vás uděláme</h2>
+      <p>Kompletní elektroinstalační práce od návrhu po revizi. Pracujeme po telefonické domluvě v Třinci a okolí.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc"><div class="ic">🔌</div><h3>Elektroinstalace</h3><p>Nové rozvody i rekonstrukce v domech, bytech a dílnách. Čistě a podle norem.</p></div>
+      <div class="svc"><div class="ic">🌡️</div><h3>Tepelná čerpadla</h3><p>Návrh a instalace tepelných čerpadel pro úsporné vytápění vaší nemovitosti.</p></div>
+      <div class="svc"><div class="ic">⚡</div><h3>Hromosvody</h3><p>Montáž a opravy hromosvodů — ochrana vašeho domu před bleskem.</p></div>
+      <div class="svc"><div class="ic">🛠️</div><h3>Opravy &amp; údržba</h3><p>Rychlé řešení poruch, výměny jističů, zásuvek a osvětlení.</p></div>
+      <div class="svc"><div class="ic">📋</div><h3>Revize</h3><p>Revize elektroinstalací a příprava dokumentace ke kolaudaci.</p></div>
+      <div class="svc"><div class="ic">💡</div><h3>Osvětlení</h3><p>Návrh a montáž vnitřního i venkovního osvětlení včetně LED.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="onas" style="background:var(--deep)">
+  <div class="wrap split">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=80" alt="Elektrikář při práci">
+    <div>
+      <span class="eyebrow">O nás</span>
+      <h2>Poctivé řemeslo bez kompromisů</h2>
+      <p>Elektrika Svoboda je spolehlivý parťák pro všechno kolem elektřiny v Třinci a okolí. Domluvíme se jasně předem — víte, co děláme, kdy to bude hotové a kolik to bude stát.</p>
+      <p>Pracujeme na rodinných domech, v bytech i provozovnách. Práci odvádíme podle platných norem a po sobě uklidíme.</p>
+      <ul class="feats">
+        <li>Jasná cena domluvená předem</li>
+        <li>Práce podle platných norem a revize</li>
+        <li>Spolehlivé termíny</li>
+        <li>Působíme v Třinci a blízkém okolí</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>Potřebujete elektrikáře?</h2>
+      <p>Zavolejte a domluvíme nezávaznou prohlídku i cenovou nabídku.</p>
+      <a href="tel:+420731913034" class="btn">📞 731 913 034</a>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt" style="background:var(--deep)">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="eyebrow">Dostupnost</span>
+      <h2 style="font-size:38px;margin:12px 0 24px">Kdy nás zastihnete</h2>
+      <ul class="hours">
+        <li><b>Pondělí – Pátek</b><span>7:00 – 17:00</span></li>
+        <li><b>Sobota</b><span>Po domluvě</span></li>
+        <li><b>Neděle</b><span>Zavřeno</span></li>
+      </ul>
+      <p style="margin-top:20px;color:var(--soft)">Pracujeme po telefonické domluvě — zavolejte a najdeme termín.</p>
+    </div>
+    <div class="cbox">
+      <h3>Nezávazná poptávka</h3>
+      <div class="row"><span>Telefon</span></div>
+      <a href="tel:+420731913034" class="big">731 913 034</a>
+      <div class="row"><span>E-mail</span>elektrikasvoboda@email.cz</div>
+      <div class="row"><span>Sídlo</span>Sosnová 363, 739 61 Třinec-Dolní Líštná</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo"><span class="bolt">⚡</span> Elektrika Svoboda</div>
+  <div>Sosnová 363, 739 61 Třinec-Dolní Líštná · 731 913 034</div>
+  <div class="made">Ukázkový web zdarma připravilo studio <a href="mailto:kontakt@lanthir.cz">Lanthir</a>. Chcete ho spustit naostro? Ozvěte se.</div>
+</footer>
+
+<script>
+  const b=document.getElementById('burger'),m=document.getElementById('menu');
+  b.addEventListener('click',()=>m.classList.toggle('open'));
+  m.addEventListener('click',e=>{if(e.target.tagName==='A')m.classList.remove('open')});
+</script>
+</body>
+</html>

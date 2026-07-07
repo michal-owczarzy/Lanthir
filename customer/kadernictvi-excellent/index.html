@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Kadeřnictví EXCELLENT — Danuta Mauritzová | Třinec</title>
+<meta name="description" content="Kadeřnictví EXCELLENT v Třinci-Lyžbicích. Dámské, pánské i dětské kadeřnictví, střihy, barvení, francouzský melír, masáž hlavy a společenské účesy. Kosmetika L'Oréal Professionnel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbf7f4; --ink:#2b1c1f; --soft:#6d585b; --line:rgba(43,28,31,.13);
+    --wine:#7a2233; --wine-dk:#5f1826; --gold:#b58a4c; --cream:#f0e3da;
+    --serif:'Cormorant Garamond',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --max:1140px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-weight:300;background:var(--bg);color:var(--ink);line-height:1.62;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:999px;background:var(--wine);color:#fff;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:.3s}
+  .btn:hover{background:var(--wine-dk);transform:translateY(-2px)}
+  .btn-out{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn-out:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600}
+
+  .demo-ribbon{position:fixed;top:0;left:0;right:0;z-index:100;background:linear-gradient(90deg,#3a2ee0,#1fcded);color:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.04em;text-align:center;padding:7px 16px;font-weight:500}
+  .demo-ribbon a{text-decoration:underline;font-weight:600}
+
+  header.nav{position:sticky;top:0;z-index:90;background:rgba(251,247,244,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .logo{font-family:var(--serif);font-size:25px;font-weight:600;letter-spacing:.02em}
+  .logo span{color:var(--wine)}
+  .nav-links{display:flex;gap:32px;list-style:none;font-size:14px;letter-spacing:.04em}
+  .nav-links a{color:var(--soft);transition:.2s}
+  .nav-links a:hover{color:var(--wine)}
+  .nav-cta{font-size:12px;padding:11px 22px}
+  .burger{display:none;background:none;border:0;font-size:26px;cursor:pointer;color:var(--ink)}
+
+  .hero{position:relative;min-height:86vh;display:flex;align-items:center;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background:linear-gradient(100deg,rgba(43,28,31,.72),rgba(43,28,31,.4)),url('https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=1600&q=80') center/cover;background-color:#2b1c1f}
+  .hero-in{position:relative;color:#fff;max-width:640px;padding:80px 0}
+  .hero h1{font-size:clamp(44px,7vw,84px);margin:18px 0 20px}
+  .hero h1 span{color:#e9b8a0;font-style:italic}
+  .hero p{font-size:19px;color:#f0e3da;max-width:500px;margin-bottom:34px}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+  .hero .btn-out{color:#fff;border-color:rgba(255,255,255,.5)}
+  .hero .btn-out:hover{background:#fff;color:var(--ink)}
+
+  .strip{background:var(--wine);color:var(--cream);text-align:center;padding:26px 24px;font-family:var(--serif);font-size:clamp(20px,3vw,30px);font-style:italic}
+
+  section{padding:clamp(64px,9vw,110px) 0}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 58px}
+  .sec-head h2{font-size:clamp(34px,5.2vw,54px);margin:14px 0 14px}
+  .sec-head p{color:var(--soft);font-size:16px}
+
+  .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2px;background:var(--line);border:1px solid var(--line)}
+  .svc{background:var(--bg);padding:36px 30px;transition:.3s}
+  .svc:hover{background:var(--cream)}
+  .svc h3{font-size:25px;margin-bottom:8px}
+  .svc .price{color:var(--wine);font-weight:600;font-family:var(--sans);font-size:15px}
+  .svc p{color:var(--soft);font-size:14px;margin-top:10px}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .about{background:var(--cream)}
+  .split img{border-radius:6px;width:100%;height:100%;min-height:380px;object-fit:cover}
+  .split h2{font-size:clamp(30px,4.6vw,48px);margin:14px 0 20px}
+  .split p{color:var(--soft);margin-bottom:15px}
+  .feats{list-style:none;margin-top:24px;display:grid;gap:12px}
+  .feats li{padding-left:28px;position:relative}
+  .feats li::before{content:'✦';position:absolute;left:0;color:var(--gold)}
+
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+  .hours{list-style:none}
+  .hours li{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);color:var(--soft)}
+  .hours li b{color:var(--ink);font-weight:500}
+  .cbox{background:var(--ink);color:var(--cream);padding:44px;border-radius:8px}
+  .cbox h3{font-size:30px;color:#fff;margin-bottom:22px}
+  .cbox a.big{display:block;font-family:var(--serif);font-size:35px;color:var(--gold);margin:6px 0 20px}
+  .cbox .row{margin-bottom:14px;font-size:15px;color:#dccfc6}
+  .cbox .row span{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#a3908a;margin-bottom:3px}
+
+  footer{background:var(--ink);color:#a99992;text-align:center;padding:44px 24px;font-size:13px}
+  footer .logo{color:#fff;margin-bottom:8px}
+  footer .made{margin-top:14px;opacity:.75}
+  footer .made a{color:#cbb7ff;text-decoration:underline}
+
+  @media(max-width:820px){
+    .nav-links,.nav-cta{display:none}
+    .burger{display:block}
+    .split,.contact-grid{grid-template-columns:1fr;gap:36px}
+    .nav-links.open{display:flex;position:absolute;top:74px;left:0;right:0;flex-direction:column;background:var(--bg);padding:22px 24px;gap:18px;border-bottom:1px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+<div class="demo-ribbon">✨ Nezávazný náhled webu připravený studiem <b>Lanthir</b> — líbí se vám? <a href="mailto:kontakt@lanthir.cz">Napište nám</a> a spustíme ho.</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="logo">EXCELLENT<span>.</span></a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#sluzby">Služby</a></li>
+      <li><a href="#osalonu">O salonu</a></li>
+      <li><a href="#hodiny">Otevírací doba</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="tel:+420558997774" class="btn nav-cta">Objednat se</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-in">
+    <span class="eyebrow" style="color:#e9b8a0">Kadeřnictví · Třinec-Lyžbice</span>
+    <h1>Kadeřnictví <span>EXCELLENT</span></h1>
+    <p>Dámské, pánské i dětské kadeřnictví Danuty Mauritzové. Střihy, barvení a péče s kosmetikou L'Oréal Professionnel.</p>
+    <div class="hero-actions">
+      <a href="tel:+420558997774" class="btn">Objednat termín</a>
+      <a href="#sluzby" class="btn btn-out">Naše služby</a>
+    </div>
+  </div>
+</section>
+
+<div class="strip">„Účes, se kterým se budete cítit výjimečně.“</div>
+
+<section id="sluzby">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Ceník</span>
+      <h2>Naše služby</h2>
+      <p>Kompletní kadeřnická péče s produkty L'Oréal Professionnel. Ceny jsou orientační, rádi vám je upřesníme.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc"><h3>Dámský střih</h3><div class="price">od 350 Kč</div><p>Mytí, střih, foukaná a styling.</p></div>
+      <div class="svc"><h3>Barvení</h3><div class="price">od 650 Kč</div><p>Barva na míru s L'Oréal Professionnel.</p></div>
+      <div class="svc"><h3>Francouzský melír</h3><div class="price">od 850 Kč</div><p>Jemné prosvětlení a přirozený efekt.</p></div>
+      <div class="svc"><h3>Masáž hlavy</h3><div class="price">od 150 Kč</div><p>Relaxační péče o vlasovou pokožku.</p></div>
+      <div class="svc"><h3>Společenské &amp; svatební účesy</h3><div class="price">od 600 Kč</div><p>Pro výjimečné příležitosti.</p></div>
+      <div class="svc"><h3>Pánský &amp; dětský střih</h3><div class="price">od 180 Kč</div><p>Pro celou rodinu.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="osalonu">
+  <div class="wrap split">
+    <img src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=900&q=80" alt="Interiér kadeřnictví">
+    <div>
+      <span class="eyebrow">O salonu</span>
+      <h2>Zkušenost, na kterou se spolehnete</h2>
+      <p>Kadeřnictví EXCELLENT najdete v budově hotelu Steel v Třinci-Lyžbicích. Danuta Mauritzová se o své klienty stará s péčí a citem pro detail — ať přijdete na rychlý střih nebo kompletní proměnu.</p>
+      <p>Pracujeme výhradně s prémiovou kosmetikou L'Oréal Professionnel, která je šetrná k vlasům i pokožce.</p>
+      <ul class="feats">
+        <li>Dámské, pánské i dětské kadeřnictví</li>
+        <li>Prémiová kosmetika L'Oréal Professionnel</li>
+        <li>Relaxační masáž hlavy</li>
+        <li>Snadná dostupnost v budově hotelu Steel</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="hodiny">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="eyebrow">Otevírací doba</span>
+      <h2 style="font-size:40px;margin:12px 0 24px">Kdy máme otevřeno</h2>
+      <ul class="hours">
+        <li><b>Pondělí – Pátek</b><span>8:00 – 18:00</span></li>
+        <li><b>Sobota</b><span>Po domluvě</span></li>
+        <li><b>Neděle</b><span>Zavřeno</span></li>
+      </ul>
+      <p style="margin-top:20px;color:var(--soft)">Doporučujeme telefonické objednání předem.</p>
+    </div>
+    <div class="cbox" id="kontakt">
+      <h3>Objednejte se</h3>
+      <div class="row"><span>Telefon</span></div>
+      <a href="tel:+420558997774" class="big">558 997 774</a>
+      <div class="row"><span>E-mail</span>atunad@centrum.cz</div>
+      <div class="row"><span>Adresa</span>nám. Svobody 527, 739 61 Třinec-Lyžbice (hotel Steel, 3. patro, dv. 302)</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo" style="font-size:22px">EXCELLENT<span style="color:var(--wine)">.</span></div>
+  <div>nám. Svobody 527, 739 61 Třinec-Lyžbice · 558 997 774</div>
+  <div class="made">Ukázkový web zdarma připravilo studio <a href="mailto:kontakt@lanthir.cz">Lanthir</a>. Chcete ho spustit naostro? Ozvěte se.</div>
+</footer>
+
+<script>
+  const b=document.getElementById('burger'),m=document.getElementById('menu');
+  b.addEventListener('click',()=>m.classList.toggle('open'));
+  m.addEventListener('click',e=>{if(e.target.tagName==='A')m.classList.remove('open')});
+</script>
+</body>
+</html>
