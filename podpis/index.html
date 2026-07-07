@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Lanthir — e-mailový podpis</title>
+<style>
+  body{margin:0;background:#eef1f6;font-family:'Segoe UI',Arial,sans-serif;padding:32px 16px;color:#0f1626}
+  .card{max-width:620px;margin:0 auto;background:#fff;border-radius:16px;padding:30px;box-shadow:0 10px 34px rgba(15,22,38,.09)}
+  h1{font-size:20px;margin:0 0 6px}
+  .sub{font-size:13px;color:#5b6b82;line-height:1.6;margin:0 0 22px}
+  .btnrow{display:flex;gap:12px;align-items:center;margin:0 0 22px;flex-wrap:wrap}
+  .copybtn{border:0;cursor:pointer;background:#1e7be5;color:#fff;font-weight:700;font-size:14px;padding:13px 24px;border-radius:10px;transition:.2s;font-family:inherit}
+  .copybtn:hover{background:#1a6cca}
+  .copybtn.ok{background:#22a06b}
+  .hintsmall{font-size:12px;color:#8a97a8}
+  .frame{border:1px dashed #cdd6e2;border-radius:12px;padding:24px;background:#fff}
+  .steps{margin:22px 0 0;padding:0;list-style:none;font-size:13px;color:#3b4658;line-height:1.7}
+  .steps li{padding-left:26px;position:relative;margin-bottom:6px}
+  .steps li b{color:#0f1626}
+  .steps li::before{content:counter(s);counter-increment:s;position:absolute;left:0;top:0;width:18px;height:18px;background:#1e7be5;color:#fff;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .steps{counter-reset:s}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Váš e-mailový podpis</h1>
+  <p class="sub">Klikněte na tlačítko, tím se podpis zkopíruje. Pak stačí vložit (Ctrl+V) do nastavení podpisu v Gmailu nebo Outlooku.</p>
+
+  <div class="btnrow">
+    <button class="copybtn" id="copyBtn" onclick="copySig()">Zkopírovat podpis</button>
+    <span class="hintsmall" id="copyMsg"></span>
+  </div>
+
+  <div class="frame">
+<!-- ═══ PODPIS ═══ -->
+<table id="sig" cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-family:'Segoe UI',Arial,Helvetica,sans-serif;">
+  <tr>
+    <td valign="top" style="padding:0 22px 0 0;">
+      <img src="https://lanthir.cz/logo-512.png" width="78" height="78" alt="Lanthir"
+           style="display:block;width:78px;height:78px;border:0;outline:none;">
+    </td>
+    <td valign="middle" style="padding:0;width:3px;">
+      <div style="width:3px;height:96px;background:#1BBBD4;background:linear-gradient(180deg,#5B5BE8 0%,#1BBBD4 50%,#3EDC97 100%);border-radius:3px;font-size:1px;line-height:1px;">&nbsp;</div>
+    </td>
+    <td valign="top" style="padding:0 0 0 22px;">
+      <div style="font-size:19px;font-weight:700;color:#0f1626;letter-spacing:.2px;line-height:1.15;">
+        Ing. Michal Owczarzy
+      </div>
+      <div style="font-size:13px;color:#5b6b82;padding:3px 0 9px;font-weight:600;letter-spacing:.3px;">
+        Zakladatel &amp; CTO
+        <span style="color:#c3ccd8;">|</span>
+        <span style="color:#1e7be5;font-weight:700;">Lanthir</span>
+      </div>
+      <div style="width:190px;height:3px;background:#1BBBD4;background:linear-gradient(90deg,#5B5BE8 0%,#1BBBD4 55%,#3EDC97 100%);border-radius:3px;margin:0 0 11px;font-size:1px;line-height:1px;">&nbsp;</div>
+      <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-size:13px;color:#3b4658;">
+        <tr>
+          <td style="padding:2px 8px 2px 0;color:#1e7be5;font-weight:700;">Tel</td>
+          <td style="padding:2px 0;"><a href="tel:+420725528165" style="color:#3b4658;text-decoration:none;">+420 725 528 165</a></td>
+        </tr>
+        <tr>
+          <td style="padding:2px 8px 2px 0;color:#1e7be5;font-weight:700;">Mail</td>
+          <td style="padding:2px 0;"><a href="mailto:michal.owczarzy@lanthir.cz" style="color:#3b4658;text-decoration:none;">michal.owczarzy@lanthir.cz</a></td>
+        </tr>
+        <tr>
+          <td style="padding:2px 8px 2px 0;color:#1e7be5;font-weight:700;">Web</td>
+          <td style="padding:2px 0;"><a href="https://lanthir.cz" style="color:#1e7be5;text-decoration:none;font-weight:600;">lanthir.cz</a></td>
+        </tr>
+      </table>
+      <div style="font-size:12px;color:#8a97a8;padding-top:10px;font-style:italic;">
+        Technologický partner pro růst a provoz firmy.
+      </div>
+    </td>
+  </tr>
+</table>
+<!-- ═══ /PODPIS ═══ -->
+  </div>
+
+  <ol class="steps">
+    <li><b>Zkopírovat podpis</b> — klikněte na modré tlačítko výše.</li>
+    <li><b>Gmail:</b> ⚙️ Nastavení → Zobrazit všechna nastavení → záložka Obecné → Podpis → Vytvořit nový → vložte (Ctrl+V) → Uložit změny.</li>
+    <li><b>Outlook (web):</b> Nastavení → Pošta → Vytvořit a odpovědět → vložte do pole podpisu → Uložit.</li>
+    <li>Nastavte podpis jako výchozí pro nové zprávy i odpovědi.</li>
+  </ol>
+</div>
+
+<script>
+async function copySig(){
+  const el = document.getElementById('sig');
+  const btn = document.getElementById('copyBtn');
+  const msg = document.getElementById('copyMsg');
+  const html = el.outerHTML;
+  const text = el.innerText;
+  try {
+    await navigator.clipboard.write([new ClipboardItem({
+      'text/html': new Blob([html], {type:'text/html'}),
+      'text/plain': new Blob([text], {type:'text/plain'})
+    })]);
+    done();
+  } catch(e){
+    try {
+      const range = document.createRange();
+      range.selectNode(el);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      document.execCommand('copy');
+      sel.removeAllRanges();
+      done();
+    } catch(e2){
+      msg.textContent = 'Nepodařilo se zkopírovat — označte podpis myší a stiskněte Ctrl+C.';
+    }
+  }
+  function done(){
+    btn.textContent = '✓ Zkopírováno';
+    btn.classList.add('ok');
+    msg.textContent = 'Hotovo — teď vložte do podpisu v Gmailu (Ctrl+V).';
+    setTimeout(()=>{ btn.textContent='Zkopírovat podpis'; btn.classList.remove('ok'); }, 3000);
+  }
+}
+</script>
+</body>
+</html>
