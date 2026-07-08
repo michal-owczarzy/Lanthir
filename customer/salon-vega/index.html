@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Salon Vega — Orlová | Kosmetika, kadeřnictví, masáže</title>
+<meta name="description" content="Salon Vega v Orlové-Lutyni. Kosmetika, make-up, masáže, dámské i pánské kadeřnictví, pedikúra a řasy. OD Orel, F. S. Tůmy 1200.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:opsz,wght@9..144,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4f8f7; --ink:#182a2b; --soft:#5b6f6f; --line:rgba(24,42,43,.12);
+    --teal:#1a9e9e; --teal-dk:#137e7e; --coral:#ff7a59; --coral-dk:#ee6544; --sand:#fff3ec; --cream:#fbfdfc;
+    --serif:'Fraunces',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif; --max:1140px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-weight:400;background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden}
+  img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 26px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 30px;border-radius:12px;background:var(--teal);color:#fff;font-size:14px;font-weight:700;letter-spacing:.02em;transition:.25s}
+  .btn:hover{background:var(--teal-dk);transform:translateY(-2px)}
+  .btn-out{background:transparent;color:var(--ink);border:1.5px solid var(--line)}.btn-out:hover{border-color:var(--teal)}
+  .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-dk);font-weight:700}
+
+  .demo-ribbon{position:fixed;top:0;left:0;right:0;z-index:100;background:linear-gradient(90deg,#3a2ee0,#1fcded);color:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.03em;text-align:center;padding:7px 16px;font-weight:700}
+  .demo-ribbon a{text-decoration:underline}
+
+  header.nav{position:sticky;top:0;z-index:90;background:rgba(244,248,247,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .brand{font-family:var(--serif);font-size:24px;font-weight:500}
+  .brand span{color:var(--teal)}
+  .nav-links{display:flex;gap:30px;list-style:none;font-size:14px;font-weight:500}
+  .nav-links a{color:var(--soft);transition:.2s}.nav-links a:hover{color:var(--ink)}
+  .nav-cta{font-size:13px;padding:11px 20px}
+  .burger{display:none;background:none;border:0;font-size:24px;cursor:pointer;color:var(--ink)}
+
+  .hero{padding:clamp(46px,7vw,84px) 0}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+  .hero h1{font-size:clamp(44px,6.4vw,80px);margin:16px 0 18px}
+  .hero h1 span{color:var(--teal);font-style:italic}
+  .hero p{font-size:18px;color:var(--soft);max-width:410px;margin-bottom:26px}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .hero-img{position:relative}
+  .hero-img img{border-radius:24px;width:100%;height:470px;object-fit:cover}
+  .hero-tab{position:absolute;top:20px;right:-12px;background:var(--coral);color:#fff;font-weight:700;font-size:13px;padding:10px 18px;border-radius:12px}
+
+  section{padding:clamp(54px,8vw,94px) 0}
+  .sec-head{max-width:560px;margin-bottom:42px}
+  .sec-head h2{font-size:clamp(30px,4.4vw,48px);margin:10px 0}.sec-head p{color:var(--soft)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .card{background:var(--cream);border-radius:18px;padding:30px 26px;transition:.25s;border:1px solid var(--line)}
+  .card:hover{transform:translateY(-5px);border-color:var(--teal)}
+  .card .ic{width:46px;height:46px;border-radius:12px;background:var(--sand);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:12px}
+  .card h3{font-size:21px}.card p{color:var(--soft);font-size:14px;margin-top:6px}
+
+  .band{background:var(--teal);color:#fff;border-radius:0}
+  .band .wrap{padding:46px 26px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .band h2{color:#fff;font-size:clamp(24px,3.4vw,36px)}
+  .band .btn{background:#fff;color:var(--teal)}.band .btn:hover{background:var(--sand)}
+
+  .visit{background:var(--sand)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+  .hours{list-style:none}.hours li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);color:var(--soft)}.hours li b{color:var(--ink);font-weight:700}
+  .cbox{background:#fff;border-radius:20px;padding:38px;border:1px solid var(--line)}
+  .cbox h3{font-size:24px;margin-bottom:12px}
+  .cbox .big{font-family:var(--serif);font-size:30px;color:var(--teal);display:block;margin:6px 0 14px}
+  .cbox .row{color:var(--soft);font-size:15px;margin-bottom:8px}.cbox .row b{color:var(--ink)}
+
+  footer{background:var(--ink);color:#a7bcbc;text-align:center;padding:44px 26px;font-size:13px}
+  footer .fb{font-family:var(--serif);font-size:24px;color:#fff;margin-bottom:8px}
+  footer .fb span{color:var(--coral)}
+  footer .made{margin-top:14px;opacity:.85}footer .made a{color:#cbb7ff;text-decoration:underline}
+
+  @media(max-width:860px){
+    .nav-links,.nav-cta{display:none}.burger{display:block}
+    .hero-grid,.visit-grid{grid-template-columns:1fr;gap:30px}.hero-img img{height:380px}
+    .nav-links.open{display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px 26px;gap:16px;border-bottom:1px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+<div class="demo-ribbon">💚 Nezávazný náhled webu od studia <b>Lanthir</b> — líbí se vám? <a href="mailto:kontakt@lanthir.cz">Napište nám</a> a spustíme ho.</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="brand">Salon <span>Vega</span></a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#sluzby">Služby</a></li>
+      <li><a href="#osalonu">O salonu</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="mailto:salonVega@seznam.cz" class="btn nav-cta">Objednat se</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">Salon krásy · Orlová-Lutyně</span>
+      <h1>Vše pro krásu<br><span>pod jednou střechou</span></h1>
+      <p>Kosmetika, kadeřnictví, masáže i pedikúra. U nás se o sebe postaráte celkově — a v pohodě.</p>
+      <div class="hero-actions">
+        <a href="mailto:salonVega@seznam.cz" class="btn">Objednat termín</a>
+        <a href="#sluzby" class="btn btn-out">Naše služby</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1633681926035-ec1ac984418a?auto=format&fit=crop&w=900&q=80" alt="Salon Vega">
+      <div class="hero-tab">6 služeb ✦</div>
+    </div>
+  </div>
+</section>
+
+<section id="sluzby">
+  <div class="wrap">
+    <div class="sec-head"><span class="kicker">Služby</span><h2>Co u nás najdete</h2><p>Šest služeb, jedno místo, spousta péče.</p></div>
+    <div class="cards">
+      <div class="card"><div class="ic">🌸</div><h3>Kosmetika</h3><p>Ošetření pleti a péče na míru.</p></div>
+      <div class="card"><div class="ic">💄</div><h3>Make-up &amp; visage</h3><p>Denní i slavnostní líčení.</p></div>
+      <div class="card"><div class="ic">💆</div><h3>Masáže &amp; lymfodrenáž</h3><p>Uvolnění, relaxace a detox.</p></div>
+      <div class="card"><div class="ic">✂️</div><h3>Kadeřnictví</h3><p>Dámské, pánské i dětské střihy.</p></div>
+      <div class="card"><div class="ic">🦶</div><h3>Pedikúra</h3><p>Péče o nohy a nehty.</p></div>
+      <div class="card"><div class="ic">👁️</div><h3>Řasy &amp; obočí</h3><p>Prodlužování řas a úprava obočí.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Svatba nebo velká událost?</h2>
+    <a href="mailto:salonVega@seznam.cz" class="btn">Objednat balíček péče</a>
+  </div>
+</section>
+
+<section id="osalonu">
+  <div class="wrap sec-head" style="text-align:center;margin:0 auto">
+    <span class="kicker">O salonu</span>
+    <h2>Salon, kde na sebe najdete čas</h2>
+    <p style="max-width:640px;margin:14px auto 0">Salon Vega najdete v obchodním domě Orel v Orlové-Lutyni. Spojujeme kosmetiku, vlasy, masáže i péči o nehty, abyste všechno stihli na jednom místě. Přijďte se k nám nadechnout — o zbytek se postaráme.</p>
+  </div>
+</section>
+
+<section class="visit" id="kontakt">
+  <div class="wrap visit-grid">
+    <div>
+      <span class="kicker">Otevírací doba</span>
+      <h2 style="font-size:30px;margin:12px 0 18px">Kdy se objednat</h2>
+      <ul class="hours">
+        <li><b>Pondělí – Pátek</b><span>8:00 – 18:00</span></li>
+        <li><b>Sobota</b><span>Po domluvě</span></li>
+        <li><b>Neděle</b><span>Zavřeno</span></li>
+      </ul>
+    </div>
+    <div class="cbox">
+      <span class="kicker">Kontakt</span>
+      <h3 style="margin-top:10px">Objednejte se</h3>
+      <a href="tel:+420596512736" class="big">596 512 736</a>
+      <div class="row"><b>E-mail:</b> salonVega@seznam.cz</div>
+      <div class="row"><b>Adresa:</b> OD Orel, F. S. Tůmy 1200, Orlová-Lutyně</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fb">Salon <span>Vega</span></div>
+  <div>OD Orel, F. S. Tůmy 1200, Orlová-Lutyně · 596 512 736</div>
+  <div class="made">Ukázkový web zdarma připravilo studio <a href="mailto:kontakt@lanthir.cz">Lanthir</a>. Chcete ho spustit naostro? Ozvěte se.</div>
+</footer>
+
+<script>
+  const b=document.getElementById('burger'),m=document.getElementById('menu');
+  b.addEventListener('click',()=>m.classList.toggle('open'));
+  m.addEventListener('click',e=>{if(e.target.tagName==='A')m.classList.remove('open')});
+</script>
+</body>
+</html>

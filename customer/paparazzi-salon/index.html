@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Paparazzi beauty salon — Český Těšín</title>
+<meta name="description" content="Paparazzi beauty salon v Českém Těšíně — kadeřnictví a solárium. Buďte ve středu pozornosti. Hlavní 22.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d0b0f; --panel:#181419; --ink:#f4eef2; --soft:#a99fa8; --line:rgba(244,238,242,.12);
+    --pink:#ff2e88; --pink-dk:#e01f74; --lime:#d6ff3f;
+    --display:'Archivo Black',system-ui,sans-serif; --sans:'Archivo',system-ui,sans-serif; --max:1180px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-weight:300;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+  img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--display);font-weight:400;line-height:.96;letter-spacing:-.02em}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:15px 30px;border-radius:999px;background:var(--pink);color:#fff;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:.25s}
+  .btn:hover{background:var(--pink-dk);transform:translateY(-2px)}
+  .btn-out{background:transparent;color:var(--ink);border:1px solid var(--line)}.btn-out:hover{border-color:var(--pink);color:var(--pink)}
+  .kicker{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);font-weight:600}
+
+  .demo-ribbon{position:fixed;top:0;left:0;right:0;z-index:100;background:linear-gradient(90deg,#3a2ee0,#1fcded);color:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.03em;text-align:center;padding:7px 16px;font-weight:600}
+  .demo-ribbon a{text-decoration:underline}
+
+  header.nav{position:sticky;top:0;z-index:90;background:rgba(13,11,15,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .brand{font-family:var(--display);font-size:20px;letter-spacing:-.02em}
+  .brand span{color:var(--pink)}
+  .nav-links{display:flex;gap:30px;list-style:none;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+  .nav-links a{color:var(--soft);transition:.2s}.nav-links a:hover{color:var(--ink)}
+  .nav-cta{font-size:12px;padding:11px 20px}
+  .burger{display:none;background:none;border:0;font-size:24px;cursor:pointer;color:var(--ink)}
+
+  .hero{position:relative;overflow:hidden;padding:clamp(50px,8vw,90px) 0}
+  .hero h1{font-size:clamp(60px,15vw,180px);text-transform:uppercase}
+  .hero h1 .o{color:transparent;-webkit-text-stroke:2px var(--pink)}
+  .hero-row{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:20px}
+  .hero-row p{max-width:400px;color:var(--soft);font-size:18px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .marq{margin-top:40px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;overflow:hidden;white-space:nowrap}
+  .marq span{font-family:var(--display);font-size:26px;text-transform:uppercase;margin:0 20px;color:var(--panel);-webkit-text-stroke:1px var(--soft)}
+  .marq b{color:var(--pink);-webkit-text-stroke:0}
+
+  section{padding:clamp(58px,8vw,100px) 0}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+  .card{background:var(--panel);border-radius:18px;padding:34px 28px;transition:.25s;border:1px solid transparent}
+  .card:hover{border-color:var(--pink);transform:translateY(-5px)}
+  .card .n{font-family:var(--display);font-size:15px;color:var(--pink)}
+  .card h3{font-size:24px;margin:8px 0;text-transform:none}
+  .card p{color:var(--soft);font-size:14px}
+  .card .p{color:var(--lime);font-weight:600;margin-top:12px;font-size:15px}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .split img{width:100%;height:100%;min-height:400px;object-fit:cover;border-radius:18px}
+  .split h2{font-size:clamp(32px,4.8vw,52px);text-transform:uppercase;margin:14px 0 18px}
+  .split p{color:var(--soft);margin-bottom:14px}
+
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  .hours{list-style:none}.hours li{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);color:var(--soft)}.hours li b{color:var(--ink);font-weight:500}
+  .cbox{border:2px solid var(--pink);border-radius:20px;padding:40px}
+  .cbox h3{font-size:26px;margin-bottom:16px;text-transform:uppercase}
+  .cbox .big{font-family:var(--display);font-size:34px;color:var(--pink);display:block;margin:6px 0 16px}
+  .cbox .row{color:var(--soft);font-size:15px;margin-bottom:8px}.cbox .row b{color:var(--ink)}
+
+  footer{border-top:1px solid var(--line);text-align:center;padding:44px 24px;font-size:13px;color:var(--soft)}
+  footer .fb{font-family:var(--display);font-size:22px;color:var(--ink);text-transform:uppercase;margin-bottom:8px}
+  footer .fb span{color:var(--pink)}
+  footer .made{margin-top:14px;opacity:.85}footer .made a{color:#a99bff;text-decoration:underline}
+
+  @media(max-width:860px){
+    .nav-links,.nav-cta{display:none}.burger{display:block}
+    .split,.visit-grid{grid-template-columns:1fr;gap:32px}
+    .nav-links.open{display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px 24px;gap:16px;border-bottom:1px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+<div class="demo-ribbon">✨ Nezávazný náhled webu od studia <b>Lanthir</b> — líbí se vám? <a href="mailto:kontakt@lanthir.cz">Napište nám</a> a spustíme ho.</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="brand">PAPARAZZI<span>.</span></a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#sluzby">Služby</a></li>
+      <li><a href="#osalonu">Salon</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="tel:+420773935293" class="btn nav-cta">Objednat se</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="kicker">Beauty salon · Český Těšín</span>
+    <h1>BU<span class="o">Ď</span>TE<br>VID<span class="o">Ě</span>T</h1>
+    <div class="hero-row">
+      <p>Kadeřnictví a solárium, po kterém se za vámi budou otáčet. Vaše proměna, náš reflektor.</p>
+      <div class="hero-actions">
+        <a href="tel:+420773935293" class="btn">Objednat termín</a>
+        <a href="#sluzby" class="btn btn-out">Ceník</a>
+      </div>
+    </div>
+  </div>
+  <div class="marq"><div class="wrap"><span>STŘIH <b>·</b> BARVA <b>·</b> SOLÁRIUM <b>·</b> STYLING <b>·</b> PROMĚNA <b>·</b> STŘIH <b>·</b> BARVA <b>·</b> SOLÁRIUM</span></div></div>
+</section>
+
+<section id="sluzby">
+  <div class="wrap">
+    <span class="kicker">Ceník</span>
+    <h2 style="font-size:clamp(30px,4.4vw,46px);text-transform:uppercase;margin:12px 0 40px">Co u nás zvládnete</h2>
+    <div class="cards">
+      <div class="card"><div class="n">01</div><h3>Dámský střih</h3><p>Mytí, střih, foukaná a styling na míru.</p><div class="p">od 350 Kč</div></div>
+      <div class="card"><div class="n">02</div><h3>Barva &amp; melír</h3><p>Odvážné i přirozené proměny barvy.</p><div class="p">od 690 Kč</div></div>
+      <div class="card"><div class="n">03</div><h3>Pánský střih</h3><p>Moderní střihy a úprava vousů.</p><div class="p">od 230 Kč</div></div>
+      <div class="card"><div class="n">04</div><h3>Solárium</h3><p>Rovnoměrné opálení po celý rok.</p><div class="p">od 8 Kč/min</div></div>
+      <div class="card"><div class="n">05</div><h3>Společenský účes</h3><p>Na plesy, svatby a velké večery.</p><div class="p">od 550 Kč</div></div>
+      <div class="card"><div class="n">06</div><h3>Styling &amp; poradenství</h3><p>Poradíme účes, který vám sedne.</p><div class="p">zdarma</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="osalonu">
+  <div class="wrap split">
+    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=900&q=80" alt="Salon Paparazzi">
+    <div>
+      <span class="kicker">O salonu</span>
+      <h2>Reflektor patří vám</h2>
+      <p>V Paparazzi jde o vás. Sedněte si do křesla, my se postaráme o zbytek — a vy odejdete jako z titulní stránky.</p>
+      <p>Spojujeme kadeřnictví a solárium, takže se o sebe postaráte na jednom místě, v centru Českého Těšína.</p>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap visit-grid">
+    <div>
+      <span class="kicker">Otevírací doba</span>
+      <h2 style="font-size:30px;text-transform:uppercase;margin:12px 0 18px">Kdy dorazit</h2>
+      <ul class="hours">
+        <li><b>Pondělí – Pátek</b><span>9:00 – 19:00</span></li>
+        <li><b>Sobota</b><span>9:00 – 13:00</span></li>
+        <li><b>Neděle</b><span>Zavřeno</span></li>
+      </ul>
+    </div>
+    <div class="cbox">
+      <span class="kicker">Kontakt</span>
+      <h3 style="margin-top:10px">Objednejte se</h3>
+      <a href="tel:+420773935293" class="big">773 935 293</a>
+      <div class="row"><b>E-mail:</b> morcinekdaniel@seznam.cz</div>
+      <div class="row"><b>Adresa:</b> Hlavní 22, Český Těšín</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fb">PAPARAZZI<span>.</span></div>
+  <div>Hlavní 22, Český Těšín · 773 935 293</div>
+  <div class="made">Ukázkový web zdarma připravilo studio <a href="mailto:kontakt@lanthir.cz">Lanthir</a>. Chcete ho spustit naostro? Ozvěte se.</div>
+</footer>
+
+<script>
+  const b=document.getElementById('burger'),m=document.getElementById('menu');
+  b.addEventListener('click',()=>m.classList.toggle('open'));
+  m.addEventListener('click',e=>{if(e.target.tagName==='A')m.classList.remove('open')});
+</script>
+</body>
+</html>

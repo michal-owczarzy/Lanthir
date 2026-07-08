@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Studio Victory — Petřvald u Karviné | Kosmetika & péče o vlasy</title>
+<meta name="description" content="Kosmetické Studio Victory v Petřvaldě u Karviné (Katarína Kozelská). Péče o pleť, vlasová kosmetika, líčení a poradenství. U samoobsluhy 1691.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f4ee; --ink:#1e2b25; --soft:#5f6d64; --line:rgba(30,43,37,.13);
+    --emerald:#1f4d3d; --emerald-dk:#163a2e; --gold:#c0a05a; --gold-dk:#a5873f; --ivory:#f2ede2;
+    --serif:'Prata',Georgia,serif; --sans:'Jost',system-ui,sans-serif; --max:1120px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-weight:300;background:var(--bg);color:var(--ink);line-height:1.7;overflow-x:hidden}
+  img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 26px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 32px;border-radius:0;background:var(--emerald);color:var(--ivory);font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:.25s}
+  .btn:hover{background:var(--emerald-dk)}
+  .btn-out{background:transparent;color:var(--ink);border:1px solid var(--gold);color:var(--gold-dk)}.btn-out:hover{background:var(--gold);color:#fff}
+  .kicker{font-size:11px;letter-spacing:.36em;text-transform:uppercase;color:var(--gold-dk);font-weight:500}
+
+  .demo-ribbon{position:fixed;top:0;left:0;right:0;z-index:100;background:linear-gradient(90deg,#3a2ee0,#1fcded);color:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.03em;text-align:center;padding:7px 16px;font-weight:500}
+  .demo-ribbon a{text-decoration:underline;font-weight:600}
+
+  header.nav{position:sticky;top:0;z-index:90;background:rgba(247,244,238,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:78px}
+  .brand{font-family:var(--serif);font-size:24px;letter-spacing:.04em}
+  .brand span{color:var(--gold-dk)}
+  .nav-links{display:flex;gap:32px;list-style:none;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+  .nav-links a{color:var(--soft);transition:.2s}.nav-links a:hover{color:var(--ink)}
+  .nav-cta{font-size:11px;padding:11px 22px}
+  .burger{display:none;background:none;border:0;font-size:24px;cursor:pointer;color:var(--ink)}
+
+  .hero{position:relative;min-height:86vh;display:flex;align-items:center;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background:linear-gradient(90deg,rgba(31,77,61,.9) 30%,rgba(31,77,61,.45)),url('https://images.unsplash.com/photo-1596178065887-1198b6148b2b?auto=format&fit=crop&w=1600&q=80') center/cover;background-color:#1a3329}
+  .hero-in{position:relative;color:var(--ivory);max-width:600px;padding:70px 0}
+  .hero .frame{border:1px solid rgba(192,160,90,.5);padding:44px 40px}
+  .hero h1{font-size:clamp(42px,6.4vw,80px);margin:14px 0 16px}
+  .hero h1 em{font-style:italic;color:var(--gold)}
+  .hero p{font-size:18px;color:#d3ddd5;max-width:400px;margin-bottom:28px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .hero .btn-out{color:var(--ivory);border-color:rgba(242,237,226,.5)}.hero .btn-out:hover{background:var(--ivory);color:var(--emerald)}
+
+  section{padding:clamp(58px,8vw,100px) 0}
+  .sec-head{text-align:center;max-width:560px;margin:0 auto 50px}
+  .sec-head h2{font-size:clamp(32px,4.8vw,50px);margin:12px 0}.sec-head p{color:var(--soft)}
+  .svc-list{max-width:740px;margin:0 auto}
+  .sv{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
+  .sv h3{font-size:22px}.sv p{color:var(--soft);font-size:14px;margin-top:3px}
+  .sv .p{font-family:var(--serif);font-size:20px;color:var(--gold-dk);white-space:nowrap}
+
+  .about{background:var(--emerald);color:var(--ivory)}
+  .about .wrap{padding:clamp(58px,8vw,100px) 26px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .about img{width:100%;height:100%;min-height:360px;object-fit:cover}
+  .about h2{color:var(--ivory);font-size:clamp(30px,4.4vw,46px);margin-bottom:18px}
+  .about h2 em{font-style:italic;color:var(--gold)}
+  .about p{color:#c7d2ca;margin-bottom:14px}
+
+  .visit{background:var(--ivory)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  .hours{list-style:none}.hours li{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);color:var(--soft)}.hours li b{color:var(--ink);font-weight:500}
+  .cbox{background:var(--ink);color:var(--ivory);padding:40px}
+  .cbox h3{color:#fff;font-size:26px;margin-bottom:14px}
+  .cbox .big{font-family:var(--serif);font-size:30px;color:var(--gold);display:block;margin:8px 0 16px}
+  .cbox .row{font-size:15px;margin-bottom:8px;color:#c7d2ca}.cbox .row b{color:#fff}
+
+  footer{background:var(--emerald-dk);color:#9fb0a6;text-align:center;padding:44px 26px;font-size:13px}
+  footer .fb{font-family:var(--serif);font-size:24px;color:var(--ivory);margin-bottom:8px;letter-spacing:.04em}
+  footer .made{margin-top:14px;opacity:.85}footer .made a{color:#cbb7ff;text-decoration:underline}
+
+  @media(max-width:860px){
+    .nav-links,.nav-cta{display:none}.burger{display:block}
+    .hero .frame{padding:32px 24px}
+    .about .wrap,.visit-grid{grid-template-columns:1fr;gap:32px}
+    .nav-links.open{display:flex;position:absolute;top:78px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px 26px;gap:16px;border-bottom:1px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+<div class="demo-ribbon">🌿 Nezávazný náhled webu od studia <b>Lanthir</b> — líbí se vám? <a href="mailto:kontakt@lanthir.cz">Napište nám</a> a spustíme ho.</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="brand">Studio <span>Victory</span></a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#sluzby">Služby</a></li>
+      <li><a href="#omne">O mně</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="tel:+420603831435" class="btn nav-cta">Objednat se</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-in">
+    <div class="frame">
+      <span class="kicker" style="color:var(--gold)">Kosmetika · Petřvald u Karviné</span>
+      <h1>Vaše krása,<br>naše <em>vítězství</em></h1>
+      <p>Profesionální péče o pleť a vlasy s osobním přístupem. Ať odejdete o něco sebevědomější.</p>
+      <div class="hero-actions">
+        <a href="tel:+420603831435" class="btn">Objednat termín</a>
+        <a href="#sluzby" class="btn btn-out">Ceník</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sluzby">
+  <div class="wrap">
+    <div class="sec-head"><span class="kicker">Ceník</span><h2>Naše služby</h2><p>Orientační ceny — vše přizpůsobíme vašim potřebám.</p></div>
+    <div class="svc-list">
+      <div class="sv"><div><h3>Kompletní ošetření pleti</h3><p>čištění, masáž, maska na míru</p></div><span class="p">od 590</span></div>
+      <div class="sv"><div><h3>Kosmetické poradenství</h3><p>výběr správné péče pro vaši pleť</p></div><span class="p">od 250</span></div>
+      <div class="sv"><div><h3>Péče o vlasy &amp; vlasová kosmetika</h3><p>výživa a regenerace vlasů</p></div><span class="p">od 350</span></div>
+      <div class="sv"><div><h3>Úprava a barvení obočí</h3><p>tvarování podle tváře</p></div><span class="p">od 200</span></div>
+      <div class="sv"><div><h3>Líčení</h3><p>denní i slavnostní make-up</p></div><span class="p">od 450</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="omne">
+  <div class="wrap">
+    <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80" alt="Studio Victory">
+    <div>
+      <span class="kicker" style="color:var(--gold)">O mně</span>
+      <h2>Péče, která má <em>třídu</em></h2>
+      <p>Jmenuji se Katarína a kosmetice se věnuji s láskou a precizností. Věřím, že skutečná péče začíná nasloucháním — proto se každé klientce věnuji individuálně.</p>
+      <p>Přijďte si do Studia Victory odpočinout a odejděte zářivější, než jste přišla.</p>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="kontakt">
+  <div class="wrap visit-grid">
+    <div>
+      <span class="kicker">Otevírací doba</span>
+      <h2 style="font-size:32px;margin:12px 0 18px">Kdy se objednat</h2>
+      <ul class="hours">
+        <li><b>Pondělí – Pátek</b><span>9:00 – 18:00</span></li>
+        <li><b>Sobota</b><span>Po domluvě</span></li>
+        <li><b>Neděle</b><span>Zavřeno</span></li>
+      </ul>
+    </div>
+    <div class="cbox">
+      <span class="kicker" style="color:var(--gold)">Kontakt</span>
+      <h3 style="margin-top:10px">Objednejte se</h3>
+      <a href="tel:+420603831435" class="big">603 831 435</a>
+      <div class="row"><b>E-mail:</b> katarina.kozelska@seznam.cz</div>
+      <div class="row"><b>Adresa:</b> U samoobsluhy 1691, 735 41 Petřvald u Karviné</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fb">Studio Victory</div>
+  <div>U samoobsluhy 1691, 735 41 Petřvald u Karviné · 603 831 435</div>
+  <div class="made">Ukázkový web zdarma připravilo studio <a href="mailto:kontakt@lanthir.cz">Lanthir</a>. Chcete ho spustit naostro? Ozvěte se.</div>
+</footer>
+
+<script>
+  const b=document.getElementById('burger'),m=document.getElementById('menu');
+  b.addEventListener('click',()=>m.classList.toggle('open'));
+  m.addEventListener('click',e=>{if(e.target.tagName==='A')m.classList.remove('open')});
+</script>
+</body>
+</html>

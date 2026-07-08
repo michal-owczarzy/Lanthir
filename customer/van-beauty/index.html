@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Van Beauty Salon — Havířov | Nehty & řasy</title>
+<meta name="description" content="Van Beauty Salon v Havířově. Nehtová modeláž, prodlužování řas, permanentní make-up. Krásné nehty a řasy na jednom místě.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#181021; --panel:#221731; --ink:#f3edf8; --soft:#b0a3c0; --line:rgba(243,237,248,.12);
+    --pink:#ff4fa3; --pink-dk:#ec3a90; --gold:#e9c46a; --violet:#8a5cf6;
+    --display:'Sora',system-ui,sans-serif; --sans:'Poppins',system-ui,sans-serif; --max:1140px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-weight:300;background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden}
+  img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.05;letter-spacing:-.02em}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:15px 30px;border-radius:14px;background:linear-gradient(120deg,var(--pink),var(--violet));color:#fff;font-family:var(--display);font-size:14px;font-weight:600;transition:.25s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(255,79,163,.3)}
+  .btn-out{background:transparent;color:var(--ink);border:1px solid var(--line)}.btn-out:hover{border-color:var(--pink)}
+  .kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
+
+  .demo-ribbon{position:fixed;top:0;left:0;right:0;z-index:100;background:linear-gradient(90deg,#3a2ee0,#1fcded);color:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.03em;text-align:center;padding:7px 16px;font-weight:500}
+  .demo-ribbon a{text-decoration:underline;font-weight:600}
+
+  header.nav{position:sticky;top:0;z-index:90;background:rgba(24,16,33,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .brand{font-family:var(--display);font-size:21px;font-weight:800}
+  .brand span{background:linear-gradient(120deg,var(--pink),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .nav-links{display:flex;gap:30px;list-style:none;font-size:14px}
+  .nav-links a{color:var(--soft);transition:.2s}.nav-links a:hover{color:var(--ink)}
+  .nav-cta{font-size:13px;padding:11px 20px}
+  .burger{display:none;background:none;border:0;font-size:24px;cursor:pointer;color:var(--ink)}
+
+  .hero{position:relative;overflow:hidden;padding:clamp(50px,8vw,90px) 0}
+  .hero::before{content:'';position:absolute;top:-20%;right:-10%;width:55%;height:120%;background:radial-gradient(circle,rgba(138,92,246,.3),transparent 65%);pointer-events:none}
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+  .hero h1{font-size:clamp(44px,7vw,84px);margin:18px 0 18px}
+  .hero h1 span{background:linear-gradient(120deg,var(--pink),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{font-size:18px;color:var(--soft);max-width:420px;margin-bottom:28px}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .hero-img{position:relative}
+  .hero-img img{border-radius:24px;width:100%;height:460px;object-fit:cover}
+  .hero-chip{position:absolute;bottom:-14px;left:-14px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 20px}
+  .hero-chip b{font-family:var(--display);color:var(--gold);font-size:20px;display:block}
+  .hero-chip span{font-size:12px;color:var(--soft)}
+
+  section{padding:clamp(56px,8vw,96px) 0}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+  .card{background:var(--panel);border-radius:20px;padding:32px 28px;transition:.25s;border:1px solid transparent}
+  .card:hover{border-color:var(--pink);transform:translateY(-5px)}
+  .card .ic{font-size:28px;margin-bottom:12px}
+  .card h3{font-size:22px;font-weight:700}
+  .card .p{color:var(--gold);font-weight:600;margin:8px 0}
+  .card p{color:var(--soft);font-size:14px}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .split img{width:100%;height:100%;min-height:400px;object-fit:cover;border-radius:22px}
+  .split h2{font-size:clamp(30px,4.4vw,48px);margin:14px 0 18px}
+  .split p{color:var(--soft);margin-bottom:14px}
+
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  .hours{list-style:none}.hours li{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);color:var(--soft)}.hours li b{color:var(--ink);font-weight:500}
+  .cbox{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:38px}
+  .cbox h3{font-size:24px;margin-bottom:14px}
+  .cbox .big{font-family:var(--display);font-size:30px;background:linear-gradient(120deg,var(--pink),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent;display:block;margin:6px 0 14px}
+  .cbox .row{color:var(--soft);font-size:15px;margin-bottom:8px}.cbox .row b{color:var(--ink)}
+
+  footer{border-top:1px solid var(--line);text-align:center;padding:44px 24px;font-size:13px;color:var(--soft)}
+  footer .fb{font-family:var(--display);font-size:22px;color:var(--ink);margin-bottom:8px}
+  footer .made{margin-top:14px;opacity:.85}footer .made a{color:#c0a3ff;text-decoration:underline}
+
+  @media(max-width:860px){
+    .nav-links,.nav-cta{display:none}.burger{display:block}
+    .hero-grid,.split,.visit-grid{grid-template-columns:1fr;gap:32px}.hero-img img{height:380px}
+    .nav-links.open{display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px 24px;gap:16px;border-bottom:1px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+<div class="demo-ribbon">💅 Nezávazný náhled webu od studia <b>Lanthir</b> — líbí se vám? <a href="mailto:kontakt@lanthir.cz">Napište nám</a> a spustíme ho.</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="brand">Van <span>Beauty</span></a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#sluzby">Služby</a></li>
+      <li><a href="#ostudiu">Studio</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="mailto:kieu_vanc10@yahoo.com" class="btn nav-cta">Objednat se</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">Nehty &amp; řasy · Havířov</span>
+      <h1>Nehty a řasy<br><span>k dokonalosti</span></h1>
+      <p>Nehtová modeláž, prodlužování řas a permanentní make-up. Vyjdete od nás jako proměněná.</p>
+      <div class="hero-actions">
+        <a href="mailto:kieu_vanc10@yahoo.com" class="btn">Objednat termín</a>
+        <a href="#sluzby" class="btn btn-out">Ceník</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=80" alt="Nehtová modeláž">
+      <div class="hero-chip"><b>V Permon</b><span>najdete nás v centru</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="sluzby">
+  <div class="wrap">
+    <span class="kicker">Ceník</span>
+    <h2 style="font-size:clamp(30px,4.4vw,46px);margin:12px 0 40px">Co u nás zkrásníte</h2>
+    <div class="cards">
+      <div class="card"><div class="ic">💅</div><h3>Nehtová modeláž</h3><div class="p">od 550 Kč</div><p>Gelové nehty, zdobení a nail art na míru.</p></div>
+      <div class="card"><div class="ic">👁️</div><h3>Prodlužování řas</h3><div class="p">od 690 Kč</div><p>Řasa po řase i objemové techniky.</p></div>
+      <div class="card"><div class="ic">✨</div><h3>Permanentní make-up</h3><div class="p">od 1 900 Kč</div><p>Obočí, oční linky i rty, které vydrží.</p></div>
+      <div class="card"><div class="ic">💖</div><h3>Manikúra</h3><div class="p">od 350 Kč</div><p>Úprava nehtů a lak shellac.</p></div>
+      <div class="card"><div class="ic">🌙</div><h3>Lash lifting</h3><div class="p">od 590 Kč</div><p>Přirozené zvednutí vlastních řas.</p></div>
+      <div class="card"><div class="ic">🎀</div><h3>Úprava obočí</h3><div class="p">od 250 Kč</div><p>Tvarování a barvení podle tváře.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="ostudiu">
+  <div class="wrap split">
+    <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=900&q=80" alt="Van Beauty studio">
+    <div>
+      <span class="kicker">O studiu</span>
+      <h2>Krása je v detailu</h2>
+      <p>Ve Van Beauty milujeme, když od nás odcházíte s úsměvem a nehty, na které se nemůžete přestat dívat. Pracujeme precizně a s láskou k detailu.</p>
+      <p>Najdete nás v centru Havířova v Permonu — zastavte se a nechte se hýčkat.</p>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap visit-grid">
+    <div>
+      <span class="kicker">Otevírací doba</span>
+      <h2 style="font-size:30px;margin:12px 0 18px">Kdy dorazit</h2>
+      <ul class="hours">
+        <li><b>Pondělí – Pátek</b><span>9:00 – 19:00</span></li>
+        <li><b>Sobota</b><span>9:00 – 14:00</span></li>
+        <li><b>Neděle</b><span>Zavřeno</span></li>
+      </ul>
+      <p style="margin-top:16px;color:var(--soft)">Objednávky přijímáme přes e-mail nebo Facebook.</p>
+    </div>
+    <div class="cbox">
+      <span class="kicker">Kontakt</span>
+      <h3 style="margin-top:10px">Objednejte se</h3>
+      <a href="mailto:kieu_vanc10@yahoo.com" class="big" style="font-size:22px">kieu_vanc10@yahoo.com</a>
+      <div class="row"><b>Kde:</b> V Permon, Havířov</div>
+      <div class="row"><b>Sociální sítě:</b> Van Beauty Salon (Facebook)</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fb">Van Beauty Salon</div>
+  <div>V Permon · Havířov</div>
+  <div class="made">Ukázkový web zdarma připravilo studio <a href="mailto:kontakt@lanthir.cz">Lanthir</a>. Chcete ho spustit naostro? Ozvěte se.</div>
+</footer>
+
+<script>
+  const b=document.getElementById('burger'),m=document.getElementById('menu');
+  b.addEventListener('click',()=>m.classList.toggle('open'));
+  m.addEventListener('click',e=>{if(e.target.tagName==='A')m.classList.remove('open')});
+</script>
+</body>
+</html>

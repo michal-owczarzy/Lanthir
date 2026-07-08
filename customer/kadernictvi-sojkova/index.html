@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Kadeřnictví Petra Sojková — Český Těšín</title>
+<meta name="description" content="Kadeřnictví Petra Sojková v Českém Těšíně. Dámské, pánské i dětské střihy, barvení, foukaná a společenské účesy. Pod Zvonek 1835/28.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#efece6; --ink:#1a1917; --soft:#726d64; --line:rgba(26,25,23,.13);
+    --accent:#b3502f; --accent-dk:#933f22; --panel:#f7f5f1; --char:#26241f;
+    --display:'Syne',system-ui,sans-serif; --sans:'Inter',system-ui,sans-serif; --max:1140px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-weight:300;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+  img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.02;letter-spacing:-.02em}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 26px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:15px 28px;border-radius:0;background:var(--char);color:#fff;font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:.25s}
+  .btn:hover{background:var(--accent)}
+  .btn-out{background:transparent;color:var(--ink);border:1px solid var(--ink)}.btn-out:hover{background:var(--ink);color:#fff}
+  .kicker{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:500}
+
+  .demo-ribbon{position:fixed;top:0;left:0;right:0;z-index:100;background:linear-gradient(90deg,#3a2ee0,#1fcded);color:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.03em;text-align:center;padding:7px 16px;font-weight:500}
+  .demo-ribbon a{text-decoration:underline;font-weight:600}
+
+  header.nav{position:sticky;top:0;z-index:90;background:rgba(239,236,230,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{font-family:var(--display);font-size:20px;font-weight:800;letter-spacing:-.01em}
+  .brand span{color:var(--accent)}
+  .nav-links{display:flex;gap:30px;list-style:none;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+  .nav-links a{color:var(--soft);transition:.2s}.nav-links a:hover{color:var(--ink)}
+  .nav-cta{font-size:12px;padding:11px 20px}
+  .burger{display:none;background:none;border:0;font-size:24px;cursor:pointer;color:var(--ink)}
+
+  .hero{padding:clamp(50px,8vw,90px) 0 0}
+  .hero h1{font-size:clamp(52px,11vw,140px);text-transform:uppercase;letter-spacing:-.04em}
+  .hero h1 span{display:block;color:var(--accent)}
+  .hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-top:22px}
+  .hero-row p{max-width:400px;color:var(--soft);font-size:18px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-img{margin-top:40px;height:clamp(280px,44vw,500px);background:url('https://images.unsplash.com/photo-1519415387722-a1c3bbef716c?auto=format&fit=crop&w=1600&q=80') center 30%/cover;background-color:#ccc}
+
+  section{padding:clamp(58px,8vw,100px) 0}
+  .two{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:start}
+  .two h2{font-size:clamp(30px,4.4vw,46px)}
+  .price-list{display:grid;gap:0}
+  .pl{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line)}
+  .pl h3{font-size:21px;font-weight:700}.pl p{color:var(--soft);font-size:13px;margin-top:3px}
+  .pl .p{font-family:var(--display);font-weight:700;font-size:20px;color:var(--accent)}
+
+  .about{background:var(--char);color:#e8e4dc}
+  .about .wrap{padding:clamp(58px,8vw,100px) 26px}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .about-grid img{width:100%;height:100%;min-height:340px;object-fit:cover}
+  .about h2{color:#fff;font-size:clamp(30px,4.4vw,46px);margin-bottom:18px}
+  .about p{color:#b9b2a6;margin-bottom:14px}
+  .about .stat{display:flex;gap:40px;margin-top:26px}
+  .about .stat b{font-family:var(--display);font-size:34px;color:var(--accent);display:block}
+  .about .stat span{font-size:13px;color:#9d968b}
+
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  .hours{list-style:none}.hours li{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);color:var(--soft)}.hours li b{color:var(--ink);font-weight:500}
+  .cbox{background:var(--panel);border:1px solid var(--line);padding:38px}
+  .cbox h3{font-size:24px;margin-bottom:14px}
+  .cbox .big{font-family:var(--display);font-size:34px;color:var(--accent);display:block;margin:6px 0 16px;font-weight:800}
+  .cbox .row{color:var(--soft);font-size:15px;margin-bottom:8px}.cbox .row b{color:var(--ink)}
+
+  footer{background:var(--char);color:#9d968b;text-align:center;padding:44px 26px;font-size:13px}
+  footer .fb{font-family:var(--display);font-size:20px;color:#fff;text-transform:uppercase;margin-bottom:8px}
+  footer .made{margin-top:14px;opacity:.85}footer .made a{color:#cbb7ff;text-decoration:underline}
+
+  @media(max-width:860px){
+    .nav-links,.nav-cta{display:none}.burger{display:block}
+    .two,.about-grid,.visit-grid{grid-template-columns:1fr;gap:32px}
+    .nav-links.open{display:flex;position:absolute;top:74px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px 26px;gap:16px;border-bottom:1px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+<div class="demo-ribbon">✂️ Nezávazný náhled webu od studia <b>Lanthir</b> — líbí se vám? <a href="mailto:kontakt@lanthir.cz">Napište nám</a> a spustíme ho.</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="brand">SOJKOVÁ<span>.</span></a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#cenik">Ceník</a></li>
+      <li><a href="#osobne">O mně</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="tel:+420775227909" class="btn nav-cta">Objednat se</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="kicker">Kadeřnictví · Český Těšín</span>
+    <h1>Petra<span>Sojková</span></h1>
+    <div class="hero-row">
+      <p>Dámské, pánské i dětské kadeřnictví s citem pro detail. Střih, který vám sedne a vydrží.</p>
+      <div class="hero-actions">
+        <a href="tel:+420775227909" class="btn">Objednat termín</a>
+        <a href="#cenik" class="btn btn-out">Ceník</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap"><div class="hero-img"></div></div>
+</section>
+
+<section id="cenik">
+  <div class="wrap two">
+    <div>
+      <span class="kicker">Ceník</span>
+      <h2>Služby &amp;<br>ceny</h2>
+      <p style="color:var(--soft);margin-top:14px;font-size:15px">Orientační ceny. Konečnou cenu vždy odvíjím od délky vlasů a náročnosti.</p>
+    </div>
+    <div class="price-list">
+      <div class="pl"><div><h3>Dámský střih + foukaná</h3><p>mytí, střih, styling</p></div><div class="p">od 390</div></div>
+      <div class="pl"><div><h3>Barvení</h3><p>barva na míru včetně úpravy</p></div><div class="p">od 650</div></div>
+      <div class="pl"><div><h3>Melír / přelivy</h3><p>prosvětlení a tónování</p></div><div class="p">od 850</div></div>
+      <div class="pl"><div><h3>Pánský střih</h3><p>střih a styling</p></div><div class="p">od 250</div></div>
+      <div class="pl"><div><h3>Dětský střih</h3><p>pro nejmenší</p></div><div class="p">od 160</div></div>
+      <div class="pl"><div><h3>Společenský účes</h3><p>svatby a oslavy</p></div><div class="p">od 600</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="osobne">
+  <div class="wrap about-grid">
+    <img src="https://images.unsplash.com/photo-1560869713-da86bd4b8df9?auto=format&fit=crop&w=900&q=80" alt="Kadeřnictví">
+    <div>
+      <span class="kicker">O mně</span>
+      <h2>Vlasy jako řemeslo</h2>
+      <p>Kadeřničině se věnuji řadu let a stále se učím nové techniky. Ke každému klientovi přistupuji individuálně — poradím střih i barvu, které podtrhnou, jak vypadáte.</p>
+      <p>Najdete mě v klidném prostředí na adrese Pod Zvonek, kousek od centra.</p>
+      <div class="stat"><div><b>15+</b><span>let za nůžkami</span></div><div><b>1:1</b><span>čas jen pro vás</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap visit-grid">
+    <div>
+      <span class="kicker">Otevírací doba</span>
+      <h2 style="font-size:32px;margin:12px 0 18px">Kdy se objednat</h2>
+      <ul class="hours">
+        <li><b>Pondělí – Pátek</b><span>8:00 – 18:00</span></li>
+        <li><b>Sobota</b><span>Po domluvě</span></li>
+        <li><b>Neděle</b><span>Zavřeno</span></li>
+      </ul>
+    </div>
+    <div class="cbox">
+      <span class="kicker">Kontakt</span>
+      <h3 style="margin-top:10px">Objednejte se</h3>
+      <a href="tel:+420775227909" class="big">775 227 909</a>
+      <div class="row"><b>E-mail:</b> pesojkova@seznam.cz</div>
+      <div class="row"><b>Adresa:</b> Pod Zvonek 1835/28, 737 01 Český Těšín</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fb">Kadeřnictví Petra Sojková</div>
+  <div>Pod Zvonek 1835/28, 737 01 Český Těšín · 775 227 909</div>
+  <div class="made">Ukázkový web zdarma připravilo studio <a href="mailto:kontakt@lanthir.cz">Lanthir</a>. Chcete ho spustit naostro? Ozvěte se.</div>
+</footer>
+
+<script>
+  const b=document.getElementById('burger'),m=document.getElementById('menu');
+  b.addEventListener('click',()=>m.classList.toggle('open'));
+  m.addEventListener('click',e=>{if(e.target.tagName==='A')m.classList.remove('open')});
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Kadeřnictví U Boubelky — Karviná | Přijedeme za vámi domů</title>
+<meta name="description" content="Kadeřnictví U Boubelky, Karviná-Ráj. Dámské, pánské i dětské střihy, prodlužování vlasů. Ostříháme vás i u vás doma. Školská 16/426.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fff6f0; --ink:#3d2b26; --soft:#8a7268; --line:rgba(61,43,38,.12);
+    --coral:#f2765a; --coral-dk:#dd5c40; --peach:#ffe4d4; --mint:#78c2a4; --cream:#fffaf6;
+    --display:'Quicksand',system-ui,sans-serif; --sans:'Nunito',system-ui,sans-serif; --max:1100px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-weight:400;background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden}
+  img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.1}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 26px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:15px 30px;border-radius:999px;background:var(--coral);color:#fff;font-size:14px;font-weight:700;letter-spacing:.02em;transition:.25s;font-family:var(--display)}
+  .btn:hover{background:var(--coral-dk);transform:translateY(-2px)}
+  .btn-out{background:#fff;color:var(--ink);border:2px solid var(--peach)}.btn-out:hover{border-color:var(--coral)}
+  .kicker{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--coral);font-weight:700;font-family:var(--display)}
+
+  .demo-ribbon{position:fixed;top:0;left:0;right:0;z-index:100;background:linear-gradient(90deg,#3a2ee0,#1fcded);color:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.03em;text-align:center;padding:7px 16px;font-weight:700}
+  .demo-ribbon a{text-decoration:underline}
+
+  header.nav{position:sticky;top:0;z-index:90;background:rgba(255,246,240,.92);backdrop-filter:blur(8px)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .brand{font-family:var(--display);font-size:21px;font-weight:700;display:flex;align-items:center;gap:8px}
+  .brand .dot{width:30px;height:30px;background:var(--coral);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px}
+  .nav-links{display:flex;gap:28px;list-style:none;font-size:15px;font-weight:600}
+  .nav-links a{color:var(--soft);transition:.2s}.nav-links a:hover{color:var(--coral)}
+  .nav-cta{font-size:13px;padding:11px 22px}
+  .burger{display:none;background:none;border:0;font-size:24px;cursor:pointer;color:var(--ink)}
+
+  .hero{padding:clamp(40px,7vw,70px) 0 0}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+  .hero h1{font-size:clamp(40px,6vw,72px);margin:16px 0 18px}
+  .hero h1 span{color:var(--coral)}
+  .hero p{font-size:18px;color:var(--soft);max-width:400px;margin-bottom:26px}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .hero-img{position:relative}
+  .hero-img img{border-radius:30px;width:100%;height:460px;object-fit:cover;background:#f0d9cc}
+  .pill{position:absolute;background:#fff;border-radius:999px;padding:12px 18px;font-family:var(--display);font-weight:700;font-size:14px;box-shadow:0 10px 26px rgba(61,43,38,.12);display:flex;align-items:center;gap:8px}
+  .pill.a{top:24px;left:-14px}.pill.b{bottom:30px;right:-10px;color:var(--coral)}
+
+  .home-band{background:var(--mint);color:#fff;margin-top:56px}
+  .home-band .wrap{padding:40px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .home-band h2{font-size:clamp(22px,3vw,32px);color:#fff}
+  .home-band p{color:#eafaf3;margin-top:4px}
+  .home-band .btn{background:#fff;color:var(--mint)}
+
+  section{padding:clamp(56px,8vw,96px) 0}
+  .sec-head{text-align:center;max-width:560px;margin:0 auto 44px}
+  .sec-head h2{font-size:clamp(30px,4.4vw,46px);margin:10px 0}
+  .sec-head p{color:var(--soft)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+  .card{background:#fff;border-radius:22px;padding:30px 26px;text-align:center;transition:.25s}
+  .card:hover{transform:translateY(-5px);box-shadow:0 16px 34px rgba(61,43,38,.1)}
+  .card .ic{font-size:30px}.card h3{font-size:21px;margin:10px 0 6px}
+  .card .price{color:var(--coral);font-weight:700;font-family:var(--display)}
+  .card p{color:var(--soft);font-size:14px;margin-top:8px}
+
+  .visit{background:var(--peach)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+  .hours{list-style:none}.hours li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(61,43,38,.12);color:var(--soft)}.hours li b{color:var(--ink);font-weight:700;font-family:var(--display)}
+  .cbox{background:#fff;border-radius:24px;padding:38px}
+  .cbox h3{font-size:24px;margin-bottom:12px}
+  .cbox .big{font-family:var(--display);font-size:32px;color:var(--coral);display:block;margin:6px 0 14px;font-weight:700}
+  .cbox .row{color:var(--soft);font-size:15px;margin-bottom:8px}.cbox .row b{color:var(--ink)}
+
+  footer{background:var(--ink);color:#c9b3aa;text-align:center;padding:44px 26px;font-size:13px}
+  footer .fb{font-family:var(--display);font-size:20px;color:#fff;margin-bottom:8px}
+  footer .made{margin-top:14px;opacity:.85}footer .made a{color:#e2b7ff;text-decoration:underline}
+
+  @media(max-width:860px){
+    .nav-links,.nav-cta{display:none}.burger{display:block}
+    .hero-grid,.visit-grid{grid-template-columns:1fr;gap:30px}.hero-img img{height:380px}
+    .nav-links.open{display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px 26px;gap:16px;border-bottom:1px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+<div class="demo-ribbon">💇 Nezávazný náhled webu od studia <b>Lanthir</b> — líbí se vám? <a href="mailto:kontakt@lanthir.cz">Napište nám</a> a spustíme ho.</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="brand"><span class="dot">✁</span> U Boubelky</a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#sluzby">Služby</a></li>
+      <li><a href="#doma">Ke mně i k vám</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="mailto:UBoubelky@seznam.cz" class="btn nav-cta">Objednat se</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">Kadeřnictví · Karviná-Ráj</span>
+      <h1>Ostříháme vás<br><span>s úsměvem</span></h1>
+      <p>Dámské, pánské i dětské kadeřnictví a prodlužování vlasů. A když nemůžete přijít vy, přijedeme my — až k vám domů.</p>
+      <div class="hero-actions">
+        <a href="mailto:UBoubelky@seznam.cz" class="btn">Objednat termín</a>
+        <a href="#sluzby" class="btn btn-out">Ceník</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=900&q=80" alt="Kadeřnictví">
+      <div class="pill a">😊 4,9 spokojenost</div>
+      <div class="pill b">🚗 Jezdíme i domů</div>
+    </div>
+  </div>
+</section>
+
+<div class="home-band">
+  <div class="wrap">
+    <div>
+      <h2>Nemůžete se dostat do salonu?</h2>
+      <p>Ostříháme vás pohodlně u vás doma — ideální pro seniory a maminky.</p>
+    </div>
+    <a href="mailto:UBoubelky@seznam.cz" class="btn">Domluvit návštěvu</a>
+  </div>
+</div>
+
+<section id="sluzby">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Ceník</span>
+      <h2>Co pro vás uděláme</h2>
+      <p>Ceny jsou orientační. U vás doma připočítáme malý příplatek za dopravu.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="ic">💇‍♀️</div><h3>Dámský střih</h3><div class="price">od 320 Kč</div><p>Mytí, střih a foukaná.</p></div>
+      <div class="card"><div class="ic">💇‍♂️</div><h3>Pánský střih</h3><div class="price">od 200 Kč</div><p>Rychle a přesně.</p></div>
+      <div class="card"><div class="ic">🧒</div><h3>Dětský střih</h3><div class="price">od 140 Kč</div><p>Trpělivě a v pohodě.</p></div>
+      <div class="card"><div class="ic">✨</div><h3>Prodlužování vlasů</h3><div class="price">od 1 500 Kč</div><p>Delší a hustší vlasy.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="kontakt">
+  <div class="wrap visit-grid">
+    <div>
+      <span class="kicker">Otevírací doba</span>
+      <h2 style="font-size:30px;margin:12px 0 18px">Kdy se objednat</h2>
+      <ul class="hours">
+        <li><b>Pondělí – Pátek</b><span>8:00 – 18:00</span></li>
+        <li><b>Sobota</b><span>Po domluvě</span></li>
+        <li><b>Neděle</b><span>Zavřeno</span></li>
+      </ul>
+      <p style="margin-top:16px;color:var(--soft)" id="doma">Návštěvy u vás doma domlouváme individuálně podle času.</p>
+    </div>
+    <div class="cbox">
+      <span class="kicker">Kontakt</span>
+      <h3 style="margin-top:10px">Objednejte se</h3>
+      <a href="mailto:UBoubelky@seznam.cz" class="big" style="font-size:24px">UBoubelky@seznam.cz</a>
+      <div class="row"><b>E-mail:</b> UBoubelky@seznam.cz</div>
+      <div class="row"><b>Adresa:</b> Školská 16/426, 734 01 Karviná-Ráj</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fb">Kadeřnictví U Boubelky</div>
+  <div>Školská 16/426, 734 01 Karviná-Ráj</div>
+  <div class="made">Ukázkový web zdarma připravilo studio <a href="mailto:kontakt@lanthir.cz">Lanthir</a>. Chcete ho spustit naostro? Ozvěte se.</div>
+</footer>
+
+<script>
+  const b=document.getElementById('burger'),m=document.getElementById('menu');
+  b.addEventListener('click',()=>m.classList.toggle('open'));
+  m.addEventListener('click',e=>{if(e.target.tagName==='A')m.classList.remove('open')});
+</script>
+</body>
+</html>

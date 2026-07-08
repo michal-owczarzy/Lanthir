@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Autoservis & pneuservis Václav Motyka — Třinec</title>
+<meta name="description" content="Autoservis a pneuservis Václav Motyka, Třinec - Dolní Líštná. Opravy, diagnostika, pneuservis, TPMS, ozonizace, renovace světel, příprava na STK.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14161a; --panel:#1c1f25; --ink:#eef1f5; --soft:#98a2b0; --line:rgba(238,241,245,.1);
+    --red:#e23b2e; --red-dk:#c22a1f; --steel:#5a6b7a; --amber:#f2b134;
+    --display:'Oswald',system-ui,sans-serif; --sans:'Inter',system-ui,sans-serif; --max:1180px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-weight:300;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+  img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:4px;background:var(--red);color:#fff;font-family:var(--display);font-size:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:.25s}
+  .btn:hover{background:var(--red-dk)}
+  .btn-out{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn-out:hover{border-color:var(--red);color:#fff}
+  .kicker{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);font-weight:700;font-family:var(--sans)}
+
+  .demo-ribbon{position:fixed;top:0;left:0;right:0;z-index:100;background:linear-gradient(90deg,#3a2ee0,#1fcded);color:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.03em;text-align:center;padding:7px 16px;font-weight:500}
+  .demo-ribbon a{text-decoration:underline;font-weight:600}
+
+  header.nav{position:sticky;top:0;z-index:90;background:rgba(20,22,26,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .brand{font-family:var(--display);font-size:22px;font-weight:700;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+  .brand .tag{width:34px;height:34px;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:18px}
+  .nav-links{display:flex;gap:30px;list-style:none;font-size:14px}
+  .nav-links a{color:var(--soft);transition:.2s}.nav-links a:hover{color:var(--ink)}
+  .nav-cta{font-size:14px;padding:11px 20px}
+  .burger{display:none;background:none;border:0;font-size:24px;cursor:pointer;color:var(--ink)}
+
+  .hero{position:relative;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,22,26,.96) 30%,rgba(20,22,26,.55)),url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1600&q=80') right center/cover;background-color:#0f1114}
+  .hero-in{position:relative;padding:clamp(70px,11vw,140px) 0}
+  .hero h1{font-size:clamp(48px,9vw,104px);max-width:14ch}
+  .hero h1 span{color:var(--red)}
+  .hero p{font-size:19px;color:var(--soft);max-width:460px;margin:20px 0 32px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .stripe{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+  .stripe span{border:1px solid var(--line);border-radius:4px;padding:8px 14px;font-size:13px;color:var(--soft);font-family:var(--display);letter-spacing:.05em;text-transform:uppercase}
+
+  section{padding:clamp(60px,8vw,104px) 0}
+  .sec-head h2{font-size:clamp(34px,5vw,58px)}
+  .sec-head{margin-bottom:44px}.sec-head p{color:var(--soft);margin-top:12px;max-width:520px}
+  .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:16px}
+  .svc{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:30px 26px;transition:.25s;position:relative}
+  .svc:hover{border-color:var(--red);transform:translateY(-4px)}
+  .svc .no{font-family:var(--display);font-size:14px;color:var(--red);font-weight:700;letter-spacing:.1em}
+  .svc h3{font-size:23px;margin:6px 0 8px}
+  .svc p{color:var(--soft);font-size:14px}
+
+  .band{background:var(--red);color:#fff}
+  .band .wrap{padding:44px 24px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .band h2{font-size:clamp(26px,3.6vw,40px)}
+  .band .btn{background:#fff;color:var(--red)}.band .btn:hover{background:#111;color:#fff}
+
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  .hours{list-style:none}
+  .hours li{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);color:var(--soft)}
+  .hours li b{color:var(--ink);font-weight:500}
+  .cbox{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:38px}
+  .cbox h3{font-size:26px;margin-bottom:16px}
+  .cbox .big{font-family:var(--display);font-size:38px;color:var(--amber);display:block;margin:6px 0 16px;font-weight:700}
+  .cbox .row{color:var(--soft);font-size:15px;margin-bottom:8px}.cbox .row b{color:var(--ink)}
+
+  footer{border-top:1px solid var(--line);text-align:center;padding:40px 24px;font-size:13px;color:var(--soft)}
+  footer .fb{font-family:var(--display);font-size:22px;color:var(--ink);text-transform:uppercase;margin-bottom:8px}
+  footer .made{margin-top:14px;opacity:.85}footer .made a{color:#8fb4ff;text-decoration:underline}
+
+  @media(max-width:860px){
+    .nav-links,.nav-cta{display:none}.burger{display:block}
+    .hero-bg{background:linear-gradient(180deg,rgba(20,22,26,.8),rgba(20,22,26,.96)),url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1200&q=80') center/cover}
+    .visit-grid{grid-template-columns:1fr;gap:34px}
+    .nav-links.open{display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px 24px;gap:16px;border-bottom:1px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+<div class="demo-ribbon">🔧 Nezávazný náhled webu od studia <b>Lanthir</b> — líbí se vám? <a href="mailto:kontakt@lanthir.cz">Napište nám</a> a spustíme ho.</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="brand"><span class="tag">M</span> Autoservis Motyka</a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#sluzby">Služby</a></li>
+      <li><a href="#proc">Proč my</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="tel:+420605928000" class="btn nav-cta">Objednat termín</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-in">
+    <span class="kicker">Třinec · Dolní Líštná</span>
+    <h1>Vaše auto v <span>dobrých rukou</span></h1>
+    <p>Autoservis a pneuservis, kde se domluvíte lidsky a odjedete s jistotou. Opravy, diagnostika, pneumatiky i příprava na STK.</p>
+    <div class="hero-actions">
+      <a href="tel:+420605928000" class="btn">Objednat termín</a>
+      <a href="#sluzby" class="btn btn-out">Naše služby</a>
+    </div>
+    <div class="stripe"><span>Diagnostika</span><span>Pneuservis</span><span>TPMS senzory</span><span>Ozonizace</span><span>Renovace světel</span><span>Příprava na STK</span></div>
+  </div>
+</section>
+
+<section id="sluzby">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Co umíme</span>
+      <h2>Kompletní péče o vůz</h2>
+      <p>Od běžné údržby po diagnostiku závad. Pracujeme rychle, čistě a vždy vám předem řekneme cenu.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc"><div class="no">01</div><h3>Opravy &amp; údržba</h3><p>Servisní prohlídky, výměny oleje, brzdy, tlumiče, rozvody.</p></div>
+      <div class="svc"><div class="no">02</div><h3>Počítačová diagnostika</h3><p>Načtení a vyhodnocení chybových kódů, řešení závad.</p></div>
+      <div class="svc"><div class="no">03</div><h3>Pneuservis</h3><p>Přezutí, vyvážení, opravy pneumatik a uskladnění.</p></div>
+      <div class="svc"><div class="no">04</div><h3>TPMS senzory</h3><p>Servis a programování senzorů tlaku v pneumatikách.</p></div>
+      <div class="svc"><div class="no">05</div><h3>Ozonizace &amp; renovace světel</h3><p>Čištění klimatizace ozonem, leštění zašlých světlometů.</p></div>
+      <div class="svc"><div class="no">06</div><h3>Příprava na STK</h3><p>Prohlídka vozu a odstranění závad před technickou kontrolou.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="proc" style="background:var(--panel)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Proč Motyka</span>
+      <h2>Servis, kterému rozumíte</h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc" style="background:var(--bg)"><h3 style="color:var(--amber)">Férová cena</h3><p>Cenu domluvíme předem. Žádná překvapení na faktuře.</p></div>
+      <div class="svc" style="background:var(--bg)"><h3 style="color:var(--amber)">Rychlý termín</h3><p>Nečekáte týdny. Domluvíme se telefonicky a jedeme.</p></div>
+      <div class="svc" style="background:var(--bg)"><h3 style="color:var(--amber)">Poctivá práce</h3><p>Uděláme jen to, co je opravdu potřeba. A vysvětlíme proč.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Potřebujete opravit auto?</h2>
+    <a href="tel:+420605928000" class="btn">📞 Zavolejte nám</a>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap visit-grid">
+    <div>
+      <span class="kicker">Otevírací doba</span>
+      <h2 style="font-size:36px;margin:12px 0 18px">Kdy nás najdete</h2>
+      <ul class="hours">
+        <li><b>Pondělí – Pátek</b><span>7:30 – 17:00</span></li>
+        <li><b>Sobota</b><span>Po domluvě</span></li>
+        <li><b>Neděle</b><span>Zavřeno</span></li>
+      </ul>
+      <p style="margin-top:18px;color:var(--soft)">Doporučujeme objednat se předem telefonicky.</p>
+    </div>
+    <div class="cbox">
+      <span class="kicker">Kontakt</span>
+      <h3 style="margin-top:12px">Ozvěte se</h3>
+      <a href="tel:+420605928000" class="big">605 928 000</a>
+      <div class="row"><b>E-mail:</b> autopneubox@seznam.cz</div>
+      <div class="row"><b>Adresa:</b> Dolní Líštná 437, 739 61 Třinec</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fb">Autoservis &amp; pneuservis Václav Motyka</div>
+  <div>Dolní Líštná 437, 739 61 Třinec</div>
+  <div class="made">Ukázkový web zdarma připravilo studio <a href="mailto:kontakt@lanthir.cz">Lanthir</a>. Chcete ho spustit naostro? Ozvěte se.</div>
+</footer>
+
+<script>
+  const b=document.getElementById('burger'),m=document.getElementById('menu');
+  b.addEventListener('click',()=>m.classList.toggle('open'));
+  m.addEventListener('click',e=>{if(e.target.tagName==='A')m.classList.remove('open')});
+</script>
+</body>
+</html>

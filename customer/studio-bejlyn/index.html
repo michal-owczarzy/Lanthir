@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Studio Bejlyn — Třinec | Nehty, vlasy, kosmetika</title>
+<meta name="description" content="Studio Bejlyn v Třinci — nehtová modeláž, kadeřnictví, pedikúra, manikúra, masáže, make-up, řasy a obočí. Vše na jednom místě od roku 2010.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fff8f4; --ink:#3a2740; --soft:#7c6a83; --line:rgba(58,39,64,.12);
+    --plum:#7b3f8f; --plum-dk:#653275; --peach:#ff9e6d; --teal:#3fb8a8; --yellow:#ffd166; --cream:#fffdf9;
+    --display:'Fredoka',system-ui,sans-serif; --sans:'Nunito Sans',system-ui,sans-serif; --max:1120px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-weight:400;background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden}
+  img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.08}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 26px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 30px;border-radius:999px;background:var(--plum);color:#fff;font-family:var(--display);font-size:15px;font-weight:600;transition:.25s}
+  .btn:hover{background:var(--plum-dk);transform:translateY(-2px)}
+  .btn-out{background:#fff;color:var(--ink);border:2px solid var(--line)}.btn-out:hover{border-color:var(--plum)}
+  .kicker{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);font-weight:700;font-family:var(--display)}
+
+  .demo-ribbon{position:fixed;top:0;left:0;right:0;z-index:100;background:linear-gradient(90deg,#3a2ee0,#1fcded);color:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.03em;text-align:center;padding:7px 16px;font-weight:700}
+  .demo-ribbon a{text-decoration:underline}
+
+  header.nav{position:sticky;top:0;z-index:90;background:rgba(255,248,244,.92);backdrop-filter:blur(8px)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .brand{font-family:var(--display);font-size:23px;font-weight:700;color:var(--plum)}
+  .brand span{color:var(--peach)}
+  .nav-links{display:flex;gap:28px;list-style:none;font-size:15px;font-weight:600}
+  .nav-links a{color:var(--soft);transition:.2s}.nav-links a:hover{color:var(--plum)}
+  .nav-cta{font-size:14px;padding:10px 22px}
+  .burger{display:none;background:none;border:0;font-size:24px;cursor:pointer;color:var(--ink)}
+
+  .hero{padding:clamp(44px,7vw,80px) 0}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+  .hero .est{display:inline-block;background:var(--yellow);color:#5a3d10;font-family:var(--display);font-weight:600;font-size:13px;padding:5px 14px;border-radius:999px}
+  .hero h1{font-size:clamp(42px,6.2vw,76px);margin:16px 0 16px}
+  .hero h1 span{color:var(--plum)}
+  .hero p{font-size:18px;color:var(--soft);max-width:410px;margin-bottom:26px}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .hero-img{position:relative}
+  .hero-img img{border-radius:28px;width:100%;height:440px;object-fit:cover}
+  .blob{position:absolute;border-radius:50%;z-index:-1}
+  .blob.a{width:120px;height:120px;background:var(--teal);top:-20px;right:20px;opacity:.5}
+  .blob.b{width:90px;height:90px;background:var(--peach);bottom:-16px;left:-16px;opacity:.6}
+
+  section{padding:clamp(54px,8vw,94px) 0}
+  .sec-head{text-align:center;max-width:560px;margin:0 auto 42px}
+  .sec-head h2{font-size:clamp(30px,4.4vw,46px);margin:10px 0}
+  .sec-head p{color:var(--soft)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .card{background:var(--cream);border-radius:20px;padding:28px 24px;transition:.25s;border:2px solid transparent}
+  .card:hover{transform:translateY(-5px);border-color:var(--peach)}
+  .card .ic{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:12px}
+  .card h3{font-size:20px}.card p{color:var(--soft);font-size:14px;margin-top:6px}
+
+  .strip{background:var(--plum);color:#fff}
+  .strip .wrap{padding:42px 26px;display:flex;flex-wrap:wrap;justify-content:center;gap:14px 34px;text-align:center}
+  .strip span{font-family:var(--display);font-weight:600;font-size:17px;display:flex;align-items:center;gap:8px}
+
+  .visit{background:var(--cream)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+  .hours{list-style:none}.hours li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);color:var(--soft)}.hours li b{color:var(--ink);font-weight:700;font-family:var(--display)}
+  .cbox{background:#fff;border-radius:24px;padding:38px;border:2px solid var(--line)}
+  .cbox h3{font-size:24px;margin-bottom:12px}
+  .cbox .big{font-family:var(--display);font-size:30px;color:var(--plum);display:block;margin:6px 0 14px}
+  .cbox .row{color:var(--soft);font-size:15px;margin-bottom:8px}.cbox .row b{color:var(--ink)}
+
+  footer{background:var(--ink);color:#c3b0cb;text-align:center;padding:44px 26px;font-size:13px}
+  footer .fb{font-family:var(--display);font-size:22px;color:#fff;margin-bottom:8px}
+  footer .fb span{color:var(--peach)}
+  footer .made{margin-top:14px;opacity:.85}footer .made a{color:#e2b7ff;text-decoration:underline}
+
+  @media(max-width:860px){
+    .nav-links,.nav-cta{display:none}.burger{display:block}
+    .hero-grid,.visit-grid{grid-template-columns:1fr;gap:30px}.hero-img img{height:360px}
+    .nav-links.open{display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px 26px;gap:16px;border-bottom:1px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+<div class="demo-ribbon">💖 Nezávazný náhled webu od studia <b>Lanthir</b> — líbí se vám? <a href="mailto:kontakt@lanthir.cz">Napište nám</a> a spustíme ho.</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="brand">Studio <span>Bejlyn</span></a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#sluzby">Služby</a></li>
+      <li><a href="#ostudiu">O studiu</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="mailto:beata.cieslarova@seznam.cz" class="btn nav-cta">Objednat se</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="est">✦ od roku 2010</span>
+      <h1>Krása <span>na jednom</span> místě</h1>
+      <p>Nehty, vlasy, kosmetika i masáže pod jednou střechou v Třinci. Přijďte se nechat hýčkat od hlavy až k patě.</p>
+      <div class="hero-actions">
+        <a href="mailto:beata.cieslarova@seznam.cz" class="btn">Objednat termín</a>
+        <a href="#sluzby" class="btn btn-out">Naše služby</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <span class="blob a"></span><span class="blob b"></span>
+      <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=900&q=80" alt="Studio Bejlyn">
+    </div>
+  </div>
+</section>
+
+<section id="sluzby">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Služby</span>
+      <h2>Vše, co potřebujete</h2>
+      <p>Od nehtů po vlasy — a mezi tím spousta hýčkání.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="ic" style="background:#ffe4d4">💅</div><h3>Nehtová modeláž</h3><p>Gelové nehty, gel-lak, nail art.</p></div>
+      <div class="card"><div class="ic" style="background:#d9f2ee">✂️</div><h3>Kadeřnictví</h3><p>Kadeřnictví Gold přímo ve studiu.</p></div>
+      <div class="card"><div class="ic" style="background:#f0e2f5">🦶</div><h3>Pedikúra &amp; manikúra</h3><p>Péče o ruce i nohy.</p></div>
+      <div class="card"><div class="ic" style="background:#fff0cc">💆</div><h3>Masáže</h3><p>Uvolnění a relaxace.</p></div>
+      <div class="card"><div class="ic" style="background:#ffe4d4">💄</div><h3>Make-up</h3><p>Na svatby, plesy a focení.</p></div>
+      <div class="card"><div class="ic" style="background:#d9f2ee">👁️</div><h3>Řasy &amp; obočí</h3><p>Prodlužování řas a úprava obočí.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="wrap">
+    <span>💖 Přátelské prostředí</span><span>✦ 15 let zkušeností</span><span>🏠 Vše na jednom místě</span><span>😊 Spokojené klientky</span>
+  </div>
+</section>
+
+<section id="ostudiu">
+  <div class="wrap sec-head" style="margin-bottom:0">
+    <span class="kicker">O studiu</span>
+    <h2>Jsme tu pro vaši pohodu</h2>
+    <p style="max-width:640px;margin:14px auto 0">Studio Bejlyn funguje v Třinci od roku 2010. Za tu dobu se u nás vystřídaly stovky spokojených klientek. Ať přijdete na nehty, vlasy nebo si jen odpočinout — postaráme se o vás s úsměvem a bez spěchu.</p>
+  </div>
+</section>
+
+<section class="visit" id="kontakt">
+  <div class="wrap visit-grid">
+    <div>
+      <span class="kicker">Otevírací doba</span>
+      <h2 style="font-size:30px;margin:12px 0 18px">Kdy se objednat</h2>
+      <ul class="hours">
+        <li><b>Pondělí – Pátek</b><span>8:00 – 18:00</span></li>
+        <li><b>Sobota</b><span>Po domluvě</span></li>
+        <li><b>Neděle</b><span>Zavřeno</span></li>
+      </ul>
+      <p style="margin-top:16px;color:var(--soft)">Objednávky telefonicky, e-mailem nebo přes Facebook.</p>
+    </div>
+    <div class="cbox">
+      <span class="kicker">Kontakt</span>
+      <h3 style="margin-top:10px">Objednejte se</h3>
+      <a href="tel:+420606452637" class="big">606 452 637</a>
+      <div class="row"><b>E-mail:</b> beata.cieslarova@seznam.cz</div>
+      <div class="row"><b>Adresa:</b> Staroměstská 258, 739 61 Třinec (1. patro)</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fb">Studio <span>Bejlyn</span></div>
+  <div>Staroměstská 258, 739 61 Třinec · 606 452 637</div>
+  <div class="made">Ukázkový web zdarma připravilo studio <a href="mailto:kontakt@lanthir.cz">Lanthir</a>. Chcete ho spustit naostro? Ozvěte se.</div>
+</footer>
+
+<script>
+  const b=document.getElementById('burger'),m=document.getElementById('menu');
+  b.addEventListener('click',()=>m.classList.toggle('open'));
+  m.addEventListener('click',e=>{if(e.target.tagName==='A')m.classList.remove('open')});
+</script>
+</body>
+</html>

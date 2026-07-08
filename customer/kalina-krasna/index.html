@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Kalina Krásna — Havířov | Kosmetika, nehty, vlasy</title>
+<meta name="description" content="Studio Kalina Krásna v Havířově-Šumbarku. Kosmetika, nehtová modeláž, kadeřnictví, permanentní make-up, řasy, manikúra a pedikúra. Školní 68/28.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f3f9; --ink:#2c2438; --soft:#6f6580; --line:rgba(44,36,56,.12);
+    --lilac:#8a6bc0; --lilac-dk:#71539f; --sage:#9fbf9a; --blush:#ecdcf0; --cream:#fcfaff;
+    --serif:'EB Garamond',Georgia,serif; --sans:'Jost',system-ui,sans-serif; --max:1120px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-weight:300;background:var(--bg);color:var(--ink);line-height:1.7;overflow-x:hidden}
+  img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.14}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 26px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 32px;border-radius:999px;background:var(--lilac);color:#fff;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:.25s}
+  .btn:hover{background:var(--lilac-dk)}
+  .btn-out{background:transparent;color:var(--ink);border:1px solid var(--line)}.btn-out:hover{border-color:var(--lilac);color:var(--lilac)}
+  .kicker{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--sage);font-weight:600;filter:brightness(.85)}
+
+  .demo-ribbon{position:fixed;top:0;left:0;right:0;z-index:100;background:linear-gradient(90deg,#3a2ee0,#1fcded);color:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.03em;text-align:center;padding:7px 16px;font-weight:500}
+  .demo-ribbon a{text-decoration:underline;font-weight:600}
+
+  header.nav{position:sticky;top:0;z-index:90;background:rgba(246,243,249,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:78px}
+  .brand{font-family:var(--serif);font-size:26px;font-weight:500;letter-spacing:.02em}
+  .brand span{color:var(--lilac)}
+  .nav-links{display:flex;gap:32px;list-style:none;font-size:13px;letter-spacing:.05em;text-transform:uppercase}
+  .nav-links a{color:var(--soft);transition:.2s}.nav-links a:hover{color:var(--ink)}
+  .nav-cta{font-size:11px;padding:11px 22px}
+  .burger{display:none;background:none;border:0;font-size:24px;cursor:pointer;color:var(--ink)}
+
+  .hero{position:relative;overflow:hidden}
+  .hero::before{content:'❋';position:absolute;font-size:340px;color:var(--blush);top:-80px;right:-40px;z-index:0;line-height:1}
+  .hero-in{position:relative;z-index:1;text-align:center;max-width:720px;margin:0 auto;padding:clamp(56px,9vw,110px) 26px}
+  .hero h1{font-size:clamp(46px,8vw,96px);margin:16px 0 18px}
+  .hero h1 em{font-style:italic;color:var(--lilac)}
+  .hero p{font-size:19px;color:var(--soft);max-width:500px;margin:0 auto 30px}
+  .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  section{padding:clamp(56px,8vw,96px) 0}
+  .sec-head{text-align:center;max-width:560px;margin:0 auto 46px}
+  .sec-head h2{font-size:clamp(32px,4.8vw,50px);margin:12px 0}.sec-head p{color:var(--soft)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .card{background:var(--cream);border-radius:18px;padding:30px 26px;transition:.25s;text-align:center;border:1px solid transparent}
+  .card:hover{border-color:var(--lilac);transform:translateY(-5px)}
+  .card .ic{font-size:28px;margin-bottom:10px}
+  .card h3{font-size:22px}.card p{color:var(--soft);font-size:14px;margin-top:6px}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .split img{width:100%;height:100%;min-height:400px;object-fit:cover;border-radius:200px 12px 200px 12px}
+  .split h2{font-size:clamp(30px,4.4vw,46px);margin:14px 0 18px}
+  .split p{color:var(--soft);margin-bottom:14px}
+  .feats{list-style:none;margin-top:20px;display:grid;gap:10px}
+  .feats li{padding-left:26px;position:relative}.feats li::before{content:'❋';position:absolute;left:0;color:var(--lilac)}
+
+  .visit{background:var(--blush)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  .hours{list-style:none}.hours li{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(44,36,56,.12);color:var(--soft)}.hours li b{color:var(--ink);font-weight:500}
+  .cbox{background:var(--ink);color:var(--blush);padding:40px;border-radius:20px}
+  .cbox h3{color:#fff;font-size:26px;margin-bottom:14px}
+  .cbox .big{font-family:var(--serif);font-size:32px;color:var(--lilac);filter:brightness(1.4);display:block;margin:8px 0 16px}
+  .cbox .row{font-size:15px;margin-bottom:8px;color:#d5c9db}.cbox .row b{color:#fff}
+
+  footer{background:var(--ink);color:#a89bb5;text-align:center;padding:44px 26px;font-size:13px}
+  footer .fb{font-family:var(--serif);font-size:24px;color:var(--blush);margin-bottom:8px;letter-spacing:.03em}
+  footer .made{margin-top:14px;opacity:.85}footer .made a{color:#cbb7ff;text-decoration:underline}
+
+  @media(max-width:860px){
+    .nav-links,.nav-cta{display:none}.burger{display:block}
+    .split,.visit-grid{grid-template-columns:1fr;gap:32px}
+    .nav-links.open{display:flex;position:absolute;top:78px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px 26px;gap:16px;border-bottom:1px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+<div class="demo-ribbon">❋ Nezávazný náhled webu od studia <b>Lanthir</b> — líbí se vám? <a href="mailto:kontakt@lanthir.cz">Napište nám</a> a spustíme ho.</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="brand">Kalina <span>Krásna</span></a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#sluzby">Služby</a></li>
+      <li><a href="#ostudiu">O studiu</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="tel:+420605744044" class="btn nav-cta">Objednat se</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-in">
+    <span class="kicker">Studio krásy · Havířov-Šumbark</span>
+    <h1>Rozkvete<br>vaše <em>krása</em></h1>
+    <p>Kosmetika, nehty, vlasy i permanentní make-up na jednom místě. Přijďte se k nám nechat rozkvést.</p>
+    <div class="hero-actions">
+      <a href="tel:+420605744044" class="btn">Objednat termín</a>
+      <a href="#sluzby" class="btn btn-out">Naše služby</a>
+    </div>
+  </div>
+</section>
+
+<section id="sluzby">
+  <div class="wrap">
+    <div class="sec-head"><span class="kicker">Služby</span><h2>Co pro vás rozkvete</h2><p>Kompletní péče o krásu — od pleti po konečky vlasů.</p></div>
+    <div class="cards">
+      <div class="card"><div class="ic">🌸</div><h3>Kosmetika</h3><p>Ošetření a péče o pleť.</p></div>
+      <div class="card"><div class="ic">💅</div><h3>Nehtová modeláž</h3><p>Gelové nehty a nail art.</p></div>
+      <div class="card"><div class="ic">✂️</div><h3>Kadeřnictví</h3><p>Střihy, barvení a styling.</p></div>
+      <div class="card"><div class="ic">✨</div><h3>Permanentní make-up</h3><p>Obočí, linky i rty.</p></div>
+      <div class="card"><div class="ic">👁️</div><h3>Řasy</h3><p>Prodlužování a lash lifting.</p></div>
+      <div class="card"><div class="ic">🤍</div><h3>Manikúra &amp; pedikúra</h3><p>Péče o ruce i nohy.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="ostudiu">
+  <div class="wrap split">
+    <img src="https://images.unsplash.com/photo-1633681926035-ec1ac984418a?auto=format&fit=crop&w=900&q=80" alt="Kalina Krásna studio">
+    <div>
+      <span class="kicker">O studiu</span>
+      <h2>Krása, která kvete</h2>
+      <p>Kalina Krásna je útulné studio krásy v Havířově-Šumbarku, kde se o vás postaráme od hlavy až k patě. Ať přijdete na nehty, pleť nebo novou barvu vlasů — odejdete rozkvetlá.</p>
+      <ul class="feats">
+        <li>Vše pro krásu na jednom místě</li>
+        <li>Kvalitní kosmetika a materiály</li>
+        <li>Příjemné a klidné prostředí</li>
+        <li>Osobní přístup ke každé klientce</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="kontakt">
+  <div class="wrap visit-grid">
+    <div>
+      <span class="kicker">Otevírací doba</span>
+      <h2 style="font-size:32px;margin:12px 0 18px">Kdy se objednat</h2>
+      <ul class="hours">
+        <li><b>Pondělí – Pátek</b><span>9:00 – 19:00</span></li>
+        <li><b>Sobota</b><span>Po domluvě</span></li>
+        <li><b>Neděle</b><span>Zavřeno</span></li>
+      </ul>
+    </div>
+    <div class="cbox">
+      <span class="kicker" style="color:#d5c9db">Kontakt</span>
+      <h3 style="margin-top:10px">Objednejte se</h3>
+      <a href="tel:+420605744044" class="big">605 744 044</a>
+      <div class="row"><b>E-mail:</b> kalinakrasna@seznam.cz</div>
+      <div class="row"><b>Adresa:</b> Školní 68/28, Havířov-Šumbark</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fb">Kalina Krásna</div>
+  <div>Školní 68/28, Havířov-Šumbark · 605 744 044</div>
+  <div class="made">Ukázkový web zdarma připravilo studio <a href="mailto:kontakt@lanthir.cz">Lanthir</a>. Chcete ho spustit naostro? Ozvěte se.</div>
+</footer>
+
+<script>
+  const b=document.getElementById('burger'),m=document.getElementById('menu');
+  b.addEventListener('click',()=>m.classList.toggle('open'));
+  m.addEventListener('click',e=>{if(e.target.tagName==='A')m.classList.remove('open')});
+</script>
+</body>
+</html>
