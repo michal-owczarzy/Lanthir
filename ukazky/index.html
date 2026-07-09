@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Ukázky naší práce — Lanthir | Weby pro místní firmy</title>
+<meta name="description" content="Ukázky webových stránek, které Lanthir tvoří pro místní firmy — kadeřnictví, restaurace, kosmetika, autoservisy a další. Moderní web od 7 990 Kč.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#06090f; --ink:#eef4ff; --soft:#c3d2e6; --dim:#7a9cc0; --hair:rgba(238,244,255,.13);
+    --iris:#3a2ee0; --iris-hi:#4b3ef5; --blue:#1e7be5; --cyan:#1fcded; --spark:#36f0d6;
+    --grad:linear-gradient(90deg,#7060ff,#1e7be5 40%,#1fcded 70%,#36f0d6);
+    --font:'Inter',system-ui,-apple-system,sans-serif; --max:1240px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);font-weight:200;background:var(--void);color:var(--ink);line-height:1.55;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,4vw,44px)}
+  .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--spark)}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:999px;background:var(--iris);color:#fff;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:.3s}
+  .btn:hover{background:var(--iris-hi);transform:translateY(-2px)}
+
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(6,9,15,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo img{width:30px;height:30px}
+  .logo span{font-size:19px;font-weight:400;letter-spacing:.02em}
+  .nav a.back{font-size:13px;color:var(--dim);transition:.2s}.nav a.back:hover{color:var(--ink)}
+
+  /* hero */
+  .hero{padding:clamp(56px,9vw,110px) 0 clamp(30px,5vw,54px);text-align:center}
+  .hero h1{font-weight:400;font-size:clamp(38px,6.4vw,74px);letter-spacing:-.03em;margin:16px 0 18px;line-height:1.04}
+  .hero p{color:var(--soft);font-size:clamp(16px,2vw,19px);max-width:620px;margin:0 auto 30px;font-weight:200}
+  .hero .note{color:var(--dim);font-size:14px;margin-top:18px}
+
+  /* work grid */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:26px;padding-bottom:40px}
+  .work{border:1px solid var(--hair);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.02);transition:.3s;display:block}
+  .work:hover{border-color:var(--cyan);transform:translateY(-5px);box-shadow:0 24px 50px rgba(0,0,0,.4)}
+  .thumb{position:relative;height:250px;overflow:hidden;background:#0c1017;border-bottom:1px solid var(--hair)}
+  .thumb iframe{position:absolute;top:0;left:0;width:1280px;height:840px;border:0;transform:scale(.335);transform-origin:top left;pointer-events:none}
+  .thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(6,9,15,.35))}
+  .thumb .open{position:absolute;bottom:12px;right:12px;z-index:2;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:rgba(58,46,224,.85);padding:7px 12px;border-radius:999px;opacity:0;transition:.3s}
+  .work:hover .thumb .open{opacity:1}
+  .meta{padding:20px 22px}
+  .meta .ind{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--spark);font-weight:600}
+  .meta h3{font-weight:400;font-size:22px;margin:7px 0 2px;letter-spacing:-.01em}
+  .meta .loc{color:var(--dim);font-size:13px}
+
+  /* cta */
+  .cta{border-top:1px solid var(--hair);margin-top:20px;padding:clamp(56px,8vw,96px) 0;text-align:center}
+  .cta h2{font-weight:400;font-size:clamp(30px,4.4vw,50px);letter-spacing:-.02em;margin-bottom:14px}
+  .cta p{color:var(--soft);max-width:540px;margin:0 auto 16px}
+  .price{display:inline-flex;align-items:baseline;gap:8px;margin:8px 0 26px}
+  .price b{font-size:40px;font-weight:500}.price span{color:var(--dim);font-size:15px}
+  .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn-ghost{background:transparent;border:1px solid var(--hair);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--cyan);background:rgba(255,255,255,.03)}
+
+  footer{border-top:1px solid var(--hair);padding:30px 0;text-align:center;color:var(--dim);font-size:13px}
+
+  @media(max-width:520px){.thumb{height:200px}.thumb iframe{transform:scale(.30)}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="https://lanthir.cz/" class="logo"><img src="/logo-mark.svg" alt="Lanthir"><span>Lanthir</span></a>
+    <a href="https://lanthir.cz/" class="back">← lanthir.cz</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Ukázky naší práce</span>
+    <h1>Weby, které tvoříme pro <span class="grad-text">místní firmy</span></h1>
+    <p>Každý web navrhujeme na míru oboru i značce — od kadeřnictví přes restaurace až po autoservisy. Níže je pár ukázek. Klikněte a projděte si je jako živý web.</p>
+    <a href="#kontakt" class="btn">Chci takový web</a>
+    <div class="note">Moderní web na míru od <b style="color:var(--ink)">7 990 Kč</b> — doména, hosting, SSL i nasazení v ceně.</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="grid">
+      <a class="work" href="/customer/restaurace-max/" target="_blank" rel="noopener">
+        <div class="thumb"><iframe src="/customer/restaurace-max/" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe><span class="open">Otevřít ↗</span></div>
+        <div class="meta"><span class="ind">Restaurace</span><h3>Restaurace MAX</h3><span class="loc">Denní menu · rezervace</span></div>
+      </a>
+      <a class="work" href="/customer/autoservis-motyka/" target="_blank" rel="noopener">
+        <div class="thumb"><iframe src="/customer/autoservis-motyka/" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe><span class="open">Otevřít ↗</span></div>
+        <div class="meta"><span class="ind">Autoservis</span><h3>Autoservis Motyka</h3><span class="loc">Služby · objednání</span></div>
+      </a>
+      <a class="work" href="/customer/masaze-bylinka/" target="_blank" rel="noopener">
+        <div class="thumb"><iframe src="/customer/masaze-bylinka/" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe><span class="open">Otevřít ↗</span></div>
+        <div class="meta"><span class="ind">Masáže &amp; wellness</span><h3>Masáže Bylinka</h3><span class="loc">Ceník · rezervace</span></div>
+      </a>
+      <a class="work" href="/customer/paparazzi-salon/" target="_blank" rel="noopener">
+        <div class="thumb"><iframe src="/customer/paparazzi-salon/" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe><span class="open">Otevřít ↗</span></div>
+        <div class="meta"><span class="ind">Kadeřnictví</span><h3>Paparazzi</h3><span class="loc">Odvážný design</span></div>
+      </a>
+      <a class="work" href="/customer/kadernictvi-burdova/" target="_blank" rel="noopener">
+        <div class="thumb"><iframe src="/customer/kadernictvi-burdova/" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe><span class="open">Otevřít ↗</span></div>
+        <div class="meta"><span class="ind">Holičství</span><h3>Kadeřnictví Burdová</h3><span class="loc">Klasika &amp; tradice</span></div>
+      </a>
+      <a class="work" href="/customer/van-beauty/" target="_blank" rel="noopener">
+        <div class="thumb"><iframe src="/customer/van-beauty/" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe><span class="open">Otevřít ↗</span></div>
+        <div class="meta"><span class="ind">Nehty &amp; řasy</span><h3>Van Beauty</h3><span class="loc">Moderní studio</span></div>
+      </a>
+      <a class="work" href="/customer/studio-victory/" target="_blank" rel="noopener">
+        <div class="thumb"><iframe src="/customer/studio-victory/" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe><span class="open">Otevřít ↗</span></div>
+        <div class="meta"><span class="ind">Kosmetika</span><h3>Studio Victory</h3><span class="loc">Elegantní &amp; prémiové</span></div>
+      </a>
+      <a class="work" href="/customer/kosmetika-bellis/" target="_blank" rel="noopener">
+        <div class="thumb"><iframe src="/customer/kosmetika-bellis/" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe><span class="open">Otevřít ↗</span></div>
+        <div class="meta"><span class="ind">Kosmetika</span><h3>BELLIS</h3><span class="loc">Čistý &amp; klidný styl</span></div>
+      </a>
+      <a class="work" href="/customer/studio-bejlyn/" target="_blank" rel="noopener">
+        <div class="thumb"><iframe src="/customer/studio-bejlyn/" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe><span class="open">Otevřít ↗</span></div>
+        <div class="meta"><span class="ind">Studio krásy</span><h3>Studio Bejlyn</h3><span class="loc">Hravý &amp; barevný</span></div>
+      </a>
+      <a class="work" href="/customer/salon-lussiet/" target="_blank" rel="noopener">
+        <div class="thumb"><iframe src="/customer/salon-lussiet/" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe><span class="open">Otevřít ↗</span></div>
+        <div class="meta"><span class="ind">Kadeřnictví &amp; kosmetika</span><h3>Salon Lussiet</h3><span class="loc">Elegantní</span></div>
+      </a>
+      <a class="work" href="/customer/kalina-krasna/" target="_blank" rel="noopener">
+        <div class="thumb"><iframe src="/customer/kalina-krasna/" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe><span class="open">Otevřít ↗</span></div>
+        <div class="meta"><span class="ind">Studio krásy</span><h3>Kalina Krásna</h3><span class="loc">Jemný &amp; květinový</span></div>
+      </a>
+      <a class="work" href="/customer/salon-catherine/" target="_blank" rel="noopener">
+        <div class="thumb"><iframe src="/customer/salon-catherine/" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe><span class="open">Otevřít ↗</span></div>
+        <div class="meta"><span class="ind">Permanentní make-up</span><h3>Salon Catherine</h3><span class="loc">Luxusní tón</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="kontakt">
+  <div class="wrap">
+    <span class="eyebrow">Pojďme na to</span>
+    <h2>Chcete takový web i vy?</h2>
+    <p>Navrhneme vám web na míru vašemu oboru — a nejdřív vám nezávazně ukážeme, jak by mohl vypadat.</p>
+    <div class="price"><b class="grad-text">7 990 Kč</b><span>jednorázově · doména, hosting, SSL i nasazení v ceně</span></div>
+    <div class="cta-actions">
+      <a href="mailto:michal.owczarzy@lanthir.cz" class="btn">Napište nám</a>
+      <a href="tel:+420725528165" class="btn btn-ghost">725 528 165</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Lanthir · Technologický partner pro růst a provoz firmy · <a href="https://lanthir.cz/" style="color:var(--cyan)">lanthir.cz</a></div>
+</footer>
+</body>
+</html>
