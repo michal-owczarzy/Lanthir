@@ -580,6 +580,9 @@ body:not(.booted) .nav {
   object-fit: cover;
   object-position: 50% 22%; /* keep the face centered in the 4:5 crop */
 }
+/* tight headshot source: only ~3% headroom exists above the hair,
+   so top-align instead of the 22% used for wider portraits */
+.person-photo--headshot { object-position: 50% 0%; }
 .person-photo-fallback {
   display: none;
   position: absolute;
