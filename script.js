@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════
-   LANTHIR — script.js (Constellation)
-   i18n (CS/EN/PL) · Particle constellation · Form
+   LANTHIR — script.js (cinematic)
+   i18n (CS/EN/PL) · scroll-scrubbed narrator canvas
 ═══════════════════════════════════════════ */
 
 const T = {
@@ -13,15 +13,15 @@ const T = {
     'nav.cta':      'Nezávazná poptávka',
 
     'hero.badge':    'Weby · Monitoring · Správa webu',
-    'hero.h1':       'Technologický partner<br><span class="grad-text">pro růst a provoz firmy.</span>',
-    'hero.sub':      'Navrhujeme webové stránky na míru a staráme se o jejich provoz. Landing page, firemní web nebo webová aplikace — s SSL, hostingem, SEO optimalizací a monitoringem dostupnosti.',
+    'hero.h1': 'Technologický partner<br><em>pro růst a provoz firmy.</em>',
+    'hero.sub': 'Navrhujeme webové stránky na míru a staráme se o jejich provoz. Webová aplikace, e-shop nebo rezervační systém — s SSL, hostingem, SEO optimalizací a monitoringem dostupnosti.',
     'hero.btn1':     'Zobrazit ceník',
     'hero.btn2':     'Nezávazná konzultace',
     'hero.chip2':    'Dní průměrná dodávka',
     'hero.building': 'Váš web se připravuje...',
 
-    'svc.tag':     'Co tvoříme',
-    'svc.heading': 'Webové stránky pro <span class="grad-text">každou potřebu</span>',
+    'svc.tag': 'Co děláme',
+    'svc.heading': 'Naše<br><em>produkty.</em>',
     'svc.sub':     'Tvorba webových stránek pro živnostníky i firmy — od jednoduché landing page po plnohodnotnou webovou aplikaci. Každý web dodáváme včetně domény, hostingu a SSL certifikátu.',
     'svc.more':    'Zobrazit ceník <span>→</span>',
     'svc.1.title': 'Prezentační web',
@@ -38,7 +38,7 @@ const T = {
     'svc.6.desc':  'Zastaralý web vám škodí. Obnovíme jeho design, výkon a SEO — bez ztráty obsahu a pozic ve vyhledávačích.',
 
     'price.tag':      'Ceník',
-    'price.heading':  'Řešení <span class="grad-text">pro každého</span>',
+    'price.heading': 'Ceny za <em>naše služby.</em>',
     'price.sub':      'Transparentní ceny tvorby webových stránek bez skrytých poplatků. Vyberte jednorázové vytvoření webu — nebo pravidelnou správu, monitoring a SEO optimalizaci.',
     'price.dev.label':'A — Jednorázová tvorba webu',
     'price.sub.label':'B — Měsíční správa, monitoring a marketing',
@@ -112,7 +112,7 @@ const T = {
     'sub.3.f5': 'Prioritní SLA',
 
     'proc.tag':     'Jak pracujeme',
-    'proc.heading': 'Čtyři kroky k <span class="grad-text">vašemu webu</span>',
+    'proc.heading': 'Náš postup<br><em>se zákazníkem.</em>',
     'proc.sub':     'Transparentní proces od první schůzky po spuštění. Vždy víte, ve které fázi se projekt nachází.',
     'proc.1.title': 'Konzultace',
     'proc.1.desc':  'Poznáme vás, vaše cíle a potřeby. Bezplatná konzultace bez závazků — osobně nebo online.',
@@ -137,7 +137,7 @@ const T = {
     'wstat.4': 'Roky zkušeností',
 
     'about.tag':     'O nás',
-    'about.heading': 'Kdo stojí <span class="grad-text">za Lanthirem</span>',
+    'about.heading': 'Kdo stojí<br><em>za Lanthirem</em>',
     'about.1.role':  'Zakladatel &amp; CTO',
     'about.1.bio':   'Zakladatel Lanthiru se specializací na monitoring a DevOps. Navrhuje a vyvíjí technická řešení, která fungují spolehlivě a přinášejí klientům reálné výsledky.',
     'about.2.role':  'Head of Sales',
@@ -148,7 +148,7 @@ const T = {
     'cta.btn':'Nezávazná poptávka',
 
     'contact.tag':       'Kontakt',
-    'contact.heading':   'Začněme <span class="grad-text">spolupracovat</span>',
+    'contact.heading': 'Kontaktujte <em>nás.</em>',
     'contact.email.lbl': 'E-mail',
     'contact.phone.lbl': 'Telefon',
     'contact.loc.lbl':   'Místo',
@@ -178,7 +178,37 @@ const T = {
     'footer.status':  'všechny systémy online',
     'footer.col1.h':  'Služby',
     'footer.col2.h':  'Společnost',
+    'form.err.name':  'Vyplňte prosím jméno.',
+    'form.err.email': 'Zadejte platný e-mail.',
+    'form.err.msg':   'Napište prosím pár vět o projektu.',
     'footer.copy':    '© 2026 Lanthir. Všechna práva vyhrazena.',
+
+    'nav.work': 'Reference',
+    'fact.1.unit':  'dní',
+    'fact.1.label': 'průměrné dodání webu',
+    'fact.2.label': 'web na míru už od',
+    'fact.3.unit':  'min',
+    'fact.3.label': 'interval monitoringu dostupnosti',
+    'fact.4.unit':  'h',
+    'fact.4.label': 'odpovídáme na poptávku do',
+
+    'work.tag': 'Reference',
+    'work.heading': 'Naše <em>reference.</em>',
+    'work.sub': 'Weby, které jsme vytvořili pro naše zákazníky. Klikněte a projděte si je jako skutečný web.',
+    'work.open': 'Otevřít živý web',
+    'work.all':     'Zobrazit všechny ukázky',
+    'work.1.ind':   'Restaurace',
+    'work.1.note':  'Denní menu · rezervace',
+    'work.2.ind':   'Autoservis',
+    'work.2.note':  'Služby · objednání',
+    'work.3.ind':   'Masáže &amp; wellness',
+    'work.3.note':  'Ceník · rezervace',
+    'work.4.ind':   'Kadeřnictví',
+    'work.4.note':  'Odvážný design',
+    'work.5.ind':   'Kosmetika',
+    'work.5.note':  'Elegantní &amp; prémiové',
+    'work.6.ind':   'Nehty &amp; řasy',
+    'work.6.note':  'Moderní studio',
   },
 
   en: {
@@ -190,15 +220,15 @@ const T = {
     'nav.cta':      'Get a Quote',
 
     'hero.badge':    'Websites · Monitoring · Web Management',
-    'hero.h1':       'Technology partner<br><span class="grad-text">for growth and operations.</span>',
-    'hero.sub':      'We design custom websites and keep them running. Landing page, corporate website or web application — with SSL, hosting, SEO optimisation and uptime monitoring included.',
+    'hero.h1': 'Technology partner<br><em>for growth and operations.</em>',
+    'hero.sub': 'We design custom websites and keep them running. A web application, e-shop or booking system — with SSL, hosting, SEO optimisation and uptime monitoring included.',
     'hero.btn1':     'View Pricing',
     'hero.btn2':     'Free Consultation',
     'hero.chip2':    'Days avg. delivery',
     'hero.building': 'Your website is being prepared...',
 
-    'svc.tag':     'What We Build',
-    'svc.heading': 'Websites for <span class="grad-text">every need</span>',
+    'svc.tag': 'What we do',
+    'svc.heading': 'Our<br><em>products.</em>',
     'svc.sub':     'Custom web development for freelancers and businesses — from a simple landing page to a full web application. Every website includes domain, hosting and SSL certificate.',
     'svc.more':    'View pricing <span>→</span>',
     'svc.1.title': 'Business Website',
@@ -215,7 +245,7 @@ const T = {
     'svc.6.desc':  'An outdated website hurts you. We\'ll refresh its design, performance and SEO — without losing content or rankings.',
 
     'price.tag':      'Pricing',
-    'price.heading':  'Solutions <span class="grad-text">for everyone</span>',
+    'price.heading': 'Prices for <em>our services.</em>',
     'price.sub':      'Transparent pricing, no hidden fees. Choose one-time development or ongoing management.',
     'price.dev.label':'A — One-time Website Development',
     'price.sub.label':'B — Monthly Management, Monitoring & Marketing',
@@ -289,7 +319,7 @@ const T = {
     'sub.3.f5': 'Priority SLA',
 
     'proc.tag':     'How We Work',
-    'proc.heading': 'Four steps to <span class="grad-text">your website</span>',
+    'proc.heading': 'How we work<br><em>with you.</em>',
     'proc.sub':     'Transparent process from first meeting to launch. You always know which phase the project is in.',
     'proc.1.title': 'Consultation',
     'proc.1.desc':  'We get to know you, your goals and needs. Free consultation with no commitment — in person or online.',
@@ -314,7 +344,7 @@ const T = {
     'wstat.4': 'Years of experience',
 
     'about.tag':     'About Us',
-    'about.heading': 'Who is behind <span class="grad-text">Lanthir</span>',
+    'about.heading': 'Who is behind<br><em>Lanthir</em>',
     'about.1.role':  'Founder &amp; CTO',
     'about.1.bio':   'Founder of Lanthir, specialized in monitoring and DevOps. Designs and develops technical solutions that run reliably and deliver real results for clients.',
     'about.2.role':  'Head of Sales',
@@ -325,7 +355,7 @@ const T = {
     'cta.btn':'Get a Free Quote',
 
     'contact.tag':       'Contact',
-    'contact.heading':   'Let\'s start <span class="grad-text">working together</span>',
+    'contact.heading': 'Contact <em>us.</em>',
     'contact.email.lbl': 'Email',
     'contact.phone.lbl': 'Phone',
     'contact.loc.lbl':   'Location',
@@ -355,7 +385,37 @@ const T = {
     'footer.status':  'all systems operational',
     'footer.col1.h':  'Services',
     'footer.col2.h':  'Company',
+    'form.err.name':  'Please enter your name.',
+    'form.err.email': 'Enter a valid email address.',
+    'form.err.msg':   'Tell us a little about the project.',
     'footer.copy':    '© 2026 Lanthir. All rights reserved.',
+
+    'nav.work': 'Work',
+    'fact.1.unit':  'days',
+    'fact.1.label': 'average website delivery',
+    'fact.2.label': 'custom website from',
+    'fact.3.unit':  'min',
+    'fact.3.label': 'uptime monitoring interval',
+    'fact.4.unit':  'h',
+    'fact.4.label': 'we reply to enquiries within',
+
+    'work.tag': 'Selected work',
+    'work.heading': 'Our <em>references.</em>',
+    'work.sub': 'Websites we have built for our clients. Click through and browse them as real sites.',
+    'work.open': 'Open the live site',
+    'work.all':     'View all work',
+    'work.1.ind':   'Restaurant',
+    'work.1.note':  'Daily menu · reservations',
+    'work.2.ind':   'Car Service',
+    'work.2.note':  'Services · booking',
+    'work.3.ind':   'Massage &amp; wellness',
+    'work.3.note':  'Pricing · reservations',
+    'work.4.ind':   'Hair Salon',
+    'work.4.note':  'Bold design',
+    'work.5.ind':   'Cosmetics',
+    'work.5.note':  'Elegant &amp; premium',
+    'work.6.ind':   'Nails &amp; lashes',
+    'work.6.note':  'Modern studio',
   },
 
   pl: {
@@ -367,15 +427,15 @@ const T = {
     'nav.cta':      'Bezpłatna wycena',
 
     'hero.badge':    'Strony · Monitoring · Zarządzanie',
-    'hero.h1':       'Partner technologiczny<br><span class="grad-text">dla wzrostu i operacji firmy.</span>',
-    'hero.sub':      'Projektujemy strony internetowe na zamówienie i dbamy o ich działanie. Landing page, strona firmowa lub aplikacja webowa — z SSL, hostingiem, optymalizacją SEO i monitoringiem dostępności.',
+    'hero.h1': 'Partner technologiczny<br><em>dla wzrostu i operacji firmy.</em>',
+    'hero.sub': 'Projektujemy strony internetowe na zamówienie i dbamy o ich działanie. Aplikacja webowa, sklep lub system rezerwacji — z SSL, hostingiem, optymalizacją SEO i monitoringiem dostępności.',
     'hero.btn1':     'Zobacz cennik',
     'hero.btn2':     'Bezpłatna konsultacja',
     'hero.chip2':    'Dni średnia realizacja',
     'hero.building': 'Twoja strona jest przygotowywana...',
 
-    'svc.tag':     'Co tworzymy',
-    'svc.heading': 'Strony internetowe dla <span class="grad-text">każdej potrzeby</span>',
+    'svc.tag': 'Co robimy',
+    'svc.heading': 'Nasze<br><em>produkty.</em>',
     'svc.sub':     'Tworzenie stron internetowych dla freelancerów i firm — od prostej strony wizytówki po rozbudowaną aplikację webową. Każda strona zawiera domenę, hosting i certyfikat SSL.',
     'svc.more':    'Zobacz cennik <span>→</span>',
     'svc.1.title': 'Strona firmowa',
@@ -392,7 +452,7 @@ const T = {
     'svc.6.desc':  'Przestarzała strona Ci szkodzi. Odświeżymy jej design, wydajność i SEO — bez utraty treści i pozycji.',
 
     'price.tag':      'Cennik',
-    'price.heading':  'Rozwiązania <span class="grad-text">dla każdego</span>',
+    'price.heading': 'Ceny za <em>nasze usługi.</em>',
     'price.sub':      'Przejrzyste ceny bez ukrytych opłat. Wybierz jednorazowe tworzenie lub stały abonament zarządzania.',
     'price.dev.label':'A — Jednorazowe tworzenie strony',
     'price.sub.label':'B — Miesięczne zarządzanie, monitoring i marketing',
@@ -466,7 +526,7 @@ const T = {
     'sub.3.f5': 'Priorytetowe SLA',
 
     'proc.tag':     'Jak pracujemy',
-    'proc.heading': 'Cztery kroki do <span class="grad-text">Twojej strony</span>',
+    'proc.heading': 'Nasz proces<br><em>z klientem.</em>',
     'proc.sub':     'Transparentny proces od pierwszego spotkania do uruchomienia. Zawsze wiesz, w której fazie jest projekt.',
     'proc.1.title': 'Konsultacja',
     'proc.1.desc':  'Poznajemy Cię, Twoje cele i potrzeby. Bezpłatna konsultacja bez zobowiązań — osobiście lub online.',
@@ -491,7 +551,7 @@ const T = {
     'wstat.4': 'Lata doświadczenia',
 
     'about.tag':     'O nas',
-    'about.heading': 'Kto stoi <span class="grad-text">za Lanthirem</span>',
+    'about.heading': 'Kto stoi<br><em>za Lanthirem</em>',
     'about.1.role':  'Założyciel &amp; CTO',
     'about.1.bio':   'Założyciel Lanthira specjalizujący się w monitoringu i DevOps. Projektuje i wdraża rozwiązania techniczne, które działają niezawodnie i przynoszą klientom realne wyniki.',
     'about.2.role':  'Head of Sales',
@@ -502,7 +562,7 @@ const T = {
     'cta.btn':'Bezpłatna wycena',
 
     'contact.tag':       'Kontakt',
-    'contact.heading':   'Zacznijmy <span class="grad-text">współpracę</span>',
+    'contact.heading': 'Skontaktuj się <em>z nami.</em>',
     'contact.email.lbl': 'E-mail',
     'contact.phone.lbl': 'Telefon',
     'contact.loc.lbl':   'Lokalizacja',
@@ -532,16 +592,56 @@ const T = {
     'footer.status':  'wszystkie systemy działają',
     'footer.col1.h':  'Usługi',
     'footer.col2.h':  'Firma',
+    'form.err.name':  'Podaj proszę imię.',
+    'form.err.email': 'Podaj poprawny adres e-mail.',
+    'form.err.msg':   'Napisz kilka słów o projekcie.',
     'footer.copy':    '© 2026 Lanthir. Wszelkie prawa zastrzeżone.',
+
+    'nav.work': 'Realizacje',
+    'fact.1.unit':  'dni',
+    'fact.1.label': 'średni czas realizacji strony',
+    'fact.2.label': 'strona na zamówienie już od',
+    'fact.3.unit':  'min',
+    'fact.3.label': 'interwał monitoringu dostępności',
+    'fact.4.unit':  'h',
+    'fact.4.label': 'odpowiadamy na zapytania w',
+
+    'work.tag': 'Realizacje',
+    'work.heading': 'Nasze <em>realizacje.</em>',
+    'work.sub': 'Strony, które stworzyliśmy dla naszych klientów. Kliknij i przejrzyj je jak prawdziwe strony.',
+    'work.open': 'Otwórz żywą stronę',
+    'work.all':     'Zobacz wszystkie realizacje',
+    'work.1.ind':   'Restauracja',
+    'work.1.note':  'Menu dnia · rezerwacje',
+    'work.2.ind':   'Serwis samochodowy',
+    'work.2.note':  'Usługi · umawianie',
+    'work.3.ind':   'Masaże &amp; wellness',
+    'work.3.note':  'Cennik · rezerwacje',
+    'work.4.ind':   'Fryzjer',
+    'work.4.note':  'Odważny design',
+    'work.5.ind':   'Kosmetyka',
+    'work.5.note':  'Elegancki &amp; premium',
+    'work.6.ind':   'Paznokcie &amp; rzęsy',
+    'work.6.note':  'Nowoczesne studio',
   }
 };
 
 /* ── Capability gates ─────────────────────── */
 const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ── i18n engine ──────────────────────────── */
-let currentLang = localStorage.getItem('lanthir-lang') || 'cs';
+/* Motion budget scaled to the hardware: 0 lite · 1 standard · 2 full */
+const TIER = (() => {
+  const c = navigator.connection || {};
+  if (c.saveData || /2g|slow-2g/.test(c.effectiveType || '')) return 0;
+  const mem = navigator.deviceMemory || 0, cpu = navigator.hardwareConcurrency || 0;
+  if ((mem && mem <= 2) || (cpu && cpu <= 2)) return 0;
+  const coarse = matchMedia('(pointer: coarse)').matches;
+  if ((mem && mem <= 4) || (cpu && cpu <= 4) || (coarse && innerWidth < 820)) return 1;
+  return 2;
+})();
 
+/* ── i18n ─────────────────────────────────── */
+let currentLang = localStorage.getItem('lanthir-lang') || 'cs';
 function applyLang(lang) {
   if (!T[lang]) return;
   currentLang = lang;
@@ -557,18 +657,13 @@ function applyLang(lang) {
   });
   document.querySelectorAll('.ls-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
 }
-
 document.querySelectorAll('.ls-btn').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
 
-/* ── Boot backstop — nav must never stay hidden ── */
-setTimeout(() => document.body.classList.add('booted'), 3200);
-
-/* ── Nav scroll state ─────────────────────── */
+/* ── Nav ──────────────────────────────────── */
 const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 24), { passive: true });
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 24), { passive: true });
 
-/* ── Mobile burger ────────────────────────── */
-const burger   = document.getElementById('burger');
+const burger = document.getElementById('burger');
 const navLinks = document.getElementById('navLinks');
 burger.addEventListener('click', () => {
   const open = navLinks.classList.toggle('open');
@@ -583,374 +678,458 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   document.body.classList.remove('no-scroll');
 }));
 
-/* ── Active nav link ──────────────────────── */
 (function () {
   const links = Array.from(navLinks.querySelectorAll('a[href^="#"]'));
-  const byId  = {};
-  links.forEach(a => { byId[a.getAttribute('href').slice(1)] = a; });
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(en => {
-      const link = byId[en.target.id];
-      if (!link) return;
-      if (en.isIntersecting) {
-        links.forEach(a => a.classList.toggle('active', a === link));
-      }
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-  Object.keys(byId).forEach(id => {
-    const sec = document.getElementById(id);
-    if (sec) io.observe(sec);
-  });
+  const byId = {};
+  links.forEach(a => byId[a.getAttribute('href').slice(1)] = a);
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    const l = byId[e.target.id];
+    if (l && e.isIntersecting) links.forEach(a => a.classList.toggle('active', a === l));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  Object.keys(byId).forEach(id => { const s = document.getElementById(id); if (s) io.observe(s); });
 })();
 
-/* ── Scroll reveal ────────────────────────── */
+/* ── Reveal (flow sections only) ──────────── */
 (function () {
-  const els = document.querySelectorAll('[data-reveal]');
-  if (RM) { els.forEach(el => el.classList.add('in')); return; }
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(en => {
-      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
-  els.forEach(el => io.observe(el));
+  const els = document.querySelectorAll('.reveal');
+  if (RM) { els.forEach(e => e.classList.add('in')); return; }
+  document.querySelectorAll('.price-cols, .people, .contact-info').forEach(g => {
+    Array.from(g.children).filter(c => c.classList.contains('reveal'))
+      .forEach((c, i) => c.style.setProperty('--d', (i * 0.04).toFixed(2) + 's'));
+  });
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
+  els.forEach(e => io.observe(e));
 })();
 
-/* ── Brand palette sampling ───────────────────
-   The logo gradient (#3a2ee0 → #1e7be5 → #1fcded → #36f0d6)
-   colors every particle. */
-const PAL = [
-  [0.00, [58,  46, 224]],
-  [0.28, [30, 123, 229]],
-  [0.62, [31, 205, 237]],
-  [1.00, [54, 240, 214]]
-];
+/* ── Palette ──────────────────────────────── */
+const PAL = [[0,[58,46,224]],[0.28,[30,123,229]],[0.62,[31,205,237]],[1,[54,240,214]]];
 function paletteAt(t) {
   t = Math.min(Math.max(t, 0), 1);
   for (let i = 1; i < PAL.length; i++) {
     if (t <= PAL[i][0]) {
-      const [t0, c0] = PAL[i - 1];
-      const [t1, c1] = PAL[i];
-      const k = (t - t0) / (t1 - t0);
-      return c0.map((v, j) => Math.round(v + (c1[j] - v) * k));
+      const [a, ca] = PAL[i - 1], [b, cb] = PAL[i], k = (t - a) / (b - a);
+      return ca.map((v, j) => Math.round(v + (cb[j] - v) * k));
     }
   }
-  return PAL[PAL.length - 1][1];
-}
-const rgba = (c, a) => 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')';
-
-/* draw one outlined triangle — the brand glyph */
-function tri(ctx, x, y, rot, s, col) {
-  ctx.save();
-  ctx.translate(x, y);
-  ctx.rotate(rot);
-  ctx.beginPath();
-  ctx.moveTo(0, -s);
-  ctx.lineTo(s * 0.866, s * 0.5);
-  ctx.lineTo(-s * 0.866, s * 0.5);
-  ctx.closePath();
-  ctx.strokeStyle = col;
-  ctx.lineWidth = 1;
-  ctx.stroke();
-  ctx.restore();
+  return PAL[3][1];
 }
 
-/* ── Hero constellation — full-screen opening ─
-   Particles sampled from logo.svg scatter across the
-   whole viewport, swirl-converge into a giant centered
-   mark, then scroll progress scrubs the mark to the
-   right column while the headline choreographs in. */
-(async function () {
-  const canvas   = document.getElementById('heroCanvas');
-  const stage    = document.getElementById('heroStage');
-  const hero     = document.getElementById('home');
-  const layout   = document.getElementById('heroLayout');
-  const wordmark = document.getElementById('heroWordmark');
-  const hint     = document.getElementById('scrollHint');
-
-  function bail() {
-    /* constellation unavailable — show everything statically */
-    if (stage) stage.classList.add('text-on');
-    if (wordmark) wordmark.style.display = 'none';
-    if (hint) hint.style.display = 'none';
-    document.body.classList.add('booted');
+/* ── Formation geometry ───────────────────────
+   Every formation is expressed as polylines in unit
+   space (-0.5..0.5) and resampled to the same particle
+   count, so the field can morph between any two. */
+function resample(segs, n) {
+  const flat = [];
+  let total = 0;
+  segs.forEach(s => {
+    for (let i = 1; i < s.length; i++) {
+      const d = Math.hypot(s[i][0] - s[i-1][0], s[i][1] - s[i-1][1]);
+      if (d > 0) { flat.push({ a: s[i-1], b: s[i], d }); total += d; }
+    }
+  });
+  if (!total) return Array.from({ length: n }, () => [0, 0]);
+  const out = [];
+  const step = total / n;
+  let seg = 0, acc = 0;
+  for (let i = 0; i < n; i++) {
+    let target = i * step;
+    while (seg < flat.length - 1 && acc + flat[seg].d < target) { acc += flat[seg].d; seg++; }
+    const f = flat[seg], t = Math.min(Math.max((target - acc) / f.d, 0), 1);
+    out.push([f.a[0] + (f.b[0] - f.a[0]) * t, f.a[1] + (f.b[1] - f.a[1]) * t]);
   }
-  if (!canvas || !stage || !hero || !layout) { bail(); return; }
+  return out;
+}
+const rect = (x, y, w, h) => [[[x,y],[x+w,y],[x+w,y+h],[x,y+h],[x,y]]];
+
+/* a browser window being built — Act 2 */
+function fWireframe(n) {
+  const segs = [
+    ...rect(-0.42,-0.30, 0.84, 0.60),
+    [[-0.42,-0.20],[0.42,-0.20]],
+    [[-0.36,-0.25],[-0.32,-0.25]], [[-0.28,-0.25],[-0.24,-0.25]], [[-0.20,-0.25],[-0.16,-0.25]],
+    ...rect(-0.36,-0.13, 0.34, 0.16),
+    [[-0.36,0.08],[0.02,0.08]], [[-0.36,0.14],[-0.06,0.14]], [[-0.36,0.20],[0.02,0.20]],
+    ...rect(0.06,-0.13, 0.30, 0.10),
+    ...rect(0.06,0.01, 0.30, 0.10),
+    ...rect(0.06,0.15, 0.30, 0.10)
+  ];
+  return resample(segs, n);
+}
+/* four nodes on a line — Act 4. `step` marks how many are complete, so the
+   constellation itself reads as a progress bar rather than four empty rings. */
+function fPath(n, step) {
+  const X = i => -0.40 + (0.80 / 3) * i;
+  const segs = [[[-0.40, 0], [0.40, 0]]];
+  if (step >= 0) {                       /* travelled portion drawn denser */
+    const e = X(step);
+    segs.push([[-0.40, 0], [e, 0]], [[-0.40, 0], [e, 0]]);
+  }
+  for (let i = 0; i < 4; i++) {
+    const x = X(i);
+    /* completed = dense disc, pending = small sparse ring (~6x contrast) */
+    const radii = i <= step ? [0.060, 0.048, 0.036, 0.024, 0.012] : [0.028];
+    radii.forEach(r => {
+      const ring = [];
+      for (let a = 0; a <= 24; a++) { const t = (a / 24) * Math.PI * 2; ring.push([x + Math.cos(t) * r, Math.sin(t) * r]); }
+      segs.push(ring);
+    });
+  }
+  return resample(segs, n);
+}
+
+/* scattered — Act 3, so the live sites are the hero, not the canvas */
+function fScatter(n) {
+  const out = [];
+  for (let i = 0; i < n; i++) {
+    const a = (i / n) * Math.PI * 2 * 7.3, r = 0.30 + (i % 97) / 97 * 0.34;
+    out.push([Math.cos(a) * r * 1.7, Math.sin(a) * r]);
+  }
+  return out;
+}
+
+/* ── The narrator ─────────────────────────────
+   One canvas for the whole page. Scroll decides which
+   formation the particles resolve into. */
+(async function () {
+  const cv = document.getElementById('stage');
+  const acts = Array.from(document.querySelectorAll('.act'));
+  const heroAct = document.getElementById('home');
+  if (!cv || !acts.length) { document.body.classList.add('booted'); return; }
+
+  /* act tracks get their scroll length from data-len */
+  const sizeActs = () => acts.forEach(a => { a.style.height = (parseFloat(a.dataset.len || 2) * 100) + 'vh'; });
+  sizeActs();
 
   let svgText = null;
   try { svgText = await fetch('logo.svg').then(r => r.text()); } catch (e) {}
-  if (!svgText) { bail(); return; }
+  if (!svgText) { document.body.classList.add('booted'); return; }
 
   const doc = new DOMParser().parseFromString(svgText, 'image/svg+xml');
-  const pts = [];
+  const raw = [];
   doc.querySelectorAll('polyline').forEach(pl => {
     const nums = (pl.getAttribute('points') || '').match(/[-\d.eE]+/g);
     if (!nums) return;
-    for (let i = 0; i + 1 < nums.length; i += 2) pts.push([+nums[i], +nums[i + 1]]);
+    const seg = [];
+    for (let i = 0; i + 1 < nums.length; i += 2) seg.push([+nums[i] / 200 - 0.5, +nums[i+1] / 200 - 0.5]);
+    if (seg.length > 1) raw.push(seg);
   });
-  if (!pts.length) { bail(); return; }
+  if (!raw.length) { document.body.classList.add('booted'); return; }
 
-  const ctx = canvas.getContext('2d');
-  const DPR = Math.min(window.devicePixelRatio || 1, 2);
-  const SKIP = window.innerWidth < 700 ? 2 : 1;
-  let W = 0, H = 0, particles = [];
+  const N = TIER === 0 ? 260 : TIER === 1 ? 520 : 900;
+  const FORM = {
+    iris:      resample(raw, N),
+    wireframe: fWireframe(N),
+    'path:0':  fPath(N, 0),
+    'path:1':  fPath(N, 1),
+    'path:2':  fPath(N, 2),
+    'path:3':  fPath(N, 3),
+    device:    fScatter(N)
+  };
 
-  function build() {
-    W = stage.clientWidth;
-    H = stage.clientHeight;
-    if (!W || !H) return;
-    canvas.width  = W * DPR;
-    canvas.height = H * DPR;
-    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    particles = [];
-    for (let i = 0; i < pts.length; i += SKIP) {
-      const lx = pts[i][0], ly = pts[i][1];
-      /* gradient runs bottom-left → top-right in the logo */
-      const gt = ((lx / 200) + (1 - ly / 200)) / 2;
-      particles.push({
-        ux: lx / 200 - 0.5,               /* unit offset from mark centre */
-        uy: ly / 200 - 0.5,
-        sx: Math.random() * W,            /* scattered across the full stage */
-        sy: Math.random() * H,
-        size: 1.6 + Math.random() * 2.4,
-        rot: Math.random() * Math.PI * 2,
-        spin: (Math.random() - 0.5) * 0.014,
-        phase: Math.random() * Math.PI * 2,
-        amp: 1.1 + Math.random() * 3,
-        delay: (Math.hypot(lx - 100, ly - 100) / 100) * 0.7 + Math.random() * 0.4,
-        swirl: (Math.random() < 0.5 ? -1 : 1) * (1.1 + Math.random() * 1.3),
-        col: paletteAt(gt)
-      });
-    }
-  }
-  build();
+  const ctx = cv.getContext('2d');
+  const DPR = Math.min(devicePixelRatio || 1, 2);
+  let W = 0, H = 0;
 
-  const lerp    = (a, b, t) => a + (b - a) * t;
-  const easeIO  = t => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-  const easeOut = t => 1 - Math.pow(1 - t, 3);
-
-  /* 0 = full-screen opening · 1 = settled beside the headline */
-  function heroProgress() {
-    const r = hero.getBoundingClientRect();
-    const span = r.height - H;
-    return span > 0 ? Math.min(Math.max(-r.top / span, 0), 1) : 1;
-  }
-
-  /* mark placement for a given scroll progress; A = opacity.
-     On narrow screens there is no room beside the text, so the
-     mark stays centered and fades to a ghost behind the copy. */
-  function pose(p) {
-    const e = easeIO(p);
-    const m = Math.min(W, H);
-    if (W < 880) {
-      return {
-        cx: W * 0.5,
-        cy: lerp(H * 0.44, H * 0.38, e),
-        R:  lerp(m * 0.44, m * 0.40, e),
-        A:  lerp(1, 0.13, e)
-      };
-    }
-    const rect = layout.getBoundingClientRect();
+  /* one particle per sample; colour comes from its position in the mark */
+  const P = FORM.iris.map((p, i) => {
+    const gt = ((p[0] + 0.5) + (1 - (p[1] + 0.5))) / 2;
+    const a = Math.random() * Math.PI * 2, r = 0.7 + Math.random() * 0.6;
     return {
-      cx: lerp(W * 0.5, rect.left + rect.width * 0.76, e),
-      cy: H * 0.5,
-      R:  lerp(m * 0.44, m * 0.30, e),
-      A:  1
+      x: Math.cos(a) * r, y: Math.sin(a) * r,   /* unit space, scattered at boot */
+      rot: Math.random() * Math.PI * 2,
+      spin: (Math.random() - 0.5) * 0.012,
+      size: 1.5 + Math.random() * 2.2,
+      ph: Math.random() * Math.PI * 2,
+      amp: 0.6 + Math.random() * 1.9,
+      delay: Math.random() * 0.35 + (Math.hypot(p[0], p[1]) * 0.7),
+      col: paletteAt(gt)
     };
+  });
+
+  const fit = () => {
+    W = innerWidth; H = innerHeight;
+    cv.width = W * DPR; cv.height = H * DPR;
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  };
+  fit();
+  let rq = false;
+  addEventListener('resize', () => {
+    if (rq) return; rq = true;
+    setTimeout(() => { rq = false; fit(); sizeActs(); }, 150);
+  });
+
+  const tri = (x, y, rot, s, col, alpha) => {
+    ctx.save();
+    ctx.translate(x, y); ctx.rotate(rot);
+    ctx.beginPath();
+    ctx.moveTo(0, -s); ctx.lineTo(s * .866, s * .5); ctx.lineTo(-s * .866, s * .5); ctx.closePath();
+    ctx.strokeStyle = 'rgba(' + col[0] + ',' + col[1] + ',' + col[2] + ',' + alpha.toFixed(3) + ')';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.restore();
+  };
+
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const clamp01 = v => Math.min(Math.max(v, 0), 1);
+
+  /* which act owns the viewport, and how far through it are we */
+  function readScroll() {
+    let active = acts[0], prog = 0, found = false; inFlow = false;
+    for (const a of acts) {
+      const r = a.getBoundingClientRect();
+      if (r.top <= 1 && r.bottom > H * 0.5) { active = a; prog = clamp01(-r.top / (r.height - H)); found = true; break; }
+    }
+    if (!found) {
+      inFlow = true;
+      /* between acts (flow sections) — hold the nearest one's end state */
+      let best = null, bd = Infinity;
+      for (const a of acts) {
+        const r = a.getBoundingClientRect(), d = Math.abs(r.top + r.height / 2 - H / 2);
+        if (d < bd) { bd = d; best = a; }
+      }
+      active = best || acts[0];
+      prog = active.getBoundingClientRect().top < 0 ? 1 : 0;
+    }
+    return { active, prog, inFlow };
   }
 
-  function applyThresholds(p) {
-    stage.classList.toggle('text-on', p > 0.32);
-    if (wordmark) wordmark.style.opacity = Math.max(0, 1 - p * 5);
-    if (hint) hint.style.opacity = Math.max(0, 1 - p * 7);
+  /* where the formation sits on screen, and how loud it is */
+  function place(act, prog) {
+    const narrow = W < 1080;
+    const kind = act.dataset.act;
+    const m = Math.min(W, H);
+    if (kind === 'iris') {
+      /* opens full-screen and centred, then steps aside as you scroll so the
+         headline is never underneath it */
+      const e = clamp01((prog - .05) / .45);
+      return { cx: narrow ? W * .5 : lerp(W * .5, W * .775, e),
+               cy: H * (narrow ? .38 : .5),
+               R: lerp(m * .74, m * .42, e) * (narrow ? .95 : 1),
+               alpha: narrow ? lerp(1, .3, e) : 1, e };
+    }
+    if (kind === 'device') {
+      return { cx: W * .5, cy: H * .5, R: m * 1.25, alpha: narrow ? .1 : .16, e: 1 };
+    }
+    return { cx: narrow ? W * .5 : W * .74, cy: H * (narrow ? .46 : .5),
+             R: m * (narrow ? .78 : .62), alpha: narrow ? .3 : 1, e: 1 };
   }
 
-  function drawGlow(cx, cy, R, A) {
-    const g = ctx.createRadialGradient(cx, cy, R * 0.1, cx, cy, R * 1.7);
-    g.addColorStop(0,  'rgba(30,123,229,' + (0.15 * A).toFixed(3) + ')');
-    g.addColorStop(0.5,'rgba(58,46,224,' + (0.07 * A).toFixed(3) + ')');
-    g.addColorStop(1,  'rgba(0,0,0,0)');
-    ctx.fillStyle = g;
-    ctx.fillRect(cx - R * 1.8, cy - R * 1.8, R * 3.6, R * 3.6);
-  }
+  let inFlow = false;
+  const t0 = performance.now();
+  const boot = location.hash || scrollY > 60;
+  setTimeout(() => document.body.classList.add('booted'), boot ? 0 : 1900);
+  /* the headline must never depend on the animation loop running */
+  setTimeout(() => heroAct.classList.add('copy-on'), boot ? 0 : 5200); /* safety net only */
+  let lastKind = null, morphT = 0;
+  const MORPH_S = 1.25;
+  const easeIO = v => v < .5 ? 2 * v * v : 1 - Math.pow(-2 * v + 2, 2) / 2;
+
+  const wordmark = document.getElementById('wordmark');
+  const cue = document.getElementById('scrollCue');
 
   if (RM) {
-    const drawRM = () => {
-      const p = heroProgress();
-      const { cx, cy, R, A } = pose(p);
-      ctx.clearRect(0, 0, W, H);
-      drawGlow(cx, cy, R, A);
-      for (const pt of particles)
-        tri(ctx, cx + pt.ux * 2 * R, cy + pt.uy * 2 * R, pt.rot, pt.size, rgba(pt.col, 0.9 * A));
-      applyThresholds(p);
-    };
-    drawRM();
-    window.addEventListener('scroll', drawRM, { passive: true });
-    window.addEventListener('resize', () => { build(); drawRM(); });
+    /* static: draw the mark once, no loop */
+    fit();
+    const m = Math.min(W, H) * .6;
+    FORM.iris.forEach((p, i) => tri(W * .5 + p[0] * m, H * .35 + p[1] * m, 0, P[i].size, P[i].col, .9));
     document.body.classList.add('booted');
+    heroAct.classList.add('copy-on');
     return;
   }
 
-  let mouse = null;
-  stage.addEventListener('pointermove', e => {
-    const b = canvas.getBoundingClientRect();
-    mouse = { x: e.clientX - b.left, y: e.clientY - b.top };
-  });
-  stage.addEventListener('pointerleave', () => { mouse = null; });
-
-  let visible = true;
-  new IntersectionObserver(en => { visible = en[en.length - 1].isIntersecting; }).observe(stage);
-
-  let resizeQueued = false;
-  window.addEventListener('resize', () => {
-    if (resizeQueued) return;
-    resizeQueued = true;
-    setTimeout(() => { resizeQueued = false; build(); }, 150);
-  });
-
-  /* deep links skip the opening sequence */
-  const instant = !!location.hash || window.scrollY > 60;
-  const t0 = performance.now();
-  setTimeout(() => document.body.classList.add('booted'), instant ? 0 : 2300);
+  let vis = true;
+  new IntersectionObserver(e => vis = e[e.length - 1].isIntersecting).observe(document.body);
 
   (function frame(now) {
     requestAnimationFrame(frame);
-    if (!visible || document.hidden || !W) return;
-    const t = instant ? 99 : (now - t0) / 1000;
-    const p = heroProgress();
-    const { cx, cy, R, A } = pose(p);
-    applyThresholds(p);
+    if (!vis || document.hidden || !W) return;
+    const t = (now - t0) / 1000;
+    const { active, prog } = readScroll();
+    /* Content sections get the brand mark back rather than keeping whatever
+       the last act left on screen — otherwise the four-step path lingers all
+       the way down through pricing, about and contact. */
+    let kind = inFlow ? 'iris' : active.dataset.act;
+    if (kind === 'path') kind += ':' + Math.min(3, Math.floor(prog * 4 * 0.999));
+    const target = FORM[kind] || FORM.iris;
+    const pose = place(active, prog);
+    if (inFlow) pose.alpha *= 0.16;  /* content sections own the screen, not the canvas */
+
+    /* hero: copy arrives once the mark has landed */
+    if (active === heroAct) {
+      if (prog > .10) heroAct.classList.add('copy-on');
+      if (wordmark) wordmark.style.opacity = String(Math.max(0, 1 - prog * 6));
+      if (cue) cue.style.opacity = String(Math.max(0, 1 - prog * 8));
+    } else if (wordmark) { wordmark.style.opacity = '0'; if (cue) cue.style.opacity = '0'; }
 
     ctx.clearRect(0, 0, W, H);
-    drawGlow(cx, cy, R, A);
-    const fade = Math.min(1, t * 2.2) * A;  /* scattered field fades in first */
-    for (const pt of particles) {
-      const prog = easeOut(Math.min(Math.max((t - 0.45 - pt.delay) / 1.45, 0), 1));
-      /* swirl: each home offset rotates in as the particle converges */
-      const th  = (1 - prog) * (1 - prog) * pt.swirl;
-      const cos = Math.cos(th), sin = Math.sin(th);
-      const ox  = pt.ux * 2 * R, oy = pt.uy * 2 * R;
-      const hx  = cx + ox * cos - oy * sin;
-      const hy  = cy + ox * sin + oy * cos;
-      let x = lerp(pt.sx, hx, prog);
-      let y = lerp(pt.sy, hy, prog);
-      if (prog >= 1) {
-        x += Math.cos(t * 0.7 + pt.phase) * pt.amp;
-        y += Math.sin(t * 0.9 + pt.phase * 1.3) * pt.amp;
-        if (mouse) {
-          const dx = x - mouse.x, dy = y - mouse.y;
-          const d = Math.hypot(dx, dy);
-          if (d < 90 && d > 0.01) {
-            const f = (1 - d / 90) * 16;
-            x += (dx / d) * f;
-            y += (dy / d) * f;
-          }
-        }
-      }
-      pt.rot += pt.spin;
-      tri(ctx, x, y, pt.rot, pt.size, rgba(pt.col, 0.9 * fade));
+
+    /* ambient wash behind the formation */
+    const g = ctx.createRadialGradient(pose.cx, pose.cy, pose.R * .05, pose.cx, pose.cy, pose.R * 1.1);
+    g.addColorStop(0, 'rgba(30,123,229,' + (0.11 * pose.alpha).toFixed(3) + ')');
+    g.addColorStop(.55, 'rgba(58,46,224,' + (0.05 * pose.alpha).toFixed(3) + ')');
+    g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(pose.cx - pose.R * 1.2, pose.cy - pose.R * 1.2, pose.R * 2.4, pose.R * 2.4);
+
+    /* Every formation change snapshots where each particle currently is and
+       eases from there over MORPH_S. Time-based, not per-frame — so the morph
+       looks identical at 30fps and 120fps instead of running at frame speed. */
+    if (kind !== lastKind) {
+      for (let i = 0; i < P.length; i++) { P[i].fx = P[i].x; P[i].fy = P[i].y; }
+      morphT = lastKind === null ? (boot ? t - MORPH_S * 2 : 0.35) : t;
+      lastKind = kind;
+    }
+    const mp = easeIO(clamp01((t - morphT) / MORPH_S));
+    for (let i = 0; i < P.length; i++) {
+      const p = P[i], tg = target[i];
+      const d = clamp01(mp * 1.34 - p.delay * 0.26);
+      p.x = lerp(p.fx, tg[0], d);
+      p.y = lerp(p.fy, tg[1], d);
+      p.rot += p.spin;
+      const dx = Math.cos(t * .6 + p.ph) * p.amp;
+      const dy = Math.sin(t * .8 + p.ph * 1.3) * p.amp;
+      tri(pose.cx + p.x * pose.R + dx, pose.cy + p.y * pose.R + dy, p.rot, p.size, p.col, 0.9 * pose.alpha);
     }
   })(t0);
 })();
 
-/* ── Ambient particle field ───────────────────
-   Sparse drifting triangles behind the whole page,
-   with per-particle scroll parallax for depth. */
+/* ── Act 2 — services scrub ───────────────── */
 (function () {
-  const canvas = document.getElementById('fieldCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const DPR = Math.min(window.devicePixelRatio || 1, 2);
-  let W = 0, H = 0, ps = [];
+  const act = document.getElementById('sluzby');
+  const items = Array.from(document.querySelectorAll('.svc-item'));
+  const rail = document.getElementById('svcRail');
+  if (!act || !items.length) return;
+  if (RM) { items.forEach(i => i.classList.add('is-on')); return; }
+  let cur = -1;
+  const tick = () => {
+    const r = act.getBoundingClientRect();
+    const p = Math.min(Math.max(-r.top / (r.height - innerHeight), 0), 1);
+    const i = Math.min(items.length - 1, Math.floor(p * items.length * 0.999));
+    if (i !== cur) { cur = i; items.forEach((el, k) => el.classList.toggle('is-on', k === i)); }
+    if (rail) rail.style.width = (p * 100).toFixed(1) + '%';
+  };
+  addEventListener('scroll', tick, { passive: true });
+  addEventListener('resize', tick);
+  tick();
+})();
 
-  function build() {
-    W = window.innerWidth;
-    H = window.innerHeight;
-    canvas.width  = W * DPR;
-    canvas.height = H * DPR;
-    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    const n = Math.min(70, Math.round((W * H) / 26000));
-    ps = Array.from({ length: n }, () => ({
-      x: Math.random() * W,
-      y: Math.random() * H,
-      s: 1.4 + Math.random() * 2.8,
-      rot: Math.random() * Math.PI * 2,
-      spin: (Math.random() - 0.5) * 0.006,
-      vx: (Math.random() - 0.5) * 0.12,
-      vy: -(0.05 + Math.random() * 0.2),
-      depth: 0.25 + Math.random() * 0.75,
-      col: rgba(paletteAt(Math.random()), 0.09 + Math.random() * 0.2)
-    }));
-  }
-  build();
+/* ── Act 4 — process scrub ────────────────── */
+(function () {
+  const act = document.getElementById('postup');
+  const items = Array.from(document.querySelectorAll('.proc-item'));
+  const rail = document.getElementById('procRail');
+  if (!act || !items.length) return;
+  if (RM) { items.forEach(i => i.classList.add('is-on')); if (rail) rail.style.width = '100%'; return; }
+  let cur = -1;
+  const tick = () => {
+    const r = act.getBoundingClientRect();
+    const p = Math.min(Math.max(-r.top / (r.height - innerHeight), 0), 1);
+    const i = Math.min(items.length - 1, Math.floor(p * items.length * 0.999));
+    if (i !== cur) { cur = i; items.forEach((el, k) => el.classList.toggle('is-on', k === i)); }
+    /* rail fills in whole steps so it matches the nodes in the constellation */
+    if (rail) rail.style.width = ((i + 1) / items.length * 100).toFixed(1) + '%';
+  };
+  addEventListener('scroll', tick, { passive: true });
+  addEventListener('resize', tick);
+  tick();
+})();
 
-  const wrapY = y => ((y % (H + 24)) + (H + 24)) % (H + 24) - 12;
+/* ── References — three live client sites ─────
+   All visible at once: no carousel, so someone hunting for a
+   price is not made to scroll through a gallery first. */
+(function () {
+  const frames = Array.from(document.querySelectorAll('.ref-frame[data-src]'));
+  if (!frames.length) return;
 
-  function drawStatic() {
-    ctx.clearRect(0, 0, W, H);
-    for (const p of ps) tri(ctx, p.x, wrapY(p.y - window.scrollY * p.depth * 0.12), p.rot, p.s, p.col);
-  }
-
-  if (RM) {
-    drawStatic();
-    window.addEventListener('resize', () => { build(); drawStatic(); });
-    return;
-  }
-
-  let resizeQueued = false;
-  window.addEventListener('resize', () => {
-    if (resizeQueued) return;
-    resizeQueued = true;
-    setTimeout(() => { resizeQueued = false; build(); }, 150);
+  const scale = () => frames.forEach(f => {
+    const w = f.clientWidth;
+    if (w) f.style.setProperty('--s', (w / 1280).toFixed(4));
   });
+  scale();
+  let rq = false;
+  addEventListener('resize', () => { if (rq) return; rq = true; setTimeout(() => { rq = false; scale(); }, 150); });
 
-  (function frame() {
-    requestAnimationFrame(frame);
-    if (document.hidden) return;
-    ctx.clearRect(0, 0, W, H);
-    const sy = window.scrollY;
-    for (const p of ps) {
-      p.x += p.vx;
-      p.y += p.vy;
-      p.rot += p.spin;
-      if (p.x < -12) p.x = W + 12;
-      if (p.x > W + 12) p.x = -12;
-      /* parallax: deeper particles trail the scroll less */
-      tri(ctx, p.x, wrapY(p.y - sy * p.depth * 0.12), p.rot, p.s, p.col);
-    }
-  })();
+  if (TIER === 0) return;              /* lite tier keeps the placeholder */
+
+  const mount = f => {
+    if (f.dataset.on) return;
+    f.dataset.on = '1';
+    const fr = document.createElement('iframe');
+    fr.src = f.dataset.src;
+    fr.loading = 'lazy';
+    fr.setAttribute('scrolling', 'no');
+    fr.setAttribute('tabindex', '-1');
+    fr.setAttribute('aria-hidden', 'true');
+    fr.title = '';
+    f.appendChild(fr);
+  };
+  /* plain scroll check — fires reliably in every renderer we test in */
+  const near = () => {
+    let pending = false;
+    frames.forEach(f => {
+      const r = f.getBoundingClientRect();
+      if (r.top < innerHeight + 500 && r.bottom > -500) mount(f);
+      if (!f.dataset.on) pending = true;
+    });
+    if (!pending) removeEventListener('scroll', near);
+  };
+  addEventListener('scroll', near, { passive: true });
+  addEventListener('resize', near);
+  near();
 })();
 
 /* ── Back to top ──────────────────────────── */
-document.getElementById('toTop')?.addEventListener('click', () =>
-  window.scrollTo({ top: 0, behavior: RM ? 'auto' : 'smooth' })
-);
+document.getElementById('toTop')?.addEventListener('click', () => scrollTo({ top: 0, behavior: RM ? 'auto' : 'smooth' }));
 
 /* ── Contact form ─────────────────────────── */
 (function () {
   const form = document.getElementById('contactForm');
-  const suc  = document.getElementById('formSuccess');
+  const suc = document.getElementById('formSuccess');
   if (!form) return;
+  /* validate on blur and on submit; the message sits with its field, and the
+     first offending field takes focus rather than a summary at the top */
+  const fields = [
+    { el: document.getElementById('fname'),  ok: v => v.trim().length > 1 },
+    { el: document.getElementById('femail'), ok: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) },
+    { el: document.getElementById('fmsg'),   ok: v => v.trim().length > 4 }
+  ];
+  const mark = f => {
+    const good = f.ok(f.el.value);
+    f.el.closest('.form-group').classList.toggle('invalid', !good);
+    f.el.setAttribute('aria-invalid', good ? 'false' : 'true');
+    return good;
+  };
+  fields.forEach(f => {
+    f.el.addEventListener('blur', () => { if (f.el.value) mark(f); });
+    f.el.addEventListener('input', () => {
+      if (f.el.closest('.form-group').classList.contains('invalid')) mark(f);
+    });
+  });
+
   form.addEventListener('submit', async e => {
     e.preventDefault();
+    const bad = fields.filter(f => !mark(f));
+    if (bad.length) { bad[0].el.focus(); return; }
     const btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    btn.classList.add('sending');
-    const bundleSel  = document.getElementById('fbundle');
-    const bundleText = bundleSel.options[bundleSel.selectedIndex]?.text || '';
+    btn.disabled = true; btn.classList.add('sending');
+    const sel = document.getElementById('fbundle');
+    const bundle = sel.options[sel.selectedIndex]?.text || '';
     try {
       await fetch('https://formsubmit.co/ajax/michal.owczarzy@lanthir.cz', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
-          _subject:  'Nová poptávka z lanthir.cz — ' + bundleText,
-          _cc:       'mariusz.chmiel@lanthir.cz',
-          _captcha:  'false',
+          _subject: 'Nová poptávka z lanthir.cz — ' + bundle,
+          _cc: 'mariusz.chmiel@lanthir.cz',
+          _captcha: 'false',
           _template: 'table',
-          Jméno:     document.getElementById('fname').value,
-          Email:     document.getElementById('femail').value,
-          Firma:     document.getElementById('fcompany').value,
-          Balíček:   bundleText,
-          Zpráva:    document.getElementById('fmsg').value
+          Jméno: document.getElementById('fname').value,
+          Email: document.getElementById('femail').value,
+          Firma: document.getElementById('fcompany').value,
+          Balíček: bundle,
+          Zpráva: document.getElementById('fmsg').value
         })
       });
     } catch (e) {}

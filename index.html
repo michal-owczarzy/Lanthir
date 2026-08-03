@@ -62,7 +62,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=Inter:wght@200;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 
   <!-- Google tag (gtag.js) -->
@@ -78,163 +78,142 @@
 
   <noscript>
     <style>
-      .nav, .hero-text > *, [data-reveal] { opacity: 1 !important; transform: none !important; filter: none !important; }
-      .hero { height: auto !important; }
-      .hero-stage { height: auto !important; min-height: 60vh; }
+      .act { height: auto !important; }
+      .act-stage { position: static !important; height: auto !important; padding: 90px 0; }
+      .act-layer { position: static !important; opacity: 1 !important; transform: none !important; pointer-events: auto !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      #stage { display: none; }
+      .svc-item, .ref-item { display: block !important; }
     </style>
   </noscript>
 
-  <!-- ═══ AMBIENT PARTICLE FIELD ═══ -->
-  <canvas class="field" id="fieldCanvas" aria-hidden="true"></canvas>
+  <!-- ═══ THE NARRATOR — one canvas for the whole page ═══ -->
+  <canvas id="stage" aria-hidden="true"></canvas>
 
   <!-- ═══ NAV ═══ -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="#home" class="nav-logo">
-        <img src="logo-mark.svg" alt="Lanthir" class="logo-img">
+        <img src="logo-mark.svg" alt="" class="logo-img">
         <span class="logo-text">Lanthir</span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#sluzby"  data-i18n="nav.services">Služby</a></li>
-        <li><a href="#cenik"   data-i18n="nav.pricing">Ceník</a></li>
-        <li><a href="#postup"  data-i18n="nav.process">Postup</a></li>
-        <li><a href="#about"   data-i18n="nav.about">O nás</a></li>
-        <li><a href="#kontakt" data-i18n="nav.contact">Kontakt</a></li>
+        <li><a href="#sluzby"    data-i18n="nav.services">Služby</a></li>
+        <li><a href="#reference" data-i18n="nav.work">Reference</a></li>
+        <li><a href="#cenik"     data-i18n="nav.pricing">Ceník</a></li>
+        <li><a href="#postup"    data-i18n="nav.process">Postup</a></li>
+        <li><a href="#about"     data-i18n="nav.about">O nás</a></li>
+        <li><a href="#kontakt"   data-i18n="nav.contact">Kontakt</a></li>
       </ul>
-      <div class="lang-switch" id="langSwitch">
+      <div class="lang-switch">
         <button class="ls-btn active" data-lang="cs">CZ</button>
         <button class="ls-btn" data-lang="en">EN</button>
         <button class="ls-btn" data-lang="pl">PL</button>
       </div>
       <a href="#kontakt" class="btn-primary nav-cta" data-i18n="nav.cta">Nezávazná poptávka</a>
-      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
-  <!-- ═══ HERO — full-screen constellation opening ═══ -->
-  <header class="hero" id="home">
-    <div class="hero-stage" id="heroStage">
-      <canvas id="heroCanvas" aria-hidden="true"></canvas>
-
-      <div class="hero-wordmark" id="heroWordmark" aria-hidden="true">
-        <span style="--i:0">L</span><span style="--i:1">A</span><span style="--i:2">N</span><span style="--i:3">T</span><span style="--i:4">H</span><span style="--i:5">I</span><span style="--i:6">R</span>
-      </div>
-
-      <div class="container hero-layout" id="heroLayout">
-        <div class="hero-text">
-          <span class="eyebrow" data-i18n="hero.badge">Weby · Monitoring · Správa webu</span>
-          <h1 class="hero-heading" data-i18n="hero.h1">
-            Technologický partner<br><span class="grad-text">pro růst a provoz firmy.</span>
-          </h1>
-          <p class="hero-sub" data-i18n="hero.sub">
-            Navrhujeme webové stránky na míru a staráme se o jejich provoz. Landing page, firemní web nebo webová aplikace — s SSL, hostingem, SEO optimalizací a monitoringem dostupnosti.
-          </p>
-          <div class="hero-actions">
-            <a href="#cenik"   class="btn-primary" data-i18n="hero.btn1">Zobrazit ceník</a>
-            <a href="#kontakt" class="btn-ghost"   data-i18n="hero.btn2">Nezávazná konzultace</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-scroll-hint" id="scrollHint" aria-hidden="true">
-        <span class="shint-in"><span class="shint-line"></span></span>
-      </div>
-    </div>
-  </header>
-
   <main>
 
-  <!-- ═══ SERVICES ═══ -->
-  <section class="section" id="sluzby">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow"><span class="chap">01</span><span data-i18n="svc.tag">Co tvoříme</span></span>
-        <div class="section-head-grid">
-          <h2 data-i18n="svc.heading">Webové stránky pro <span class="grad-text">každou potřebu</span></h2>
-          <p class="lede" data-i18n="svc.sub">Tvorba webových stránek pro živnostníky i firmy — od jednoduché landing page po plnohodnotnou webovou aplikaci. Každý web dodáváme včetně domény, hostingu a SSL certifikátu.</p>
+  <!-- ═══ ACT 1 — the mark assembles ═══ -->
+  <section class="act act--hero" id="home" data-act="iris" data-len="2">
+    <div class="act-stage">
+      <div class="container act-grid">
+        <div class="act-copy" data-layer="0">
+          <span class="tag" data-i18n="hero.badge">Weby · Monitoring · Správa webu</span>
+          <h1 class="display" data-i18n="hero.h1">Web, který postavíme —<br><em>a nespustíme z očí.</em></h1>
+          <p class="lede" data-i18n="hero.sub">Navrhujeme webové stránky na míru a staráme se o jejich provoz. Landing page, firemní web nebo webová aplikace — s SSL, hostingem, SEO optimalizací a monitoringem dostupnosti.</p>
+          <div class="row-actions">
+            <a href="#cenik" class="btn-primary" data-i18n="hero.btn1">Zobrazit ceník</a>
+            <a href="#kontakt" class="btn-text" data-i18n="hero.btn2">Nezávazná konzultace</a>
+          </div>
         </div>
       </div>
-
-      <ol class="svc-index">
-        <li class="svc-row" data-reveal>
-          <span class="svc-num">01</span>
-          <div class="svc-body">
-            <h3 data-i18n="svc.1.title">Prezentační web</h3>
-            <p data-i18n="svc.1.desc">Profesionální webové stránky, které představují vaši firmu nebo produkt. Moderní design, rychlé načítání, perfektní na mobilu.</p>
-            <a href="#cenik" class="text-link" data-i18n="svc.more">Zobrazit ceník <span>→</span></a>
-          </div>
-        </li>
-        <li class="svc-row" data-reveal>
-          <span class="svc-num">02</span>
-          <div class="svc-body">
-            <h3 data-i18n="svc.2.title">E-shop</h3>
-            <p data-i18n="svc.2.desc">Plně funkční online obchod s košíkem, platební bránou a správou objednávek. Prodávejte 24/7 bez omezení.</p>
-            <a href="#cenik" class="text-link" data-i18n="svc.more">Zobrazit ceník <span>→</span></a>
-          </div>
-        </li>
-        <li class="svc-row" data-reveal>
-          <span class="svc-num">03</span>
-          <div class="svc-body">
-            <h3 data-i18n="svc.3.title">Rezervační systém</h3>
-            <p data-i18n="svc.3.desc">Online rezervace pro restaurace, hotely, salony, lékaře a další. Zákazníci si zarezervují sami — vy šetříte čas.</p>
-            <a href="#cenik" class="text-link" data-i18n="svc.more">Zobrazit ceník <span>→</span></a>
-          </div>
-        </li>
-        <li class="svc-row" data-reveal>
-          <span class="svc-num">04</span>
-          <div class="svc-body">
-            <h3 data-i18n="svc.4.title">Landing page</h3>
-            <p data-i18n="svc.4.desc">Efektivní stránka zaměřená na jeden cíl — kampaň, produkt nebo získání kontaktů. Maximální konverze.</p>
-            <a href="#cenik" class="text-link" data-i18n="svc.more">Zobrazit ceník <span>→</span></a>
-          </div>
-        </li>
-        <li class="svc-row" data-reveal>
-          <span class="svc-num">05</span>
-          <div class="svc-body">
-            <h3 data-i18n="svc.5.title">Webová aplikace</h3>
-            <p data-i18n="svc.5.desc">Komplexní webová aplikace s přihlášením, databází a vlastní logikou. Portály, dashboardy, interní nástroje.</p>
-            <a href="#cenik" class="text-link" data-i18n="svc.more">Zobrazit ceník <span>→</span></a>
-          </div>
-        </li>
-        <li class="svc-row" data-reveal>
-          <span class="svc-num">06</span>
-          <div class="svc-body">
-            <h3 data-i18n="svc.6.title">Redesign webu</h3>
-            <p data-i18n="svc.6.desc">Zastaralý web vám škodí. Obnovíme jeho design, výkon a SEO — bez ztráty obsahu a pozic ve vyhledávačích.</p>
-            <a href="#cenik" class="text-link" data-i18n="svc.more">Zobrazit ceník <span>→</span></a>
-          </div>
-        </li>
-      </ol>
+      <div class="wordmark" id="wordmark" aria-hidden="true">LANTHIR</div>
+      <div class="scroll-cue" id="scrollCue" aria-hidden="true"><span></span></div>
     </div>
   </section>
 
-  <!-- ═══ PRICING ═══ -->
-  <section class="section" id="cenik">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow"><span class="chap">02</span><span data-i18n="price.tag">Ceník</span></span>
-        <div class="section-head-grid">
-          <h2 data-i18n="price.heading">Řešení <span class="grad-text">pro každého</span></h2>
-          <p class="lede" data-i18n="price.sub">Transparentní ceny tvorby webových stránek bez skrytých poplatků. Vyberte jednorázové vytvoření webu — nebo pravidelnou správu, monitoring a SEO optimalizaci.</p>
+  <!-- ═══ ACT 2 — particles become a page being built ═══ -->
+  <section class="act" id="sluzby" data-act="wireframe" data-len="2.4">
+    <div class="act-stage">
+      <div class="container act-grid">
+        <div class="act-copy">
+          <span class="tag" data-i18n="svc.tag">Co stavíme</span>
+          <h2 class="display display--sm" data-i18n="svc.heading">Od vizitky<br><em>po systém.</em></h2>
+          <ol class="svc-list" id="svcList">
+            <li class="svc-item" data-idx="0">
+              <span class="svc-n">01</span>
+              <h3 data-i18n="svc.5.title">Webová aplikace</h3>
+              <p data-i18n="svc.5.desc">Komplexní webová aplikace s přihlášením, databází a vlastní logikou. Portály, dashboardy, interní nástroje.</p>
+            </li>
+            <li class="svc-item" data-idx="1">
+              <span class="svc-n">02</span>
+              <h3 data-i18n="svc.2.title">E-shop</h3>
+              <p data-i18n="svc.2.desc">Plně funkční online obchod s košíkem, platební bránou a správou objednávek. Prodávejte 24/7 bez omezení.</p>
+            </li>
+            <li class="svc-item" data-idx="2">
+              <span class="svc-n">03</span>
+              <h3 data-i18n="svc.3.title">Rezervační systém</h3>
+              <p data-i18n="svc.3.desc">Online rezervace pro restaurace, hotely, salony, lékaře a další. Zákazníci si zarezervují sami — vy šetříte čas.</p>
+            </li>
+            <li class="svc-item" data-idx="3">
+              <span class="svc-n">04</span>
+              <h3 data-i18n="svc.6.title">Redesign webu</h3>
+              <p data-i18n="svc.6.desc">Zastaralý web vám škodí. Obnovíme jeho design, výkon a SEO — bez ztráty obsahu a pozic ve vyhledávačích.</p>
+            </li>
+          </ol>
+          <div class="svc-rail" aria-hidden="true"><span class="svc-rail-fill" id="svcRail"></span></div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- A: Jednorázová tvorba -->
-      <div class="price-group" data-reveal>
-        <span class="price-group-label" data-i18n="price.dev.label">A — Jednorázová tvorba webu</span>
+  <!-- ═══ REFERENCES — three live client sites, all visible at once ═══ -->
+  <section class="flow" id="reference">
+    <div class="container">
+      <header class="flow-head reveal">
+        <span class="tag" data-i18n="work.tag">Reference</span>
+        <h2 class="display display--sm" data-i18n="work.heading">Naše <em>reference.</em></h2>
+        <p class="lede" data-i18n="work.sub">Weby, které jsme vytvořili pro naše zákazníky. Klikněte a projděte si je jako skutečný web.</p>
+      </header>
+      <div class="ref-row">
+        <a class="ref-item reveal" href="/customer/restaurace-max/" target="_blank" rel="noopener">
+          <span class="ref-frame" data-src="/customer/restaurace-max/"></span>
+          <span class="ref-cap"><span class="ref-ind" data-i18n="work.1.ind">Restaurace</span><span class="ref-name">Restaurace MAX</span></span>
+        </a>
+        <a class="ref-item reveal" href="/customer/studio-victory/" target="_blank" rel="noopener">
+          <span class="ref-frame" data-src="/customer/studio-victory/"></span>
+          <span class="ref-cap"><span class="ref-ind" data-i18n="work.5.ind">Kosmetika</span><span class="ref-name">Studio Victory</span></span>
+        </a>
+        <a class="ref-item reveal" href="/customer/autoservis-motyka/" target="_blank" rel="noopener">
+          <span class="ref-frame" data-src="/customer/autoservis-motyka/"></span>
+          <span class="ref-cap"><span class="ref-ind" data-i18n="work.2.ind">Autoservis</span><span class="ref-name">Autoservis Motyka</span></span>
+        </a>
+      </div>
+      <a href="/ukazky/" class="btn-text ref-more reveal" data-i18n="work.all">Zobrazit všechny ukázky</a>
+    </div>
+  </section>
+
+  <!-- ═══ PRICING — deliberately not pinned: this is a comparison table ═══ -->
+  <section class="flow" id="cenik">
+    <div class="container">
+      <header class="flow-head reveal">
+        <span class="tag" data-i18n="price.tag">Ceník</span>
+        <h2 class="display display--sm" data-i18n="price.heading">Ceny za <em>naše služby.</em></h2>
+        <p class="lede" data-i18n="price.sub">Transparentní ceny tvorby webových stránek bez skrytých poplatků. Vyberte jednorázové vytvoření webu — nebo pravidelnou správu, monitoring a SEO optimalizaci.</p>
+      </header>
+
+      <div class="price-block">
+        <span class="price-label reveal" data-i18n="price.dev.label">A — Jednorázová tvorba webu</span>
         <div class="price-cols">
-
-          <article class="price-col">
+          <article class="price-col reveal">
             <span class="price-tier" data-i18n="price.1.tier">START</span>
             <h3 class="price-name" data-i18n="price.1.name">Landing Page</h3>
             <p class="price-desc" data-i18n="price.1.desc">Pro živnostníky, řemeslníky a nové projekty.</p>
-            <div class="price-amount">
-              <span class="price-from" data-i18n="price.from">od</span>
-              <span class="price-num" data-i18n="price.1.price">7 990</span>
-              <span class="price-currency" data-i18n="price.currency">Kč</span>
-            </div>
+            <p class="price-amount"><span class="from" data-i18n="price.from">od</span><span class="num" data-i18n="price.1.price">7 990</span><span class="cur" data-i18n="price.currency">Kč</span></p>
             <ul class="price-feats">
               <li data-i18n="price.1.f1">Jednostránkový web (One-pager)</li>
               <li data-i18n="price.1.f2">Sekce: O nás, Služby, Ceník, Kontakt</li>
@@ -244,19 +223,14 @@
               <li data-i18n="price.1.f6">Doména, hosting &amp; SSL v ceně</li>
               <li data-i18n="price.1.f7">Dodání do 14 dní</li>
             </ul>
-            <a href="#kontakt" class="btn-ghost" data-i18n="price.cta">Mám zájem</a>
+            <a href="#kontakt" class="btn-text" data-i18n="price.cta">Mám zájem</a>
           </article>
 
-          <article class="price-col featured">
-            <span class="price-pop" data-i18n="price.popular">Nejpopulárnější</span>
+          <article class="price-col price-col--lead reveal">
             <span class="price-tier" data-i18n="price.2.tier">BUSINESS</span>
             <h3 class="price-name" data-i18n="price.2.name">Firemní prezentace</h3>
             <p class="price-desc" data-i18n="price.2.desc">Pro malé a střední firmy, konzultanty a agentury.</p>
-            <div class="price-amount">
-              <span class="price-from" data-i18n="price.from">od</span>
-              <span class="price-num" data-i18n="price.2.price">19 990</span>
-              <span class="price-currency" data-i18n="price.currency">Kč</span>
-            </div>
+            <p class="price-amount"><span class="from" data-i18n="price.from">od</span><span class="num num--lead" data-i18n="price.2.price">19 990</span><span class="cur" data-i18n="price.currency">Kč</span></p>
             <ul class="price-feats">
               <li data-i18n="price.2.f1">Vícestránkový web (5–10 podstránek)</li>
               <li data-i18n="price.2.f2">Blogová sekce a stránky pro služby</li>
@@ -269,13 +243,11 @@
             <a href="#kontakt" class="btn-primary" data-i18n="price.cta.main">Začít projekt</a>
           </article>
 
-          <article class="price-col">
+          <article class="price-col reveal">
             <span class="price-tier" data-i18n="price.3.tier">PRO</span>
             <h3 class="price-name" data-i18n="price.3.name">Custom &amp; Lead Generation</h3>
             <p class="price-desc" data-i18n="price.3.desc">Pro firmy, pro které je web hlavním prodejním kanálem.</p>
-            <div class="price-amount">
-              <span class="price-num price-custom" data-i18n="price.3.price">Na vyžádání</span>
-            </div>
+            <p class="price-amount"><span class="num num--sm" data-i18n="price.3.price">Na vyžádání</span></p>
             <ul class="price-feats">
               <li data-i18n="price.3.f1">Komplexní struktura a případové studie</li>
               <li data-i18n="price.3.f2">Napojení na CRM nebo Slack (automatické leady)</li>
@@ -285,26 +257,19 @@
               <li data-i18n="price.3.f6">Konverzní copywriting</li>
               <li data-i18n="price.3.f7">Měření cílů a událostí v analytice</li>
             </ul>
-            <a href="#kontakt" class="btn-ghost" data-i18n="price.cta">Mám zájem</a>
+            <a href="#kontakt" class="btn-text" data-i18n="price.cta">Mám zájem</a>
           </article>
-
         </div>
       </div>
 
-      <!-- B: Měsíční správa -->
-      <div class="price-group" data-reveal>
-        <span class="price-group-label" data-i18n="price.sub.label">B — Měsíční správa, monitoring a marketing</span>
+      <div class="price-block">
+        <span class="price-label reveal" data-i18n="price.sub.label">B — Měsíční správa, monitoring a marketing</span>
         <div class="price-cols">
-
-          <article class="price-col">
+          <article class="price-col price-col--lead reveal">
             <span class="price-tier" data-i18n="sub.1.tier">ZÁKLAD</span>
             <h3 class="price-name" data-i18n="sub.1.name">Klidné spaní</h3>
             <p class="price-desc" data-i18n="sub.1.desc">Jistota, že váš web funguje a nic nevyprší.</p>
-            <div class="price-amount">
-              <span class="price-num" data-i18n="sub.1.price">399</span>
-              <span class="price-currency" data-i18n="price.currency">Kč</span>
-              <span class="price-per-month" data-i18n="price.per.month">/ měsíc</span>
-            </div>
+            <p class="price-amount"><span class="num num--lead" data-i18n="sub.1.price">399</span><span class="cur" data-i18n="price.currency">Kč</span><span class="per" data-i18n="price.per.month">/ měsíc</span></p>
             <ul class="price-feats">
               <li data-i18n="sub.1.f1">Uptime monitoring každých 5 minut</li>
               <li data-i18n="sub.1.f2">Okamžitá notifikace při výpadku</li>
@@ -312,19 +277,14 @@
               <li data-i18n="sub.1.f4">Průběžná technická údržba webu</li>
               <li data-i18n="sub.1.f5">15–30 min drobných úprav měsíčně</li>
             </ul>
-            <a href="#kontakt" class="btn-ghost" data-i18n="price.cta">Mám zájem</a>
+            <a href="#kontakt" class="btn-primary" data-i18n="price.cta.main">Začít projekt</a>
           </article>
 
-          <article class="price-col featured">
-            <span class="price-pop" data-i18n="price.popular">Nejpopulárnější</span>
+          <article class="price-col reveal">
             <span class="price-tier" data-i18n="sub.2.tier">PLUS</span>
             <h3 class="price-name" data-i18n="sub.2.name">Výkon pod kontrolou</h3>
             <p class="price-desc" data-i18n="sub.2.desc">Vše ze ZÁKLADU + výkonnostní reporty a úpravy.</p>
-            <div class="price-amount">
-              <span class="price-num" data-i18n="sub.2.price">899</span>
-              <span class="price-currency" data-i18n="price.currency">Kč</span>
-              <span class="price-per-month" data-i18n="price.per.month">/ měsíc</span>
-            </div>
+            <p class="price-amount"><span class="num" data-i18n="sub.2.price">899</span><span class="cur" data-i18n="price.currency">Kč</span><span class="per" data-i18n="price.per.month">/ měsíc</span></p>
             <ul class="price-feats">
               <li data-i18n="sub.2.f1">Vše ze ZÁKLADU</li>
               <li data-i18n="sub.2.f2">Pravidelné měření rychlosti a výkonu webu</li>
@@ -332,19 +292,14 @@
               <li data-i18n="sub.2.f4">Analýza návštěvnosti a klíčových stránek</li>
               <li data-i18n="sub.2.f5">1 hodina kódování / úprav měsíčně</li>
             </ul>
-            <a href="#kontakt" class="btn-primary" data-i18n="price.cta.main">Začít projekt</a>
+            <a href="#kontakt" class="btn-text" data-i18n="price.cta">Mám zájem</a>
           </article>
 
-          <article class="price-col">
+          <article class="price-col reveal">
             <span class="price-tier" data-i18n="sub.3.tier">KOMPLEX</span>
             <h3 class="price-name" data-i18n="sub.3.name">Růst a Observabilita</h3>
             <p class="price-desc" data-i18n="sub.3.desc">Vše z PLUSU + aktivní SEO a prioritní SLA.</p>
-            <div class="price-amount">
-              <span class="price-from" data-i18n="price.from">od</span>
-              <span class="price-num" data-i18n="sub.3.price">2 499</span>
-              <span class="price-currency" data-i18n="price.currency">Kč</span>
-              <span class="price-per-month" data-i18n="price.per.month">/ měsíc</span>
-            </div>
+            <p class="price-amount"><span class="from" data-i18n="price.from">od</span><span class="num" data-i18n="sub.3.price">2 499</span><span class="cur" data-i18n="price.currency">Kč</span><span class="per" data-i18n="price.per.month">/ měsíc</span></p>
             <ul class="price-feats">
               <li data-i18n="sub.3.f1">Vše z PLUSU</li>
               <li data-i18n="sub.3.f2">Syntetické testování formulářů a klíčových cest</li>
@@ -352,80 +307,47 @@
               <li data-i18n="sub.3.f4">Garantované zahájení řešení do 2 hodin</li>
               <li data-i18n="sub.3.f5">Prioritní SLA</li>
             </ul>
-            <a href="#kontakt" class="btn-ghost" data-i18n="price.cta">Mám zájem</a>
+            <a href="#kontakt" class="btn-text" data-i18n="price.cta">Mám zájem</a>
           </article>
-
         </div>
       </div>
 
-      <p class="price-note" data-i18n="price.note">* Ceny jsou bez DPH. Rádi připravíme přesnou nabídku na míru.</p>
+      <p class="price-note reveal" data-i18n="price.note">* Ceny jsou bez DPH. Rádi připravíme přesnou nabídku na míru.</p>
     </div>
   </section>
 
-  <!-- ═══ PROCESS ═══ -->
-  <section class="section" id="postup">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow"><span class="chap">03</span><span data-i18n="proc.tag">Jak pracujeme</span></span>
-        <div class="section-head-grid">
-          <h2 data-i18n="proc.heading">Čtyři kroky k <span class="grad-text">vašemu webu</span></h2>
-          <p class="lede" data-i18n="proc.sub">Transparentní proces od první schůzky po spuštění. Vždy víte, ve které fázi se projekt nachází.</p>
-        </div>
-      </div>
-
-      <div class="proc-list">
-        <div class="proc-step" data-reveal>
-          <span class="proc-num">01</span>
-          <div class="proc-body">
-            <h3 data-i18n="proc.1.title">Konzultace</h3>
-            <p data-i18n="proc.1.desc">Poznáme vás, vaše cíle a potřeby. Bezplatná konzultace bez závazků — osobně nebo online.</p>
-          </div>
-        </div>
-        <div class="proc-step" data-reveal>
-          <span class="proc-num">02</span>
-          <div class="proc-body">
-            <h3 data-i18n="proc.2.title">Návrh</h3>
-            <p data-i18n="proc.2.desc">Vytvoříme vizuální podobu vašeho webu — layout a design odsouhlasíme před tím, než začneme kódovat.</p>
-          </div>
-        </div>
-        <div class="proc-step" data-reveal>
-          <span class="proc-num">03</span>
-          <div class="proc-body">
-            <h3 data-i18n="proc.3.title">Vývoj</h3>
-            <p data-i18n="proc.3.desc">Kódujeme, testujeme a ladíme. Průběžně vás informujeme o postupu a zapracováváme zpětnou vazbu.</p>
-          </div>
-        </div>
-        <div class="proc-step" data-reveal>
-          <span class="proc-num">04</span>
-          <div class="proc-body">
-            <h3 data-i18n="proc.4.title">Spuštění</h3>
-            <p data-i18n="proc.4.desc">Nasadíme web i s doménou a hostingem — zákazník nemusí řešit nic technického. Podpora zahrnuta v ceně.</p>
-          </div>
+  <!-- ═══ ACT 4 — the path ═══ -->
+  <section class="act" id="postup" data-act="path" data-len="2.0">
+    <div class="act-stage">
+      <div class="container act-grid">
+        <div class="act-copy">
+          <span class="tag" data-i18n="proc.tag">Jak pracujeme</span>
+          <h2 class="display display--sm" data-i18n="proc.heading">Čtyři kroky.<br><em>Žádná překvapení.</em></h2>
+          <ol class="proc-list" id="procList">
+            <li class="proc-item" data-idx="0"><span class="proc-n">01</span><h3 data-i18n="proc.1.title">Konzultace</h3><p data-i18n="proc.1.desc">Poznáme vás, vaše cíle a potřeby. Bezplatná konzultace bez závazků — osobně nebo online.</p></li>
+            <li class="proc-item" data-idx="1"><span class="proc-n">02</span><h3 data-i18n="proc.2.title">Návrh</h3><p data-i18n="proc.2.desc">Vytvoříme vizuální podobu vašeho webu — layout a design odsouhlasíme před tím, než začneme kódovat.</p></li>
+            <li class="proc-item" data-idx="2"><span class="proc-n">03</span><h3 data-i18n="proc.3.title">Vývoj</h3><p data-i18n="proc.3.desc">Kódujeme, testujeme a ladíme. Průběžně vás informujeme o postupu a zapracováváme zpětnou vazbu.</p></li>
+            <li class="proc-item" data-idx="3"><span class="proc-n">04</span><h3 data-i18n="proc.4.title">Spuštění</h3><p data-i18n="proc.4.desc">Nasadíme web i s doménou a hostingem — zákazník nemusí řešit nic technického. Podpora zahrnuta v ceně.</p></li>
+          </ol>
+          <div class="proc-rail" aria-hidden="true"><span class="proc-rail-fill" id="procRail"></span></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ═══ ABOUT ═══ -->
-  <section class="section" id="about">
+  <section class="flow" id="about">
     <div class="container">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow"><span class="chap">04</span><span data-i18n="about.tag">O nás</span></span>
-        <div class="section-head-grid">
-          <h2 data-i18n="about.heading">Kdo stojí <span class="grad-text">za Lanthirem</span></h2>
-        </div>
-      </div>
-
+      <header class="flow-head reveal">
+        <span class="tag" data-i18n="about.tag">O nás</span>
+        <h2 class="display display--sm" data-i18n="about.heading">Dva lidi.<br><em>Žádná agentura.</em></h2>
+      </header>
       <div class="people">
-
-        <!-- Michal Owczarzy -->
-        <article class="person" data-reveal>
+        <article class="person reveal">
           <div class="person-photo-wrap">
-            <img src="michal.jpg" alt="Michal Owczarzy" class="person-photo"
+            <img src="michal.jpg" alt="Michal Owczarzy" class="person-photo" loading="lazy" width="760" height="1139"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="person-photo-fallback">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            </div>
+            <div class="person-photo-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
           </div>
           <span class="person-role" data-i18n="about.1.role">Zakladatel &amp; CTO</span>
           <h3 class="person-name">Ing. Michal Owczarzy</h3>
@@ -437,14 +359,11 @@
           <p class="person-skills">HTML / CSS · JavaScript · Zabbix · GitLab CI/CD · Kubernetes</p>
         </article>
 
-        <!-- Mariusz Chmiel -->
-        <article class="person" data-reveal>
+        <article class="person reveal">
           <div class="person-photo-wrap">
-            <img src="mariusz.jpg" alt="Mariusz Chmiel" class="person-photo person-photo--headshot"
+            <img src="mariusz.jpg" alt="Mariusz Chmiel" class="person-photo person-photo--headshot" loading="lazy" width="760" height="1140"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="person-photo-fallback">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            </div>
+            <div class="person-photo-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
           </div>
           <span class="person-role" data-i18n="about.2.role">Head of Sales</span>
           <h3 class="person-name">Mariusz Chmiel</h3>
@@ -455,61 +374,30 @@
           </div>
           <p class="person-skills">Obchod · CRM · Project Management · B2B</p>
         </article>
-
       </div>
-    </div>
-  </section>
-
-  <!-- ═══ CTA BANNER ═══ -->
-  <section class="cta-banner">
-    <div class="container" data-reveal>
-      <h2 data-i18n="cta.h2">Máte projekt? <span class="grad-text">Pojďme na to.</span></h2>
-      <p data-i18n="cta.p">Bezplatná konzultace bez závazků. Řekněte nám o svém projektu a my se ozveme do 24 hodin.</p>
-      <a href="#kontakt" class="btn-primary" data-i18n="cta.btn">Nezávazná poptávka</a>
     </div>
   </section>
 
   <!-- ═══ CONTACT ═══ -->
-  <section class="section" id="kontakt">
+  <section class="flow" id="kontakt">
     <div class="container">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow"><span class="chap">05</span><span data-i18n="contact.tag">Kontakt</span></span>
-        <div class="section-head-grid">
-          <h2 data-i18n="contact.heading">Začněme <span class="grad-text">spolupracovat</span></h2>
-        </div>
-      </div>
-
+      <header class="flow-head reveal">
+        <span class="tag" data-i18n="contact.tag">Kontakt</span>
+        <h2 class="display display--sm" data-i18n="contact.heading">Kontaktujte <em>nás.</em></h2>
+      </header>
       <div class="contact-grid">
         <div class="contact-info">
-          <div class="ci-item" data-reveal>
-            <span class="ci-label" data-i18n="contact.email.lbl">E-mail</span>
-            <a class="ci-val" href="mailto:kontakt@lanthir.cz">kontakt@lanthir.cz</a>
-          </div>
-          <div class="ci-item" data-reveal>
-            <span class="ci-label" data-i18n="contact.phone.lbl">Telefon</span>
-            <a class="ci-val" href="tel:+420725528165">+420 725 528 165</a>
-          </div>
-          <div class="ci-item" data-reveal>
-            <span class="ci-label" data-i18n="contact.loc.lbl">Místo</span>
-            <span class="ci-val" data-i18n="contact.loc.val">Česká republika</span>
-          </div>
+          <div class="ci-item reveal"><span class="ci-label" data-i18n="contact.email.lbl">E-mail</span><a class="ci-val" href="mailto:kontakt@lanthir.cz">kontakt@lanthir.cz</a></div>
+          <div class="ci-item reveal"><span class="ci-label" data-i18n="contact.phone.lbl">Telefon</span><a class="ci-val" href="tel:+420725528165">+420 725 528 165</a></div>
+          <div class="ci-item reveal"><span class="ci-label" data-i18n="contact.loc.lbl">Místo</span><span class="ci-val" data-i18n="contact.loc.val">Česká republika</span></div>
         </div>
 
-        <form class="contact-form" id="contactForm" data-reveal novalidate>
+        <form class="contact-form reveal" id="contactForm" novalidate>
           <div class="form-row">
-            <div class="form-group">
-              <label for="fname" data-i18n="form.name.lbl">Jméno</label>
-              <input id="fname" type="text" data-i18n-ph="form.name.ph" placeholder="Vaše jméno" required>
-            </div>
-            <div class="form-group">
-              <label for="femail" data-i18n="form.email.lbl">E-mail</label>
-              <input id="femail" type="email" data-i18n-ph="form.email.ph" placeholder="váš@email.com" required>
-            </div>
+            <div class="form-group"><label for="fname" data-i18n="form.name.lbl">Jméno</label><input id="fname" type="text" data-i18n-ph="form.name.ph" placeholder="Vaše jméno" required aria-describedby="fname-err"><span class="form-err" id="fname-err" data-i18n="form.err.name">Vyplňte prosím jméno.</span></div>
+            <div class="form-group"><label for="femail" data-i18n="form.email.lbl">E-mail</label><input id="femail" type="email" data-i18n-ph="form.email.ph" placeholder="váš@email.com" required aria-describedby="femail-err"><span class="form-err" id="femail-err" data-i18n="form.err.email">Zadejte platný e-mail.</span></div>
           </div>
-          <div class="form-group">
-            <label for="fcompany" data-i18n="form.company.lbl">Firma</label>
-            <input id="fcompany" type="text" data-i18n-ph="form.company.ph" placeholder="Vaše firma">
-          </div>
+          <div class="form-group"><label for="fcompany" data-i18n="form.company.lbl">Firma</label><input id="fcompany" type="text" data-i18n-ph="form.company.ph" placeholder="Vaše firma"></div>
           <div class="form-group">
             <label for="fbundle" data-i18n="form.bundle.lbl">Balíček</label>
             <select id="fbundle">
@@ -524,10 +412,7 @@
               <option value="komplex"  data-i18n="form.bundle.opt6">KOMPLEX — od 2 499 Kč/měsíc</option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="fmsg" data-i18n="form.msg.lbl">Zpráva</label>
-            <textarea id="fmsg" rows="4" data-i18n-ph="form.msg.ph" placeholder="Popište váš projekt..." required></textarea>
-          </div>
+          <div class="form-group"><label for="fmsg" data-i18n="form.msg.lbl">Zpráva</label><textarea id="fmsg" rows="4" data-i18n-ph="form.msg.ph" placeholder="Popište váš projekt..." required aria-describedby="fmsg-err"></textarea><span class="form-err" id="fmsg-err" data-i18n="form.err.msg">Napište prosím pár vět o projektu.</span></div>
           <button type="submit" class="btn-primary btn-submit" data-i18n="form.send">Odeslat poptávku</button>
           <div class="form-success" id="formSuccess">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
@@ -543,26 +428,23 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <div class="footer-brand-row">
-            <img src="logo-mark.svg" alt="Lanthir" class="footer-logo">
-            <span class="footer-name">Lanthir</span>
-          </div>
+          <div class="footer-brand-row"><img src="logo-mark.svg" alt="" class="footer-logo"><span class="footer-name">Lanthir</span></div>
           <p data-i18n="footer.tagline">Technologický partner pro růst a provoz firmy.</p>
           <span class="status-chip"><span class="status-dot" aria-hidden="true"></span><span data-i18n="footer.status">všechny systémy online</span></span>
         </div>
         <div class="footer-nav">
           <div class="footer-col">
             <h5 data-i18n="footer.col1.h">Služby</h5>
-            <a href="#sluzby" data-i18n="svc.1.title">Prezentační web</a>
+            <a href="#sluzby" data-i18n="svc.5.title">Webová aplikace</a>
             <a href="#sluzby" data-i18n="svc.2.title">E-shop</a>
             <a href="#sluzby" data-i18n="svc.3.title">Rezervační systém</a>
-            <a href="#sluzby" data-i18n="svc.5.title">Webová aplikace</a>
+            <a href="#sluzby" data-i18n="svc.6.title">Redesign webu</a>
           </div>
           <div class="footer-col">
             <h5 data-i18n="footer.col2.h">Společnost</h5>
+            <a href="#reference" data-i18n="nav.work">Reference</a>
             <a href="#cenik"   data-i18n="nav.pricing">Ceník</a>
             <a href="#postup"  data-i18n="nav.process">Postup</a>
-            <a href="#about"   data-i18n="nav.about">O nás</a>
             <a href="#kontakt" data-i18n="nav.contact">Kontakt</a>
           </div>
         </div>
@@ -572,15 +454,12 @@
       </div>
       <div class="footer-bar">
         <span data-i18n="footer.copy">© 2026 Lanthir. Všechna práva vyhrazena.</span>
-        <button class="to-top" id="toTop" aria-label="Zpět nahoru">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
-        </button>
+        <button class="to-top" id="toTop" aria-label="Zpět nahoru"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></button>
       </div>
     </div>
   </footer>
 
   </main>
-
   <script src="script.js"></script>
 </body>
 </html>
