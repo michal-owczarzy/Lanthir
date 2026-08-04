@@ -334,7 +334,10 @@ body:not(.booted) .nav { opacity: 0; transform: translateY(-14px); pointer-event
 /* three live sites, unequal widths — a row of real work, not a card grid */
 .ref-row {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));  /* equal, so captions align */
+  /* 2x2 rather than 4-across: four tiles in one row shrink each preview to
+     ~265px, too small to read as a real site. Two columns keep them ~610px
+     and every reference is still visible without a carousel. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(18px, 2.4vw, 38px);
   align-items: start;
 }
@@ -607,8 +610,7 @@ a.ci-val:hover { color: var(--spark); }
 /* ── Responsive ───────────────────────────────── */
 @media (max-width: 1080px) {
   .act-copy, .act--hero .act-copy { max-width: 100%; }
-  .ref-row { grid-template-columns: 1fr 1fr; }
-  .ref-item:nth-child(3) { display: none; }  /* two is enough proof; the rest live on /ukazky/ */
+  /* four items fill a 2x2 cleanly, so nothing needs hiding any more */
 }
 @media (max-width: 880px) {
   .nav-inner { height: 68px; gap: 16px; }
