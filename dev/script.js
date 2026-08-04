@@ -802,8 +802,10 @@ function fScatter(n) {
   const sizeActs = () => acts.forEach(a => { a.style.height = (parseFloat(a.dataset.len || 2) * 100) + 'vh'; });
   sizeActs();
 
+  /* absolute: this page is served from /dev/, where a relative
+     'logo.svg' 404s and the whole constellation silently dies */
   let svgText = null;
-  try { svgText = await fetch('logo.svg').then(r => r.text()); } catch (e) {}
+  try { svgText = await fetch('/logo.svg').then(r => r.ok ? r.text() : null); } catch (e) {}
   if (!svgText) { document.body.classList.add('booted'); return; }
 
   const doc = new DOMParser().parseFromString(svgText, 'image/svg+xml');
@@ -954,7 +956,8 @@ function fScatter(n) {
     if (kind === 'path') kind += ':' + Math.min(3, Math.floor(prog * 4 * 0.999));
     const target = FORM[kind] || FORM.iris;
     const pose = place(active, prog);
-    if (inFlow) pose.alpha *= 0.16;  /* content sections own the screen, not the canvas */
+    if (inFlow) pose.alpha *= 0.42;  /* the constellation is the signature visual here,
+                                        so it stays legible through content sections */
 
     /* hero: copy arrives once the mark has landed */
     if (active === heroAct) {
@@ -967,8 +970,8 @@ function fScatter(n) {
 
     /* ambient wash behind the formation */
     const g = ctx.createRadialGradient(pose.cx, pose.cy, pose.R * .05, pose.cx, pose.cy, pose.R * 1.1);
-    g.addColorStop(0, 'rgba(30,123,229,' + (0.11 * pose.alpha).toFixed(3) + ')');
-    g.addColorStop(.55, 'rgba(58,46,224,' + (0.05 * pose.alpha).toFixed(3) + ')');
+    g.addColorStop(0, 'rgba(30,123,229,' + (0.18 * pose.alpha).toFixed(3) + ')');
+    g.addColorStop(.55, 'rgba(58,46,224,' + (0.09 * pose.alpha).toFixed(3) + ')');
     g.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = g;
     ctx.fillRect(pose.cx - pose.R * 1.2, pose.cy - pose.R * 1.2, pose.R * 2.4, pose.R * 2.4);

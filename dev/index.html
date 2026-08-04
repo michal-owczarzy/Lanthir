@@ -95,6 +95,9 @@
   <div class="ambient" id="ambient" aria-hidden="true">
     <video id="ambientVideo" muted loop playsinline preload="none" data-src="media/nebula.mp4"></video>
   </div>
+  <!-- readability veil: must sit OUTSIDE .ambient, because a dark overlay
+       inside a screen-blended layer does nothing -->
+  <div class="ambient-veil" aria-hidden="true"></div>
 
   <!-- ═══ THE NARRATOR — one canvas for the whole page ═══ -->
   <canvas id="stage" aria-hidden="true"></canvas>

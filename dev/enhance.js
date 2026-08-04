@@ -38,7 +38,11 @@
     v.appendChild(s); v.load();
     var p = v.play();
     if (p && p.catch) p.catch(function () {});
-    v.addEventListener('playing', function () { wrap.classList.add('on'); }, { once: true });
+    /* reveal on either event — if autoplay is deferred, 'playing' may never
+       fire and the layer would stay invisible */
+    var show = function () { wrap.classList.add('on'); };
+    v.addEventListener('playing', show, { once: true });
+    v.addEventListener('loadeddata', show, { once: true });
   })();
 
   /* ── 2. Headline line-masks ─────────────────────────────
