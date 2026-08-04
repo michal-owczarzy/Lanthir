@@ -4,188 +4,580 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Autoservis & pneuservis Václav Motyka — Třinec</title>
+<title>Autoservis &amp; pneuservis Václav Motyka — Třinec</title>
 <meta name="description" content="Autoservis a pneuservis Václav Motyka, Třinec - Dolní Líštná. Opravy, diagnostika, pneuservis, TPMS, ozonizace, renovace světel, příprava na STK.">
+<meta name="theme-color" content="#E9E7E2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
 <style>
   :root{
-    --bg:#14161a; --panel:#1c1f25; --ink:#eef1f5; --soft:#98a2b0; --line:rgba(238,241,245,.1);
-    --red:#e23b2e; --red-dk:#c22a1f; --steel:#5a6b7a; --amber:#f2b134;
-    --display:'Oswald',system-ui,sans-serif; --sans:'Inter',system-ui,sans-serif; --max:1180px;
+    --paper:#E9E7E2; --card:#F7F6F3; --ink:#14171A;
+    --steel:#4E5862; --redline:#D0261B; --petrol:#16262E;
+    --rule:rgba(20,23,26,.16); --rule-2:rgba(20,23,26,.32);
+    --display:'Archivo',system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+    --sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+    --max:1320px; --gutter:clamp(18px,4.4vw,56px);
+    --ease:cubic-bezier(.16,1,.3,1);
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:var(--sans);font-weight:300;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
-  img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
-  h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1;text-transform:uppercase;letter-spacing:.01em}
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:4px;background:var(--red);color:#fff;font-family:var(--display);font-size:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:.25s}
-  .btn:hover{background:var(--red-dk)}
-  .btn-out{background:transparent;color:var(--ink);border:1px solid var(--line)}
-  .btn-out:hover{border-color:var(--red);color:#fff}
-  .kicker{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);font-weight:700;font-family:var(--sans)}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--sans);font-size:16.5px;font-weight:400;line-height:1.65;
+    background:var(--paper);color:var(--ink);overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,video{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;background:none;border:0}
+  h1,h2,h3{font-family:var(--display);font-weight:800;line-height:.98;letter-spacing:-.035em;text-transform:uppercase}
+  ::selection{background:var(--redline);color:#fff}
+  :focus-visible{outline:2.5px solid var(--redline);outline-offset:3px}
 
-  .demo-ribbon{position:fixed;top:0;left:0;right:0;z-index:100;background:linear-gradient(90deg,#3a2ee0,#1fcded);color:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.03em;text-align:center;padding:7px 16px;font-weight:500}
-  .demo-ribbon a{text-decoration:underline;font-weight:600}
+  .shell{max-width:var(--max);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+  .tag{
+    display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11px;
+    font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);
+  }
+  .tag::before{content:'';width:7px;height:7px;background:var(--redline);flex:none}
+  .lede{font-size:clamp(16.5px,1.8vw,19.5px);color:var(--steel);line-height:1.62}
 
-  header.nav{position:sticky;top:0;z-index:90;background:rgba(20,22,26,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;height:76px}
-  .brand{font-family:var(--display);font-size:22px;font-weight:700;text-transform:uppercase;display:flex;align-items:center;gap:10px}
-  .brand .tag{width:34px;height:34px;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:18px}
-  .nav-links{display:flex;gap:30px;list-style:none;font-size:14px}
-  .nav-links a{color:var(--soft);transition:.2s}.nav-links a:hover{color:var(--ink)}
-  .nav-cta{font-size:14px;padding:11px 20px}
-  .burger{display:none;background:none;border:0;font-size:24px;cursor:pointer;color:var(--ink)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:11px;min-height:56px;padding:17px 30px;
+    background:var(--ink);color:var(--paper);border:2px solid var(--ink);
+    font-family:var(--display);font-size:14.5px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;
+    cursor:pointer;transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease);
+  }
+  .btn:hover{background:var(--redline);border-color:var(--redline);color:#fff}
+  .btn svg{width:18px;height:18px;flex:none}
+  .btn--out{background:transparent;color:var(--ink)}
+  .btn--out:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+  .btn--inv{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+  .btn--inv:hover{background:var(--redline);border-color:var(--redline);color:#fff}
 
-  .hero{position:relative;overflow:hidden}
-  .hero-bg{position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,22,26,.96) 30%,rgba(20,22,26,.55)),url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1600&q=80') right center/cover;background-color:#0f1114}
-  .hero-in{position:relative;padding:clamp(70px,11vw,140px) 0}
-  .hero h1{font-size:clamp(48px,9vw,104px);max-width:14ch}
-  .hero h1 span{color:var(--red)}
-  .hero p{font-size:19px;color:var(--soft);max-width:460px;margin:20px 0 32px}
-  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
-  .stripe{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
-  .stripe span{border:1px solid var(--line);border-radius:4px;padding:8px 14px;font-size:13px;color:var(--soft);font-family:var(--display);letter-spacing:.05em;text-transform:uppercase}
+  /* ── ribbon ─────────────────────────────────── */
+  .ribbon{
+    position:relative;z-index:200;
+    background:linear-gradient(90deg,#3a2ee0,#1e7be5 55%,#1fcded);
+    color:#fff;font-size:13.5px;text-align:center;padding:9px 20px;
+  }
+  .ribbon b{font-weight:700}
+  .ribbon a{text-decoration:underline;text-underline-offset:2px;font-weight:700}
 
-  section{padding:clamp(60px,8vw,104px) 0}
-  .sec-head h2{font-size:clamp(34px,5vw,58px)}
-  .sec-head{margin-bottom:44px}.sec-head p{color:var(--soft);margin-top:12px;max-width:520px}
-  .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:16px}
-  .svc{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:30px 26px;transition:.25s;position:relative}
-  .svc:hover{border-color:var(--red);transform:translateY(-4px)}
-  .svc .no{font-family:var(--display);font-size:14px;color:var(--red);font-weight:700;letter-spacing:.1em}
-  .svc h3{font-size:23px;margin:6px 0 8px}
-  .svc p{color:var(--soft);font-size:14px}
+  /* ── nav ────────────────────────────────────── */
+  .nav{position:sticky;top:0;z-index:150;background:rgba(233,231,226,.9);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s var(--ease)}
+  .nav.solid{border-bottom-color:var(--rule)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
+  .brand{display:flex;align-items:center;gap:13px;min-height:44px}
+  .brand .mk{
+    width:40px;height:40px;flex:none;background:var(--ink);color:var(--paper);
+    display:grid;place-items:center;font-family:var(--display);font-size:19px;font-weight:800;letter-spacing:-.04em;
+  }
+  .brand .nm{font-family:var(--display);font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:-.02em;line-height:1.1}
+  .brand .sb{display:block;font-family:var(--mono);font-size:9.5px;font-weight:400;letter-spacing:.16em;color:var(--steel);text-transform:uppercase;margin-top:2px}
+  .nav-links{display:flex;gap:clamp(18px,2.6vw,34px);list-style:none;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+  .nav-links a{color:var(--steel);padding:8px 0;position:relative;transition:color .2s var(--ease)}
+  .nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--redline);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after{transform:scaleX(1)}
+  .nav-cta{min-height:44px;padding:12px 20px;font-size:13px}
+  .burger{display:none;width:46px;height:46px;align-items:center;justify-content:center;cursor:pointer}
+  .burger svg{width:24px;height:24px}
 
-  .band{background:var(--red);color:#fff}
-  .band .wrap{padding:44px 24px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-  .band h2{font-size:clamp(26px,3.6vw,40px)}
-  .band .btn{background:#fff;color:var(--red)}.band .btn:hover{background:#111;color:#fff}
+  /* ── hero ───────────────────────────────────── */
+  .hero{padding:clamp(36px,5vw,64px) 0 0;border-bottom:1px solid var(--rule)}
+  .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(28px,4vw,60px);align-items:end}
+  .hero h1{font-size:clamp(50px,8.6vw,132px);margin:22px 0 0}
+  .hero h1 .rl{color:var(--redline)}
+  .ln{display:block;overflow:hidden}
+  .ln>span{display:block}
+  .js .ln>span{transform:translateY(105%)}
+  .hero-say{margin:26px 0 30px;max-width:44ch}
+  .hero-act{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,44px)}
+  .hero-panel{position:relative;overflow:hidden;background:var(--petrol);aspect-ratio:4/5}
+  .hero-panel video,.hero-panel img{width:100%;height:100%;object-fit:cover}
+  .js .hero-panel{clip-path:inset(0 0 100% 0)}
+  .panel-tag{
+    position:absolute;left:0;bottom:0;z-index:2;background:var(--paper);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+    padding:10px 16px;color:var(--ink);
+  }
+  /* spec bar — the page's factual footing, in the shop's own vernacular */
+  .specbar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule);margin-top:clamp(30px,4vw,52px)}
+  .specbar div{padding:20px clamp(12px,1.6vw,22px) 24px;border-right:1px solid var(--rule)}
+  .specbar div:first-child{padding-left:0}
+  .specbar div:last-child{border-right:0}
+  .specbar dt{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--steel);margin-bottom:8px}
+  .specbar dd{font-family:var(--display);font-size:clamp(15px,1.6vw,19px);font-weight:700;text-transform:uppercase;letter-spacing:-.02em;line-height:1.2}
+  .specbar dd a:hover{color:var(--redline)}
 
-  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
-  .hours{list-style:none}
-  .hours li{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);color:var(--soft)}
-  .hours li b{color:var(--ink);font-weight:500}
-  .cbox{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:38px}
-  .cbox h3{font-size:26px;margin-bottom:16px}
-  .cbox .big{font-family:var(--display);font-size:38px;color:var(--amber);display:block;margin:6px 0 16px;font-weight:700}
-  .cbox .row{color:var(--soft);font-size:15px;margin-bottom:8px}.cbox .row b{color:var(--ink)}
+  /* ── section frame ──────────────────────────── */
+  .sec{padding:clamp(72px,10vw,140px) 0}
+  .sec-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,60px);align-items:end;margin-bottom:clamp(36px,5vw,60px)}
+  .sec-head h2{font-size:clamp(32px,5.4vw,72px)}
+  .sec-head h2 .rl{color:var(--redline)}
+  .sec-head p{max-width:42ch}
 
-  footer{border-top:1px solid var(--line);text-align:center;padding:40px 24px;font-size:13px;color:var(--soft)}
-  footer .fb{font-family:var(--display);font-size:22px;color:var(--ink);text-transform:uppercase;margin-bottom:8px}
-  footer .made{margin-top:14px;opacity:.85}footer .made a{color:#8fb4ff;text-decoration:underline}
+  /* ── services as a worksheet ────────────────── */
+  .sheet{border-top:2px solid var(--ink)}
+  .job{
+    display:grid;grid-template-columns:130px 1fr auto;gap:clamp(16px,3vw,44px);align-items:baseline;
+    padding:clamp(22px,2.8vw,34px) 0;border-bottom:1px solid var(--rule);position:relative;
+    transition:padding-left .4s var(--ease);
+  }
+  .job:hover{padding-left:14px}
+  .job::after{content:'';position:absolute;left:0;bottom:-1px;height:1px;width:0;background:var(--redline);transition:width .5s var(--ease)}
+  .job:hover::after{width:100%}
+  .job .code{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+  .job h3{font-size:clamp(21px,2.5vw,30px);margin-bottom:9px}
+  .job p{color:var(--steel);font-size:15.5px;max-width:52ch}
+  .job .mark{font-family:var(--mono);font-size:12px;color:var(--steel);white-space:nowrap}
 
+  /* ── precision band (dark, video) ───────────── */
+  .band{position:relative;background:var(--petrol);color:var(--paper);overflow:hidden}
+  .band-media{position:absolute;inset:-6% 0;z-index:0}
+  .band-media video,.band-media img{width:100%;height:100%;object-fit:cover;opacity:.42}
+  .band-media::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,38,46,.96) 26%,rgba(22,38,46,.55))}
+  .band-in{position:relative;z-index:2;padding:clamp(78px,11vw,164px) 0}
+  .band h2{font-size:clamp(32px,5.6vw,76px);max-width:15ch;margin:22px 0 26px;color:var(--paper)}
+  .band h2 .rl{color:#FF6B5E}
+  .band p{color:#A9BAC2;max-width:46ch;font-size:clamp(16px,1.8vw,19px)}
+  .band .tag{color:#A9BAC2}
+  .band .tag::before{background:#FF6B5E}
+
+  /* ── process (a real sequence, so it is numbered) ── */
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.6vw,34px);position:relative}
+  .flow::before{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:var(--rule)}
+  .flow-fill{position:absolute;left:0;top:0;height:2px;background:var(--redline);width:0;z-index:1}
+  .fstep{padding-top:28px}
+  .fstep .n{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--redline);font-weight:600}
+  .fstep h3{font-size:clamp(18px,2vw,23px);margin:12px 0 10px}
+  .fstep p{color:var(--steel);font-size:15px}
+
+  /* ── why ────────────────────────────────────── */
+  .why{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px)}
+  .wcard{background:var(--card);padding:clamp(26px,3.2vw,40px);border:1px solid var(--rule)}
+  .wcard svg{width:26px;height:26px;color:var(--redline);margin-bottom:18px}
+  .wcard h3{font-size:21px;margin-bottom:11px}
+  .wcard p{color:var(--steel);font-size:15px}
+
+  /* ── contact ────────────────────────────────── */
+  .visit-grid{display:grid;grid-template-columns:1fr .92fr;gap:clamp(36px,5vw,76px);align-items:start}
+  .hours{list-style:none;border-top:2px solid var(--ink);margin-top:24px}
+  .hours li{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:17px 0;border-bottom:1px solid var(--rule);color:var(--steel);font-size:16px}
+  .hours li b{color:var(--ink);font-weight:600;font-family:var(--display);text-transform:uppercase;letter-spacing:-.01em}
+  .hours li.now b{color:var(--redline)}
+  .hours li.now::after{content:'dnes';font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--redline);padding:3px 9px;align-self:center}
+  .cbox{background:var(--ink);color:var(--paper);padding:clamp(28px,3.6vw,46px)}
+  .cbox .tag{color:#9AA6AE}
+  .cbox h3{font-size:26px;margin:14px 0 20px;color:var(--paper)}
+  .cbox .tel{font-family:var(--display);font-size:clamp(34px,4.6vw,52px);font-weight:800;letter-spacing:-.035em;display:inline-block;margin-bottom:26px;transition:color .2s var(--ease)}
+  .cbox .tel:hover{color:var(--redline)}
+  .cbox dl{display:grid;gap:16px;margin-bottom:30px}
+  .cbox dt{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#8D9BA4;margin-bottom:5px}
+  .cbox dd{font-size:15.5px;line-height:1.55}
+  .cbox dd a:hover{color:var(--redline)}
+  .cbox .btn{width:100%}
+
+  /* ── SIGNATURE: scroll tachometer ───────────── */
+  .tacho{
+    position:fixed;left:clamp(16px,2vw,28px);bottom:clamp(16px,2vw,28px);z-index:120;
+    width:104px;height:104px;pointer-events:none;opacity:0;transition:opacity .5s var(--ease);
+  }
+  .tacho.on{opacity:1}
+  .tacho svg{width:100%;height:100%;overflow:visible}
+  .tacho .dial{fill:rgba(247,246,243,.94);stroke:var(--rule);stroke-width:1}
+  .tacho .arc{fill:none;stroke:var(--rule-2);stroke-width:3}
+  .tacho .arc-red{fill:none;stroke:var(--redline);stroke-width:3;opacity:.85}
+  .tacho .arc-fill{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:butt}
+  .tacho .needle{stroke:var(--redline);stroke-width:2.4;stroke-linecap:round}
+  .tacho .hub{fill:var(--ink)}
+  .tacho .lbl{font-family:var(--mono);font-size:9px;fill:var(--steel);letter-spacing:.1em;text-transform:uppercase}
+
+  /* ── footer ─────────────────────────────────── */
+  footer{background:var(--ink);color:#8D9BA4;padding:clamp(48px,6vw,76px) 0;text-align:center;font-size:14.5px}
+  footer .fb{font-family:var(--display);font-size:clamp(26px,4vw,44px);font-weight:800;color:var(--paper);text-transform:uppercase;letter-spacing:-.03em;margin-bottom:12px}
+  footer a:hover{color:var(--redline)}
+  footer .made{margin-top:24px;padding-top:24px;border-top:1px solid rgba(233,231,226,.14);font-size:13.5px}
+  footer .made a{color:#9DB7FF;text-decoration:underline;text-underline-offset:2px;font-weight:600}
+
+  /* ── reveal fallback ────────────────────────── */
+  .js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .js .rv.in{opacity:1;transform:none}
+
+  /* ── responsive ─────────────────────────────── */
+  @media(max-width:1080px){
+    .hero-grid{grid-template-columns:1fr;gap:34px}
+    .hero-panel{aspect-ratio:16/10}
+    .flow{grid-template-columns:1fr 1fr;gap:30px}
+    .flow::before,.flow-fill{display:none}
+    .fstep{border-top:2px solid var(--rule);padding-top:22px}
+    .why{grid-template-columns:1fr}
+    .visit-grid{grid-template-columns:1fr;gap:40px}
+    .sec-head{grid-template-columns:1fr;gap:18px}
+  }
   @media(max-width:860px){
-    .nav-links,.nav-cta{display:none}.burger{display:block}
-    .hero-bg{background:linear-gradient(180deg,rgba(20,22,26,.8),rgba(20,22,26,.96)),url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1200&q=80') center/cover}
-    .visit-grid{grid-template-columns:1fr;gap:34px}
-    .nav-links.open{display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px 24px;gap:16px;border-bottom:1px solid var(--line)}
+    .nav-links,.nav-cta{display:none}
+    .burger{display:flex}
+    .nav-links.open{
+      display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;gap:0;
+      background:var(--card);padding:6px 0;border-bottom:1px solid var(--rule);
+    }
+    .nav-links.open li{border-bottom:1px solid var(--rule)}
+    .nav-links.open li:last-child{border-bottom:0}
+    .nav-links.open a{display:block;padding:16px var(--gutter);font-size:13px;color:var(--ink)}
+    .nav-links.open a::after{display:none}
+    .specbar{grid-template-columns:1fr 1fr}
+    .specbar div{border-bottom:1px solid var(--rule);padding-left:0}
+    .specbar div:nth-child(2n){border-right:0;padding-left:clamp(12px,1.6vw,22px)}
+    .job{grid-template-columns:1fr;gap:8px}
+    .job .mark{display:none}
+    .tacho{display:none}
+  }
+  @media(max-width:560px){ .flow{grid-template-columns:1fr} .specbar{grid-template-columns:1fr} .specbar div:nth-child(2n){padding-left:0} }
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+    .js .rv{opacity:1;transform:none}
+    .js .ln>span{transform:none}
+    .js .hero-panel{clip-path:none}
+    .tacho{display:none}
   }
 </style>
 </head>
 <body>
-<div class="demo-ribbon">🔧 Nezávazný náhled webu od studia <b>Lanthir</b> — líbí se vám? <a href="mailto:kontakt@lanthir.cz">Napište nám</a> a spustíme ho.</div>
 
-<header class="nav">
-  <div class="wrap nav-in">
-    <a href="#" class="brand"><span class="tag">M</span> Autoservis Motyka</a>
-    <ul class="nav-links" id="menu">
-      <li><a href="#sluzby">Služby</a></li>
-      <li><a href="#proc">Proč my</a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
-    </ul>
-    <a href="tel:+420605928000" class="btn nav-cta">Objednat termín</a>
-    <button class="burger" id="burger" aria-label="Menu">☰</button>
+<div class="ribbon">
+  Nezávazný náhled webu od studia <b>Lanthir</b> — líbí se vám? <a href="mailto:kontakt@lanthir.cz">Napište nám</a> a spustíme ho.
+</div>
+
+<header class="nav" id="nav">
+  <div class="shell nav-in">
+    <a href="#" class="brand" aria-label="Autoservis Motyka — domů">
+      <span class="mk" aria-hidden="true">M</span>
+      <span class="nm">Motyka<span class="sb">Autoservis · Pneuservis</span></span>
+    </a>
+    <nav aria-label="Hlavní navigace">
+      <ul class="nav-links" id="menuList">
+        <li><a href="#sluzby">Služby</a></li>
+        <li><a href="#postup">Postup</a></li>
+        <li><a href="#proc">Proč my</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+    <a href="tel:+420605928000" class="btn nav-cta">605 928 000</a>
+    <button class="burger" id="burger" aria-label="Otevřít menu" aria-expanded="false" aria-controls="menuList">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M3 7h18M3 17h18"/></svg>
+    </button>
   </div>
 </header>
 
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="wrap hero-in">
-    <span class="kicker">Třinec · Dolní Líštná</span>
-    <h1>Vaše auto v <span>dobrých rukou</span></h1>
-    <p>Autoservis a pneuservis, kde se domluvíte lidsky a odjedete s jistotou. Opravy, diagnostika, pneumatiky i příprava na STK.</p>
-    <div class="hero-actions">
-      <a href="tel:+420605928000" class="btn">Objednat termín</a>
-      <a href="#sluzby" class="btn btn-out">Naše služby</a>
+<section class="hero" id="hero">
+  <div class="shell">
+    <div class="hero-grid">
+      <div>
+        <span class="tag rv">Třinec · Dolní Líštná</span>
+        <h1>
+          <span class="ln"><span>Vaše auto</span></span>
+          <span class="ln"><span>v <span class="rl">dobrých</span></span></span>
+          <span class="ln"><span>rukou</span></span>
+        </h1>
+        <p class="lede hero-say rv">Servis, kde se domluvíte lidsky a odjedete s jistotou. Cenu řekneme dřív, než sáhneme na nářadí.</p>
+        <div class="hero-act rv">
+          <a href="tel:+420605928000" class="btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            Objednat termín
+          </a>
+          <a href="#sluzby" class="btn btn--out">Co umíme</a>
+        </div>
+      </div>
+      <figure class="hero-panel" id="heroPanel">
+        <video id="heroVideo" poster="img/hero.jpg" muted loop playsinline preload="none" aria-hidden="true" data-src="img/hero.mp4"></video>
+        <figcaption class="panel-tag">Dílna · Dolní Líštná 437</figcaption>
+      </figure>
     </div>
-    <div class="stripe"><span>Diagnostika</span><span>Pneuservis</span><span>TPMS senzory</span><span>Ozonizace</span><span>Renovace světel</span><span>Příprava na STK</span></div>
+
+    <dl class="specbar">
+      <div class="rv"><dt>Otevřeno dnes</dt><dd id="todayHours">7:30 – 17:00</dd></div>
+      <div class="rv"><dt>Objednávky</dt><dd><a href="tel:+420605928000">605 928 000</a></dd></div>
+      <div class="rv"><dt>Kde</dt><dd>Dolní Líštná 437</dd></div>
+      <div class="rv"><dt>Cena</dt><dd>Vždy předem</dd></div>
+    </dl>
   </div>
 </section>
 
-<section id="sluzby">
-  <div class="wrap">
+<section class="sec" id="sluzby">
+  <div class="shell">
     <div class="sec-head">
-      <span class="kicker">Co umíme</span>
-      <h2>Kompletní péče o vůz</h2>
-      <p>Od běžné údržby po diagnostiku závad. Pracujeme rychle, čistě a vždy vám předem řekneme cenu.</p>
+      <h2 class="rv">Co u nás <span class="rl">zvládneme</span></h2>
+      <p class="lede rv">Od běžné údržby po hledání závady, kterou jinde nenašli. Pracujeme rychle, čistě a bez překvapení na faktuře.</p>
     </div>
-    <div class="svc-grid">
-      <div class="svc"><div class="no">01</div><h3>Opravy &amp; údržba</h3><p>Servisní prohlídky, výměny oleje, brzdy, tlumiče, rozvody.</p></div>
-      <div class="svc"><div class="no">02</div><h3>Počítačová diagnostika</h3><p>Načtení a vyhodnocení chybových kódů, řešení závad.</p></div>
-      <div class="svc"><div class="no">03</div><h3>Pneuservis</h3><p>Přezutí, vyvážení, opravy pneumatik a uskladnění.</p></div>
-      <div class="svc"><div class="no">04</div><h3>TPMS senzory</h3><p>Servis a programování senzorů tlaku v pneumatikách.</p></div>
-      <div class="svc"><div class="no">05</div><h3>Ozonizace &amp; renovace světel</h3><p>Čištění klimatizace ozonem, leštění zašlých světlometů.</p></div>
-      <div class="svc"><div class="no">06</div><h3>Příprava na STK</h3><p>Prohlídka vozu a odstranění závad před technickou kontrolou.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="proc" style="background:var(--panel)">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="kicker">Proč Motyka</span>
-      <h2>Servis, kterému rozumíte</h2>
-    </div>
-    <div class="svc-grid">
-      <div class="svc" style="background:var(--bg)"><h3 style="color:var(--amber)">Férová cena</h3><p>Cenu domluvíme předem. Žádná překvapení na faktuře.</p></div>
-      <div class="svc" style="background:var(--bg)"><h3 style="color:var(--amber)">Rychlý termín</h3><p>Nečekáte týdny. Domluvíme se telefonicky a jedeme.</p></div>
-      <div class="svc" style="background:var(--bg)"><h3 style="color:var(--amber)">Poctivá práce</h3><p>Uděláme jen to, co je opravdu potřeba. A vysvětlíme proč.</p></div>
+    <div class="sheet">
+      <article class="job rv">
+        <div class="code">Servis</div>
+        <div><h3>Opravy &amp; údržba</h3><p>Servisní prohlídky, výměny oleje, brzdy, tlumiče, rozvody.</p></div>
+        <div class="mark">Po dohodě</div>
+      </article>
+      <article class="job rv">
+        <div class="code">Diagnostika</div>
+        <div><h3>Počítačová diagnostika</h3><p>Načtení a vyhodnocení chybových kódů, dohledání skutečné příčiny závady.</p></div>
+        <div class="mark">Na počkání</div>
+      </article>
+      <article class="job rv">
+        <div class="code">Pneu</div>
+        <div><h3>Pneuservis</h3><p>Přezutí, vyvážení, opravy pneumatik a uskladnění mimo sezónu.</p></div>
+        <div class="mark">Sezónně</div>
+      </article>
+      <article class="job rv">
+        <div class="code">TPMS</div>
+        <div><h3>Senzory tlaku</h3><p>Servis a programování senzorů tlaku v pneumatikách.</p></div>
+        <div class="mark">Na počkání</div>
+      </article>
+      <article class="job rv">
+        <div class="code">Ozon · Světla</div>
+        <div><h3>Ozonizace &amp; renovace světel</h3><p>Vyčištění klimatizace ozonem, leštění zašlých světlometů.</p></div>
+        <div class="mark">Po dohodě</div>
+      </article>
+      <article class="job rv">
+        <div class="code">STK</div>
+        <div><h3>Příprava na STK</h3><p>Prohlídka vozu a odstranění závad ještě před technickou kontrolou.</p></div>
+        <div class="mark">Po dohodě</div>
+      </article>
     </div>
   </div>
 </section>
 
 <section class="band">
-  <div class="wrap">
-    <h2>Potřebujete opravit auto?</h2>
-    <a href="tel:+420605928000" class="btn">📞 Zavolejte nám</a>
+  <div class="band-media" id="bandMedia">
+    <video id="bandVideo" poster="img/brzdy.jpg" muted loop playsinline preload="none" aria-hidden="true" data-src="img/brzdy.mp4"></video>
+  </div>
+  <div class="shell band-in">
+    <span class="tag rv">Jak pracujeme</span>
+    <h2 class="rv">Dotažené na <span class="rl">správný moment</span></h2>
+    <p class="rv">Brzdy, rozvody, kola — všechno, co drží auto pohromadě, se dotahuje na předepsanou hodnotu. Ne odhadem, ne „od oka“. Tohle je ta část práce, kterou nikdy neuvidíte, a přesně proto ji děláme pořádně.</p>
   </div>
 </section>
 
-<section id="kontakt">
-  <div class="wrap visit-grid">
-    <div>
-      <span class="kicker">Otevírací doba</span>
-      <h2 style="font-size:36px;margin:12px 0 18px">Kdy nás najdete</h2>
-      <ul class="hours">
-        <li><b>Pondělí – Pátek</b><span>7:30 – 17:00</span></li>
-        <li><b>Sobota</b><span>Po domluvě</span></li>
-        <li><b>Neděle</b><span>Zavřeno</span></li>
-      </ul>
-      <p style="margin-top:18px;color:var(--soft)">Doporučujeme objednat se předem telefonicky.</p>
+<section class="sec" id="postup">
+  <div class="shell">
+    <div class="sec-head">
+      <h2 class="rv">Od telefonu <span class="rl">po klíčky</span></h2>
+      <p class="lede rv">Čtyři kroky, ve kterých se nic neschová. Cenu potvrzujeme uprostřed, ne na konci.</p>
     </div>
-    <div class="cbox">
-      <span class="kicker">Kontakt</span>
-      <h3 style="margin-top:12px">Ozvěte se</h3>
-      <a href="tel:+420605928000" class="big">605 928 000</a>
-      <div class="row"><b>E-mail:</b> autopneubox@seznam.cz</div>
-      <div class="row"><b>Adresa:</b> Dolní Líštná 437, 739 61 Třinec</div>
+    <div class="flow" id="flow">
+      <div class="flow-fill" id="flowFill" aria-hidden="true"></div>
+      <div class="fstep rv"><div class="n">KROK 01</div><h3>Zavoláte</h3><p>Řeknete, co auto dělá. Zeptáme se na pár věcí a většinou hned tušíme, o co jde.</p></div>
+      <div class="fstep rv"><div class="n">KROK 02</div><h3>Domluvíme termín</h3><p>Nečekáte týdny na volné místo. Sedneme si na termín, který vám vyhovuje.</p></div>
+      <div class="fstep rv"><div class="n">KROK 03</div><h3>Řekneme cenu</h3><p>Auto prohlédneme a ozveme se s cenou dřív, než začneme pracovat.</p></div>
+      <div class="fstep rv"><div class="n">KROK 04</div><h3>Opravíme</h3><p>Uděláme jen to, co je opravdu potřeba — a vysvětlíme vám proč.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="proc" style="padding-top:0">
+  <div class="shell">
+    <div class="sec-head">
+      <h2 class="rv">Proč zrovna <span class="rl">Motyka</span></h2>
+      <p class="lede rv">Malý servis, ve kterém mluvíte přímo s tím, kdo vám auto opravuje.</p>
+    </div>
+    <div class="why">
+      <div class="wcard rv">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <h3>Férová cena</h3>
+        <p>Cenu domluvíme předem. Když se během opravy něco změní, voláme dřív, než to uděláme.</p>
+      </div>
+      <div class="wcard rv">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <h3>Rychlý termín</h3>
+        <p>Nečekáte týdny. Domluvíme se telefonicky a jedeme.</p>
+      </div>
+      <div class="wcard rv">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 4 6v6c0 4.6 3.4 8.4 8 9.5 4.6-1.1 8-4.9 8-9.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
+        <h3>Poctivá práce</h3>
+        <p>Uděláme jen to, co je opravdu potřeba. Nic navíc, nic „pro jistotu“.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="kontakt" style="padding-top:0">
+  <div class="shell visit-grid">
+    <div>
+      <span class="tag rv">Kdy</span>
+      <h2 class="rv" style="font-size:clamp(30px,4.6vw,54px);margin-top:18px">Otevírací doba</h2>
+      <ul class="hours rv" id="hoursList">
+        <li data-d="1,2,3,4,5"><b>Pondělí – Pátek</b><span>7:30 – 17:00</span></li>
+        <li data-d="6"><b>Sobota</b><span>Po domluvě</span></li>
+        <li data-d="0"><b>Neděle</b><span>Zavřeno</span></li>
+      </ul>
+      <p class="rv" style="margin-top:22px;color:var(--steel);font-size:15.5px">Objednejte se prosím předem telefonicky — ušetříte si čekání a my pro vás uvolníme zvedák.</p>
+    </div>
+    <div class="cbox rv">
+      <span class="tag">Kontakt</span>
+      <h3>Ozvěte se</h3>
+      <a href="tel:+420605928000" class="tel">605 928 000</a>
+      <dl>
+        <div><dt>E-mail</dt><dd><a href="mailto:autopneubox@seznam.cz">autopneubox@seznam.cz</a></dd></div>
+        <div><dt>Adresa</dt><dd>Dolní Líštná 437<br>739 61 Třinec</dd></div>
+      </dl>
+      <a href="tel:+420605928000" class="btn btn--inv">Objednat termín</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="fb">Autoservis &amp; pneuservis Václav Motyka</div>
-  <div>Dolní Líštná 437, 739 61 Třinec</div>
-  <div class="made">Ukázkový web zdarma připravilo studio <a href="mailto:kontakt@lanthir.cz">Lanthir</a>. Chcete ho spustit naostro? Ozvěte se.</div>
+  <div class="shell">
+    <div class="fb">Autoservis Motyka</div>
+    <div>
+      Václav Motyka · Dolní Líštná 437, 739 61 Třinec<br>
+      <a href="tel:+420605928000">605 928 000</a> · <a href="mailto:autopneubox@seznam.cz">autopneubox@seznam.cz</a>
+    </div>
+    <div class="made">
+      Ukázkový web zdarma připravilo studio <a href="mailto:kontakt@lanthir.cz">Lanthir</a>. Chcete ho spustit naostro? Ozvěte se.
+    </div>
+  </div>
 </footer>
 
+<!-- SIGNATURE: a tachometer that reads the page instead of the engine -->
+<div class="tacho" id="tacho" aria-hidden="true">
+  <svg viewBox="0 0 120 120">
+    <circle class="dial" cx="60" cy="60" r="54"/>
+    <circle class="arc"      cx="60" cy="60" r="44" transform="rotate(150 60 60)" stroke-dasharray="184.3 276.5"/>
+    <circle class="arc-red"  cx="60" cy="60" r="44" transform="rotate(150 60 60)" stroke-dasharray="36.9 276.5" stroke-dashoffset="-147.4"/>
+    <circle class="arc-fill" cx="60" cy="60" r="44" transform="rotate(150 60 60)" stroke-dasharray="184.3 276.5" stroke-dashoffset="184.3" id="tachoFill"/>
+    <line class="needle" id="tachoNeedle" x1="60" y1="60" x2="60" y2="26"/>
+    <circle class="hub" cx="60" cy="60" r="4.5"/>
+    <text class="lbl" x="60" y="86" text-anchor="middle" id="tachoLbl">START</text>
+  </svg>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
-  const b=document.getElementById('burger'),m=document.getElementById('menu');
-  b.addEventListener('click',()=>m.classList.toggle('open'));
-  m.addEventListener('click',e=>{if(e.target.tagName==='A')m.classList.remove('open')});
+(function(){
+  var RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav=document.getElementById('nav'), burger=document.getElementById('burger'), list=document.getElementById('menuList');
+
+  burger.addEventListener('click',function(){
+    var open=list.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open?'true':'false');
+    burger.setAttribute('aria-label',open?'Zavřít menu':'Otevřít menu');
+  });
+  list.addEventListener('click',function(e){
+    if(e.target.tagName==='A'){list.classList.remove('open');burger.setAttribute('aria-expanded','false');}
+  });
+  function solid(){nav.classList.toggle('solid',window.scrollY>40);}
+  solid(); window.addEventListener('scroll',solid,{passive:true});
+
+  var day=new Date().getDay(), map={0:'Zavřeno',1:'7:30 – 17:00',2:'7:30 – 17:00',3:'7:30 – 17:00',4:'7:30 – 17:00',5:'7:30 – 17:00',6:'Po domluvě'};
+  var th=document.getElementById('todayHours'); if(th) th.textContent=map[day];
+  Array.prototype.forEach.call(document.querySelectorAll('#hoursList li'),function(li){
+    if(li.getAttribute('data-d').split(',').indexOf(String(day))>-1) li.classList.add('now');
+  });
+
+  /* Video stays an enhancement: several MB per file, and these pages are
+     embedded as iframes on the lanthir.cz reference row. Anything that is not
+     a roomy desktop on a decent connection simply keeps the poster frame. */
+  function videoAllowed(){
+    if(RM) return false;
+    if(window.self !== window.top) return false;
+    if(!window.matchMedia('(min-width: 861px)').matches) return false;
+    var c=navigator.connection;
+    if(c && (c.saveData || /(^|-)2g$/.test(c.effectiveType||''))) return false;
+    return true;
+  }
+  function mountVideo(v){
+    if(!v || v.dataset.on || !videoAllowed()) return;
+    v.dataset.on='1';
+    var s=document.createElement('source'); s.src=v.dataset.src; s.type='video/mp4';
+    v.appendChild(s); v.load();
+    var p=v.play(); if(p&&p.catch) p.catch(function(){});
+  }
+  var hv=document.getElementById('heroVideo'), bv=document.getElementById('bandVideo');
+  mountVideo(hv);
+  if(bv && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(en){
+      en.forEach(function(e){ if(e.isIntersecting) mountVideo(bv); else if(bv.dataset.on) bv.pause(); });
+    },{threshold:.2}).observe(bv);
+  }
+
+  var reveals=document.querySelectorAll('.rv');
+  function revealAll(){Array.prototype.forEach.call(reveals,function(el){el.classList.add('in');});}
+  var GS=window.gsap && window.ScrollTrigger && !RM;
+
+  if(!GS){
+    revealAll();
+    Array.prototype.forEach.call(document.querySelectorAll('.ln>span'),function(s){s.style.transform='none';});
+    var hp=document.getElementById('heroPanel'); if(hp) hp.style.clipPath='none';
+    if('IntersectionObserver' in window && !RM){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
+      Array.prototype.forEach.call(reveals,function(el){el.classList.remove('in');io.observe(el);});
+      setTimeout(revealAll,3000);
+    }
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* opening sequence */
+  /* The mask offset starts in CSS (translateY(105%)) so nothing flashes before
+     GSAP boots. Normalise it through gsap.set first so GSAP owns the transform
+     in its own units, then animate. */
+  gsap.set('.ln>span',{yPercent:105,y:0});
+  var intro=gsap.timeline({defaults:{ease:'expo.out'}})
+    .to('.ln>span',{yPercent:0,duration:1.25,stagger:.1})
+    .to('#heroPanel',{clipPath:'inset(0 0 0% 0)',duration:1.4},'-=1.05')
+    .from('.hero-say',{opacity:0,y:20,duration:.9},'-=1')
+    .from('.hero-act',{opacity:0,y:20,duration:.9},'-=.8');
+
+  /* The H1 and hero panel start clipped out of view, so if the intro never runs
+     the page opens on nothing. Snap to the finished state if it has not moved
+     while the tab is actually on screen. */
+  function introGuard(){ if(document.hidden) return; if(intro.progress()===0) intro.progress(1); }
+  setTimeout(introGuard,4000);
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden) setTimeout(introGuard,4000); });
+
+  gsap.utils.toArray('.rv').forEach(function(el){
+    gsap.to(el,{opacity:1,y:0,duration:.8,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 90%',once:true},onStart:function(){el.classList.add('in');}});
+  });
+
+  /* dark band: footage drifts behind the statement */
+  gsap.to('#bandMedia',{yPercent:10,ease:'none',scrollTrigger:{trigger:'.band',start:'top bottom',end:'bottom top',scrub:true}});
+
+  /* the process rule draws itself as the steps arrive */
+  if(document.getElementById('flowFill')){
+    gsap.to('#flowFill',{width:'100%',ease:'none',scrollTrigger:{trigger:'#flow',start:'top 82%',end:'bottom 70%',scrub:.5}});
+  }
+
+  /* SIGNATURE: needle sweeps idle → redline across the whole page */
+  var tacho=document.getElementById('tacho'), needle=document.getElementById('tachoNeedle'),
+      fill=document.getElementById('tachoFill'), lbl=document.getElementById('tachoLbl');
+  if(tacho && window.matchMedia('(min-width: 861px)').matches){
+    var marks=[
+      {id:'hero',t:'Start'},{id:'sluzby',t:'Služby'},{id:'postup',t:'Postup'},
+      {id:'proc',t:'Proč my'},{id:'kontakt',t:'Kontakt'}
+    ];
+    gsap.set(needle,{rotation:-120,transformOrigin:'60px 60px'});   // rest at idle, not mid-dial
+    ScrollTrigger.create({
+      trigger:document.body,start:'top top',end:'bottom bottom',scrub:.4,
+      onUpdate:function(self){
+        var p=self.progress;
+        gsap.set(needle,{rotation:-120+240*p,transformOrigin:'60px 60px'});
+        gsap.set(fill,{strokeDashoffset:184.3-184.3*p});
+        tacho.classList.toggle('on',p>.02);
+      }
+    });
+    marks.forEach(function(m){
+      var el=document.getElementById(m.id); if(!el) return;
+      ScrollTrigger.create({trigger:el,start:'top 60%',end:'bottom 40%',
+        onToggle:function(self){ if(self.isActive) lbl.textContent=m.t.toUpperCase(); }});
+    });
+  }
+
+  window.addEventListener('load',function(){ScrollTrigger.refresh();});
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ScrollTrigger.refresh();});
+})();
 </script>
 </body>
 </html>
