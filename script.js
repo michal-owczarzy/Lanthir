@@ -693,7 +693,7 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
 (function () {
   const els = document.querySelectorAll('.reveal');
   if (RM) { els.forEach(e => e.classList.add('in')); return; }
-  document.querySelectorAll('.price-cols, .people, .contact-info, .ref-row').forEach(g => {
+  document.querySelectorAll('.price-cols, .people, .contact-info').forEach(g => {
     Array.from(g.children).filter(c => c.classList.contains('reveal'))
       .forEach((c, i) => c.style.setProperty('--d', (i * 0.04).toFixed(2) + 's'));
   });
@@ -701,18 +701,6 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
   }), { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
   els.forEach(e => io.observe(e));
-
-  /* Safety net: .reveal starts at opacity 0 and the tiles additionally start
-     clipped. If the observer never fires for a single element the page is
-     stranded invisible, so reveal everything rather than ship that. If some
-     already fired the observer is healthy and the rest animate on scroll. */
-  const net = () => {
-    if (document.hidden) return;
-    if (!document.querySelector('.reveal.in')) els.forEach(e => e.classList.add('in'));
-  };
-  setTimeout(net, 3500);
-  /* a tab opened in the background is hidden at 3.5s, so re-arm on return */
-  document.addEventListener('visibilitychange', () => { if (!document.hidden) setTimeout(net, 3500); });
 })();
 
 /* ── Palette ──────────────────────────────── */
@@ -1090,79 +1078,6 @@ function fScatter(n) {
   addEventListener('scroll', near, { passive: true });
   addEventListener('resize', near);
   near();
-})();
-
-/* ── Reference tiles — pointer tilt + focus rack ───
-   JS writes custom properties only; every visual change lives in CSS and
-   runs on the compositor. Skipped entirely on coarse pointers (hover is
-   not a thing there), on the lite motion tier, and under reduced motion. */
-(function () {
-  const row = document.querySelector('.ref-row');
-  if (!row || RM || TIER === 0) return;
-  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-
-  const items = Array.from(row.querySelectorAll('.ref-item'));
-  if (!items.length) return;
-
-  const MAX_TILT = 5;      /* clamped: enough to read as depth, never a wobble */
-  const LIFT = -10;
-  let raf = 0, pending = null;
-
-  const apply = () => {
-    raf = 0;
-    if (!pending) return;
-    const { el, x, y, w, h } = pending;
-    /* normalise to -1..1 so MAX_TILT is the real limit, not half of it */
-    const nx = (x / w) * 2 - 1, ny = (y / h) * 2 - 1;
-    el.style.setProperty('--ry', (nx * MAX_TILT).toFixed(2) + 'deg');
-    el.style.setProperty('--rx', (-ny * MAX_TILT).toFixed(2) + 'deg');
-    el.style.setProperty('--gx', ((x / w) * 100).toFixed(1) + '%');
-    el.style.setProperty('--gy', ((y / h) * 100).toFixed(1) + '%');
-  };
-
-  items.forEach(el => {
-    const frame = el.querySelector('.ref-frame') || el;
-
-    el.addEventListener('pointermove', e => {
-      const r = frame.getBoundingClientRect();
-      pending = { el, x: e.clientX - r.left, y: e.clientY - r.top, w: r.width, h: r.height };
-      if (!raf) raf = requestAnimationFrame(apply);
-    }, { passive: true });
-
-    const engage = () => {
-      row.classList.add('racked');
-      el.classList.add('is-focus');
-      el.style.setProperty('--lift', LIFT + 'px');
-      el.style.setProperty('--glare', '1');
-    };
-    /* always fully reversed, so a fast pointer can never leave it stuck */
-    const release = () => {
-      row.classList.remove('racked');
-      el.classList.remove('is-focus');
-      el.style.setProperty('--lift', '0px');
-      el.style.setProperty('--glare', '0');
-      el.style.setProperty('--rx', '0deg');
-      el.style.setProperty('--ry', '0deg');
-      pending = null;
-    };
-
-    el.addEventListener('pointerenter', engage);
-    el.addEventListener('pointerleave', release);
-    el.addEventListener('focus', engage);
-    el.addEventListener('blur', release);
-  });
-
-  /* pointer leaving the row entirely (or the window) must clear every tile */
-  const clearAll = () => items.forEach(el => {
-    row.classList.remove('racked');
-    el.classList.remove('is-focus');
-    el.style.setProperty('--lift', '0px');
-    el.style.setProperty('--glare', '0');
-    el.style.setProperty('--rx', '0deg');
-    el.style.setProperty('--ry', '0deg');
-  });
-  row.addEventListener('pointerleave', clearAll);
-  addEventListener('blur', clearAll);
 })();
 
 /* ── Back to top ──────────────────────────── */

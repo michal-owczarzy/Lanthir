@@ -351,53 +351,7 @@ body:not(.booted) .nav { opacity: 0; transform: translateY(-14px); pointer-event
   background: radial-gradient(circle at 50% 35%, rgba(30,123,229,.12), transparent 70%), #0a0f17;
   transition: transform .4s var(--e-out);
 }
-/* ── Reference tiles — the focus rack ─────────────
-   Hovering one product racks focus onto it: that tile lifts and tilts
-   toward the pointer with a glare across its surface, while the others
-   recede. Every property here is transform/opacity/filter so the whole
-   thing stays on the compositor. JS only writes the custom properties. */
-.ref-row { perspective: 1600px; }
-.ref-item {
-  --rx: 0deg; --ry: 0deg; --lift: 0px; --gx: 50%; --gy: 50%; --glare: 0;
-  transition: opacity .55s var(--e-out), filter .55s var(--e-out), transform .55s var(--e-out);
-}
-.ref-frame {
-  transform: translateY(var(--lift)) rotateX(var(--rx)) rotateY(var(--ry));
-  transition: transform .5s var(--e-out), box-shadow .5s var(--e-out);
-}
-.ref-item:hover .ref-frame,
-.ref-item:focus-visible .ref-frame {
-  box-shadow: 0 26px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(54,240,214,.45);
-}
-/* the glare — a soft light that tracks the pointer across the surface */
-.ref-frame::after {
-  content: '';
-  position: absolute; inset: 0; z-index: 3;
-  pointer-events: none;
-  background: radial-gradient(340px circle at var(--gx) var(--gy), rgba(255,255,255,.15), transparent 62%);
-  opacity: var(--glare);
-  transition: opacity .45s var(--e-out);
-}
-/* siblings recede so attention moves BETWEEN the products */
-.ref-row.racked .ref-item:not(.is-focus) { opacity: .42; filter: saturate(.5); transform: scale(.985); }
-
-/* caption: hairline draws under the name, industry label warms */
-.ref-cap { position: relative; }
-.ref-cap::after {
-  content: '';
-  position: absolute; left: 0; bottom: -11px; height: 1px; width: 100%;
-  background: var(--spark);
-  transform: scaleX(0); transform-origin: right;
-  transition: transform .6s var(--e-out);
-}
-.ref-item:hover .ref-cap::after,
-.ref-item:focus-visible .ref-cap::after { transform: scaleX(1); transform-origin: left; }
-.ref-name { transition: color .4s var(--e-out); }
-.ref-item:hover .ref-name, .ref-item:focus-visible .ref-name { color: #fff; }
-
-/* entry: each tile wipes upward, staggered by --d from script.js */
-.ref-item.reveal .ref-frame { clip-path: inset(0 0 100% 0); transition: transform .5s var(--e-out), box-shadow .5s var(--e-out), clip-path .95s var(--e-out) var(--d, 0s); }
-.ref-item.reveal.in .ref-frame { clip-path: inset(0 0 0% 0); }
+.ref-item:hover .ref-frame { transform: translateY(-6px); }
 .ref-frame iframe {
   position: absolute; top: 0; left: 0;
   width: 1280px; height: 800px;
@@ -698,11 +652,6 @@ a.ci-val:hover { color: var(--spark); }
   .svc-list, .proc-list { min-height: 0; }
   .ref-slot { position: static; opacity: 1; transform: none; }
   .reveal, .act--hero .act-copy > * { opacity: 1; transform: none; }
-  /* the focus rack collapses to a plain, static grid */
-  .ref-item, .ref-frame { transform: none !important; }
-  .ref-item.reveal .ref-frame { clip-path: none; }
-  .ref-row.racked .ref-item:not(.is-focus) { opacity: 1; filter: none; }
-  .ref-frame::after { display: none; }
   body:not(.booted) .nav { opacity: 1; transform: none; pointer-events: auto; }
   .scroll-cue { display: none; }
 }
