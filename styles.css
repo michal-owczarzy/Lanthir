@@ -145,6 +145,11 @@ body.no-scroll { overflow: hidden; }
 #stage {
   position: fixed;
   inset: 0;
+  /* the backing store is sized to W*DPR; without an explicit CSS size the
+     element lays out at that intrinsic size, so on a DPR-2/3 phone the canvas
+     became 2-3x the viewport and the mark was drawn oversized and offset */
+  width: 100%;
+  height: 100%;
   z-index: 0;
   pointer-events: none;
 }
@@ -603,6 +608,49 @@ a.ci-val:hover { color: var(--spark); }
 .to-top:hover { color: var(--ink); transform: translateY(-4px); }
 .to-top svg { width: 20px; height: 20px; }
 
+/* ── Flow mode — phones, tablets, reduced motion ──
+   No pinning and no scroll-scrubbing: the acts become ordinary stacked
+   sections. 100vh/sticky combinations misbehave while a mobile URL bar
+   resizes the viewport, so we simply do not use them here. */
+.flow-mode .act { height: auto !important; }
+.flow-mode .act-stage {
+  position: static;
+  height: auto;
+  min-height: 0;
+  display: block;
+  overflow: visible;
+  padding: var(--s3) 0;
+}
+.flow-mode .act--hero .act-stage { padding: 132px 0 var(--s3); }
+.flow-mode .act-copy,
+.flow-mode .act--hero .act-copy { max-width: 100%; }
+
+/* every step is simply present, stacked */
+.flow-mode .svc-list,
+.flow-mode .proc-list { min-height: 0; margin-top: var(--s2); }
+.flow-mode .svc-item,
+.flow-mode .proc-item {
+  position: static;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  padding-bottom: var(--s2);
+  border-bottom: 1px solid var(--hair);
+  margin-bottom: var(--s2);
+}
+.flow-mode .svc-item:last-child,
+.flow-mode .proc-item:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+
+/* hero copy is on screen immediately — never gated behind the animation */
+.flow-mode .act--hero .act-copy > * { opacity: 1; transform: none; }
+
+/* the mark sits behind the hero only, and quietly */
+.flow-mode #stage { opacity: .5; }
+.flow-mode .wordmark { display: none; }
+.flow-mode .scroll-cue { display: none; }
+.flow-mode .svc-rail,
+.flow-mode .proc-rail { display: none; }
+
 /* ── Reveal (flow sections only) ───────────────── */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--e-out), transform .7s var(--e-out); transition-delay: var(--d, 0s); }
 .reveal.in { opacity: 1; transform: none; }
@@ -638,6 +686,9 @@ a.ci-val:hover { color: var(--spark); }
   .flow { padding: var(--s3) 0; }
   .row-actions { gap: 16px; }
   .ref-row { grid-template-columns: 1fr; gap: var(--s1); }
+  /* phones: two references is enough proof, and four live iframes is a lot
+     of weight on a phone connection. The rest are one tap away on /ukazky/. */
+  .ref-item:nth-child(n+3) { display: none; }
   .svc-list, .proc-list { min-height: 340px; }
   .ref-all { position: static; transform: none; display: inline-flex; margin: var(--s1) var(--gutter) 0; }
 }

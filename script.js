@@ -630,6 +630,13 @@ const T = {
 const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* Motion budget scaled to the hardware: 0 lite · 1 standard · 2 full */
+/* Pinned, scroll-scrubbed sections are desktop-only. On phones the URL bar
+   resizes the viewport mid-scroll, which changes the scrub denominator and
+   makes the pinned acts jump; the skill also flags 100vh and scroll-jacking
+   as mobile hazards. Everything below simply flows instead. */
+const PIN = window.matchMedia('(min-width: 881px) and (pointer: fine)').matches && !RM;
+if (!PIN) document.documentElement.classList.add('flow-mode');
+
 const TIER = (() => {
   const c = navigator.connection || {};
   if (c.saveData || /2g|slow-2g/.test(c.effectiveType || '')) return 0;
@@ -799,7 +806,7 @@ function fScatter(n) {
   if (!cv || !acts.length) { document.body.classList.add('booted'); return; }
 
   /* act tracks get their scroll length from data-len */
-  const sizeActs = () => acts.forEach(a => { a.style.height = (parseFloat(a.dataset.len || 2) * 100) + 'vh'; });
+  const sizeActs = () => acts.forEach(a => { a.style.height = PIN ? (parseFloat(a.dataset.len || 2) * 100) + 'vh' : ''; });
   sizeActs();
 
   let svgText = null;
@@ -849,7 +856,10 @@ function fScatter(n) {
   });
 
   const fit = () => {
-    W = innerWidth; H = innerHeight;
+    /* measure the canvas box, not innerWidth: with a visible scrollbar the two
+       differ and the drawing ends up scaled by ~1% against the layout */
+    W = cv.clientWidth || innerWidth;
+    H = cv.clientHeight || innerHeight;
     cv.width = W * DPR; cv.height = H * DPR;
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
   };
@@ -903,7 +913,9 @@ function fScatter(n) {
     if (kind === 'iris') {
       /* opens full-screen and centred, then steps aside as you scroll so the
          headline is never underneath it */
-      const e = clamp01((prog - .05) / .45);
+      /* deep links (#home, logo click) show the copy at once, so the mark must
+         already be parked to the right instead of sitting under the headline */
+      const e = boot ? 1 : clamp01((prog - .05) / .45);
       return { cx: narrow ? W * .5 : lerp(W * .5, W * .775, e),
                cy: H * (narrow ? .38 : .5),
                R: lerp(m * .74, m * .42, e) * (narrow ? .95 : 1),
@@ -939,8 +951,11 @@ function fScatter(n) {
     return;
   }
 
+  /* Watch the hero, not <body> — body always intersects, so the loop never
+     paused and kept burning frames the whole way down the page. */
   let vis = true;
-  new IntersectionObserver(e => vis = e[e.length - 1].isIntersecting).observe(document.body);
+  new IntersectionObserver(e => { vis = e[e.length - 1].isIntersecting; },
+    { rootMargin: '200px 0px' }).observe(PIN ? document.body : heroAct);
 
   (function frame(now) {
     requestAnimationFrame(frame);
@@ -950,7 +965,7 @@ function fScatter(n) {
     /* Content sections get the brand mark back rather than keeping whatever
        the last act left on screen — otherwise the four-step path lingers all
        the way down through pricing, about and contact. */
-    let kind = inFlow ? 'iris' : active.dataset.act;
+    let kind = (!PIN || inFlow) ? 'iris' : active.dataset.act;
     if (kind === 'path') kind += ':' + Math.min(3, Math.floor(prog * 4 * 0.999));
     const target = FORM[kind] || FORM.iris;
     const pose = place(active, prog);
@@ -1001,11 +1016,14 @@ function fScatter(n) {
   const items = Array.from(document.querySelectorAll('.svc-item'));
   const rail = document.getElementById('svcRail');
   if (!act || !items.length) return;
-  if (RM) { items.forEach(i => i.classList.add('is-on')); return; }
+  /* not pinned: every item is simply on screen, no stepping */
+  if (!PIN) { items.forEach(i => i.classList.add('is-on')); if (rail) rail.style.width = '100%'; return; }
   let cur = -1;
   const tick = () => {
     const r = act.getBoundingClientRect();
-    const p = Math.min(Math.max(-r.top / (r.height - innerHeight), 0), 1);
+    const span = r.height - innerHeight;
+    if (span <= 0) return;
+    const p = Math.min(Math.max(-r.top / span, 0), 1);
     const i = Math.min(items.length - 1, Math.floor(p * items.length * 0.999));
     if (i !== cur) { cur = i; items.forEach((el, k) => el.classList.toggle('is-on', k === i)); }
     if (rail) rail.style.width = (p * 100).toFixed(1) + '%';
@@ -1021,11 +1039,13 @@ function fScatter(n) {
   const items = Array.from(document.querySelectorAll('.proc-item'));
   const rail = document.getElementById('procRail');
   if (!act || !items.length) return;
-  if (RM) { items.forEach(i => i.classList.add('is-on')); if (rail) rail.style.width = '100%'; return; }
+  if (!PIN) { items.forEach(i => i.classList.add('is-on')); if (rail) rail.style.width = '100%'; return; }
   let cur = -1;
   const tick = () => {
     const r = act.getBoundingClientRect();
-    const p = Math.min(Math.max(-r.top / (r.height - innerHeight), 0), 1);
+    const span = r.height - innerHeight;
+    if (span <= 0) return;
+    const p = Math.min(Math.max(-r.top / span, 0), 1);
     const i = Math.min(items.length - 1, Math.floor(p * items.length * 0.999));
     if (i !== cur) { cur = i; items.forEach((el, k) => el.classList.toggle('is-on', k === i)); }
     /* rail fills in whole steps so it matches the nodes in the constellation */
@@ -1054,7 +1074,9 @@ function fScatter(n) {
   if (TIER === 0) return;              /* lite tier keeps the placeholder */
 
   const mount = f => {
-    if (f.dataset.on) return;
+    /* skip anything the layout has hidden (phones show only the first two) —
+       otherwise we pay for iframes nobody can see */
+    if (f.dataset.on || !f.offsetParent) return;
     f.dataset.on = '1';
     const fr = document.createElement('iframe');
     fr.src = f.dataset.src;
