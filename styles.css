@@ -694,6 +694,66 @@ a.ci-val:hover { color: var(--spark); }
 }
 
 /* ── Reduced motion ───────────────────────────── */
+/* ── Mobile type scale ────────────────────────────
+   The clamp() floors above are tuned for desktop minimums, so on a phone the
+   vw term never wins and everything renders at near-desktop size. These blocks
+   set a scale that suits the viewport. Desktop is untouched: every rule here
+   lives inside a max-width query. */
+
+/* tablets and small laptops in flow mode */
+@media (max-width: 880px) {
+  :root { --s3: 76px; --s4: 116px; }
+  .display        { font-size: 34px; line-height: 1.02; letter-spacing: -0.025em; }
+  .display--sm    { font-size: 27px; line-height: 1.04; letter-spacing: -0.02em; }
+  .svc-item h3,
+  .proc-item h3   { font-size: 22px; }
+  .price-name     { font-size: 24px; }
+  .price-amount .num     { font-size: 36px; }
+  .price-amount .num--sm { font-size: 22px; }
+  .lede           { font-size: 17px; }
+  .person-name    { font-size: 20px; }
+}
+
+/* phones */
+@media (max-width: 560px) {
+  :root { --s1: 18px; --s2: 34px; --s3: 60px; --s4: 88px; }
+  body            { font-size: 16px; }
+  .display        { font-size: 28px; line-height: 1.06; letter-spacing: -0.02em; }
+  .display--sm    { font-size: 23px; line-height: 1.08; letter-spacing: -0.015em; }
+  .tag            { font-size: 11px; letter-spacing: .16em; margin-bottom: 14px; }
+  .lede           { font-size: 15.5px; line-height: 1.5; }
+
+  .svc-item h3,
+  .proc-item h3   { font-size: 19px; }
+  .svc-item p,
+  .proc-item p    { font-size: 15px; }
+  .svc-n, .proc-n { font-size: 11px; margin-bottom: 10px; }
+
+  .price-name     { font-size: 20px; margin: 10px 0 6px; }
+  .price-desc     { font-size: 14.5px; }
+  .price-amount   { margin: 18px 0; }
+  .price-amount .num     { font-size: 30px; }
+  .price-amount .num--sm { font-size: 18px; }
+  .price-amount .from,
+  .price-amount .cur,
+  .price-amount .per     { font-size: 13.5px; }
+  .price-feats           { gap: 11px; margin-bottom: 30px; }
+  .price-feats li        { font-size: 15px; line-height: 1.5; padding-left: 19px; }
+  .price-tier            { font-size: 11px; }
+  .price-label           { font-size: 11px; margin-bottom: 28px; }
+
+  .person-name    { font-size: 19px; }
+  .person-bio     { font-size: 15px; }
+  .ref-name       { font-size: 15px; }
+  .ci-val         { font-size: 17px; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea { font-size: 16px; }   /* 16px keeps iOS from zooming on focus */
+  .footer-wordmark { font-size: 48px; }
+  .nav-links a    { font-size: 22px; }
+  .btn-primary, .btn-text { font-size: 11.5px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
