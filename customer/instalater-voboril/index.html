@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="cs" class="is-loading">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Instalatér Vobořil — koupelny na klíč, voda a topení | Ústí nad Labem</title>
+<meta name="description" content="Tomáš Vobořil — instalatérské a topenářské práce, rekonstrukce koupelen a bytových jader, podlahové topení, obklady a dlažba. Ústí nad Labem a okolí. Tel. 604 581 537.">
+<meta name="theme-color" content="#0C100D">
+<meta property="og:title" content="Instalatér Vobořil — koupelny na klíč, voda a topení">
+<meta property="og:description" content="Od bourání po poslední spáru. Ústí nad Labem a okolí.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230C100D'/%3E%3Cpath d='M41 12a13 13 0 0 0-13 21L12 49a5 5 0 0 0 7 7l16-16a13 13 0 0 0 17-17l-8 8-6-2-2-6 8-8a13 13 0 0 0-3-3Z' fill='none' stroke='%236E9C42' stroke-width='3.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+<style>
+/* ============================================================
+   TOKENY
+   Paleta odvozená z loga: mechová zeleň + čedičová čerň,
+   světlé kapitoly v tónu vápenné omítky a keramiky.
+   Měď = druhý akcent (měděné rozvody), používá se jen na
+   tekoucí bod v topném okruhu a na vlásečnicové linky.
+   ============================================================ */
+:root{
+  --basalt:#0C100D;
+  --basalt-2:#141A15;
+  --basalt-3:#1C231D;
+  --lime-wash:#E9EDE9;
+  --plaster:#D7DDD6;
+  --moss:#6E9C42;
+  --moss-hi:#93C75B;
+  --moss-ink:#456427;
+  --copper:#C08A4E;
+
+  --ink:#F2F5F1;
+  --ink-dim:#98A69A;
+  --ink-dark:#101410;
+  --ink-dark-dim:#57604F;
+
+  --line:rgba(242,245,241,.11);
+  --line-dark:rgba(16,20,16,.14);
+
+  --display:'Archivo',system-ui,sans-serif;
+  --sans:'Manrope',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+
+  --max:1240px;
+  --pad:clamp(20px,4vw,56px);
+  --s1:8px; --s2:16px; --s3:26px; --s4:44px; --s5:72px; --s6:112px; --s7:160px;
+
+  --ease:cubic-bezier(.16,1,.3,1);
+  --ease-io:cubic-bezier(.65,0,.35,1);
+
+  /* skutečnou výšku náhledové lišty dopočítá JS — na mobilu se láme na dva řádky */
+  --ribbon-h:33px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html.is-loading{overflow:hidden}
+body{
+  font-family:var(--sans);font-weight:400;font-size:17px;line-height:1.65;
+  background:var(--basalt);color:var(--ink);
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--moss);color:#fff}
+
+h1,h2,h3,h4{
+  font-family:var(--display);font-weight:700;line-height:1.02;
+  letter-spacing:-.025em;font-stretch:112%;
+  text-wrap:balance;
+}
+
+:focus-visible{outline:2px solid var(--moss-hi);outline-offset:3px;border-radius:2px}
+
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad);width:100%}
+.section{padding-block:clamp(80px,11vw,var(--s7))}
+.section--tight{padding-block:clamp(64px,8vw,var(--s6))}
+
+/* světlé kapitoly */
+.light{background:var(--lime-wash);color:var(--ink-dark)}
+.light h1,.light h2,.light h3{color:var(--ink-dark)}
+
+/* ---------- typografická stupnice ---------- */
+.t-hero{font-size:clamp(2.5rem,5.5vw,4.9rem)}
+.t-h2{font-size:clamp(2rem,5vw,4.1rem)}
+.t-h3{font-size:clamp(1.35rem,2.4vw,1.95rem);letter-spacing:-.02em}
+.t-lead{font-size:clamp(1.05rem,1.5vw,1.28rem);line-height:1.6;font-weight:300}
+.dim{color:var(--ink-dim)}
+.light .dim{color:var(--ink-dark-dim)}
+
+.label{
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.19em;text-transform:uppercase;color:var(--moss-hi);
+  display:inline-flex;align-items:center;gap:10px;
+}
+.light .label{color:var(--moss-ink)}
+.label::before{content:"";width:22px;height:1px;background:currentColor;opacity:.55}
+
+/* ---------- tlačítka ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:11px;
+  min-height:52px;padding:0 28px;border-radius:999px;border:1px solid transparent;
+  font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.01em;
+  cursor:pointer;position:relative;overflow:hidden;
+  transition:transform .35s var(--ease),background-color .3s,border-color .3s,color .3s;
+  will-change:transform;
+}
+.btn svg{width:18px;height:18px;flex:none}
+.btn--fill{background:var(--moss-hi);color:#0A0D0A}
+.btn--fill:hover{background:#A6D96C}
+.btn--ghost{border-color:var(--line);color:var(--ink)}
+.btn--ghost:hover{border-color:var(--moss-hi);color:var(--moss-hi)}
+.light .btn--ghost{border-color:var(--line-dark);color:var(--ink-dark)}
+.light .btn--ghost:hover{border-color:var(--moss-ink);color:var(--moss-ink)}
+.btn--dark{background:var(--basalt);color:var(--ink)}
+.btn--dark:hover{background:var(--basalt-3)}
+
+/* ============================================================
+   NÁHLEDOVÁ LIŠTA LANTHIR
+   ============================================================ */
+.ribbon{
+  position:fixed;inset:0 0 auto 0;z-index:120;
+  background:linear-gradient(90deg,#3a2ee0,#1e7be5 55%,#1fcded);
+  color:#fff;font-size:12.5px;font-weight:500;letter-spacing:.01em;
+  text-align:center;padding:8px 16px;line-height:1.35;
+}
+.ribbon a{text-decoration:underline;font-weight:700;text-underline-offset:2px}
+
+/* ============================================================
+   ÚVODNÍ SEKVENCE
+   ============================================================ */
+.loader{
+  position:fixed;inset:0;z-index:200;background:var(--basalt);
+  display:grid;place-items:center;
+}
+.loader__mark{width:min(62vw,300px);opacity:0;transform:translateY(10px);
+  animation:loaderIn .7s var(--ease) .1s forwards}
+.loader__mark path,.loader__mark line{
+  stroke-dasharray:var(--len,260);stroke-dashoffset:var(--len,260);
+  animation:draw 1.05s var(--ease) .18s forwards;
+}
+.loader__word{
+  margin-top:20px;text-align:center;font-family:var(--mono);font-size:11px;
+  letter-spacing:.34em;text-transform:uppercase;color:var(--ink-dim);
+  opacity:0;animation:loaderIn .6s var(--ease) .75s forwards;
+}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes loaderIn{to{opacity:1;transform:none}}
+.loader.is-out{transform:translateY(-101%);transition:transform 1s var(--ease)}
+html:not(.js) .loader{display:none}
+
+/* ============================================================
+   TRUBKA — indikátor postupu (levý okraj)
+   ============================================================ */
+.pipe{
+  position:fixed;left:max(12px,2vw);top:0;bottom:0;width:2px;z-index:60;
+  background:linear-gradient(var(--line),var(--line));
+  pointer-events:none;
+}
+.pipe__fill{position:absolute;inset:0 0 auto 0;height:0;background:linear-gradient(180deg,var(--moss),var(--moss-hi));transform-origin:top}
+.pipe__dot{
+  position:absolute;left:50%;top:0;width:9px;height:9px;margin-left:-4.5px;margin-top:-4.5px;
+  border-radius:50%;background:var(--copper);box-shadow:0 0 0 4px rgba(192,138,78,.18);
+}
+@media (max-width:1100px){.pipe{display:none}}
+
+/* ============================================================
+   NAVIGACE
+   ============================================================ */
+.nav{
+  position:fixed;left:0;right:0;top:var(--ribbon-h);z-index:100;
+  transition:transform .5s var(--ease),background-color .4s,border-color .4s;
+  border-bottom:1px solid transparent;
+}
+.nav.is-stuck{background:rgba(12,16,13,.72);backdrop-filter:blur(16px) saturate(1.3);border-bottom-color:var(--line)}
+.nav.is-hidden{transform:translateY(calc(-100% - var(--ribbon-h) - 2px))}
+.nav__in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
+.nav__links{display:flex;gap:30px;list-style:none;font-size:14.5px;font-weight:500}
+.nav__links a{color:var(--ink-dim);transition:color .25s;position:relative;padding-block:6px}
+.nav__links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--moss-hi);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
+.nav__links a:hover{color:var(--ink)}
+.nav__links a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav__tel{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:14px;font-weight:500;
+  padding:11px 20px;border:1px solid var(--line);border-radius:999px;transition:.3s var(--ease)}
+.nav__tel:hover{border-color:var(--moss-hi);color:var(--moss-hi);transform:translateY(-1px)}
+.nav__tel svg{width:15px;height:15px}
+@media (max-width:900px){.nav__links{display:none}.nav__in{height:64px}}
+
+/* ---------- znak / logotyp ---------- */
+.mark{display:flex;align-items:center;gap:13px}
+.mark__ico{width:34px;height:34px;flex:none;color:var(--moss-hi)}
+.mark__txt{display:flex;flex-direction:column;line-height:1}
+.mark__top{font-family:var(--mono);font-size:8.5px;letter-spacing:.3em;color:var(--ink-dim);text-transform:uppercase}
+.mark__name{font-family:var(--display);font-weight:800;font-stretch:108%;font-size:20px;letter-spacing:-.01em;color:var(--ink)}
+.mark__name b{color:var(--moss-hi);font-weight:800}
+.light .mark__name{color:var(--ink-dark)}
+.light .mark__name b{color:var(--moss-ink)}
+.light .mark__ico{color:var(--moss-ink)}
+.light .mark__top{color:var(--ink-dark-dim)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{position:relative;display:grid;grid-template-columns:minmax(0,46fr) minmax(0,54fr);min-height:100svh;align-items:stretch}
+.hero__copy{
+  display:flex;flex-direction:column;justify-content:flex-end;gap:var(--s3);
+  padding:calc(var(--s7) + 20px) clamp(24px,4vw,64px) clamp(48px,7vh,88px) max(var(--pad),40px);
+}
+.hero h1{margin-block:6px}
+.hero__sub{max-width:34ch}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.hero__meta{display:flex;flex-wrap:wrap;gap:8px 22px;font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-dim);margin-top:var(--s2)}
+.hero__meta span{display:inline-flex;align-items:center;gap:8px}
+.hero__meta i{width:4px;height:4px;border-radius:50%;background:var(--moss);font-style:normal}
+
+/* obrazová deska + obkládací reveal */
+.hero__plate{position:relative;overflow:hidden;background:var(--basalt-2)}
+.hero__img{position:absolute;inset:-6% -3%;width:106%;height:112%;object-fit:cover;object-position:center;
+  transform:scale(1.06);will-change:transform}
+.hero__plate::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,var(--basalt) 0%,rgba(12,16,13,.35) 34%,rgba(12,16,13,0) 62%);pointer-events:none}
+.tiles{position:absolute;inset:0;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(5,1fr);z-index:2;pointer-events:none}
+.tiles i{background:var(--basalt);transform-origin:bottom;transition:transform .78s var(--ease),opacity .5s linear}
+html.is-revealed .tiles i{transform:scaleY(0);opacity:0}
+
+/* svislý popisek na desce */
+.hero__stamp{
+  position:absolute;right:clamp(14px,2vw,26px);bottom:clamp(20px,4vh,44px);z-index:3;
+  writing-mode:vertical-rl;font-family:var(--mono);font-size:11px;letter-spacing:.28em;
+  text-transform:uppercase;color:rgba(242,245,241,.62);
+}
+.hero__scroll{position:absolute;left:max(var(--pad),40px);bottom:26px;z-index:3;display:flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-dim)}
+.hero__scroll span{width:34px;height:1px;background:var(--ink-dim);position:relative;overflow:hidden}
+.hero__scroll span::after{content:"";position:absolute;inset:0;background:var(--moss-hi);animation:trace 2.4s var(--ease-io) infinite}
+@keyframes trace{0%{transform:translateX(-100%)}55%,100%{transform:translateX(100%)}}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero__plate{height:52svh;order:-1}
+  .hero__copy{padding:var(--s4) var(--pad) var(--s5);gap:var(--s2)}
+  .hero__scroll{display:none}
+  .tiles{grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(4,1fr)}
+}
+
+/* maskovaný nástup textu */
+.rv{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.06em;margin-bottom:-.06em}
+.rv > i{display:inline-block;font-style:inherit;transform:translateY(105%);transition:transform .95s var(--ease)}
+html.is-revealed .rv > i,.is-in .rv > i{transform:none}
+
+/* obecné odhalení při scrollu */
+.up{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.up.is-in{opacity:1;transform:none}
+
+/* ============================================================
+   TEZE
+   ============================================================ */
+.thesis{border-top:1px solid var(--line)}
+.thesis__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(28px,5vw,90px);align-items:start}
+/* pozor: nikdy nestylovat holé `p` uvnitř sekce — přebilo by to .label i .thesis__note */
+.thesis__lead{font-family:var(--display);font-weight:400;font-stretch:105%;
+  font-size:clamp(1.5rem,3.1vw,2.6rem);line-height:1.22;letter-spacing:-.02em}
+.thesis__lead em{font-style:normal;color:var(--moss-hi)}
+.thesis__note{font-size:15.5px;line-height:1.72;color:var(--ink-dim);max-width:44ch;margin-top:var(--s3)}
+@media (max-width:820px){.thesis__grid{grid-template-columns:1fr;gap:var(--s3)}}
+
+/* ============================================================
+   SLUŽBY — ostřicí lišta
+   ============================================================ */
+.svc{position:relative}
+.svc__head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:var(--s5);flex-wrap:wrap}
+.svc__list{border-top:1px solid var(--line-dark)}
+.svc__row{
+  display:grid;grid-template-columns:96px minmax(0,1fr) auto;align-items:center;gap:clamp(14px,3vw,40px);
+  padding:clamp(20px,2.6vw,30px) 0;border-bottom:1px solid var(--line-dark);
+  position:relative;cursor:pointer;width:100%;text-align:left;background:none;border-inline:0;border-top:0;
+  transition:padding-left .5s var(--ease);
+}
+.svc__row::before{content:"";position:absolute;left:-24px;top:50%;width:0;height:1px;background:var(--moss-ink);transform:translateY(-50%);transition:width .5s var(--ease)}
+.svc__row:hover,.svc__row:focus-visible{padding-left:26px}
+.svc__row:hover::before,.svc__row:focus-visible::before{width:18px}
+.svc__tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--moss-ink)}
+.svc__name{font-family:var(--display);font-weight:600;font-stretch:106%;font-size:clamp(1.18rem,2.5vw,1.85rem);letter-spacing:-.02em;line-height:1.15}
+.svc__desc{display:block;font-family:var(--sans);font-weight:400;font-size:14.5px;line-height:1.6;color:var(--ink-dark-dim);letter-spacing:0;margin-top:7px;max-width:56ch}
+.svc__ico{width:26px;height:26px;color:var(--ink-dark-dim);flex:none;transition:color .35s,transform .5s var(--ease)}
+.svc__row:hover .svc__ico,.svc__row:focus-visible .svc__ico{color:var(--moss-ink);transform:translateX(4px)}
+@media (max-width:900px){
+  .svc__row{grid-template-columns:1fr auto;gap:12px 16px}
+  .svc__tag{grid-column:1/-1;margin-bottom:2px}
+}
+
+/* ============================================================
+   AKT — PODLAHOVÉ TOPENÍ
+   ============================================================ */
+.act{position:relative;background:var(--basalt)}
+.act__stage{min-height:100svh;display:grid;grid-template-columns:minmax(0,38fr) minmax(0,62fr);
+  gap:clamp(24px,4vw,64px);align-items:center;padding-block:var(--s5)}
+.act__steps{list-style:none;display:flex;flex-direction:column;gap:var(--s2)}
+.act__step{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:start;
+  padding:16px 18px;border-radius:6px;border:1px solid transparent;
+  transition:background-color .5s var(--ease),border-color .5s,opacity .5s}
+.act__step.is-on{background:var(--basalt-2);border-color:var(--line)}
+.act__num{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ink-dim);padding-top:4px;transition:color .4s}
+.act__step.is-on .act__num{color:var(--copper)}
+.act__step h3{font-size:clamp(1.05rem,1.7vw,1.3rem);color:var(--ink-dim);transition:color .4s}
+.act__step.is-on h3{color:var(--ink)}
+.act__step p{font-size:14.5px;line-height:1.6;color:var(--ink-dim);margin-top:5px;max-width:42ch;
+  max-height:0;opacity:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .4s}
+.act__step.is-on p{max-height:120px;opacity:1}
+.act__view{position:relative}
+.act__svg{width:100%;height:auto;max-height:58svh;display:block;overflow:visible}
+.act__readout{display:flex;gap:26px;margin-top:var(--s3);font-family:var(--mono);font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim)}
+.act__readout b{color:var(--moss-hi);font-weight:500}
+@media (max-width:900px){
+  .act__stage{grid-template-columns:1fr;min-height:0;gap:var(--s4);padding-block:0}
+  .act__step p{max-height:none;opacity:1}
+  .act__step{background:var(--basalt-2);border-color:var(--line)}
+  .act__num{color:var(--copper)}
+  .act__step h3{color:var(--ink)}
+}
+
+/* ============================================================
+   PŘED / PO
+   ============================================================ */
+.ba__head{margin-bottom:var(--s5)}
+.ba__head p{max-width:46ch}
+.ba__stage{position:relative;aspect-ratio:16/10;overflow:hidden;border-radius:6px;background:var(--plaster);
+  touch-action:pan-y;--pos:50%}
+.ba__stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;user-select:none;-webkit-user-drag:none}
+.ba__after{clip-path:inset(0 0 0 var(--pos))}
+.ba__handle{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;background:var(--lime-wash);transform:translateX(-1px);z-index:3;
+  box-shadow:0 0 0 1px rgba(16,20,16,.16)}
+.ba__grip{position:absolute;top:50%;left:50%;width:54px;height:54px;transform:translate(-50%,-50%);
+  border-radius:50%;background:var(--lime-wash);display:grid;place-items:center;cursor:ew-resize;
+  box-shadow:0 8px 24px -8px rgba(16,20,16,.5)}
+.ba__grip svg{width:22px;height:22px;color:var(--ink-dark)}
+.ba__tag{position:absolute;bottom:16px;z-index:4;font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;padding:7px 13px;border-radius:999px;background:rgba(12,16,13,.66);color:#fff;backdrop-filter:blur(6px)}
+.ba__tag--l{left:16px}
+.ba__tag--r{right:16px}
+.ba__range{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;z-index:5;margin:0}
+.ba__foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:var(--s3);
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dark-dim)}
+
+/* ============================================================
+   GALERIE
+   ============================================================ */
+.gal__head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:var(--s5)}
+.gal__grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(10px,1.4vw,20px)}
+.gal__item{position:relative;overflow:hidden;background:var(--basalt-2);border:0;padding:0;cursor:pointer;display:block;border-radius:4px}
+.gal__item img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease),filter .6s;filter:saturate(.92)}
+.gal__item:hover img{transform:scale(1.045);filter:saturate(1.05)}
+.gal__item figcaption{position:absolute;left:14px;bottom:12px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.7);opacity:0;transform:translateY(6px);
+  transition:opacity .4s,transform .5s var(--ease)}
+.gal__item:hover figcaption,.gal__item:focus-visible figcaption{opacity:1;transform:none}
+/* fotky jsou na výšku; poměry 3/4 (span 4) a 3/2 (span 8) dávají
+   shodnou výšku řádku, takže mřížka drží rovné linky */
+.g-p{grid-column:span 4;aspect-ratio:3/4}
+.g-w{grid-column:span 8;aspect-ratio:3/2}
+@media (max-width:820px){
+  /* dense: širokou fotku nelze vměstnat vedle úzké, jinak by v mřížce zůstala díra */
+  .gal__grid{grid-template-columns:repeat(2,1fr);grid-auto-flow:dense}
+  .g-p{grid-column:span 1;aspect-ratio:3/4}
+  .g-w{grid-column:span 2;aspect-ratio:3/2}
+}
+
+/* světelný box */
+.lb{position:fixed;inset:0;z-index:150;display:none;place-items:center;background:rgba(8,10,8,.93);
+  backdrop-filter:blur(8px);opacity:0;transition:opacity .4s}
+.lb.is-open{display:grid}
+.lb.is-shown{opacity:1}
+.lb img{max-width:min(92vw,1300px);max-height:86svh;object-fit:contain;border-radius:4px}
+.lb__close{position:absolute;top:22px;right:22px;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);
+  background:rgba(20,26,21,.7);display:grid;place-items:center;cursor:pointer;transition:.3s}
+.lb__close:hover{background:var(--basalt-3);transform:rotate(90deg)}
+.lb__close svg{width:18px;height:18px}
+.lb__cap{position:absolute;bottom:26px;left:0;right:0;text-align:center;font-family:var(--mono);font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim)}
+.lb__ghost{position:fixed;z-index:151;object-fit:cover;border-radius:4px;pointer-events:none}
+
+/* ============================================================
+   PŮSOBNOST + ODKAZY
+   ============================================================ */
+.area__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,100px);align-items:center}
+.area__towns{display:flex;flex-wrap:wrap;gap:10px;margin-top:var(--s3)}
+.area__towns li{list-style:none;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  padding:8px 15px;border:1px solid var(--line);border-radius:999px;color:var(--ink-dim)}
+.area__towns li:first-child{border-color:var(--moss);color:var(--moss-hi)}
+.links{display:grid;gap:2px}
+.links a{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 4px;
+  border-bottom:1px solid var(--line);transition:padding-left .45s var(--ease),color .3s}
+.links a:hover{padding-left:14px;color:var(--moss-hi)}
+.links a:first-child{border-top:1px solid var(--line)}
+.links__l{display:flex;align-items:center;gap:14px}
+.links__l svg{width:20px;height:20px;color:var(--ink-dim);transition:color .3s}
+.links a:hover .links__l svg{color:var(--moss-hi)}
+.links__k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
+.links__arrow{width:16px;height:16px;flex:none;opacity:.5;transition:transform .4s var(--ease),opacity .3s}
+.links a:hover .links__arrow{transform:translate(3px,-3px);opacity:1}
+@media (max-width:820px){.area__grid{grid-template-columns:1fr;gap:var(--s4)}}
+
+/* ============================================================
+   KONTAKT
+   ============================================================ */
+.ct__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(36px,6vw,96px)}
+.ct__tel{
+  display:inline-flex;align-items:center;gap:16px;margin-block:var(--s3) var(--s2);
+  font-family:var(--display);font-weight:700;font-stretch:110%;
+  font-size:clamp(2rem,4.4vw,3.4rem);letter-spacing:-.03em;color:var(--ink-dark);
+  transition:color .3s
+}
+.ct__tel:hover{color:var(--moss-ink)}
+.ct__tel svg{width:.62em;height:.62em;color:var(--moss-ink);flex:none}
+.ct__hint{font-size:15px;color:var(--ink-dark-dim);max-width:36ch}
+
+.form{display:grid;gap:var(--s2)}
+.field{display:grid;gap:7px}
+.field label{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dark-dim)}
+.field input,.field select,.field textarea{
+  width:100%;background:transparent;border:0;border-bottom:1px solid var(--line-dark);
+  padding:12px 2px;font-size:16px;color:var(--ink-dark);border-radius:0;
+  transition:border-color .3s
+}
+.field select{appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%2357604F' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 4px center;background-size:12px}
+.field textarea{resize:vertical;min-height:96px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-bottom-color:var(--moss-ink)}
+.field input::placeholder,.field textarea::placeholder{color:#9AA396}
+.form__row{display:grid;grid-template-columns:1fr 1fr;gap:var(--s2)}
+.form__msg{font-size:14px;min-height:22px;color:var(--moss-ink);font-weight:600}
+.form__msg.is-err{color:#B4401F}
+.form__note{font-size:12.5px;color:var(--ink-dark-dim);line-height:1.55}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+@media (max-width:820px){.ct__grid{grid-template-columns:1fr}.form__row{grid-template-columns:1fr}}
+
+/* ============================================================
+   PATIČKA + MOBILNÍ LIŠTA
+   ============================================================ */
+.foot{border-top:1px solid var(--line);padding-block:var(--s4)}
+.foot__in{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim)}
+.foot__in a:hover{color:var(--moss-hi)}
+
+.callbar{
+  position:fixed;left:12px;right:12px;bottom:12px;z-index:110;display:none;
+  align-items:center;justify-content:center;gap:11px;height:56px;border-radius:999px;
+  background:var(--moss-hi);color:#0A0D0A;font-weight:700;font-size:16px;
+  box-shadow:0 12px 30px -10px rgba(0,0,0,.6);
+  transform:translateY(120%);transition:transform .5s var(--ease);
+}
+.callbar.is-on{transform:none}
+.callbar svg{width:19px;height:19px}
+/* patička nesmí zmizet pod plovoucí lištou s telefonem */
+@media (max-width:900px){.callbar{display:flex}.foot{padding-bottom:calc(var(--s4) + 68px)}}
+
+/* ============================================================
+   OMEZENÝ POHYB
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important}
+  .tiles{display:none}
+  .rv > i{transform:none!important}
+  .up{opacity:1!important;transform:none!important}
+  .act__step p{max-height:none;opacity:1}
+  .loader{display:none}
+}
+</style>
+</head>
+
+<body>
+<div class="ribbon">
+  Nezávazný náhled webu připravený studiem <b>Lanthir</b> — líbí se vám?
+  <a href="mailto:kontakt@lanthir.cz">Napište nám</a> a spustíme ho.
+</div>
+
+<!-- úvodní sekvence -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div>
+    <svg class="loader__mark" viewBox="0 0 240 90" fill="none" stroke="#6E9C42" stroke-width="3.2"
+         stroke-linecap="round" stroke-linejoin="round">
+      <path style="--len:300" d="M56 14a22 22 0 0 0-21 30L9 70a8 8 0 0 0 11 11l26-26a22 22 0 0 0 30-21 22 22 0 0 0-1-6L61 42l-10-3-3-10 16-16a22 22 0 0 0-8-1Z"/>
+      <path style="--len:300" d="M132 40h84v13a30 30 0 0 1-30 30h-24a30 30 0 0 1-30-30V40Z"/>
+      <line style="--len:16" x1="152" y1="83" x2="147" y2="90"/>
+      <line style="--len:16" x1="196" y1="83" x2="201" y2="90"/>
+      <path style="--len:60" d="M196 14h20a5 5 0 0 1 0 10h-20a5 5 0 0 1 0-10Z"/>
+      <line style="--len:14" x1="200" y1="27" x2="200" y2="34"/>
+      <line style="--len:14" x1="208" y1="27" x2="208" y2="36"/>
+      <line style="--len:14" x1="216" y1="27" x2="216" y2="34"/>
+    </svg>
+    <p class="loader__word">Instalatér Vobořil</p>
+  </div>
+</div>
+
+<!-- indikátor postupu -->
+<div class="pipe" aria-hidden="true">
+  <div class="pipe__fill" id="pipeFill"></div>
+  <div class="pipe__dot" id="pipeDot"></div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a href="#uvod" class="mark" aria-label="Instalatér Vobořil — úvod">
+      <svg class="mark__ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.4"
+           stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+        <path d="M41 12a13 13 0 0 0-13 21L12 49a5 5 0 0 0 7 7l16-16a13 13 0 0 0 17-17l-8 8-6-2-2-6 8-8a13 13 0 0 0-3-3Z"/>
+      </svg>
+      <span class="mark__txt">
+        <span class="mark__top">Instalatér</span>
+        <span class="mark__name"><b>Vobořil</b> koupelny</span>
+      </span>
+    </a>
+
+    <nav aria-label="Hlavní">
+      <ul class="nav__links">
+        <li><a href="#sluzby">Služby</a></li>
+        <li><a href="#topeni">Podlahové topení</a></li>
+        <li><a href="#galerie">Realizace</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+
+    <a class="nav__tel" href="tel:+420604581537">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+      </svg>
+      604 581 537
+    </a>
+  </div>
+</header>
+
+<main>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" id="uvod">
+  <div class="hero__copy">
+    <p class="label">Ústí nad Labem a okolí</p>
+
+    <h1 class="t-hero" data-split>Od bourání po poslední spáru.</h1>
+
+    <p class="t-lead dim hero__sub up">
+      Instalatérské a topenářské práce, rekonstrukce koupelen a bytových jader.
+      Vodu, topení, obklady i elektro řeší jeden člověk — Tomáš Vobořil.
+    </p>
+
+    <div class="hero__cta up">
+      <a class="btn btn--fill" href="tel:+420604581537">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+        </svg>
+        Zavolat 604 581 537
+      </a>
+      <a class="btn btn--ghost" href="#kontakt">Popsat zakázku</a>
+    </div>
+
+    <p class="hero__meta up">
+      <span><i></i> Voda &amp; kanalizace</span>
+      <span><i></i> Topení</span>
+      <span><i></i> Koupelny na klíč</span>
+    </p>
+  </div>
+
+  <div class="hero__plate">
+    <img class="hero__img" id="heroImg" alt="Dokončená koupelna s velkoformátovým obkladem" fetchpriority="high">
+    <div class="tiles" id="tiles" aria-hidden="true"></div>
+    <p class="hero__stamp">Rekonstrukce koupelen</p>
+  </div>
+
+  <p class="hero__scroll" aria-hidden="true"><span></span> Posuňte dolů</p>
+</section>
+
+<!-- ══════════════ TEZE ══════════════ -->
+<section class="section section--tight thesis">
+  <div class="wrap thesis__grid">
+    <p class="label up">Proč jeden řemeslník</p>
+    <div>
+      <p class="thesis__lead up">
+        Rekonstrukce koupelny je pět řemesl v jedné místnosti. Když je dělá pět firem,
+        čekáte na každou zvlášť. <em>Tady je dělá jeden člověk</em> a termín drží celý.
+      </p>
+      <p class="thesis__note up">
+        Bourání, rozvody vody a kanalizace, topení, hydroizolace, obklady, dlažba, elektro
+        i konečná montáž. Jedno telefonní číslo od první prohlídky až po předání hotové koupelny.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SLUŽBY ══════════════ -->
+<section class="section light svc" id="sluzby">
+  <div class="wrap">
+    <div class="svc__head">
+      <div>
+        <p class="label up">Co dělám</p>
+        <h2 class="t-h2 up" style="margin-top:18px">Řemeslo pod<br>jednou střechou</h2>
+      </div>
+      <p class="t-lead dim up" style="max-width:34ch">
+        Od výměny baterie po kompletní bytové jádro. Vyberte, co potřebujete —
+        u telefonu si to upřesníme.
+      </p>
+    </div>
+
+    <div class="svc__list" id="svcList"><!-- generováno níže z dat --></div>
+  </div>
+</section>
+
+<!-- ══════════════ AKT: PODLAHOVÉ TOPENÍ ══════════════ -->
+<section class="act" id="topeni">
+  <div class="wrap act__stage" id="actStage">
+    <div>
+      <p class="label up">Podlahové topení</p>
+      <h2 class="t-h2 up" style="margin:18px 0 var(--s3)">Od izolace<br>po betonáž</h2>
+
+      <ol class="act__steps" id="actSteps">
+        <li class="act__step" data-step="0">
+          <span class="act__num">01</span>
+          <div>
+            <h3>Tepelná izolace</h3>
+            <p>Na podklad přijde izolace, aby teplo šlo nahoru do místnosti, a ne dolů k sousedovi.</p>
+          </div>
+        </li>
+        <li class="act__step" data-step="1">
+          <span class="act__num">02</span>
+          <div>
+            <h3>Rozvod trubek</h3>
+            <p>Okruh se klade v pravidelné rozteči — hustěji u oken a v koupelně, kde je největší tepelná ztráta.</p>
+          </div>
+        </li>
+        <li class="act__step" data-step="2">
+          <span class="act__num">03</span>
+          <div>
+            <h3>Tlaková zkouška a betonáž</h3>
+            <p>Okruh se natlakuje a zabetonuje pod tlakem. Zalévá se až to, o čem je jisté, že drží.</p>
+          </div>
+        </li>
+        <li class="act__step" data-step="3">
+          <span class="act__num">04</span>
+          <div>
+            <h3>Podlaha a zátop</h3>
+            <p>Po vyzrání betonu přijde dlažba nebo podlaha a řízený náběh topení.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="act__view">
+      <svg class="act__svg" id="actSvg" viewBox="0 0 600 560" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="warm" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#C08A4E" stop-opacity=".34"/>
+            <stop offset="100%" stop-color="#C08A4E" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="loop" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#6E9C42"/>
+            <stop offset="100%" stop-color="#93C75B"/>
+          </linearGradient>
+        </defs>
+
+        <!-- topný okruh (půdorys) -->
+        <path id="loopPath" pathLength="1"
+              d="M70 50 H500 A30 30 0 0 1 500 110 H100 A30 30 0 0 0 100 170 H500 A30 30 0 0 1 500 230 H100 A30 30 0 0 0 100 290 H500 A30 30 0 0 1 500 350 H70"
+              stroke="url(#loop)" stroke-width="6" stroke-linecap="round"
+              stroke-dasharray="1" stroke-dashoffset="1"/>
+        <circle id="flowHalo" r="14" fill="#C08A4E" opacity="0" cx="70" cy="50"/>
+        <circle id="flowDot" r="6" fill="#C08A4E" cx="70" cy="50" opacity="0"/>
+
+        <!-- skladba podlahy (řez) -->
+        <rect id="warmth" x="20" y="520" width="560" height="0" fill="url(#warm)"/>
+        <g id="layers">
+          <rect class="ly" x="20" y="520" width="560" height="0" fill="#232B23"/>
+          <rect class="ly" x="20" y="520" width="560" height="0" fill="#3A4A32"/>
+          <rect class="ly" x="20" y="520" width="560" height="0" fill="#4E5C4A"/>
+          <rect class="ly" x="20" y="520" width="560" height="0" fill="#74836D"/>
+        </g>
+        <line x1="20" y1="521" x2="580" y2="521" stroke="#F2F5F1" stroke-opacity=".16"/>
+      </svg>
+
+      <p class="act__readout">
+        <span>Rozteč <b id="roLoop">—</b></span>
+        <span>Vrstva <b id="roLayer">—</b></span>
+        <span>Stav <b id="roState">připraveno</b></span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PŘED / PO ══════════════ -->
+<section class="section light ba">
+  <div class="wrap">
+    <div class="ba__head">
+      <p class="label up">Bytové jádro</p>
+      <h2 class="t-h2 up" style="margin:18px 0 16px">Umakart ven,<br>zděná koupelna dovnitř</h2>
+      <p class="t-lead dim up">Přetáhněte posuvník. Vlevo stav před rekonstrukcí, vpravo hotová koupelna.</p>
+    </div>
+
+    <div class="ba__stage up" id="baStage">
+      <img id="baBefore" alt="Koupelna před rekonstrukcí">
+      <img id="baAfter" class="ba__after" alt="Koupelna po rekonstrukci">
+      <span class="ba__tag ba__tag--l">Před</span>
+      <span class="ba__tag ba__tag--r">Po</span>
+      <div class="ba__handle" aria-hidden="true">
+        <span class="ba__grip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m9 6-6 6 6 6M15 6l6 6-6 6"/>
+          </svg>
+        </span>
+      </div>
+      <input class="ba__range" id="baRange" type="range" min="0" max="100" value="50" step="0.5"
+             aria-label="Porovnání před a po rekonstrukci">
+    </div>
+
+    <p class="ba__foot">
+      <span>Bourání jádra · nové rozvody · hydroizolace · obklad</span>
+      <span>Fotografie jsou zatím ilustrační</span>
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════ GALERIE ══════════════ -->
+<section class="section" id="galerie">
+  <div class="wrap">
+    <div class="gal__head">
+      <div>
+        <p class="label up">Realizace</p>
+        <h2 class="t-h2 up" style="margin-top:18px">Hotová práce</h2>
+      </div>
+      <a class="btn btn--ghost up" href="https://photos.app.goo.gl/9YAmFk7ybV82YSok6" target="_blank" rel="noopener">
+        Celá galerie koupelen
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 17 17 7M8 7h9v9"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="gal__grid" id="galGrid"><!-- generováno níže z dat --></div>
+  </div>
+</section>
+
+<!-- ══════════════ PŮSOBNOST ══════════════ -->
+<section class="section section--tight">
+  <div class="wrap area__grid">
+    <div>
+      <p class="label up">Kde pracuji</p>
+      <h2 class="t-h2 up" style="margin:18px 0 var(--s2)">Ústí nad Labem<br>a okolí</h2>
+      <p class="t-lead dim up" style="max-width:38ch">
+        Sídlím ve Střekově. Za většinou zakázek dojedu do půl hodiny — na vzdálenější
+        se domluvíme telefonicky.
+      </p>
+      <ul class="area__towns up">
+        <li>Ústí nad Labem</li><li>Střekov</li><li>Neštěmice</li>
+        <li>Trmice</li><li>Chlumec</li><li>Povrly</li><li>Velké Březno</li>
+      </ul>
+    </div>
+
+    <div class="links up">
+      <a href="https://www.firmy.cz/detail/2607544-instalater-tomas-voboril-usti-nad-labem-strekov.html" target="_blank" rel="noopener">
+        <span class="links__l">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span><span class="links__k">Firmy.cz</span><br>Profil a hodnocení</span>
+        </span>
+        <svg class="links__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+
+      <a href="https://www.instagram.com/koupelnyvoboril" target="_blank" rel="noopener">
+        <span class="links__l">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/>
+          </svg>
+          <span><span class="links__k">Instagram</span><br>@koupelnyvoboril</span>
+        </span>
+        <svg class="links__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+
+      <a href="https://www.instagram.com/instalater_voboril" target="_blank" rel="noopener">
+        <span class="links__l">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/>
+          </svg>
+          <span><span class="links__k">Instagram</span><br>@instalater_voboril</span>
+        </span>
+        <svg class="links__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+
+      <a href="https://www.facebook.com/koupelnyvoboril" target="_blank" rel="noopener">
+        <span class="links__l">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M15 3h-2.5A4.5 4.5 0 0 0 8 7.5V10H6v4h2v7h4v-7h3l1-4h-4V7.5A.5.5 0 0 1 12.5 7H15V3Z"/>
+          </svg>
+          <span><span class="links__k">Facebook</span><br>Koupelny Vobořil</span>
+        </span>
+        <svg class="links__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ KONTAKT ══════════════ -->
+<section class="section light" id="kontakt">
+  <div class="wrap ct__grid">
+    <div>
+      <p class="label up">Kontakt</p>
+      <h2 class="t-h2 up" style="margin-top:18px">Zavolejte,<br>domluvíme prohlídku</h2>
+
+      <a class="ct__tel up" href="tel:+420604581537">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+        </svg>
+        604 581 537
+      </a>
+
+      <p class="ct__hint up">
+        Tomáš Vobořil · Ústí nad Labem — Střekov<br>
+        Nejrychlejší je telefon. Když to nezvednu, jsem na zakázce — ozvu se zpět.
+      </p>
+    </div>
+
+    <form class="form up" id="form" novalidate>
+      <div class="form__row">
+        <div class="field">
+          <label for="f-name">Jméno</label>
+          <input id="f-name" name="jmeno" type="text" autocomplete="name" placeholder="Jan Novák" required>
+        </div>
+        <div class="field">
+          <label for="f-tel">Telefon</label>
+          <input id="f-tel" name="telefon" type="tel" autocomplete="tel" inputmode="tel" placeholder="600 000 000" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f-type">Co potřebujete</label>
+        <select id="f-type" name="typ">
+          <option>Rekonstrukce koupelny nebo bytového jádra</option>
+          <option>Rozvody vody a kanalizace</option>
+          <option>Topení nebo podlahové topení</option>
+          <option>Obklady a dlažba</option>
+          <option>Elektroinstalace</option>
+          <option>Drobná oprava nebo montáž</option>
+          <option>Něco jiného</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="f-msg">Popis</label>
+        <textarea id="f-msg" name="zprava" placeholder="Panelákové jádro 4,5 m², chci zděnou koupelnu s vanou. Ústí – Severní Terasa."></textarea>
+      </div>
+
+      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <button class="btn btn--dark" type="submit" id="formBtn" style="justify-self:start">
+        Odeslat poptávku
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6"/>
+        </svg>
+      </button>
+
+      <p class="form__msg" id="formMsg" role="status" aria-live="polite"></p>
+      <p class="form__note">
+        Poptávka z náhledu chodí zatím do studia Lanthir. Po spuštění webu poputuje rovnou
+        do schránky pana Vobořila.
+      </p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <span>Tomáš Vobořil — instalatérské a topenářské práce, Ústí nad Labem</span>
+    <span>Náhled: <a href="https://lanthir.cz" target="_blank" rel="noopener">Lanthir</a></span>
+  </div>
+</footer>
+
+<a class="callbar" id="callbar" href="tel:+420604581537">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+  </svg>
+  Zavolat 604 581 537
+</a>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Zvětšená fotografie">
+  <img id="lbImg" alt="">
+  <p class="lb__cap" id="lbCap"></p>
+  <button class="lb__close" id="lbClose" aria-label="Zavřít">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
+</div>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+'use strict';
+
+/* ════════════════════════════════════════════════════════════
+   FOTKY — jediné místo, kde se mění obrázky.
+
+   GALERIE = skutečné realizace pana Vobořila, soubory leží
+   ve složce img/ vedle této stránky, vždy ve dvou velikostech
+   (<jméno>-900.jpg do mřížky, <jméno>-1600.jpg do zvětšeniny).
+   Přidání další fotky = jeden řádek v poli `galerie`.
+
+   HERO a PŘED/PO jsou zatím ilustrační (Unsplash) — až dorazí
+   jeho fotky, přepiš jen tyhle dvě položky.
+   ════════════════════════════════════════════════════════════ */
+var U = function(id, w){ return 'https://images.unsplash.com/photo-' + id +
+  '?auto=format&fit=crop&w=' + (w || 1200) + '&q=80'; };
+
+var FOTO = {
+  hero:   U('1584622650111-993a426fbf0a', 1600),
+  before: U('1754212536450-1b3591a3b837', 1400),
+  after:  U('1638799869566-b17fa794c4de', 1400),
+  galerie: [
+    { f:'img_3222', t:'Sprchový kout bez vaničky',      c:'g-p' },
+    { f:'img_1835', t:'Sprcha s výklenkem na kosmetiku',c:'g-p' },
+    { f:'img_3223', t:'Dešťová sprcha a oválné zrcadlo',c:'g-p' },
+    { f:'img_3239', t:'Podomítková baterie a kamenné umyvadlo', c:'g-w' },
+    { f:'img_3227', t:'Závěsné WC a umyvadlová skříňka',c:'g-p' },
+    { f:'img_3218', t:'Umyvadlová deska na míru',       c:'g-p' },
+    { f:'img_0886', t:'Kuchyň po rekonstrukci bytu',    c:'g-p' },
+    { f:'img_0898', t:'Rekonstrukce bytu — kuchyňský kout', c:'g-p' }
+  ]
+};
+
+/* ════════════════════════════════════════════════════════════
+   SLUŽBY — data
+   ════════════════════════════════════════════════════════════ */
+// o = index volby ve formulářovém <select>, kterou řádek předvybere
+var SLUZBY = [
+  { tag:'Voda', k:'voda', o:1, n:'Rozvody vody a kanalizace',
+    d:'Opravy, montáže a rekonstrukce rozvodů v bytech i domech. Výměna stoupaček, baterií, odpadů.' },
+  { tag:'Topení', k:'topeni', o:2, n:'Topenářské práce',
+    d:'Rozvody topení, výměna a montáž radiátorů, opravy netěsností.' },
+  { tag:'Topení', k:'podlahove', o:2, n:'Podlahové topení',
+    d:'Kompletní realizace včetně tepelné izolace a zajištění betonáže.' },
+  { tag:'Koupelny', k:'koupelny', o:0, n:'Rekonstrukce koupelen a bytů',
+    d:'Bytová jádra i zděné koupelny na klíč — od návrhu po osazení zařizovacích předmětů.' },
+  { tag:'Koupelny', k:'izolace', o:3, n:'Hydroizolace, obklady, dlažba',
+    d:'Izolace mokrých míst, obkladačské práce a pokládka dlažby.' },
+  { tag:'Stavba', k:'stavba', o:6, n:'Stavební činnost',
+    d:'Bourání, vyzdívky, přizdívky a zednické zapravení po instalacích.' },
+  { tag:'Elektro', k:'elektro', o:4, n:'Elektroinstalace',
+    d:'Montáž a opravy, výměna elektrospotřebičů, zásuvky a světla v rekonstruovaném prostoru.' },
+  { tag:'Servis', k:'drobne', o:5, n:'Drobné opravy a montáže',
+    d:'V bytech, domech i na zahradách. To, na co se jinde nikdo nechce rozjet.' }
+];
+
+var IKONY = {
+  voda:'M12 3s6 6.6 6 10.6A6 6 0 0 1 6 13.6C6 9.6 12 3 12 3Z',
+  topeni:'M5 4v16M9.5 4v16M14.5 4v16M19 4v16M3 8h18M3 16h18',
+  podlahove:'M4 6h12a3 3 0 0 1 0 6H8a3 3 0 0 0 0 6h12',
+  koupelny:'M3 12h18v3a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5v-3ZM7 20l-1 2M17 20l1 2M7 12V6a2.5 2.5 0 0 1 5 0',
+  izolace:'M3 4h18v6H3zM3 14h18v6H3zM8 4v6M16 4v6M8 14v6M16 14v6',
+  stavba:'M3 20h18M5 20V9l7-5 7 5v11M10 20v-6h4v6',
+  elektro:'M13 2 4 14h7l-1 8 9-12h-7l1-8Z',
+  drobne:'M14.7 6.3a4 4 0 0 0 5 5L21 10a6 6 0 0 1-8.5 7L6 23.5 2.5 20 9 13.5A6 6 0 0 1 16 5l-1.3 1.3Z'
+};
+
+var RM = matchMedia('(prefers-reduced-motion: reduce)');
+var FINE = matchMedia('(min-width: 901px) and (pointer: fine)').matches;
+var clamp = function(v,a,b){ return v<a?a:(v>b?b:v); };
+
+/* ────────────────────────────────────────────
+   1. Obrázky do DOM
+   ──────────────────────────────────────────── */
+document.getElementById('heroImg').src = FOTO.hero;
+document.getElementById('baBefore').src = FOTO.before;
+document.getElementById('baAfter').src = FOTO.after;
+
+/* výška náhledové lišty → --ribbon-h (na úzkém displeji se láme na víc řádků,
+   navigace se podle toho musí posunout, jinak lištu překryje) */
+(function(){
+  var rib = document.querySelector('.ribbon');
+  if (!rib) return;
+  function sync(){
+    document.documentElement.style.setProperty('--ribbon-h', rib.offsetHeight + 'px');
+  }
+  sync();
+  window.addEventListener('resize', sync);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(sync);
+})();
+
+/* dlaždice hero revealu */
+(function(){
+  var box = document.getElementById('tiles');
+  var cols = window.innerWidth <= 900 ? 5 : 8;
+  var rows = window.innerWidth <= 900 ? 4 : 5;
+  var frag = document.createDocumentFragment();
+  for (var r = 0; r < rows; r++){
+    for (var c = 0; c < cols; c++){
+      var t = document.createElement('i');
+      // pokládá se odspodu zleva, jako obklad
+      t.style.transitionDelay = (((rows - 1 - r) * 0.055) + (c * 0.035)) + 's';
+      frag.appendChild(t);
+    }
+  }
+  box.appendChild(frag);
+})();
+
+/* ────────────────────────────────────────────
+   2. Služby — vykreslení + ostřicí náhled
+   ──────────────────────────────────────────── */
+(function(){
+  var list = document.getElementById('svcList');
+  var html = '';
+
+  SLUZBY.forEach(function(s, i){
+    html +=
+      '<button class="svc__row" type="button" data-i="' + i + '">' +
+        '<span class="svc__tag">' + s.tag + '</span>' +
+        '<span class="svc__name">' + s.n + '<span class="svc__desc">' + s.d + '</span></span>' +
+        '<svg class="svc__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" ' +
+        'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + IKONY[s.k] + '"/></svg>' +
+      '</button>';
+  });
+  list.innerHTML = html;
+
+  var rows = [].slice.call(list.querySelectorAll('.svc__row'));
+
+  // klik kdekoli na řádku vede na kontakt s předvyplněným typem
+  rows.forEach(function(row){
+    row.addEventListener('click', function(){
+      document.getElementById('kontakt').scrollIntoView({ behavior: RM.matches ? 'auto' : 'smooth' });
+      document.getElementById('f-type').selectedIndex = SLUZBY[+row.dataset.i].o;
+    });
+  });
+})();
+
+/* ────────────────────────────────────────────
+   3. Galerie + světelný box (FLIP)
+   ──────────────────────────────────────────── */
+(function(){
+  var grid = document.getElementById('galGrid');
+  var html = '';
+  FOTO.galerie.forEach(function(g, i){
+    html +=
+      '<figure class="gal__item ' + g.c + '" role="button" tabindex="0" data-i="' + i + '" aria-label="' + g.t + ' — zvětšit">' +
+        '<img src="img/' + g.f + '-900.jpg" alt="' + g.t + '" loading="lazy" decoding="async">' +
+        '<figcaption>' + g.t + '</figcaption>' +
+      '</figure>';
+  });
+  grid.innerHTML = html;
+
+  var lb = document.getElementById('lb'),
+      lbImg = document.getElementById('lbImg'),
+      lbCap = document.getElementById('lbCap'),
+      lastTrigger = null;
+
+  function open(fig){
+    var i = +fig.dataset.i, g = FOTO.galerie[i];
+    lastTrigger = fig;
+    lbImg.src = 'img/' + g.f + '-1600.jpg';
+    lbImg.alt = g.t;
+    lbCap.textContent = g.t;
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+
+    if (!RM.matches){
+      // FLIP: náhled doletí z dlaždice na místo
+      var from = fig.getBoundingClientRect();
+      var ghost = fig.querySelector('img').cloneNode();
+      ghost.className = 'lb__ghost';
+      ghost.style.cssText += 'left:' + from.left + 'px;top:' + from.top + 'px;width:' +
+        from.width + 'px;height:' + from.height + 'px';
+      document.body.appendChild(ghost);
+      requestAnimationFrame(function(){
+        var to = lbImg.getBoundingClientRect();
+        ghost.animate(
+          [{ transform:'none', width:from.width+'px', height:from.height+'px' },
+           { transform:'translate(' + (to.left-from.left) + 'px,' + (to.top-from.top) + 'px)',
+             width:to.width+'px', height:to.height+'px' }],
+          { duration: 520, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'forwards' }
+        ).onfinish = function(){ ghost.remove(); lb.classList.add('is-shown'); };
+      });
+      // pojistka: kdyby animace neproběhla, zvětšenina se musí zobrazit tak jako tak
+      setTimeout(function(){ ghost.remove(); lb.classList.add('is-shown'); }, 900);
+    } else {
+      lb.classList.add('is-shown');
+    }
+    document.getElementById('lbClose').focus();
+  }
+
+  function close(){
+    lb.classList.remove('is-shown');
+    setTimeout(function(){
+      lb.classList.remove('is-open');
+      document.body.style.overflow = '';
+      if (lastTrigger) lastTrigger.focus();
+    }, RM.matches ? 0 : 380);
+  }
+
+  grid.addEventListener('click', function(e){
+    var fig = e.target.closest('.gal__item');
+    if (fig) open(fig);
+  });
+  grid.addEventListener('keydown', function(e){
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var fig = e.target.closest('.gal__item');
+    if (fig){ e.preventDefault(); open(fig); }
+  });
+  document.getElementById('lbClose').addEventListener('click', close);
+  lb.addEventListener('click', function(e){ if (e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && lb.classList.contains('is-open')) close();
+  });
+})();
+
+/* ────────────────────────────────────────────
+   4. Před / po
+   ──────────────────────────────────────────── */
+(function(){
+  var stage = document.getElementById('baStage');
+  var range = document.getElementById('baRange');
+  function set(v){ stage.style.setProperty('--pos', v + '%'); }
+  range.addEventListener('input', function(){ set(range.value); });
+
+  function fromPointer(e){
+    var r = stage.getBoundingClientRect();
+    var v = clamp((e.clientX - r.left) / r.width * 100, 0, 100);
+    range.value = v; set(v);
+  }
+  var dragging = false;
+  stage.addEventListener('pointerdown', function(e){
+    dragging = true; stage.setPointerCapture(e.pointerId); fromPointer(e);
+  });
+  stage.addEventListener('pointermove', function(e){ if (dragging) fromPointer(e); });
+  stage.addEventListener('pointerup', function(){ dragging = false; });
+  stage.addEventListener('pointercancel', function(){ dragging = false; });
+  set(50);
+})();
+
+/* ────────────────────────────────────────────
+   5. Formulář
+   ──────────────────────────────────────────── */
+(function(){
+  var form = document.getElementById('form'),
+      btn = document.getElementById('formBtn'),
+      msg = document.getElementById('formMsg');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (form._honey.value) return;
+
+    var jmeno = form.jmeno.value.trim(),
+        tel = form.telefon.value.trim();
+
+    if (jmeno.length < 2){ fail('Doplňte prosím jméno.'); form.jmeno.focus(); return; }
+    if (tel.replace(/\D/g, '').length < 9){ fail('Doplňte prosím telefon, ať se dá ozvat.'); form.telefon.focus(); return; }
+
+    msg.className = 'form__msg';
+    msg.textContent = 'Odesílám…';
+    btn.disabled = true;
+
+    fetch('https://formsubmit.co/ajax/michal.owczarzy@lanthir.cz', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'Poptávka z náhledu — Instalatér Vobořil',
+        _template: 'table',
+        Jmeno: jmeno,
+        Telefon: tel,
+        Typ: form.typ.value,
+        Zprava: form.zprava.value.trim() || '—',
+        Zdroj: location.href
+      })
+    }).then(function(r){
+      if (!r.ok) throw new Error('http');
+      form.reset();
+      msg.className = 'form__msg';
+      msg.textContent = 'Odesláno. Ozveme se co nejdřív.';
+    }).catch(function(){
+      fail('Odeslání se nepovedlo. Zavolejte prosím na 604 581 537.');
+    }).then(function(){ btn.disabled = false; });
+
+    function fail(t){ msg.className = 'form__msg is-err'; msg.textContent = t; btn.disabled = false; }
+  });
+})();
+
+/* ────────────────────────────────────────────
+   6. Rozdělení nadpisu na slova (maskovaný nástup)
+   ──────────────────────────────────────────── */
+(function(){
+  [].forEach.call(document.querySelectorAll('[data-split]'), function(el){
+    var words = el.textContent.trim().split(/\s+/);
+    el.innerHTML = words.map(function(w, i){
+      return '<span class="rv" style="transition-delay:' + (i * 0.07) + 's">' +
+             '<i style="transition-delay:' + (i * 0.07) + 's">' + w + '</i></span>';
+    }).join(' ');
+  });
+})();
+
+/* ────────────────────────────────────────────
+   7. Odhalování při scrollu
+   ──────────────────────────────────────────── */
+(function(){
+  var targets = document.querySelectorAll('.up');
+  if (RM.matches || !('IntersectionObserver' in window)){
+    [].forEach.call(targets, function(el){ el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      en.target.classList.add('is-in');
+      io.unobserve(en.target);
+    });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+
+  // drobné prodlevy uvnitř skupin
+  var groups = {};
+  [].forEach.call(targets, function(el){
+    var p = el.parentElement;
+    groups[p] = (groups[p] || 0);
+    el.style.transitionDelay = (groups[p] * 0.07) + 's';
+    groups[p]++;
+    io.observe(el);
+  });
+})();
+
+/* ────────────────────────────────────────────
+   8. Scroll engine — navigace, trubka, hero, akt
+   ──────────────────────────────────────────── */
+(function(){
+  var nav = document.getElementById('nav'),
+      pipeFill = document.getElementById('pipeFill'),
+      pipeDot = document.getElementById('pipeDot'),
+      heroImg = document.getElementById('heroImg'),
+      hero = document.getElementById('uvod'),
+      callbar = document.getElementById('callbar'),
+      act = document.getElementById('topeni'),
+      loopPath = document.getElementById('loopPath'),
+      flowDot = document.getElementById('flowDot'),
+      flowHalo = document.getElementById('flowHalo'),
+      warmth = document.getElementById('warmth'),
+      layers = [].slice.call(document.querySelectorAll('.ly')),
+      steps = [].slice.call(document.querySelectorAll('.act__step')),
+      roLoop = document.getElementById('roLoop'),
+      roLayer = document.getElementById('roLayer'),
+      roState = document.getElementById('roState');
+
+  var LAYER_NAMES = ['podklad', 'izolace', 'beton', 'dlažba'];
+  var LAYER_H = [22, 34, 46, 26];   // výšky vrstev v souřadnicích SVG
+  var BASE = 520, WARM_H = 96;      // musí být nad prvním voláním setLayers()
+  var pathLen = loopPath.getTotalLength ? loopPath.getTotalLength() : 0;
+
+  var lastY = window.scrollY, ticking = false, actDone = -1;
+
+  // pinning aktu jen tam, kde nehrozí skákání kvůli adresnímu řádku
+  var PIN = FINE && !RM.matches;
+  if (PIN){
+    act.style.height = '300vh';
+    var stage = document.getElementById('actStage');
+    stage.style.position = 'sticky';
+    stage.style.top = '0';
+  } else {
+    // statický cílový stav: okruh nakreslený, vrstvy postavené
+    loopPath.style.strokeDashoffset = '0';
+    setLayers(1);
+    steps.forEach(function(s){ s.classList.add('is-on'); });
+    roLoop.textContent = '150 mm'; roLayer.textContent = 'dlažba'; roState.textContent = 'hotovo';
+  }
+
+  function setLayers(p){
+    // vrstvy rostou postupně odspodu, teplo stoupá nad hotovou podlahu
+    var y = BASE;
+    for (var i = 0; i < layers.length; i++){
+      var seg = clamp((p - i * 0.22) / 0.22, 0, 1);
+      var h = LAYER_H[i] * seg;
+      y -= h;
+      layers[i].setAttribute('height', h);
+      layers[i].setAttribute('y', y);
+    }
+    var wp = clamp((p - 0.8) / 0.2, 0, 1);
+    warmth.setAttribute('height', WARM_H * wp);
+    warmth.setAttribute('y', y - WARM_H * wp);
+    warmth.setAttribute('opacity', wp);
+  }
+
+  function frame(){
+    ticking = false;
+    var y = window.scrollY, vh = window.innerHeight;
+    var doc = document.documentElement.scrollHeight - vh;
+
+    /* trubka */
+    var prog = doc > 0 ? clamp(y / doc, 0, 1) : 0;
+    pipeFill.style.height = (prog * 100) + '%';
+    pipeDot.style.top = (prog * 100) + '%';
+
+    /* navigace: schová se při scrollu dolů */
+    nav.classList.toggle('is-stuck', y > 40);
+    if (y > 260 && y > lastY + 4) nav.classList.add('is-hidden');
+    else if (y < lastY - 4) nav.classList.remove('is-hidden');
+    lastY = y;
+
+    /* mobilní lišta s telefonem */
+    if (callbar) callbar.classList.toggle('is-on', y > vh * 0.55);
+
+    if (!RM.matches){
+      /* hero parallax */
+      var hh = hero.offsetHeight;
+      if (y < hh){
+        var hp = y / hh;
+        heroImg.style.transform = 'scale(' + (1.06 + hp * 0.06) + ') translate3d(0,' + (hp * 42) + 'px,0)';
+      }
+
+      /* akt */
+      if (PIN){
+        var r = act.getBoundingClientRect();
+        var span = act.offsetHeight - vh;
+        var p = clamp(-r.top / span, 0, 1);
+
+        // 0–.62 kreslení okruhu, .15–1 stavba vrstev
+        var draw = clamp(p / 0.62, 0, 1);
+        loopPath.style.strokeDashoffset = String(1 - draw);
+
+        if (pathLen && draw > 0.001 && draw < 0.999){
+          var pt = loopPath.getPointAtLength(draw * pathLen);
+          flowDot.setAttribute('cx', pt.x); flowDot.setAttribute('cy', pt.y);
+          flowHalo.setAttribute('cx', pt.x); flowHalo.setAttribute('cy', pt.y);
+          flowDot.setAttribute('opacity', '1');
+          flowHalo.setAttribute('opacity', String(0.22 + 0.12 * Math.sin(y / 40)));
+        } else {
+          flowDot.setAttribute('opacity', draw >= 0.999 ? '1' : '0');
+          flowHalo.setAttribute('opacity', '0');
+        }
+
+        setLayers(clamp((p - 0.15) / 0.85, 0, 1));
+
+        var idx = clamp(Math.floor(p * 4), 0, 3);
+        if (idx !== actDone){
+          actDone = idx;
+          steps.forEach(function(s, i){ s.classList.toggle('is-on', i === idx); });
+          roLoop.textContent = idx >= 1 ? '150 mm' : '—';
+          roLayer.textContent = LAYER_NAMES[idx];
+          roState.textContent = ['izolace','pokládka','tlaková zkouška','hotovo'][idx];
+        }
+      }
+    }
+  }
+
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(frame);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  frame();
+})();
+
+/* ────────────────────────────────────────────
+   9. Úvodní sekvence — spustit obkládání
+   ──────────────────────────────────────────── */
+(function(){
+  var loader = document.getElementById('loader');
+  var done = false;
+
+  function go(){
+    if (done) return;
+    done = true;
+    document.documentElement.classList.remove('is-loading');
+    document.documentElement.classList.add('is-revealed');
+    if (loader) loader.classList.add('is-out');
+    setTimeout(function(){ if (loader) loader.remove(); }, 1100);
+  }
+
+  if (RM.matches){ go(); return; }
+  // spustit až po doběhnutí kresby značky, nejpozději za 2,4 s
+  window.addEventListener('load', function(){ setTimeout(go, 1150); });
+  setTimeout(go, 2400);
+})();
+
+})();
+</script>
+</body>
+</html>
