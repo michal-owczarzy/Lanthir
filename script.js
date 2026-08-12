@@ -179,11 +179,14 @@ const T = {
 
     'footer.tagline': 'Technologický partner pro růst a provoz firmy.',
     'footer.status':  'všechny systémy online',
+    'footer.ico':     'IČO',
     'footer.col1.h':  'Služby',
     'footer.col2.h':  'Společnost',
     'form.err.name':  'Vyplňte prosím jméno.',
     'form.err.email': 'Zadejte platný e-mail.',
     'form.err.msg':   'Napište prosím pár vět o projektu.',
+    'form.gdpr':      'Souhlasím se zpracováním osobních údajů za účelem vyřízení této poptávky. Údaje nepředáváme třetím stranám a na požádání je smažeme.',
+    'form.err.gdpr':  'Bez souhlasu bohužel nemůžeme poptávku zpracovat.',
     'footer.copy':    '© 2026 Lanthir. Všechna práva vyhrazena.',
 
     'nav.work': 'Reference',
@@ -389,11 +392,14 @@ const T = {
 
     'footer.tagline': 'Technology partner for growth and operations.',
     'footer.status':  'all systems operational',
+    'footer.ico':     'Company ID (IČO)',
     'footer.col1.h':  'Services',
     'footer.col2.h':  'Company',
     'form.err.name':  'Please enter your name.',
     'form.err.email': 'Enter a valid email address.',
     'form.err.msg':   'Tell us a little about the project.',
+    'form.gdpr':      'I agree to my personal data being processed in order to handle this enquiry. We do not pass it to third parties and will delete it on request.',
+    'form.err.gdpr':  'We cannot process the enquiry without your consent.',
     'footer.copy':    '© 2026 Lanthir. All rights reserved.',
 
     'nav.work': 'Work',
@@ -599,11 +605,14 @@ const T = {
 
     'footer.tagline': 'Partner technologiczny dla wzrostu i operacji firmy.',
     'footer.status':  'wszystkie systemy działają',
+    'footer.ico':     'IČO',   /* Czech registration number — not the Polish REGON */
     'footer.col1.h':  'Usługi',
     'footer.col2.h':  'Firma',
     'form.err.name':  'Podaj proszę imię.',
     'form.err.email': 'Podaj poprawny adres e-mail.',
     'form.err.msg':   'Napisz kilka słów o projekcie.',
+    'form.gdpr':      'Wyrażam zgodę na przetwarzanie danych osobowych w celu obsługi tego zapytania. Nie przekazujemy ich stronom trzecim i usuniemy je na żądanie.',
+    'form.err.gdpr':  'Bez zgody nie możemy obsłużyć zapytania.',
     'footer.copy':    '© 2026 Lanthir. Wszelkie prawa zastrzeżone.',
 
     'nav.work': 'Realizacje',
@@ -675,18 +684,18 @@ addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 24),
 
 const burger = document.getElementById('burger');
 const navLinks = document.getElementById('navLinks');
-burger.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
+const setMenu = open => {
+  navLinks.classList.toggle('open', open);
   burger.classList.toggle('open', open);
-  burger.setAttribute('aria-expanded', open);
+  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
   document.body.classList.toggle('no-scroll', open);
-});
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  burger.classList.remove('open');
-  navLinks.classList.remove('open');
-  burger.setAttribute('aria-expanded', 'false');
-  document.body.classList.remove('no-scroll');
-}));
+};
+burger.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+/* Escape, and a tap on the empty part of the panel, both close it — a
+   full-screen overlay whose only exit is one small X is a trap on a phone. */
+addEventListener('keydown', e => { if (e.key === 'Escape' && navLinks.classList.contains('open')) setMenu(false); });
+navLinks.addEventListener('click', e => { if (e.target === navLinks) setMenu(false); });
 
 (function () {
   const links = Array.from(navLinks.querySelectorAll('a[href^="#"]'));
@@ -1302,10 +1311,12 @@ document.getElementById('toTop')?.addEventListener('click', () => scrollTo({ top
   const ok = document.getElementById('formSuccess');
   if (!form) return;
 
+  const consent = document.getElementById('fgdpr');
   const fields = [
     { el: document.getElementById('fname'),  ok: v => v.trim().length > 1 },
     { el: document.getElementById('femail'), ok: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) },
-    { el: document.getElementById('fmsg'),   ok: v => v.trim().length > 4 }
+    { el: document.getElementById('fmsg'),   ok: v => v.trim().length > 4 },
+    { el: consent, ok: () => consent.checked, box: true }
   ];
   const mark = f => {
     const good = f.ok(f.el.value);
@@ -1314,6 +1325,9 @@ document.getElementById('toTop')?.addEventListener('click', () => scrollTo({ top
     return good;
   };
   fields.forEach(f => {
+    /* a checkbox always has a value, so the blur-if-filled rule would flag the
+       consent box the moment focus passed over it — react to the toggle instead */
+    if (f.box) { f.el.addEventListener('change', () => mark(f)); return; }
     f.el.addEventListener('blur', () => { if (f.el.value) mark(f); });
     f.el.addEventListener('input', () => { if (f.el.closest('.fg').classList.contains('invalid')) mark(f); });
   });
@@ -1339,11 +1353,14 @@ document.getElementById('toTop')?.addEventListener('click', () => scrollTo({ top
           Email: document.getElementById('femail').value,
           Firma: document.getElementById('fcompany').value,
           Balíček: bundle,
-          Zpráva: document.getElementById('fmsg').value
+          Zpráva: document.getElementById('fmsg').value,
+          /* sent with the enquiry so the consent leaves a trace */
+          Souhlas_GDPR: 'Ano — ' + new Date().toISOString()
         })
       });
     } catch (e) {}
     form.querySelectorAll('input,textarea,select').forEach(el => el.value = '');
+    consent.checked = false;   /* clearing .value does not untick a checkbox */
     btn.classList.remove('sending');
     btn.style.display = 'none';
     ok.classList.add('show');

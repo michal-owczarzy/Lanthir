@@ -190,6 +190,7 @@ body.no-scroll { overflow: hidden; }
   color: var(--dim); padding: 8px 0; transition: color .25s var(--e-out);
 }
 .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.nav-links-cta { display: none; }   /* the header already has a CTA on desktop */
 .lang-switch { display: flex; gap: 2px; position: relative; z-index: 120; }
 .ls-btn {
   display: inline-flex; align-items: center; justify-content: center;
@@ -778,6 +779,65 @@ a.ci-val:hover { color: var(--spark); }
 }
 .fg select option { background: #0a0f18; color: var(--ink); }
 .fg.invalid input, .fg.invalid textarea, .fg.invalid select { border-bottom-color: #ff6b6b; }
+
+/* ── Consent ──────────────────────────────────
+   The real checkbox stays in the layer and keeps its focus, it is just made
+   invisible and stretched over the drawn box — so keyboard focus, the label
+   click target and form validation all behave natively. */
+.fg--consent { margin-bottom: var(--s1); }
+/* Scoped past `.fg label`, which otherwise forces this into a block-level
+   uppercase mono field label — wrong layout and unreadable as a sentence. */
+.fg--consent .consent {
+  position: relative;
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 13px;
+  align-items: start;
+  margin-bottom: 0;
+  padding: 4px 0;
+  font-family: var(--f-body);
+  font-weight: 200;
+  font-size: 14.5px;
+  letter-spacing: 0;
+  text-transform: none;
+  cursor: pointer;
+}
+.fg--consent .consent input {
+  position: absolute;
+  top: 4px; left: 0;
+  width: 22px; height: 22px;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.consent-box {
+  width: 22px; height: 22px;
+  margin-top: 1px;
+  border: 1px solid var(--hair-2);
+  border-radius: 6px;
+  background: rgba(238,244,255,.03);
+  display: flex; align-items: center; justify-content: center;
+  color: #06090f;
+  transition: background .22s var(--e-out), border-color .22s var(--e-out), transform var(--t-press) ease-out;
+}
+.consent-box svg { width: 14px; height: 14px; opacity: 0; transform: scale(.6); transition: opacity .18s ease-out, transform .3s var(--e-spring); }
+.consent input:checked ~ .consent-box { background: var(--cyan); border-color: var(--cyan); }
+.consent input:checked ~ .consent-box svg { opacity: 1; transform: none; }
+.consent input:active ~ .consent-box { transform: scale(.93); }
+.consent input:focus-visible ~ .consent-box { outline: 2px solid var(--cyan); outline-offset: 3px; }
+.consent-txt {
+  font-family: var(--f-body);
+  font-size: 14.5px; font-weight: 200;
+  line-height: 1.55;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--soft);
+}
+.fg--consent.invalid .consent-box { border-color: #ff6b6b; }
+@media (hover: hover) { .consent:hover .consent-box { border-color: rgba(31,205,237,.5); } }
 .err { display: none; margin-top: 8px; font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; color: #ff8f8f; }
 .fg.invalid .err { display: block; }
 .form-ok { display: none; align-items: center; gap: 12px; margin-top: var(--s1); color: var(--spark); font-weight: 400; }
@@ -792,6 +852,14 @@ a.ci-val:hover { color: var(--spark); }
 .footer-logo { width: 32px; height: 32px; }
 .footer-name { font-family: var(--f-mono); font-size: 14px; letter-spacing: .16em; text-transform: uppercase; }
 .footer-brand p { margin: 16px 0 18px; max-width: 320px; font-size: 15px; color: var(--dim); }
+.footer-brand p.footer-legal {
+  margin: -6px 0 18px;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  line-height: 1.75;
+  letter-spacing: .05em;
+  color: var(--dim);
+}
 .status { display: inline-flex; align-items: center; gap: 9px; font-family: var(--f-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
 .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--spark); animation: pulse 2.4s ease infinite; }
 @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(54,240,214,.45); } 55% { box-shadow: 0 0 0 7px rgba(54,240,214,0); } }
@@ -853,16 +921,70 @@ a.ci-val:hover { color: var(--spark); }
   .nav-cta { display: none; }
   .burger { display: flex; }
   .lang-switch { margin-left: auto; }
+  /* ── Mobile menu ───────────────────────────
+     Kept in flow with visibility rather than toggled with `display`, so the
+     panel and its items can actually transition — a display switch gives the
+     browser no start frame to animate from. */
   .nav-links {
-    display: none;
     position: fixed; inset: 0; z-index: 110;
-    background: rgba(6,9,15,.96);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    flex-direction: column; align-items: center; justify-content: center; gap: 6px; margin: 0;
+    display: flex;
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 0; margin: 0;
+    background: #06090f;            /* fully opaque: the hero behind it is bright */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .28s var(--e-out), visibility 0s linear .28s;
   }
-  .nav-links.open { display: flex; }
-  .nav-links a { font-family: var(--f-display); font-size: 24px; letter-spacing: .02em; text-transform: none; padding: 12px 0; }
+  .nav-links.open {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .28s var(--e-out), visibility 0s;
+  }
+  .nav-links li {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+    transition: opacity .34s var(--e-out), transform .46s var(--e-spring);
+  }
+  .nav-links-cta { display: block; }   /* mobile has no header CTA to fall back on */
+  .nav-links.open li {
+    opacity: 1;
+    transform: none;
+    transition-delay: calc(var(--i, 0) * 42ms + 70ms);
+  }
+  /* `display: block` is the fix for the overlapping tap targets: vertical
+     padding on an inline element paints outside the line box without taking
+     any room, so the links were 50px tall but only 43px apart and each one
+     covered part of its neighbour. */
+  .nav-links a {
+    display: block;
+    min-width: 200px;
+    padding: 14px 24px;
+    font-family: var(--f-display);
+    font-variation-settings: 'wdth' 108, 'wght' 500;
+    font-size: 27px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    text-align: center;
+    color: var(--soft);
+  }
+  .nav-links a.active { color: var(--ink); }
+  .nav-links .m-cta {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 48px;
+    margin-top: 22px;
+    padding: 14px 30px;
+    border-radius: 999px;
+    background: var(--iris);
+    box-shadow: 0 1px 2px rgba(0,0,0,.25), 0 6px 20px rgba(58,46,224,.3);
+    font-family: var(--f-mono);
+    font-variation-settings: normal;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: #fff;
+    transition: transform var(--t-press) ease-out;
+  }
+  .nav-links .m-cta:active { transform: scale(.97); }
   .price-grid { grid-template-columns: 1fr; }
   .people { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; gap: 0; }

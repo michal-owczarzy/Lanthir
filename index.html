@@ -40,11 +40,13 @@
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Lanthir",
+    "legalName": "Ing. Michal Owczarzy",
     "description": "Technologický partner pro růst a provoz firmy. Profesionální tvorba webových stránek na míru, monitoring dostupnosti a správa webu.",
     "url": "https://lanthir.cz",
     "logo": "https://lanthir.cz/logo-512.png",
     "email": "kontakt@lanthir.cz",
     "telephone": "+420725528165",
+    "identifier": { "@type": "PropertyValue", "name": "IČO", "value": "23741945" },
     "address": { "@type": "PostalAddress", "addressCountry": "CZ" },
     "areaServed": "CZ",
     "priceRange": "Kč",
@@ -127,12 +129,13 @@
         <span class="logo-text">Lanthir</span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#sluzby"    data-i18n="nav.services">Služby</a></li>
-        <li><a href="#reference" data-i18n="nav.work">Reference</a></li>
-        <li><a href="#cenik"     data-i18n="nav.pricing">Ceník</a></li>
-        <li><a href="#postup"    data-i18n="nav.process">Postup</a></li>
-        <li><a href="#about"     data-i18n="nav.about">O nás</a></li>
-        <li><a href="#kontakt"   data-i18n="nav.contact">Kontakt</a></li>
+        <li style="--i:0"><a href="#sluzby"    data-i18n="nav.services">Služby</a></li>
+        <li style="--i:1"><a href="#reference" data-i18n="nav.work">Reference</a></li>
+        <li style="--i:2"><a href="#cenik"     data-i18n="nav.pricing">Ceník</a></li>
+        <li style="--i:3"><a href="#postup"    data-i18n="nav.process">Postup</a></li>
+        <li style="--i:4"><a href="#about"     data-i18n="nav.about">O nás</a></li>
+        <li style="--i:5"><a href="#kontakt"   data-i18n="nav.contact">Kontakt</a></li>
+        <li style="--i:6" class="nav-links-cta"><a href="#kontakt" class="m-cta" data-i18n="nav.cta">Nezávazná poptávka</a></li>
       </ul>
       <div class="lang-switch">
         <button class="ls-btn active" data-lang="cs">CZ</button>
@@ -643,6 +646,18 @@
                 </select>
               </div>
               <div class="fg"><label for="fmsg" data-i18n="form.msg.lbl">Zpráva</label><textarea id="fmsg" rows="4" data-i18n-ph="form.msg.ph" placeholder="Popište váš projekt..." required aria-describedby="fmsg-err"></textarea><span class="err" id="fmsg-err" data-i18n="form.err.msg">Napište prosím pár vět o projektu.</span></div>
+
+              <div class="fg fg--consent">
+                <label class="consent" for="fgdpr">
+                  <input type="checkbox" id="fgdpr" required aria-describedby="fgdpr-err">
+                  <span class="consent-box" aria-hidden="true">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6"/></svg>
+                  </span>
+                  <span class="consent-txt" data-i18n="form.gdpr">Souhlasím se zpracováním osobních údajů za účelem vyřízení této poptávky. Údaje nepředáváme třetím stranám a na požádání je smažeme.</span>
+                </label>
+                <span class="err" id="fgdpr-err" data-i18n="form.err.gdpr">Bez souhlasu bohužel nemůžeme poptávku zpracovat.</span>
+              </div>
+
               <button type="submit" class="btn btn--solid btn--full" data-i18n="form.send">Odeslat poptávku</button>
               <div class="form-ok" id="formSuccess">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
@@ -662,6 +677,7 @@
         <div class="footer-brand">
           <div class="footer-row"><img src="logo-mark.svg" alt="" class="footer-logo"><span class="footer-name">Lanthir</span></div>
           <p data-i18n="footer.tagline">Technologický partner pro růst a provoz firmy.</p>
+          <p class="footer-legal">Ing. Michal Owczarzy<br><span data-i18n="footer.ico">IČO</span> 23741945</p>
           <span class="status"><span class="dot" aria-hidden="true"></span><span data-i18n="footer.status">všechny systémy online</span></span>
         </div>
         <div class="footer-nav">
