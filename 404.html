@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — stránka nenalezena | Lanthir</title>
+  <meta name="robots" content="noindex, follow">
+  <meta name="description" content="Tato stránka na lanthir.cz neexistuje. Vraťte se na úvod nebo nám napište.">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+
+  <!-- the main stylesheet is almost certainly already cached from the site -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" media="print" onload="this.media='all'"
+        href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..600&family=Inter:wght@200;400;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..600&family=Inter:wght@200;400;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  </noscript>
+
+  <style>
+    /* No shader here on purpose — an error page should cost nothing. The
+       backdrop is two CSS radials in the brand ramp. */
+    .nf {
+      position: relative;
+      min-height: 100vh; min-height: 100svh;
+      display: flex; align-items: center;
+      padding: 120px 0 90px;
+      overflow: hidden; isolation: isolate;
+    }
+    .nf::before {
+      content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(70% 55% at 18% 8%,  rgba(112,96,255,.20), transparent 62%),
+        radial-gradient(60% 50% at 88% 92%, rgba(31,205,237,.14), transparent 60%);
+    }
+    .nf > .container { position: relative; z-index: 1; width: 100%; }
+    .nf-code {
+      display: block;
+      font-family: var(--f-display);
+      font-variation-settings: 'wdth' 122, 'wght' 500;
+      font-size: clamp(5.5rem, 20vw, 13rem);
+      line-height: .82; letter-spacing: -0.05em;
+      background: var(--grad-ink);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      margin-bottom: clamp(18px, 3vw, 30px);
+    }
+    .nf .lede { margin-top: var(--s1); }
+    .nf .row { margin-top: var(--s2); }
+    .nf-links {
+      display: flex; flex-wrap: wrap; gap: 10px 26px;
+      margin-top: var(--s3);
+      padding-top: var(--s1);
+      border-top: 1px solid var(--hair);
+    }
+    .nf-links a {
+      font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--dim); min-height: 44px; display: inline-flex; align-items: center;
+      transition: color .25s var(--e-out);
+    }
+    .nf-links a:hover { color: var(--ink); }
+
+    /* entry: the same rise the rest of the site uses */
+    .rise { opacity: 0; transform: translate3d(0, 20px, 0); transition: opacity .6s var(--e-out), transform .62s var(--e-spring); }
+    body.ready .rise { opacity: 1; transform: none; }
+    body.ready .rise:nth-child(2) { transition-delay: .06s; }
+    body.ready .rise:nth-child(3) { transition-delay: .12s; }
+    body.ready .rise:nth-child(4) { transition-delay: .18s; }
+    body.ready .rise:nth-child(5) { transition-delay: .24s; }
+    @media (prefers-reduced-motion: reduce) { .rise { opacity: 1 !important; transform: none !important; } }
+    @media (max-width: 560px) { .nf { padding: 96px 0 70px; } .nf-links { gap: 4px 20px; } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/logo-mark.svg" alt="" class="logo-img">
+        <span class="logo-text">Lanthir</span>
+      </a>
+    </div>
+  </nav>
+
+  <main class="nf">
+    <div class="container">
+      <span class="nf-code rise" aria-hidden="true">404</span>
+      <h1 class="h2 rise" data-i18n="e.h">Tato stránka <em>neexistuje.</em></h1>
+      <p class="lede rise" data-i18n="e.p">Odkaz je nejspíš zastaralý nebo obsahuje překlep. Zkuste to od začátku — nebo nám napište a my vás nasměrujeme.</p>
+      <div class="row rise">
+        <a href="/" class="btn btn--solid" data-i18n="e.b1">Zpět na úvod</a>
+        <a href="/#kontakt" class="btn btn--ghost" data-i18n="e.b2">Napište nám</a>
+      </div>
+      <div class="nf-links rise">
+        <a href="/#sluzby"    data-i18n="e.l1">Naše produkty</a>
+        <a href="/#reference" data-i18n="e.l2">Reference</a>
+        <a href="/#cenik"     data-i18n="e.l3">Ceník</a>
+        <a href="/#about"     data-i18n="e.l4">O nás</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    /* Tiny standalone i18n — the site's 63 KB bundle has no business loading
+       on an error page. Follows whichever language the visitor last chose. */
+    (function () {
+      var T = {
+        cs: {
+          'e.h': 'Tato stránka <em>neexistuje.</em>',
+          'e.p': 'Odkaz je nejspíš zastaralý nebo obsahuje překlep. Zkuste to od začátku — nebo nám napište a my vás nasměrujeme.',
+          'e.b1': 'Zpět na úvod', 'e.b2': 'Napište nám',
+          'e.l1': 'Naše produkty', 'e.l2': 'Reference', 'e.l3': 'Ceník', 'e.l4': 'O nás'
+        },
+        en: {
+          'e.h': 'This page <em>does not exist.</em>',
+          'e.p': 'The link is probably out of date or has a typo in it. Start again from the top — or write to us and we will point you the right way.',
+          'e.b1': 'Back to home', 'e.b2': 'Write to us',
+          'e.l1': 'Our products', 'e.l2': 'Work', 'e.l3': 'Pricing', 'e.l4': 'About'
+        },
+        pl: {
+          'e.h': 'Ta strona <em>nie istnieje.</em>',
+          'e.p': 'Link jest prawdopodobnie nieaktualny albo zawiera literówkę. Zacznij od strony głównej — albo napisz do nas, a wskażemy Ci drogę.',
+          'e.b1': 'Wróć na stronę główną', 'e.b2': 'Napisz do nas',
+          'e.l1': 'Nasze produkty', 'e.l2': 'Realizacje', 'e.l3': 'Cennik', 'e.l4': 'O nas'
+        }
+      };
+      var lang = 'cs';
+      try { lang = localStorage.getItem('lanthir-lang') || 'cs'; } catch (e) {}
+      if (!T[lang]) lang = 'cs';
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var v = T[lang][el.dataset.i18n];
+        if (v !== undefined) el.innerHTML = v;
+      });
+      requestAnimationFrame(function () { document.body.classList.add('ready'); });
+      setTimeout(function () { document.body.classList.add('ready'); }, 350);
+    })();
+  </script>
+</body>
+</html>

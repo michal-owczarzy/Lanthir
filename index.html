@@ -107,6 +107,9 @@
   <noscript>
     <style>
       .reveal, .hero-copy > * { opacity: 1 !important; transform: none !important; }
+      .fold-c { opacity: 1 !important; transform: none !important; }
+      .fold-c::after { display: none; }
+      .nav { opacity: 1 !important; pointer-events: auto !important; }
       #lightfall { display: none; }
       .wheel { height: auto !important; }
       .wheel-item { position: static !important; opacity: 1 !important; transform: none !important; filter: none !important; margin-bottom: 24px; }
@@ -155,7 +158,6 @@
     <canvas id="lightfall" aria-hidden="true"></canvas>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="container hero-copy">
-      <span class="tag" data-i18n="hero.badge">Weby · Monitoring · Správa webu</span>
       <h1 class="hero-h1" id="heroH1" data-i18n="hero.h1">Technologický partner<br><em>pro růst a provoz firmy.</em></h1>
       <p class="lede" data-i18n="hero.sub">Navrhujeme webové stránky na míru a staráme se o jejich provoz. Webová aplikace, e-shop nebo rezervační systém — s SSL, hostingem, SEO optimalizací a monitoringem dostupnosti.</p>
       <div class="row">
@@ -196,7 +198,7 @@
             <p class="is-on" data-i18n="svc.5.desc">Komplexní webová aplikace s přihlášením, databází a vlastní logikou. Portály, dashboardy, interní nástroje.</p>
             <p data-i18n="svc.2.desc">Plně funkční online obchod s košíkem, platební bránou a správou objednávek. Prodávejte 24/7 bez omezení.</p>
             <p data-i18n="svc.3.desc">Online rezervace pro restaurace, hotely, salony, lékaře a další. Zákazníci si zarezervují sami — vy šetříte čas.</p>
-            <p data-i18n="svc.6.desc">Zastaralý web vám škodí. Obnovíme jeho design, výkon a SEO — bez ztráty obsahu a pozic ve vyhledávačích.</p>
+            <p data-i18n="svc.6.desc"></p>
           </div>
         </div>
 
@@ -385,6 +387,17 @@
 
       <div class="price-block">
         <span class="price-label reveal" data-i18n="price.dev.label">A — Jednorázová tvorba webu</span>
+
+        <!-- Included with every one-off package, called out once rather than
+             buried three times in three feature lists. -->
+        <div class="price-incl reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          <p>
+            <strong data-i18n="price.incl.lead">V ceně u všech balíčků</strong>
+            <span data-i18n="price.incl.items">doména &middot; hosting &middot; SSL certifikát &middot; nasazení webu</span>
+          </p>
+        </div>
+
         <div class="price-grid">
 
           <article class="glow price reveal">
@@ -706,6 +719,17 @@
   </footer>
 
   </main>
+
+  <!-- ═══ STICKY MOBILE CTA ═══
+       Phones lose the header CTA behind the burger, so the primary action is
+       off screen for the whole page. This brings it back once the hero's own
+       buttons have scrolled away, and stands down inside the contact section
+       where it would only cover the form it points at. -->
+  <a class="sticky-cta" id="stickyCta" href="#kontakt" tabindex="-1" aria-hidden="true">
+    <span data-i18n="sticky.cta">Nezávazná poptávka</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+  </a>
+
   <script src="script.js"></script>
 </body>
 </html>

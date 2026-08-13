@@ -40,6 +40,7 @@
 
   /* motion — ζ 1.0 / response .35s expressed as a CSS linear() spring */
   --e-out:    cubic-bezier(.22,1,.36,1);
+  --e-power3: cubic-bezier(.215,.61,.355,1);   /* GSAP power3.out */
   --e-spring: linear(0,.0033,.0195,.0512,.0952,.1483,.2073,.2694,.332,.3931,.4509,.5043,.5524,.5947,.6311,.6617,.6867,.7068,.7226,.7348,.7442,.7515,.7573,.7623,.767,.7717,.7768,.7825,.789,.7963,.8045,.8135,.8231,.8333,.8438,.8545,.8652,.8758,.886,.8958,.9051,.9138,.9219,.9293,.936,.9421,.9476,.9526,.957,.961,.9645,.9677,.9705,.973,.9753,.9773,.9791,.9807,.9822,.9835,.9847,.9857,.9867,.9876,.9884,.9891,.9897,.9903,.9909,.9914,.9918,.9922,.9926,1);
   --t-press:  160ms;
 }
@@ -124,6 +125,66 @@ body.no-scroll { overflow: hidden; }
   background-clip: text;
   color: transparent;
 }
+/* ── FoldText ─────────────────────────────────
+   Each character hangs from a hinge along its top edge and swings down into
+   the page. Reference props: splitBy char · hinge top · trigger scroll ·
+   duration 0.65 · stagger 0.045 · ease power3.out · perspective 700 ·
+   creaseShading 0.55.
+
+   Words are wrapped so the line still breaks normally, and the gradient is
+   re-projected per character (see __foldSync in script.js) — otherwise every
+   letter would restart the ramp and the heading would look like confetti. */
+.fold { perspective: 700px; }
+.fold-w { display: inline-block; transform-style: preserve-3d; white-space: nowrap; }
+.fold-c {
+  position: relative;
+  display: inline-block;
+  transform-origin: top center;
+  transform: rotateX(-90deg);
+  opacity: 0;
+  transition:
+    transform .65s var(--e-power3),
+    opacity .3s linear;
+  transition-delay: calc(var(--base, 0ms) + var(--i, 0) * var(--stag, 45ms));
+}
+/* Hint only while a heading is still waiting to fold. Left on permanently this
+   promoted all 140 characters to their own compositor layer for the life of
+   the page; scoping it to :not(.in) releases each heading's layers the moment
+   it has landed. */
+.fold:not(.in) .fold-c { will-change: transform, opacity; }
+.fold.in .fold-c { transform: none; opacity: 1; }
+/* the crease: a shadow across the panel that lifts as it flattens out */
+.fold-c::after {
+  content: '';
+  position: absolute;
+  inset: -0.06em -0.02em;
+  background: linear-gradient(180deg, rgba(2,3,8,.55) 0%, rgba(2,3,8,.16) 62%, rgba(2,3,8,0) 100%);
+  opacity: 1;
+  transition: opacity .65s var(--e-power3);
+  transition-delay: calc(var(--base, 0ms) + var(--i, 0) * var(--stag, 45ms));
+  pointer-events: none;
+}
+.fold.in .fold-c::after { opacity: 0; }
+/* The crease is sized for display type. On 12-14px nav labels it reads as
+   grime rather than a fold, so those containers keep the rotation and drop
+   the shading. */
+.logo-text .fold-c::after, .nav-links a .fold-c::after { display: none; }
+.logo-text, .nav-links a { perspective: 420px; }
+/* the <em> no longer paints its own ramp — the characters carry it now */
+.fold em { background: none; }
+/* characters inside <em> carry the brand gradient; the slice each one shows is
+   positioned by JS so the ramp runs unbroken across the whole heading */
+.fold-c.grad {
+  background-image: var(--grad-ink);
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+/* the hero headline is folding, so it opts out of the hero copy's fade-up;
+   running both at once muddies each other */
+.hero-copy > .hero-h1 { opacity: 1; transform: none; transition: none; }
+
 .tag {
   display: block;
   font-family: var(--f-mono);
@@ -136,8 +197,22 @@ body.no-scroll { overflow: hidden; }
 }
 .lede { font-size: 18px; font-weight: 200; color: var(--soft); max-width: 52ch; }
 
-/* ── Buttons ──────────────────────────────────── */
+/* ── Buttons — SpecularButton ──────────────────
+   A 1px edge carrying a bright specular glint that tracks the cursor and
+   fades in as it approaches. The reference props map to these:
+
+     radius 18 · thickness 1 · shineSize 10deg · shineFade 40deg
+     speed 0.35 · proximity 250px · intensity 1 · autoAnimate false
+
+   JS writes only --sa (the glint's angle) and --near (0-1 proximity); the
+   look is all CSS, and the colours are the Lanthir brand ones untouched. */
 .btn {
+  --sa: 90deg;
+  --near: 0;
+  --thickness: 1px;
+  --shine: 10deg;
+  --fade: 40deg;
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -145,24 +220,70 @@ body.no-scroll { overflow: hidden; }
   min-height: 48px;
   padding: 14px 28px;
   border: 0;
-  border-radius: 999px;
+  border-radius: 18px;
   font-family: var(--f-mono);
   font-size: 12px;
   font-weight: 500;
   letter-spacing: .12em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: transform var(--t-press) ease-out, background .25s var(--e-out), border-color .25s var(--e-out), color .25s var(--e-out);
+  isolation: isolate;
+  transition: transform var(--t-press) ease-out, filter .25s var(--e-out),
+              background .25s var(--e-out), border-color .25s var(--e-out), color .25s var(--e-out);
 }
+/* instant press feedback — this is what makes a control feel like it is
+   listening, and it stays between .95 and .98 so it reads as pressure */
 .btn:active { transform: scale(.97); }
+/* the glint itself */
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--thickness);
+  background: conic-gradient(from var(--sa) at 50% 50%,
+    #fff 0deg,
+    #fff calc(var(--shine) / 2),
+    transparent var(--fade),
+    transparent calc(360deg - var(--fade)),
+    #fff calc(360deg - var(--shine) / 2),
+    #fff 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: var(--near);
+  pointer-events: none;
+  z-index: 2;
+}
+/* The primary buttons fade across the existing palette rather than sitting on
+   one flat indigo. The ramp is held to the deep half of the brand — #7060ff
+   through --iris-hi and --iris to --blue — because white on the cyan/spark end
+   of --grad is only 1.9:1. Those stops keep their job on the near-black
+   background, where they are bright *against* it rather than under text.
+
+   Depth follows the apple-design rules: a hairline of light along the top edge
+   to imply a source above, and three small stacked shadows instead of one big
+   blur, which is what separates a lit object from a drop-shadow filter. */
 .btn--solid {
-  background: var(--iris); color: #fff;
-  box-shadow: 0 1px 2px rgba(0,0,0,.25), 0 6px 20px rgba(58,46,224,.28);
+  background-image: linear-gradient(96deg,
+    #7060ff 0%,
+    #4b3ef5 26%,
+    #3a2ee0 58%,
+    #2f5eea 82%,
+    #1e7be5 100%);
+  color: #fff;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.2),
+    0 1px 2px rgba(0,0,0,.3),
+    0 3px 8px rgba(58,46,224,.24),
+    0 10px 26px -8px rgba(58,46,224,.5);
 }
 .btn--ghost { background: rgba(238,244,255,.03); border: 1px solid var(--hair-2); color: var(--soft); }
 .btn--full { width: 100%; }
 @media (hover: hover) {
-  .btn--solid:hover { background: var(--iris-hi); }
+  /* brightness is a composited filter — no layout, no paint of the gradient */
+  .btn--solid:hover { filter: brightness(1.08) saturate(1.05); }
   .btn--ghost:hover { border-color: rgba(31,205,237,.5); color: var(--ink); }
 }
 
@@ -172,8 +293,13 @@ body.no-scroll { overflow: hidden; }
   top: 0; left: 0; right: 0;
   z-index: 100;
   padding: 0 var(--gutter);
-  transition: background .35s ease, backdrop-filter .35s ease;
+  /* Held back until the hero has had its moment. Opacity only — the bar must
+     not shift, or the fixed header would jump the layout it sits over. */
+  opacity: 0;
+  pointer-events: none;
+  transition: background .35s ease, backdrop-filter .35s ease, opacity .55s var(--e-out);
 }
+body.nav-in .nav { opacity: 1; pointer-events: auto; }
 .nav.scrolled {
   background: rgba(6,9,15,.72);
   backdrop-filter: blur(20px) saturate(180%);
@@ -234,13 +360,16 @@ body.no-scroll { overflow: hidden; }
 
 .hero-copy > * {
   opacity: 0;
-  transform: translate3d(0, 26px, 0);
-  transition: opacity .7s var(--e-out), transform .7s var(--e-spring);
+  transform: translate3d(0, 22px, 0);
+  /* trimmed from .7s: this now runs at the end of a sequence rather than at
+     page load, so every millisecond here is added to the wait before the
+     primary button is legible */
+  transition: opacity .5s var(--e-out), transform .55s var(--e-spring);
 }
 body.ready .hero-copy > * { opacity: 1; transform: none; }
-body.ready .hero-copy > :nth-child(2) { transition-delay: .07s; }
-body.ready .hero-copy > :nth-child(3) { transition-delay: .14s; }
-body.ready .hero-copy > :nth-child(4) { transition-delay: .21s; }
+body.ready .hero-copy > :nth-child(2) { transition-delay: .06s; }
+body.ready .hero-copy > :nth-child(3) { transition-delay: .12s; }
+body.ready .hero-copy > :nth-child(4) { transition-delay: .18s; }
 
 .hero-cue {
   z-index: 2;
@@ -577,6 +706,32 @@ body.ready .hero-cue { opacity: 1; }
 .price-block { margin-bottom: var(--s4); }
 .price-block:last-of-type { margin-bottom: 0; }
 .price-label { display: block; margin-bottom: var(--s2); font-family: var(--f-mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); }
+/* ── Included with every package ──────────────
+   Domain, hosting, SSL and deployment apply to all three one-off tiers, so
+   they are stated once above the grid instead of being repeated inside each
+   card — and the PRO card never listed them at all. */
+.price-incl {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: calc(var(--s2) * -0.5) 0 var(--s2);
+  padding: 14px 20px;
+  border: 1px solid rgba(31,205,237,.22);
+  border-radius: 14px;
+  background:
+    linear-gradient(96deg, rgba(31,205,237,.09) 0%, rgba(58,46,224,.07) 55%, rgba(31,205,237,0) 100%),
+    rgba(238,244,255,.02);
+}
+.price-incl svg { width: 19px; height: 19px; flex-shrink: 0; color: var(--spark); }
+.price-incl p { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; margin: 0; }
+.price-incl strong {
+  font-family: var(--f-mono);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--cyan);
+}
+.price-incl span { font-size: 15px; color: var(--soft); }
+
 .price-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 2.4vw, 30px); align-items: stretch; }
 .price { --radius: 22px; }
 .price .glow-in { display: flex; flex-direction: column; height: 100%; padding: 32px 30px 30px; }
@@ -888,6 +1043,54 @@ a.ci-val:hover { color: var(--spark); }
 .to-top:active { transform: scale(.94); }
 .to-top svg { width: 20px; height: 20px; }
 
+/* ── Sticky mobile CTA ────────────────────────
+   Desktop keeps its header button, so this is phone-only. It sits above the
+   iOS home indicator via safe-area-inset, and translates rather than changing
+   `display` so it can spring in and out. */
+.sticky-cta { display: none; }
+@media (max-width: 880px) {
+  .sticky-cta {
+    position: fixed;
+    left: 50%;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    z-index: 95;
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 15px 26px;
+    border-radius: 18px;
+    background-image: linear-gradient(96deg,
+      #7060ff 0%, #4b3ef5 26%, #3a2ee0 58%, #2f5eea 82%, #1e7be5 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.2),
+      0 2px 6px rgba(0,0,0,.35),
+      0 12px 34px -10px rgba(58,46,224,.75);
+    font-family: var(--f-mono);
+    font-size: 12px; font-weight: 500;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: #fff;
+    white-space: nowrap;
+    /* parked below the fold edge until it is called for */
+    transform: translate3d(-50%, calc(100% + 28px), 0);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .5s var(--e-spring), opacity .3s var(--e-out);
+  }
+  .sticky-cta svg { width: 16px; height: 16px; }
+  .sticky-cta.on {
+    transform: translate3d(-50%, 0, 0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .sticky-cta:active { transform: translate3d(-50%, 0, 0) scale(.97); }
+  /* the open menu owns the screen */
+  body.no-scroll .sticky-cta { opacity: 0; pointer-events: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sticky-cta { transition: opacity .01ms !important; }
+}
+
 /* ── Reveal ───────────────────────────────────── */
 .reveal {
   opacity: 0;
@@ -974,9 +1177,14 @@ a.ci-val:hover { color: var(--spark); }
     min-height: 48px;
     margin-top: 22px;
     padding: 14px 30px;
-    border-radius: 999px;
-    background: var(--iris);
-    box-shadow: 0 1px 2px rgba(0,0,0,.25), 0 6px 20px rgba(58,46,224,.3);
+    border-radius: 18px;
+    background-image: linear-gradient(96deg,
+      #7060ff 0%, #4b3ef5 26%, #3a2ee0 58%, #2f5eea 82%, #1e7be5 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.2),
+      0 1px 2px rgba(0,0,0,.3),
+      0 3px 8px rgba(58,46,224,.24),
+      0 10px 26px -8px rgba(58,46,224,.5);
     font-family: var(--f-mono);
     font-variation-settings: normal;
     font-size: 12px; font-weight: 500;
@@ -1073,4 +1281,8 @@ a.ci-val:hover { color: var(--spark); }
   .step.on .step-body h3 { transform: none !important; }
   .step-mark { transform: none !important; }
   .step.on .step-mark::after { animation: none !important; }
+  /* the fold is a rotation, so it goes; the text just appears */
+  .fold-c { transform: none !important; opacity: 1 !important; }
+  .fold-c::after { display: none; }
+  .btn::after { opacity: 0 !important; }
 }

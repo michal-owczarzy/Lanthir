@@ -12,7 +12,6 @@ const T = {
     'nav.contact':  'Kontakt',
     'nav.cta':      'Nezávazná poptávka',
 
-    'hero.badge':    'Weby · Monitoring · Správa webu',
     'hero.h1': 'Technologický partner<br><em>pro růst a provoz firmy.</em>',
     'hero.sub': 'Navrhujeme webové stránky na míru a staráme se o jejich provoz. Webová aplikace, e-shop nebo rezervační systém — s SSL, hostingem, SEO optimalizací a monitoringem dostupnosti.',
     'hero.btn1':     'Zobrazit ceník',
@@ -37,12 +36,14 @@ const T = {
     'svc.5.title': 'Webová aplikace',
     'svc.5.desc':  'Komplexní webová aplikace s přihlášením, databází a vlastní logikou. Portály, dashboardy, interní nástroje.',
     'svc.6.title': 'Redesign webu',
-    'svc.6.desc':  'Zastaralý web vám škodí. Obnovíme jeho design, výkon a SEO — bez ztráty obsahu a pozic ve vyhledávačích.',
+    'svc.6.desc':  '',
 
     'price.tag':      'Ceník',
     'price.heading': 'Ceny za <em>naše služby.</em>',
     'price.sub':      'Transparentní ceny tvorby webových stránek bez skrytých poplatků. Vyberte jednorázové vytvoření webu — nebo pravidelnou správu, monitoring a SEO optimalizaci.',
     'price.dev.label':'A — Jednorázová tvorba webu',
+    'price.incl.lead':  'V ceně u všech balíčků',
+    'price.incl.items': 'doména &middot; hosting &middot; SSL certifikát &middot; nasazení webu',
     'price.sub.label':'B — Měsíční správa, monitoring a marketing',
     'price.from':     'od',
     'price.currency': 'Kč',
@@ -60,7 +61,7 @@ const T = {
     'price.1.f3': 'Moderní responzivní design',
     'price.1.f4': 'Kontaktní formulář',
     'price.1.f5': 'Základní SEO (nadpisy, meta tagy)',
-    'price.1.f6': 'Doména, hosting & SSL v ceně',
+    'price.1.f6': 'Doména, hosting, SSL & nasazení v ceně',
     'price.1.f7': 'Dodání do 14 dní',
     'price.2.tier':   'BUSINESS',
     'price.2.flag':   'Nejčastější volba',
@@ -180,6 +181,7 @@ const T = {
     'footer.tagline': 'Technologický partner pro růst a provoz firmy.',
     'footer.status':  'všechny systémy online',
     'footer.ico':     'IČO',
+    'sticky.cta':     'Nezávazná poptávka',
     'footer.col1.h':  'Služby',
     'footer.col2.h':  'Společnost',
     'form.err.name':  'Vyplňte prosím jméno.',
@@ -225,7 +227,6 @@ const T = {
     'nav.contact':  'Contact',
     'nav.cta':      'Get a Quote',
 
-    'hero.badge':    'Websites · Monitoring · Web Management',
     'hero.h1': 'Technology partner<br><em>for growth and operations.</em>',
     'hero.sub': 'We design custom websites and keep them running. A web application, e-shop or booking system — with SSL, hosting, SEO optimisation and uptime monitoring included.',
     'hero.btn1':     'View Pricing',
@@ -250,12 +251,14 @@ const T = {
     'svc.5.title': 'Web Application',
     'svc.5.desc':  'Complex web app with login, database and custom logic. Portals, dashboards, internal tools.',
     'svc.6.title': 'Website Redesign',
-    'svc.6.desc':  'An outdated website hurts you. We\'ll refresh its design, performance and SEO — without losing content or rankings.',
+    'svc.6.desc':  '',
 
     'price.tag':      'Pricing',
     'price.heading': 'Prices for <em>our services.</em>',
     'price.sub':      'Transparent pricing, no hidden fees. Choose one-time development or ongoing management.',
     'price.dev.label':'A — One-time Website Development',
+    'price.incl.lead':  'Included in every package',
+    'price.incl.items': 'domain &middot; hosting &middot; SSL certificate &middot; deployment',
     'price.sub.label':'B — Monthly Management, Monitoring & Marketing',
     'price.from':     'from',
     'price.currency': 'CZK',
@@ -273,7 +276,7 @@ const T = {
     'price.1.f3': 'Modern responsive design',
     'price.1.f4': 'Contact form',
     'price.1.f5': 'Basic SEO (headings, meta tags)',
-    'price.1.f6': 'Domain, hosting & SSL included',
+    'price.1.f6': 'Domain, hosting, SSL & deployment included',
     'price.1.f7': 'Delivery in 14 days',
     'price.2.tier':   'BUSINESS',
     'price.2.flag':   'Most chosen',
@@ -393,6 +396,7 @@ const T = {
     'footer.tagline': 'Technology partner for growth and operations.',
     'footer.status':  'all systems operational',
     'footer.ico':     'Company ID (IČO)',
+    'sticky.cta':     'Get a free quote',
     'footer.col1.h':  'Services',
     'footer.col2.h':  'Company',
     'form.err.name':  'Please enter your name.',
@@ -438,7 +442,6 @@ const T = {
     'nav.contact':  'Kontakt',
     'nav.cta':      'Bezpłatna wycena',
 
-    'hero.badge':    'Strony · Monitoring · Zarządzanie',
     'hero.h1': 'Partner technologiczny<br><em>dla wzrostu i operacji firmy.</em>',
     'hero.sub': 'Projektujemy strony internetowe na zamówienie i dbamy o ich działanie. Aplikacja webowa, sklep lub system rezerwacji — z SSL, hostingiem, optymalizacją SEO i monitoringiem dostępności.',
     'hero.btn1':     'Zobacz cennik',
@@ -463,12 +466,14 @@ const T = {
     'svc.5.title': 'Aplikacja webowa',
     'svc.5.desc':  'Złożona aplikacja z logowaniem, bazą danych i własną logiką. Portale, dashboardy, narzędzia wewnętrzne.',
     'svc.6.title': 'Redesign strony',
-    'svc.6.desc':  'Przestarzała strona Ci szkodzi. Odświeżymy jej design, wydajność i SEO — bez utraty treści i pozycji.',
+    'svc.6.desc':  '',
 
     'price.tag':      'Cennik',
     'price.heading': 'Ceny za <em>nasze usługi.</em>',
     'price.sub':      'Przejrzyste ceny bez ukrytych opłat. Wybierz jednorazowe tworzenie lub stały abonament zarządzania.',
     'price.dev.label':'A — Jednorazowe tworzenie strony',
+    'price.incl.lead':  'W cenie każdego pakietu',
+    'price.incl.items': 'domena &middot; hosting &middot; certyfikat SSL &middot; wdrożenie',
     'price.sub.label':'B — Miesięczne zarządzanie, monitoring i marketing',
     'price.from':     'od',
     'price.currency': 'CZK',
@@ -486,7 +491,7 @@ const T = {
     'price.1.f3': 'Nowoczesny responsywny design',
     'price.1.f4': 'Formularz kontaktowy',
     'price.1.f5': 'Podstawowe SEO (nagłówki, meta tagi)',
-    'price.1.f6': 'Domena, hosting & SSL w cenie',
+    'price.1.f6': 'Domena, hosting, SSL i wdrożenie w cenie',
     'price.1.f7': 'Realizacja w 14 dni',
     'price.2.tier':   'BUSINESS',
     'price.2.flag':   'Najczęstszy wybór',
@@ -606,6 +611,7 @@ const T = {
     'footer.tagline': 'Partner technologiczny dla wzrostu i operacji firmy.',
     'footer.status':  'wszystkie systemy działają',
     'footer.ico':     'IČO',   /* Czech registration number — not the Polish REGON */
+    'sticky.cta':     'Bezpłatna wycena',
     'footer.col1.h':  'Usługi',
     'footer.col2.h':  'Firma',
     'form.err.name':  'Podaj proszę imię.',
@@ -648,6 +654,29 @@ const T = {
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
+/* ── Hero hand-off ─────────────────────────
+   The headline waits for the backdrop, so the two read as a sequence rather
+   than a pile-up: the streaks establish themselves, then the type folds down
+   over them. Capped at 1.2s, because the text must never be held hostage to a
+   shader that fails to compile, a lite-tier device, or a driver that never
+   draws a frame. */
+let heroReady = false;
+/* The opening runs in one order, timed from the moment the backdrop puts its
+   first frame up: streaks, then the headline folding down over them, then the
+   supporting copy and buttons rising underneath. The copy starts while the
+   headline is still folding its last characters — waiting for a full stop
+   would leave the primary button off screen for well over two seconds. */
+const HERO_STEP = { headline: 180, copy: 540, nav: 700 };
+const heroWaiting = [];
+const onHeroReady = cb => (heroReady ? cb() : heroWaiting.push(cb));
+const markHeroReady = () => {
+  if (heroReady) return;
+  heroReady = true;
+  document.documentElement.dataset.hero = 'ready';
+  heroWaiting.splice(0).forEach(cb => cb());
+};
+setTimeout(markHeroReady, 1200);
+
 /* Motion budget scaled to the hardware: 0 lite · 1 standard · 2 full */
 const TIER = (() => {
   const c = navigator.connection || {};
@@ -675,6 +704,8 @@ function applyLang(lang) {
   });
   document.querySelectorAll('.ls-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
   if (window.__wheelSync) window.__wheelSync();
+  /* innerHTML above just destroyed every split heading — rebuild them */
+  if (window.__foldSync) window.__foldSync();
 }
 document.querySelectorAll('.ls-btn').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
 
@@ -727,10 +758,15 @@ navLinks.addEventListener('click', e => { if (e.target === navLinks) setMenu(fal
     if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
   }), { threshold: 0, rootMargin: '0px 0px 14% 0px' });
   els.forEach(e => io.observe(e));
-  requestAnimationFrame(() => document.body.classList.add('ready'));
-  setTimeout(() => document.body.classList.add('ready'), 400); /* backstop */
+  /* `ready` drives the hero's lede, buttons and scroll cue. It used to fire on
+     the first animation frame, which put them on screen before the backdrop
+     and the headline had done anything at all. */
+  onHeroReady(() => setTimeout(() => document.body.classList.add('ready'), HERO_STEP.copy));
+  /* the top bar is chrome — it arrives after the hero has spoken, not before */
+  onHeroReady(() => setTimeout(() => document.body.classList.add('nav-in'), HERO_STEP.nav));
 })();
 if (RM) document.body.classList.add('ready');
+if (RM) document.body.classList.add('nav-in');
 
 /* ══════════════════════════════════════════════
    LIGHTFALL — the React Bits component, ported to raw WebGL
@@ -748,10 +784,10 @@ function bootLightfall() {
   /* ?lightfall=off renders the static wash instead — useful for comparing the
      two on real hardware without a redeploy. */
   const forced = new URLSearchParams(location.search).get('lightfall');
-  if (forced === 'off' || TIER === 0 || RM) { staticWash(); return; }
+  if (forced === 'off' || TIER === 0 || RM) { staticWash(); markHeroReady(); return; }
 
   const gl = cv.getContext('webgl', { alpha: true, antialias: true, premultipliedAlpha: false });
-  if (!gl) { staticWash(); return; }
+  if (!gl) { staticWash(); markHeroReady(); return; }
 
   const VERT = [
     'attribute vec2 position;',
@@ -862,10 +898,10 @@ function bootLightfall() {
     return o;
   };
   const vs = sh(gl.VERTEX_SHADER, VERT), fs = sh(gl.FRAGMENT_SHADER, FRAG);
-  if (!vs || !fs) { staticWash(); return; }
+  if (!vs || !fs) { staticWash(); markHeroReady(); return; }
   const prog = gl.createProgram();
   gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
-  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { console.warn(gl.getProgramInfoLog(prog)); staticWash(); return; }
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { console.warn(gl.getProgramInfoLog(prog)); staticWash(); markHeroReady(); return; }
   gl.useProgram(prog);
 
   const buf = gl.createBuffer();
@@ -934,7 +970,7 @@ function bootLightfall() {
   new IntersectionObserver(e => { vis = e[e.length - 1].isIntersecting; })
     .observe(document.querySelector('.hero') || cv);
 
-  let last = 0;
+  let last = 0, drawn = false;
   (function frame(now) {
     requestAnimationFrame(frame);
     if (!W) { fit(); return; }
@@ -947,6 +983,8 @@ function bootLightfall() {
     gl.uniform2f(uMouse, mc[0], mc[1]);
     gl.uniform1f(uTime, now * 0.001);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
+    /* the streaks are on screen — the headline may now fold down over them */
+    if (!drawn) { drawn = true; markHeroReady(); }
   })(0);
 }
 
@@ -959,12 +997,231 @@ function bootLightfall() {
   const cv = document.getElementById('lightfall');
   if (cv) cv.style.background = 'radial-gradient(70% 60% at 50% 0%, #3348ff 0%, #241a9e 42%, #0a0f2e 100%)';
   /* Idle, not just post-load: firing straight after `load` simply moved the
-     100ms block on top of largest-contentful-paint instead of first paint. */
-  const go = () => (window.requestIdleCallback || (f => setTimeout(f, 260)))(
-    () => bootLightfall(), { timeout: 1200 }
+     100ms compile on top of largest-contentful-paint instead of first paint.
+     The timeout is short, though — the headline now waits on this shader, and
+     a loose idle deadline let the boot drift far enough that the text fell
+     back to its own timer instead of being cued by the backdrop. */
+  const go = () => (window.requestIdleCallback || (f => setTimeout(f, 160)))(
+    () => bootLightfall(), { timeout: 350 }
   );
   if (document.readyState === 'complete') go();
   else addEventListener('load', go, { once: true });
+})();
+
+/* ══════════════════════════════════════════════
+   FOLD TEXT — the React Bits component, in CSS
+   splitBy char · hinge top · trigger scroll · duration .65 · stagger .045
+   ease power3.out · perspective 700 · creaseShading .55
+
+   Two things make this awkward on a real page rather than a demo string, and
+   both are handled here: the headings carry markup (<br>, <em>) that has to
+   survive the split, and applyLang rewrites innerHTML wholesale on every
+   language change, which wipes the split — so this re-runs from applyLang.
+══════════════════════════════════════════════ */
+(function () {
+  const heads = Array.from(document.querySelectorAll('.hero-h1, .h2, .logo-text, .nav-links a'));
+  if (!heads.length) return;
+
+  /* Nav items are their own fold containers rather than one container round
+     the whole bar: `build` replaces an element's children, and running it over
+     the <ul> would rebuild the <a> elements and lose their href. Each item
+     restarts --i at 0, so a --base offset per item is what turns six
+     simultaneous flips into one sweep across the bar. */
+  const navFolds = Array.from(document.querySelectorAll('.logo-text, .nav-links a'));
+  navFolds.forEach((el, k) => el.style.setProperty('--base', (k * 55) + 'ms'));
+
+  const build = el => {
+    let i = 0;
+    const walk = (from, to, grad) => {
+      from.childNodes.forEach(n => {
+        if (n.nodeType === 3) {
+          /* keep whole words together so the line still breaks normally */
+          n.nodeValue.split(/(\s+)/).forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { to.appendChild(document.createTextNode(' ')); return; }
+            const w = document.createElement('span');
+            w.className = 'fold-w';
+            /* for..of walks code points, so č/ě/ř stay single characters */
+            for (const ch of part) {
+              const c = document.createElement('span');
+              c.className = grad ? 'fold-c grad' : 'fold-c';
+              c.style.setProperty('--i', i++);
+              c.textContent = ch;
+              w.appendChild(c);
+            }
+            to.appendChild(w);
+          });
+        } else if (n.nodeType === 1) {
+          if (n.tagName === 'BR') { to.appendChild(document.createElement('br')); return; }
+          const clone = document.createElement(n.tagName.toLowerCase());
+          /* copy every attribute — cloning only the class silently dropped
+             href, aria-* and data-i18n from anything nested */
+          for (const a of n.attributes) clone.setAttribute(a.name, a.value);
+          walk(n, clone, grad || n.tagName === 'EM');
+          to.appendChild(clone);
+        }
+      });
+    };
+    const frag = document.createDocumentFragment();
+    walk(el, frag, false);
+    el.textContent = '';
+    el.appendChild(frag);
+    /* The reference stagger of 45ms was picked for a 19-character English
+       string. "Technologický partner pro růst a provoz firmy." is 40, and at
+       45ms the last letter would not start moving for 1.8s — the headline
+       would still be assembling itself long after the visitor had read it.
+       Hold the whole sweep to ~0.9s and let short headings keep the full 45. */
+    el.style.setProperty('--stag', Math.min(45, 900 / Math.max(i, 1)).toFixed(1) + 'ms');
+    el.classList.add('fold');
+  };
+
+  /* Each character is its own box, so a background-clip gradient would restart
+     on every letter. Give each one the slice of the ramp that belongs at its
+     position instead. Measured with offsetLeft/offsetTop because those are
+     layout values — getBoundingClientRect would report the folded, squashed
+     box while the characters are still rotated out. */
+  /* Offsets have to be accumulated up the offsetParent chain, not read once:
+     `.fold-w` carries transform-style, which makes every word its own
+     offsetParent, so a bare offsetLeft is measured from the start of the word
+     and the ramp restarts on each one. */
+  const absOffset = node => {
+    let x = 0, y = 0;
+    for (let n = node; n; n = n.offsetParent) { x += n.offsetLeft; y += n.offsetTop; }
+    return [x, y];
+  };
+
+  /* Returns false when the heading has no layout yet. Writing a zero-width
+     background-size would leave every gradient character painting nothing —
+     the <em> would simply be invisible — so refuse and let the caller retry
+     on the next frame. */
+  const project = el => {
+    const gs = el.querySelectorAll('.fold-c.grad');
+    if (!gs.length) return true;
+    const w = el.offsetWidth, h = el.offsetHeight;
+    if (!w || !h) return false;
+    const [hx, hy] = absOffset(el);
+    gs.forEach(c => {
+      const [cx, cy] = absOffset(c);
+      c.style.backgroundSize = w + 'px ' + h + 'px';
+      c.style.backgroundPosition = (hx - cx) + 'px ' + (hy - cy) + 'px';
+    });
+    return true;
+  };
+
+  let tries = 0;
+  const projectAll = () => {
+    const pending = heads.filter(el => !project(el));
+    if (pending.length && ++tries < 60) requestAnimationFrame(projectAll);
+  };
+
+  const io = RM ? null : new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: 0, rootMargin: '0px 0px 12% 0px' });
+
+  const hero = document.querySelector('.hero-h1');
+
+  const run = () => {
+    heads.forEach(el => {
+      if (!el.querySelector('.fold-c')) build(el);
+      if (RM) { el.classList.add('in'); return; }
+      if (el.classList.contains('in')) return;
+      /* The hero headline is on screen from the first frame, so an observer
+         would fire instantly and race the backdrop. It waits for the shader's
+         first frame instead; every other heading keeps the scroll trigger. */
+      if (el === hero) onHeroReady(() => setTimeout(() => el.classList.add('in'), HERO_STEP.headline));
+      else if (navFolds.indexOf(el) !== -1) onHeroReady(() => setTimeout(() => el.classList.add('in'), HERO_STEP.nav));
+      else io.observe(el);
+    });
+    tries = 0;
+    projectAll();
+  };
+
+  /* No initial run() here: applyLang() fires at the end of this file and
+     rewrites every heading's innerHTML, which destroys the split. Building
+     first meant creating all 140 character spans twice on every load. The
+     __foldSync hook inside applyLang is the single build. */
+  window.__foldSync = run;
+
+  let rq = false;
+  addEventListener('resize', () => {
+    if (rq) return;
+    rq = true;
+    setTimeout(() => { rq = false; tries = 0; projectAll(); }, 150);
+  });
+  /* the display font is loaded async, and the swap changes every glyph advance,
+     so the slices have to be recut once it lands */
+  addEventListener('load', () => { tries = 0; projectAll(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { tries = 0; projectAll(); });
+})();
+
+/* ══════════════════════════════════════════════
+   SPECULAR BUTTON — the React Bits component, in CSS
+   radius 18 · thickness 1 · shineSize 10 · shineFade 40 · speed .35
+   followMouse · proximity 250 · intensity 1 · autoAnimate false
+
+   JS writes two custom properties per button and nothing else. The glint
+   eases toward the cursor rather than snapping, which is what stops it
+   reading as a hover state and starts it reading as light.
+══════════════════════════════════════════════ */
+(function () {
+  const btns = Array.from(document.querySelectorAll('.btn'));
+  if (!btns.length || !FINE || RM) return;
+
+  const PROX = 250, SPEED = 0.35, INTENSITY = 1;
+  const box = new Array(btns.length);
+  const cur = btns.map(() => ({ a: 90, n: 0 }));
+  const tgt = btns.map(() => ({ a: 90, n: 0 }));
+  let stale = true, raf = null, last = 0, px = -1e5, py = -1e5;
+
+  const measure = () => {
+    stale = false;
+    for (let i = 0; i < btns.length; i++) box[i] = btns[i].getBoundingClientRect();
+  };
+
+  /* shortest way round the circle, so a glint near 0deg does not spin the
+     long way to 359deg */
+  const easeAngle = (a, b, k) => a + ((((b - a) % 360) + 540) % 360 - 180) * k;
+
+  const frame = now => {
+    const dt = last ? Math.min((now - last) / 1000, .05) : 1 / 60;
+    last = now;
+    if (stale) measure();
+    const k = 1 - Math.pow(1 - SPEED, dt * 60);
+
+    let alive = false;
+    for (let i = 0; i < btns.length; i++) {
+      const r = box[i];
+      if (!r || !r.width) continue;
+      /* distance from the pointer to the button's box, 0 when inside it */
+      const dx = Math.max(r.left - px, 0, px - r.right);
+      const dy = Math.max(r.top - py, 0, py - r.bottom);
+      const near = Math.max(0, 1 - Math.sqrt(dx * dx + dy * dy) / PROX) * INTENSITY;
+      tgt[i].n = near;
+      if (near > 0) {
+        const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        let deg = Math.atan2(py - cy, px - cx) * (180 / Math.PI) + 90;
+        if (deg < 0) deg += 360;
+        tgt[i].a = deg;
+      }
+
+      const c = cur[i];
+      c.n += (tgt[i].n - c.n) * k;
+      c.a = (easeAngle(c.a, tgt[i].a, k) % 360 + 360) % 360;   /* keep it bounded */
+      if (c.n < 0.002) c.n = 0;
+
+      btns[i].style.setProperty('--near', c.n.toFixed(3));
+      btns[i].style.setProperty('--sa', c.a.toFixed(1) + 'deg');
+      if (c.n > 0 || tgt[i].n > 0) alive = true;
+    }
+
+    raf = alive ? requestAnimationFrame(frame) : (last = 0, null);
+  };
+
+  const wake = () => { if (raf == null) { last = 0; raf = requestAnimationFrame(frame); } };
+  addEventListener('pointermove', e => { px = e.clientX; py = e.clientY; wake(); }, { passive: true });
+  addEventListener('scroll', () => { stale = true; wake(); }, { passive: true });
+  addEventListener('resize', () => { stale = true; wake(); });
+  addEventListener('pointerleave', () => { px = py = -1e5; wake(); });
 })();
 
 /* ══════════════════════════════════════════════
@@ -1302,6 +1559,47 @@ function bootLightfall() {
   });
 })();
 
+/* ── Sticky mobile CTA ─────────────────────
+   Appears once the hero's own buttons are gone, and stands down over the
+   contact section — a floating button covering the form it points at is just
+   an obstacle. Driven by two observers rather than a scroll handler so it
+   costs nothing while idle. */
+(function () {
+  const cta = document.getElementById('stickyCta');
+  if (!cta) return;
+  const hero = document.querySelector('.hero');
+  const contact = document.getElementById('kontakt');
+  const footer = document.querySelector('.footer');
+  if (!hero) return;
+
+  let pastHero = false, atTarget = false;
+  const sync = () => {
+    const on = pastHero && !atTarget;
+    cta.classList.toggle('on', on);
+    /* keep it out of the tab order and off screen readers while hidden */
+    cta.setAttribute('aria-hidden', on ? 'false' : 'true');
+    cta.tabIndex = on ? 0 : -1;
+  };
+
+  new IntersectionObserver(es => {
+    pastHero = !es[es.length - 1].isIntersecting;
+    sync();
+  }, { rootMargin: '-40% 0px 0px 0px' }).observe(hero);
+
+  /* An observer callback carries only the entries that *changed*, not every
+     element being watched — so `es.some(...)` reported whichever of the two
+     happened to be in that batch, and the button stayed up over the form it
+     points at. Hold each target's state and combine them. */
+  const inView = new Map();
+  const target = new IntersectionObserver(es => {
+    es.forEach(e => inView.set(e.target, e.isIntersecting));
+    atTarget = [...inView.values()].some(Boolean);
+    sync();
+  }, { rootMargin: '0px 0px -10% 0px' });
+  if (contact) target.observe(contact);
+  if (footer) target.observe(footer);
+})();
+
 /* ── Back to top ──────────────────────────── */
 document.getElementById('toTop')?.addEventListener('click', () => scrollTo({ top: 0, behavior: RM ? 'auto' : 'smooth' }));
 
@@ -1364,6 +1662,11 @@ document.getElementById('toTop')?.addEventListener('click', () => scrollTo({ top
     btn.classList.remove('sending');
     btn.style.display = 'none';
     ok.classList.add('show');
+    /* Hand off to a real confirmation page: it gives the visitor a clear end
+       to the task and gives the business a URL to count conversions on. The
+       inline message stays as the fallback for the split second before the
+       navigation lands, and for the case where it is blocked. */
+    location.assign('/dekuji/');
   });
 })();
 
