@@ -143,8 +143,8 @@ body.no-scroll { overflow: hidden; }
   transform: rotateX(-90deg);
   opacity: 0;
   transition:
-    transform .65s var(--e-power3),
-    opacity .3s linear;
+    transform var(--fold-dur, .65s) var(--e-power3),
+    opacity calc(var(--fold-dur, .65s) * .46) linear;
   transition-delay: calc(var(--base, 0ms) + var(--i, 0) * var(--stag, 45ms));
 }
 /* Hint only while a heading is still waiting to fold. Left on permanently this
@@ -160,7 +160,7 @@ body.no-scroll { overflow: hidden; }
   inset: -0.06em -0.02em;
   background: linear-gradient(180deg, rgba(2,3,8,.55) 0%, rgba(2,3,8,.16) 62%, rgba(2,3,8,0) 100%);
   opacity: 1;
-  transition: opacity .65s var(--e-power3);
+  transition: opacity var(--fold-dur, .65s) var(--e-power3);
   transition-delay: calc(var(--base, 0ms) + var(--i, 0) * var(--stag, 45ms));
   pointer-events: none;
 }
@@ -1042,6 +1042,19 @@ a.ci-val:hover { color: var(--spark); }
 .to-top:hover { color: var(--ink); transform: translate3d(0,-3px,0); }
 .to-top:active { transform: scale(.94); }
 .to-top svg { width: 20px; height: 20px; }
+
+/* ── Intro skip ───────────────────────────────
+   Set the moment the visitor scrolls, taps or types. Everything still moves —
+   a hard cut is jarring — but it lands in one short beat instead of finishing
+   a sequence nobody is waiting for any more. */
+body.intro-skip .fold-c,
+body.intro-skip .fold-c::after,
+body.intro-skip .hero-copy > *,
+body.intro-skip .hero-cue,
+body.intro-skip .nav {
+  transition-delay: 0s !important;
+  transition-duration: .2s !important;
+}
 
 /* ── Sticky mobile CTA ────────────────────────
    Desktop keeps its header button, so this is phone-only. It sits above the

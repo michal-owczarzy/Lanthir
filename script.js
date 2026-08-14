@@ -666,7 +666,34 @@ let heroReady = false;
    supporting copy and buttons rising underneath. The copy starts while the
    headline is still folding its last characters — waiting for a full stop
    would leave the primary button off screen for well over two seconds. */
-const HERO_STEP = { headline: 180, copy: 540, nav: 700 };
+/* ── Opening sequence ──────────────────────
+   The "cinematic" pacing, picked over two faster and one slower variant.
+
+     hold  = backdrop alone on screen before the headline moves
+     sweep = how long the fold takes to cross the headline
+     char  = how long a single character takes to swing down
+
+   Second and later views in the same session get the short version — nobody
+   should sit through a title sequence twice to reach a price list. */
+const INTRO_FULL  = { hold: 1100, sweep: 1900, char: 850 };
+const INTRO_QUICK = { hold: 120,  sweep: 620,  char: 520 };
+
+const INTRO = (() => {
+  let seen = false;
+  try { seen = sessionStorage.getItem('lanthir-intro') === '1'; } catch (e) {}
+  try { sessionStorage.setItem('lanthir-intro', '1'); } catch (e) {}
+  return seen ? INTRO_QUICK : INTRO_FULL;
+})();
+
+/* The copy carries a 180ms internal stagger and a ~650ms transition. Starting
+   it that much before the headline's last character lands makes the two arrive
+   together instead of the lede beating the headline to a stop. */
+const COPY_TAIL = 830;
+const HERO_STEP = {
+  headline: INTRO.hold,
+  copy: Math.max(INTRO.hold + 120, INTRO.hold + INTRO.sweep + INTRO.char - COPY_TAIL),
+  nav:  Math.max(INTRO.hold + 260, INTRO.hold + INTRO.sweep + INTRO.char - COPY_TAIL + 260)
+};
 const heroWaiting = [];
 const onHeroReady = cb => (heroReady ? cb() : heroWaiting.push(cb));
 const markHeroReady = () => {
@@ -676,6 +703,21 @@ const markHeroReady = () => {
   heroWaiting.splice(0).forEach(cb => cb());
 };
 setTimeout(markHeroReady, 1200);
+
+/* ── Skip on intent ────────────────────────
+   Any sign the visitor wants to get on with it ends the intro immediately.
+   A held-back page is only charming until someone is trying to use it. */
+let introDone = false;
+const endIntro = () => {
+  if (introDone) return;
+  introDone = true;
+  document.body.classList.add('intro-skip');   /* collapses the remaining delays */
+  markHeroReady();
+  document.body.classList.add('ready', 'nav-in');
+  document.querySelectorAll('.fold').forEach(el => el.classList.add('in'));
+};
+['pointerdown', 'wheel', 'touchstart', 'keydown', 'scroll'].forEach(t =>
+  addEventListener(t, endIntro, { once: true, passive: true }));
 
 /* Motion budget scaled to the hardware: 0 lite · 1 standard · 2 full */
 const TIER = (() => {
@@ -1071,7 +1113,10 @@ function bootLightfall() {
        45ms the last letter would not start moving for 1.8s — the headline
        would still be assembling itself long after the visitor had read it.
        Hold the whole sweep to ~0.9s and let short headings keep the full 45. */
-    el.style.setProperty('--stag', Math.min(45, 900 / Math.max(i, 1)).toFixed(1) + 'ms');
+    const isHero = el === document.querySelector('.hero-h1');
+    const sweep = isHero ? INTRO.sweep : 900;
+    el.style.setProperty('--stag', Math.min(isHero ? 95 : 45, sweep / Math.max(i, 1)).toFixed(1) + 'ms');
+    if (isHero) el.style.setProperty('--fold-dur', INTRO.char + 'ms');
     el.classList.add('fold');
   };
 
