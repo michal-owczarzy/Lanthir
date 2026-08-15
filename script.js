@@ -12,7 +12,8 @@ const T = {
     'nav.contact':  'Kontakt',
     'nav.cta':      'Nezávazná poptávka',
 
-    'hero.h1': 'Technologický partner<br><em>pro růst a provoz firmy.</em>',
+    'hero.l1': 'My jsme <em>Lanthir.</em>',
+    'hero.l2': 'Váš technologický partner pro růst a provoz firmy.',
     'hero.sub': 'Navrhujeme webové stránky na míru a staráme se o jejich provoz. Webová aplikace, e-shop nebo rezervační systém — s SSL, hostingem, SEO optimalizací a monitoringem dostupnosti.',
     'hero.btn1':     'Zobrazit ceník',
     'hero.btn2':     'Nezávazná konzultace',
@@ -227,7 +228,8 @@ const T = {
     'nav.contact':  'Contact',
     'nav.cta':      'Get a Quote',
 
-    'hero.h1': 'Technology partner<br><em>for growth and operations.</em>',
+    'hero.l1': 'We are <em>Lanthir.</em>',
+    'hero.l2': 'Your technology partner for growth and operations.',
     'hero.sub': 'We design custom websites and keep them running. A web application, e-shop or booking system — with SSL, hosting, SEO optimisation and uptime monitoring included.',
     'hero.btn1':     'View Pricing',
     'hero.btn2':     'Free Consultation',
@@ -442,7 +444,8 @@ const T = {
     'nav.contact':  'Kontakt',
     'nav.cta':      'Bezpłatna wycena',
 
-    'hero.h1': 'Partner technologiczny<br><em>dla wzrostu i operacji firmy.</em>',
+    'hero.l1': 'Jesteśmy <em>Lanthir.</em>',
+    'hero.l2': 'Twój partner technologiczny dla wzrostu i utrzymania firmy.',
     'hero.sub': 'Projektujemy strony internetowe na zamówienie i dbamy o ich działanie. Aplikacja webowa, sklep lub system rezerwacji — z SSL, hostingiem, optymalizacją SEO i monitoringiem dostępności.',
     'hero.btn1':     'Zobacz cennik',
     'hero.btn2':     'Bezpłatna konsultacja',
@@ -675,8 +678,8 @@ let heroReady = false;
 
    Second and later views in the same session get the short version — nobody
    should sit through a title sequence twice to reach a price list. */
-const INTRO_FULL  = { hold: 1100, sweep: 1900, char: 850 };
-const INTRO_QUICK = { hold: 120,  sweep: 620,  char: 520 };
+const INTRO_FULL  = { hold: 1000, l1: 850, l2: 1250, char: 700, gap: 200 };
+const INTRO_QUICK = { hold: 120,  l1: 360, l2: 520,  char: 460, gap: 90 };
 
 const INTRO = (() => {
   let seen = false;
@@ -689,10 +692,16 @@ const INTRO = (() => {
    it that much before the headline's last character lands makes the two arrive
    together instead of the lede beating the headline to a stop. */
 const COPY_TAIL = 830;
+/* line two starts once line one has finished sweeping, not once its last
+   character has finished moving — a slight overlap, so the two read as one
+   thought arriving in two beats rather than two separate events */
+const L2_START = INTRO.hold + INTRO.l1 + INTRO.gap;
+const HERO_SETTLED = L2_START + INTRO.l2 + INTRO.char;
 const HERO_STEP = {
-  headline: INTRO.hold,
-  copy: Math.max(INTRO.hold + 120, INTRO.hold + INTRO.sweep + INTRO.char - COPY_TAIL),
-  nav:  Math.max(INTRO.hold + 260, INTRO.hold + INTRO.sweep + INTRO.char - COPY_TAIL + 260)
+  l1: INTRO.hold,
+  l2: L2_START,
+  copy: Math.max(INTRO.hold + 120, HERO_SETTLED - COPY_TAIL),
+  nav:  Math.max(INTRO.hold + 260, HERO_SETTLED - COPY_TAIL + 260)
 };
 const heroWaiting = [];
 const onHeroReady = cb => (heroReady ? cb() : heroWaiting.push(cb));
@@ -1061,7 +1070,7 @@ function bootLightfall() {
    language change, which wipes the split — so this re-runs from applyLang.
 ══════════════════════════════════════════════ */
 (function () {
-  const heads = Array.from(document.querySelectorAll('.hero-h1, .h2, .logo-text, .nav-links a'));
+  const heads = Array.from(document.querySelectorAll('.hero-l1, .hero-l2, .h2, .logo-text, .nav-links a'));
   if (!heads.length) return;
 
   /* Nav items are their own fold containers rather than one container round
@@ -1113,10 +1122,11 @@ function bootLightfall() {
        45ms the last letter would not start moving for 1.8s — the headline
        would still be assembling itself long after the visitor had read it.
        Hold the whole sweep to ~0.9s and let short headings keep the full 45. */
-    const isHero = el === document.querySelector('.hero-h1');
-    const sweep = isHero ? INTRO.sweep : 900;
-    el.style.setProperty('--stag', Math.min(isHero ? 95 : 45, sweep / Math.max(i, 1)).toFixed(1) + 'ms');
-    if (isHero) el.style.setProperty('--fold-dur', INTRO.char + 'ms');
+    const heroLine = el.classList.contains('hero-l1') ? 'l1'
+                   : el.classList.contains('hero-l2') ? 'l2' : null;
+    const sweep = heroLine ? INTRO[heroLine] : 900;
+    el.style.setProperty('--stag', Math.min(heroLine ? 120 : 45, sweep / Math.max(i, 1)).toFixed(1) + 'ms');
+    if (heroLine) el.style.setProperty('--fold-dur', INTRO.char + 'ms');
     el.classList.add('fold');
   };
 
@@ -1163,7 +1173,8 @@ function bootLightfall() {
     if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
   }), { threshold: 0, rootMargin: '0px 0px 12% 0px' });
 
-  const hero = document.querySelector('.hero-h1');
+  const heroL1 = document.querySelector('.hero-l1');
+  const heroL2 = document.querySelector('.hero-l2');
 
   const run = () => {
     heads.forEach(el => {
@@ -1173,7 +1184,11 @@ function bootLightfall() {
       /* The hero headline is on screen from the first frame, so an observer
          would fire instantly and race the backdrop. It waits for the shader's
          first frame instead; every other heading keeps the scroll trigger. */
-      if (el === hero) onHeroReady(() => setTimeout(() => el.classList.add('in'), HERO_STEP.headline));
+      /* The hero lines are on screen from the first frame, so an observer would
+         fire instantly and race the backdrop. They wait for the shader and then
+         run in sequence; every other heading keeps the scroll trigger. */
+      if (el === heroL1) onHeroReady(() => setTimeout(() => el.classList.add('in'), HERO_STEP.l1));
+      else if (el === heroL2) onHeroReady(() => setTimeout(() => el.classList.add('in'), HERO_STEP.l2));
       else if (navFolds.indexOf(el) !== -1) onHeroReady(() => setTimeout(() => el.classList.add('in'), HERO_STEP.nav));
       else io.observe(el);
     });

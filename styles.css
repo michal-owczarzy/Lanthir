@@ -116,8 +116,28 @@ body.no-scroll { overflow: hidden; }
   line-height: 1.02;
   text-wrap: balance;
 }
-.hero-h1 { font-size: clamp(2.3rem, 5vw, 4.4rem); max-width: 16ch; }
+.hero-h1 { font-size: clamp(2.3rem, 5vw, 4.4rem); max-width: 20ch; }
 .h2      { font-size: clamp(1.95rem, 3.6vw, 3.2rem); }
+
+/* ── Hero headline, two lines ─────────────────
+   Line one is the introduction, line two the positioning. They fold in that
+   order. Both live inside the single <h1> so the searchable heading still
+   carries the whole statement. */
+.hero-l1, .hero-l2 { display: block; }
+.hero-l2 { margin-top: .34em; }
+
+/* The introduction carries the size; the promise sits under it in a lighter,
+   wider-set voice. */
+.hero-l1 { font-size: clamp(2.4rem, 5.2vw, 4.6rem); }
+.hero-l2 {
+  font-size: clamp(1.15rem, 2.25vw, 1.85rem);
+  font-variation-settings: 'wdth' 108, 'wght' 400;
+  letter-spacing: -0.012em;
+  line-height: 1.2;
+  color: var(--soft);
+  max-width: 26ch;
+}
+
 .hero-h1 em, .h2 em {
   font-style: normal;
   background: var(--grad-ink);
@@ -153,23 +173,11 @@ body.no-scroll { overflow: hidden; }
    it has landed. */
 .fold:not(.in) .fold-c { will-change: transform, opacity; }
 .fold.in .fold-c { transform: none; opacity: 1; }
-/* the crease: a shadow across the panel that lifts as it flattens out */
-.fold-c::after {
-  content: '';
-  position: absolute;
-  inset: -0.06em -0.02em;
-  background: linear-gradient(180deg, rgba(2,3,8,.55) 0%, rgba(2,3,8,.16) 62%, rgba(2,3,8,0) 100%);
-  opacity: 1;
-  transition: opacity var(--fold-dur, .65s) var(--e-power3);
-  transition-delay: calc(var(--base, 0ms) + var(--i, 0) * var(--stag, 45ms));
-  pointer-events: none;
-}
-.fold.in .fold-c::after { opacity: 0; }
-/* The crease is sized for display type. On 12-14px nav labels it reads as
-   grime rather than a fold, so those containers keep the rotation and drop
-   the shading. */
-.logo-text .fold-c::after, .nav-links a .fold-c::after { display: none; }
-.logo-text, .nav-links a { perspective: 420px; }
+/* No crease shading. The reference component darkens each panel as it folds,
+   but over light type on a dark page it reads as a black card flashing behind
+   every character rather than a shadow — so the rotation carries the fold on
+   its own. */
+
 /* the <em> no longer paints its own ramp — the characters carry it now */
 .fold em { background: none; }
 /* characters inside <em> carry the brand gradient; the slice each one shows is
@@ -1048,7 +1056,6 @@ a.ci-val:hover { color: var(--spark); }
    a hard cut is jarring — but it lands in one short beat instead of finishing
    a sequence nobody is waiting for any more. */
 body.intro-skip .fold-c,
-body.intro-skip .fold-c::after,
 body.intro-skip .hero-copy > *,
 body.intro-skip .hero-cue,
 body.intro-skip .nav {
@@ -1211,6 +1218,8 @@ body.intro-skip .nav {
   .form-row { grid-template-columns: 1fr; gap: 0; }
   .footer-top { grid-template-columns: 1fr; }
   .hero-h1 { font-size: 34px; }
+  .hero-l1 { font-size: 34px; }
+  .hero-l2 { font-size: 17px; max-width: none; }
   .h2 { font-size: 27px; }
   .lede { font-size: 17px; }
   .price-name { font-size: 24px; }
@@ -1235,6 +1244,8 @@ body.intro-skip .nav {
   .person-links a { min-height: 40px; display: inline-flex; align-items: center; }
   .hero { padding: 104px 0 80px; }
   .hero-h1 { font-size: 28px; line-height: 1.06; letter-spacing: -0.02em; }
+  .hero-l1 { font-size: 29px; }
+  .hero-l2 { font-size: 15.5px; line-height: 1.35; margin-top: .45em; }
   .h2 { font-size: 23px; line-height: 1.08; letter-spacing: -0.015em; }
   .tag { font-size: 11px; letter-spacing: .16em; margin-bottom: 14px; }
   .lede { font-size: 15.5px; }
@@ -1296,6 +1307,5 @@ body.intro-skip .nav {
   .step.on .step-mark::after { animation: none !important; }
   /* the fold is a rotation, so it goes; the text just appears */
   .fold-c { transform: none !important; opacity: 1 !important; }
-  .fold-c::after { display: none; }
   .btn::after { opacity: 0 !important; }
 }

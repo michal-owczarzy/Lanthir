@@ -108,7 +108,6 @@
     <style>
       .reveal, .hero-copy > * { opacity: 1 !important; transform: none !important; }
       .fold-c { opacity: 1 !important; transform: none !important; }
-      .fold-c::after { display: none; }
       .nav { opacity: 1 !important; pointer-events: auto !important; }
       #lightfall { display: none; }
       .wheel { height: auto !important; }
@@ -158,7 +157,10 @@
     <canvas id="lightfall" aria-hidden="true"></canvas>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="container hero-copy">
-      <h1 class="hero-h1" id="heroH1" data-i18n="hero.h1">Technologický partner<br><em>pro růst a provoz firmy.</em></h1>
+      <h1 class="hero-h1" id="heroH1">
+        <span class="hero-l1" data-i18n="hero.l1">My jsme <em>Lanthir.</em></span>
+        <span class="hero-l2" data-i18n="hero.l2">Váš technologický partner pro růst a provoz firmy.</span>
+      </h1>
       <p class="lede" data-i18n="hero.sub">Navrhujeme webové stránky na míru a staráme se o jejich provoz. Webová aplikace, e-shop nebo rezervační systém — s SSL, hostingem, SEO optimalizací a monitoringem dostupnosti.</p>
       <div class="row">
         <a href="#cenik" class="btn btn--solid" data-i18n="hero.btn1">Zobrazit ceník</a>
