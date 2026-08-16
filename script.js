@@ -669,29 +669,24 @@ let heroReady = false;
    supporting copy and buttons rising underneath. The copy starts while the
    headline is still folding its last characters — waiting for a full stop
    would leave the primary button off screen for well over two seconds. */
-/* ── Opening sequence ──────────────────────
-   The "cinematic" pacing, picked over two faster and one slower variant.
+/* The cinematic pacing, at the per-character rate that was signed off:
+   1100ms of backdrop alone, then ~45ms between characters and 850ms for each
+   one to swing down. The sweeps differ per line because a 16-character
+   greeting and a 43-character sentence cannot share one budget without one of
+   them crawling.
 
-     hold  = backdrop alone on screen before the headline moves
-     sweep = how long the fold takes to cross the headline
-     char  = how long a single character takes to swing down
+   There is deliberately no shortened repeat-visit variant. It existed to spare
+   returning visitors the full sequence, but it meant a reload played a much
+   faster animation than a first visit, which reads as the timing being wrong
+   rather than as a considerate shortcut. Skip-on-intent already covers anyone
+   who does not want to wait. */
+const INTRO = { hold: 1100, l1: 1000, l2: 1850, char: 850, gap: 250 };
 
-   Second and later views in the same session get the short version — nobody
-   should sit through a title sequence twice to reach a price list. */
-const INTRO_FULL  = { hold: 1000, l1: 850, l2: 1250, char: 700, gap: 200 };
-const INTRO_QUICK = { hold: 120,  l1: 360, l2: 520,  char: 460, gap: 90 };
-
-const INTRO = (() => {
-  let seen = false;
-  try { seen = sessionStorage.getItem('lanthir-intro') === '1'; } catch (e) {}
-  try { sessionStorage.setItem('lanthir-intro', '1'); } catch (e) {}
-  return seen ? INTRO_QUICK : INTRO_FULL;
-})();
-
-/* The copy carries a 180ms internal stagger and a ~650ms transition. Starting
-   it that much before the headline's last character lands makes the two arrive
-   together instead of the lede beating the headline to a stop. */
+/* the copy carries a 180ms internal stagger and a ~650ms transition, so it
+   starts this far before the headline's last character lands and the two
+   arrive together */
 const COPY_TAIL = 830;
+
 /* line two starts once line one has finished sweeping, not once its last
    character has finished moving — a slight overlap, so the two read as one
    thought arriving in two beats rather than two separate events */
