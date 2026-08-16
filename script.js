@@ -701,7 +701,10 @@ const HERO_STEP = {
   l1: INTRO.hold,
   l2: L2_START,
   copy: Math.max(INTRO.hold + 120, HERO_SETTLED - COPY_TAIL),
-  nav:  Math.max(INTRO.hold + 260, HERO_SETTLED - COPY_TAIL + 260)
+  /* Touch gets the bar straight away. Holding it back on a phone meant the
+     burger sat there looking like a control for three and a half seconds
+     before it became one. */
+  nav:  FINE ? Math.max(INTRO.hold + 260, HERO_SETTLED - COPY_TAIL + 260) : 0
 };
 const heroWaiting = [];
 const onHeroReady = cb => (heroReady ? cb() : heroWaiting.push(cb));
@@ -1070,7 +1073,7 @@ function bootLightfall() {
    language change, which wipes the split — so this re-runs from applyLang.
 ══════════════════════════════════════════════ */
 (function () {
-  const heads = Array.from(document.querySelectorAll('.hero-l1, .hero-l2, .h2, .logo-text, .nav-links a'));
+  const heads = Array.from(document.querySelectorAll('.hero-l1, .hero-l2, .h2, .logo-text, .nav-links a:not(.m-cta)'));
   if (!heads.length) return;
 
   /* Nav items are their own fold containers rather than one container round
@@ -1078,7 +1081,7 @@ function bootLightfall() {
      the <ul> would rebuild the <a> elements and lose their href. Each item
      restarts --i at 0, so a --base offset per item is what turns six
      simultaneous flips into one sweep across the bar. */
-  const navFolds = Array.from(document.querySelectorAll('.logo-text, .nav-links a'));
+  const navFolds = Array.from(document.querySelectorAll('.logo-text, .nav-links a:not(.m-cta)'));
   navFolds.forEach((el, k) => el.style.setProperty('--base', (k * 55) + 'ms'));
 
   const build = el => {

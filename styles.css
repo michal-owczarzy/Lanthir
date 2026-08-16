@@ -301,19 +301,45 @@ body.no-scroll { overflow: hidden; }
   top: 0; left: 0; right: 0;
   z-index: 100;
   padding: 0 var(--gutter);
-  /* Held back until the hero has had its moment. Opacity only — the bar must
-     not shift, or the fixed header would jump the layout it sits over. */
+  /* Held back until the hero has had its moment — but only visually. It is
+     NEVER made pointer-events:none: that turned the burger into a dead zone
+     for the whole intro, so the first tap fell through to the hero behind it
+     and the menu appeared not to work. An invisible control that still
+     responds is recoverable; one that swallows the tap is not. */
   opacity: 0;
-  pointer-events: none;
-  transition: background .35s ease, backdrop-filter .35s ease, opacity .55s var(--e-out);
+  transition: opacity .55s var(--e-out);
 }
-body.nav-in .nav { opacity: 1; pointer-events: auto; }
-.nav.scrolled {
+body.nav-in .nav { opacity: 1; }
+
+/* The frosted bar lives on a pseudo-element, NOT on .nav itself.
+   A non-none backdrop-filter makes an element the containing block for its
+   fixed-position descendants — so with the filter on .nav, the mobile menu
+   overlay (position:fixed; inset:0) sized itself to the 66px bar instead of
+   the viewport, and three of its links ended up at negative coordinates, off
+   the top of the screen. It only bit once .scrolled had been added, which is
+   why it survived every test run from the top of the page. */
+.nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
   background: rgba(6,9,15,.72);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--hair);
+  transition: opacity .35s ease;
+  pointer-events: none;
 }
+.nav.scrolled::before { opacity: 1; }
+
+/* On a touch device the bar is just a logo and a burger — it is not competing
+   with the hero the way a full desktop nav is, and the menu has to be reachable
+   from the first moment. So phones get it immediately, no hold at all. */
+@media (hover: none), (pointer: coarse) {
+  .nav { opacity: 1; }
+}
+
 .nav-inner { max-width: var(--max); margin: 0 auto; height: 76px; display: flex; align-items: center; gap: 32px; }
 .nav-logo { display: flex; align-items: center; gap: 11px; position: relative; z-index: 120; }
 .logo-img { width: 30px; height: 30px; }
