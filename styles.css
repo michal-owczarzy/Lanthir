@@ -21,8 +21,20 @@
   --blue:    #1e7be5;
   --cyan:    #1fcded;
   --spark:   #36f0d6;
-  --grad:     linear-gradient(90deg, #7060ff 0%, #1e7be5 40%, #1fcded 70%, #36f0d6 100%);
-  --grad-ink: linear-gradient(96deg, #9d8dff 0%, #55a9f2 38%, #3fdcf7 68%, #5cffe2 100%);
+  /* Cyan through blue into violet. --btn-ink is the label colour this fill can
+     carry: white peaks at 3.46:1 on the blue midpoint, dark ink clears 5:1
+     across the band the label actually sits in. */
+  --grad:     linear-gradient(-225deg, #22E1FF 0%, #1D8FE1 48%, #625EB1 100%);
+  --grad-ink: linear-gradient(-225deg, #22E1FF 0%, #1D8FE1 48%, #625EB1 100%);
+
+  /* Buttons take the cyan-to-blue part of the same ramp, not the violet tail.
+     On a wide, short button the -225deg line drives well into the violet at
+     the bottom-right, exactly where the end of the label sits, and nothing
+     reads there — dark ink measures 3.9:1 and even pure black only reaches
+     3.7:1. Headings never hit that corner (they use t 0.06-0.54), so text
+     keeps the full ramp. */
+  --grad-btn: linear-gradient(-225deg, #22E1FF 0%, #1D8FE1 100%);
+  --btn-ink:  #04121c;
 
   /* type */
   --f-display: 'Archivo', 'Inter', system-ui, sans-serif;
@@ -274,18 +286,16 @@ body.no-scroll { overflow: hidden; }
    to imply a source above, and three small stacked shadows instead of one big
    blur, which is what separates a lit object from a drop-shadow filter. */
 .btn--solid {
-  background-image: linear-gradient(96deg,
-    #7060ff 0%,
-    #4b3ef5 26%,
-    #3a2ee0 58%,
-    #2f5eea 82%,
-    #1e7be5 100%);
-  color: #fff;
+  background-image: var(--grad-btn);
+  /* near-black, not white: white tops out at 3.76:1 anywhere on this ramp.
+     Dark ink runs 5.0-8.9:1, and the label sits in the middle band where it
+     is ~6.6:1. */
+  color: var(--btn-ink);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.2),
     0 1px 2px rgba(0,0,0,.3),
-    0 3px 8px rgba(58,46,224,.24),
-    0 10px 26px -8px rgba(58,46,224,.5);
+    0 3px 8px rgba(68,129,235,.28),
+    0 10px 26px -8px rgba(4,190,254,.45);
 }
 .btn--ghost { background: rgba(238,244,255,.03); border: 1px solid var(--hair-2); color: var(--soft); }
 .btn--full { width: 100%; }
@@ -1106,16 +1116,15 @@ body.intro-skip .nav {
     min-height: 52px;
     padding: 15px 26px;
     border-radius: 18px;
-    background-image: linear-gradient(96deg,
-      #7060ff 0%, #4b3ef5 26%, #3a2ee0 58%, #2f5eea 82%, #1e7be5 100%);
+    background-image: var(--grad-btn);
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,.2),
       0 2px 6px rgba(0,0,0,.35),
-      0 12px 34px -10px rgba(58,46,224,.75);
+      0 12px 34px -10px rgba(4,190,254,.62);
     font-family: var(--f-mono);
     font-size: 12px; font-weight: 500;
     letter-spacing: .12em; text-transform: uppercase;
-    color: #fff;
+    color: var(--btn-ink);
     white-space: nowrap;
     /* parked below the fold edge until it is called for */
     transform: translate3d(-50%, calc(100% + 28px), 0);
@@ -1224,18 +1233,17 @@ body.intro-skip .nav {
     margin-top: 22px;
     padding: 14px 30px;
     border-radius: 18px;
-    background-image: linear-gradient(96deg,
-      #7060ff 0%, #4b3ef5 26%, #3a2ee0 58%, #2f5eea 82%, #1e7be5 100%);
+    background-image: var(--grad-btn);
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,.2),
       0 1px 2px rgba(0,0,0,.3),
-      0 3px 8px rgba(58,46,224,.24),
-      0 10px 26px -8px rgba(58,46,224,.5);
+      0 3px 8px rgba(68,129,235,.28),
+      0 10px 26px -8px rgba(4,190,254,.45);
     font-family: var(--f-mono);
     font-variation-settings: normal;
     font-size: 12px; font-weight: 500;
     letter-spacing: .12em; text-transform: uppercase;
-    color: #fff;
+    color: var(--btn-ink);
     transition: transform var(--t-press) ease-out;
   }
   .nav-links .m-cta:active { transform: scale(.97); }
