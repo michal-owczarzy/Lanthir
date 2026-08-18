@@ -191,19 +191,33 @@ html:not(.js) .loader{display:none}
   padding:11px 20px;border:1px solid var(--line);border-radius:999px;transition:.3s var(--ease)}
 .nav__tel:hover{border-color:var(--moss-hi);color:var(--moss-hi);transform:translateY(-1px)}
 .nav__tel svg{width:15px;height:15px}
-@media (max-width:900px){.nav__links{display:none}.nav__in{height:64px}}
+@media (max-width:900px){
+  .nav__links{display:none}
+  .nav__in{height:64px}
+  /* na mobilu zbývá na telefon jen ikona — číslo nese spodní lišta a hero */
+  .nav__tel{font-size:0;gap:0;width:44px;height:44px;padding:0;justify-content:center}
+  .nav__tel svg{width:18px;height:18px}
+}
 
 /* ---------- znak / logotyp ---------- */
-.mark{display:flex;align-items:center;gap:13px}
-.mark__ico{width:34px;height:34px;flex:none;color:var(--moss-hi)}
-.mark__txt{display:flex;flex-direction:column;line-height:1}
-.mark__top{font-family:var(--mono);font-size:8.5px;letter-spacing:.3em;color:var(--ink-dim);text-transform:uppercase}
-.mark__name{font-family:var(--display);font-weight:800;font-stretch:108%;font-size:20px;letter-spacing:-.01em;color:var(--ink)}
+.mark{display:flex;align-items:center;gap:11px}
+.mark__ico{flex:none;color:var(--moss-hi)}
+.mark__ico--wrench{width:30px;height:30px}
+.mark__ico--tub{width:34px;height:30px}
+/* všechna tři slova stejnou velikostí, Vobořil zeleně */
+.mark__name{font-family:var(--display);font-weight:800;font-stretch:106%;font-size:18px;
+  letter-spacing:-.01em;line-height:1;color:var(--ink);white-space:nowrap}
 .mark__name b{color:var(--moss-hi);font-weight:800}
 .light .mark__name{color:var(--ink-dark)}
 .light .mark__name b{color:var(--moss-ink)}
 .light .mark__ico{color:var(--moss-ink)}
-.light .mark__top{color:var(--ink-dark-dim)}
+@media (max-width:900px){
+  .mark{gap:8px}
+  .mark__name{font-size:13px}
+  .mark__ico--wrench{width:22px;height:22px}
+  .mark__ico--tub{width:25px;height:22px}
+}
+@media (max-width:380px){ .mark__ico--wrench{display:none} }
 
 /* ============================================================
    HERO
@@ -313,7 +327,10 @@ html.is-revealed .rv > i,.is-in .rv > i{transform:none}
 .act__step p{font-size:14.5px;line-height:1.6;color:var(--ink-dim);margin-top:5px;max-width:42ch;
   max-height:0;opacity:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .4s}
 .act__step.is-on p{max-height:120px;opacity:1}
+.act__note{margin-top:var(--s3);font-size:14.5px;line-height:1.6;color:var(--ink-dim);max-width:44ch}
 .act__view{position:relative}
+.branch{stroke:url(#pipeGrad);stroke-width:5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.fx{stroke:#93C75B;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .act__svg{width:100%;height:auto;max-height:58svh;display:block;overflow:visible}
 .act__readout{display:flex;gap:26px;margin-top:var(--s3);font-family:var(--mono);font-size:11px;
   letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim)}
@@ -510,21 +527,25 @@ html.is-revealed .rv > i,.is-in .rv > i{transform:none}
 
 <header class="nav" id="nav">
   <div class="wrap nav__in">
-    <a href="#uvod" class="mark" aria-label="Instalatér Vobořil — úvod">
-      <svg class="mark__ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.4"
+    <a href="#uvod" class="mark" aria-label="Instalatér Vobořil koupelny — úvod">
+      <svg class="mark__ico mark__ico--wrench" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.6"
            stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
         <path d="M41 12a13 13 0 0 0-13 21L12 49a5 5 0 0 0 7 7l16-16a13 13 0 0 0 17-17l-8 8-6-2-2-6 8-8a13 13 0 0 0-3-3Z"/>
       </svg>
-      <span class="mark__txt">
-        <span class="mark__top">Instalatér</span>
-        <span class="mark__name"><b>Vobořil</b> koupelny</span>
-      </span>
+      <span class="mark__name">Instalatér <b>Vobořil</b> koupelny</span>
+      <svg class="mark__ico mark__ico--tub" viewBox="128 8 98 88" fill="none" stroke="currentColor" stroke-width="5.2"
+           stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+        <path d="M132 40h84v13a30 30 0 0 1-30 30h-24a30 30 0 0 1-30-30V40Z"/>
+        <path d="M152 83l-5 7M196 83l5 7"/>
+        <path d="M196 14h20a5 5 0 0 1 0 10h-20a5 5 0 0 1 0-10Z"/>
+        <path d="M200 27v7M208 27v9M216 27v7"/>
+      </svg>
     </a>
 
     <nav aria-label="Hlavní">
       <ul class="nav__links">
         <li><a href="#sluzby">Služby</a></li>
-        <li><a href="#topeni">Podlahové topení</a></li>
+        <li><a href="#instalaterske">Instalatérské práce</a></li>
         <li><a href="#galerie">Realizace</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
@@ -614,80 +635,84 @@ html.is-revealed .rv > i,.is-in .rv > i{transform:none}
   </div>
 </section>
 
-<!-- ══════════════ AKT: PODLAHOVÉ TOPENÍ ══════════════ -->
-<section class="act" id="topeni">
+<!-- ══════════════ AKT: INSTALATÉRSKÉ PRÁCE ══════════════ -->
+<section class="act" id="instalaterske">
   <div class="wrap act__stage" id="actStage">
     <div>
-      <p class="label up">Podlahové topení</p>
-      <h2 class="t-h2 up" style="margin:18px 0 var(--s3)">Od izolace<br>po betonáž</h2>
+      <p class="label up">Instalatérské práce</p>
+      <h2 class="t-h2 up" style="margin:18px 0 var(--s3)">Hlavní<br>činnost</h2>
 
       <ol class="act__steps" id="actSteps">
         <li class="act__step" data-step="0">
           <span class="act__num">01</span>
           <div>
-            <h3>Tepelná izolace</h3>
-            <p>Na podklad přijde izolace, aby teplo šlo nahoru do místnosti, a ne dolů k sousedovi.</p>
+            <h3>Baterie a sifony</h3>
+            <p>Výměna a oprava baterií, sifonů u umyvadel, dřezů i van. Včetně čištění ucpaných odpadů.</p>
           </div>
         </li>
         <li class="act__step" data-step="1">
           <span class="act__num">02</span>
           <div>
-            <h3>Rozvod trubek</h3>
-            <p>Okruh se klade v pravidelné rozteči — hustěji u oken a v koupelně, kde je největší tepelná ztráta.</p>
+            <h3>WC mísy, umyvadla, dřezy</h3>
+            <p>Výměna mís a nádržek, závěsných i kombi WC, umyvadel a kuchyňských dřezů.</p>
           </div>
         </li>
         <li class="act__step" data-step="2">
           <span class="act__num">03</span>
           <div>
-            <h3>Tlaková zkouška a betonáž</h3>
-            <p>Okruh se natlakuje a zabetonuje pod tlakem. Zalévá se až to, o čem je jisté, že drží.</p>
+            <h3>Bojlery a ohřev vody</h3>
+            <p>Montáž a výměna bojlerů včetně připojení, odvzdušnění a kontroly těsnosti.</p>
           </div>
         </li>
         <li class="act__step" data-step="3">
           <span class="act__num">04</span>
           <div>
-            <h3>Podlaha a zátop</h3>
-            <p>Po vyzrání betonu přijde dlažba nebo podlaha a řízený náběh topení.</p>
+            <h3>Sprchové kouty a vany</h3>
+            <p>Montáž a výměna sprchových koutů a van, odpadů i silikonových spár.</p>
           </div>
         </li>
       </ol>
+
+      <p class="act__note up">Veškeré sanitární zařízení včetně oprav a čištění.</p>
     </div>
 
     <div class="act__view">
       <svg class="act__svg" id="actSvg" viewBox="0 0 600 560" fill="none" aria-hidden="true">
         <defs>
-          <linearGradient id="warm" x1="0" y1="1" x2="0" y2="0">
-            <stop offset="0%" stop-color="#C08A4E" stop-opacity=".34"/>
-            <stop offset="100%" stop-color="#C08A4E" stop-opacity="0"/>
-          </linearGradient>
-          <linearGradient id="loop" x1="0" y1="0" x2="1" y2="1">
+          <linearGradient id="pipeGrad" gradientUnits="userSpaceOnUse" x1="0" y1="40" x2="0" y2="500">
             <stop offset="0%" stop-color="#6E9C42"/>
             <stop offset="100%" stop-color="#93C75B"/>
           </linearGradient>
         </defs>
 
-        <!-- topný okruh (půdorys) -->
-        <path id="loopPath" pathLength="1"
-              d="M70 50 H500 A30 30 0 0 1 500 110 H100 A30 30 0 0 0 100 170 H500 A30 30 0 0 1 500 230 H100 A30 30 0 0 0 100 290 H500 A30 30 0 0 1 500 350 H70"
-              stroke="url(#loop)" stroke-width="6" stroke-linecap="round"
+        <!-- stoupačka -->
+        <path id="riser" pathLength="1" d="M90 40 V500"
+              stroke="url(#pipeGrad)" stroke-width="7" stroke-linecap="round"
               stroke-dasharray="1" stroke-dashoffset="1"/>
-        <circle id="flowHalo" r="14" fill="#C08A4E" opacity="0" cx="70" cy="50"/>
-        <circle id="flowDot" r="6" fill="#C08A4E" cx="70" cy="50" opacity="0"/>
 
-        <!-- skladba podlahy (řez) -->
-        <rect id="warmth" x="20" y="520" width="560" height="0" fill="url(#warm)"/>
-        <g id="layers">
-          <rect class="ly" x="20" y="520" width="560" height="0" fill="#232B23"/>
-          <rect class="ly" x="20" y="520" width="560" height="0" fill="#3A4A32"/>
-          <rect class="ly" x="20" y="520" width="560" height="0" fill="#4E5C4A"/>
-          <rect class="ly" x="20" y="520" width="560" height="0" fill="#74836D"/>
-        </g>
-        <line x1="20" y1="521" x2="580" y2="521" stroke="#F2F5F1" stroke-opacity=".16"/>
+        <!-- odbočky k jednotlivým zařízením -->
+        <path class="branch" pathLength="1" d="M90 100 H452"/>
+        <path class="branch" pathLength="1" d="M90 220 H452"/>
+        <path class="branch" pathLength="1" d="M90 340 H452"/>
+        <path class="branch" pathLength="1" d="M90 460 H452"/>
+
+        <!-- zařizovací předměty -->
+        <g class="fx" transform="translate(464,64)" opacity="0"><path d="M24 10h16M32 10v14M32 24h10a8 8 0 0 1 8 8v6"/><path d="M14 50h44v4a12 12 0 0 1-12 12H26a12 12 0 0 1-12-12z"/></g>
+        <g class="fx" transform="translate(464,184)" opacity="0"><path d="M18 8h22v14H18z"/><path d="M27 22v6"/><path d="M12 28h34v4a18 18 0 0 1-18 18h-2a14 14 0 0 1-14-14z"/><path d="M24 50l-2 14h14l-2-14"/></g>
+        <g class="fx" transform="translate(464,304)" opacity="0"><path d="M20 6h32a6 6 0 0 1 6 6v40a6 6 0 0 1-6 6H20a6 6 0 0 1-6-6V12a6 6 0 0 1 6-6z"/><circle cx="36" cy="44" r="5"/><path d="M24 58v8M48 58v8"/></g>
+        <g class="fx" transform="translate(464,424)" opacity="0"><path d="M8 36h56v6a16 16 0 0 1-16 16H24A16 16 0 0 1 8 42z"/><path d="M18 58l-4 8M54 58l4 8"/><path d="M44 6h22a3 3 0 0 1 0 6H44a3 3 0 0 1 0-6z"/><path d="M50 14v8M56 14v10M62 14v8"/></g>
+
+        <circle class="tee" cx="90" cy="100" r="5.5" fill="#6E9C42" opacity="0"/>
+        <circle class="tee" cx="90" cy="220" r="5.5" fill="#6E9C42" opacity="0"/>
+        <circle class="tee" cx="90" cy="340" r="5.5" fill="#6E9C42" opacity="0"/>
+        <circle class="tee" cx="90" cy="460" r="5.5" fill="#6E9C42" opacity="0"/>
+        <circle id="flowHalo" cx="90" cy="40" r="14" fill="#C08A4E" opacity="0"/>
+        <circle id="flowDot"  cx="90" cy="40" r="6"  fill="#C08A4E" opacity="0"/>
       </svg>
 
       <p class="act__readout">
-        <span>Rozteč <b id="roLoop">—</b></span>
-        <span>Vrstva <b id="roLayer">—</b></span>
+        <span>Úsek <b id="roStep">—</b></span>
+        <span>Zařízení <b id="roItem">—</b></span>
         <span>Stav <b id="roState">připraveno</b></span>
       </p>
     </div>
@@ -699,7 +724,7 @@ html.is-revealed .rv > i,.is-in .rv > i{transform:none}
   <div class="wrap">
     <div class="ba__head">
       <p class="label up">Bytové jádro</p>
-      <h2 class="t-h2 up" style="margin:18px 0 16px">Umakart ven,<br>zděná koupelna dovnitř</h2>
+      <h2 class="t-h2 up" style="margin:18px 0 16px">Podívejte se na svou<br>novou koupelnu.</h2>
       <p class="t-lead dim up">Přetáhněte posuvník. Vlevo stav před rekonstrukcí, vpravo hotová koupelna.</p>
     </div>
 
@@ -939,20 +964,20 @@ var FOTO = {
 var SLUZBY = [
   { tag:'Voda', k:'voda', o:1, n:'Rozvody vody a kanalizace',
     d:'Opravy, montáže a rekonstrukce rozvodů v bytech i domech. Výměna stoupaček, baterií, odpadů.' },
-  { tag:'Topení', k:'topeni', o:2, n:'Topenářské práce',
-    d:'Rozvody topení, výměna a montáž radiátorů, opravy netěsností.' },
-  { tag:'Topení', k:'podlahove', o:2, n:'Podlahové topení',
-    d:'Kompletní realizace včetně tepelné izolace a zajištění betonáže.' },
   { tag:'Koupelny', k:'koupelny', o:0, n:'Rekonstrukce koupelen a bytů',
     d:'Bytová jádra i zděné koupelny na klíč — od návrhu po osazení zařizovacích předmětů.' },
   { tag:'Koupelny', k:'izolace', o:3, n:'Hydroizolace, obklady, dlažba',
     d:'Izolace mokrých míst, obkladačské práce a pokládka dlažby.' },
+  { tag:'Servis', k:'drobne', o:5, n:'Drobné opravy a montáže',
+    d:'V bytech, domech i na zahradách. To, na co se jinde nikdo nechce rozjet.' },
+  { tag:'Topení', k:'topeni', o:2, n:'Topenářské práce',
+    d:'Rozvody topení, výměna a montáž radiátorů, opravy netěsností.' },
   { tag:'Stavba', k:'stavba', o:6, n:'Stavební činnost',
     d:'Bourání, vyzdívky, přizdívky a zednické zapravení po instalacích.' },
   { tag:'Elektro', k:'elektro', o:4, n:'Elektroinstalace',
     d:'Montáž a opravy, výměna elektrospotřebičů, zásuvky a světla v rekonstruovaném prostoru.' },
-  { tag:'Servis', k:'drobne', o:5, n:'Drobné opravy a montáže',
-    d:'V bytech, domech i na zahradách. To, na co se jinde nikdo nechce rozjet.' }
+  { tag:'Topení', k:'podlahove', o:2, n:'Podlahové topení',
+    d:'Kompletní realizace včetně tepelné izolace a zajištění betonáže.' }
 ];
 
 var IKONY = {
@@ -1237,23 +1262,56 @@ document.getElementById('baAfter').src = FOTO.after;
       heroImg = document.getElementById('heroImg'),
       hero = document.getElementById('uvod'),
       callbar = document.getElementById('callbar'),
-      act = document.getElementById('topeni'),
-      loopPath = document.getElementById('loopPath'),
+      act = document.getElementById('instalaterske'),
+      riser = document.getElementById('riser'),
+      branches = [].slice.call(document.querySelectorAll('.branch')),
+      tees = [].slice.call(document.querySelectorAll('.tee')),
+      fixtures = [].slice.call(document.querySelectorAll('.fx')),
       flowDot = document.getElementById('flowDot'),
       flowHalo = document.getElementById('flowHalo'),
-      warmth = document.getElementById('warmth'),
-      layers = [].slice.call(document.querySelectorAll('.ly')),
       steps = [].slice.call(document.querySelectorAll('.act__step')),
-      roLoop = document.getElementById('roLoop'),
-      roLayer = document.getElementById('roLayer'),
+      roStep = document.getElementById('roStep'),
+      roItem = document.getElementById('roItem'),
       roState = document.getElementById('roState');
 
-  var LAYER_NAMES = ['podklad', 'izolace', 'beton', 'dlažba'];
-  var LAYER_H = [22, 34, 46, 26];   // výšky vrstev v souřadnicích SVG
-  var BASE = 520, WARM_H = 96;      // musí být nad prvním voláním setLayers()
-  var pathLen = loopPath.getTotalLength ? loopPath.getTotalLength() : 0;
+  /* Pozor: všechny tyhle `var` musí být DEKLAROVANÉ NAD prvním voláním setAct(),
+     jinak se hoistnou jako undefined a statický stav se vykreslí rozbitě. */
+  var ITEMS  = ['baterie a sifony', 'WC, umyvadla, dřezy', 'bojlery', 'sprchy a vany'];
+  var STATES = ['výměna', 'montáž', 'připojení', 'hotovo'];
+  // podíl délky stoupačky, ve kterém sedí jednotlivé odbočky (y 100/220/340/460 z rozsahu 40–500)
+  var BRANCH_AT = [0.130, 0.391, 0.652, 0.913];
+  var riserLen = riser.getTotalLength ? riser.getTotalLength() : 0;
 
   var lastY = window.scrollY, ticking = false, actDone = -1;
+
+  function setAct(p){
+    // voda teče stoupačkou dolů; jak ji mine, odbočka se dokreslí a zařízení naskočí
+    var draw = clamp(p / 0.92, 0, 1);
+    riser.style.strokeDashoffset = String(1 - draw);
+
+    for (var i = 0; i < branches.length; i++){
+      var b = clamp((draw - BRANCH_AT[i]) / 0.09, 0, 1);
+      branches[i].style.strokeDashoffset = String(1 - b);
+      tees[i].setAttribute('opacity', b > 0.02 ? '1' : '0');
+      fixtures[i].setAttribute('opacity', String(b));
+    }
+
+    if (riserLen && draw > 0.001 && draw < 0.999){
+      var pt = riser.getPointAtLength(draw * riserLen);
+      flowDot.setAttribute('cy', pt.y);
+      flowHalo.setAttribute('cy', pt.y);
+      flowDot.setAttribute('opacity', '1');
+      flowHalo.setAttribute('opacity', '.26');
+    } else {
+      if (draw >= 0.999 && riserLen){
+        var endPt = riser.getPointAtLength(riserLen);
+        flowDot.setAttribute('cy', endPt.y);
+        flowHalo.setAttribute('cy', endPt.y);
+      }
+      flowDot.setAttribute('opacity', draw >= 0.999 ? '1' : '0');
+      flowHalo.setAttribute('opacity', '0');
+    }
+  }
 
   // pinning aktu jen tam, kde nehrozí skákání kvůli adresnímu řádku
   var PIN = FINE && !RM.matches;
@@ -1263,27 +1321,12 @@ document.getElementById('baAfter').src = FOTO.after;
     stage.style.position = 'sticky';
     stage.style.top = '0';
   } else {
-    // statický cílový stav: okruh nakreslený, vrstvy postavené
-    loopPath.style.strokeDashoffset = '0';
-    setLayers(1);
+    // statický cílový stav: celý rozvod nakreslený, všechna zařízení vidět
+    setAct(1);
     steps.forEach(function(s){ s.classList.add('is-on'); });
-    roLoop.textContent = '150 mm'; roLayer.textContent = 'dlažba'; roState.textContent = 'hotovo';
-  }
-
-  function setLayers(p){
-    // vrstvy rostou postupně odspodu, teplo stoupá nad hotovou podlahu
-    var y = BASE;
-    for (var i = 0; i < layers.length; i++){
-      var seg = clamp((p - i * 0.22) / 0.22, 0, 1);
-      var h = LAYER_H[i] * seg;
-      y -= h;
-      layers[i].setAttribute('height', h);
-      layers[i].setAttribute('y', y);
-    }
-    var wp = clamp((p - 0.8) / 0.2, 0, 1);
-    warmth.setAttribute('height', WARM_H * wp);
-    warmth.setAttribute('y', y - WARM_H * wp);
-    warmth.setAttribute('opacity', wp);
+    roStep.textContent = '4/4';
+    roItem.textContent = 'sprchy a vany';
+    roState.textContent = 'hotovo';
   }
 
   function frame(){
@@ -1319,30 +1362,15 @@ document.getElementById('baAfter').src = FOTO.after;
         var span = act.offsetHeight - vh;
         var p = clamp(-r.top / span, 0, 1);
 
-        // 0–.62 kreslení okruhu, .15–1 stavba vrstev
-        var draw = clamp(p / 0.62, 0, 1);
-        loopPath.style.strokeDashoffset = String(1 - draw);
-
-        if (pathLen && draw > 0.001 && draw < 0.999){
-          var pt = loopPath.getPointAtLength(draw * pathLen);
-          flowDot.setAttribute('cx', pt.x); flowDot.setAttribute('cy', pt.y);
-          flowHalo.setAttribute('cx', pt.x); flowHalo.setAttribute('cy', pt.y);
-          flowDot.setAttribute('opacity', '1');
-          flowHalo.setAttribute('opacity', String(0.22 + 0.12 * Math.sin(y / 40)));
-        } else {
-          flowDot.setAttribute('opacity', draw >= 0.999 ? '1' : '0');
-          flowHalo.setAttribute('opacity', '0');
-        }
-
-        setLayers(clamp((p - 0.15) / 0.85, 0, 1));
+        setAct(p);
 
         var idx = clamp(Math.floor(p * 4), 0, 3);
         if (idx !== actDone){
           actDone = idx;
           steps.forEach(function(s, i){ s.classList.toggle('is-on', i === idx); });
-          roLoop.textContent = idx >= 1 ? '150 mm' : '—';
-          roLayer.textContent = LAYER_NAMES[idx];
-          roState.textContent = ['izolace','pokládka','tlaková zkouška','hotovo'][idx];
+          roStep.textContent = (idx + 1) + '/4';
+          roItem.textContent = ITEMS[idx];
+          roState.textContent = STATES[idx];
         }
       }
     }
