@@ -1370,12 +1370,19 @@ document.getElementById('baAfter').src = FOTO.after;
   // elementem — ten se převede na řetězec "[object HTMLDivElement]", takže všech
   // 29 prvků sdílelo jeden čítač a poslední se objevil se zpožděním 1,96 s.
   var seen = new WeakMap();
+  var vh = window.innerHeight;
   [].forEach.call(targets, function(el){
     var par = el.parentElement;
     var i = seen.get(par) || 0;
     seen.set(par, i + 1);
     if (i) el.style.transitionDelay = Math.min(i, 3) * 0.05 + 's';
-    io.observe(el);
+
+    /* Co je při načtení už ve výřezu, odhalíme rovnou. Observer má zápornou
+       spodní hranici (-12 %), takže prvky u dolního okraje prvního výřezu by
+       jinak zůstaly neviditelné, dokud uživatel neposkroluje — na telefonu se
+       to týkalo hero tlačítka „Zavolat“, tedy toho nejdůležitějšího na webu. */
+    if (el.getBoundingClientRect().top < vh) el.classList.add('is-in');
+    else io.observe(el);
   });
 })();
 
