@@ -1,7 +1,9 @@
 # Web Tomáše Vobořila běží na vlastní doméně instalatervoboril.cz.
 # Kopie pod lanthir.cz se nepublikuje — přesměrujeme ji na ostrou doménu,
 # ať nevzniká duplicitní obsah a zákazníkův web nežije pod adresou studia.
-# Vykřičník je nutný: bez něj Netlify přednostně naservíruje existující soubor
-# a přesměrování se nikdy neuplatní.
-/customer/instalater-voboril      https://instalatervoboril.cz/          301!
-/customer/instalater-voboril/*    https://instalatervoboril.cz/:splat    301!
+# Zdroj webu zůstává v repu — staví se z něj projekt pro instalatervoboril.cz.
+# Z výstupu pro lanthir.cz ho vyřazuje build command, takže na téhle cestě
+# žádný soubor neleží a obyčejné 301 se uplatní. Vykřičník (Netlify "force")
+# Cloudflare Pages nezná, proto tu není.
+/customer/instalater-voboril      https://instalatervoboril.cz/          301
+/customer/instalater-voboril/*    https://instalatervoboril.cz/:splat    301
