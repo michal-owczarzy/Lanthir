@@ -126,9 +126,16 @@ h1,h2,h3{
 .btn--fill{--btn-bg:var(--btn-fill-bg);color:var(--btn-fill-fg)}
 .btn--acc{--btn-bg:var(--acc);color:#fff}
 .btn--line{border-color:color-mix(in srgb,currentColor 24%,transparent);color:inherit}
+/* Stín leží na pseudoprvku a nabíhá průhledností. box-shadow se animovat dá,
+   ale jde přes malování; opacity zvládne kompozitor sám. */
+.btn--fill{position:relative}
+.btn--fill::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  box-shadow:0 1px 2px rgba(0,0,0,.14),0 8px 24px rgba(0,0,0,.20);
+  opacity:0;transition:opacity .35s var(--ease);
+}
 @media (hover:hover){
-  /* gradient se mezi hodnotami neanimuje, proto hover nese stín a ne barva */
-  .btn--fill:hover{box-shadow:0 1px 2px rgba(0,0,0,.14),0 8px 24px rgba(0,0,0,.20)}
+  .btn--fill:hover::after{opacity:1}
   .btn--acc:hover{--btn-bg:var(--acc-ink)}
   .btn--line:hover{border-color:currentColor}
 }
@@ -395,9 +402,16 @@ html:not(.is-loading) .loader{pointer-events:none}
 .ev__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:18px;margin-top:var(--s4)}
 .ev{position:relative;display:flex;flex-direction:column;
   padding:26px 24px 22px;background:var(--paper);border:1px solid var(--line-dark);border-radius:4px;
-  transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .4s}
-@media (hover:hover){.ev:hover{transform:translateY(-4px);border-color:transparent;
-  box-shadow:0 1px 2px rgba(25,26,30,.05),0 8px 26px rgba(25,26,30,.09)}}
+  transition:transform .5s var(--ease),border-color .4s}
+.ev::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  box-shadow:0 1px 2px rgba(25,26,30,.05),0 8px 26px rgba(25,26,30,.09);
+  opacity:0;transition:opacity .5s var(--ease);
+}
+@media (hover:hover){
+  .ev:hover{transform:translateY(-4px);border-color:transparent}
+  .ev:hover::after{opacity:1}
+}
 .ev__date{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--acc-ink);display:flex;align-items:center;gap:8px}
 .ev__date b{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
@@ -515,6 +529,20 @@ html:not(.is-loading) .loader{pointer-events:none}
 .soc a{width:44px;height:44px}
 .mate a.mate__link{position:relative}
 .mate a.mate__link::after{content:"";position:absolute;inset:-12px -10px}
+
+/* ============================================================
+   ODEZVA NA STISK
+   Rozhraní má dát najevo, že poslouchá, i u odkazů — ne jen u tlačítek.
+   Široké blokové odkazy ztlumíme, drobné zmenšíme; zmenšovat odkaz přes
+   celou šířku vypadá rozbitě.
+   ============================================================ */
+.brand,.nav-links a,.sheet a,.ev__go,.mate a.mate__link{
+  transition:transform .16s ease-out,opacity .25s,background-color .25s,
+             color .3s var(--ease),border-color .3s}
+.brand:active,.nav-links a:active,.ev__go:active,.mate a.mate__link:active{transform:scale(.97)}
+.sheet a:active{transform:scale(.98)}
+.ct__big{transition:color .35s var(--ease),opacity .16s ease-out}
+.ct__big:active{opacity:.62}
 
 /* ============================================================
    ODHALOVÁNÍ PŘI SCROLLU
@@ -1239,33 +1267,53 @@ html:not(.is-loading) .loader{pointer-events:none}
      ============================================================ */
   var channel = $('#cenik'), pill = $('#pill');
   var tabs = $$('.seg button'), panels = {online:$('#p-online'), offline:$('#p-offline')};
-  var sx = new Spring(0, {zeta:1, response:.34});
-  var sw = new Spring(0, {zeta:1, response:.34});
+  // Přepínač je malá změna stavu -> odezva .25 s, kriticky tlumeno.
+  var sx = new Spring(0, {zeta:1, response:.25});
   var pillRaf = null;
 
-  function measure(btn){ return {x: btn.offsetLeft, w: btn.offsetWidth}; }
-
-  function drawPill(){
-    pill.style.transform = 'translateX(' + sx.x + 'px)';
-    pill.style.width = sw.x + 'px';
+  // Šířku držíme pevnou podle širšího segmentu a hýbeme jen transformem.
+  // Zapisovat width každý snímek znamená přepočet layoutu při 60 fps —
+  // segmenty se přitom liší o jediný pixel, takže by to stejně nic nepřineslo.
+  function sizePill(){
+    var w = 0;
+    tabs.forEach(function(t){ if (t.offsetWidth > w) w = t.offsetWidth; });
+    pill.style.width = w + 'px';
   }
+
+  function drawPill(){ pill.style.transform = 'translateX(' + sx.x + 'px)'; }
+
+  var pillGuard = null;
+  function settlePill(){
+    if (pillRaf){ cancelAnimationFrame(pillRaf); pillRaf = null; }
+    if (pillGuard){ clearTimeout(pillGuard); pillGuard = null; }
+    sx.x = sx.target; sx.v = 0;
+    drawPill();
+    pill.style.willChange = '';               // vrstvu držíme jen po dobu pohybu
+  }
+
   function runPill(){
     if (pillRaf) return;
     var last = null;
+    pill.style.willChange = 'transform';
+    // Když requestAnimationFrame neběží (skrytá záložka, throttling), pilulka
+    // by zůstala u starého segmentu, zatímco obsah už je přepnutý. Dorovnáme ji.
+    if (pillGuard) clearTimeout(pillGuard);
+    pillGuard = setTimeout(settlePill, 700);
     pillRaf = requestAnimationFrame(function loop(now){
       if (last === null) last = now;          // základ opět z hodin rAF
       var dt = (now - last) / 1000; last = now;
-      var a = sx.step(dt), b = sw.step(dt);
+      var done = sx.step(dt);
       drawPill();
-      if (a && b){ sx.x = sx.target; sw.x = sw.target; drawPill(); pillRaf = null; return; }
+      if (done){ settlePill(); return; }
       pillRaf = requestAnimationFrame(loop);
     });
   }
 
   function placePill(btn, animate){
-    var m = measure(btn);
-    sx.to(m.x); sw.to(m.w);
-    if (!animate || RM){ sx.x = m.x; sw.x = m.w; sx.v = sw.v = 0; drawPill(); return; }
+    sizePill();
+    var x = btn.offsetLeft;
+    sx.to(x);
+    if (!animate || RM){ sx.x = x; sx.v = 0; drawPill(); return; }
     runPill();
   }
 
