@@ -37,10 +37,12 @@
 
   --cold:#4A7B9D; --cold-hi:#8FC2E0; --cold-ink:#2B5877;
   --warm:#C0782F; --warm-hi:#E7A75C; --warm-ink:#8C5017;
-  --live:#E04830;
 
   /* aktivní kanál — přepíná se na .channel[data-ch] */
   --acc:#4A7B9D; --acc-hi:#8FC2E0; --acc-ink:#2B5877;
+
+  /* světelný lesk pro plné tlačítko a headline hera */
+  --sheen:linear-gradient(120deg,#fdfbfb 0%,#ebedee 100%);
 
   --line:rgba(245,242,236,.12);
   --line-dark:rgba(25,26,30,.15);
@@ -64,7 +66,7 @@
 :root{--btn-fill-bg:var(--ink);--btn-fill-fg:var(--paper);
   --dim-color:var(--fg-dark-dim);--label-color:var(--acc-ink)}
 .hero,.stats,.channel,.sec--dark,.foot,.ct__card,.nav,.sheet{
-  --btn-fill-bg:var(--fg);--btn-fill-fg:var(--ink);
+  --btn-fill-bg:var(--sheen);--btn-fill-fg:var(--ink);
   --dim-color:var(--fg-dim);--label-color:var(--acc-hi)}
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -115,7 +117,8 @@ h1,h2,h3{
   font-size:15px;font-weight:600;cursor:pointer;
   background:var(--btn-bg);border:1px solid transparent;
   transition:transform .18s ease-out,background-color .3s var(--ease),
-             border-color .3s var(--ease),color .3s var(--ease);
+             border-color .3s var(--ease),color .3s var(--ease),
+             box-shadow .35s var(--ease);
 }
 .btn:active{transform:scale(.97)}
 /* Tlačítka se řídí povrchem, na kterém leží — tmavé plochy jen
@@ -124,7 +127,8 @@ h1,h2,h3{
 .btn--acc{--btn-bg:var(--acc);color:#fff}
 .btn--line{border-color:color-mix(in srgb,currentColor 24%,transparent);color:inherit}
 @media (hover:hover){
-  .btn--fill:hover{--btn-bg:var(--acc-ink);color:#fff}
+  /* gradient se mezi hodnotami neanimuje, proto hover nese stín a ne barva */
+  .btn--fill:hover{box-shadow:0 1px 2px rgba(0,0,0,.14),0 8px 24px rgba(0,0,0,.20)}
   .btn--acc:hover{--btn-bg:var(--acc-ink)}
   .btn--line:hover{border-color:currentColor}
 }
@@ -227,24 +231,22 @@ html:not(.is-loading) .loader{pointer-events:none}
 .hero__in{position:relative;z-index:3;width:100%}
 .hero__grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--s4);align-items:end}
 
-.tally{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);
-  font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--fg);
-  padding:7px 14px 7px 11px;border:1px solid var(--line);border-radius:999px;
-  background:rgba(22,23,27,.42);backdrop-filter:blur(8px)}
-.tally b{width:7px;height:7px;border-radius:50%;background:var(--live);
-  box-shadow:0 0 0 0 rgba(224,72,48,.7);animation:tally 2.4s var(--ease-io) infinite}
-@keyframes tally{
-  0%{box-shadow:0 0 0 0 rgba(224,72,48,.6)}
-  60%{box-shadow:0 0 0 11px rgba(224,72,48,0)}
-  100%{box-shadow:0 0 0 0 rgba(224,72,48,0)}
-}
-
-.hero h1{margin:var(--s3) 0 var(--s3);max-width:14ch}
+.hero h1{margin:0 0 var(--s3);max-width:14ch}
 .line{display:block;overflow:hidden}
 .line>span{display:block;transform:translateY(105%);transition:transform 1.15s var(--ease)}
 .hero.is-live .line>span{transform:none}
 .hero.is-live .line:nth-child(2)>span{transition-delay:.09s}
 .hero.is-live .line:nth-child(3)>span{transition-delay:.18s}
+
+/* Lesk na headline. color:transparent je bezpečné jen tam, kde clip funguje —
+   jinak by titulek zmizel, proto @supports a dědičná barva jako záloha. */
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .hero h1 .line>span{
+    background-image:var(--sheen);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;
+  }
+}
 
 .hero__sub{max-width:46ch;color:#D9D6D0}
 .hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:var(--s3)}
@@ -562,7 +564,7 @@ html:not(.is-loading) .loader{pointer-events:none}
   .line>span{transform:none !important}
   .hero__media img{transform:none !important;opacity:1 !important}
   .hero__fade{opacity:1 !important;transform:none !important}
-  .tally b,.hero__cue i,.loader__bars i{animation:none}
+  .hero__cue i,.loader__bars i{animation:none}
   .loader__bars i{transform:scaleY(var(--h));opacity:1}
   .loader__cap{opacity:1;animation:none}
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important}
@@ -630,8 +632,6 @@ html:not(.is-loading) .loader{pointer-events:none}
   <div class="hero__in wrap">
     <div class="hero__grid">
       <div>
-        <span class="tally hero__fade"><b></b> Plzeň · Praha · online</span>
-
         <h1 class="t-hero">
           <span class="line"><span>Mikrofon, stůl</span></span>
           <span class="line"><span>a dva lidé, kteří</span></span>
