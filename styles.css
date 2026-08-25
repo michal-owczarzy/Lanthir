@@ -743,6 +743,29 @@ body.ready .hero-cue { opacity: 1; }
   font-size: clamp(1.05rem, 1.5vw, 1.3rem);
   letter-spacing: -0.01em;
 }
+/* a real client, not a demo — say so */
+.ref-cap { position: relative; }
+.ref-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 9px;
+  padding: 4px 10px;
+  border: 1px solid rgba(53,214,232,.34);
+  border-radius: 999px;
+  background: rgba(53,214,232,.07);
+  font-family: var(--f-mono);
+  font-size: 9.5px; font-weight: 500;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--cyan);
+}
+.ref-badge::before {
+  content: '';
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--spark);
+  box-shadow: 0 0 7px rgba(255,46,139,.7);
+}
+.ref--live { border-color: rgba(53,214,232,.26); }
 @media (hover: hover) { .ref:hover { transform: translate3d(0,-5px,0); } }
 .ref-more { margin-top: var(--s2); }
 

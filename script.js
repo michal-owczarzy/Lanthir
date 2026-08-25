@@ -223,6 +223,8 @@ const T = {
     'work.open': 'Otevřít živý web',
     'work.all':     'Zobrazit všechny ukázky',
     'work.1.ind':   'Restaurace',
+    'work.7.ind':   'Instalatérství &amp; koupelny',
+    'work.live':    'Ostrý provoz',
     'work.1.note':  'Denní menu · rezervace',
     'work.2.ind':   'Autoservis',
     'work.2.note':  'Služby · objednání',
@@ -455,6 +457,8 @@ const T = {
     'work.open': 'Open the live site',
     'work.all':     'View all work',
     'work.1.ind':   'Restaurant',
+    'work.7.ind':   'Plumbing &amp; bathrooms',
+    'work.live':    'Live client',
     'work.1.note':  'Daily menu · reservations',
     'work.2.ind':   'Car Service',
     'work.2.note':  'Services · booking',
@@ -687,6 +691,8 @@ const T = {
     'work.open': 'Otwórz żywą stronę',
     'work.all':     'Zobacz wszystkie realizacje',
     'work.1.ind':   'Restauracja',
+    'work.7.ind':   'Hydraulika &amp; łazienki',
+    'work.live':    'Klient na żywo',
     'work.1.note':  'Menu dnia · rezerwacje',
     'work.2.ind':   'Serwis samochodowy',
     'work.2.note':  'Usługi · umawianie',
@@ -1630,7 +1636,10 @@ function bootLightfall() {
    opens the genuine site, so nothing about the promise changes — only when we
    pay for it. */
 (function () {
-  const frames = Array.from(document.querySelectorAll('.ref-frame[data-src]'));
+  /* [data-noframe] tiles are real client sites on their own domains. They send
+     X-Frame-Options: DENY, so mounting an iframe would render a blocked blank
+     box over a perfectly good poster. They stay poster-only and click through. */
+  const frames = Array.from(document.querySelectorAll('.ref-frame[data-src]:not([data-noframe])'));
   if (!frames.length) return;
 
   const scale = () => frames.forEach(f => {

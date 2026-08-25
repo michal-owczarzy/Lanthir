@@ -361,6 +361,21 @@
       </header>
 
       <div class="ref-grid">
+        <!-- Real client, live on its own domain. It sends X-Frame-Options: DENY
+             and frame-ancestors 'none', so it cannot be embedded — data-noframe
+             stops the hover-to-live mount that the demo tiles use, and the
+             poster stands on its own. Clicking still opens the real site. -->
+        <a class="glow ref ref--live reveal" href="https://instalatervoboril.cz/" target="_blank" rel="noopener">
+          <span class="glow-edge" aria-hidden="true"></span>
+          <span class="glow-in">
+            <span class="ref-frame" data-noframe><img src="ref/instalater-voboril.jpg" alt="Web Instalatér Vobořil" loading="lazy" decoding="async" width="1024" height="640"></span>
+            <span class="ref-cap">
+              <span class="ref-ind" data-i18n="work.7.ind">Instalatérství &amp; koupelny</span>
+              <span class="ref-name">Instalatér Vobořil</span>
+              <span class="ref-badge" data-i18n="work.live">Ostrý provoz</span>
+            </span>
+          </span>
+        </a>
         <a class="glow ref reveal" href="/customer/restaurace-max/" target="_blank" rel="noopener">
           <span class="glow-edge" aria-hidden="true"></span>
           <span class="glow-in">
