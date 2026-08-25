@@ -921,6 +921,64 @@ body.ready .hero-cue { opacity: 1; }
 }
 .step.on .step-body p { opacity: 1; }
 
+/* ── FAQ ──────────────────────────────────────
+   Native <details>, so the answers exist in the DOM and are reachable by
+   keyboard and screen reader whether open or closed — which is also what
+   makes them indexable. */
+.faq { border-top: 1px solid var(--hair); }
+.faq-item { border-bottom: 1px solid var(--hair); }
+.faq-item summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: clamp(20px, 2.4vw, 28px) 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--f-display);
+  font-variation-settings: 'wdth' 108, 'wght' 500;
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  line-height: 1.3;
+  letter-spacing: -0.012em;
+  color: var(--soft);
+  transition: color .25s var(--e-out);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::marker { content: ''; }
+.faq-item[open] summary { color: var(--ink); }
+@media (hover: hover) { .faq-item summary:hover { color: var(--ink); } }
+.faq-item summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; border-radius: 4px; }
+
+/* the +/- marker, drawn rather than a glyph so it can rotate */
+.faq-item summary i {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  margin-top: .18em;
+}
+.faq-item summary i::before,
+.faq-item summary i::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 14px; height: 1.5px;
+  margin: -.75px 0 0 -7px;
+  border-radius: 2px;
+  background: var(--cyan);
+  transition: transform .3s var(--e-out), opacity .3s var(--e-out);
+}
+.faq-item summary i::after { transform: rotate(90deg); }
+.faq-item[open] summary i::after { transform: rotate(0deg); opacity: 0; }
+
+.faq-a { padding: 0 clamp(36px, 5vw, 60px) clamp(22px, 2.6vw, 30px) 0; }
+.faq-a p { max-width: 74ch; color: var(--soft); font-size: 16.5px; line-height: 1.65; }
+
+@media (max-width: 560px) {
+  .faq-item summary { font-size: 16.5px; gap: 16px; padding: 18px 0; }
+  .faq-a { padding-right: 0; padding-bottom: 20px; }
+  .faq-a p { font-size: 15.5px; }
+}
+
 /* ── People ───────────────────────────────────── */
 .people { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 40px); }
 .person { --radius: 24px; }
@@ -1076,7 +1134,15 @@ a.ci-val:hover { color: var(--spark); }
   background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
   opacity: .2;
 }
-.footer-bar { display: flex; align-items: center; justify-content: space-between; font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; color: var(--faint); }
+.footer-bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; color: var(--faint); }
+.footer-legal-links { display: flex; align-items: center; gap: 8px 22px; flex-wrap: wrap; margin-right: auto; }
+.footer-legal-links a, .footer-legal-links .cc-reopen {
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em;
+  color: var(--dim); min-height: 44px; display: inline-flex; align-items: center;
+  transition: color .25s var(--e-out);
+}
+.footer-legal-links a:hover, .footer-legal-links .cc-reopen:hover { color: var(--ink); }
+@media (max-width: 560px) { .footer-bar { gap: 4px 16px; } .footer-legal-links { gap: 0 16px; } }
 .to-top {
   min-width: 44px; min-height: 44px; width: 46px; height: 46px;
   display: flex; align-items: center; justify-content: center;
@@ -1145,6 +1211,80 @@ body.intro-skip .nav {
 @media (prefers-reduced-motion: reduce) {
   .sticky-cta { transition: opacity .01ms !important; }
 }
+
+/* ── Cookie consent ───────────────────────────
+   Accept and refuse are the same size and weight on purpose: a regulator
+   reading this should see two equal choices, not a bright yes beside a grey
+   maybe. Sits above the sticky CTA and clears the iOS home indicator. */
+.cc {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  z-index: 200;
+  width: min(100%, 980px);
+  padding: 0 clamp(12px, 3vw, 22px) calc(16px + env(safe-area-inset-bottom, 0px));
+  transform: translate3d(-50%, calc(100% + 24px), 0);
+  transition: transform .5s var(--e-spring);
+}
+.cc.on { transform: translate3d(-50%, 0, 0); }
+.cc-in {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 34px);
+  padding: 18px 22px;
+  border: 1px solid var(--hair-2);
+  border-radius: 18px;
+  background: #0a0f18;
+  box-shadow: 0 2px 8px rgba(0,0,0,.4), 0 18px 50px -12px rgba(0,0,0,.75);
+}
+.cc-copy strong {
+  display: block;
+  margin-bottom: 5px;
+  font-family: var(--f-mono);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--cyan);
+}
+.cc-copy p { font-size: 14px; line-height: 1.55; color: var(--soft); max-width: 68ch; }
+.cc-copy a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.cc-copy a:hover { color: var(--cyan); }
+.cc-act { display: flex; gap: 10px; flex-shrink: 0; }
+.cc-btn {
+  min-height: 44px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  border: 1px solid var(--hair-2);
+  background: rgba(238,244,255,.04);
+  color: var(--soft);
+  font-family: var(--f-mono);
+  font-size: 11.5px; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform var(--t-press) ease-out, border-color .25s var(--e-out), color .25s var(--e-out);
+}
+.cc-btn:active { transform: scale(.97); }
+.cc-btn:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+@media (hover: hover) { .cc-btn:hover { border-color: rgba(53,214,232,.55); color: var(--ink); } }
+.cc-yes { background-image: var(--grad-btn); border-color: transparent; color: var(--btn-ink); }
+
+@media (max-width: 720px) {
+  .cc-in { flex-direction: column; align-items: stretch; gap: 16px; padding: 18px; }
+  .cc-act { display: grid; grid-template-columns: 1fr 1fr; }
+  .cc-btn { padding: 12px 10px; font-size: 11px; }
+  .cc-copy p { font-size: 13.5px; }
+  /* the sticky CTA would sit under the banner — stand it down while asking */
+  body:has(.cc) .sticky-cta { opacity: 0; pointer-events: none; }
+}
+@media (prefers-reduced-motion: reduce) { .cc { transition: none; } }
+
+/* footer link that reopens the choice */
+.cc-reopen {
+  background: none; border: 0; padding: 0;
+  font: inherit; color: inherit; cursor: pointer;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.cc-reopen:hover { color: var(--ink); }
 
 /* ── Reveal ───────────────────────────────────── */
 .reveal {

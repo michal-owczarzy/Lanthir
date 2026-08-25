@@ -47,7 +47,7 @@
     "email": "kontakt@lanthir.cz",
     "telephone": "+420725528165",
     "identifier": { "@type": "PropertyValue", "name": "IČO", "value": "23741945" },
-    "address": { "@type": "PostalAddress", "addressCountry": "CZ" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Český Těšín", "addressCountry": "CZ" },
     "areaServed": "CZ",
     "priceRange": "Kč",
     "hasOfferCatalog": {
@@ -59,6 +59,26 @@
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Správa webu (ZÁKLAD)", "description": "Měsíční správa a monitoring webu od 399 Kč" } }
       ]
     }
+  }
+  </script>
+
+  <!-- FAQ structured data: lets the answers surface directly in search results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Můžu si web ponechat v samosprávě?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ano. K samosprávě je ovšem potřeba mít účet na GitHubu a také znalost Gitu a editace kódu. Celou námi naprogramovanou stránku vám rádi předáme." } },
+      { "@type": "Question", "name": "Co když takové znalosti neovládám?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Pokud takové schopnosti nemáte, máme pro naše zákazníky vytvořenou interní aplikaci, ve které si zákazník může upravovat obrázky a texty bez jakékoliv interakce se zdrojovým kódem. Tato aplikace je hrazena formou předplatného." } },
+      { "@type": "Question", "name": "Jak dlouho trvá webovou stránku nasadit?",
+        "acceptedAnswer": { "@type": "Answer", "text": "V Lanthiru vždy lpíme na individuálním zákaznickém přístupu, proto je to u každého zákazníka jiné a vždy záleží na komunikaci z jeho strany. Po technické stránce jsme schopni webovou stránku nasadit za dva dny." } },
+      { "@type": "Question", "name": "Co když mi webová stránka přestane fungovat? Pomůžete mi?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Přesně pro tento případ nabízíme podporu ve formě předplatného. Stránky ovšem nepadají ze dne na den, ale vždy tomu předchází déle trvající problém. Proto nabízíme i monitoring webových stránek. Náš monitoring dokáže výpadek predikovat tak, že jsme schopni mu zamezit. Pokud jej predikovat nedokážeme, umíme velmi efektivně zkrátit dobu prostoje, protože víme, kde chyba nastala." } },
+      { "@type": "Question", "name": "Jsou vaše ceny pevně dané?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Nejsou. Ceny jsou ovlivněny primárně časovou náročností tvorby webu a množstvím webů a balíčků, které si u nás zákazník objedná. Ceny jsou individuální, tudíž pro sjednání ceny pro váš web prosím kontaktujte našeho obchodního zástupce." } }
+    ]
   }
   </script>
 
@@ -76,31 +96,26 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..600&family=Inter:wght@200;400;600&family=JetBrains+Mono:wght@400;500&display=swap">
   </noscript>
 
-  <!-- Google tag (gtag.js) — held back until the main thread is idle or the
-       visitor first interacts, so it never competes with the first paint. -->
+  <!-- Google Analytics — loaded ONLY after the visitor has agreed.
+       Analytics cookies are not "strictly necessary", so under the ePrivacy
+       directive and GDPR they need prior, active consent: the tag must not be
+       requested at all until then. The banner in cookies.js sets the flag. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    (function () {
-      var done = false;
-      function load() {
-        if (done) return;
-        done = true;
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-VQRNZH1QTF';
-        document.head.appendChild(s);
-        gtag('js', new Date());
-        gtag('config', 'G-VQRNZH1QTF');
-      }
-      ['pointerdown', 'keydown', 'scroll'].forEach(function (t) {
-        addEventListener(t, load, { once: true, passive: true });
-      });
-      addEventListener('load', function () {
-        (window.requestIdleCallback || function (f) { setTimeout(f, 2200); })(load, { timeout: 4000 });
-      });
-    })();
+    window.__loadAnalytics = function () {
+      if (window.__analyticsLoaded) return;
+      window.__analyticsLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-VQRNZH1QTF';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      /* IP anonymisation on, and no ad signals */
+      gtag('config', 'G-VQRNZH1QTF', { anonymize_ip: true, allow_google_signals: false });
+    };
   </script>
+  <script src="cookies.js" defer></script>
 </head>
 <body>
 
@@ -135,9 +150,10 @@
         <li style="--i:1"><a href="#reference" data-i18n="nav.work">Reference</a></li>
         <li style="--i:2"><a href="#cenik"     data-i18n="nav.pricing">Ceník</a></li>
         <li style="--i:3"><a href="#postup"    data-i18n="nav.process">Postup</a></li>
-        <li style="--i:4"><a href="#about"     data-i18n="nav.about">O nás</a></li>
-        <li style="--i:5"><a href="#kontakt"   data-i18n="nav.contact">Kontakt</a></li>
-        <li style="--i:6" class="nav-links-cta"><a href="#kontakt" class="m-cta" data-i18n="nav.cta">Nezávazná poptávka</a></li>
+        <li style="--i:4"><a href="#faq"       data-i18n="nav.faq">FAQ</a></li>
+        <li style="--i:5"><a href="#about"     data-i18n="nav.about">O nás</a></li>
+        <li style="--i:6"><a href="#kontakt"   data-i18n="nav.contact">Kontakt</a></li>
+        <li style="--i:7" class="nav-links-cta"><a href="#kontakt" class="m-cta" data-i18n="nav.cta">Nezávazná poptávka</a></li>
       </ul>
       <div class="lang-switch">
         <button class="ls-btn active" data-lang="cs">CZ</button>
@@ -158,8 +174,8 @@
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="container hero-copy">
       <h1 class="hero-h1" id="heroH1">
-        <span class="hero-l1" data-i18n="hero.l1">My jsme <em>Lanthir.</em></span>
-        <span class="hero-l2" data-i18n="hero.l2">Váš technologický partner pro růst a provoz firmy.</span>
+        <span class="hero-l1" data-i18n="hero.l1">My jsme <em>Lanthir</em></span>
+        <span class="hero-l2" data-i18n="hero.l2">Váš technologický partner pro růst a provoz firmy</span>
       </h1>
       <p class="lede" data-i18n="hero.sub">Navrhujeme webové stránky na míru a staráme se o jejich provoz. Webová aplikace, e-shop nebo rezervační systém — s SSL, hostingem, SEO optimalizací a monitoringem dostupnosti.</p>
       <div class="row">
@@ -175,7 +191,7 @@
     <div class="container">
       <header class="head reveal">
         <span class="tag" data-i18n="svc.tag">Co děláme</span>
-        <h2 class="h2" data-i18n="svc.heading">Naše<br><em>produkty.</em></h2>
+        <h2 class="h2" data-i18n="svc.heading">Naše<br><em>produkty</em></h2>
       </header>
 
       <div class="wheel-wrap reveal">
@@ -340,7 +356,7 @@
     <div class="container">
       <header class="head reveal">
         <span class="tag" data-i18n="work.tag">Reference</span>
-        <h2 class="h2" data-i18n="work.heading">Naše <em>reference.</em></h2>
+        <h2 class="h2" data-i18n="work.heading">Naše <em>reference</em></h2>
         <p class="lede" data-i18n="work.sub">Weby, které jsme vytvořili pro naše zákazníky. Klikněte a projděte si je jako skutečný web.</p>
       </header>
 
@@ -383,7 +399,7 @@
     <div class="container">
       <header class="head reveal">
         <span class="tag" data-i18n="price.tag">Ceník</span>
-        <h2 class="h2" data-i18n="price.heading">Ceny za <em>naše služby.</em></h2>
+        <h2 class="h2" data-i18n="price.heading">Ceny za <em>naše služby</em></h2>
         <p class="lede" data-i18n="price.sub">Transparentní ceny tvorby webových stránek bez skrytých poplatků. Vyberte jednorázové vytvoření webu — nebo pravidelnou správu, monitoring a SEO optimalizaci.</p>
       </header>
 
@@ -536,7 +552,7 @@
     <div class="container">
       <header class="head reveal">
         <span class="tag" data-i18n="proc.tag">Jak pracujeme</span>
-        <h2 class="h2" data-i18n="proc.heading">Náš postup<br><em>se zákazníkem.</em></h2>
+        <h2 class="h2" data-i18n="proc.heading">Náš postup<br><em>se zákazníkem</em></h2>
       </header>
       <div class="steps-wrap">
         <span class="steps-line" id="stepsLine" aria-hidden="true"><i></i></span>
@@ -575,6 +591,46 @@
   </section>
 
   <!-- ═══ ABOUT ═══ -->
+  <!-- ═══ FAQ ═══
+       <details>/<summary> rather than a JS accordion: the answers are in the
+       DOM whether or not they are open, which is what search engines index and
+       what a screen reader can reach. The FAQPage schema below mirrors them. -->
+  <section class="section" id="faq">
+    <div class="container">
+      <header class="head reveal">
+        <span class="tag" data-i18n="faq.tag">Časté dotazy</span>
+        <h2 class="h2" data-i18n="faq.heading">Na co se ptáte<br><em>nejčastěji</em></h2>
+      </header>
+
+      <div class="faq">
+        <details class="faq-item reveal">
+          <summary><span data-i18n="faq.1.q">Můžu si web ponechat v samosprávě?</span><i aria-hidden="true"></i></summary>
+          <div class="faq-a"><p data-i18n="faq.1.a">Ano. K samosprávě je ovšem potřeba mít účet na GitHubu a také znalost Gitu a editace kódu. Celou námi naprogramovanou stránku vám rádi předáme.</p></div>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary><span data-i18n="faq.2.q">Co když takové znalosti neovládám?</span><i aria-hidden="true"></i></summary>
+          <div class="faq-a"><p data-i18n="faq.2.a">Pokud takové schopnosti nemáte, máme pro naše zákazníky vytvořenou interní aplikaci, ve které si zákazník může upravovat obrázky a texty bez jakékoliv interakce se zdrojovým kódem. Tato aplikace je hrazena formou předplatného.</p></div>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary><span data-i18n="faq.3.q">Jak dlouho trvá webovou stránku nasadit?</span><i aria-hidden="true"></i></summary>
+          <div class="faq-a"><p data-i18n="faq.3.a">V Lanthiru vždy lpíme na individuálním zákaznickém přístupu, proto je to u každého zákazníka jiné a vždy záleží na komunikaci z jeho strany. Po technické stránce jsme schopni webovou stránku nasadit za dva dny.</p></div>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary><span data-i18n="faq.4.q">Co když mi webová stránka přestane fungovat? Pomůžete mi?</span><i aria-hidden="true"></i></summary>
+          <div class="faq-a"><p data-i18n="faq.4.a">Přesně pro tento případ nabízíme podporu ve formě předplatného. Stránky ovšem nepadají ze dne na den, ale vždy tomu předchází déle trvající problém. Proto nabízíme i monitoring webových stránek. Náš monitoring dokáže výpadek predikovat tak, že jsme schopni mu zamezit. Pokud jej predikovat nedokážeme, umíme velmi efektivně zkrátit dobu prostoje, protože víme, kde chyba nastala.</p></div>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary><span data-i18n="faq.5.q">Jsou vaše ceny pevně dané?</span><i aria-hidden="true"></i></summary>
+          <div class="faq-a"><p data-i18n="faq.5.a">Nejsou. Ceny jsou ovlivněny primárně časovou náročností tvorby webu a množstvím webů a balíčků, které si u nás zákazník objedná. Ceny jsou individuální, tudíž pro sjednání ceny pro váš web prosím kontaktujte našeho obchodního zástupce.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="about">
     <div class="container">
       <header class="head reveal">
@@ -628,7 +684,7 @@
     <div class="container">
       <header class="head reveal">
         <span class="tag" data-i18n="contact.tag">Kontakt</span>
-        <h2 class="h2" data-i18n="contact.heading">Kontaktujte <em>nás.</em></h2>
+        <h2 class="h2" data-i18n="contact.heading">Kontaktujte <em>nás</em></h2>
       </header>
       <div class="contact-grid">
         <div class="contact-info">
@@ -715,6 +771,12 @@
       <div class="footer-mark" aria-hidden="true"><span>LANTHIR</span></div>
       <div class="footer-bar">
         <span data-i18n="footer.copy">© 2026 Lanthir. Všechna práva vyhrazena.</span>
+        <nav class="footer-legal-links" aria-label="Právní informace">
+          <a href="/zasady-ochrany-osobnich-udaju/" data-i18n="footer.privacy">Zásady ochrany osobních údajů</a>
+          <a href="/informace-pro-spotrebitele/" data-i18n="footer.consumer">Informace pro spotřebitele</a>
+          <button type="button" class="cc-reopen" data-i18n="footer.cookies"
+                  onclick="window.__cookieSettings && window.__cookieSettings()">Nastavení cookies</button>
+        </nav>
         <button class="to-top" id="toTop" aria-label="Zpět nahoru"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></button>
       </div>
     </div>

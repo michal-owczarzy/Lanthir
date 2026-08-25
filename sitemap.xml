@@ -34,4 +34,14 @@
   <url><loc>https://lanthir.cz/tvorba-webu/uherske-hradiste/</loc><lastmod>2026-07-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://lanthir.cz/tvorba-webu/sumperk/</loc><lastmod>2026-07-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
+  <url>
+    <loc>https://lanthir.cz/zasady-ochrany-osobnich-udaju/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://lanthir.cz/informace-pro-spotrebitele/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>
