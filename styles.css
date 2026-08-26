@@ -1143,6 +1143,39 @@ a.ci-val:hover { color: var(--spark); }
 .status { display: inline-flex; align-items: center; gap: 9px; font-family: var(--f-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
 .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--spark); animation: pulse 2.4s ease infinite; }
 @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(54,240,214,.45); } 55% { box-shadow: 0 0 0 7px rgba(54,240,214,0); } }
+/* ── Footer social ───────────────────────────
+   One network today, so the row is a list that simply grows when a second
+   one arrives rather than needing a rewrite. 44px target, hairline top-edge
+   light, and the same 160ms press feedback the buttons use. */
+.footer-social { margin-top: 24px; }
+.footer-social h5 {
+  margin-bottom: 11px;
+  font-family: var(--f-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--dim);
+}
+.social-row { display: flex; gap: 10px; list-style: none; margin: 0; padding: 0; }
+.social-row li::before { content: none; }
+.social-link {
+  width: 44px; height: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--hair);
+  border-radius: 13px;
+  background: rgba(238,244,255,.03);
+  box-shadow: inset 0 1px 0 rgba(238,244,255,.05);
+  color: var(--dim);
+  transition: color .25s var(--e-out), border-color .25s var(--e-out),
+              background-color .25s var(--e-out), transform var(--t-press) ease-out;
+}
+.social-link svg { width: 19px; height: 19px; }
+@media (hover: hover) {
+  .social-link:hover {
+    color: var(--ink);
+    border-color: var(--hair-2);
+    background: rgba(238,244,255,.07);
+  }
+}
+.social-link:active { transform: scale(.97); }
+
 .footer-nav { display: flex; gap: clamp(40px,6vw,88px); }
 .footer-col h5 { margin-bottom: 18px; font-family: var(--f-mono); font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); }
 .footer-col a { display: block; margin-bottom: 12px; font-size: 14px; font-weight: 400; color: var(--soft); transition: color .25s var(--e-out); }
@@ -1250,6 +1283,12 @@ body.intro-skip .nav {
   transition: transform .5s var(--e-spring);
 }
 .cc.on { transform: translate3d(-50%, 0, 0); }
+/* The banner is 262px tall and pinned to the bottom, so on a phone it sat on
+   top of the last two entries of the open menu (Kontakt and the CTA) and ate
+   their taps. It slides back out while the menu is open, exactly as the
+   sticky CTA already does, and returns untouched when the menu closes —
+   no consent state is altered either way. */
+body.no-scroll .cc.on { transform: translate3d(-50%, calc(100% + 24px), 0); }
 .cc-in {
   display: flex;
   align-items: center;

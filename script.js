@@ -198,6 +198,14 @@ const T = {
     'footer.privacy': 'Zásady ochrany osobních údajů',
     'footer.consumer': 'Informace pro spotřebitele',
     'footer.cookies': 'Nastavení cookies',
+    'footer.social':  'Sledujte nás',
+    'work.1.alt':     'Ukázka webu pro restauraci: úvodní stránka Restaurace MAX',
+    'work.2.alt':     'Ukázka webu pro autoservis: úvodní stránka Autoservis Motyka',
+    'work.3.alt':     'Ukázka webu pro masáže a wellness: úvodní stránka Masáže Bylinka',
+    'work.5.alt':     'Ukázka webu pro kosmetické studio: úvodní stránka Studio Victory',
+    'work.7.alt':     'Úvodní stránka webu pro Instalatér Vobořil',
+    'about.1.alt':    'Ing. Michal Owczarzy, zakladatel a CTO Lanthiru',
+    'about.2.alt':    'Mariusz Chmiel, Head of Sales v Lanthiru',
     'sticky.cta':     'Nezávazná poptávka',
     'footer.col1.h':  'Služby',
     'footer.col2.h':  'Společnost',
@@ -432,6 +440,14 @@ const T = {
     'footer.privacy': 'Privacy policy',
     'footer.consumer': 'Consumer information',
     'footer.cookies': 'Cookie settings',
+    'footer.social':  'Follow us',
+    'work.1.alt':     'Sample restaurant website: Restaurace MAX home page',
+    'work.2.alt':     'Sample car service website: Autoservis Motyka home page',
+    'work.3.alt':     'Sample massage and wellness website: Masáže Bylinka home page',
+    'work.5.alt':     'Sample beauty studio website: Studio Victory home page',
+    'work.7.alt':     'Home page of the website we built for Instalatér Vobořil',
+    'about.1.alt':    'Ing. Michal Owczarzy, founder and CTO of Lanthir',
+    'about.2.alt':    'Mariusz Chmiel, Head of Sales at Lanthir',
     'sticky.cta':     'Get a free quote',
     'footer.col1.h':  'Services',
     'footer.col2.h':  'Company',
@@ -666,6 +682,14 @@ const T = {
     'footer.privacy': 'Zasady ochrony danych osobowych',
     'footer.consumer': 'Informacje dla konsumentów',
     'footer.cookies': 'Ustawienia cookies',
+    'footer.social':  'Obserwuj nas',
+    'work.1.alt':     'Przykładowa strona dla restauracji: strona główna Restaurace MAX',
+    'work.2.alt':     'Przykładowa strona dla serwisu samochodowego: strona główna Autoservis Motyka',
+    'work.3.alt':     'Przykładowa strona dla masaży i wellness: strona główna Masáže Bylinka',
+    'work.5.alt':     'Przykładowa strona dla studia kosmetycznego: strona główna Studio Victory',
+    'work.7.alt':     'Strona główna witryny, którą zbudowaliśmy dla Instalatér Vobořil',
+    'about.1.alt':    'Ing. Michal Owczarzy, założyciel i CTO Lanthiru',
+    'about.2.alt':    'Mariusz Chmiel, Head of Sales w Lanthirze',
     'sticky.cta':     'Bezpłatna wycena',
     'footer.col1.h':  'Usługi',
     'footer.col2.h':  'Firma',
@@ -804,6 +828,12 @@ function applyLang(lang) {
   document.querySelectorAll('[data-i18n-ph]').forEach(el => {
     const v = T[lang][el.dataset.i18nPh];
     if (v !== undefined) el.placeholder = v;
+  });
+  /* Alt text is content too — an English page should not describe its
+     screenshots in Czech. Same contract as data-i18n-ph above. */
+  document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+    const v = T[lang][el.dataset.i18nAlt];
+    if (v !== undefined) el.alt = v;
   });
   document.querySelectorAll('.ls-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
   if (window.__wheelSync) window.__wheelSync();

@@ -1,0 +1,47 @@
+# --- Kodovani v HTTP hlavicce ---------------------------------------------
+# Cloudflare posila u HTML jen "Content-Type: text/html" bez charsetu, takze
+# prohlizec i crawler se musi spolehnout na <meta charset> az v tele stranky.
+# Doplnujeme charset primo do hlavicky. Cesty jsou vyjmenovane zamerne:
+# blanketni /* by prepsalo Content-Type i u CSS, JS a obrazku a rozbilo web.
+# Vsechny adresare nize obsahuji vyhradne .html soubory.
+/
+  Content-Type: text/html; charset=utf-8
+
+/index.html
+  Content-Type: text/html; charset=utf-8
+
+/404.html
+  Content-Type: text/html; charset=utf-8
+
+/tvorba-webu/*
+  Content-Type: text/html; charset=utf-8
+
+/ukazky/*
+  Content-Type: text/html; charset=utf-8
+
+/dekuji/*
+  Content-Type: text/html; charset=utf-8
+
+/zasady-ochrany-osobnich-udaju/*
+  Content-Type: text/html; charset=utf-8
+
+/informace-pro-spotrebitele/*
+  Content-Type: text/html; charset=utf-8
+
+/admin/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Referrer-Policy: no-referrer
+  Cache-Control: no-store
+
+/api/*
+  Cache-Control: no-store
+
+# --- instalatervoboril.cz (soubory leží v /customer/instalater-voboril/) ---
+# CSP odpovídá tomu, co stránka opravdu používá: vlastní styl/skript inline,
+# fonty z Google, fotky lokálně + Unsplash, odeslání poptávky na formsubmit.
+/customer/instalater-voboril/*
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; frame-ancestors 'none'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://formsubmit.co; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), interest-cohort=()
+  X-Frame-Options: DENY
