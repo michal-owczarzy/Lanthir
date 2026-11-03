@@ -31,6 +31,7 @@
   --pad:clamp(16px,4.5vw,48px);
   --max:1200px;
   --r:16px;
+  --vyjezd:cubic-bezier(.2,.8,.2,1);
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:72px}
@@ -65,9 +66,10 @@ p{margin:0}
    HLAVIČKA — tmavá, ať žluté logo svítí
    ============================================================ */
 .nav{position:sticky;top:0;z-index:100;background:rgba(12,20,36,.9);-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);border-bottom:1px solid rgba(255,255,255,.06)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:10px}
+.logo{margin-right:auto}
 .logo img{width:150px;height:auto}
-.nav-links{display:none;gap:26px;font:600 15px/1 var(--display)}
+.nav-links{display:none;gap:26px;font:600 15px/1 var(--display);margin-right:14px}
 .nav-links a{text-decoration:none;color:rgba(255,255,255,.72);padding:10px 0;transition:color 200ms}
 @media (hover:hover){.nav-links a:hover{color:#fff}}
 .nav .btn{min-height:44px;padding:0 16px;font-size:15px}
@@ -189,9 +191,147 @@ dialog.lb p{padding:16px 20px calc(env(safe-area-inset-bottom) + 24px);font:700 
 .lb-close:active{transform:scale(.94)}
 .lb-close svg{width:20px;height:20px}
 
+/* menu na telefonu — hamburger se přelije do křížku */
+.menu-btn{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;border:0;background:rgba(255,255,255,.08);color:#fff;cursor:pointer;flex:none;transition:transform 160ms ease-out,background-color 200ms}
+.menu-btn:active{transform:scale(.94)}
+.menu-btn svg{width:22px;height:22px;overflow:visible}
+.menu-btn line{stroke:currentColor;stroke-width:2;stroke-linecap:round;transform-box:fill-box;transform-origin:center;transition:transform .32s var(--vyjezd),opacity .2s}
+body:has(#menu:popover-open) .menu-btn .h{transform:translateY(6px) rotate(45deg)}
+body:has(#menu:popover-open) .menu-btn .s{opacity:0;transform:scaleX(.2)}
+body:has(#menu:popover-open) .menu-btn .d{transform:translateY(-6px) rotate(-45deg)}
+@media (min-width:940px){.menu-btn{display:none}}
+.menu::backdrop{background:rgba(4,8,16,0);transition:background-color .3s ease-out,overlay .3s allow-discrete,display .3s allow-discrete}
+.menu:popover-open::backdrop{background:rgba(4,8,16,.5)}
+@starting-style{.menu:popover-open::backdrop{background:rgba(4,8,16,0)}}
+.menu{position:fixed;inset:auto;top:var(--menu-top,76px);left:12px;right:12px;width:auto;height:auto;margin:0;padding:8px;border:0;border-radius:16px;background:var(--noc-2);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 2px 6px rgba(0,0,0,.25),0 24px 60px rgba(0,0,0,.45);
+  opacity:0;transform:translateY(-8px) scale(.98);transform-origin:top right;
+  transition:opacity .2s ease-out,transform .3s var(--vyjezd),overlay .3s allow-discrete,display .3s allow-discrete}
+.menu:popover-open{opacity:1;transform:none}
+@starting-style{.menu:popover-open{opacity:0;transform:translateY(-8px) scale(.98)}}
+.menu nav{display:grid}
+.menu a{display:flex;align-items:center;gap:12px;min-height:54px;padding:0 14px;border-radius:12px;text-decoration:none;font:800 19px/1 var(--display)}
+.menu a::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--zluta);box-shadow:0 0 8px rgba(230,220,42,.6);flex:none}
+.menu a + a{box-shadow:0 -1px 0 rgba(255,255,255,.08)}
+.menu a:active{background:rgba(255,255,255,.06)}
+.menu a.btn{justify-content:center;margin-top:8px;box-shadow:none;font-size:16px}
+.menu a.btn::before{display:none}
+.menu:popover-open nav > *{animation:vstup .38s var(--vyjezd) both;animation-delay:calc(var(--i)*35ms + 40ms)}
+
+/* ============================================================
+   POHYB ÚVODU — čisté CSS (nečeká na skripty).
+   Reflektory u kostela se „rozehřejí“: tmavá vrstva pomalu odejde, fotka je vidět celou dobu.
+   ============================================================ */
+@keyframes vstup{from{opacity:0;transform:translateY(16px)}}
+@keyframes rozsviceni{0%{opacity:.86}30%{opacity:.62}100%{opacity:0}}
+@keyframes jenFade{from{opacity:0}}
+@keyframes najezd{to{transform:scale(1.07)}}
+.hero .tma{position:absolute;inset:0;background:#03060C;opacity:0;pointer-events:none}
+.slovo{display:inline-block}
+@media (prefers-reduced-motion:no-preference){
+  .hero .tma{animation:rozsviceni 2s cubic-bezier(.5,0,.3,1) .1s both}
+  /* kamera po rozsvícení pomalu najíždí ke kostelu */
+  .hero .foto img{animation:najezd 12s cubic-bezier(.25,.6,.3,1) .3s both}
+  .hero .eyebrow{animation:vstup .7s var(--vyjezd) .1s both}
+  .hero .slovo{animation:vstup .7s var(--vyjezd) both;animation-delay:calc(.18s + var(--i)*55ms)}
+  .hero .lead{animation:vstup .7s var(--vyjezd) .45s both}
+  .hero .actions{animation:vstup .7s var(--vyjezd) .55s both}
+  .hero .popisek{animation:vstup .7s var(--vyjezd) 1.2s both}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero .eyebrow,.hero .slovo,.hero .lead,.hero .actions,.hero .popisek{animation:jenFade .2s ease-out both}
+}
+
+/* odrážky služeb se po odhalení rozsvítí jako kontrolky */
+.sluzba li::before{transition:background-color .3s ease-out,box-shadow .3s ease-out;transition-delay:calc(var(--n,0)*70ms + .25s)}
+.sluzba.ceka li::before{background:#5B667C;transition:none}
+
+/* displej rozvaděče — průběh střídavého proudu z ASCII znaků */
+.displej{margin-bottom:10px;border-radius:10px;background:#0B1220;box-shadow:inset 0 2px 6px rgba(0,0,0,.6),0 1px 0 #fff;padding:10px 12px 9px;color:var(--zluta)}
+.displej-hlava{display:flex;justify-content:space-between;align-items:center;min-height:20px;font:700 11px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:rgba(230,220,42,.72)}
+.pauza{width:44px;height:44px;margin:-14px -10px -12px 0;display:grid;place-items:center;border:0;background:none;color:rgba(230,220,42,.8);cursor:pointer;border-radius:10px;transition:transform 160ms ease-out,background-color 200ms}
+.pauza:active{transform:scale(.92)}
+@media (hover:hover){.pauza:hover{background:rgba(230,220,42,.1)}}
+.pauza svg{width:16px;height:16px;overflow:visible}
+.pauza path{stroke:currentColor;stroke-width:2.6;stroke-linecap:round;fill:none;transition:opacity .2s}
+.pauza .hraj{fill:currentColor;stroke:none;opacity:0}
+.pauza[aria-pressed="true"] .p1,.pauza[aria-pressed="true"] .p2{opacity:0}
+.pauza[aria-pressed="true"] .hraj{opacity:1}
+.osc{margin:6px 0 0;height:84px;contain:strict;font:500 12px/1 ui-monospace,Consolas,"Cascadia Mono",monospace;color:var(--zluta);text-shadow:0 0 6px rgba(230,220,42,.45);white-space:pre;overflow:hidden;user-select:none}
+/* měděná sběrnice — proud doběhne zleva doprava, pak naskočí jističe */
+.sbernice{position:relative;height:6px;margin:0 8px 10px;border-radius:3px;background:linear-gradient(180deg,#D59B4A,#B87A33);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 1px 2px rgba(0,0,0,.2);transform-origin:left;overflow:hidden}
+.sbernice i{position:absolute;top:0;bottom:0;left:0;width:30%;background:linear-gradient(90deg,transparent,rgba(255,244,190,.95),transparent);transform:translateX(-100%)}
+.hvezdy i{font-style:normal;display:inline-block}
+
+/* prohlížeč: prolnutí + View Transitions (jistič nebo náhled se přelije do fotky) */
+dialog.lb{opacity:0;transition:opacity .22s ease-out,overlay .22s allow-discrete,display .22s allow-discrete}
+dialog.lb[open]{opacity:1}
+@starting-style{dialog.lb[open]{opacity:0}}
+dialog.lb.vt{transition:none}
+::view-transition-group(foto){animation-duration:.45s;animation-timing-function:var(--vyjezd)}
+::view-transition-old(foto),::view-transition-new(foto){height:100%;object-fit:cover;overflow:clip}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.3s}
+
+/* kopírování e-mailu: ikona se přerýsuje na fajfku, dole vyjede potvrzení */
+.kontakt dd{display:flex;flex-direction:column;align-items:flex-start}
+.kopirovat{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:0 10px;margin:4px 0 -6px -10px;border:0;border-radius:10px;background:transparent;color:rgba(255,255,255,.68);font:700 11.5px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:transform 160ms ease-out,background-color 200ms,color 200ms}
+.kopirovat::after{content:"";position:absolute;inset:-5px 0}
+.kopirovat:active{transform:scale(.95)}
+@media (hover:hover){.kopirovat:hover{background:rgba(255,255,255,.08);color:#fff}}
+.kopirovat svg{width:16px;height:16px;overflow:visible}
+.kopirovat .kopie{transition:opacity .15s}
+.kopirovat .ok{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .3s ease-out}
+.kopirovat.hotovo{color:var(--zluta)}
+.kopirovat.hotovo .kopie{opacity:0}
+.kopirovat.hotovo .ok{stroke-dashoffset:0;transition-delay:.06s}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));z-index:300;translate:-50% 0;padding:12px 18px;border-radius:12px;background:var(--noc);color:#fff;font:700 15px/1.2 var(--display);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 10px 30px rgba(0,0,0,.35);pointer-events:none;
+  opacity:0;transform:translateY(16px);transition:opacity .18s ease-in,transform .18s ease-in}
+.toast::before{content:"";display:inline-block;width:8px;height:8px;margin-right:10px;border-radius:2px;background:var(--zluta);box-shadow:0 0 8px rgba(230,220,42,.6);vertical-align:1px}
+.toast.is-on{opacity:1;transform:none;transition:opacity .22s ease-out,transform .32s var(--vyjezd)}
+
+/* ============================================================
+   ENERGIE — schéma domu: slunce → panely → rozvaděč → baterie → podlahové topení.
+   Výchozí stav je dokreslený (bez JS i při omezeném pohybu), scroll ho postupně rozehraje.
+   ============================================================ */
+.energie{padding:clamp(48px,7vw,88px) 0 0}
+.energie-karta{background:var(--noc);color:#fff;border-radius:22px;padding:clamp(24px,5vw,56px);display:grid;gap:28px;align-items:center;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 18px 50px rgba(12,20,36,.25)}
+@media (min-width:900px){.energie-karta{grid-template-columns:.9fr 1.1fr;gap:48px}}
+.energie .eyebrow{color:var(--zluta)}
+.energie h2{font-size:clamp(28px,4vw,44px);margin:14px 0 16px}
+.energie .text > p{color:rgba(255,255,255,.74);max-width:32em}
+.energie ul{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.energie li{display:grid;grid-template-columns:16px 1fr;gap:10px;color:rgba(255,255,255,.9)}
+.energie li::before{content:"";width:8px;height:8px;margin-top:.6em;border-radius:2px;background:var(--zluta);box-shadow:0 0 8px rgba(230,220,42,.55)}
+.schema-obal{margin:0;justify-self:center;width:100%;max-width:560px}
+.schema{display:block;width:100%;height:auto;overflow:visible}
+.schema figcaption{display:none}
+.schema-obal figcaption{margin-top:8px;text-align:center;font:700 10.5px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+.schema .e-dum path{fill:none;stroke:rgba(255,255,255,.55);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0}
+.schema .e-slunce circle{fill:var(--zluta)}
+.schema .e-paprsky path{stroke:var(--zluta);stroke-width:2.2;stroke-linecap:round}
+.schema .e-panel{fill:var(--zluta);fill-opacity:.9;stroke:var(--zluta);stroke-width:1.2;stroke-linejoin:round}
+.schema .e-drat{fill:none;stroke:rgba(230,220,42,.32);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0}
+.schema .e-proud{fill:none;stroke:var(--zluta);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:3 10}
+.schema .e-box{fill:#1A2540;stroke:rgba(255,255,255,.55);stroke-width:1.4}
+.schema .e-jistice{fill:none;stroke:rgba(255,255,255,.4);stroke-width:1.4;stroke-linecap:round}
+.schema .e-led{fill:var(--zluta)}
+.schema .e-baterie{fill:none;stroke:rgba(255,255,255,.55);stroke-width:1.4}
+.schema .e-napln{fill:var(--zluta);fill-opacity:.85}
+.schema .e-had{fill:none;stroke:var(--sodik);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0}
+.schema .e-teplo path{fill:none;stroke:var(--sodik);stroke-width:1.6;stroke-linecap:round}
+.schema .e-popis{font:700 9.5px/1 var(--display);letter-spacing:.12em;fill:rgba(255,255,255,.8)}
+
+/* ============================================================
+   OMEZENÝ POHYB — pohyb mizí, krátké prolnutí a zpětná vazba zůstávají
+   ============================================================ */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .packa::after{transition:none}
+  .menu{transform:none;transition:opacity .15s ease-out,overlay .15s allow-discrete,display .15s allow-discrete}
+  @starting-style{.menu:popover-open{opacity:0;transform:none}}
+  .menu:popover-open nav > *{animation:jenFade .15s both}
+  .menu-btn line{transition:opacity .15s}
+  .toast,.toast.is-on{transform:none}
+  .pauza{display:none}
 }
 </style>
 </head>
@@ -199,7 +339,7 @@ dialog.lb p{padding:16px 20px calc(env(safe-area-inset-bottom) + 24px);font:700 
 
 <div class="ribbon">Nezávazný náhled nového webu, připravený studiem <b>Lanthir</b> z obsahu Vašich současných stránek. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
 
-<header class="nav">
+<header class="nav" id="nav">
   <div class="wrap">
     <a class="logo" href="#top" aria-label="Hyánek elektroinstalace, nahoru"><img src="img/logo.png" width="250" height="71" alt="Hyánek elektroinstalace"></a>
     <nav class="nav-links" aria-label="Hlavní">
@@ -212,16 +352,30 @@ dialog.lb p{padding:16px 20px calc(env(safe-area-inset-bottom) + 24px);font:700 
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
       <span class="t-short">Zavolat</span><span class="t-long">777 618 832</span>
     </a>
+    <button class="menu-btn" type="button" popovertarget="menu" aria-label="Menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><line class="h" x1="4" y1="6" x2="20" y2="6"/><line class="s" x1="4" y1="12" x2="20" y2="12"/><line class="d" x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
   </div>
 </header>
+
+<div class="menu" id="menu" popover>
+  <nav aria-label="Menu">
+    <a href="#sluzby" style="--i:0">Služby</a>
+    <a href="#reference" style="--i:1">Fotovoltaika</a>
+    <a href="#elektro" style="--i:2">Reference</a>
+    <a href="#kontakt" style="--i:3">Kontakt</a>
+    <a class="btn btn--zluta" href="tel:+420777618832" style="--i:4">Zavolat 777 618 832</a>
+  </nav>
+</div>
 
 <main id="top">
   <section class="hero" style="padding:0">
     <div class="foto"><img src="img/kostel-480.jpg" srcset="img/kostel-480.jpg 480w, img/kostel-900.jpg 900w" sizes="100vw" width="900" height="675" alt="Noční osvětlení kostela Povýšení svatého Kříže ve Veselí nad Lužnicí" fetchpriority="high"></div>
+    <div class="tma" aria-hidden="true"></div>
     <div class="wrap">
       <div class="hero-text">
         <p class="eyebrow">Elektroinstalace Hyánek · Žíšov u Veselí nad Lužnicí</p>
-        <h1>Elektro, fotovoltaika a&nbsp;<em>podlahové topení.</em></h1>
+        <h1><span class="slovo" style="--i:0">Elektro,</span><br><span class="slovo" style="--i:1">fotovoltaika</span><br><span class="slovo" style="--i:2">a&nbsp;<em>podlahové</em></span><br><span class="slovo" style="--i:3"><em>topení.</em></span></h1>
         <p class="lead">Elektroinstalace provádíme od roku 1989. Rozvody, osvětlení, hromosvody, rozvaděče i revize. K tomu sluneční elektrárny na klíč, elektrické podlahové topení a centrální vysavače.</p>
         <div class="actions">
           <a class="btn btn--zluta" href="tel:+420777618832">
@@ -243,11 +397,56 @@ dialog.lb p{padding:16px 20px calc(env(safe-area-inset-bottom) + 24px);font:700 
     </div>
   </div>
 
+  <section class="energie" id="energie">
+    <div class="wrap">
+      <div class="energie-karta">
+        <div class="text">
+          <p class="eyebrow">Jak to do sebe zapadá</p>
+          <h2 data-split>Od slunce na střeše po teplou podlahu</h2>
+          <p>Elektrické podlahové topení je velmi efektivní a v kombinaci se solárními fotovoltaickými panely se řadí mezi ekologické topení budoucnosti.</p>
+          <ul>
+            <li>Fotovoltaika s akumulací elektrické energie</li>
+            <li>Elektroinstalace a rozvaděče</li>
+            <li>Inteligentní elektrické podlahové topení</li>
+          </ul>
+        </div>
+        <figure class="schema-obal">
+          <svg class="schema" viewBox="0 0 400 322" role="img" aria-label="Schéma: slunce, fotovoltaické panely na střeše, rozvaděč, baterie a elektrické podlahové topení v domě">
+            <g class="e-dum"><path pathLength="1" d="M20 290H380"/><path pathLength="1" d="M70 176L200 95L330 176"/><path pathLength="1" d="M90 290V172"/><path pathLength="1" d="M310 172V290"/><path pathLength="1" d="M90 262H310"/></g>
+            <g class="e-slunce"><circle cx="64" cy="64" r="16"/><g class="e-paprsky"><path d="M87.0 64.0L95.0 64.0"/><path d="M80.3 80.3L85.9 85.9"/><path d="M64.0 87.0L64.0 95.0"/><path d="M47.7 80.3L42.1 85.9"/><path d="M41.0 64.0L33.0 64.0"/><path d="M47.7 47.7L42.1 42.1"/><path d="M64.0 41.0L64.0 33.0"/><path d="M80.3 47.7L85.9 42.1"/></g></g>
+            <path class="e-panel" d="M216.6 102.9L245.2 120.5L249.9 112.8L221.3 95.2Z"/>
+            <path class="e-panel" d="M250.4 123.7L279.0 141.3L283.7 133.6L255.1 116.0Z"/>
+            <path class="e-panel" d="M284.2 144.5L312.8 162.1L317.5 154.4L288.9 136.8Z"/>
+            <path class="e-drat w1" pathLength="1" d="M265 137V180H136V192"/>
+            <path class="e-drat w2" pathLength="1" d="M150 216H254"/>
+            <path class="e-drat w3" pathLength="1" d="M136 232V268H98V274"/>
+            <path class="e-proud w1" d="M265 137V180H136V192"/>
+            <path class="e-proud w2" d="M150 216H254"/>
+            <path class="e-proud w3" d="M136 232V268H98V274"/>
+            <rect class="e-box" x="122" y="192" width="28" height="40" rx="3"/>
+            <path class="e-jistice" d="M128 210h8M128 216h8M128 222h8"/>
+            <circle class="e-led" cx="143" cy="200" r="2.6"/>
+            <rect class="e-baterie" x="263" y="196" width="12" height="4" rx="1"/>
+            <rect class="e-baterie" x="254" y="200" width="30" height="58" rx="3"/>
+            <rect class="e-napln" x="258" y="204" width="22" height="50" rx="1.5"/>
+            <path class="e-had" pathLength="1" d="M98 274 q6 -7 12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0"/>
+            <g class="e-teplo"><path d="M180 256q-4 -6 0 -12t0 -12"/><path d="M210 256q-4 -6 0 -12t0 -12"/><path d="M240 256q-4 -6 0 -12t0 -12"/></g>
+            <text class="e-popis p1" x="300" y="104" text-anchor="middle">FOTOVOLTAIKA</text>
+            <text class="e-popis p2" x="156" y="209">ROZVADĚČ</text>
+            <text class="e-popis p3" x="269" y="192" text-anchor="middle">BATERIE</text>
+            <text class="e-popis p4" x="200" y="311" text-anchor="middle">PODLAHOVÉ TOPENÍ</text>
+          </svg>
+          <figcaption>Schéma pro ilustraci</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <section id="sluzby">
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Služby</p>
-        <h2>Co pro Vás uděláme</h2>
+        <h2 data-split>Co pro Vás uděláme</h2>
         <p>K zákazníkům přistupujeme profesionálně, s maximální ochotou a vysokou kvalitou práce. Dodržování dohodnutých cen a termínů je samozřejmostí.</p>
       </div>
       <div class="sluzby">
@@ -310,15 +509,22 @@ dialog.lb p{padding:16px 20px calc(env(safe-area-inset-bottom) + 24px);font:700 
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Fotovoltaika · reference</p>
-        <h2>Elektrárny, které jsme postavili</h2>
+        <h2 data-split>Elektrárny, které jsme postavili</h2>
         <p>Každý jistič je jedna realizace z naší fotogalerie. Klepnutím zobrazíte fotku.</p>
       </div>
-      <div class="souhrn" aria-live="polite">
+      <div class="souhrn">
         <div><b id="pocet">0</b><span>elektráren</span></div>
         <div><b id="vykon">0</b><span>kWp celkem</span></div>
         <div><b id="obce">0</b><span>obcí a měst</span></div>
       </div>
-      <div class="rozvadec"><div class="lista" id="lista"></div></div>
+      <div class="rozvadec">
+        <div class="displej">
+          <div class="displej-hlava"><span>~ 230 V · 50 Hz</span><button class="pauza" type="button" aria-pressed="false" aria-label="Pozastavit animaci průběhu"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="p1" d="M8 5v14"/><path class="p2" d="M16 5v14"/><path class="hraj" d="M7 4.5l12 7.5-12 7.5z"/></svg></button></div>
+          <pre class="osc" aria-hidden="true"></pre>
+        </div>
+        <div class="sbernice" aria-hidden="true"><i></i></div>
+        <div class="lista" id="lista"></div>
+      </div>
       <p class="pozn-ref">Údaje podle popisků fotografií v referencích na hyanek.cz.</p>
     </div>
   </section>
@@ -327,7 +533,7 @@ dialog.lb p{padding:16px 20px calc(env(safe-area-inset-bottom) + 24px);font:700 
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Elektroinstalace · reference</p>
-        <h2>Od rodinných domů po osvětlení kostelů</h2>
+        <h2 data-split>Od rodinných domů po osvětlení kostelů</h2>
       </div>
       <div class="pas" id="pas">
         <button data-src="img/kostel-drahov-900.jpg" data-t="Osvětlení – kostel v Dráchově"><div class="img"><img src="img/kostel-drahov-480.jpg" width="480" height="360" loading="lazy" decoding="async" alt=""></div><span>Osvětlení – kostel v Dráchově</span></button>
@@ -341,9 +547,9 @@ dialog.lb p{padding:16px 20px calc(env(safe-area-inset-bottom) + 24px);font:700 
       </div>
 
       <div class="recenze">
-        <blockquote><span class="hvezdy" aria-hidden="true">★★★★★</span><p>Výborná spolupráce, doporučujeme! Ještě jednou děkujeme za profesionální přístup! Vyšli jste nám vstříc ve všem! Doporučujeme Vás přátelům i známým.</p><cite>Alena a Jakub Bydžovští</cite></blockquote>
-        <blockquote><span class="hvezdy" aria-hidden="true">★★★★★</span><p>Naprostá profesionalita, 100% spolehnutí za kvalitně odvedenou práci. Fotovoltaika nám šetří finance za ohřev vody a vytápění. Každému vřele doporučuji.</p><cite>Renata Fantová</cite></blockquote>
-        <blockquote><span class="hvezdy" aria-hidden="true">★★★★★</span><p>Moc děkujeme firmě Hyánek za zhotovení podlahového vytápění. Jsme moc spokojeni. Byla to již 2. zakázka (1. byla centrální vysavač). Spokojenost na místě.</p><cite>Karel M.</cite></blockquote>
+        <blockquote><span class="hvezdy" aria-hidden="true"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></span><p>Výborná spolupráce, doporučujeme! Ještě jednou děkujeme za profesionální přístup! Vyšli jste nám vstříc ve všem! Doporučujeme Vás přátelům i známým.</p><cite>Alena a Jakub Bydžovští</cite></blockquote>
+        <blockquote><span class="hvezdy" aria-hidden="true"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></span><p>Naprostá profesionalita, 100% spolehnutí za kvalitně odvedenou práci. Fotovoltaika nám šetří finance za ohřev vody a vytápění. Každému vřele doporučuji.</p><cite>Renata Fantová</cite></blockquote>
+        <blockquote><span class="hvezdy" aria-hidden="true"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></span><p>Moc děkujeme firmě Hyánek za zhotovení podlahového vytápění. Jsme moc spokojeni. Byla to již 2. zakázka (1. byla centrální vysavač). Spokojenost na místě.</p><cite>Karel M.</cite></blockquote>
       </div>
     </div>
   </section>
@@ -353,7 +559,7 @@ dialog.lb p{padding:16px 20px calc(env(safe-area-inset-bottom) + 24px);font:700 
       <div class="kontakt">
         <div>
           <p class="eyebrow">Kontakt</p>
-          <h2>Zavolejte, přijedeme se podívat</h2>
+          <h2 data-split>Zavolejte, přijedeme se podívat</h2>
           <p>U fotovoltaiky Vás osobně, zdarma a nezávazně navštívíme a navrhneme nejlepší možné řešení.</p>
           <div class="actions">
             <a class="btn btn--zluta" href="tel:+420777618832">Zavolat 777 618 832</a>
@@ -363,7 +569,7 @@ dialog.lb p{padding:16px 20px calc(env(safe-area-inset-bottom) + 24px);font:700 
         <dl>
           <div><dt>Jméno</dt><dd>Jan Hyánek</dd></div>
           <div><dt>Telefon</dt><dd><a href="tel:+420777618832">+420 777 618 832</a></dd></div>
-          <div><dt>E-mail</dt><dd><a href="mailto:elektro@hyanek.cz">elektro@hyanek.cz</a></dd></div>
+          <div><dt>E-mail</dt><dd><a href="mailto:elektro@hyanek.cz">elektro@hyanek.cz</a><button class="kopirovat" type="button" data-copy="elektro@hyanek.cz" data-msg="E-mail zkopírován" aria-label="Zkopírovat e-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="kopie"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></g><path class="ok" pathLength="1" d="M5 12.5l4.5 4.5L19 7.5"/></svg>Kopírovat</button></dd></div>
           <div><dt>Adresa</dt><dd>Žíšov 77<br>391 81 Veselí nad Lužnicí</dd></div>
           <div><dt>IČO</dt><dd>65022581</dd></div>
         </dl>
@@ -379,6 +585,8 @@ dialog.lb p{padding:16px 20px calc(env(safe-area-inset-bottom) + 24px);font:700 
   </div>
 </footer>
 
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <dialog class="lb" id="lb" aria-label="Zvětšená fotografie">
   <img id="lbImg" alt="">
   <p id="lbCap"></p>
@@ -389,41 +597,255 @@ dialog.lb p{padding:16px 20px calc(env(safe-area-inset-bottom) + 24px);font:700 
 /* reference fotovoltaických elektráren — převzato z popisků fotogalerie na hyanek.cz */
 var FVE=[[14,"Vřesce",5.0,""],[15,"Žíšov",28.8,""],[16,"Klenovice",3.96,""],[17,"Klenovice",10.8,""],[18,"Vimperk, Bohumilice",11.0,""],[19,"Vřesce",21.12,""],[20,"Milevsko",10.2,""],[21,"Srubec",3.185,""],[22,"Struhy",29.4,""],[23,"Šumavské Hoštice",3.0,""],[24,"Třebiště",4.5,""],[25,"Veliš",13.965,""],[26,"Soběslav",4.32,""],[27,"Protivín",13.5,""],[28,"Počátky",16.17,""],[29,"Písek",4.0,""],[30,"Olbramovice",10.29,""],[31,"Načeradec",10.0,""],[32,"Načeradec",9.8,""],[33,"Mazelov",8.1,""],[34,"Lukavec",4.9,""],[35,"Lukavec",4.8,""],[36,"Lásenice",4.0,"baterie 16 kWh"],[37,"Košice",11.76,""],[38,"Kejnice",6.9,""],[39,"Chýnov",5.0,""],[40,"Jestřebice",2.88,""],[41,"Chotýčany",27.6,""],[42,"Chotýčany",7.99,""],[43,"Hrdějovice",3.185,""],[44,"Horní Žďár",10.78,""],[45,"České Budějovice",29.4,""],[46,"České Budějovice",9.8,""],[47,"České Budějovice",4.59,""],[48,"Suchdol nad Lužnicí",2.0,""],[49,"Žíšov",20.09,""],[50,"Žíšov",29.4,""],[51,"Hrdějovice",6.75,""],[52,"České Budějovice",4.05,""],[53,"Jindřichův Hradec",6.3,""],[54,"Dubné",2.92,""],[55,"Želeč",4.8,""],[56,"Kunžak",19.35,""],[57,"Myslkovice",8.1,""],[58,"Zlukov",4.5,""],[59,"Veselí nad Lužnicí, Žíšov",10.0,""],[60,"Strakonice, Kejnice",5.0,""],[61,"Soběslav",5.0,""],[62,"Milevsko",8.2,""],[63,"Kaplice, Dluhoště",4.5,""],[64,"Jindřichův Hradec, obchodní dům JH Markt",29.4,""],[65,"Horažďovice, Kejnice",5.0,""],[66,"Hluboká nad Vltavou",2.0,""],[67,"České Budějovice",4.5,""],[68,"Přibyslav",15.68,""],[69,"Otín",5.17,""],[70,"Strmilov",5.0,""],[71,"Soběslav, Klenovice",5.4,""],[72,"Jindřichův Hradec, Lásenice",10.0,""]];
 
+var RM=matchMedia('(prefers-reduced-motion: reduce)');
 var fmt=function(n){return n.toLocaleString('cs-CZ',{maximumFractionDigits:2})};
 var lista=document.getElementById('lista');
 lista.innerHTML=FVE.map(function(f,i){
-  return '<button class="jistic" data-i="'+i+'" aria-label="Elektrárna '+f[1]+', '+fmt(f[2])+' kWp – zobrazit fotku"><span class="packa" aria-hidden="true"></span><b>'+fmt(f[2])+'<small>kWp</small></b><span>'+f[1]+'</span></button>';
+  return '<button class="jistic is-on" data-i="'+i+'" aria-label="Elektrárna '+f[1]+', '+fmt(f[2])+' kWp – zobrazit fotku"><span class="packa" aria-hidden="true"></span><b>'+fmt(f[2])+'<small>kWp</small></b><span>'+f[1]+'</span></button>';
 }).join('');
 
-/* souhrn spočítaný z dat — obce podle prvního názvu v popisku */
+/* souhrn spočítaný z dat — obce podle prvního názvu v popisku; konečné hodnoty hned,
+   aby čísla platila i bez animace */
 var celkem=FVE.reduce(function(s,f){return s+f[2]},0);
 var obce={};FVE.forEach(function(f){obce[f[1].split(',')[0].trim()]=1});
 var cile=[[document.getElementById('pocet'),FVE.length,0],[document.getElementById('vykon'),celkem,1],[document.getElementById('obce'),Object.keys(obce).length,0]];
-var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function vypsat(c,v){c[0].textContent=c[2]?fmt(Math.round(v*10)/10):Math.round(v)}
+cile.forEach(function(c){vypsat(c,c[1])});
 
-/* po doscrollování se jističe postupně „nahodí“ a čísla doběhnou */
-function nahodit(){
-  var tl=lista.querySelectorAll('.jistic');
-  tl.forEach(function(t,i){setTimeout(function(){t.classList.add('is-on')},reduce?0:i*28)});
-  var t0=performance.now(),dur=reduce?0:1400;
-  (function krok(t){
-    var p=dur?Math.min(1,(t-t0)/dur):1,e=1-Math.pow(1-p,3);
-    cile.forEach(function(c){c[0].textContent=c[2]?fmt(Math.round(c[1]*e*10)/10):Math.round(c[1]*e)});
-    if(p<1)requestAnimationFrame(krok);
-  })(t0);
+/* ============================================================
+   DISPLEJ — sinusovka střídavého proudu z ASCII znaků (rampa jasu).
+   Běží ~20 snímků/s jen když je vidět, dá se pozastavit (WCAG 2.2.2),
+   při omezeném pohybu zůstane jeden klidný snímek.
+   ============================================================ */
+(function(){
+  var pre=document.querySelector('.osc'),btn=document.querySelector('.pauza');if(!pre)return;
+  var RAMPA=' .:-=+*#%@',RADKY=7,sloupce=40,beh=false,pauza=false,raf=0,posledni=0,faze=0,videt=false;
+  function zmerit(){
+    var s=document.createElement('span');s.textContent='0000000000';pre.appendChild(s);
+    var w=s.getBoundingClientRect().width/10;pre.removeChild(s);
+    sloupce=Math.max(20,Math.floor(pre.clientWidth/(w||7.2)));
+  }
+  function snimek(t){
+    var stred=(RADKY-1)/2,amp=RADKY/2-.7,out='';
+    for(var y=0;y<RADKY;y++){
+      for(var x=0;x<sloupce;x++){
+        var v=stred-Math.sin(x/sloupce*Math.PI*5-t)*amp;
+        var jas=Math.max(0,1-Math.abs(y-v)/1.15);
+        if(jas<.08&&y===stred&&x%2===0)jas=.12;
+        out+=RAMPA[Math.round(jas*(RAMPA.length-1))];
+      }
+      if(y<RADKY-1)out+='\n';
+    }
+    pre.textContent=out;
+  }
+  function smycka(now){
+    if(!beh)return;raf=requestAnimationFrame(smycka);
+    if(now-posledni<50)return;posledni=now;faze+=.24;snimek(faze);
+  }
+  function spustit(){if(beh||pauza||!videt||RM.matches)return;beh=true;raf=requestAnimationFrame(smycka)}
+  function zastavit(){beh=false;cancelAnimationFrame(raf)}
+  zmerit();snimek(1.2);
+  new IntersectionObserver(function(en){videt=en[0].isIntersecting;videt?spustit():zastavit()}).observe(pre);
+  addEventListener('resize',function(){zmerit();snimek(faze)});
+  RM.addEventListener('change',function(){if(RM.matches){zastavit();snimek(faze)}else spustit()});
+  btn.addEventListener('click',function(){
+    pauza=!pauza;btn.setAttribute('aria-pressed',pauza);
+    btn.setAttribute('aria-label',pauza?'Spustit animaci průběhu':'Pozastavit animaci průběhu');
+    pauza?zastavit():spustit();
+  });
+})();
+
+/* ============================================================
+   PROHLÍŽEČ — jistič nebo náhled se přelije do fotky (View Transitions)
+   ============================================================ */
+var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap'),zdroj=null;
+function prelit(zmena){
+  if(!document.startViewTransition||RM.matches){zmena();return null}
+  lb.classList.add('vt');
+  var t=document.startViewTransition(zmena);
+  t.finished.finally(function(){lb.classList.remove('vt')});
+  return t;
 }
-new IntersectionObserver(function(en,o){if(en[0].isIntersecting){nahodit();o.disconnect()}},{threshold:.6}).observe(document.querySelector('.souhrn'));
-
-/* prohlížeč fotek */
-var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap');
-function otevrit(src,t){lbImg.src=src;lbImg.alt=t;lbCap.textContent=t;lb.showModal()}
+function nacist(src){
+  var im=new Image();im.src=src;
+  return Promise.race([im.decode().catch(function(){}),new Promise(function(r){setTimeout(r,300)})]);
+}
+function otevrit(src,t,el){
+  zdroj=el;
+  nacist(src).then(function(){
+    if(el)el.style.viewTransitionName='foto';
+    var vt=prelit(function(){
+      if(el)el.style.viewTransitionName='';
+      lbImg.src=src;lbImg.alt=t;lbCap.textContent=t;lbImg.style.viewTransitionName='foto';lb.showModal();
+    });
+    if(vt)vt.finished.finally(function(){lbImg.style.viewTransitionName=''});else lbImg.style.viewTransitionName='';
+  });
+}
+function zavrit(){
+  var r=zdroj&&zdroj.getBoundingClientRect();
+  if(!r||!(r.bottom>0&&r.top<innerHeight)||!document.startViewTransition||RM.matches){lb.close();return}
+  lbImg.style.viewTransitionName='foto';
+  var vt=prelit(function(){lbImg.style.viewTransitionName='';lb.close();zdroj.style.viewTransitionName='foto'});
+  vt.finished.finally(function(){zdroj.style.viewTransitionName=''});
+}
 lista.addEventListener('click',function(e){
   var b=e.target.closest('.jistic');if(!b)return;var f=FVE[+b.dataset.i];
-  otevrit('img/fve/'+f[0]+'.jpg','Fotovoltaická elektrárna – '+f[1]+' '+fmt(f[2])+' kWp'+(f[3]?' + '+f[3]:''));
+  /* páčka cvakne dolů a zpátky nahoru, pak se otevře fotka */
+  var p=b.querySelector('.packa');
+  if(!RM.matches&&p.animate)p.animate([{transform:'translateY(-12px)'},{transform:'translateY(0)',offset:.45},{transform:'translateY(-12px)'}],{duration:300,easing:'cubic-bezier(.2,.8,.2,1)',pseudoElement:'::after'});
+  setTimeout(function(){otevrit('img/fve/'+f[0]+'.jpg','Fotovoltaická elektrárna – '+f[1]+' '+fmt(f[2])+' kWp'+(f[3]?' + '+f[3]:''),b)},RM.matches?0:200);
 });
-document.getElementById('pas').addEventListener('click',function(e){var b=e.target.closest('button');if(b)otevrit(b.dataset.src,b.dataset.t)});
-document.getElementById('lbClose').onclick=function(){lb.close()};
-lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+document.getElementById('pas').addEventListener('click',function(e){var b=e.target.closest('button');if(b)otevrit(b.dataset.src,b.dataset.t,b.querySelector('img'))});
+document.getElementById('lbClose').onclick=zavrit;
+lb.addEventListener('cancel',function(e){e.preventDefault();zavrit()});
+lb.addEventListener('click',function(e){if(e.target===lb)zavrit()});
+
+/* ============================================================
+   MENU NA TELEFONU + KOPÍROVÁNÍ E-MAILU
+   ============================================================ */
+(function(){
+  var menu=document.getElementById('menu'),nav=document.getElementById('nav');
+  menu.addEventListener('beforetoggle',function(e){if(e.newState==='open')menu.style.setProperty('--menu-top',(nav.getBoundingClientRect().bottom+8)+'px')});
+  menu.addEventListener('click',function(e){if(e.target.closest('a'))menu.hidePopover()});
+})();
+function toast(text){
+  var t=document.getElementById('toast');t.textContent=text;t.classList.add('is-on');
+  clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('is-on')},2200);
+}
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.kopirovat');if(!b)return;
+  var text=b.dataset.copy;
+  (navigator.clipboard?navigator.clipboard.writeText(text):Promise.reject()).then(function(){
+    b.classList.add('hotovo');toast(b.dataset.msg||'Zkopírováno');
+    clearTimeout(b._t);b._t=setTimeout(function(){b.classList.remove('hotovo')},1800);
+  },function(){location.href='mailto:'+text});
+});
+
+/* ============================================================
+   POHYB PŘI SCROLLU — GSAP + ScrollTrigger + SplitText.
+   Rozvaděč: proud doběhne sběrnicí a jističe naskočí ve vlně, čísla doběhnou.
+   gsap.matchMedia: při omezeném pohybu jen krátké prolnutí, jističe svítí rovnou.
+   ============================================================ */
+function pohyb(){
+  if(!window.gsap||!window.ScrollTrigger)return;
+  gsap.registerPlugin(ScrollTrigger,SplitText);
+  gsap.matchMedia().add({ok:'(prefers-reduced-motion: no-preference)',klid:'(prefers-reduced-motion: reduce)',velke:'(min-width: 900px) and (min-height: 700px)'},function(ctx){
+    var ok=ctx.conditions.ok,velke=ctx.conditions.velke;
+    var pod=function(el){var r=el.getBoundingClientRect();return r.height>0&&r.top>innerHeight*.95};
+    function odhalit(sel,o){
+      o=o||{};
+      var els=gsap.utils.toArray(sel).filter(pod);
+      if(!els.length)return;
+      gsap.set(els,{opacity:0,y:ok?(o.y||24):0});
+      ScrollTrigger.batch(els,{start:'top 90%',once:true,onEnter:function(b){
+        gsap.to(b,{opacity:1,y:0,duration:ok?(o.d||.7):.25,ease:'power3.out',stagger:ok?(o.stagger||.07):0,overwrite:true,onStart:o.start?function(){b.forEach(o.start)}:null});
+      }});
+    }
+
+    odhalit('.roky div',{y:16,stagger:.08});
+    odhalit('.head > p',{y:14,stagger:.08});
+
+    /* služby — karta vyjede, odrážky se rozsvítí jedna po druhé */
+    var karty=gsap.utils.toArray('.sluzba').filter(pod);
+    if(ok)karty.forEach(function(k){k.classList.add('ceka');k.querySelectorAll('li').forEach(function(li,i){li.style.setProperty('--n',i)})});
+    odhalit(karty,{y:26,stagger:.1,start:function(k){k.classList.remove('ceka')}});
+
+    /* energie — na počítači se sekce na chvíli zastaví a scéna se odvíjí se scrollem,
+       na telefonu se jen dokresluje, jak schéma projíždí obrazovkou */
+    var en=document.querySelector('.energie');
+    if(ok&&en&&pod(en)){
+      var q=function(sel){return en.querySelectorAll(sel)};
+      gsap.set(q('.e-dum path, .e-drat, .e-had'),{strokeDashoffset:1});
+      gsap.set(q('.e-slunce'),{scale:0,opacity:0,transformOrigin:'50% 50%'});
+      gsap.set(q('.e-panel'),{opacity:0,fillOpacity:.06});
+      gsap.set(q('.e-box, .e-jistice, .e-baterie'),{opacity:0});
+      gsap.set(q('.e-proud, .e-popis, .e-teplo path'),{opacity:0});
+      gsap.set(q('.e-led'),{opacity:.15});
+      gsap.set(q('.e-napln'),{scaleY:0,transformOrigin:'50% 100%'});
+      gsap.set(q('.e-had'),{stroke:'#5B667C'});
+      var st=velke
+        ?{trigger:en,start:'top 66px',end:'+=140%',scrub:.8,pin:true,anticipatePin:1}
+        :{trigger:en.querySelector('.schema'),start:'top 85%',end:'bottom 35%',scrub:.8};
+      var tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:st});
+      tl.to(q('.e-dum path'),{strokeDashoffset:0,duration:1,stagger:.12})
+        .to(q('.e-box, .e-jistice, .e-baterie'),{opacity:1,duration:.4},'-=.4')
+        .to(q('.e-slunce'),{scale:1,opacity:1,duration:.6,ease:'back.out(1.6)'},'-=.5')
+        .to(q('.e-paprsky'),{rotation:45,svgOrigin:'64 64',duration:5},'<')
+        .to(q('.e-panel'),{opacity:1,duration:.15,stagger:.15},'-=4.2')
+        .to(q('.e-panel'),{fillOpacity:.9,duration:.3,stagger:.15},'<.1')
+        .to(q('.e-popis.p1'),{opacity:1,duration:.3},'<')
+        .to(q('.e-drat.w1'),{strokeDashoffset:0,duration:.8})
+        .to(q('.e-proud.w1'),{opacity:1,duration:.2},'<.3')
+        .to(q('.e-led'),{opacity:1,duration:.15})
+        .to(q('.e-popis.p2'),{opacity:1,duration:.3},'<')
+        .to(q('.e-drat.w2'),{strokeDashoffset:0,duration:.6})
+        .to(q('.e-proud.w2'),{opacity:1,duration:.2},'<.2')
+        .to(q('.e-napln'),{scaleY:1,duration:.8})
+        .to(q('.e-popis.p3'),{opacity:1,duration:.3},'<')
+        .to(q('.e-drat.w3'),{strokeDashoffset:0,duration:.6})
+        .to(q('.e-proud.w3'),{opacity:1,duration:.2},'<.2')
+        .to(q('.e-had'),{strokeDashoffset:0,duration:1})
+        .to(q('.e-had'),{stroke:'#FFB547',duration:.5})
+        .to(q('.e-teplo path'),{opacity:.85,y:-4,duration:.6,stagger:.15},'-=.3')
+        .to(q('.e-popis.p4'),{opacity:1,duration:.3},'<');
+      /* proud teče drátem po celou dobu scény */
+      tl.fromTo(q('.e-proud'),{strokeDashoffset:0},{strokeDashoffset:-160,duration:tl.duration(),ease:'none'},0);
+    }
+
+    /* rozvaděč */
+    var roz=document.querySelector('.rozvadec');
+    if(ok&&roz&&pod(roz)){
+      var jistice=gsap.utils.toArray('.jistic');
+      jistice.forEach(function(j){j.classList.remove('is-on')});
+      cile.forEach(function(c){vypsat(c,0)});
+      var rozlozit=gsap.utils.distribute({base:0,amount:1.2,grid:'auto',from:'start'});
+      var tl=gsap.timeline({scrollTrigger:{trigger:roz,start:'top 72%',once:true}});
+      tl.from('.sbernice',{scaleX:0,duration:.6,ease:'power2.inOut'})
+        .fromTo('.sbernice i',{xPercent:-100},{xPercent:340,duration:.7,ease:'power1.in'},'-=.2')
+        .addLabel('zap','-=.35');
+      jistice.forEach(function(j,i){tl.call(function(){j.classList.add('is-on')},null,'zap+='+rozlozit(i,j,jistice))});
+      cile.forEach(function(c){var o={v:0};tl.to(o,{v:c[1],duration:1.5,ease:'power3.out',onUpdate:function(){vypsat(c,o.v)}},'zap')});
+    }
+
+    odhalit('.energie .text > p, .energie li',{y:16,stagger:.08});
+    odhalit('.pozn-ref');
+    odhalit('.pas button',{y:24,stagger:.06});
+    /* recenze — hvězdičky naskočí postupně */
+    odhalit('.recenze blockquote',{y:22,stagger:.1,start:function(q){if(ok)gsap.from(q.querySelectorAll('.hvezdy i'),{opacity:.15,scale:.6,duration:.35,ease:'back.out(2)',stagger:.07,delay:.25})}});
+    odhalit('.kontakt',{y:24});
+
+    /* nadpisy sekcí — řádky vyjedou z masky, až jsou písma načtená */
+    if(ok)document.fonts.ready.then(function(){ctx.add(function(){
+      gsap.utils.toArray('[data-split]').filter(pod).forEach(function(el){
+        SplitText.create(el,{type:'lines',mask:'lines',autoSplit:true,onSplit:function(s){
+          return gsap.from(s.lines,{yPercent:110,duration:.85,ease:'power4.out',stagger:.09,scrollTrigger:{trigger:el,start:'top 88%',once:true}});
+        }});
+      });
+    })});
+
+    return function(){
+      /* při přepnutí preference vrátit vše do konečného stavu */
+      document.querySelectorAll('.jistic').forEach(function(j){j.classList.add('is-on')});
+      document.querySelectorAll('.sluzba.ceka').forEach(function(k){k.classList.remove('ceka')});
+      cile.forEach(function(c){vypsat(c,c[1])});
+    };
+  });
+}
+
+/* GSAP se načte až při prvním scrollu nebo dotyku (nejpozději ~2 s po načtení, až je prohlížeč volný):
+   pohyb při scrollu se týká jen obsahu níž, takže knihovny nebrzdí první vykreslení ani hlavní fotku */
+(function(){
+  var hotovo=false;
+  function nacist(){
+    if(hotovo)return;hotovo=true;
+    var soubory=['gsap','ScrollTrigger','SplitText'];
+    soubory.forEach(function(src,i){var el=document.createElement('script');el.src='js/'+src+'.min.js';el.async=false;if(i===soubory.length-1)el.onload=pohyb;document.head.appendChild(el)});
+  }
+  addEventListener('scroll',nacist,{passive:true,once:true});
+  addEventListener('pointerdown',nacist,{passive:true,once:true});
+  function pozdeji(){setTimeout(function(){window.requestIdleCallback?requestIdleCallback(nacist,{timeout:1500}):nacist()},2000)}
+  if(document.readyState==='complete')pozdeji();else addEventListener('load',pozdeji);
+})();
 </script>
 </body>
 </html>

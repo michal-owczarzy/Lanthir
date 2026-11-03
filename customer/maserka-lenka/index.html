@@ -31,6 +31,7 @@
   --pad:clamp(16px,4.5vw,48px);
   --max:1160px;
   --r:22px;
+  --klid:cubic-bezier(.25,.8,.25,1);
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:72px}
@@ -65,9 +66,9 @@ p{margin:0}
    HLAVIČKA
    ============================================================ */
 .nav{position:sticky;top:0;z-index:100;background:rgba(243,238,244,.86);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);box-shadow:0 1px 0 rgba(42,22,48,.06)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
-.znacka{font:600 italic 25px/1 var(--serif);color:var(--magenta);text-decoration:none;letter-spacing:-.01em}
-.nav-links{display:none;gap:28px;font-size:15.5px;font-weight:500}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:10px}
+.znacka{font:600 italic clamp(21px,5.6vw,25px)/1 var(--serif);color:var(--magenta);text-decoration:none;letter-spacing:-.01em;margin-right:auto;white-space:nowrap}
+.nav-links{display:none;gap:28px;font-size:15.5px;font-weight:500;margin-right:14px}
 .nav-links a{text-decoration:none;color:var(--seda);padding:10px 0;transition:color 200ms}
 @media (hover:hover){.nav-links a:hover{color:var(--text)}}
 .nav .btn{min-height:44px;padding:0 18px;font-size:15px}
@@ -120,10 +121,13 @@ section{padding:clamp(64px,9vw,112px) 0}
 .portret{position:relative;max-width:420px;justify-self:center;width:100%}
 .portret figure{margin:0;border-radius:200px 200px var(--r) var(--r);overflow:hidden;aspect-ratio:2/3;box-shadow:0 20px 60px rgba(0,0,0,.35)}
 .portret img{width:100%;height:100%;object-fit:cover}
-/* světýlka z masérny — jemně dýchají */
-.svetla{position:absolute;inset:-6% -10% auto;height:46%;pointer-events:none}
-.svetla i{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--svetylko);box-shadow:0 0 12px 3px rgba(242,182,94,.55);animation:dych 4.8s ease-in-out infinite}
-@keyframes dych{0%,100%{opacity:.35;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
+/* girlanda světýlek z masérny — drát se natáhne, žárovky se rozsvítí jedna po druhé */
+.girlanda{position:absolute;left:-12%;top:-7%;width:124%;height:auto;overflow:visible;pointer-events:none;z-index:2}
+.girlanda .drat{fill:none;stroke:rgba(255,255,255,.35);stroke-width:1.2;stroke-dasharray:1;stroke-dashoffset:0}
+.girlanda .patice path{stroke:rgba(255,255,255,.35);stroke-width:1.4}
+.girlanda .zar{fill:url(#zare)}
+.girlanda .tel{fill:#F7C878}
+.girlanda .z{transform-box:fill-box;transform-origin:center}
 .dopis .eyebrow{color:var(--svetylko)}
 .dopis h2{font-size:clamp(36px,5vw,56px);margin:14px 0 20px}
 .dopis .uvod{color:rgba(255,255,255,.78);font-size:18.5px;max-width:34em}
@@ -187,9 +191,16 @@ section{padding:clamp(64px,9vw,112px) 0}
 .osv .list img{max-height:100%;width:auto;border-radius:4px}
 .osv span{display:block;margin-top:10px;font-size:14.5px;font-weight:500;line-height:1.35}
 
-dialog.lb{border:0;padding:0;margin:0;max-width:none;max-height:none;width:100%;height:100%;background:rgba(30,16,34,.94)}
+dialog.lb{border:0;padding:0;margin:0;max-width:none;max-height:none;width:100%;height:100%;background:rgba(30,16,34,.94);
+  opacity:0;transition:opacity .3s ease-out,overlay .3s allow-discrete,display .3s allow-discrete}
 dialog.lb::backdrop{background:transparent}
-dialog.lb[open]{display:grid;place-items:center}
+dialog.lb[open]{display:grid;place-items:center;opacity:1}
+@starting-style{dialog.lb[open]{opacity:0}}
+dialog.lb.vt{transition:none}
+/* náhled osvědčení se přelije do zvětšeniny (View Transitions) */
+::view-transition-group(foto){animation-duration:.55s;animation-timing-function:var(--klid)}
+::view-transition-old(foto),::view-transition-new(foto){height:100%;object-fit:contain;overflow:clip}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.35s}
 dialog.lb img{max-width:min(100vw - 32px,900px);max-height:calc(100svh - 110px);width:auto;border-radius:8px;background:#fff}
 .lb-close{position:absolute;top:calc(env(safe-area-inset-top) + 14px);right:14px;width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;display:grid;place-items:center;cursor:pointer;transition:transform 160ms ease-out}
 .lb-close:active{transform:scale(.94)}
@@ -223,9 +234,86 @@ footer .wrap{display:grid;gap:16px}
 @media (min-width:860px){footer .wrap{grid-template-columns:1fr 1fr;gap:40px}}
 footer b{color:var(--text);font-weight:600}
 
+/* menu na telefonu — hamburger se přelije do křížku */
+.menu-btn{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;border:0;background:var(--mlha-2);color:var(--svestka);cursor:pointer;flex:none;transition:transform 160ms ease-out,background-color 200ms}
+.menu-btn:active{transform:scale(.94)}
+.menu-btn svg{width:22px;height:22px;overflow:visible}
+.menu-btn line{stroke:currentColor;stroke-width:2;stroke-linecap:round;transform-box:fill-box;transform-origin:center;transition:transform .4s var(--klid),opacity .25s}
+body:has(#menu:popover-open) .menu-btn .h{transform:translateY(6px) rotate(45deg)}
+body:has(#menu:popover-open) .menu-btn .s{opacity:0;transform:scaleX(.2)}
+body:has(#menu:popover-open) .menu-btn .d{transform:translateY(-6px) rotate(-45deg)}
+@media (min-width:920px){.menu-btn{display:none}}
+.menu::backdrop{background:rgba(42,22,48,0);transition:background-color .4s ease-out,overlay .4s allow-discrete,display .4s allow-discrete}
+.menu:popover-open::backdrop{background:rgba(42,22,48,.38)}
+@starting-style{.menu:popover-open::backdrop{background:rgba(42,22,48,0)}}
+.menu{position:fixed;inset:auto;top:var(--menu-top,76px);left:12px;right:12px;width:auto;height:auto;margin:0;padding:10px;border:0;border-radius:var(--r);background:#fff;color:var(--text);box-shadow:0 2px 6px rgba(42,22,48,.08),0 24px 60px rgba(42,22,48,.24);
+  opacity:0;transform:translateY(-8px) scale(.98);transform-origin:top right;
+  transition:opacity .3s ease-out,transform .4s var(--klid),overlay .4s allow-discrete,display .4s allow-discrete}
+.menu:popover-open{opacity:1;transform:none}
+@starting-style{.menu:popover-open{opacity:0;transform:translateY(-8px) scale(.98)}}
+.menu nav{display:grid}
+.menu a{display:flex;align-items:center;min-height:56px;padding:0 14px;border-radius:14px;text-decoration:none;font:500 italic 25px/1 var(--serif);color:var(--svestka)}
+.menu a + a{box-shadow:0 -1px 0 var(--mlha-2)}
+.menu a:active{background:var(--mlha)}
+.menu a.btn{justify-content:center;margin-top:10px;box-shadow:none;border-radius:999px;font:600 16px/1 var(--sans);color:#fff}
+.menu:popover-open nav > *{animation:vstup .5s var(--klid) both;animation-delay:calc(var(--i)*45ms + 60ms)}
+
+/* ============================================================
+   POHYB ÚVODU — klidný, čisté CSS (nečeká na skripty);
+   fotka zůstává viditelná celou dobu, jen se pomalu usadí
+   ============================================================ */
+@keyframes vstup{from{opacity:0;transform:translateY(18px)}}
+@keyframes usazeni{from{transform:scale(1.05)}}
+@keyframes tah{from{stroke-dashoffset:1}}
+@keyframes jenFade{from{opacity:0}}
+.slovo{display:inline-block}
+.dotyk{position:relative;display:inline-block}
+.tah-stetcem{position:absolute;left:-3%;width:106%;bottom:-.14em;height:auto;overflow:visible;pointer-events:none}
+.tah-stetcem path{fill:none;stroke:var(--magenta-2);stroke-opacity:.42;stroke-width:5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0}
+@media (prefers-reduced-motion:no-preference){
+  .hero .eyebrow{animation:vstup .9s var(--klid) .05s both}
+  .hero .slovo{animation:vstup 1s var(--klid) both;animation-delay:calc(.15s + var(--i)*90ms)}
+  .tah-stetcem path{animation:tah 1.2s cubic-bezier(.45,.05,.25,1) .95s both}
+  .hero .lead{animation:vstup 1s var(--klid) .45s both}
+  .hero .actions{animation:vstup 1s var(--klid) .55s both}
+  .hero .mista{animation:vstup 1s var(--klid) .65s both}
+  .hero-foto img{animation:usazeni 2.2s var(--klid) both}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero .eyebrow,.hero .slovo,.hero .lead,.hero .actions,.hero .mista,.tah-stetcem{animation:jenFade .25s ease-out both}
+}
+
+/* fotky služeb se při najetí pomalu přiblíží */
+.sluzba .foto{overflow:hidden}
+.sluzba .foto img{transition:transform 1.2s var(--klid)}
+@media (hover:hover){.sluzba:hover .foto img{transform:scale(1.05)}}
+
+/* kopírování e-mailu: ikona se přerýsuje na fajfku, dole vyjede potvrzení */
+.kopirovat{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 12px;margin:-2px 0 0 8px;justify-self:start;border:0;border-radius:10px;background:transparent;color:#fff;font:600 12px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:transform 160ms ease-out,background-color 200ms}
+.kopirovat::after{content:"";position:absolute;inset:-4px 0}
+.kopirovat:active{transform:scale(.95)}
+@media (hover:hover){.kopirovat:hover{background:rgba(255,255,255,.14)}}
+.kopirovat svg{width:16px;height:16px;overflow:visible}
+.kopirovat .kopie{transition:opacity .15s}
+.kopirovat .ok{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .35s ease-out}
+.kopirovat.hotovo .kopie{opacity:0}
+.kopirovat.hotovo .ok{stroke-dashoffset:0;transition-delay:.06s}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));z-index:300;translate:-50% 0;padding:12px 18px;border-radius:999px;background:var(--svestka);color:#fff;font:600 15px/1.2 var(--sans);box-shadow:0 10px 30px rgba(42,22,48,.3);pointer-events:none;
+  opacity:0;transform:translateY(16px);transition:opacity .2s ease-in,transform .2s ease-in}
+.toast.is-on{opacity:1;transform:none;transition:opacity .3s ease-out,transform .45s var(--klid)}
+
+/* ============================================================
+   OMEZENÝ POHYB — pohyb mizí, krátké prolnutí a zpětná vazba zůstávají
+   ============================================================ */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .svetla i{animation:none;opacity:.8}
+  .menu{transform:none;transition:opacity .15s ease-out,overlay .15s allow-discrete,display .15s allow-discrete}
+  @starting-style{.menu:popover-open{opacity:0;transform:none}}
+  .menu:popover-open nav > *{animation:jenFade .15s both}
+  .menu-btn line{transition:opacity .15s}
+  .toast,.toast.is-on{transform:none}
+  .sluzba .foto img{transition:none}
+  @media (hover:hover){.sluzba:hover .foto img{transform:none}}
 }
 </style>
 </head>
@@ -233,7 +321,7 @@ footer b{color:var(--text);font-weight:600}
 
 <div class="ribbon">Nezávazný náhled nového webu, připravený studiem <b>Lanthir</b> z obsahu Vašich současných stránek. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
 
-<header class="nav">
+<header class="nav" id="nav">
   <div class="wrap">
     <a class="znacka" href="#top">Masérka Lenka</a>
     <nav class="nav-links" aria-label="Hlavní">
@@ -246,15 +334,28 @@ footer b{color:var(--text);font-weight:600}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
       <span class="t-short">Objednat</span><span class="t-long">776 65 65 62</span>
     </a>
+    <button class="menu-btn" type="button" popovertarget="menu" aria-label="Menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><line class="h" x1="4" y1="6" x2="20" y2="6"/><line class="s" x1="4" y1="12" x2="20" y2="12"/><line class="d" x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
   </div>
 </header>
+
+<div class="menu" id="menu" popover>
+  <nav aria-label="Menu">
+    <a href="#masaze" style="--i:0">Masáže</a>
+    <a href="#ems" style="--i:1">EMS a ceník</a>
+    <a href="#kosmetika" style="--i:2">Kosmetika</a>
+    <a href="#kontakt" style="--i:3">Kontakt</a>
+    <a class="btn btn--mag" href="tel:+420776656562" style="--i:4">Objednat se: 776 65 65 62</a>
+  </nav>
+</div>
 
 <main id="top">
   <section class="hero">
     <div class="wrap">
       <div>
         <p class="eyebrow">Masáže a kosmetika · Trutnov</p>
-        <h1>Masáž je o&nbsp;<em>dotyku.</em></h1>
+        <h1><span class="slovo" style="--i:0">Masáž</span> <span class="slovo" style="--i:1">je</span> <span class="slovo" style="--i:2">o&nbsp;<em class="dotyk">dotyku.<svg class="tah-stetcem" viewBox="0 0 200 22" aria-hidden="true"><path pathLength="1" d="M4 14 C 50 6, 100 18, 150 10 S 190 8, 196 12"/></svg></em></span></h1>
         <p class="lead">Tím se stává projevem důvěry mezi Vámi a mnou. Relaxační a thajské masáže, reflexní masáž chodidel, kosmetika a EMS procedury.</p>
         <div class="actions">
           <a class="btn btn--mag" href="tel:+420776656562">
@@ -278,7 +379,7 @@ footer b{color:var(--text);font-weight:600}
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Masáže</p>
-        <h2>Uvolnění, klid a odpočinek</h2>
+        <h2 data-split>Uvolnění, klid a odpočinek</h2>
         <p>Masáž by měla navodit regeneraci spojenou s relaxací a celkovým odpočinkem, vše zabalené v hezkém zážitku.</p>
       </div>
       <div class="sluzby">
@@ -311,15 +412,12 @@ footer b{color:var(--text);font-weight:600}
   <section id="dopis">
     <div class="wrap dopis">
       <div class="portret">
-        <div class="svetla" aria-hidden="true">
-          <i style="left:6%;top:22%;animation-delay:0s"></i><i style="left:18%;top:8%;animation-delay:.8s"></i><i style="left:34%;top:2%;animation-delay:1.6s"></i>
-          <i style="left:52%;top:0%;animation-delay:.4s"></i><i style="left:70%;top:4%;animation-delay:2.2s"></i><i style="left:86%;top:14%;animation-delay:1.2s"></i><i style="left:96%;top:30%;animation-delay:2.8s"></i>
-        </div>
+        <svg class="girlanda" viewBox="0 0 420 120" aria-hidden="true"><defs><radialGradient id="zare"><stop offset="0" stop-color="#F2B65E" stop-opacity=".62"/><stop offset="1" stop-color="#F2B65E" stop-opacity="0"/></radialGradient></defs><path class="drat" pathLength="1" d="M-6 26 C70 92 150 104 210 72 S340 18 426 50"/><g class="patice"><path d="M19.3 45.9 v4"/><path d="M57.0 68.3 v4"/><path d="M98.1 83.5 v4"/><path d="M141.6 89.0 v4"/><path d="M184.9 82.5 v4"/><path d="M224.9 64.4 v4"/><path d="M265.4 47.6 v4"/><path d="M308.0 37.0 v4"/><path d="M351.8 34.5 v4"/><path d="M395.2 40.6 v4"/></g><g class="z" style="--i:0"><circle class="zar" cx="19.3" cy="50.9" r="13"/><circle class="tel" cx="19.3" cy="50.9" r="4.2"/></g><g class="z" style="--i:1"><circle class="zar" cx="57.0" cy="73.3" r="13"/><circle class="tel" cx="57.0" cy="73.3" r="4.2"/></g><g class="z" style="--i:2"><circle class="zar" cx="98.1" cy="88.5" r="13"/><circle class="tel" cx="98.1" cy="88.5" r="4.2"/></g><g class="z" style="--i:3"><circle class="zar" cx="141.6" cy="94.0" r="13"/><circle class="tel" cx="141.6" cy="94.0" r="4.2"/></g><g class="z" style="--i:4"><circle class="zar" cx="184.9" cy="87.5" r="13"/><circle class="tel" cx="184.9" cy="87.5" r="4.2"/></g><g class="z" style="--i:5"><circle class="zar" cx="224.9" cy="69.4" r="13"/><circle class="tel" cx="224.9" cy="69.4" r="4.2"/></g><g class="z" style="--i:6"><circle class="zar" cx="265.4" cy="52.6" r="13"/><circle class="tel" cx="265.4" cy="52.6" r="4.2"/></g><g class="z" style="--i:7"><circle class="zar" cx="308.0" cy="42.0" r="13"/><circle class="tel" cx="308.0" cy="42.0" r="4.2"/></g><g class="z" style="--i:8"><circle class="zar" cx="351.8" cy="39.5" r="13"/><circle class="tel" cx="351.8" cy="39.5" r="4.2"/></g><g class="z" style="--i:9"><circle class="zar" cx="395.2" cy="45.6" r="13"/><circle class="tel" cx="395.2" cy="45.6" r="4.2"/></g></svg>
         <figure><img src="img/lenka-640.jpg" srcset="img/lenka-640.jpg 640w, img/lenka-1200.jpg 1200w" sizes="(min-width:900px) 420px, 90vw" width="799" height="1200" loading="lazy" decoding="async" alt="Masérka Lenka"></figure>
       </div>
       <div>
         <p class="eyebrow">Dříve než začne masáž…</p>
-        <h2>Pár slov pro Vaše pohodlí</h2>
+        <h2 data-split>Pár slov pro Vaše pohodlí</h2>
         <p class="uvod">Aby masáž byla vždy hezkým zážitkem, poprosila bych o pozornost k pár informacím pro Vaše zamyšlení a uvážení:</p>
         <ol class="kroky">
           <li>Před masáží se lehce najezte a pokud je to možné, osprchujte se.</li>
@@ -337,7 +435,7 @@ footer b{color:var(--text);font-weight:600}
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">EMS procedury</p>
-        <h2>Zpevnění a formování postavy</h2>
+        <h2 data-split>Zpevnění a formování postavy</h2>
         <p>I pro ty, kteří nemají v oblibě atmosféru posiloven. Procedura trvá maximálně 30 minut, během ní si lehnete a odpočíváte. Intenzitu upravíme podle Vašeho pohodlí.</p>
       </div>
       <div class="ems">
@@ -397,7 +495,7 @@ footer b{color:var(--text);font-weight:600}
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Kosmetika</p>
-        <h2>Základní, relaxační i přístrojová</h2>
+        <h2 data-split>Základní, relaxační i přístrojová</h2>
       </div>
       <div class="kos">
         <div class="kos-karta">
@@ -437,7 +535,7 @@ footer b{color:var(--text);font-weight:600}
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Osvědčení</p>
-        <h2>Kurzy a certifikáty</h2>
+        <h2 data-split>Kurzy a certifikáty</h2>
         <p>Klepnutím si osvědčení zvětšíte.</p>
       </div>
       <div class="osv" id="osv">
@@ -457,7 +555,7 @@ footer b{color:var(--text);font-weight:600}
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Provozovny</p>
-        <h2>Kde mě najdete</h2>
+        <h2 data-split>Kde mě najdete</h2>
       </div>
       <div class="mista-grid">
         <div class="misto">
@@ -472,12 +570,13 @@ footer b{color:var(--text);font-weight:600}
 
       <div class="kontakt">
         <div>
-          <h2>Objednejte se</h2>
+          <h2 data-split>Objednejte se</h2>
           <p>Zavolejte nebo napište, domluvíme termín i druh masáže či ošetření.</p>
         </div>
         <div class="akce">
           <a class="radek" href="tel:+420776656562"><small>Telefon</small><b>776 65 65 62</b></a>
           <a class="radek" href="mailto:info@maserkalenka.cz"><small>E-mail</small><b>info@maserkalenka.cz</b></a>
+          <button class="kopirovat" type="button" data-copy="info@maserkalenka.cz" data-msg="E-mail zkopírován" aria-label="Zkopírovat e-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="kopie"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></g><path class="ok" pathLength="1" d="M5 12.5l4.5 4.5L19 7.5"/></svg>Zkopírovat e-mail</button>
           <a class="radek" href="https://www.facebook.com/Mas%C3%A9rka-Lenka-104632031023831" target="_blank" rel="noopener"><small>Facebook</small><b>Masérka Lenka</b></a>
         </div>
       </div>
@@ -492,20 +591,146 @@ footer b{color:var(--text);font-weight:600}
   </div>
 </footer>
 
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <dialog class="lb" id="lb" aria-label="Zvětšené osvědčení">
   <img id="lbImg" alt="">
   <button class="lb-close" id="lbClose" aria-label="Zavřít"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
 </dialog>
 
 <script>
+var RM=matchMedia('(prefers-reduced-motion: reduce)');
+
+/* ============================================================
+   OSVĚDČENÍ — náhled se přelije do zvětšeniny (View Transitions)
+   ============================================================ */
 (function(){
-  var lb=document.getElementById('lb'),img=document.getElementById('lbImg');
+  var lb=document.getElementById('lb'),img=document.getElementById('lbImg'),zdroj=null;
+  function prelit(zmena){
+    if(!document.startViewTransition||RM.matches){zmena();return null}
+    lb.classList.add('vt');
+    var t=document.startViewTransition(zmena);
+    t.finished.finally(function(){lb.classList.remove('vt')});
+    return t;
+  }
+  function nacist(src){
+    var im=new Image();im.src=src;
+    return Promise.race([im.decode().catch(function(){}),new Promise(function(r){setTimeout(r,300)})]);
+  }
   document.getElementById('osv').addEventListener('click',function(e){
     var b=e.target.closest('button');if(!b)return;
-    img.src=b.dataset.src;img.alt=b.querySelector('span').textContent;lb.showModal();
+    var nahled=b.querySelector('img');zdroj=nahled;
+    nacist(b.dataset.src).then(function(){
+      nahled.style.viewTransitionName='foto';
+      var t=prelit(function(){
+        nahled.style.viewTransitionName='';
+        img.src=b.dataset.src;img.alt=b.querySelector('span').textContent;img.style.viewTransitionName='foto';lb.showModal();
+      });
+      if(t)t.finished.finally(function(){img.style.viewTransitionName=''});else img.style.viewTransitionName='';
+    });
   });
-  document.getElementById('lbClose').onclick=function(){lb.close()};
-  lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+  function zavrit(){
+    var r=zdroj&&zdroj.getBoundingClientRect();
+    if(!r||!(r.bottom>0&&r.top<innerHeight)||!document.startViewTransition||RM.matches){lb.close();return}
+    img.style.viewTransitionName='foto';
+    var t=prelit(function(){img.style.viewTransitionName='';lb.close();zdroj.style.viewTransitionName='foto'});
+    t.finished.finally(function(){zdroj.style.viewTransitionName=''});
+  }
+  document.getElementById('lbClose').onclick=zavrit;
+  lb.addEventListener('cancel',function(e){e.preventDefault();zavrit()});
+  lb.addEventListener('click',function(e){if(e.target===lb)zavrit()});
+})();
+
+/* ============================================================
+   MENU NA TELEFONU + KOPÍROVÁNÍ E-MAILU
+   ============================================================ */
+(function(){
+  var menu=document.getElementById('menu'),nav=document.getElementById('nav');
+  menu.addEventListener('beforetoggle',function(e){if(e.newState==='open')menu.style.setProperty('--menu-top',(nav.getBoundingClientRect().bottom+8)+'px')});
+  menu.addEventListener('click',function(e){if(e.target.closest('a'))menu.hidePopover()});
+})();
+function toast(text){
+  var t=document.getElementById('toast');t.textContent=text;t.classList.add('is-on');
+  clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('is-on')},2400);
+}
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.kopirovat');if(!b)return;
+  var text=b.dataset.copy;
+  (navigator.clipboard?navigator.clipboard.writeText(text):Promise.reject()).then(function(){
+    b.classList.add('hotovo');toast(b.dataset.msg||'Zkopírováno');
+    clearTimeout(b._t);b._t=setTimeout(function(){b.classList.remove('hotovo')},2000);
+  },function(){location.href='mailto:'+text});
+});
+
+/* ============================================================
+   POHYB PŘI SCROLLU — klidný: delší a měkčí než u řemeslníků.
+   gsap.matchMedia: při omezeném pohybu jen krátké prolnutí, girlanda svítí rovnou.
+   Skrývá se jen obsah pod okrajem obrazovky, takže nic neproblikne.
+   ============================================================ */
+function pohyb(){
+  if(!window.gsap||!window.ScrollTrigger)return;
+  gsap.registerPlugin(ScrollTrigger,SplitText);
+  gsap.matchMedia().add({ok:'(prefers-reduced-motion: no-preference)',klid:'(prefers-reduced-motion: reduce)'},function(ctx){
+    var ok=ctx.conditions.ok;
+    var pod=function(el){var r=el.getBoundingClientRect();return r.height>0&&r.top>innerHeight*.95};
+    function odhalit(sel,o){
+      o=o||{};
+      var els=gsap.utils.toArray(sel).filter(pod);
+      if(!els.length)return;
+      gsap.set(els,{opacity:0,y:ok?(o.y||20):0});
+      ScrollTrigger.batch(els,{start:'top 90%',once:true,onEnter:function(b){
+        gsap.to(b,{opacity:1,y:0,duration:ok?(o.d||1):.3,ease:'power2.out',stagger:ok?(o.stagger||.1):0,overwrite:true});
+      }});
+    }
+
+    /* portrét se vynoří, pak se natáhne drát girlandy a žárovky se rozsvítí jedna po druhé;
+       jeden klidný nádech a pak už svítí — žádná nekonečná smyčka */
+    var portret=document.querySelector('.portret figure'),g=document.querySelector('.girlanda');
+    if(portret&&pod(portret)){
+      var tl=gsap.timeline({scrollTrigger:{trigger:'.portret',start:'top 82%',once:true}});
+      tl.from(portret,{opacity:0,y:ok?28:0,scale:ok?.98:1,duration:ok?1.3:.3,ease:'power2.out'});
+      if(ok&&g){
+        var drat=g.querySelector('.drat'),z=g.querySelectorAll('.z'),zar=g.querySelectorAll('.zar');
+        gsap.set(drat,{strokeDashoffset:1});gsap.set(z,{opacity:0,scale:.4});
+        tl.to(drat,{strokeDashoffset:0,duration:1.4,ease:'sine.inOut'},.3)
+          .to(z,{opacity:1,scale:1,duration:.55,ease:'power2.out',stagger:.11},'-=.8')
+          .to(zar,{opacity:.6,duration:.9,ease:'sine.inOut',yoyo:true,repeat:1,stagger:.06});
+      }
+    }
+
+    odhalit('.head > p',{y:14,stagger:.1});
+    odhalit('.sluzba',{y:26,stagger:.14,d:1.1});
+    odhalit('.cena-dohodou');
+    odhalit('.dopis .uvod, .kroky li, .podpis',{y:16,stagger:.12});
+    odhalit('.cenik, .roller, .upozorneni',{y:24,stagger:.14});
+    odhalit('.kos-karta',{y:24,stagger:.14});
+    odhalit('.osv button',{y:18,stagger:.07,d:.9});
+    odhalit('.misto, .kontakt',{y:24,stagger:.14});
+
+    /* nadpisy sekcí — řádky vyplují z masky pomalu, až jsou písma načtená */
+    if(ok)document.fonts.ready.then(function(){ctx.add(function(){
+      gsap.utils.toArray('[data-split]').filter(pod).forEach(function(el){
+        SplitText.create(el,{type:'lines',mask:'lines',autoSplit:true,onSplit:function(s){
+          return gsap.from(s.lines,{yPercent:110,duration:1.1,ease:'power3.out',stagger:.12,scrollTrigger:{trigger:el,start:'top 88%',once:true}});
+        }});
+      });
+    })});
+  });
+}
+
+/* GSAP se načte až při prvním scrollu nebo dotyku (nejpozději ~2 s po načtení, až je prohlížeč volný):
+   pohyb při scrollu se týká jen obsahu níž, takže knihovny nebrzdí první vykreslení ani hlavní fotku */
+(function(){
+  var hotovo=false;
+  function nacist(){
+    if(hotovo)return;hotovo=true;
+    var soubory=['gsap','ScrollTrigger','SplitText'];
+    soubory.forEach(function(src,i){var el=document.createElement('script');el.src='js/'+src+'.min.js';el.async=false;if(i===soubory.length-1)el.onload=pohyb;document.head.appendChild(el)});
+  }
+  addEventListener('scroll',nacist,{passive:true,once:true});
+  addEventListener('pointerdown',nacist,{passive:true,once:true});
+  function pozdeji(){setTimeout(function(){window.requestIdleCallback?requestIdleCallback(nacist,{timeout:1500}):nacist()},2000)}
+  if(document.readyState==='complete')pozdeji();else addEventListener('load',pozdeji);
 })();
 </script>
 </body>

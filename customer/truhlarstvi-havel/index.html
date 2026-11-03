@@ -31,6 +31,7 @@
   --pad:clamp(16px,4.5vw,48px);
   --max:1180px;
   --r:14px;
+  --vyjezd:cubic-bezier(.2,.8,.2,1);
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:72px}
@@ -63,19 +64,44 @@ p{margin:0}
 .ribbon a{font-weight:700;text-underline-offset:2px}
 
 /* ============================================================
-   HLAVIČKA
+   HLAVIČKA + MENU NA TELEFONU
    ============================================================ */
 .nav{position:sticky;top:0;z-index:100;background:rgba(30,42,35,.86);-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);border-bottom:1px solid rgba(255,255,255,.06)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
-.brand{display:flex;flex-direction:column;text-decoration:none;color:var(--bila);line-height:1.1}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.brand{display:flex;flex-direction:column;text-decoration:none;color:var(--bila);line-height:1.1;margin-right:auto}
 .brand b{font:800 18px/1.1 var(--display);font-variation-settings:"wdth" 118;letter-spacing:-.01em}
 .brand span{font:500 10.5px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:3px}
-.nav-links{display:none;gap:28px;font-weight:500;font-size:15px}
+.nav-links{display:none;gap:28px;font-weight:500;font-size:15px;margin-right:12px}
 .nav-links a{color:rgba(255,255,255,.78);text-decoration:none;padding:10px 0}
 @media (hover:hover){.nav-links a:hover{color:#fff}}
 .nav .btn{min-height:44px;padding:0 18px;font-size:15px}
 .nav .btn .t-long{display:none}
 @media (min-width:860px){.nav-links{display:flex}.nav .btn .t-long{display:inline}.nav .btn .t-short{display:none}}
+
+/* hamburger se přelije do křížku — jen transform a opacity */
+.menu-btn{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;border:0;background:rgba(255,255,255,.08);color:#fff;cursor:pointer;transition:transform 160ms ease-out,background-color 200ms}
+.menu-btn:active{transform:scale(.94)}
+.menu-btn svg{width:22px;height:22px;overflow:visible}
+.menu-btn line{stroke:currentColor;stroke-width:2;stroke-linecap:round;transform-box:fill-box;transform-origin:center;transition:transform .32s var(--vyjezd),opacity .2s}
+body:has(#menu:popover-open) .menu-btn .h{transform:translateY(6px) rotate(45deg)}
+body:has(#menu:popover-open) .menu-btn .s{opacity:0;transform:scaleX(.2)}
+body:has(#menu:popover-open) .menu-btn .d{transform:translateY(-6px) rotate(-45deg)}
+@media (min-width:860px){.menu-btn{display:none}}
+.menu::backdrop{background:rgba(8,12,10,0);transition:background-color .3s ease-out,overlay .3s allow-discrete,display .3s allow-discrete}
+.menu:popover-open::backdrop{background:rgba(8,12,10,.5)}
+@starting-style{.menu:popover-open::backdrop{background:rgba(8,12,10,0)}}
+.menu{position:fixed;inset:auto;top:var(--menu-top,76px);left:12px;right:12px;width:auto;height:auto;margin:0;padding:8px;border:0;border-radius:18px;background:#26352C;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 2px 6px rgba(0,0,0,.2),0 24px 60px rgba(0,0,0,.35);
+  opacity:0;transform:translateY(-8px) scale(.98);transform-origin:top right;
+  transition:opacity .2s ease-out,transform .3s var(--vyjezd),overlay .3s allow-discrete,display .3s allow-discrete}
+.menu:popover-open{opacity:1;transform:none}
+@starting-style{.menu:popover-open{opacity:0;transform:translateY(-8px) scale(.98)}}
+.menu nav{display:grid}
+.menu a{display:flex;align-items:center;justify-content:space-between;min-height:54px;padding:0 14px;border-radius:12px;text-decoration:none;font-weight:700;font-size:18px;font-variation-settings:"wdth" 112}
+.menu a + a{box-shadow:0 -1px 0 rgba(255,255,255,.08)}
+.menu a:active{background:rgba(255,255,255,.08)}
+.menu a span{font:500 11px/1 var(--mono);letter-spacing:.06em;color:rgba(255,255,255,.5)}
+.menu a.btn{justify-content:center;margin-top:8px;width:100%;box-shadow:none;border-radius:999px;font-size:17px}
+.menu:popover-open nav > *{animation:vstup .38s var(--vyjezd) both;animation-delay:calc(var(--i)*35ms + 40ms)}
 
 /* ============================================================
    ÚVOD — fotka „okótovaná“ jako na dílenském výkresu
@@ -89,6 +115,7 @@ p{margin:0}
 .hero .label{color:var(--metr)}
 .hero h1{font-size:clamp(40px,7.4vw,76px);margin:18px 0 22px;font-variation-settings:"wdth" 122}
 .hero h1 em{font-style:normal;color:var(--metr)}
+.slovo{display:inline-block}
 .hero p.lead{font-size:clamp(17px,1.9vw,19.5px);color:rgba(250,251,248,.78);max-width:34em}
 .hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
 .hero .where{margin-top:28px;display:flex;gap:10px;align-items:center;color:rgba(250,251,248,.6);font-size:14.5px}
@@ -98,25 +125,57 @@ p{margin:0}
 .drawing figure{margin:0;position:relative;border-radius:var(--r);overflow:hidden;box-shadow:0 2px 4px rgba(0,0,0,.18),0 18px 40px rgba(0,0,0,.28);aspect-ratio:4/3;background:var(--smrk-2)}
 .drawing figure img{width:100%;height:100%;object-fit:cover}
 .drawing figcaption{position:absolute;left:12px;bottom:12px;font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;background:rgba(30,42,35,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:7px 10px;border-radius:6px;color:rgba(255,255,255,.86)}
-/* kóty */
-.kota{position:absolute;color:var(--kota);--c:#E2584A}
+/* kóty: vynášecí čáry, kótovací čára, šikmé značky a popisek */
+.kota{position:absolute;--c:#E2584A}
 .kota i{position:absolute;background:var(--c)}
 .kota b{position:absolute;font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#F07A6C;background:var(--smrk);padding:3px 8px;white-space:nowrap}
+.kota .sikma{position:absolute;width:12px;height:12px;overflow:visible}
+.kota .sikma path{fill:none;stroke:var(--c);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0}
 .kota--w{left:0;right:40px;top:8px;height:14px}
-.kota--w i.l{left:0;right:0;top:6px;height:1.5px;transform-origin:center;transform:scaleX(0)}
+.kota--w i.l{left:0;right:0;top:6px;height:1.5px}
 .kota--w i.a,.kota--w i.z{top:0;width:1.5px;height:14px}
 .kota--w i.a{left:0}.kota--w i.z{right:0}
-.kota--w b{left:50%;top:0;transform:translate(-50%,-2px)}
+.kota--w .sikma{top:1px}.kota--w .sikma.a{left:-6px}.kota--w .sikma.z{right:-6px}
+.kota--w b{left:50%;top:0;translate:-50% -2px}
 .kota--h{right:8px;top:36px;bottom:0;width:14px}
-.kota--h i.l{top:0;bottom:0;left:6px;width:1.5px;transform-origin:center;transform:scaleY(0)}
+.kota--h i.l{top:0;bottom:0;left:6px;width:1.5px}
 .kota--h i.a,.kota--h i.z{left:0;height:1.5px;width:14px}
 .kota--h i.a{top:0}.kota--h i.z{bottom:0}
-.kota--h b{top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg)}
-.kota b,.kota i.a,.kota i.z{opacity:0}
-.is-ready .kota i.l{transform:none;transition:transform 900ms cubic-bezier(.2,.8,.2,1) 250ms}
-.is-ready .kota b,.is-ready .kota i.a,.is-ready .kota i.z{opacity:1;transition:opacity 400ms ease-out 900ms}
-.is-ready .kota--h i.l{transition-delay:450ms}
-.is-ready .kota--h b{transition-delay:1100ms}
+.kota--h .sikma{left:1px}.kota--h .sikma.a{top:-6px}.kota--h .sikma.z{bottom:-6px}
+.kota--h b{top:50%;left:50%;translate:-50% -50%;rotate:90deg}
+
+/* ============================================================
+   POHYB ÚVODU — čisté CSS, běží od prvního vykreslení (nečeká na skripty)
+   ============================================================ */
+@keyframes vstup{from{opacity:0;transform:translateY(16px)}}
+@keyframes vstupFoto{from{opacity:0;transform:translateY(20px) scale(.97)}}
+@keyframes jenFade{from{opacity:0}}
+@keyframes kotaX{from{transform:scaleX(0)}}
+@keyframes kotaY{from{transform:scaleY(0)}}
+@keyframes tah{from{stroke-dashoffset:1}}
+@keyframes stitek{from{opacity:0;transform:translateY(5px)}}
+@media (prefers-reduced-motion:no-preference){
+  .hero .label,.hero .slovo,.hero .lead,.hero .actions,.hero .where{animation:vstup .7s var(--vyjezd) both}
+  .hero .label{animation-delay:.05s}
+  .hero .slovo{animation-delay:calc(.1s + var(--i)*45ms)}
+  .hero .lead{animation-delay:.32s}
+  .hero .actions{animation-delay:.42s}
+  .hero .where{animation-delay:.5s}
+  .drawing figure{animation:vstupFoto .9s var(--vyjezd) .2s both}
+  /* kótovací čára se natáhne od středu, pak vynášecí čáry, šikmé značky a popisek */
+  .kota--w i.l{animation:kotaX .9s var(--vyjezd) .7s both}
+  .kota--h i.l{animation:kotaY .9s var(--vyjezd) .9s both}
+  .kota--w i.a,.kota--w i.z{animation:kotaY .35s var(--vyjezd) 1.25s both}
+  .kota--h i.a,.kota--h i.z{animation:kotaX .35s var(--vyjezd) 1.45s both}
+  .kota .sikma path{animation:tah .3s ease-out 1.45s both}
+  .kota--h .sikma path{animation-delay:1.65s}
+  .kota b{animation:stitek .45s var(--vyjezd) 1.5s both}
+  .kota--h b{animation-delay:1.7s}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero .label,.hero .slovo,.hero .lead,.hero .actions,.hero .where,.drawing figure{animation:jenFade .2s ease-out both}
+  .kota{animation:jenFade .25s ease-out .15s both}
+}
 
 /* ============================================================
    CO VYRÁBÍME — kusovník
@@ -126,15 +185,19 @@ section{padding:clamp(64px,9vw,112px) 0}
 .head h2{font-size:clamp(30px,4.6vw,48px)}
 .head p{color:var(--seda);font-size:17.5px}
 
-.kusovnik{border-top:2px solid var(--grafit);display:grid}
+.kusovnik{position:relative;display:grid;padding-top:2px}
+.pravitko{position:absolute;left:0;right:0;top:0;height:2px;background:var(--grafit);transform-origin:left}
 @media (min-width:760px){.kusovnik{grid-template-columns:1fr 1fr;column-gap:48px}}
-.kus{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;min-height:64px;padding:12px 0;border-bottom:1px solid var(--linka);text-decoration:none}
+.kus{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;min-height:64px;padding:12px 0;border-bottom:1px solid var(--linka);text-decoration:none}
+/* žlutý metr přeměří řádek při najetí */
+.kus::before{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--metr);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--vyjezd)}
 .kus h3{font-size:clamp(19px,2.2vw,22px);font-variation-settings:"wdth" 110;letter-spacing:-.01em}
-.kus .meta{font:500 12px/1 var(--mono);letter-spacing:.04em;color:var(--seda);display:flex;align-items:center;gap:8px;white-space:nowrap}
+.kus .meta{font:500 12px/1 var(--mono);letter-spacing:.04em;color:var(--seda);display:flex;align-items:center;gap:8px;white-space:nowrap;transition:color 200ms}
 .kus .meta svg{width:16px;height:16px;transition:transform 200ms ease-out}
 a.kus{transition:background-color 200ms ease-out}
 a.kus:active{background:var(--papir-2)}
-@media (hover:hover){a.kus:hover .meta{color:var(--grafit)}a.kus:hover .meta svg{transform:translateX(3px)}}
+a.kus:focus-visible::before{transform:scaleX(1)}
+@media (hover:hover){a.kus:hover .meta{color:var(--grafit)}a.kus:hover .meta svg{transform:translateX(3px)}a.kus:hover::before{transform:scaleX(1)}}
 .material{margin-top:36px;display:flex;flex-wrap:wrap;gap:10px}
 .chip{font:500 13px/1 var(--mono);letter-spacing:.03em;padding:10px 14px;border-radius:999px;background:var(--bila);box-shadow:inset 0 0 0 1px var(--linka)}
 
@@ -150,20 +213,21 @@ a.kus:active{background:var(--papir-2)}
 .filters button small{font:500 11px/1 var(--mono);color:var(--seda);margin-left:6px}
 .filters button[aria-pressed="true"] small{color:rgba(250,251,248,.72)}
 @media (hover:hover){.filters button[aria-pressed="false"]:hover{background:var(--papir-2)}}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.grid{position:relative;display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 @media (min-width:640px){.grid{grid-template-columns:repeat(3,1fr);gap:12px}}
 @media (min-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}
 .tile{position:relative;aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:var(--papir-2);border:0;padding:0;cursor:zoom-in;transition:transform 160ms ease-out}
 .tile:active{transform:scale(.97)}
-.tile img{width:100%;height:100%;object-fit:cover;transition:transform 500ms cubic-bezier(.2,.8,.2,1)}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform 500ms var(--vyjezd)}
 @media (hover:hover){.tile:hover img{transform:scale(1.04)}}
-.tile.is-in{animation:tileIn 420ms cubic-bezier(.2,.8,.2,1) both}
-@keyframes tileIn{from{opacity:0;transform:translateY(10px) scale(.98)}}
 .more{margin-top:28px;text-align:center}
 
-dialog.lb{border:0;padding:0;margin:0;max-width:none;max-height:none;width:100%;height:100%;background:rgba(14,19,16,.94);color:#fff}
+dialog.lb{border:0;padding:0;margin:0;max-width:none;max-height:none;width:100%;height:100%;background:rgba(14,19,16,.94);color:#fff;
+  opacity:0;transition:opacity .22s ease-out,overlay .22s allow-discrete,display .22s allow-discrete}
+dialog.lb[open]{display:grid;grid-template-rows:auto 1fr auto;opacity:1}
+@starting-style{dialog.lb[open]{opacity:0}}
+dialog.lb.vt{transition:none}
 dialog.lb::backdrop{background:transparent}
-dialog.lb[open]{display:grid;grid-template-rows:auto 1fr auto}
 .lb-top{display:flex;justify-content:space-between;align-items:center;padding:calc(env(safe-area-inset-top) + 12px) 16px 12px}
 .lb-top .label{color:rgba(255,255,255,.7)}
 .lb-stage{position:relative;display:grid;place-items:center;overflow:hidden;touch-action:pan-y}
@@ -173,6 +237,10 @@ dialog.lb[open]{display:grid;grid-template-rows:auto 1fr auto}
 .icon-btn:active{transform:scale(.94)}
 .icon-btn svg{width:20px;height:20px}
 @media (hover:hover){.icon-btn:hover{background:rgba(255,255,255,.18)}}
+/* náhled se přelije do prohlížeče (View Transitions) */
+::view-transition-group(foto){animation-duration:.45s;animation-timing-function:var(--vyjezd)}
+::view-transition-old(foto),::view-transition-new(foto){height:100%;object-fit:cover;overflow:clip}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.3s}
 
 /* ============================================================
    RENOVACE
@@ -199,22 +267,45 @@ dialog.lb[open]{display:grid;grid-template-rows:auto 1fr auto}
 .card dl{margin:22px 0 0;display:grid;gap:0}
 .card dl div{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:13px 0;border-top:1px solid var(--papir-2)}
 .card dt{font:500 12px/1.6 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--seda)}
-.card dd{margin:0;font-weight:600}
+.card dd{margin:0;font-weight:600;display:flex;flex-direction:column;align-items:flex-start}
 .card dd a{text-decoration:none;border-bottom:1.5px solid var(--metr)}
 .card .actions{display:grid;gap:10px;margin-top:24px}
 @media (min-width:480px){.card .actions{grid-template-columns:1fr 1fr}}
 .btn--line{background:transparent;color:var(--grafit);box-shadow:inset 0 0 0 1.5px var(--linka)}
 @media (hover:hover){.btn--line:hover{background:var(--papir)}}
 
+/* kopírování e-mailu: ikona se přerýsuje na fajfku, dole vyjede potvrzení */
+.kopirovat{position:relative;display:inline-flex;align-items:center;gap:7px;min-height:34px;padding:0 10px;margin:6px 0 -4px -10px;border:0;border-radius:10px;background:transparent;color:var(--seda);font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:transform 160ms ease-out,background-color 200ms,color 200ms}
+.kopirovat::after{content:"";position:absolute;inset:-5px 0}
+.kopirovat:active{transform:scale(.95)}
+@media (hover:hover){.kopirovat:hover{background:var(--papir);color:var(--grafit)}}
+.kopirovat svg{width:16px;height:16px;overflow:visible}
+.kopirovat .kopie{transition:opacity .15s}
+.kopirovat .ok{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .3s ease-out}
+.kopirovat.hotovo{color:#2F7D4A}
+.kopirovat.hotovo .kopie{opacity:0}
+.kopirovat.hotovo .ok{stroke-dashoffset:0;transition-delay:.06s}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));z-index:300;translate:-50% 0;padding:12px 18px;border-radius:999px;background:var(--grafit);color:#fff;font:600 15px/1.2 var(--sans);box-shadow:0 10px 30px rgba(0,0,0,.25);pointer-events:none;
+  opacity:0;transform:translateY(16px);transition:opacity .18s ease-in,transform .18s ease-in}
+.toast.is-on{opacity:1;transform:none;transition:opacity .22s ease-out,transform .32s var(--vyjezd)}
+
 footer{background:var(--smrk);color:rgba(250,251,248,.6);font-size:14px;padding:36px 0 calc(36px + env(safe-area-inset-bottom))}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
-
+/* ============================================================
+   OMEZENÝ POHYB — pohyb mizí, krátké prolnutí a zpětná vazba zůstávají
+   ============================================================ */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .kota i.l{transform:none!important;transition:none!important}
-  .tile.is-in{animation:none}
+  .menu{transform:none;transition:opacity .15s ease-out,overlay .15s allow-discrete,display .15s allow-discrete}
+  @starting-style{.menu:popover-open{opacity:0;transform:none}}
+  .menu:popover-open nav > *{animation:jenFade .15s both}
+  .menu-btn line{transition:opacity .15s}
+  .toast,.toast.is-on{transform:none}
+  .kus::before{transition:opacity .15s;transform:scaleX(1);opacity:0}
+  a.kus:focus-visible::before{opacity:1}
   .tile img{transition:none}
+  @media (hover:hover){.tile:hover img{transform:none}a.kus:hover::before{opacity:1}}
 }
 </style>
 </head>
@@ -222,7 +313,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <div class="ribbon">Nezávazný náhled nového webu, připravený studiem <b>Lanthir</b> z obsahu Vašich současných stránek. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
 
-<header class="nav">
+<header class="nav" id="nav">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Jiří Havel – zakázkové truhlářství, nahoru">
       <b>Jiří Havel</b>
@@ -238,15 +329,28 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
       <span class="t-short">Zavolat</span><span class="t-long">603 377 801</span>
     </a>
+    <button class="menu-btn" type="button" popovertarget="menu" aria-label="Menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><line class="h" x1="4" y1="6" x2="20" y2="6"/><line class="s" x1="4" y1="12" x2="20" y2="12"/><line class="d" x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
   </div>
 </header>
+
+<div class="menu" id="menu" popover>
+  <nav aria-label="Menu">
+    <a href="#vyrabime" style="--i:0">Co vyrábíme <span>01</span></a>
+    <a href="#realizace" style="--i:1">Realizace <span>02</span></a>
+    <a href="#renovace" style="--i:2">Renovace <span>03</span></a>
+    <a href="#kontakt" style="--i:3">Kontakt <span>04</span></a>
+    <a class="btn btn--metr" href="tel:+420603377801" style="--i:4">Zavolat 603 377 801</a>
+  </nav>
+</div>
 
 <main id="top">
   <section class="hero">
     <div class="wrap">
       <div>
         <p class="label">Zakázkové truhlářství · Pelhřimov</p>
-        <h1>Nábytek, okna a dveře <em>přesně na&nbsp;míru.</em></h1>
+        <h1><span class="slovo" style="--i:0">Nábytek,</span> <span class="slovo" style="--i:1">okna</span> <span class="slovo" style="--i:2">a</span> <span class="slovo" style="--i:3">dveře</span> <em><span class="slovo" style="--i:4">přesně</span> <span class="slovo" style="--i:5">na&nbsp;míru.</span></em></h1>
         <p class="lead">Kuchyně, vestavné skříně, schody i zábradlí. Vyrábíme podle konkrétních přání zákazníků, z masivu i z lamina, pro interiéry i exteriéry.</p>
         <div class="actions">
           <a class="btn btn--metr" href="tel:+420603377801">
@@ -261,9 +365,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         </p>
       </div>
 
-      <div class="drawing" aria-hidden="false">
-        <div class="kota kota--w" aria-hidden="true"><i class="l"></i><i class="a"></i><i class="z"></i><b>na míru</b></div>
-        <div class="kota kota--h" aria-hidden="true"><i class="l"></i><i class="a"></i><i class="z"></i><b>na míru</b></div>
+      <div class="drawing">
+        <div class="kota kota--w" aria-hidden="true"><i class="l"></i><i class="a"></i><i class="z"></i><svg class="sikma a" viewBox="0 0 12 12"><path pathLength="1" d="M2 10 10 2"/></svg><svg class="sikma z" viewBox="0 0 12 12"><path pathLength="1" d="M2 10 10 2"/></svg><b>na míru</b></div>
+        <div class="kota kota--h" aria-hidden="true"><i class="l"></i><i class="a"></i><i class="z"></i><svg class="sikma a" viewBox="0 0 12 12"><path pathLength="1" d="M2 10 10 2"/></svg><svg class="sikma z" viewBox="0 0 12 12"><path pathLength="1" d="M2 10 10 2"/></svg><b>na míru</b></div>
         <figure>
           <img src="img/dvere-17.jpg" width="640" height="480" alt="Dřevěná dvoukřídlá vrata s obloukem ve fasádě vesnického domu" fetchpriority="high">
           <figcaption>Realizace · vrata</figcaption>
@@ -276,7 +380,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <div class="wrap">
       <div class="head">
         <p class="label">Co vyrábíme</p>
-        <h2>Kompletní truhlářská výroba</h2>
+        <h2 data-split>Kompletní truhlářská výroba</h2>
         <p>Zakázková výroba, která vychází z konkrétních přání zákazníků. Vyberte, co Vás zajímá, a ukážeme Vám, co už jsme vyrobili.</p>
       </div>
       <div class="kusovnik" id="kusovnik"></div>
@@ -295,7 +399,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <div class="wrap">
       <div class="head">
         <p class="label">Realizace</p>
-        <h2>Ukázky naší práce</h2>
+        <h2 data-split>Ukázky naší práce</h2>
         <p>Výběr z fotografií hotových zakázek. Fotku otevřete klepnutím.</p>
       </div>
       <div class="filters" role="toolbar" aria-label="Filtrovat realizace" id="filters"></div>
@@ -308,7 +412,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <div class="wrap">
       <div class="head">
         <p class="label">Restaurování nábytku</p>
-        <h2>Starému nábytku vrátíme život</h2>
+        <h2 data-split>Starému nábytku vrátíme život</h2>
         <p>Kromě nové výroby se věnujeme i renovaci a restaurování starého nábytku. Podívejte se do dílny.</p>
       </div>
       <div class="strip" id="strip"></div>
@@ -319,7 +423,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <div class="wrap about">
       <div>
         <p class="label" style="margin-bottom:22px">O nás</p>
-        <blockquote>Za dobu našeho působení jsme si získali mnoho spokojených zákazníků, kteří se k nám znovu a znovu vracejí.</blockquote>
+        <blockquote data-split>Za dobu našeho působení jsme si získali mnoho spokojených zákazníků, kteří se k nám znovu a znovu vracejí.</blockquote>
         <div class="body">
           <p>Vítáme Vás na stránkách našeho truhlářství. Zabýváme se především zakázkovou výrobou, která vychází z konkrétních přání našich zákazníků.</p>
           <p>Provádíme kompletní truhlářskou výrobu pro interiéry i exteriéry, a to jak z masivu, tak z lepených materiálů. Těšíme se i na spolupráci s Vámi.</p>
@@ -331,7 +435,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <h3 style="margin-top:10px">Zakázkové truhlářství Jiří Havel</h3>
         <dl>
           <div><dt>Telefon</dt><dd><a href="tel:+420603377801">603 377 801</a></dd></div>
-          <div><dt>E-mail</dt><dd><a href="mailto:info@truhlarstvi-havel.cz">info@truhlarstvi-havel.cz</a></dd></div>
+          <div><dt>E-mail</dt><dd><a href="mailto:info@truhlarstvi-havel.cz">info@truhlarstvi-havel.cz</a><button class="kopirovat" type="button" data-copy="info@truhlarstvi-havel.cz" data-msg="E-mail zkopírován" aria-label="Zkopírovat e-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="kopie"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></g><path class="ok" pathLength="1" d="M5 12.5l4.5 4.5L19 7.5"/></svg>Kopírovat</button></dd></div>
           <div><dt>Adresa</dt><dd>Vlásenická 1540<br>393 01 Pelhřimov</dd></div>
           <div><dt>IČO</dt><dd>690 98 981</dd></div>
         </dl>
@@ -351,6 +455,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   </div>
 </footer>
 
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <dialog class="lb" id="lb" aria-label="Prohlížeč fotografií">
   <div class="lb-top">
@@ -365,6 +470,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 </dialog>
 
 <script>
+var RM=matchMedia('(prefers-reduced-motion: reduce)');
+
 /* ============================================================
    DATA — výběr z fotogalerie truhlarstvi-havel.cz
    ============================================================ */
@@ -391,7 +498,7 @@ var KUS=[
   ['Kancelářský nábytek','pracovny'],['Vybavení prodejen a restaurací','prodejny'],['Ostatní nábytek a doplňky','jidelny'],['Renovace nábytku','restaurovani-nabytku']
 ];
 var arrow='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-document.getElementById('kusovnik').innerHTML=KUS.map(function(r){
+document.getElementById('kusovnik').innerHTML='<span class="pravitko" aria-hidden="true"></span>'+KUS.map(function(r){
   var c=FOTO.filter(function(f){return f.k===r[1]}).length;
   var href=r[1]==='restaurovani-nabytku'?'#renovace':'#realizace';
   var slovo=c===1?'fotka':(c>=2&&c<=4?'fotky':'fotek');
@@ -399,40 +506,63 @@ document.getElementById('kusovnik').innerHTML=KUS.map(function(r){
 }).join('');
 
 /* ============================================================
-   REALIZACE — filtr + mřížka
+   REALIZACE — všechny dlaždice jsou v DOM, filtr je jen skrývá,
+   takže je Flip umí přesunout na nová místa
    ============================================================ */
 var grid=document.getElementById('grid'),filters=document.getElementById('filters'),moreBtn=document.getElementById('moreBtn');
 var GALERIE=FOTO.filter(function(f){return f.k!=='restaurovani-nabytku'});
-var aktivni='vse',zobrazeno=12,seznam=[];
+var RENO=FOTO.filter(function(f){return f.k==='restaurovani-nabytku'});
+var aktivni='vse',limit=12,seznam=[];
 function tile(f,i,list){
-  return '<button class="tile is-in" style="animation-delay:'+Math.min(i%12,11)*30+'ms" data-i="'+i+'" data-list="'+list+'" aria-label="'+f.nazev+' – otevřít fotku"><img src="'+f.sm+'" alt="'+f.nazev+'" loading="lazy" decoding="async" width="360" height="270"></button>';
+  return '<button class="tile" data-i="'+i+'" data-list="'+list+'" aria-label="'+f.nazev+' – otevřít fotku"><img src="'+f.sm+'" alt="'+f.nazev+'" loading="lazy" decoding="async" width="360" height="270"></button>';
 }
-function kreslit(){
-  seznam=aktivni==='vse'?GALERIE:GALERIE.filter(function(f){return f.k===aktivni});
-  grid.innerHTML=seznam.slice(0,zobrazeno).map(function(f,i){return tile(f,i,'g')}).join('');
-  moreBtn.hidden=seznam.length<=zobrazeno;
+grid.innerHTML=GALERIE.map(function(f,i){return tile(f,i,'g')}).join('');
+var tiles=[].slice.call(grid.children);
+function odpovida(f){return aktivni==='vse'||f.k===aktivni}
+function rozvrhnout(){
+  seznam=GALERIE.filter(odpovida);
+  var n=0;
+  tiles.forEach(function(t,i){
+    var f=GALERIE[i],ano=odpovida(f)&&n<limit;
+    if(odpovida(f))n++;
+    t.style.display=ano?'':'none';
+  });
+  moreBtn.hidden=seznam.length<=limit;
+}
+function sFlipem(zmena){
+  if(window.Flip&&window.gsap&&!RM.matches){
+    var stav=Flip.getState(tiles);
+    zmena();
+    Flip.from(stav,{duration:.55,ease:'power3.inOut',absoluteOnLeave:true,stagger:.012,
+      onEnter:function(els){return gsap.fromTo(els,{opacity:0,scale:.92},{opacity:1,scale:1,duration:.4,ease:'power2.out',stagger:.02,delay:.12,overwrite:true})},
+      onLeave:function(els){return gsap.to(els,{opacity:0,scale:.92,duration:.25,ease:'power2.in'})},
+      onComplete:function(){ScrollTrigger.refresh()}});
+  }else{
+    zmena();
+    if(window.ScrollTrigger)ScrollTrigger.refresh();
+  }
 }
 var kat=[{id:'vse',nazev:'Vše',c:GALERIE.length}].concat(KAT.filter(function(k){return k.id!=='restaurovani-nabytku'}).map(function(k){return{id:k.id,nazev:k.nazev,c:k.n.length}}));
 filters.innerHTML=kat.map(function(k){return '<button aria-pressed="'+(k.id==='vse')+'" data-k="'+k.id+'">'+k.nazev+'<small>'+k.c+'</small></button>'}).join('');
 function vybrat(id){
-  aktivni=id;zobrazeno=12;
+  if(id===aktivni)return;
   filters.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.k===id)});
-  var b=filters.querySelector('[data-k="'+id+'"]');if(b)b.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
-  kreslit();
+  var b=filters.querySelector('[data-k="'+id+'"]');if(b)b.scrollIntoView({block:'nearest',inline:'center',behavior:RM.matches?'auto':'smooth'});
+  sFlipem(function(){aktivni=id;limit=12;rozvrhnout()});
 }
 filters.addEventListener('click',function(e){var b=e.target.closest('button');if(b)vybrat(b.dataset.k)});
-moreBtn.addEventListener('click',function(){zobrazeno+=12;kreslit()});
+moreBtn.addEventListener('click',function(){sFlipem(function(){limit+=12;rozvrhnout()})});
 document.getElementById('kusovnik').addEventListener('click',function(e){
   var a=e.target.closest('.kus');if(a&&a.dataset.k!=='restaurovani-nabytku')vybrat(a.dataset.k);
 });
-kreslit();
+rozvrhnout();
 
 /* renovace — pás z dílny */
-var RENO=FOTO.filter(function(f){return f.k==='restaurovani-nabytku'});
 document.getElementById('strip').innerHTML=RENO.slice(0,8).map(function(f,i){return tile(f,i,'r')}).join('');
 
 /* ============================================================
-   PROHLÍŽEČ — šipky, klávesy, tah prstem
+   PROHLÍŽEČ — náhled se přelije do velké fotky (View Transitions),
+   šipky a tah prstem střídají fotky prolnutím
    ============================================================ */
 var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap'),stage=document.getElementById('lbStage');
 var aktList=[],idx=0;
@@ -440,31 +570,154 @@ function ukaz(i){
   idx=(i+aktList.length)%aktList.length;var f=aktList[idx];
   lbImg.src=f.src;lbImg.alt=f.nazev;lbCap.textContent=f.nazev+' · '+(idx+1)+' / '+aktList.length;
 }
+function prelit(zmena){
+  if(!document.startViewTransition||RM.matches){zmena();return null}
+  lb.classList.add('vt');
+  var t=document.startViewTransition(zmena);
+  t.finished.finally(function(){lb.classList.remove('vt')});
+  return t;
+}
+function nacist(src){
+  var im=new Image();im.src=src;
+  return Promise.race([im.decode().catch(function(){}),new Promise(function(r){setTimeout(r,300)})]);
+}
+function nahled(){
+  var f=aktList[idx];if(!f)return null;
+  var img=document.querySelector('.tile img[src="'+f.sm+'"]');if(!img)return null;
+  var r=img.getBoundingClientRect();
+  return (r.width&&r.bottom>0&&r.top<innerHeight)?img:null;
+}
+function otevrit(list,i,thumb){
+  aktList=list;
+  nacist(list[i].src).then(function(){
+    if(thumb)thumb.style.viewTransitionName='foto';
+    var t=prelit(function(){
+      if(thumb)thumb.style.viewTransitionName='';
+      ukaz(i);lbImg.style.viewTransitionName='foto';lb.showModal();
+    });
+    if(t)t.finished.finally(function(){lbImg.style.viewTransitionName=''});else lbImg.style.viewTransitionName='';
+  });
+}
+function zavrit(){
+  var thumb=nahled();
+  if(!thumb||!document.startViewTransition||RM.matches){lb.close();return}
+  lbImg.style.viewTransitionName='foto';
+  var t=prelit(function(){lbImg.style.viewTransitionName='';lb.close();thumb.style.viewTransitionName='foto'});
+  t.finished.finally(function(){thumb.style.viewTransitionName=''});
+}
+function prepnout(smer,odX){
+  if(RM.matches||!lbImg.animate){ukaz(idx+smer);return}
+  var ven=lbImg.animate([{opacity:1,transform:'translateX('+(odX||0)+'px)'},{opacity:0,transform:'translateX('+(-smer*32)+'px)'}],{duration:140,easing:'cubic-bezier(.4,0,1,1)'});
+  ven.onfinish=function(){
+    ukaz(idx+smer);
+    lbImg.animate([{opacity:0,transform:'translateX('+(smer*32)+'px)'},{opacity:1,transform:'none'}],{duration:260,easing:'cubic-bezier(.2,.8,.2,1)'});
+  };
+}
 document.addEventListener('click',function(e){
   var t=e.target.closest('.tile');if(!t)return;
-  aktList=t.dataset.list==='r'?RENO:seznam;ukaz(+t.dataset.i);lb.showModal();
+  var list=t.dataset.list==='r'?RENO:seznam;
+  var i=t.dataset.list==='r'?+t.dataset.i:seznam.indexOf(GALERIE[+t.dataset.i]);
+  otevrit(list,i,t.querySelector('img'));
 });
-document.getElementById('lbClose').onclick=function(){lb.close()};
-document.getElementById('lbPrev').onclick=function(){ukaz(idx-1)};
-document.getElementById('lbNext').onclick=function(){ukaz(idx+1)};
-lb.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')ukaz(idx-1);if(e.key==='ArrowRight')ukaz(idx+1)});
-lb.addEventListener('click',function(e){if(e.target===stage)lb.close()});
+document.getElementById('lbClose').onclick=zavrit;
+document.getElementById('lbPrev').onclick=function(){prepnout(-1)};
+document.getElementById('lbNext').onclick=function(){prepnout(1)};
+lb.addEventListener('cancel',function(e){e.preventDefault();zavrit()});
+lb.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')prepnout(-1);if(e.key==='ArrowRight')prepnout(1)});
+lb.addEventListener('click',function(e){if(e.target===stage)zavrit()});
 /* tah: rozhoduje projekce hybnosti, ne jen ujetá vzdálenost */
 (function(){
-  var x0=0,dx=0,t0=0,v=0,last=0,lastT=0,drag=false;
-  stage.addEventListener('pointerdown',function(e){drag=true;x0=last=e.clientX;t0=lastT=performance.now();dx=0;v=0;lbImg.style.transition='none'});
+  var x0=0,dx=0,v=0,last=0,lastT=0,drag=false;
+  stage.addEventListener('pointerdown',function(e){drag=true;x0=last=e.clientX;lastT=performance.now();dx=0;v=0;lbImg.style.transition='none'});
   stage.addEventListener('pointermove',function(e){if(!drag)return;var now=performance.now();dx=e.clientX-x0;v=(e.clientX-last)/Math.max(1,now-lastT)*1000;last=e.clientX;lastT=now;lbImg.style.transform='translate3d('+dx+'px,0,0)'});
   function konec(){
     if(!drag)return;drag=false;
     var proj=dx+(v/1000)*(0.998/(1-0.998));
-    lbImg.style.transition='transform 320ms cubic-bezier(.2,.8,.2,1)';lbImg.style.transform='';
-    if(proj<-120)ukaz(idx+1);else if(proj>120)ukaz(idx-1);
+    if(Math.abs(proj)>120){lbImg.style.transform='';prepnout(proj<0?1:-1,dx)}
+    else{lbImg.style.transition='transform 320ms cubic-bezier(.2,.8,.2,1)';lbImg.style.transform=''}
   }
   stage.addEventListener('pointerup',konec);stage.addEventListener('pointercancel',konec);
 })();
 
-/* kóty se dokreslí po načtení */
-requestAnimationFrame(function(){document.body.classList.add('is-ready')});
+/* ============================================================
+   MENU NA TELEFONU + KOPÍROVÁNÍ E-MAILU
+   ============================================================ */
+(function(){
+  var menu=document.getElementById('menu'),nav=document.getElementById('nav');
+  menu.addEventListener('beforetoggle',function(e){if(e.newState==='open')menu.style.setProperty('--menu-top',(nav.getBoundingClientRect().bottom+8)+'px')});
+  menu.addEventListener('click',function(e){if(e.target.closest('a'))menu.hidePopover()});
+})();
+function toast(text){
+  var t=document.getElementById('toast');t.textContent=text;t.classList.add('is-on');
+  clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('is-on')},2200);
+}
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.kopirovat');if(!b)return;
+  var text=b.dataset.copy;
+  (navigator.clipboard?navigator.clipboard.writeText(text):Promise.reject()).then(function(){
+    b.classList.add('hotovo');toast(b.dataset.msg||'Zkopírováno');
+    clearTimeout(b._t);b._t=setTimeout(function(){b.classList.remove('hotovo')},1800);
+  },function(){location.href='mailto:'+text});
+});
+
+/* ============================================================
+   POHYB PŘI SCROLLU — GSAP + ScrollTrigger + SplitText.
+   gsap.matchMedia: při omezeném pohybu jen krátké prolnutí, nic se nehýbe.
+   Skrývá se jen obsah pod okrajem obrazovky, takže nic neproblikne.
+   ============================================================ */
+function pohyb(){
+  if(!window.gsap||!window.ScrollTrigger)return;
+  gsap.registerPlugin(ScrollTrigger,SplitText,Flip);
+  gsap.matchMedia().add({ok:'(prefers-reduced-motion: no-preference)',klid:'(prefers-reduced-motion: reduce)'},function(ctx){
+    var ok=ctx.conditions.ok;
+    var pod=function(el){var r=el.getBoundingClientRect();return r.height>0&&r.top>innerHeight*.95};
+    function odhalit(sel,o){
+      o=o||{};
+      var els=gsap.utils.toArray(sel).filter(pod);
+      if(!els.length)return;
+      gsap.set(els,{opacity:0,y:ok?(o.y||24):0});
+      ScrollTrigger.batch(els,{start:'top 90%',once:true,onEnter:function(b){
+        gsap.to(b,{opacity:1,y:0,duration:ok?(o.d||.7):.25,ease:'power3.out',stagger:ok?(o.stagger||.07):0,overwrite:true});
+      }});
+    }
+
+    /* pravítko kusovníku se natáhne zleva doprava */
+    var prav=document.querySelector('.pravitko');
+    if(ok&&pod(prav))gsap.from(prav,{scaleX:0,duration:1.1,ease:'power3.inOut',scrollTrigger:{trigger:prav,start:'top 90%',once:true}});
+
+    odhalit('.head > p',{y:14,stagger:.08});
+    odhalit('.kus',{y:14,stagger:.05,d:.6});
+    odhalit('.material .chip',{y:10,stagger:.03,d:.5});
+    odhalit('.filters button',{y:10,stagger:.03,d:.5});
+    odhalit(tiles.filter(function(t){return t.style.display!=='none'}),{y:22,stagger:.04});
+    odhalit('#strip .tile',{y:22,stagger:.06});
+    odhalit('.about .body p, .card',{y:18,stagger:.1});
+
+    /* nadpisy sekcí a citát — řádky vyjedou z masky, až jsou písma načtená */
+    if(ok)document.fonts.ready.then(function(){ctx.add(function(){
+      gsap.utils.toArray('[data-split]').filter(pod).forEach(function(el){
+        SplitText.create(el,{type:'lines',mask:'lines',autoSplit:true,onSplit:function(s){
+          return gsap.from(s.lines,{yPercent:110,duration:.85,ease:'power4.out',stagger:.09,scrollTrigger:{trigger:el,start:'top 88%',once:true}});
+        }});
+      });
+    })});
+  });
+}
+
+/* GSAP se načte až při prvním scrollu nebo dotyku (nejpozději ~2 s po načtení, až je prohlížeč volný):
+   pohyb při scrollu se týká jen obsahu níž, takže knihovny nebrzdí první vykreslení ani hlavní fotku */
+(function(){
+  var hotovo=false;
+  function nacist(){
+    if(hotovo)return;hotovo=true;
+    var soubory=['gsap','ScrollTrigger','SplitText','Flip'];
+    soubory.forEach(function(src,i){var el=document.createElement('script');el.src='js/'+src+'.min.js';el.async=false;if(i===soubory.length-1)el.onload=pohyb;document.head.appendChild(el)});
+  }
+  addEventListener('scroll',nacist,{passive:true,once:true});
+  addEventListener('pointerdown',nacist,{passive:true,once:true});
+  function pozdeji(){setTimeout(function(){window.requestIdleCallback?requestIdleCallback(nacist,{timeout:1500}):nacist()},2000)}
+  if(document.readyState==='complete')pozdeji();else addEventListener('load',pozdeji);
+})();
 </script>
 </body>
 </html>
