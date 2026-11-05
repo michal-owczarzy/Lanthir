@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Domy Výšovice – koncept developerské šablony</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500&display=swap" rel="stylesheet">
+<style>
+:root { --bg: #dfdedb; --paper: #ecebe8; --ink: #26251e; --muted: #57554e; --accent: #d20067; --m: clamp(16px, 3vw, 48px); --r: 12px; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--ink); font: 400 clamp(1.0625rem, 1rem + .25vw, 1.1875rem)/1.5 'Clash Grotesk', Arial, sans-serif; padding: var(--m); }
+a { color: inherit; }
+img { display: block; width: 100%; height: auto; }
+h1, h2 { font-weight: 400; letter-spacing: -.03em; line-height: .95; }
+h1 { font-size: clamp(2.6rem, 1.4rem + 4.4vw, 5.5rem); max-width: 14ch; }
+.lead { margin-top: 24px; max-width: 52ch; font-size: clamp(1.25rem, 1.1rem + .7vw, 1.625rem); line-height: 1.3; }
+.grid { margin-top: clamp(56px, 7vw, 96px); display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.c { background: var(--paper); border-radius: var(--r); overflow: hidden; text-decoration: none; display: flex; flex-direction: column; transition: transform 200ms cubic-bezier(.22,1,.36,1); }
+.c:hover { transform: translateY(-4px); }
+.c:active { transform: scale(.99); }
+.c img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+.c div { padding: 24px 24px 28px; }
+.c h2 { font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.25rem); }
+.c p { margin-top: 10px; color: var(--ink); }
+.c span { display: inline-block; margin-top: 16px; color: var(--accent); font-weight: 500; }
+.how { margin-top: clamp(80px, 10vw, 140px); display: grid; grid-template-columns: repeat(12, 1fr); gap: 32px 24px; }
+.how h2 { grid-column: 1 / 5; font-size: clamp(2.2rem, 1.4rem + 2.8vw, 4rem); }
+.how ol { grid-column: 6 / 13; list-style: none; display: grid; gap: 28px; }
+.how b { display: block; font-weight: 500; font-size: clamp(1.25rem, 1.1rem + .7vw, 1.625rem); letter-spacing: -.01em; }
+.how li p { margin-top: 6px; max-width: 56ch; }
+footer { margin-top: clamp(80px, 10vw, 140px); color: var(--muted); font-size: .875rem; }
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } .how h2, .how ol { grid-column: 1 / -1; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Šablona pro developerské projekty</h1>
+  <p class="lead">Dva návrhy webu Domy Výšovice. Oba stojí na stejném základu, který se pro každý další projekt jen naplní novým obsahem.</p>
+</header>
+
+<main>
+  <div class="grid">
+    <a class="c" href="a-misto/">
+      <img src="assets/nahled-a.jpg" alt="Náhled návrhu A: fotografie domu přes celou obrazovku" width="1440" height="900">
+      <div><h2>Návrh A: Místo</h2><p>Fotografie přes celou obrazovku, ceník jako tištěný list vedle klikací situace parcel.</p><span>Otevřít návrh →</span></div>
+    </a>
+    <a class="c" href="b-plan/">
+      <img src="assets/nahled-b.jpg" alt="Náhled návrhu B: karta s logem vedle velké fotografie" width="1440" height="900">
+      <div><h2>Návrh B: Plán</h2><p>Dělená obrazovka s pevnou fotkou, aktivní seznam domů propojený se situací a standard jako ceník.</p><span>Otevřít návrh →</span></div>
+    </a>
+  </div>
+
+  <section class="how" aria-labelledby="how-h">
+    <h2 id="how-h">Jak šablona funguje</h2>
+    <ol>
+      <li><b>Jeden základ, rodina webů</b><p>Rozvržení, typografie, úvodní animace loga a ovládání jsou společné. Každý projekt mění jen to, co je jeho: logo, fotografie, texty, lokalitu a nabídku domů. Weby tak působí jako jedna rodina.</p></li>
+      <li><b>Nabídka domů jako data</b><p>Každý dům má číslo, pozemek, cenu, stav a polohu na situaci. Změna stavu z „volný“ na „rezervace“ se hned projeví v ceníku i na plánu.</p></li>
+      <li><b>Úpravy bez programátora</b><p>Texty, fotografie a nabídku domů upravíte v administraci. Vzhled je uzamčený, takže se při úpravách nic nerozbije.</p></li>
+      <li><b>Nový projekt</b><p>Zkopíruje se základ, nahraje se logo a fotografie, vyplní se obsah a připojí doména.</p></li>
+    </ol>
+  </section>
+</main>
+
+<footer>Návrh: Lanthir, listopad 2026. Vizualizace a obsah pochází ze stávajícího webu domyvysovice.cz.</footer>
+</body>
+</html>

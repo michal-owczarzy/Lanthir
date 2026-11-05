@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150" role="img" aria-label="DOMY VÝŠOVICE">
+  <g transform="translate(103 4) scale(1.9)" fill="#d20067" stroke="#ecebe8" stroke-width="1.2" stroke-linejoin="round">
+    <path d="M18 40V16L33 2l15 14v24Z"/><path d="M9 40V16L24 2l15 14v24Z"/><path d="M0 40V16L15 2l15 14v24Z"/>
+  </g>
+  <text x="150" y="134" text-anchor="middle" font-family="Clash Grotesk, Arial, sans-serif" font-size="22" letter-spacing="3.4" fill="#5a5a5a">DOMY VÝŠOVICE</text>
+</svg>

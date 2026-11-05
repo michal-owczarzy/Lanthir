@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Domy Výšovice – osm bungalovů 4+kk u Prostějova</title>
+<meta name="description" content="Nízkoenergetické bungalovy 4+kk se zelenou střechou ve Výšovicích, 10 km od Prostějova. Cena od 5 490 000 Kč.">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/intro.css">
+<style>
+:root {
+  --bg: #dfdedb;
+  --surface: #d3d2ce;
+  --paper: #ecebe8;
+  --ink: #26251e;
+  --muted: #57554e;
+  --accent: #d20067;
+  --accent-ink: #fff;
+  --f: 'Clash Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2.25rem, 1.3rem + 3.4vw, 4.25rem);
+  --step-hero: clamp(2.75rem, 1.2rem + 4.4vw, 5.25rem);
+  --m: 12px;
+  --pad: clamp(24px, 4.4vw, 72px);
+  --r: 12px;
+  --gap: clamp(120px, 14vw, 200px);
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --intro-font: var(--f);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font: 400 var(--step-body)/1.45 var(--f); }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+::selection { background: var(--accent); color: #fff; }
+h1, h2, h3 { font-weight: 400; letter-spacing: -.03em; line-height: .95; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .6em;
+  min-height: 54px; padding: 0 28px; border: 0; border-radius: var(--r);
+  background: var(--accent); color: var(--accent-ink); text-decoration: none; font: 500 var(--step-body)/1 var(--f);
+  cursor: pointer; transition: transform 160ms var(--ease), filter 160ms;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn:active { transform: scale(.97); }
+.btn svg { width: 18px; height: 18px; transition: transform 200ms var(--ease); }
+.btn:hover svg { transform: translateX(4px); }
+
+
+/* ── split: hero + dopis ───────────────────────── */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--m); padding: var(--m); }
+.stage { position: sticky; top: var(--m); height: calc(100svh - 2 * var(--m)); border-radius: var(--r); overflow: hidden; background: #8aa0b4; }
+.stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.04); transition: opacity 1600ms ease, transform 2400ms var(--ease); }
+.stage img.is-on { opacity: 1; transform: none; }
+.stage figcaption { position: absolute; left: 20px; bottom: 18px; z-index: 2; padding: 8px 12px; border-radius: 8px; background: var(--paper); font-size: var(--step-small); }
+.col { display: grid; gap: var(--m); align-content: start; }
+
+.card { min-height: calc(100svh - 2 * var(--m)); border-radius: var(--r); overflow: hidden; background: var(--paper); display: flex; flex-direction: column; }
+.card__in { flex: 1; display: grid; align-content: center; justify-items: center; text-align: center; padding: 48px var(--pad); }
+.mark { width: min(300px, 70%); height: auto; }
+.card h1 { margin-top: 44px; font-size: var(--step-hero); }
+.card p { margin-top: 22px; max-width: 36ch; }
+.card .btn { margin-top: 32px; }
+.card nav { display: flex; justify-content: center; gap: 28px; padding: 0 24px 28px; font-size: var(--step-small); }
+.card nav a { text-decoration: none; position: relative; }
+.card nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 2px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 240ms var(--ease); }
+.card nav a:hover::after, .card nav a:focus-visible::after { transform: scaleX(1); }
+
+.letter { border-radius: var(--r); background: var(--surface); padding: 160px var(--pad); display: grid; justify-items: center; }
+.letter__sheet { width: min(100%, 560px); background: var(--paper); padding: 56px clamp(24px, 4vw, 56px) 0; border-radius: var(--r) var(--r) 0 0; }
+.letter__sheet h2 { font-size: var(--step-lead); letter-spacing: -.01em; line-height: 1.2; font-weight: 500; }
+.letter__sheet p { margin-top: 1.1em; line-height: 1.55; }
+.letter__sheet mark { background: color-mix(in srgb, var(--accent) 18%, var(--paper)); color: inherit; padding: 0 .15em; }
+.sign { margin-top: 28px; padding-bottom: 40px; }
+.sign b { display: block; font-size: var(--step-lead); font-weight: 500; letter-spacing: -.01em; }
+.sign span { font-size: var(--step-small); color: var(--muted); }
+.tear { width: min(100%, 560px); background: var(--paper); border-radius: 0 0 var(--r) var(--r); padding: 22px clamp(24px, 4vw, 56px) 26px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+  /* perforace: řada teček nahoře */
+  background-image: radial-gradient(circle, var(--surface) 2.5px, transparent 3px); /* taste-skill-ignore: perforace odtrhávacího lístku */
+  background-size: 14px 10px; background-repeat: repeat-x; background-position: 0 0; }
+.tear a { font-size: var(--step-lead); text-decoration: none; letter-spacing: -.01em; }
+
+/* ── nabídka domů: plán + aktivní seznam ───────── */
+.offer { margin-top: var(--gap); padding: 0 var(--pad); display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 24px; }
+.offer__plan { grid-column: 1 / 7; position: sticky; top: 12vh; align-self: start; }
+.plan { position: relative; aspect-ratio: 1000 / 690; border-radius: var(--r); overflow: hidden; }
+.plan img { width: 100%; height: 100%; object-fit: cover; }
+.plot {
+  position: absolute; transform: translate(-50%, -50%);
+  width: clamp(32px, 2.8vw, 44px); aspect-ratio: 1; border-radius: 50%; border: 0; display: grid; place-items: center;
+  font: 500 var(--step-small)/1 var(--f); cursor: pointer; transition: transform 220ms var(--ease);
+}
+.plot--free { background: var(--accent); color: #fff; }
+.plot--reserved { background: var(--ink); color: #fff; }
+.plot--sold { background: #fff; color: var(--muted); }
+.plot:hover { transform: translate(-50%, -50%) scale(1.12); }
+.plot.is-active { transform: translate(-50%, -50%) scale(1.36); outline: 3px solid #fff; }
+.legend { margin-top: 14px; display: flex; gap: 22px; flex-wrap: wrap; font-size: var(--step-small); }
+.legend--m { display: none; }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; vertical-align: -1px; }
+.offer__list { grid-column: 8 / 13; }
+.offer__list h2 { font-size: var(--step-head); }
+.offer__list > p { margin-top: 18px; max-width: 36ch; color: var(--ink); }
+.houses { list-style: none; margin-top: 48px; }
+.h { padding: 16px 0; cursor: pointer; }
+.h__row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; width: 100%; border: 0; background: none; text-align: left; cursor: pointer; padding: 0; }
+.h__row b { font-weight: 400; font-size: var(--step-lead); color: var(--muted); transition: color 240ms; letter-spacing: -.01em; }
+.h__row span { font-size: var(--step-small); color: var(--muted); font-variant-numeric: tabular-nums; }
+.h.is-active .h__row b { color: var(--ink); }
+.h.is-active .h__row span { color: var(--ink); }
+.h__more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 360ms var(--ease); }
+.h__more > div { overflow: hidden; }
+.h.is-active .h__more { grid-template-rows: 1fr; }
+.h__more p { padding-top: 8px; max-width: 34ch; font-size: var(--step-small); }
+.h__more a { display: inline-block; margin-top: 10px; font-size: var(--step-small); color: var(--ink); text-underline-offset: 3px; }
+.status { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: var(--step-small); }
+.status--free { background: var(--accent); color: #fff; }
+.status--reserved { background: var(--ink); color: #fff; }
+.status--sold { background: var(--surface); }
+.offer__note { margin-top: 28px; font-size: var(--step-small); color: var(--muted); }
+
+/* ── galerie: tři fotky přes sebe ──────────────── */
+.seq { margin-top: var(--gap); position: relative; }
+.seq__lead { position: relative; z-index: 3; margin-left: 58%; width: 260px; margin-bottom: -5.4em; font-size: var(--step-small); line-height: 1.5; color: var(--ink); }
+.seq__lead h2 { font-size: var(--step-lead); letter-spacing: -.01em; line-height: 1.15; margin-bottom: 10px; }
+.seq__item { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+.seq__item img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); transition: transform 3200ms var(--ease); }
+.seq__item img.is-in { transform: scale(1); }
+.seq__item::after { content: ""; position: absolute; inset: auto 0 0 0; height: 120px; background: rgba(20, 20, 20, .38); }
+.seq__item p { position: absolute; z-index: 2; left: var(--pad); bottom: 44px; color: #fff; font-size: var(--step-small); }
+.seq__lead + .seq__item { padding-top: 0; }
+
+/* ── standard jako ceník ───────────────────────── */
+.std { margin-top: var(--m); padding: var(--m); display: grid; grid-template-columns: 1fr 1fr; gap: var(--m); }
+.std__pic { position: sticky; top: var(--m); height: calc(100svh - 2 * var(--m)); border-radius: var(--r); overflow: hidden; background: #fff; display: grid; place-items: center; }
+.std__pic img { width: 88%; height: auto; }
+.std__pic figcaption { position: absolute; left: 20px; bottom: 18px; font-size: var(--step-small); color: var(--muted); }
+.std__ground { border-radius: var(--r); background: var(--surface); padding: 120px var(--pad); display: grid; justify-items: center; }
+.menu { width: min(100%, 580px); background: var(--paper); padding: 64px clamp(24px, 4vw, 56px); position: relative; }
+.menu::before, .menu::after { content: ""; position: absolute; left: 0; right: 0; height: 12px; background-repeat: repeat-x; }
+.menu::before { top: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12'%3E%3Cpath d='M0 0l12 12L24 0z' fill='%23d3d2ce'/%3E%3C/svg%3E"); }
+.menu::after { bottom: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12'%3E%3Cpath d='M0 12L12 0l12 12z' fill='%23d3d2ce'/%3E%3C/svg%3E"); }
+.menu h2 { text-align: center; font-size: var(--step-head); }
+.menu h3 { margin-top: 44px; font-size: var(--step-body); font-weight: 500; letter-spacing: 0; line-height: 1.3; }
+.menu dl > div { margin-top: 18px; }
+.menu dt { display: flex; align-items: baseline; gap: 8px; font-size: var(--step-body); }
+.menu dt::after { content: ""; order: 1; flex: 1; border-bottom: 4px dotted var(--ink); opacity: .55; transform: translateY(-3px); }
+.menu dt em { order: 2; font-style: normal; font-size: var(--step-small); }
+.menu dd { margin-top: 4px; max-width: 34ch; font-size: var(--step-small); color: var(--muted); }
+.menu__dl { margin-top: 44px; display: grid; gap: 8px; }
+.menu__dl a { display: flex; justify-content: space-between; padding: 14px 16px; border-radius: 8px; background: var(--bg); text-decoration: none; transition: background-color 180ms, transform 160ms var(--ease); }
+.menu__dl a:hover { background: var(--surface); }
+.menu__dl a:active { transform: scale(.98); }
+.menu__dl small { color: var(--muted); font-size: var(--step-small); }
+
+/* ── kontakt ──────────────────────────────────── */
+.mail { margin-top: var(--gap); background: var(--ink); color: var(--paper); padding: clamp(72px, 9vw, 128px) var(--pad); display: grid; grid-template-columns: repeat(12, 1fr); gap: 40px 24px; align-items: start; }
+.mail__text { grid-column: 1 / 6; }
+.mail h2 { font-size: var(--step-head); }
+.mail__text p { margin-top: 20px; max-width: 36ch; color: #d6d4cd; }
+.mail__list { grid-column: 7 / 13; display: grid; gap: 22px; }
+.mail__dl { display: grid; gap: 22px; }
+.mail__list dt { font-size: var(--step-small); color: #b9b7b0; }
+.mail__list dd { font-size: var(--step-lead); letter-spacing: -.01em; }
+.mail__list a { text-decoration: none; transition: color 200ms; }
+.mail__list a:hover, .mail__list a:focus-visible { color: var(--accent); }
+.mail__acts { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+.btn--ghost { background: transparent; color: var(--paper); box-shadow: inset 0 0 0 2px var(--paper); } /* taste-skill-ignore: obrys druhého tlačítka */
+
+/* ── patička: název přes poslední fotku ───────── */
+.foot { position: relative; height: 100svh; min-height: 560px; overflow: hidden; color: var(--paper); }
+.foot > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.6); }
+.foot__top { position: relative; display: flex; justify-content: space-between; gap: 32px; padding: 32px var(--pad); }
+.foot__top ul { list-style: none; display: grid; gap: 6px; }
+.foot__top a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.foot__name { position: absolute; left: var(--pad); right: var(--pad); bottom: 56px; }
+.foot__name b { display: block; font-weight: 400; font-size: 12.6vw; letter-spacing: -.045em; line-height: .8; white-space: nowrap; }
+.foot__name p { margin-top: 18px; font-size: var(--step-small); color: #dedcd6; }
+
+/* ── vstupy ───────────────────────────────────── */
+.js [data-rise] { opacity: 0; transform: translateY(24px); transition: opacity 700ms var(--ease), transform 900ms var(--ease); transition-delay: var(--d, 0ms); }
+.js [data-rise].is-in { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  .split, .std { grid-template-columns: 1fr; }
+  .stage { position: relative; top: 0; height: 34svh; order: -1; z-index: 1; }
+  .card { min-height: 0; margin-top: -24px; position: relative; z-index: 2; }
+  .card__in { padding: 28px 20px 32px; }
+  .card h1 { margin-top: 24px; }
+  .mark { width: 200px; }
+  .letter { padding: 72px 12px; }
+  .offer { grid-template-columns: 1fr; padding: 0 16px; }
+  .offer__plan { grid-column: 1; position: static; }
+  .legend--d { display: none; }
+  .legend--m { display: flex; margin-top: 20px; }
+  .offer__list { grid-column: 1; margin-top: 32px; }
+  .std__pic { position: relative; top: 0; height: 56svh; }
+  .std__ground { padding: 56px 12px; }
+  .menu { padding: 48px 20px; }
+  .seq__lead { margin-left: 16px; width: 60%; }
+}
+@media (max-width: 600px) {
+  .card h1 { font-size: 10vw; }
+  .card nav { flex-wrap: wrap; gap: 12px 24px; }
+  .seq__item { height: 88svh; }
+  .foot { height: 88svh; }
+  .foot__top { flex-direction: column; padding: 24px 20px; }
+  .mail { grid-template-columns: 1fr; }
+  .mail__text, .mail__list { grid-column: 1; }
+  .foot__name { left: 20px; right: 20px; }
+  .foot__name b { font-size: 13.4vw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+  .js [data-rise] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="intro" id="intro" aria-hidden="true">
+  <div>
+    <svg class="intro__mark" viewBox="-1 -1 50 42">
+      <path d="M18 40V16L33 2l15 14v24Z"/>
+      <path d="M9 40V16L24 2l15 14v24Z"/>
+      <path d="M0 40V16L15 2l15 14v24Z"/>
+    </svg>
+    <p class="intro__word">Domy Výšovice</p>
+  </div>
+</div>
+
+<div class="split" id="top">
+  <div class="col">
+    <header class="card">
+      <div class="card__in">
+        <img class="mark" data-rise data-logo src="../assets/logo-vysovice.svg" alt="Domy Výšovice" width="300" height="150">
+        <h1 data-rise style="--d:90ms">Osm domů<br>se zahradou</h1>
+        <p data-rise style="--d:170ms" data-p="lead">Nízkoenergetické bungalovy 4+kk se zelenou střechou, 10&nbsp;km od Prostějova. Cena od 5&nbsp;490&nbsp;000&nbsp;Kč.</p>
+        <a class="btn" href="#domy" data-rise style="--d:250ms">Vybrat dům
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
+      </div>
+      <nav aria-label="Hlavní">
+        <a href="#domy">Domy</a><a href="#dum">O domě</a><a href="#standard">Standard</a><a href="#kontakt">Kontakt</a>
+      </nav>
+    </header>
+
+    <section class="letter" id="dum" aria-labelledby="dopis-h">
+      <div class="letter__sheet" data-rise>
+        <h2 id="dopis-h">Proč jsme dům navrhli takhle</h2>
+        <p>Chtěli jsme dům, ve kterém se dobře žije a málo platí. Proto má kompaktní tvar, jedno podlaží a zdi z keramických bloků tloušťky 50&nbsp;cm.</p>
+        <p>Největší je obývací pokoj s kuchyní. Ostatní pokoje vedou z jedné krátké chodby, takže žádné místo nepřijde nazmar. Z obýváku vede francouzské okno <mark>rovnou do zahrady</mark>.</p>
+        <p>Střecha je plochá a zelená. Zadrží dešťovou vodu a v létě dům chladí. Topí tepelné čerpadlo, teplou vodu pomáhá ohřívat fotovoltaika.</p>
+        <p>Při stavbě si dům můžete upravit podle sebe. Vzorky materiálů máme připravené v kanceláři.</p>
+        <div class="sign"><b>Tým Stavíme sny</b><span>architekti a stavitelé projektu</span></div>
+      </div>
+      <div class="tear" data-rise style="--d:100ms">
+        <span>Prohlídku domluvíte na</span>
+        <a href="tel:+420777619939" data-p="phone">777 619 939</a>
+      </div>
+    </section>
+  </div>
+
+  <figure class="stage" aria-label="Vizualizace domu">
+    <img class="is-on" src="../assets/img/dum-zahrada.jpg" alt="Bungalov se zahradou a pergolou" width="2000" height="1221" fetchpriority="high">
+    <img src="../assets/img/interier-obyvak.jpg" alt="Obývací pokoj s jídelním stolem" width="2000" height="1334">
+    <img src="../assets/img/dum-pergola.jpg" alt="Terasa s pergolou" width="2000" height="1221">
+    <figcaption data-cap>Dům PP05, vizualizace</figcaption>
+  </figure>
+</div>
+
+<main>
+  <section class="offer" id="domy" aria-labelledby="domy-h">
+    <div class="offer__plan" data-rise>
+      <div class="plan" data-plan>
+        <img src="../assets/img/situace.jpg" alt="Situační výkres: osm parcel podél nové ulice" width="1000" height="690" loading="lazy">
+      </div>
+      <p class="legend legend--d"><span><i style="background:var(--accent)"></i>Volný</span><span><i style="background:var(--ink)"></i>Rezervace</span><span><i style="background:#fff"></i>Prodáno</span></p>
+    </div>
+    <div class="offer__list">
+      <h2 id="domy-h" data-rise>Vyberte si dům</h2>
+      <p data-rise style="--d:80ms"><span data-p="stage">Čtvrtá etapa</span>: osm domů PP05 na pozemcích od 870 do 943&nbsp;m². Volných je <span data-p="free">5</span>.</p>
+      <p class="legend legend--m"><span><i style="background:var(--accent)"></i>Volný</span><span><i style="background:var(--ink)"></i>Rezervace</span><span><i style="background:#fff"></i>Prodáno</span></p>
+      <ul class="houses" data-houses></ul>
+      <p class="offer__note" data-rise>Ceny v základní variantě, bez provize realitní kanceláře 2&nbsp;%.</p>
+    </div>
+  </section>
+
+  <section class="seq" aria-labelledby="seq-h">
+    <div class="seq__lead" data-rise>
+      <h2 id="seq-h">Uvnitř domu</h2>
+      Světlé pokoje s velkými okny. Obývací pokoj s kuchyní zabírá celou zadní stranu domu a otevírá se do zahrady.
+    </div>
+    <figure class="seq__item"><img data-drift src="../assets/img/interier-obyvak-2.jpg" alt="Obývací pokoj se světlou sedačkou" width="2000" height="1334" loading="lazy"><p>Obývací pokoj</p></figure>
+    <figure class="seq__item"><img data-drift src="../assets/img/kuchyn.jpg" alt="Kuchyň s dřevěnou pracovní deskou a vestavěnými spotřebiči" width="2000" height="1334" loading="lazy"><p>Kuchyň</p></figure>
+    <figure class="seq__item"><img data-drift src="../assets/img/letecky.jpg" alt="Letecký pohled na domy se zelenými střechami" width="2000" height="1024" loading="lazy"><p>Zelené střechy čtvrté etapy</p></figure>
+  </section>
+
+  <section class="std" id="standard" aria-labelledby="std-h">
+    <figure class="std__pic" data-rise>
+      <img src="../assets/img/pudorys-vyrez.jpg" alt="Vzorový půdorys domu" width="1150" height="825" loading="lazy">
+      <figcaption>Vzorový půdorys</figcaption>
+    </figure>
+    <div class="std__ground">
+      <div class="menu">
+        <h2 id="std-h" data-rise>Co je v ceně</h2>
+        <h3 data-rise>Stavba</h3>
+        <dl data-rise style="--d:80ms">
+          <div><dt>Keramické bloky 50 cm<em>v ceně</em></dt><dd>Obvodové zdivo i příčky na železobetonových pasech.</dd></div>
+          <div><dt>Vegetační střecha<em>v ceně</em></dt><dd>Plochá, s extenzivní zelení.</dd></div>
+          <div><dt>Bílá fasádní omítka<em>v ceně</em></dt><dd>S kontrastními prvky.</dd></div>
+        </dl>
+        <h3 data-rise>Technologie</h3>
+        <dl data-rise style="--d:80ms">
+          <div><dt>Tepelné čerpadlo<em>v ceně</em></dt><dd>Vzduch–voda, napojené na podlahové topení.</dd></div>
+          <div><dt>Podlahové topení<em>v ceně</em></dt><dd>Teplovodní, ve všech místnostech.</dd></div>
+          <div><dt>Fotovoltaika<em>v ceně</em></dt><dd>Podporuje ohřev teplé vody.</dd></div>
+        </dl>
+        <h3 data-rise>Okna a okolí</h3>
+        <dl data-rise style="--d:80ms">
+          <div><dt>Izolační trojskla<em>v ceně</em></dt><dd>Plastová okna a dveře se stíněním.</dd></div>
+          <div><dt>Kryté stání pro 2 auta<em>v ceně</em></dt><dd>Příjezd ze zámkové dlažby.</dd></div>
+        </dl>
+        <div class="menu__dl" data-rise>
+          <a href="https://domyvysovice.cz/download/katalog-standardu.pdf">Katalog standardů <small>PDF</small></a>
+          <a href="https://domyvysovice.cz/download/penb.pdf">Energetický štítek <small>PDF</small></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mail" id="kontakt" aria-labelledby="mail-h">
+    <div class="mail__text" data-rise>
+      <h2 id="mail-h">Domluvte si prohlídku</h2>
+      <p>Napište, který dům Vás zajímá. Prodejce Vám ho ukáže a poradí i s hypotékou přes specialistu partnera.</p>
+    </div>
+    <div class="mail__list" data-rise style="--d:100ms">
+      <dl class="mail__dl">
+        <div><dt>Prodej</dt><dd>Ing. David Foretek, CM Reality</dd></div>
+        <div><dt>Telefon</dt><dd><a href="tel:+420777619939">+420 777 619 939</a></dd></div>
+        <div><dt>E-mail</dt><dd><a href="mailto:foretek@cmreality.cz">foretek@cmreality.cz</a></dd></div>
+        <div><dt>Lokalita</dt><dd>Výšovice, okres Prostějov</dd></div>
+      </dl>
+      <div class="mail__acts">
+        <a class="btn" data-mail href="mailto:foretek@cmreality.cz?subject=Prohl%C3%ADdka%20Domy%20V%C3%BD%C5%A1ovice">Napsat e-mail</a>
+        <a class="btn btn--ghost" href="https://domyvysovice.cz/download/rd-vysovice-4-etapa.pdf">Vizualizace (PDF)</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <img src="../assets/img/ulice-3.jpg" alt="" width="2000" height="1000" loading="lazy">
+  <div class="foot__top" data-rise>
+    <ul>
+      <li><a href="#domy">Domy</a></li>
+      <li><a href="#standard">Standard</a></li>
+      <li><a href="https://domyvysovice.cz/download/zarucni-podminky-uzivani.pdf">Vstup pro majitele</a></li>
+      <li><a href="https://domyvysovice.cz/projekty-eu/">Projekty podpořené EU</a></li>
+    </ul>
+    <ul>
+      <li>Další projekty: <a href="https://stavimesny.cz/">Stavíme sny</a></li>
+      <li><a href="mailto:foretek@cmreality.cz">foretek@cmreality.cz</a></li>
+    </ul>
+  </div>
+  <div class="foot__name" data-rise style="--d:120ms">
+    <b data-p="name">Domy Výšovice</b>
+    <p>© 2026 Domy Výšovice. Vizualizace jsou ilustrační.</p>
+  </div>
+</footer>
+
+<script src="../shared/project.js"></script>
+<script src="../shared/intro.js"></script>
+<script src="../shared/plan.js"></script>
+<script>
+(function () {
+  var P = window.PROJECT;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-p]').forEach(function (el) {
+    var k = el.dataset.p;
+    if (k === 'name') el.textContent = P.name;
+    if (P.isDemo) document.querySelectorAll('[data-logo]').forEach(function (i) { i.src = '../assets/logo-ukazka.svg'; i.alt = P.name; });
+    if (k === 'stage') el.textContent = P.stage;
+    if (k === 'free') el.textContent = P.countFree();
+    if (k === 'lead' && P.isDemo) el.textContent = P.lead + ' Cena od ' + P.priceFrom + '.';
+  });
+  if (P.isDemo) document.title = P.name + ' – ukázka šablony';
+
+  // seznam domů
+  var ul = document.querySelector('[data-houses]');
+  var items = {};
+  P.houses.forEach(function (h) {
+    var li = document.createElement('li'); li.className = 'h'; li.dataset.no = h.no; li.setAttribute('data-rise', ''); li.style.setProperty('--d', (P.houses.indexOf(h) * 60) + 'ms');
+    var price = h.status === 'sold' ? 'prodáno' : P.formatPrice(h.price);
+    var mail = 'mailto:' + P.contact.email + '?subject=' + encodeURIComponent('Zájem o dům ' + h.no + ', ' + P.name);
+    li.innerHTML = '<button type="button" class="h__row" aria-expanded="false"><b>Dům ' + h.no + '</b><span>' + price + '</span></button>' +
+      '<div class="h__more"><div><p><span class="status status--' + h.status + '">' + P.statusLabel[h.status] + '</span> Pozemek ' + h.plot + ' m², dům PP05 4+kk.</p>' +
+      (h.status === 'sold' ? '' : '<a href="' + mail + '">Mám zájem o dům ' + h.no + '</a>') + '</div></div>';
+    li.querySelector('button').addEventListener('click', function () { activate(h.no); plan.select(h.no, 'list'); });
+    li.addEventListener('mouseenter', function () { activate(h.no); plan.select(h.no, 'list'); });
+    ul.appendChild(li); items[h.no] = li;
+  });
+  var current;
+  function activate(no) {
+    if (current === no) return;
+    if (current) { items[current].classList.remove('is-active'); items[current].querySelector('button').setAttribute('aria-expanded', 'false'); }
+    current = no; items[no].classList.add('is-active'); items[no].querySelector('button').setAttribute('aria-expanded', 'true');
+  }
+  var plan = Plan.mount(document.querySelector('[data-plan]'), { onSelect: function (h, from) { if (from === 'plan') activate(h.no); } });
+  activate(P.houses[1].no); plan.select(P.houses[1].no, 'list');
+
+  // řádek uprostřed obrazovky je aktivní
+  var lio = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { activate(e.target.dataset.no); plan.select(e.target.dataset.no, 'list'); } });
+  }, { rootMargin: '-48% 0px -48% 0px' });
+  Object.keys(items).forEach(function (k) { lio.observe(items[k]); });
+
+  // pevná fotka se mění podle sekce
+  var shots = document.querySelectorAll('.stage img');
+  var cap = document.querySelector('[data-cap]');
+  var caps = ['Dům PP05, vizualizace', 'Obývací pokoj, vizualizace', 'Terasa s pergolou, vizualizace'];
+  function shot(i) { shots.forEach(function (s, k) { s.classList.toggle('is-on', k === i); }); cap.textContent = caps[i]; }
+  var so = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) shot(+e.target.dataset.shot); });
+  }, { rootMargin: '-50% 0px -50% 0px' });
+  var card = document.querySelector('.card'), letter = document.querySelector('.letter__sheet'), tear = document.querySelector('.tear');
+  card.dataset.shot = 0; letter.dataset.shot = 1; tear.dataset.shot = 2;
+  [card, letter, tear].forEach(function (el) { so.observe(el); });
+
+  // vstupy
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -10% 0px' });
+  function watch() { document.querySelectorAll('[data-rise], [data-drift]').forEach(function (el) { io.observe(el); }); }
+  if (document.documentElement.classList.contains('is-revealed')) watch();
+  else document.addEventListener('intro:done', watch, { once: true });
+})();
+</script>
+</body>
+</html>

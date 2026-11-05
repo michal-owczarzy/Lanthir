@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Domy Výšovice – nízkoenergetické bungalovy 4+kk u Prostějova</title>
+<meta name="description" content="Osm nízkoenergetických bungalovů 4+kk se zelenou střechou ve Výšovicích, 10 km od Prostějova. Cena od 5 490 000 Kč.">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400&family=Albert+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/intro.css">
+<style>
+:root {
+  --bg: #eeecea;
+  --surface: #e4e1dd;
+  --field: #cdc3b6;
+  --ink: #333231;
+  --muted: #615d59;
+  --paper: #f6f5f3;
+  --accent: #d20067;
+  --accent-ink: #fff;
+
+  --display: 'Imbue', Georgia, serif;
+  --text: 'Albert Sans', system-ui, sans-serif;
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2.5rem, 1.4rem + 3.6vw, 4.75rem);
+  --step-hero: clamp(3.6rem, 1.6rem + 7vw, 8.5rem);
+
+  --m: clamp(16px, 2.2vw, 32px);
+  --gap: clamp(120px, 14vw, 200px);
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --intro-font: var(--text);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font: 400 var(--step-body)/1.55 var(--text); }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+::selection { background: var(--accent); color: #fff; }
+.d { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: -.01em; line-height: .9; font-optical-sizing: auto; }
+.wrap { padding-inline: var(--m); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .6em;
+  min-height: 52px; padding: 0 28px; border: 0; border-radius: 0;
+  background: var(--accent); color: var(--accent-ink); text-decoration: none;
+  font: 500 var(--step-body)/1 var(--text); cursor: pointer;
+  transition: transform 160ms var(--ease), filter 160ms;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn:active { transform: scale(.97); }
+.btn svg { width: 18px; height: 18px; transition: transform 200ms var(--ease); }
+.btn:hover svg { transform: translateX(4px); }
+
+/* ── hero ─────────────────────────────────────── */
+.hero { position: relative; height: 100svh; min-height: 560px; color: #fff; overflow: hidden; background: #8aa0b4; }
+.hero__slides img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%;
+  opacity: 0; transition: opacity 1600ms ease;
+}
+.hero__slides img.is-on { opacity: 1; }
+.hero__slides { position: absolute; inset: 0; transform: scale(1.06); transition: transform 2400ms var(--ease); }
+.is-revealed .hero__slides { transform: scale(1); }
+.hero::after { /* neutrální stín jen pod textem dole */
+  content: ""; position: absolute; inset: auto 0 0 0; height: 46%;
+  background: linear-gradient(to top, rgba(20,20,20,.6), rgba(20,20,20,0)); /* taste-skill-ignore: neutralni stin pod textem */
+  pointer-events: none;
+}
+.top {
+  position: absolute; z-index: 2; inset: 0 0 auto 0;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 24px var(--m);
+  font-size: var(--step-small); line-height: 1.25;
+}
+.top__name { display: flex; gap: 10px; align-items: flex-start; text-decoration: none; color: var(--ink); }
+.top__name svg { width: 30px; height: auto; }
+.top__links { display: flex; gap: 0 .35em; flex-wrap: wrap; justify-content: flex-end; color: var(--ink); }
+.top__links a, .back__addr a { position: relative; text-decoration: none; padding-bottom: 2px; }
+.top__links a::before, .back__addr a::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 240ms var(--ease); }
+.top__links a:hover::before, .top__links a:focus-visible::before, .back__addr a:hover::before, .back__addr a:focus-visible::before { transform: scaleX(1); }
+.top__links a::after { content: ","; }
+.top__links a:last-child::after { content: ""; }
+.hero__foot {
+  position: absolute; z-index: 2; inset: auto var(--m) 32px var(--m);
+  display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 24px 48px;
+}
+.hero h1 { font-size: var(--step-hero); }
+.hero__lead { max-width: 30ch; margin-top: 20px; font-size: var(--step-lead); line-height: 1.3; }
+.hero__act { display: grid; justify-items: end; gap: 16px; text-align: right; }
+.hero__act p { max-width: 30ch; font-size: var(--step-body); }
+
+/* ── ceník a situace ───────────────────────────── */
+.offer {
+  margin-top: 0; padding: clamp(72px, 9vw, 140px) var(--m);
+  background: var(--field);
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: 32px var(--m); align-items: start;
+}
+.plan { grid-column: 1 / 7; position: sticky; top: 24px; }
+.plan__img { position: relative; aspect-ratio: 1000 / 690; }
+.plan__img img { width: 100%; height: 100%; object-fit: cover; }
+.plan figcaption { margin-top: 14px; font-size: var(--step-small); color: var(--ink); display: flex; gap: 20px; flex-wrap: wrap; }
+.key { display: inline-flex; align-items: center; gap: 8px; }
+.key i { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
+.plot {
+  position: absolute; transform: translate(-50%, -50%);
+  width: clamp(34px, 3vw, 46px); aspect-ratio: 1; border-radius: 50%; border: 0;
+  display: grid; place-items: center;
+  font: 500 var(--step-small)/1 var(--text);
+  cursor: pointer; transition: transform 200ms var(--ease), background-color 200ms;
+}
+.plot--free { background: var(--accent); color: #fff; }
+.plot--reserved { background: var(--ink); color: #fff; }
+.plot--sold { background: #fff; color: var(--muted); }
+.plot:hover { transform: translate(-50%, -50%) scale(1.12); }
+.plot.is-active { transform: translate(-50%, -50%) scale(1.32); outline: 3px solid #fff; outline-offset: 0; }
+
+.sheet {
+  grid-column: 7 / 13; justify-self: end; width: min(100%, 640px);
+  background: var(--paper); color: var(--ink);
+  padding: 72px clamp(28px, 4vw, 64px) 64px;
+  position: relative; text-align: center;
+}
+/* zoubkovaný okraj tištěného listu: půlkruhy v barvě podkladu */
+.sheet::before, .sheet::after { content: ""; position: absolute; left: 0; right: 0; height: 12px; background-repeat: repeat-x; background-position: center; }
+.sheet::before { top: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='12'%3E%3Ccircle cx='14' cy='0' r='10' fill='%23cdc3b6'/%3E%3C/svg%3E"); }
+.sheet::after { bottom: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='12'%3E%3Ccircle cx='14' cy='12' r='10' fill='%23cdc3b6'/%3E%3C/svg%3E"); }
+.sheet h2 { font-size: var(--step-head); }
+.sheet__note { margin-top: 12px; font-size: var(--step-small); color: var(--muted); }
+.group { margin-top: 48px; }
+.group h3 { font: 500 var(--step-lead)/1.2 var(--text); }
+.rows { list-style: none; margin: 18px auto 0; max-width: 440px; display: grid; gap: 4px; text-align: left; }
+.row {
+  width: 100%; display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; align-items: baseline;
+  padding: 10px 12px; margin-inline: -12px; border: 0; background: none; cursor: pointer; text-align: left;
+  transition: background-color 180ms;
+}
+.row:hover, .row.is-active { background: var(--surface); }
+.row b { font-weight: 500; }
+.row span { font-variant-numeric: tabular-nums; }
+.row small { grid-column: 1 / -1; font-size: var(--step-small); color: var(--muted); }
+.row.is-active b { color: var(--ink); }
+.pick {
+  margin-top: 40px; padding: 24px; background: var(--surface); text-align: left;
+  display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center;
+}
+.pick p { font-size: var(--step-body); }
+.pick strong { font-weight: 500; }
+.sheet__end { margin-top: 40px; font-size: var(--step-small); color: var(--muted); }
+
+/* ── dům ──────────────────────────────────────── */
+.house { padding: var(--gap) var(--m) 0; }
+.house h2 { font-size: var(--step-head); }
+.house__lead { margin-top: 24px; max-width: 34ch; font-size: var(--step-lead); line-height: 1.35; }
+.tiles { margin-top: 72px; display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px var(--m); align-items: start; }
+.tile-photo { grid-column: 1 / 9; position: relative; }
+.tile-photo img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.tile-photo p { position: absolute; top: 0; right: 0; width: 340px; padding: 20px 24px; background: var(--bg); }
+.tile-plan { grid-column: 9 / 13; }
+.tile-plan figure { background: #fff; padding: 16px; }
+.cap { margin-top: 10px; font-size: var(--step-small); color: var(--muted); }
+.facts { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 24px; }
+.facts dt { font-size: var(--step-small); color: var(--muted); }
+.facts dd { font-size: var(--step-lead); line-height: 1.2; margin-top: 4px; }
+
+/* ── galerie ──────────────────────────────────── */
+.gallery { padding-top: var(--gap); }
+.gallery__head { display: flex; justify-content: space-between; align-items: baseline; padding: 0 var(--m) 32px; }
+.gallery__head h2 { font-size: var(--step-head); }
+.gallery__head p { font-size: var(--step-small); color: var(--muted); }
+.strip {
+  display: flex; gap: 12px; height: 68svh; min-height: 380px;
+  overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none;
+  padding-inline: 6vw var(--m); cursor: grab;
+}
+.strip::-webkit-scrollbar { display: none; }
+.strip.is-drag { cursor: grabbing; scroll-snap-type: none; }
+.strip > * { flex: none; height: 100%; scroll-snap-align: start; }
+.strip img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; user-select: none; }
+.m-tall { aspect-ratio: 3 / 4; }
+.m-wide { aspect-ratio: 16 / 10; }
+.m-pair { aspect-ratio: 4 / 6.15; display: grid; grid-template-rows: 1fr 1fr; gap: 12px; }
+.m-pair img { min-height: 0; }
+
+/* ── ke stažení ───────────────────────────────── */
+.dl-h { margin-top: 36px; font: 500 var(--step-body)/1.3 var(--text); }
+.dl { list-style: none; margin-top: 10px; display: grid; gap: 6px; }
+.dl a { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 16px; background: var(--surface); text-decoration: none; transition: background-color 180ms, transform 160ms var(--ease); }
+.dl a:hover { background: var(--field); }
+.dl a:active { transform: scale(.98); }
+.dl small { color: var(--muted); font-size: var(--step-small); }
+
+/* ── standard ─────────────────────────────────── */
+.std { position: relative; height: 380vh; margin-top: var(--gap); }
+.std__stage { position: sticky; top: 0; height: 100svh; overflow: hidden; color: #fff; }
+/* fotka se při příjezdu rozevře z rámečku na celou obrazovku */
+.std__frame { position: absolute; inset: 0; overflow: hidden; background: #59616a;
+  clip-path: inset(calc(var(--shut, 1) * 14vh) calc(var(--shut, 1) * 12vw) round calc(var(--shut, 1) * 16px)); }
+.std__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 70%;
+  transform: translate3d(0, var(--pan, 0%), 0) scale(var(--zoom, 1.22)); will-change: transform; }
+.std__frame::after { content: ""; position: absolute; inset: 0; background: rgba(24, 24, 24, .46); opacity: var(--dim, 0); }
+.std__head { position: absolute; z-index: 3; inset: clamp(64px, 11vh, 112px) var(--m) auto; text-align: center;
+  font-size: var(--step-head); opacity: var(--dim, 0); transform: translateY(calc((1 - var(--dim, 0)) * 24px)); }
+/* seznam jako válec: aktivní položka uprostřed, ostatní menší */
+.std__wheel { position: absolute; z-index: 2; left: 0; right: 0; top: 50%; height: 0; opacity: var(--dim, 0); }
+.std__list { list-style: none; position: absolute; left: 0; right: 0; top: 0; text-align: center; transform: translate3d(0, calc(var(--f, 0) * -1 * var(--row) - var(--row) / 2), 0); --row: clamp(56px, 8vh, 76px); }
+.std__list li { height: var(--row); display: grid; place-items: center; font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.5rem); line-height: 1.1; letter-spacing: -.01em; color: #d9d6d2;
+  transform: scale(calc(1 - var(--d, 1) * .16)); opacity: max(0, calc(1 - var(--d, 1) * .5)); }
+.std__list li.is-on { color: #fff; font-weight: 500; }
+.std__card { position: absolute; z-index: 2; left: var(--m); bottom: var(--m); width: min(440px, calc(100% - 2 * var(--m))); background: var(--paper); color: var(--ink); padding: 26px 28px 24px;
+  opacity: var(--dim, 0); transform: translateY(calc((1 - var(--dim, 0)) * 40px)); }
+.std__texts { position: relative; min-height: 104px; }
+.std__card p { position: absolute; inset: 0 0 auto; opacity: 0; transform: translateX(24px); transition: opacity 360ms ease, transform 520ms var(--ease); }
+.std__card p.is-on { opacity: 1; transform: none; }
+.std__card strong { display: block; font-weight: 500; margin-bottom: 6px; }
+.std__bar { display: flex; gap: 6px; margin-top: 18px; }
+.std__bar i { flex: 1; height: 4px; background: var(--surface); overflow: hidden; }
+.std__bar i::before { content: ""; display: block; height: 100%; background: var(--accent); transform-origin: left; transform: scaleX(var(--fill, 0)); }
+
+/* ── lokalita ─────────────────────────────────── */
+.place { padding: var(--gap) var(--m) 0; display: grid; grid-template-columns: repeat(12, 1fr); gap: 32px var(--m); align-items: start; }
+.place__text { grid-column: 1 / 6; }
+.place h2 { font-size: var(--step-head); }
+.place__text > p:not(.fin) { margin-top: 24px; max-width: 40ch; }
+.place dl { margin-top: 40px; display: grid; gap: 22px; }
+.place dt { font-size: var(--step-small); color: var(--muted); }
+.place dd { font-size: var(--step-lead); line-height: 1.25; }
+.place figure { grid-column: 6 / 13; }
+.place figure img, .drone iframe { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: 0; display: block; }
+.drone { position: relative; background: var(--ink); }
+.drone__play { position: absolute; left: 24px; bottom: 24px; display: inline-flex; gap: 10px; align-items: center; min-height: 52px; padding: 0 24px; border: 0; background: var(--paper); color: var(--ink); cursor: pointer; transition: transform 160ms var(--ease); }
+.drone__play:hover { transform: translateY(-2px); }
+.drone__play:active { transform: scale(.97); }
+.drone__play svg { width: 18px; height: 18px; color: var(--accent); }
+.fin { margin-top: 8px; max-width: 40ch; }
+.place figcaption { margin-top: 10px; font-size: var(--step-small); color: var(--muted); }
+.place figcaption a { color: var(--ink); }
+
+/* ── kontakt ──────────────────────────────────── */
+.visit { position: relative; margin-top: var(--gap); height: 100svh; min-height: 640px; }
+.visit > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% 60%; }
+.card {
+  position: absolute; top: 60px; right: 60px; width: 400px;
+  background: var(--paper); border-radius: 8px; overflow: hidden;
+}
+.card__in { padding: 32px; }
+.card h2 { font: 400 var(--step-lead)/1.15 var(--text); }
+.card address { margin-top: 18px; font-style: normal; }
+.card dl { margin-top: 20px; display: grid; gap: 10px; }
+.card dl div { display: flex; justify-content: space-between; gap: 16px; }
+.card dt { color: var(--muted); }
+.card dd { text-align: right; }
+.card dd a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.card .note { margin-top: 20px; font-size: var(--step-small); color: var(--muted); }
+.card .btn { width: 100%; min-height: 56px; }
+
+/* ── patička ──────────────────────────────────── */
+.foot { background: var(--ink); padding: 120px var(--m) 48px; }
+.back {
+  margin-inline: auto; max-width: 1180px; background: var(--paper); color: var(--ink);
+  padding: 88px clamp(28px, 5vw, 72px) 32px; position: relative;
+}
+.back::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 40px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='40'%3E%3Ccircle cx='50' cy='0' r='40' fill='%23333231'/%3E%3C/svg%3E") center top / 100px 40px repeat-x; }
+.back__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.back h2 { font-size: var(--step-head); }
+.back__msg p { margin-top: 18px; max-width: 38ch; }
+.back__addr { position: relative; padding-top: 128px; display: grid; gap: 12px; }
+.back__addr a { width: fit-content; }
+.stamp { position: absolute; top: 0; right: 0; width: 88px; padding: 6px; background: var(--bg); transform: rotate(3deg); }
+.stamp img { aspect-ratio: 3 / 4; object-fit: cover; }
+.family { margin-top: 56px; display: flex; gap: 12px 28px; flex-wrap: wrap; align-items: center; font-size: var(--step-small); color: var(--muted); }
+.family a { color: var(--ink); }
+.imprint { margin-top: 40px; text-align: center; font-size: var(--step-small); color: var(--muted); }
+
+/* ── vstupy sekcí ─────────────────────────────── */
+.js [data-rise] { opacity: 0; transform: translateY(24px); transition: opacity 700ms var(--ease), transform 900ms var(--ease); transition-delay: var(--d, 0ms); }
+.js [data-rise].is-in { opacity: 1; transform: none; }
+.js .hero [data-rise] { transition-duration: 900ms, 1100ms; }
+
+/* ── telefon ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .offer { grid-template-columns: 1fr; padding: 72px 10px; }
+  .plan { grid-column: 1; position: static; padding-inline: 6px; }
+  .sheet { grid-column: 1; width: 100%; padding: 56px 24px 48px; }
+  .tiles, .place { grid-template-columns: 1fr; }
+  .tile-photo, .tile-plan, .place__text, .place figure { grid-column: 1; }
+  .tile-photo p { position: static; width: auto; max-width: 60ch; padding: 16px 0 0; background: none; }
+  .tile-photo img { aspect-ratio: 4 / 3; }
+  .back__grid { grid-template-columns: 1fr; }
+  .back__addr { padding-top: 0; }
+  .stamp { top: -64px; width: 64px; }
+}
+@media (max-width: 600px) {
+  .top__links a:not(:last-child) { display: none; }
+  .top__links a::after { content: ""; }
+  .hero__slides img { object-position: 60% 60%; }
+  .hero__foot { grid-template-columns: 1fr; inset: auto 20px 24px 20px; }
+  .hero h1 { font-size: 17vw; }
+  .hero__act { justify-items: start; text-align: left; }
+  .hero__act .btn { width: 100%; }
+  .gallery__head { padding-inline: 20px; }
+  .strip { height: 62svh; gap: 8px; padding-left: 20px; }
+  .m-tall { aspect-ratio: auto; width: 72vw; }
+  .m-pair { aspect-ratio: auto; width: 64vw; gap: 8px; }
+  .m-wide { aspect-ratio: auto; width: 88vw; height: 60%; align-self: center; }
+  .std__head { inset: 24px 20px auto; text-align: left; }
+  .std__wheel { top: 44%; }
+  .std__list { text-align: left; padding-inline: 20px; }
+  .std__list li { place-items: center start; font-size: 1.375rem; transform-origin: left center; }
+  .std__card { left: 16px; right: 16px; bottom: 16px; width: auto; padding: 20px; }
+  .std__texts { min-height: 120px; }
+  .visit { height: auto; min-height: 0; display: grid; }
+  .visit > img { position: static; height: 70svh; }
+  .card { position: relative; top: auto; right: auto; width: auto; margin: -80px 16px 0; }
+  .card .btn { min-height: 56px; }
+  .foot { padding: 96px 0 32px; }
+  .back { padding: 72px 20px 24px; }
+  .back::before { height: 26px; background-size: 64px 26px; }
+  .hero::after { height: 72%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+  .js [data-rise] { opacity: 1; transform: none; }
+  .hero__slides { transform: none; }
+  .std { height: auto; }
+  .std__stage { position: relative; }
+  .std__frame { clip-path: none; }
+  .std__frame img { transform: none; }
+  .std__head, .std__wheel, .std__card { opacity: 1; transform: none; }
+  .std__frame::after { opacity: 1; }
+  .std__list { transform: translateY(-50%); }
+  .std__list li { transform: none; opacity: 1; height: auto; padding: 6px 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="intro" id="intro" aria-hidden="true">
+  <div>
+    <svg class="intro__mark" viewBox="-1 -1 50 42">
+      <path d="M18 40V16L33 2l15 14v24Z"/>
+      <path d="M9 40V16L24 2l15 14v24Z"/>
+      <path d="M0 40V16L15 2l15 14v24Z"/>
+    </svg>
+    <p class="intro__word">Domy Výšovice</p>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero__slides" aria-hidden="true">
+    <img class="is-on" src="../assets/img/dum-zahrada.jpg" alt="" width="2000" height="1221" fetchpriority="high">
+    <img src="../assets/img/ulice-2.jpg" alt="" width="2000" height="1000">
+    <img src="../assets/img/ulice.jpg" alt="" width="2000" height="1000">
+  </div>
+  <nav class="top" aria-label="Hlavní">
+    <a class="top__name" href="#top" data-rise>
+      <svg viewBox="-1 -1 50 42" aria-hidden="true" fill="var(--accent)">
+        <path d="M18 40V16L33 2l15 14v24Z" stroke="#fff" stroke-width="1.2"/>
+        <path d="M9 40V16L24 2l15 14v24Z" stroke="#fff" stroke-width="1.2"/>
+        <path d="M0 40V16L15 2l15 14v24Z" stroke="#fff" stroke-width="1.2"/>
+      </svg>
+      <span data-p="nameLines">Domy<br>Výšovice</span>
+    </a>
+    <div class="top__links" data-rise style="--d:80ms">
+      <a href="#domy">Domy</a> <a href="#dum">Dům</a> <a href="#standard">Standard</a> <a href="#lokalita">Lokalita</a> <a href="#kontakt">Kontakt</a>
+    </div>
+  </nav>
+  <div class="hero__foot">
+    <div>
+      <h1 class="d" data-rise style="--d:120ms" data-p="nameH1">Domy<br>Výšovice</h1>
+      <p class="hero__lead" data-rise style="--d:220ms" data-p="lead">Osm nízkoenergetických bungalovů 4+kk se zelenou střechou, 10&nbsp;km od Prostějova.</p>
+    </div>
+    <div class="hero__act" data-rise style="--d:320ms">
+      <p><span data-p="free">5 z 8 domů</span> je volných, cena od <span data-p="priceFrom">5&nbsp;490&nbsp;000&nbsp;Kč</span>.</p>
+      <a class="btn" href="#domy">Vybrat dům
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="offer" id="domy" aria-labelledby="cenik">
+    <figure class="plan" data-rise>
+      <div class="plan__img" data-plan>
+        <img src="../assets/img/situace.jpg" alt="Situační výkres čtvrté etapy: osm parcel podél nové ulice, silnice III/4333 a pole" width="1000" height="690" loading="lazy">
+      </div>
+      <figcaption>
+        <span class="key"><i style="background:var(--accent)"></i>Volný</span>
+        <span class="key"><i style="background:var(--ink)"></i>Rezervace</span>
+        <span class="key"><i style="background:#fff"></i>Prodáno</span>
+      </figcaption>
+    </figure>
+
+    <div class="sheet" data-rise style="--d:120ms">
+      <h2 class="d" id="cenik">Ceník domů</h2>
+      <p class="sheet__note"><span data-p="stage">Čtvrtá etapa</span>, rodinný dům PP05, cena v základní variantě</p>
+      <div data-list></div>
+      <div class="pick" aria-live="polite">
+        <p data-pick>Vyberte dům v ceníku nebo na plánu.</p>
+        <a class="btn" data-pick-btn href="#kontakt">Mám zájem</a>
+      </div>
+      <p class="sheet__end">Cena neobsahuje provizi realitní kanceláře 2&nbsp;%.<br>Další varianty podle katalogu standardů.</p>
+    </div>
+  </section>
+
+  <section class="house" id="dum" aria-labelledby="dum-h">
+    <h2 class="d" id="dum-h" data-rise>Dům PP05</h2>
+    <p class="house__lead" data-rise style="--d:80ms">Jednopodlažní dům 4+kk s velkými okny. Z obývacího pokoje vede francouzské okno rovnou do zahrady.</p>
+    <div class="tiles">
+      <div class="tile-photo" data-rise style="--d:140ms">
+        <img src="../assets/img/dum-terasa.jpg" alt="Vizualizace domu PP05 s terasou, pergolou a zahradou" width="2000" height="1221" loading="lazy">
+        <p>Zděný dům z keramických bloků tloušťky 50&nbsp;cm s bílou fasádou. Plochá vegetační střecha zadrží dešťovou vodu a v létě dům chladí.</p>
+      </div>
+      <div class="tile-plan" data-rise style="--d:220ms">
+        <figure>
+          <img src="../assets/img/pudorys-vyrez.jpg" alt="Vzorový půdorys domu: obývací pokoj s kuchyní, ložnice, dva pokoje, koupelna, WC a zádveří" width="1150" height="825" loading="lazy">
+        </figure>
+        <p class="cap">Vzorový půdorys</p>
+        <dl class="facts">
+          <div><dt>Dispozice</dt><dd>4+kk</dd></div>
+          <div><dt>Zastavěná plocha</dt><dd>126 m²</dd></div>
+          <div><dt>Parkování</dt><dd>2 auta, kryté</dd></div>
+          <div><dt>Střecha</dt><dd>zelená</dd></div>
+        </dl>
+        <h3 class="dl-h">Ke stažení</h3>
+        <ul class="dl">
+          <li><a href="https://domyvysovice.cz/download/katalog-standardu.pdf">Katalog standardů <small>PDF</small></a></li>
+          <li><a href="https://domyvysovice.cz/download/penb.pdf">Energetický štítek <small>PDF</small></a></li>
+          <li><a href="https://domyvysovice.cz/download/rd-vysovice-4-etapa.pdf">Vizualizace a půdorysy <small>PDF</small></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" aria-labelledby="gal-h">
+    <div class="gallery__head" data-rise>
+      <h2 class="d" id="gal-h">Uvnitř i venku</h2>
+      <p>9 vizualizací, táhněte do strany</p>
+    </div>
+    <div class="strip" tabindex="0" aria-label="Galerie vizualizací">
+      <div class="m-tall"><img src="../assets/img/interier-jidelna.jpg" alt="Jídelní kout s kulatým stolem a kuchyní" width="2000" height="1334" loading="lazy"></div>
+      <div class="m-pair">
+        <img src="../assets/img/kuchyn.jpg" alt="Kuchyňská linka s dřevěnou pracovní deskou" width="2000" height="1334" loading="lazy">
+        <img src="../assets/img/interier-obyvak-2.jpg" alt="Obývací pokoj se světlou sedačkou" width="2000" height="1334" loading="lazy">
+      </div>
+      <div class="m-wide"><img src="../assets/img/ulice-3.jpg" alt="Nová ulice mezi domy se zatravňovací dlažbou" width="2000" height="1000" loading="lazy"></div>
+      <div class="m-pair">
+        <img src="../assets/img/dum-pergola.jpg" alt="Dům s pergolou a posezením na terase" width="2000" height="1221" loading="lazy">
+        <img src="../assets/img/dum-virivka.jpg" alt="Dřevěná terasa s vířivkou v zahradě" width="2000" height="1221" loading="lazy">
+      </div>
+      <div class="m-tall"><img src="../assets/img/interier-obyvak.jpg" alt="Obývací pokoj s jídelním stolem a závěsnými světly" width="2000" height="1334" loading="lazy"></div>
+      <div class="m-wide"><img src="../assets/img/letecky.jpg" alt="Letecký pohled na domy se zelenými střechami" width="2000" height="1024" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="std" id="standard" aria-labelledby="std-h">
+    <div class="std__stage">
+      <div class="std__frame">
+        <img src="../assets/img/ulice.jpg" alt="Ulice nové zástavby s bílými bungalovy" width="2000" height="1000" loading="lazy">
+      </div>
+      <h2 class="std__head d" id="std-h">Standard v ceně</h2>
+      <div class="std__wheel">
+        <ol class="std__list">
+          <li class="is-on">Zdivo z keramických bloků 50 cm</li>
+          <li>Tepelné čerpadlo vzduch–voda</li>
+          <li>Podlahové topení ve všech pokojích</li>
+          <li>Fotovoltaika na ohřev vody</li>
+          <li>Okna s trojsklem a stíněním</li>
+        </ol>
+      </div>
+      <div class="std__card" aria-live="polite">
+        <div class="std__texts">
+          <p class="is-on"><strong>Zdivo z keramických bloků 50 cm</strong>Obvodové zdivo i příčky z keramických bloků na železobetonových základových pasech.</p>
+          <p><strong>Tepelné čerpadlo vzduch–voda</strong>Zdroj tepla pro teplovodní podlahové vytápění celého domu.</p>
+          <p><strong>Podlahové topení ve všech pokojích</strong>Teplovodní podlahové topení v každé místnosti, v koupelně navíc otopný žebřík.</p>
+          <p><strong>Fotovoltaika na ohřev vody</strong>Fotovoltaický systém podporuje ohřev teplé vody.</p>
+          <p><strong>Okna s izolačním trojsklem a stíněním</strong>Plastová okna a dveře s trojsklem. Stínicí prvky brání přehřívání interiéru.</p>
+        </div>
+        <div class="std__bar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="place" id="lokalita" aria-labelledby="lok-h">
+    <div class="place__text">
+      <h2 class="d" id="lok-h" data-rise>Výšovice</h2>
+      <p data-rise style="--d:80ms">Klidná obec na Hané s vlastním fotbalovým klubem. Nová ulice navazuje na zástavbu a za domy začínají pole.</p>
+      <dl data-rise style="--d:160ms">
+        <div><dt>Do centra Prostějova</dt><dd>10 km</dd></div>
+        <div><dt>Dálnice</dt><dd>dobrá dostupnost</dd></div>
+        <div><dt>Pozemky</dt><dd>870 až 943 m²</dd></div>
+      </dl>
+      <h3 class="dl-h">Financování</h3>
+      <p class="fin">Hypotéku, stavební spoření i pojištění zařídí hypoteční specialista našeho partnera. Ušetříte čas s obcházením bank.</p>
+    </div>
+    <figure data-rise style="--d:120ms">
+      <div class="drone" data-video="jcEzrXgzjAo">
+        <img src="../assets/img/letecky-2.jpg" alt="Letecký pohled na novou ulici s osmi domy na kraji obce" width="2000" height="1000" loading="lazy">
+        <button type="button" class="drone__play"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 4l10 6-10 6z" fill="currentColor"/></svg>Pohled z dronu</button>
+      </div>
+      <figcaption>Video z dronu nad lokalitou · <a href="https://maps.google.com/?q=V%C3%BD%C5%A1ovice">Otevřít v mapě</a></figcaption>
+    </figure>
+  </section>
+
+  <section class="visit" id="kontakt" aria-labelledby="kon-h">
+    <img src="../assets/img/ulice-2.jpg" alt="Ulice s domy a zelení před vchody" width="2000" height="1000" loading="lazy">
+    <div class="card" data-rise>
+      <div class="card__in">
+        <h2 id="kon-h">Prohlídka a prodej</h2>
+        <address>Výšovice<br>798 09, okres Prostějov</address>
+        <dl>
+          <div><dt>Prodej</dt><dd>Ing. David Foretek<br>CM Reality</dd></div>
+          <div><dt>Telefon</dt><dd><a href="tel:+420777619939">777 619 939</a></dd></div>
+          <div><dt>E-mail</dt><dd><a href="mailto:foretek@cmreality.cz">foretek@cmreality.cz</a></dd></div>
+        </dl>
+        <p class="note">S hypotékou pomůže specialista našeho partnera, od výběru úvěru po pojištění.</p>
+      </div>
+      <a class="btn" data-mail href="mailto:foretek@cmreality.cz?subject=Prohl%C3%ADdka%20Domy%20V%C3%BD%C5%A1ovice">Domluvit prohlídku</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="back" data-rise>
+    <div class="back__grid">
+      <div class="back__msg">
+        <h2 class="d">Domy Výšovice</h2>
+        <p>Nízkoenergetické domy se zahradou, deset minut od Prostějova. Rádi Vám je ukážeme naživo.</p>
+        <div class="family">
+          <span>Další projekty</span>
+          <a href="https://stavimesny.cz/">Stavíme sny</a>
+        </div>
+      </div>
+      <div class="back__addr">
+        <div class="stamp"><img src="../assets/img/dum-zahrada.jpg" alt="" width="2000" height="1221" loading="lazy"></div>
+        <a href="mailto:foretek@cmreality.cz">foretek@cmreality.cz</a>
+        <a href="tel:+420777619939">+420 777 619 939</a>
+        <a href="https://domyvysovice.cz/download/zarucni-podminky-uzivani.pdf">Vstup pro majitele</a>
+        <a href="https://domyvysovice.cz/projekty-eu/">Projekty podpořené EU</a>
+      </div>
+    </div>
+    <p class="imprint">© 2026 Domy Výšovice. Vizualizace jsou ilustrační.</p>
+  </div>
+</footer>
+
+<script src="../shared/project.js"></script>
+<script src="../shared/intro.js"></script>
+<script src="../shared/plan.js"></script>
+<script>
+(function () {
+  var P = window.PROJECT;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // texty z dat projektu (šablona)
+  var bind = {
+    nameLines: P.nameLines.join('<br>'),
+    nameH1: P.nameLines.join('<br>'),
+    lead: P.lead,
+    priceFrom: P.priceFrom.replace(/ /g, ' '),
+    stage: P.stage,
+    free: P.countFree() + ' z ' + P.houses.length + ' domů'
+  };
+  document.querySelectorAll('[data-p]').forEach(function (el) {
+    var v = bind[el.dataset.p]; if (v != null) el.innerHTML = v;
+  });
+  if (P.isDemo) document.title = P.name + ' – ukázka šablony';
+
+  // ceník podle stavu
+  var list = document.querySelector('[data-list]');
+  var groups = [['free', 'Volné domy'], ['reserved', 'Rezervované'], ['sold', 'Prodané']];
+  var rows = {};
+  groups.forEach(function (g) {
+    var hs = P.houses.filter(function (h) { return h.status === g[0]; });
+    if (!hs.length) return;
+    var box = document.createElement('div'); box.className = 'group';
+    box.innerHTML = '<h3>' + g[1] + '</h3>';
+    var ul = document.createElement('ul'); ul.className = 'rows';
+    hs.forEach(function (h) {
+      var li = document.createElement('li');
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'row';
+      b.innerHTML = '<b>Dům ' + h.no + '</b><span>' + (h.status === 'sold' ? 'prodáno' : P.formatPrice(h.price)) + '</span><small>pozemek ' + h.plot + ' m²</small>';
+      b.addEventListener('click', function () { plan.select(h.no, 'list'); });
+      li.appendChild(b); ul.appendChild(li); rows[h.no] = b;
+    });
+    box.appendChild(ul); list.appendChild(box);
+  });
+
+  var pick = document.querySelector('[data-pick]');
+  var pickBtn = document.querySelector('[data-pick-btn]');
+  var current;
+  var plan = Plan.mount(document.querySelector('[data-plan]'), {
+    onSelect: function (h) {
+      if (current) rows[current].classList.remove('is-active');
+      current = h.no; rows[h.no].classList.add('is-active');
+      pick.innerHTML = '<strong>Dům ' + h.no + '</strong>, pozemek ' + h.plot + ' m²<br>' +
+        P.statusLabel[h.status] + (h.status === 'sold' ? '' : ', ' + P.formatPrice(h.price));
+      pickBtn.hidden = h.status === 'sold';
+      pickBtn.href = 'mailto:' + P.contact.email + '?subject=' + encodeURIComponent('Zájem o dům ' + h.no + ', ' + P.name) +
+        '&body=' + encodeURIComponent('Dobrý den,\nmám zájem o dům ' + h.no + ' (pozemek ' + h.plot + ' m²). Prosím o kontakt.\n');
+    }
+  });
+  var firstFree = P.houses.find(function (h) { return h.status === 'free'; });
+  if (firstFree) plan.select(firstFree.no);
+
+  // vstupy sekcí
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -12% 0px' });
+  function watch() {
+    document.querySelectorAll('[data-rise]').forEach(function (el) {
+      if (el.closest('.hero')) el.classList.add('is-in'); else io.observe(el);
+    });
+  }
+  if (document.documentElement.classList.contains('is-revealed')) watch();
+  else document.addEventListener('intro:done', watch, { once: true });
+
+  // hero: pomalé prolínání fotek
+  var slides = document.querySelectorAll('.hero__slides img');
+  var si = 0, st;
+  function next() { slides[si].classList.remove('is-on'); si = (si + 1) % slides.length; slides[si].classList.add('is-on'); }
+  function play() { if (!reduce && !st) st = setInterval(next, 6000); }
+  function stop() { clearInterval(st); st = null; }
+  play();
+  document.addEventListener('visibilitychange', function () { document.hidden ? stop() : play(); });
+
+  // standard: animace řízená scrollem (rozevření fotky, kamera, válec, průběh)
+  var std = document.querySelector('.std');
+  var stage = std.querySelector('.std__stage');
+  var items = std.querySelectorAll('.std__list li');
+  var texts = std.querySelectorAll('.std__card p');
+  var bars = std.querySelectorAll('.std__bar i');
+  var n = items.length, shown = -1, ticking = false;
+  function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function ease(t) { return 1 - Math.pow(1 - t, 3); }
+  function frame() {
+    ticking = false;
+    var r = std.getBoundingClientRect();
+    var travel = std.offsetHeight - innerHeight;
+    var p = clamp(-r.top / travel);
+    var enter = clamp((innerHeight - r.top) / innerHeight);   // 0 → 1 jak sekce vjíždí
+    var open = ease(clamp((enter - .35) / .65));
+    stage.style.setProperty('--shut', (1 - open).toFixed(4));
+    stage.style.setProperty('--dim', ease(clamp((open - .55) / .45)).toFixed(4));
+    stage.style.setProperty('--zoom', (1.22 - .22 * ease(p)).toFixed(4));
+    stage.style.setProperty('--pan', ((.5 - p) * 7).toFixed(3) + '%');
+    var f = clamp((p - .04) / .86) * (n - 1);
+    stage.style.setProperty('--f', f.toFixed(4));
+    items.forEach(function (li, i) { var d = Math.abs(i - f); li.style.setProperty('--d', Math.min(d, 2.5).toFixed(3)); li.style.visibility = d > 1.95 ? 'hidden' : ''; });
+    bars.forEach(function (b, i) { b.style.setProperty('--fill', clamp(f - i + 1).toFixed(3)); });
+    var a = Math.round(f);
+    if (a !== shown) {
+      shown = a;
+      items.forEach(function (li, i) { li.classList.toggle('is-on', i === a); });
+      texts.forEach(function (t, i) { t.classList.toggle('is-on', i === a); });
+    }
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+  if (!reduce) {
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
+    frame();
+  }
+
+  // dron: video se načte až po kliknutí
+  var drone = document.querySelector('[data-video]');
+  drone.querySelector('button').addEventListener('click', function () {
+    drone.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + drone.dataset.video + '?autoplay=1&rel=0" title="Pohled z dronu nad Výšovicemi" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+  });
+
+  // galerie: tažení myší
+  var strip = document.querySelector('.strip');
+  var down = false, sx = 0, sl = 0;
+  strip.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse') return; down = true; sx = e.clientX; sl = strip.scrollLeft; strip.classList.add('is-drag'); });
+  addEventListener('pointerup', function () { down = false; strip.classList.remove('is-drag'); });
+  addEventListener('pointermove', function (e) { if (down) strip.scrollLeft = sl - (e.clientX - sx); });
+})();
+</script>
+</body>
+</html>
