@@ -387,6 +387,17 @@ body.nav-in .nav { opacity: 1; }
 .burger.open span:nth-child(2) { opacity: 0; }
 .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* Eight links, the language switch and the action only fit on one row from
+   about 1200px. Below that (and above the burger) the two links that only
+   jump within the homepage step aside; the page still reaches them by
+   scrolling, and the burger menu and the footer still list them. */
+.nav-links a, .nav-cta { white-space: nowrap; }
+@media (min-width: 881px) and (max-width: 1199px) {
+  .nav-links .nav-opt { display: none; }
+  .nav-inner { gap: 24px; }
+  .nav-links { gap: 20px; }
+}
+
 /* ── Hero ─────────────────────────────────────── */
 .hero {
   position: relative;
@@ -1220,6 +1231,68 @@ body.intro-skip .nav {
   transition-delay: 0s !important;
   transition-duration: .2s !important;
 }
+
+/* ── Logo splash ──────────────────────────────
+   Shown only when <head> has put `splash-on` on <html> (first page of a
+   session, no reduced motion). The ground and the lockup are separate layers
+   so the ground can clear while the lockup flies into the nav. If script.js
+   never runs, the failsafe animation takes the overlay away on its own. */
+.splash { display: none; }
+html.splash-on .splash {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  animation: splash-failsafe .3s linear 4.5s forwards;
+}
+@keyframes splash-failsafe { to { opacity: 0; visibility: hidden; } }
+.splash-ground {
+  position: absolute;
+  inset: 0;
+  background: var(--void);
+  transition: opacity .5s var(--e-out) .06s;
+}
+.splash.clearing .splash-ground { opacity: 0; }
+.splash.skip { opacity: 0; transition: opacity .2s ease-out; }
+
+/* a true multiple of the nav lockup (30px mark, 11px gap, 14px mono caps), so
+   the flight into the bar is one uniform scale */
+.splash-lock {
+  --S: 3;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: calc(11px * var(--S));
+  transform-origin: 0 0;
+  will-change: transform;
+}
+.splash-mark { width: calc(30px * var(--S)); height: calc(30px * var(--S)); overflow: visible; }
+.splash-rays { fill: none; stroke: url(#splashGrad); stroke-width: 7; stroke-linecap: round; }
+.splash-word {
+  display: inline-flex;
+  overflow: hidden;
+  font-family: var(--f-mono);
+  font-size: calc(14px * var(--S));
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1.15;
+}
+.splash-word span {
+  display: inline-block;
+  transform: translate3d(0, 105%, 0);
+  transition: transform .72s var(--e-out);
+  transition-delay: calc(var(--i, 0) * 46ms);
+}
+.splash.word-in .splash-word span { transform: none; }
+
+/* while the lockup is in the air the bar's own logo waits under it, already
+   unfolded, and appears in the frame the overlay is removed */
+html.splash-on .nav-logo { opacity: 0; }
+html.splash-on .nav-logo .fold-c { transition: none !important; }
 
 /* ── Sticky mobile CTA ────────────────────────
    Desktop keeps its header button, so this is phone-only. It sits above the

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Observabilita a dohled sítě a infrastruktury | Lanthir</title>
+  <meta name="description" content="Dohled nad sítí, servery, kontejnery i weby. Metriky, logy a trasy v jednom dohledu: o výpadku víme dřív než vaši zákazníci. Zabbix, SNMP, Kubernetes.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://lanthir.cz/observabilita/">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lanthir.cz/observabilita/">
+  <meta property="og:title" content="Objevte svět observability | Lanthir">
+  <meta property="og:description" content="Dohled nad vaší sítí, servery i weby. O problému se dozvíme dřív než vaši zákazníci a víme, kde ho hledat.">
+  <meta property="og:image" content="https://lanthir.cz/og-image.png">
+  <meta property="og:locale" content="cs_CZ">
+  <meta property="og:site_name" content="Lanthir">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Observabilita a dohled sítě a infrastruktury",
+    "serviceType": "Monitoring sítě, serverů, kontejnerů a webových aplikací",
+    "provider": { "@type": "ProfessionalService", "name": "Lanthir", "url": "https://lanthir.cz" },
+    "areaServed": "CZ",
+    "url": "https://lanthir.cz/observabilita/"
+  }
+  </script>
+
+  <!-- Logo splash: same rule as the homepage (see index.html) -->
+  <script>
+    try {
+      if (!sessionStorage.getItem('lanthir-splash') && !location.hash &&
+          !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        sessionStorage.setItem('lanthir-splash', '1');
+        document.documentElement.classList.add('splash-on');
+      }
+    } catch (e) {}
+  </script>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/obs.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" media="print" onload="this.media='all'"
+        href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..600&family=Inter:wght@200;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..600&family=Inter:wght@200;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  </noscript>
+
+  <!-- Google Analytics — only after consent (cookies.js), as on the homepage -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.__loadAnalytics = function () {
+      if (window.__analyticsLoaded) return;
+      window.__analyticsLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-VQRNZH1QTF';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-VQRNZH1QTF', { anonymize_ip: true, allow_google_signals: false });
+    };
+  </script>
+  <script src="/cookies.js" defer></script>
+</head>
+<body data-page="obs">
+
+  <noscript>
+    <style>
+      .reveal, .hero-copy > * { opacity: 1 !important; transform: none !important; }
+      .fold-c { opacity: 1 !important; transform: none !important; }
+      .nav { opacity: 1 !important; }
+      #topology { display: none; }
+      .st-state { position: static !important; opacity: 1 !important; visibility: visible !important; }
+      .how-step { color: var(--ink) !important; }
+    </style>
+  </noscript>
+
+  <!-- ═══ LOGO SPLASH ═══ (see script.js · LOGO SPLASH) -->
+  <div class="splash" id="splash" aria-hidden="true">
+    <div class="splash-ground"></div>
+    <div class="splash-lock">
+      <svg class="splash-mark" viewBox="0 0 120 120" focusable="false">
+        <defs>
+          <linearGradient id="splashGrad" gradientUnits="userSpaceOnUse" x1="8" y1="112" x2="112" y2="8">
+            <stop offset="0" stop-color="#5B5BE8"/>
+            <stop offset=".5" stop-color="#1BBBD4"/>
+            <stop offset="1" stop-color="#3EDC97"/>
+          </linearGradient>
+        </defs>
+        <g class="splash-rays"></g>
+      </svg>
+      <span class="splash-word">Lanthir</span>
+    </div>
+  </div>
+
+  <!-- ═══ NAV ═══ -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="Lanthir — úvod">
+        <img src="/logo-mark.svg" alt="" class="logo-img">
+        <span class="logo-text">Lanthir</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li style="--i:0"><a href="/#sluzby"    data-i18n="nav.services">Služby</a></li>
+        <li style="--i:1"><a href="/#reference" data-i18n="nav.work">Reference</a></li>
+        <li style="--i:2"><a href="/#cenik"     data-i18n="nav.pricing">Ceník</a></li>
+        <li style="--i:3"><a href="/observabilita/" class="active" aria-current="page" data-i18n="nav.obs">Observabilita</a></li>
+        <li style="--i:4" class="nav-opt"><a href="/#postup"    data-i18n="nav.process">Postup</a></li>
+        <li style="--i:5" class="nav-opt"><a href="/#faq"       data-i18n="nav.faq">FAQ</a></li>
+        <li style="--i:6"><a href="/#about"     data-i18n="nav.about">O nás</a></li>
+        <li style="--i:7"><a href="/#kontakt"   data-i18n="nav.contact">Kontakt</a></li>
+        <li style="--i:8" class="nav-links-cta"><a href="/?balicek=dohled#kontakt" class="m-cta" data-i18n="nav.cta">Nezávazná poptávka</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="ls-btn active" data-lang="cs">CZ</button>
+        <button class="ls-btn" data-lang="en">EN</button>
+        <button class="ls-btn" data-lang="pl">PL</button>
+      </div>
+      <a href="/?balicek=dohled#kontakt" class="btn btn--solid nav-cta" data-i18n="nav.cta">Nezávazná poptávka</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main>
+
+  <!-- ═══ HERO — Topology Field ═══ -->
+  <header class="hero hero--obs" id="home">
+    <canvas id="topology" aria-hidden="true"></canvas>
+    <div class="hero-scrim hero-scrim--obs" aria-hidden="true"></div>
+    <div class="container hero-copy">
+      <h1 class="hero-h1">
+        <span class="hero-l1" data-i18n="obs.hero.l1">Objevte svět <em>observability</em></span>
+        <span class="hero-l2" data-i18n="obs.hero.l2">Dohled nad vaší sítí, servery i weby</span>
+      </h1>
+      <p class="lede" data-i18n="obs.hero.sub">Napojíme vaši síť, servery, kontejnery i webové aplikace na jeden dohled. O problému se dozvíme dřív než vaši zákazníci a víme, kde ho hledat.</p>
+      <div class="row">
+        <a href="/?balicek=dohled#kontakt" class="btn btn--solid" data-i18n="obs.hero.btn1">Nezávazná konzultace</a>
+        <a href="#hlidani" class="btn btn--ghost" data-i18n="obs.hero.btn2">Co umíme hlídat</a>
+      </div>
+    </div>
+    <div class="hero-cue" aria-hidden="true"><span></span></div>
+  </header>
+
+  <!-- ═══ SIGNALS — one incident, three signals ═══ -->
+  <section class="section" id="signaly">
+    <div class="container sig">
+      <div class="sig-copy">
+        <h2 class="h2" data-i18n="obs.sig.h">Co je observabilita</h2>
+        <p class="sig-lead reveal" data-i18n="obs.sig.p1">Monitoring vám řekne, že něco nefunguje. Observabilita vám řekne proč.</p>
+        <p class="reveal" data-i18n="obs.sig.p2">Ze systémů sbíráme tři druhy signálů. Metriky jsou čísla v čase: vytížení procesoru, zaplnění disku, provoz na lince. Logy zapisují, co se v systému stalo. Trasy sledují jeden požadavek napříč službami a ukážou, kde se zdržel.</p>
+        <p class="reveal" data-i18n="obs.sig.p3">Teprve dohromady dávají celý obraz. Vedle je jeden noční incident tak, jak ho uvidíte v našem dohledu: disk se plnil, aplikace začala hlásit chyby a objednávky na webu padaly.</p>
+      </div>
+
+      <!-- An incident as the monitoring shows it. Sample data, not a client's. -->
+      <figure class="inc reveal" data-ui>
+        <figcaption class="inc-head">
+          <span class="inc-title" data-i18n="obs.inc.title">Incident · srv-files</span>
+          <span class="inc-when" data-i18n="obs.inc.when">dnes 02:09–02:31</span>
+          <span class="inc-state" data-i18n="obs.inc.state">Vyřešeno</span>
+        </figcaption>
+
+        <div class="inc-block">
+          <div class="inc-label"><span data-i18n="obs.inc.metric">Metrika · zaplnění disku /data</span><b class="inc-val">91 %</b></div>
+          <svg class="inc-chart" viewBox="0 0 480 120" preserveAspectRatio="none" role="img" aria-label="Zaplnění disku stoupá z 62 % na 91 % a po zásahu klesá na 48 %">
+            <line class="inc-limit" x1="0" x2="480" y1="27" y2="27"/>
+            <path class="inc-area" d="M0 69 L40 68 L80 66 L120 63 L160 60 L200 55 L240 48 L280 40 L320 31 L350 22 L372 15 L392 15 L408 70 L440 72 L480 72 L480 120 L0 120 Z"/>
+            <path class="inc-line" d="M0 69 L40 68 L80 66 L120 63 L160 60 L200 55 L240 48 L280 40 L320 31 L350 22 L372 15 L392 15 L408 70 L440 72 L480 72"/>
+            <circle class="inc-dot" cx="372" cy="15" r="5"/>
+          </svg>
+          <span class="inc-limit-lbl" data-i18n="obs.inc.limit">hranice 85 %</span>
+        </div>
+
+        <div class="inc-block">
+          <div class="inc-label"><span data-i18n="obs.inc.log">Log · app-web</span><b class="inc-val">3</b></div>
+          <pre class="inc-log"><code><span class="t">02:09:41</span> <span class="w">WARN </span> upload: free space below 10 %
+<span class="t">02:11:03</span> <span class="e">ERROR</span> write failed: No space left on device
+<span class="t">02:11:03</span> <span class="e">ERROR</span> POST /objednavka → 500</code></pre>
+        </div>
+
+        <div class="inc-block">
+          <div class="inc-label"><span data-i18n="obs.inc.trace">Trasa · POST /objednavka</span><b class="inc-val">2,41 s</b></div>
+          <ol class="inc-trace">
+            <li style="--l:0;--w:100"><span>web</span><i></i><b>2,41 s</b></li>
+            <li style="--l:1;--w:97"><span>api /order</span><i></i><b>2,36 s</b></li>
+            <li style="--l:2;--w:2"><span>db.query</span><i></i><b>0,04 s</b></li>
+            <li class="hot" style="--l:3.5;--w:94"><span>storage.write</span><i></i><b>2,29 s</b></li>
+          </ol>
+        </div>
+
+        <p class="inc-cause"><span data-i18n="obs.inc.cause">Příčina: plný disk na srv-files → selhal zápis → objednávky končily chybou 500.</span> <span class="inc-fix" data-i18n="obs.inc.fix">Uvolněno 120 GB, bez dalšího výpadku.</span></p>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ═══ COMPARISON ═══ -->
+  <section class="section" id="rozdil">
+    <div class="container">
+      <h2 class="h2 cmp-h" data-i18n="obs.cmp.h">Co se změní s dohledem</h2>
+      <div class="cmp" role="table" aria-label="Srovnání: bez dohledu, běžný monitoring, dohled s Lanthirem">
+        <div class="cmp-row cmp-row--head" role="row">
+          <span role="columnheader"><span class="sr-only">Situace</span></span>
+          <span role="columnheader" data-i18n="obs.cmp.c1">Bez dohledu</span>
+          <span role="columnheader" data-i18n="obs.cmp.c2">Běžný monitoring</span>
+          <span role="columnheader" class="cmp-us" data-i18n="obs.cmp.c3">Dohled s Lanthirem</span>
+        </div>
+        <div class="cmp-row reveal" role="row"><span role="rowheader" data-i18n="obs.cmp.r1">Web přestane odpovídat</span><span role="cell" data-i18n="obs.cmp.r1a">Zavolá vám zákazník</span><span role="cell" data-i18n="obs.cmp.r1b">Přijde e-mail</span><span role="cell" class="cmp-us" data-i18n="obs.cmp.r1c">Upozornění hned, i s místem chyby</span></div>
+        <div class="cmp-row reveal" role="row"><span role="rowheader" data-i18n="obs.cmp.r2">Plní se disk na serveru</span><span role="cell" data-i18n="obs.cmp.r2a">Až přestane zapisovat</span><span role="cell" data-i18n="obs.cmp.r2b">Když je skoro plný</span><span role="cell" class="cmp-us" data-i18n="obs.cmp.r2c">Trend vidíme dny dopředu</span></div>
+        <div class="cmp-row reveal" role="row"><span role="rowheader" data-i18n="obs.cmp.r3">Vyprší SSL nebo doména</span><span role="cell" data-i18n="obs.cmp.r3a">Prohlížeč začne varovat</span><span role="cell" data-i18n="obs.cmp.r3b">Připomínka v kalendáři</span><span role="cell" class="cmp-us" data-i18n="obs.cmp.r3c">Hlídáme s předstihem</span></div>
+        <div class="cmp-row reveal" role="row"><span role="rowheader" data-i18n="obs.cmp.r4">Zahlcená linka nebo switch</span><span role="cell" data-i18n="obs.cmp.r4a">Všechno je pomalé</span><span role="cell" data-i18n="obs.cmp.r4b">Víte, že je to pomalé</span><span role="cell" class="cmp-us" data-i18n="obs.cmp.r4c">Víte, který port a od kdy</span></div>
+        <div class="cmp-row reveal" role="row"><span role="rowheader" data-i18n="obs.cmp.r5">Pomalá aplikace</span><span role="cell" data-i18n="obs.cmp.r5a">Stížnosti uživatelů</span><span role="cell" data-i18n="obs.cmp.r5b">Průměrná doba odezvy</span><span role="cell" class="cmp-us" data-i18n="obs.cmp.r5c">Konkrétní pomalý dotaz v trase</span></div>
+        <div class="cmp-row reveal" role="row"><span role="rowheader" data-i18n="obs.cmp.r6">Incident ve dvě ráno</span><span role="cell" data-i18n="obs.cmp.r6a">Řeší se ráno</span><span role="cell" data-i18n="obs.cmp.r6b">Zpráva, kterou nikdo nečte</span><span role="cell" class="cmp-us" data-i18n="obs.cmp.r6c">Řešíme podle domluvené SLA</span></div>
+        <div class="cmp-row reveal" role="row"><span role="rowheader" data-i18n="obs.cmp.r7">Konec měsíce</span><span role="cell" data-i18n="obs.cmp.r7a">Nic</span><span role="cell" data-i18n="obs.cmp.r7b">Graf dostupnosti</span><span role="cell" class="cmp-us" data-i18n="obs.cmp.r7c">Report s doporučením</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ASK — type what you want watched ═══ -->
+  <section class="section" id="hlidani">
+    <div class="container">
+      <header class="ask-head reveal">
+        <h2 class="h2" data-i18n="obs.ask.h">Co u vás uhlídáme</h2>
+        <p class="lede" data-i18n="obs.ask.sub">Napište, co chcete mít pod dohledem: router, server, web nebo cluster. Hned uvidíte, co bychom na něm sledovali.</p>
+      </header>
+
+      <div class="ask reveal" data-ui>
+        <label class="sr-only" for="askInput" data-i18n="obs.ask.lbl">Co chcete hlídat</label>
+        <div class="ask-line">
+          <input id="askInput" class="ask-input" type="text" autocomplete="off" spellcheck="false" maxlength="60"
+                 value="router v kanceláři" aria-describedby="askKind" aria-controls="askPlan">
+        </div>
+
+        <div class="ask-out" id="askPlan" aria-live="polite">
+          <p class="ask-kind" id="askKind"><b>Síťový prvek</b> · 5 kontrol</p>
+          <div class="ask-table" role="table">
+            <div class="ask-tr ask-tr--head" role="row">
+              <span role="columnheader" data-i18n="obs.ask.col1">Kontrola</span>
+              <span role="columnheader" data-i18n="obs.ask.col2">Jak</span>
+              <span role="columnheader" data-i18n="obs.ask.col3">Interval</span>
+              <span role="columnheader" data-i18n="obs.ask.col4">Upozorníme, když</span>
+            </div>
+            <div class="ask-rows" id="askRows">
+              <div class="ask-tr" role="row"><span role="cell">Dostupnost</span><span role="cell">ICMP ping</span><span role="cell">1 min</span><span role="cell">ztráta paketů nad 20 %</span></div>
+              <div class="ask-tr" role="row"><span role="cell">Vytížení linek</span><span role="cell">SNMP</span><span role="cell">1 min</span><span role="cell">nad 80 % déle než 5 min</span></div>
+              <div class="ask-tr" role="row"><span role="cell">Stav a chyby portů</span><span role="cell">SNMP</span><span role="cell">1 min</span><span role="cell">port spadne nebo rostou chyby</span></div>
+              <div class="ask-tr" role="row"><span role="cell">CPU a teplota</span><span role="cell">SNMP</span><span role="cell">5 min</span><span role="cell">CPU nad 85 % nebo přehřátí</span></div>
+              <div class="ask-tr" role="row"><span role="cell">Konfigurace</span><span role="cell">záloha</span><span role="cell">denně</span><span role="cell">někdo změní nastavení</span></div>
+            </div>
+          </div>
+          <p class="ask-more"><span data-i18n="obs.ask.more">Rozsah doladíme na konzultaci.</span> <a href="/?balicek=dohled#kontakt" data-i18n="obs.ask.cta">Probrat s námi</a></p>
+        </div>
+
+        <div class="ask-ex">
+          <span class="ask-try" data-i18n="obs.ask.try">Zkuste také</span>
+          <button type="button" class="ask-chip" data-i18n="obs.ask.ex1">lanthir.cz</button>
+          <button type="button" class="ask-chip" data-i18n="obs.ask.ex2">souborový server</button>
+          <button type="button" class="ask-chip" data-i18n="obs.ask.ex3">Kubernetes cluster</button>
+          <button type="button" class="ask-chip" data-i18n="obs.ask.ex4">Wi-Fi ve skladu</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW — pinned fragment, three states ═══ -->
+  <section class="section" id="zavedeni">
+    <div class="container how">
+      <div class="how-copy">
+        <h2 class="h2" data-i18n="obs.how.h">Jak dohled zavedeme</h2>
+        <div class="how-step is-on" data-state="0">
+          <h3 data-i18n="obs.how.1">Nejdřív zjistíme, co u vás běží.</h3>
+          <p data-i18n="obs.how.1s">Projdeme síť, servery i aplikace a sepíšeme, co je pro váš provoz kritické.</p>
+        </div>
+        <div class="how-step" data-state="1">
+          <h3 data-i18n="obs.how.2">Pak napojíme sběr a nastavíme hranice.</h3>
+          <p data-i18n="obs.how.2s">Agenti a SNMP sbírají data. My nastavíme, kdy je co problém, aby vás nebudily plané poplachy.</p>
+        </div>
+        <div class="how-step" data-state="2">
+          <h3 data-i18n="obs.how.3">Od té doby hlídáme za vás.</h3>
+          <p data-i18n="obs.how.3s">Když se něco blíží hranici, víme o tom první. Každý měsíc dostanete přehled s doporučením.</p>
+        </div>
+      </div>
+
+      <div class="how-stage">
+        <div class="st" data-ui data-state="0" id="howStage">
+          <div class="st-tabs" aria-hidden="true">
+            <span class="st-tab" data-i18n="obs.st.inv">Inventář</span>
+            <span class="st-tab" data-i18n="obs.st.lim">Hranice</span>
+            <span class="st-tab" data-i18n="obs.st.live">Dohled</span>
+          </div>
+
+          <!-- state 0: what was found -->
+          <div class="st-state" data-for="0">
+            <p class="st-sum" data-i18n="obs.st.found">Nalezeno 6 zařízení · 23 služeb</p>
+            <ul class="st-list">
+              <li><b>gw-01</b><span>Router · 10.0.0.1</span><em>3</em></li>
+              <li><b>sw-core</b><span>Switch · 24 portů</span><em>5</em></li>
+              <li><b>ap-sklad</b><span>Wi-Fi · 2,4 / 5 GHz</span><em>3</em></li>
+              <li><b>srv-files</b><span>Linux · 4 disky</span><em>6</em></li>
+              <li><b>srv-db</b><span>PostgreSQL 16</span><em>4</em></li>
+              <li><b>app-web</b><span>Kubernetes · 3 pody</span><em>2</em></li>
+            </ul>
+          </div>
+
+          <!-- state 1: limits set -->
+          <div class="st-state" data-for="1">
+            <p class="st-sum" data-i18n="obs.st.limn">23 kontrol aktivních</p>
+            <ul class="st-list st-list--lim">
+              <li><b>srv-files /data</b><span class="st-bar" style="--v:.62;--t:.85"><i></i></span><em>85 %</em></li>
+              <li><b>gw-01 WAN</b><span class="st-bar" style="--v:.41;--t:.8"><i></i></span><em>80 %</em></li>
+              <li><b>srv-db CPU</b><span class="st-bar" style="--v:.28;--t:.9"><i></i></span><em>90 %</em></li>
+              <li><b>app-web p95</b><span class="st-bar" style="--v:.35;--t:.75"><i></i></span><em>1,5 s</em></li>
+              <li><b>lanthir.cz SSL</b><span class="st-bar" style="--v:.2;--t:.85"><i></i></span><em>14 d</em></li>
+            </ul>
+          </div>
+
+          <!-- state 2: an incident handled -->
+          <div class="st-state" data-for="2">
+            <p class="st-sum st-sum--ok"><span class="st-ok" aria-hidden="true"></span><span data-i18n="obs.st.ok">Vše v pořádku</span></p>
+            <ol class="st-log">
+              <li class="warn"><time>02:09</time><span data-i18n="obs.st.e1">srv-files /data překročil 85 %</span></li>
+              <li><time>02:10</time><span data-i18n="obs.st.e2">Upozornění odesláno (SMS, e-mail)</span></li>
+              <li><time>02:21</time><span data-i18n="obs.st.e3">Uvolněno 120 GB, zápis obnoven</span></li>
+              <li class="ok"><time>02:31</time><span data-i18n="obs.st.e4">Vyřešeno bez výpadku pro zákazníky</span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ═══ -->
+  <section class="section" id="faq">
+    <div class="container obs-faq">
+      <h2 class="h2 obs-faq-h" data-i18n="obs.faq.h">Časté otázky k dohledu</h2>
+      <div class="obs-faq-list">
+        <details class="ft reveal" name="obs-faq" open>
+          <summary><span data-i18n="obs.faq.1.q">Potřebujeme k tomu vlastní server?</span><i aria-hidden="true"></i></summary>
+          <p data-i18n="obs.faq.1.a">Nemusíte. Dohledový systém můžeme provozovat u nás, nebo ho nasadíme k vám, pokud chcete mít data ve vlastní síti.</p>
+        </details>
+        <details class="ft reveal" name="obs-faq">
+          <summary><span data-i18n="obs.faq.2.q">Uhlídáte i síťové prvky, nejen servery?</span><i aria-hidden="true"></i></summary>
+          <p data-i18n="obs.faq.2.a">Ano. Routery, switche, firewally i Wi-Fi přístupové body sledujeme přes SNMP: stav portů, vytížení linek, chybovost a dostupnost.</p>
+        </details>
+        <details class="ft reveal" name="obs-faq">
+          <summary><span data-i18n="obs.faq.3.q">S jakými nástroji pracujete?</span><i aria-hidden="true"></i></summary>
+          <p data-i18n="obs.faq.3.a">Stavíme na ověřených open-source nástrojích, především na Zabbixu. Kontejnery a Kubernetes sledujeme přímo přes jejich rozhraní. Nic proprietárního, co by vás k nám svazovalo.</p>
+        </details>
+        <details class="ft reveal" name="obs-faq">
+          <summary><span data-i18n="obs.faq.4.q">Co se stane, když něco spadne v noci?</span><i aria-hidden="true"></i></summary>
+          <p data-i18n="obs.faq.4.a">Upozornění odchází okamžitě. Jak rychle začneme řešit, záleží na domluvené SLA. U balíčku KOMPLEX garantujeme zahájení řešení do 2 hodin.</p>
+        </details>
+        <details class="ft reveal" name="obs-faq">
+          <summary><span data-i18n="obs.faq.5.q">Uvidíme data i my?</span><i aria-hidden="true"></i></summary>
+          <p data-i18n="obs.faq.5.a">Ano. Dostanete přístup k přehledům a každý měsíc report s tím, co se dělo a co doporučujeme zlepšit.</p>
+        </details>
+        <details class="ft reveal" name="obs-faq">
+          <summary><span data-i18n="obs.faq.6.q">Kolik dohled stojí?</span><i aria-hidden="true"></i></summary>
+          <p data-i18n="obs.faq.6.a">Dohled webu začíná na 399 Kč měsíčně. Dohled sítě a infrastruktury naceníme podle počtu zařízení a služeb po úvodní konzultaci, která je zdarma.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CLOSE — contact + prices ═══ -->
+  <section class="section obs-end" id="kontakt">
+    <div class="container obs-end-in">
+      <div class="obs-end-copy reveal">
+        <h2 class="h2" data-i18n="obs.end.h">Mějte svou síť <em>pod dohledem</em></h2>
+        <p class="lede" data-i18n="obs.end.sub">Na první konzultaci projdeme, co u vás běží, a navrhneme rozsah dohledu. Nezávazně a zdarma.</p>
+        <div class="row">
+          <a href="/?balicek=dohled#kontakt" class="btn btn--solid" data-i18n="obs.end.btn">Domluvit konzultaci</a>
+          <a href="tel:+420725528165" class="btn btn--ghost">+420 725 528 165</a>
+        </div>
+        <p class="obs-mail"><a href="mailto:kontakt@lanthir.cz">kontakt@lanthir.cz</a></p>
+      </div>
+
+      <div class="obs-prices-wrap reveal">
+        <h3 class="obs-prices-h" data-i18n="obs.pr.h">Ceny dohledu</h3>
+        <ul class="obs-prices">
+          <li><b data-i18n="sub.1.tier">ZÁKLAD</b><span data-i18n="obs.pr.1">Dohled webu: dostupnost, SSL a doména</span><strong>399 <small><span data-i18n="price.currency">Kč</span> <span data-i18n="price.per.month">/ měsíc</span></small></strong></li>
+          <li><b data-i18n="sub.2.tier">PLUS</b><span data-i18n="obs.pr.2">K tomu výkon webu a měsíční report</span><strong>899 <small><span data-i18n="price.currency">Kč</span> <span data-i18n="price.per.month">/ měsíc</span></small></strong></li>
+          <li><b data-i18n="sub.3.tier">KOMPLEX</b><span data-i18n="obs.pr.3">K tomu syntetické testy a prioritní SLA</span><strong><small data-i18n="price.from">od</small> 2 499 <small><span data-i18n="price.currency">Kč</span> <span data-i18n="price.per.month">/ měsíc</span></small></strong></li>
+          <li class="obs-prices-us"><b data-i18n="obs.pr.4n">Síť a infrastruktura</b><span data-i18n="obs.pr.4">Podle počtu zařízení a služeb</span><strong data-i18n="obs.pr.4p">na míru</strong></li>
+        </ul>
+        <p class="obs-prices-note" data-i18n="obs.pr.note">Ceny jsou bez DPH.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-row"><img src="/logo-mark.svg" alt="" class="footer-logo"><span class="footer-name">Lanthir</span></div>
+          <p data-i18n="footer.tagline">Technologický partner pro růst a provoz firmy.</p>
+          <p class="footer-legal">Ing. Michal Owczarzy<br><span data-i18n="footer.ico">IČO</span> 23741945</p>
+          <span class="status"><span class="dot" aria-hidden="true"></span><span data-i18n="footer.status">všechny systémy online</span></span>
+          <div class="footer-social">
+            <h5 data-i18n="footer.social">Sledujte nás</h5>
+            <ul class="social-row">
+              <li><a href="https://www.instagram.com/lanthircz/" class="social-link" target="_blank" rel="noopener me" aria-label="Lanthir na Instagramu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.2" y="2.2" width="19.6" height="19.6" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.15" fill="currentColor" stroke="none"/></svg>
+              </a></li>
+              <li><a href="https://www.facebook.com/profile.php?id=61588706684278" class="social-link" target="_blank" rel="noopener me" aria-label="Lanthir na Facebooku">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-nav">
+          <div class="footer-col">
+            <h5 data-i18n="footer.col1.h">Služby</h5>
+            <a href="/#sluzby" data-i18n="svc.5.title">Webová aplikace</a>
+            <a href="/#sluzby" data-i18n="svc.2.title">E-shop</a>
+            <a href="/#sluzby" data-i18n="svc.3.title">Rezervační systém</a>
+            <a href="/observabilita/" data-i18n="nav.obs">Observabilita</a>
+          </div>
+          <div class="footer-col">
+            <h5 data-i18n="footer.col2.h">Společnost</h5>
+            <a href="/#reference" data-i18n="nav.work">Reference</a>
+            <a href="/#cenik"   data-i18n="nav.pricing">Ceník</a>
+            <a href="/#postup"  data-i18n="nav.process">Postup</a>
+            <a href="/#kontakt" data-i18n="nav.contact">Kontakt</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-mark" aria-hidden="true"><span>LANTHIR</span></div>
+      <div class="footer-bar">
+        <span data-i18n="footer.copy">© 2026 Lanthir. Všechna práva vyhrazena.</span>
+        <nav class="footer-legal-links" aria-label="Právní informace">
+          <a href="/zasady-ochrany-osobnich-udaju/" data-i18n="footer.privacy">Zásady ochrany osobních údajů</a>
+          <a href="/informace-pro-spotrebitele/" data-i18n="footer.consumer">Informace pro spotřebitele</a>
+          <button type="button" class="cc-reopen" data-i18n="footer.cookies"
+                  onclick="window.__cookieSettings && window.__cookieSettings()">Nastavení cookies</button>
+        </nav>
+        <button class="to-top" id="toTop" aria-label="Zpět nahoru"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></button>
+      </div>
+    </div>
+  </footer>
+
+  </main>
+
+  <script src="/obs-i18n.js"></script>
+  <script src="/script.js"></script>
+  <script src="/topology.js"></script>
+  <script src="/obs.js"></script>
+</body>
+</html>

@@ -19,6 +19,9 @@
 /ukazky/*
   Content-Type: text/html; charset=utf-8
 
+/observabilita/*
+  Content-Type: text/html; charset=utf-8
+
 /dekuji/*
   Content-Type: text/html; charset=utf-8
 

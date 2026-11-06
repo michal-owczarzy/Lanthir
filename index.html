@@ -88,6 +88,19 @@
   }
   </script>
 
+  <!-- Logo splash: decided before first paint so the page never flashes under
+       it. First page of a session only, never with reduced motion, and never
+       when the visitor arrives on a deep link (#kontakt etc.). -->
+  <script>
+    try {
+      if (!sessionStorage.getItem('lanthir-splash') && !location.hash &&
+          !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        sessionStorage.setItem('lanthir-splash', '1');
+        document.documentElement.classList.add('splash-on');
+      }
+    } catch (e) {}
+  </script>
+
   <!-- Our own CSS first — it is the only render-blocking request we want. -->
   <link rel="stylesheet" href="styles.css">
 
@@ -125,6 +138,24 @@
 </head>
 <body>
 
+  <!-- ═══ LOGO SPLASH ═══ (see script.js · LOGO SPLASH) -->
+  <div class="splash" id="splash" aria-hidden="true">
+    <div class="splash-ground"></div>
+    <div class="splash-lock">
+      <svg class="splash-mark" viewBox="0 0 120 120" focusable="false">
+        <defs>
+          <linearGradient id="splashGrad" gradientUnits="userSpaceOnUse" x1="8" y1="112" x2="112" y2="8">
+            <stop offset="0" stop-color="#5B5BE8"/>
+            <stop offset=".5" stop-color="#1BBBD4"/>
+            <stop offset="1" stop-color="#3EDC97"/>
+          </linearGradient>
+        </defs>
+        <g class="splash-rays"></g>
+      </svg>
+      <span class="splash-word">Lanthir</span>
+    </div>
+  </div>
+
   <noscript>
     <style>
       .reveal, .hero-copy > * { opacity: 1 !important; transform: none !important; }
@@ -155,11 +186,12 @@
         <li style="--i:0"><a href="#sluzby"    data-i18n="nav.services">Služby</a></li>
         <li style="--i:1"><a href="#reference" data-i18n="nav.work">Reference</a></li>
         <li style="--i:2"><a href="#cenik"     data-i18n="nav.pricing">Ceník</a></li>
-        <li style="--i:3"><a href="#postup"    data-i18n="nav.process">Postup</a></li>
-        <li style="--i:4"><a href="#faq"       data-i18n="nav.faq">FAQ</a></li>
-        <li style="--i:5"><a href="#about"     data-i18n="nav.about">O nás</a></li>
-        <li style="--i:6"><a href="#kontakt"   data-i18n="nav.contact">Kontakt</a></li>
-        <li style="--i:7" class="nav-links-cta"><a href="#kontakt" class="m-cta" data-i18n="nav.cta">Nezávazná poptávka</a></li>
+        <li style="--i:3"><a href="/observabilita/" data-i18n="nav.obs">Observabilita</a></li>
+        <li style="--i:4" class="nav-opt"><a href="#postup"    data-i18n="nav.process">Postup</a></li>
+        <li style="--i:5" class="nav-opt"><a href="#faq"       data-i18n="nav.faq">FAQ</a></li>
+        <li style="--i:6"><a href="#about"     data-i18n="nav.about">O nás</a></li>
+        <li style="--i:7"><a href="#kontakt"   data-i18n="nav.contact">Kontakt</a></li>
+        <li style="--i:8" class="nav-links-cta"><a href="#kontakt" class="m-cta" data-i18n="nav.cta">Nezávazná poptávka</a></li>
       </ul>
       <div class="lang-switch">
         <button class="ls-btn active" data-lang="cs">CZ</button>
@@ -735,6 +767,8 @@
                   <option value="zaklad"   data-i18n="form.bundle.opt4">ZÁKLAD — 399 Kč/měsíc</option>
                   <option value="plus"     data-i18n="form.bundle.opt5">PLUS — 899 Kč/měsíc</option>
                   <option value="komplex"  data-i18n="form.bundle.opt6">KOMPLEX — od 2 499 Kč/měsíc</option>
+                  <option value="" disabled data-i18n="form.bundle.grp3">── Dohled sítě a infrastruktury ──</option>
+                  <option value="dohled"   data-i18n="form.bundle.opt7">Observabilita — síť, servery, cloud</option>
                 </select>
               </div>
               <div class="fg"><label for="fmsg" data-i18n="form.msg.lbl">Zpráva</label><textarea id="fmsg" rows="4" data-i18n-ph="form.msg.ph" placeholder="Popište váš projekt..." required aria-describedby="fmsg-err"></textarea><span class="err" id="fmsg-err" data-i18n="form.err.msg">Napište prosím pár vět o projektu.</span></div>
@@ -796,6 +830,7 @@
           <div class="footer-col">
             <h5 data-i18n="footer.col2.h">Společnost</h5>
             <a href="#reference" data-i18n="nav.work">Reference</a>
+            <a href="/observabilita/" data-i18n="nav.obs">Observabilita</a>
             <a href="#cenik"   data-i18n="nav.pricing">Ceník</a>
             <a href="#postup"  data-i18n="nav.process">Postup</a>
             <a href="#kontakt" data-i18n="nav.contact">Kontakt</a>
