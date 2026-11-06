@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Observabilita a dohled sítě a infrastruktury | Lanthir</title>
-  <meta name="description" content="Dohled nad sítí, servery, kontejnery i weby. Metriky, logy a trasy v jednom dohledu: o výpadku víme dřív než vaši zákazníci. Zabbix, SNMP, Kubernetes.">
+  <meta name="description" content="Observabilita na míru jako samostatná služba: síť, servery, cloud, kontejnery, aplikace i IoT v jednom dohledu. Metriky, logy a trasy, dashboardy a upozornění.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://lanthir.cz/observabilita/">
 
@@ -16,7 +16,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://lanthir.cz/observabilita/">
   <meta property="og:title" content="Objevte svět observability | Lanthir">
-  <meta property="og:description" content="Dohled nad vaší sítí, servery i weby. O problému se dozvíme dřív než vaši zákazníci a víme, kde ho hledat.">
+  <meta property="og:description" content="Observabilita na míru pro celou vaši infrastrukturu. O problému se dozvíme dřív než vaši zákazníci a víme, kde ho hledat.">
   <meta property="og:image" content="https://lanthir.cz/og-image.png">
   <meta property="og:locale" content="cs_CZ">
   <meta property="og:site_name" content="Lanthir">
@@ -26,7 +26,7 @@
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Observabilita a dohled sítě a infrastruktury",
-    "serviceType": "Monitoring sítě, serverů, kontejnerů a webových aplikací",
+    "serviceType": "Observabilita a monitoring na míru: síť, servery, cloud, kontejnery, aplikace a IoT",
     "provider": { "@type": "ProfessionalService", "name": "Lanthir", "url": "https://lanthir.cz" },
     "areaServed": "CZ",
     "url": "https://lanthir.cz/observabilita/"
@@ -140,9 +140,9 @@
     <div class="container hero-copy">
       <h1 class="hero-h1">
         <span class="hero-l1" data-i18n="obs.hero.l1">Objevte svět <em>observability</em></span>
-        <span class="hero-l2" data-i18n="obs.hero.l2">Dohled nad vaší sítí, servery i weby</span>
+        <span class="hero-l2" data-i18n="obs.hero.l2">Na míru celé vaší infrastruktuře</span>
       </h1>
-      <p class="lede" data-i18n="obs.hero.sub">Napojíme vaši síť, servery, kontejnery i webové aplikace na jeden dohled. O problému se dozvíme dřív než vaši zákazníci a víme, kde ho hledat.</p>
+      <p class="lede" data-i18n="obs.hero.sub">Observabilitu stavíme jako samostatnou službu, vždy na míru. Napojíme cokoliv, co u vás běží: síť, servery, cloud, kontejnery, aplikace i výrobní a IoT zařízení. O problému se dozvíme dřív než vaši zákazníci a víme, kde ho hledat.</p>
       <div class="row">
         <a href="/?balicek=dohled#kontakt" class="btn btn--solid" data-i18n="obs.hero.btn1">Nezávazná konzultace</a>
         <a href="#hlidani" class="btn btn--ghost" data-i18n="obs.hero.btn2">Co umíme hlídat</a>
@@ -150,6 +150,64 @@
     </div>
     <div class="hero-cue" aria-hidden="true"><span></span></div>
   </header>
+
+  <!-- ═══ DASHBOARD — a sample board that is running (dashboard.js) ═══ -->
+  <section class="section dash-sec" id="dashboard">
+    <div class="container">
+      <header class="dash-head">
+        <h2 class="h2" data-i18n="obs.db.h">Takhle může vypadat váš dashboard</h2>
+        <p class="lede reveal" data-i18n="obs.db.sub">Každý dashboard navrhujeme na míru. Technik v něm vidí detail každé služby, vedení stav celé firmy na jeden pohled. Najeďte na kterýkoliv uzel v mapě.</p>
+      </header>
+
+      <div class="dash reveal" id="dash" data-ui>
+        <div class="dash-top">
+          <img src="/logo-mark.svg" alt="" class="dash-logo">
+          <b class="dash-name">Lanthir Observe</b>
+          <span class="dash-env" data-i18n="obs.db.env">Produkce · 13 služeb</span>
+          <span class="dash-live"><i aria-hidden="true"></i><span data-i18n="obs.db.live">Živě</span></span>
+          <time class="dash-clock" id="dashClock">--:--:--</time>
+          <span class="dash-sample" data-i18n="obs.db.sample">Ukázková data</span>
+        </div>
+
+        <div class="dash-grid">
+          <div class="dp dp-map">
+            <h3 class="dp-h" data-i18n="obs.db.map">Mapa služeb</h3>
+            <svg class="dash-map" id="dashMap" viewBox="0 0 700 330" role="group" aria-label="Mapa služeb: internet, firewall, load balancer, tři webové servery, API, databáze, cache, fronta, souborový server, VPN pobočky a IoT brána"></svg>
+            <div class="dash-read" id="dashRead" aria-live="polite"></div>
+          </div>
+
+          <div class="dp dp-kpis">
+            <div class="kpi"><span class="kpi-l" data-i18n="obs.db.k1">Dostupnost · 30 dní</span><b class="kpi-v" data-k="up">99,982 %</b><canvas class="kpi-sp" aria-hidden="true"></canvas></div>
+            <div class="kpi"><span class="kpi-l" data-i18n="obs.db.k2">Latence p95</span><b class="kpi-v" data-k="p95">182 ms</b><canvas class="kpi-sp" aria-hidden="true"></canvas></div>
+            <div class="kpi"><span class="kpi-l" data-i18n="obs.db.k3">Chybovost</span><b class="kpi-v" data-k="err">0,04 %</b><canvas class="kpi-sp" aria-hidden="true"></canvas></div>
+            <div class="kpi"><span class="kpi-l" data-i18n="obs.db.k4">Provoz</span><b class="kpi-v" data-k="thr">1,82 Gb/s</b><canvas class="kpi-sp" aria-hidden="true"></canvas></div>
+          </div>
+
+          <div class="dp dp-chart">
+            <h3 class="dp-h"><span data-i18n="obs.db.chart">Provoz v reálném čase · Gb/s</span><span class="dp-legend"><i class="lg-in"></i>in <i class="lg-out"></i>out</span></h3>
+            <canvas class="dash-chart" id="dashChart" aria-hidden="true"></canvas>
+          </div>
+
+          <div class="dp dp-logs">
+            <h3 class="dp-h" data-i18n="obs.db.logs">Živé logy</h3>
+            <ol class="dash-logs" id="dashLogs"></ol>
+          </div>
+
+          <div class="dp dp-heat">
+            <h3 class="dp-h" data-i18n="obs.db.heat">Latence podle služeb · posledních 48 minut</h3>
+            <canvas class="dash-heat" id="dashHeat" aria-hidden="true"></canvas>
+          </div>
+
+          <div class="dp dp-slo">
+            <h3 class="dp-h" data-i18n="obs.db.slo">Spolehlivost (SLO 99,9 %)</h3>
+            <div class="slo-bar" aria-hidden="true"><i style="--v:.71"></i></div>
+            <p class="slo-txt" data-i18n="obs.db.budget">Zbývá 71 % rozpočtu chyb na tento měsíc</p>
+            <p class="slo-alert"><b>srv-files</b> <span data-i18n="obs.db.alert">Disk /data se zaplní zhruba za 6 dní. Navrhujeme rozšířit svazek do pátku.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ═══ SIGNALS — one incident, three signals ═══ -->
   <section class="section" id="signaly">
@@ -229,7 +287,7 @@
     <div class="container">
       <header class="ask-head reveal">
         <h2 class="h2" data-i18n="obs.ask.h">Co u vás uhlídáme</h2>
-        <p class="lede" data-i18n="obs.ask.sub">Napište, co chcete mít pod dohledem: router, server, web nebo cluster. Hned uvidíte, co bychom na něm sledovali.</p>
+        <p class="lede" data-i18n="obs.ask.sub">Napište, co chcete mít pod dohledem: router, server, web, cloud, cluster nebo stroj ve výrobě. Hned uvidíte, co bychom na něm sledovali.</p>
       </header>
 
       <div class="ask reveal" data-ui>
@@ -250,13 +308,13 @@
             </div>
             <div class="ask-rows" id="askRows">
               <div class="ask-tr" role="row"><span role="cell">Dostupnost</span><span role="cell">ICMP ping</span><span role="cell">1 min</span><span role="cell">ztráta paketů nad 20 %</span></div>
-              <div class="ask-tr" role="row"><span role="cell">Vytížení linek</span><span role="cell">SNMP</span><span role="cell">1 min</span><span role="cell">nad 80 % déle než 5 min</span></div>
-              <div class="ask-tr" role="row"><span role="cell">Stav a chyby portů</span><span role="cell">SNMP</span><span role="cell">1 min</span><span role="cell">port spadne nebo rostou chyby</span></div>
-              <div class="ask-tr" role="row"><span role="cell">CPU a teplota</span><span role="cell">SNMP</span><span role="cell">5 min</span><span role="cell">CPU nad 85 % nebo přehřátí</span></div>
+              <div class="ask-tr" role="row"><span role="cell">Vytížení linek</span><span role="cell">SNMP, NetFlow</span><span role="cell">1 min</span><span role="cell">nad 80 % déle než 5 min</span></div>
+              <div class="ask-tr" role="row"><span role="cell">Stav a chyby portů</span><span role="cell">SNMP, syslog</span><span role="cell">1 min</span><span role="cell">port spadne nebo rostou chyby</span></div>
+              <div class="ask-tr" role="row"><span role="cell">CPU a teplota</span><span role="cell">SNMP, API výrobce</span><span role="cell">5 min</span><span role="cell">CPU nad 85 % nebo přehřátí</span></div>
               <div class="ask-tr" role="row"><span role="cell">Konfigurace</span><span role="cell">záloha</span><span role="cell">denně</span><span role="cell">někdo změní nastavení</span></div>
             </div>
           </div>
-          <p class="ask-more"><span data-i18n="obs.ask.more">Rozsah doladíme na konzultaci.</span> <a href="/?balicek=dohled#kontakt" data-i18n="obs.ask.cta">Probrat s námi</a></p>
+          <p class="ask-more"><span data-i18n="obs.ask.more">Tohle je jen výchozí návrh. Dohled stavíme na míru a napojíme i to, co v seznamu není.</span> <a href="/?balicek=dohled#kontakt" data-i18n="obs.ask.cta">Probrat s námi</a></p>
         </div>
 
         <div class="ask-ex">
@@ -264,7 +322,8 @@
           <button type="button" class="ask-chip" data-i18n="obs.ask.ex1">lanthir.cz</button>
           <button type="button" class="ask-chip" data-i18n="obs.ask.ex2">souborový server</button>
           <button type="button" class="ask-chip" data-i18n="obs.ask.ex3">Kubernetes cluster</button>
-          <button type="button" class="ask-chip" data-i18n="obs.ask.ex4">Wi-Fi ve skladu</button>
+          <button type="button" class="ask-chip" data-i18n="obs.ask.ex4">AWS účet</button>
+          <button type="button" class="ask-chip" data-i18n="obs.ask.ex5">výrobní linka</button>
         </div>
       </div>
     </div>
@@ -281,7 +340,7 @@
         </div>
         <div class="how-step" data-state="1">
           <h3 data-i18n="obs.how.2">Pak napojíme sběr a nastavíme hranice.</h3>
-          <p data-i18n="obs.how.2s">Agenti a SNMP sbírají data. My nastavíme, kdy je co problém, aby vás nebudily plané poplachy.</p>
+          <p data-i18n="obs.how.2s">Data bereme tam, kde vznikají: agenti, SNMP, API, OpenTelemetry, logy. My nastavíme, kdy je co problém, aby vás nebudily plané poplachy.</p>
         </div>
         <div class="how-step" data-state="2">
           <h3 data-i18n="obs.how.3">Od té doby hlídáme za vás.</h3>
@@ -347,24 +406,24 @@
           <p data-i18n="obs.faq.1.a">Nemusíte. Dohledový systém můžeme provozovat u nás, nebo ho nasadíme k vám, pokud chcete mít data ve vlastní síti.</p>
         </details>
         <details class="ft reveal" name="obs-faq">
-          <summary><span data-i18n="obs.faq.2.q">Uhlídáte i síťové prvky, nejen servery?</span><i aria-hidden="true"></i></summary>
-          <p data-i18n="obs.faq.2.a">Ano. Routery, switche, firewally i Wi-Fi přístupové body sledujeme přes SNMP: stav portů, vytížení linek, chybovost a dostupnost.</p>
+          <summary><span data-i18n="obs.faq.2.q">Co všechno umíte napojit?</span><i aria-hidden="true"></i></summary>
+          <p data-i18n="obs.faq.2.a">Prakticky cokoliv, co o sobě dává data. Servery a virtualizaci přes agenty, síť přes SNMP, NetFlow a syslog, aplikace přes OpenTelemetry, cloud přes API poskytovatelů, výrobní a IoT zařízení přes MQTT nebo OPC UA. Co nemá standardní rozhraní, napojíme vlastním sběrem.</p>
         </details>
         <details class="ft reveal" name="obs-faq">
           <summary><span data-i18n="obs.faq.3.q">S jakými nástroji pracujete?</span><i aria-hidden="true"></i></summary>
-          <p data-i18n="obs.faq.3.a">Stavíme na ověřených open-source nástrojích, především na Zabbixu. Kontejnery a Kubernetes sledujeme přímo přes jejich rozhraní. Nic proprietárního, co by vás k nám svazovalo.</p>
+          <p data-i18n="obs.faq.3.a">Stavíme na ověřených open-source nástrojích, například Zabbix, Prometheus, Grafana a OpenTelemetry, a skládáme je podle vašeho prostředí. Nic proprietárního, co by vás k nám svazovalo.</p>
         </details>
         <details class="ft reveal" name="obs-faq">
           <summary><span data-i18n="obs.faq.4.q">Co se stane, když něco spadne v noci?</span><i aria-hidden="true"></i></summary>
-          <p data-i18n="obs.faq.4.a">Upozornění odchází okamžitě. Jak rychle začneme řešit, záleží na domluvené SLA. U balíčku KOMPLEX garantujeme zahájení řešení do 2 hodin.</p>
+          <p data-i18n="obs.faq.4.a">Upozornění odchází okamžitě. Reakční dobu a způsob eskalace si domluvíme ve smlouvě (SLA) podle toho, jak kritický je váš provoz.</p>
         </details>
         <details class="ft reveal" name="obs-faq">
           <summary><span data-i18n="obs.faq.5.q">Uvidíme data i my?</span><i aria-hidden="true"></i></summary>
           <p data-i18n="obs.faq.5.a">Ano. Dostanete přístup k přehledům a každý měsíc report s tím, co se dělo a co doporučujeme zlepšit.</p>
         </details>
         <details class="ft reveal" name="obs-faq">
-          <summary><span data-i18n="obs.faq.6.q">Kolik dohled stojí?</span><i aria-hidden="true"></i></summary>
-          <p data-i18n="obs.faq.6.a">Dohled webu začíná na 399 Kč měsíčně. Dohled sítě a infrastruktury naceníme podle počtu zařízení a služeb po úvodní konzultaci, která je zdarma.</p>
+          <summary><span data-i18n="obs.faq.6.q">Kolik observabilita stojí?</span><i aria-hidden="true"></i></summary>
+          <p data-i18n="obs.faq.6.a">Observabilita je samostatná služba a každý dohled stavíme na míru. Cenu připravíme po úvodní konzultaci, která je zdarma, podle rozsahu a požadované reakční doby.</p>
         </details>
       </div>
     </div>
@@ -374,8 +433,8 @@
   <section class="section obs-end" id="kontakt">
     <div class="container obs-end-in">
       <div class="obs-end-copy reveal">
-        <h2 class="h2" data-i18n="obs.end.h">Mějte svou síť <em>pod dohledem</em></h2>
-        <p class="lede" data-i18n="obs.end.sub">Na první konzultaci projdeme, co u vás běží, a navrhneme rozsah dohledu. Nezávazně a zdarma.</p>
+        <h2 class="h2" data-i18n="obs.end.h">Mějte svou firmu <em>pod dohledem</em></h2>
+        <p class="lede" data-i18n="obs.end.sub">Na první konzultaci projdeme, co u vás běží, a navrhneme dohled na míru. Nezávazně a zdarma.</p>
         <div class="row">
           <a href="/?balicek=dohled#kontakt" class="btn btn--solid" data-i18n="obs.end.btn">Domluvit konzultaci</a>
           <a href="tel:+420725528165" class="btn btn--ghost">+420 725 528 165</a>
@@ -383,15 +442,16 @@
         <p class="obs-mail"><a href="mailto:kontakt@lanthir.cz">kontakt@lanthir.cz</a></p>
       </div>
 
-      <div class="obs-prices-wrap reveal">
-        <h3 class="obs-prices-h" data-i18n="obs.pr.h">Ceny dohledu</h3>
-        <ul class="obs-prices">
-          <li><b data-i18n="sub.1.tier">ZÁKLAD</b><span data-i18n="obs.pr.1">Dohled webu: dostupnost, SSL a doména</span><strong>399 <small><span data-i18n="price.currency">Kč</span> <span data-i18n="price.per.month">/ měsíc</span></small></strong></li>
-          <li><b data-i18n="sub.2.tier">PLUS</b><span data-i18n="obs.pr.2">K tomu výkon webu a měsíční report</span><strong>899 <small><span data-i18n="price.currency">Kč</span> <span data-i18n="price.per.month">/ měsíc</span></small></strong></li>
-          <li><b data-i18n="sub.3.tier">KOMPLEX</b><span data-i18n="obs.pr.3">K tomu syntetické testy a prioritní SLA</span><strong><small data-i18n="price.from">od</small> 2 499 <small><span data-i18n="price.currency">Kč</span> <span data-i18n="price.per.month">/ měsíc</span></small></strong></li>
-          <li class="obs-prices-us"><b data-i18n="obs.pr.4n">Síť a infrastruktura</b><span data-i18n="obs.pr.4">Podle počtu zařízení a služeb</span><strong data-i18n="obs.pr.4p">na míru</strong></li>
+      <div class="obs-get-wrap reveal">
+        <h3 class="obs-get-h" data-i18n="obs.get.h">Co od nás dostanete</h3>
+        <ul class="obs-get">
+          <li><b data-i18n="obs.get.1">Návrh dohledu</b><span data-i18n="obs.get.1s">Co sledovat, odkud brát data a kdy koho budit.</span></li>
+          <li><b data-i18n="obs.get.2">Sběr odkudkoliv</b><span data-i18n="obs.get.2s">Agenti, SNMP, API, OpenTelemetry, logy, cloud i IoT.</span></li>
+          <li><b data-i18n="obs.get.3">Dashboardy na míru</b><span data-i18n="obs.get.3s">Pro techniky i pro vedení. Každý vidí, co potřebuje.</span></li>
+          <li><b data-i18n="obs.get.4">Upozornění a eskalace</b><span data-i18n="obs.get.4s">SMS, e-mail nebo chat, podle domluvené SLA.</span></li>
+          <li><b data-i18n="obs.get.5">Provoz a vyhodnocování</b><span data-i18n="obs.get.5s">Hlídáme, ladíme hranice a každý měsíc reportujeme.</span></li>
         </ul>
-        <p class="obs-prices-note" data-i18n="obs.pr.note">Ceny jsou bez DPH.</p>
+        <p class="obs-get-note" data-i18n="obs.get.note">Observabilita je samostatná služba, nezávislá na tvorbě webu. Cenu připravíme na míru po konzultaci.</p>
       </div>
     </div>
   </section>
@@ -453,6 +513,7 @@
   <script src="/obs-i18n.js"></script>
   <script src="/script.js"></script>
   <script src="/topology.js"></script>
+  <script src="/dashboard.js"></script>
   <script src="/obs.js"></script>
 </body>
 </html>

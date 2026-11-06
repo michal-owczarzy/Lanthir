@@ -18,7 +18,7 @@
   /* rows: [check, how, interval, alert-when] per language */
   const PLAN = {
     web: {
-      re: /(\.[a-z]{2,}(\/|$))|web|e-?shop|stránk|strank|site|strona|sklep|https?:/i,
+      re: /(\.[a-z]{2,}(\/|$))|web|e-?shop|obchod|stránk|strank|site|strona|sklep|https?:/i,
       name: { cs: 'Web a aplikace', en: 'Website & app', pl: 'Strona i aplikacja' },
       rows: {
         cs: [['Dostupnost HTTPS', 'ze 3 míst', '1 min', 'web neodpovídá 2× po sobě'],
@@ -59,24 +59,66 @@
              ['Certyfikaty klastra', 'kontrola ważności', 'codziennie', 'zostało mniej niż 30 dni']]
       }
     },
+    cloud: {
+      re: /aws|azure|gcp|google cloud|cloud|chmur|m365|microsoft 365|office 365|s3\b|lambda/i,
+      name: { cs: 'Cloud', en: 'Cloud', pl: 'Chmura' },
+      rows: {
+        cs: [['Stav služeb', 'API poskytovatele', '1 min', 'služba hlásí výpadek'],
+             ['Výkon a kapacita', 'cloudové metriky', '1 min', 'instance nad 85 % déle než 10 min'],
+             ['Kvóty a limity', 'API poskytovatele', '15 min', 'zbývá méně než 15 % kvóty'],
+             ['Náklady', 'billing API', 'denně', 'útrata nad plánem o 20 %'],
+             ['Přístupy a změny', 'audit log', 'průběžně', 'nečekaná změna oprávnění']],
+        en: [['Service health', 'provider API', '1 min', 'a service reports an outage'],
+             ['Performance and capacity', 'cloud metrics', '1 min', 'an instance above 85 % for 10 min'],
+             ['Quotas and limits', 'provider API', '15 min', 'less than 15 % of a quota left'],
+             ['Costs', 'billing API', 'daily', 'spend 20 % above plan'],
+             ['Access and changes', 'audit log', 'continuous', 'an unexpected permission change']],
+        pl: [['Stan usług', 'API dostawcy', '1 min', 'usługa zgłasza awarię'],
+             ['Wydajność i pojemność', 'metryki chmury', '1 min', 'instancja powyżej 85 % przez 10 min'],
+             ['Limity i kwoty', 'API dostawcy', '15 min', 'zostało mniej niż 15 % limitu'],
+             ['Koszty', 'billing API', 'codziennie', 'wydatki 20 % ponad plan'],
+             ['Dostępy i zmiany', 'audit log', 'na bieżąco', 'nieoczekiwana zmiana uprawnień']]
+      }
+    },
+    iot: {
+      re: /výrob|vyrob|production line|linia produk|stroj|maszyn|machine|plc|scada|senzor|sensor|czujnik|\biot\b|mqtt|opc ua|teplot|chlad/i,
+      name: { cs: 'Výroba a IoT', en: 'Production & IoT', pl: 'Produkcja i IoT' },
+      rows: {
+        cs: [['Stav strojů', 'OPC UA, Modbus', '10 s', 'stroj stojí nebo hlásí poruchu'],
+             ['Data ze senzorů', 'MQTT', 'průběžně', 'hodnota mimo povolený rozsah'],
+             ['Výkon linky', 'vlastní sběr', '1 min', 'výroba pod plánem o 10 %'],
+             ['Spojení zařízení', 'heartbeat', '30 s', 'zařízení přestane posílat data'],
+             ['Brána a síť', 'agent, SNMP', '1 min', 'brána nebo linka vypadne']],
+        en: [['Machine state', 'OPC UA, Modbus', '10 s', 'a machine stops or reports a fault'],
+             ['Sensor data', 'MQTT', 'continuous', 'a value leaves its allowed range'],
+             ['Line output', 'custom collector', '1 min', 'output 10 % below plan'],
+             ['Device connectivity', 'heartbeat', '30 s', 'a device stops sending data'],
+             ['Gateway and network', 'agent, SNMP', '1 min', 'the gateway or link goes down']],
+        pl: [['Stan maszyn', 'OPC UA, Modbus', '10 s', 'maszyna stoi lub zgłasza awarię'],
+             ['Dane z czujników', 'MQTT', 'na bieżąco', 'wartość poza dozwolonym zakresem'],
+             ['Wydajność linii', 'własny kolektor', '1 min', 'produkcja 10 % poniżej planu'],
+             ['Łączność urządzeń', 'heartbeat', '30 s', 'urządzenie przestaje wysyłać dane'],
+             ['Bramka i sieć', 'agent, SNMP', '1 min', 'bramka lub łącze pada']]
+      }
+    },
     net: {
       re: /router|switch|přepín|prepin|firewall|wi-?fi|wlan|\bap\b|access point|mikrotik|ubiquiti|cisco|síť|sit\b|sieć|siec|network|linka|link|vpn|modem|łącz|lacz/i,
       name: { cs: 'Síťový prvek', en: 'Network device', pl: 'Urządzenie sieciowe' },
       rows: {
         cs: [['Dostupnost', 'ICMP ping', '1 min', 'ztráta paketů nad 20 %'],
-             ['Vytížení linek', 'SNMP', '1 min', 'nad 80 % déle než 5 min'],
-             ['Stav a chyby portů', 'SNMP', '1 min', 'port spadne nebo rostou chyby'],
-             ['CPU a teplota', 'SNMP', '5 min', 'CPU nad 85 % nebo přehřátí'],
+             ['Vytížení linek', 'SNMP, NetFlow', '1 min', 'nad 80 % déle než 5 min'],
+             ['Stav a chyby portů', 'SNMP, syslog', '1 min', 'port spadne nebo rostou chyby'],
+             ['CPU a teplota', 'SNMP, API výrobce', '5 min', 'CPU nad 85 % nebo přehřátí'],
              ['Konfigurace', 'záloha', 'denně', 'někdo změní nastavení']],
         en: [['Availability', 'ICMP ping', '1 min', 'packet loss above 20 %'],
-             ['Link load', 'SNMP', '1 min', 'above 80 % for over 5 min'],
-             ['Port state and errors', 'SNMP', '1 min', 'a port drops or errors climb'],
-             ['CPU and temperature', 'SNMP', '5 min', 'CPU above 85 % or overheating'],
+             ['Link load', 'SNMP, NetFlow', '1 min', 'above 80 % for over 5 min'],
+             ['Port state and errors', 'SNMP, syslog', '1 min', 'a port drops or errors climb'],
+             ['CPU and temperature', 'SNMP, vendor API', '5 min', 'CPU above 85 % or overheating'],
              ['Configuration', 'backup', 'daily', 'someone changes the settings']],
         pl: [['Dostępność', 'ICMP ping', '1 min', 'utrata pakietów powyżej 20 %'],
-             ['Obciążenie łączy', 'SNMP', '1 min', 'powyżej 80 % przez ponad 5 min'],
-             ['Stan i błędy portów', 'SNMP', '1 min', 'port pada lub rosną błędy'],
-             ['CPU i temperatura', 'SNMP', '5 min', 'CPU powyżej 85 % lub przegrzanie'],
+             ['Obciążenie łączy', 'SNMP, NetFlow', '1 min', 'powyżej 80 % przez ponad 5 min'],
+             ['Stan i błędy portów', 'SNMP, syslog', '1 min', 'port pada lub rosną błędy'],
+             ['CPU i temperatura', 'SNMP, API producenta', '5 min', 'CPU powyżej 85 % lub przegrzanie'],
              ['Konfiguracja', 'kopia zapasowa', 'codziennie', 'ktoś zmieni ustawienia']]
       }
     },
@@ -119,7 +161,7 @@
   };
   /* order matters: "web server" is a server question about a website, but
      "Wi-Fi" must not fall to "file" and a domain wins over everything */
-  const ORDER = ['web', 'k8s', 'net', 'srv', 'any'];
+  const ORDER = ['web', 'k8s', 'cloud', 'iot', 'net', 'srv', 'any'];
   const CHECKS = { cs: n => n + (n >= 5 ? ' kontrol' : ' kontroly'), en: n => n + ' checks', pl: n => n + (n >= 5 ? ' kontroli' : ' kontrole') };
 
   const lang = () => (typeof currentLang !== 'undefined' && PLAN.web.name[currentLang]) ? currentLang : 'cs';

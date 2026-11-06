@@ -218,8 +218,8 @@ const T = {
 
     'nav.work': 'Reference',
     'nav.obs': 'Observabilita',
-    'form.bundle.grp3': '── Dohled sítě a infrastruktury ──',
-    'form.bundle.opt7': 'Observabilita — síť, servery, cloud',
+    'form.bundle.grp3': '── Samostatná služba ──',
+    'form.bundle.opt7': 'Observabilita na míru',
     'fact.1.unit':  'dní',
     'fact.1.label': 'průměrné dodání webu',
     'fact.2.label': 'web na míru už od',
@@ -463,8 +463,8 @@ const T = {
 
     'nav.work': 'Work',
     'nav.obs': 'Observability',
-    'form.bundle.grp3': '── Network & infrastructure monitoring ──',
-    'form.bundle.opt7': 'Observability — network, servers, cloud',
+    'form.bundle.grp3': '── Separate service ──',
+    'form.bundle.opt7': 'Custom observability',
     'fact.1.unit':  'days',
     'fact.1.label': 'average website delivery',
     'fact.2.label': 'custom website from',
@@ -708,8 +708,8 @@ const T = {
 
     'nav.work': 'Realizacje',
     'nav.obs': 'Obserwowalność',
-    'form.bundle.grp3': '── Monitoring sieci i infrastruktury ──',
-    'form.bundle.opt7': 'Obserwowalność — sieć, serwery, chmura',
+    'form.bundle.grp3': '── Osobna usługa ──',
+    'form.bundle.opt7': 'Obserwowalność na miarę',
     'fact.1.unit':  'dni',
     'fact.1.label': 'średni czas realizacji strony',
     'fact.2.label': 'strona na zamówienie już od',
@@ -1050,7 +1050,7 @@ navLinks.addEventListener('click', e => { if (e.target === navLinks) setMenu(fal
   const els = document.querySelectorAll('.reveal');
   if (RM) { els.forEach(e => e.classList.add('in')); return; }
   /* siblings entering together cascade rather than popping as a block */
-  document.querySelectorAll('.ref-grid, .price-grid, .people, .steps, .contact-info, .cmp, .obs-faq-list, .obs-prices').forEach(g => {
+  document.querySelectorAll('.ref-grid, .price-grid, .people, .steps, .contact-info, .cmp, .obs-faq-list, .obs-get').forEach(g => {
     Array.from(g.children).filter(c => c.classList.contains('reveal'))
       .forEach((c, i) => c.style.setProperty('--d', (i * 0.045).toFixed(3) + 's'));
   });
