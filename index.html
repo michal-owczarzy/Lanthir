@@ -100,6 +100,8 @@
       }
     } catch (e) {}
   </script>
+  <!-- the black ground before any stylesheet arrives -->
+  <style>html.splash-on, html.splash-on body { background: #000; }</style>
 
   <!-- Our own CSS first — it is the only render-blocking request we want. -->
   <link rel="stylesheet" href="styles.css">
@@ -186,12 +188,11 @@
         <li style="--i:0"><a href="#sluzby"    data-i18n="nav.services">Služby</a></li>
         <li style="--i:1"><a href="#reference" data-i18n="nav.work">Reference</a></li>
         <li style="--i:2"><a href="#cenik"     data-i18n="nav.pricing">Ceník</a></li>
-        <li style="--i:3"><a href="/observabilita/" data-i18n="nav.obs">Observabilita</a></li>
-        <li style="--i:4" class="nav-opt"><a href="#postup"    data-i18n="nav.process">Postup</a></li>
-        <li style="--i:5" class="nav-opt"><a href="#faq"       data-i18n="nav.faq">FAQ</a></li>
-        <li style="--i:6"><a href="#about"     data-i18n="nav.about">O nás</a></li>
-        <li style="--i:7"><a href="#kontakt"   data-i18n="nav.contact">Kontakt</a></li>
-        <li style="--i:8" class="nav-links-cta"><a href="#kontakt" class="m-cta" data-i18n="nav.cta">Nezávazná poptávka</a></li>
+        <li style="--i:3"><a href="#postup"    data-i18n="nav.process">Postup</a></li>
+        <li style="--i:4"><a href="#faq"       data-i18n="nav.faq">FAQ</a></li>
+        <li style="--i:5"><a href="#about"     data-i18n="nav.about">O nás</a></li>
+        <li style="--i:6"><a href="#kontakt"   data-i18n="nav.contact">Kontakt</a></li>
+        <li style="--i:7" class="nav-links-cta"><a href="#kontakt" class="m-cta" data-i18n="nav.cta">Nezávazná poptávka</a></li>
       </ul>
       <div class="lang-switch">
         <button class="ls-btn active" data-lang="cs">CZ</button>
@@ -767,8 +768,6 @@
                   <option value="zaklad"   data-i18n="form.bundle.opt4">ZÁKLAD — 399 Kč/měsíc</option>
                   <option value="plus"     data-i18n="form.bundle.opt5">PLUS — 899 Kč/měsíc</option>
                   <option value="komplex"  data-i18n="form.bundle.opt6">KOMPLEX — od 2 499 Kč/měsíc</option>
-                  <option value="" disabled data-i18n="form.bundle.grp3">── Samostatná služba ──</option>
-                  <option value="dohled"   data-i18n="form.bundle.opt7">Observabilita na míru</option>
                 </select>
               </div>
               <div class="fg"><label for="fmsg" data-i18n="form.msg.lbl">Zpráva</label><textarea id="fmsg" rows="4" data-i18n-ph="form.msg.ph" placeholder="Popište váš projekt..." required aria-describedby="fmsg-err"></textarea><span class="err" id="fmsg-err" data-i18n="form.err.msg">Napište prosím pár vět o projektu.</span></div>
@@ -830,7 +829,6 @@
           <div class="footer-col">
             <h5 data-i18n="footer.col2.h">Společnost</h5>
             <a href="#reference" data-i18n="nav.work">Reference</a>
-            <a href="/observabilita/" data-i18n="nav.obs">Observabilita</a>
             <a href="#cenik"   data-i18n="nav.pricing">Ceník</a>
             <a href="#postup"  data-i18n="nav.process">Postup</a>
             <a href="#kontakt" data-i18n="nav.contact">Kontakt</a>

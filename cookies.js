@@ -123,11 +123,21 @@
     show();
   };
 
+  /* With the logo splash running, the banner waits until the page has
+     arrived, so it does not slide in over the hand-off. */
+  function showWhenClear() {
+    if (!document.documentElement.classList.contains('splash-on')) return show();
+    var fired = false;
+    function go() { if (fired) return; fired = true; setTimeout(show, 1400); }
+    window.addEventListener('lanthir:splashdone', go, { once: true });
+    setTimeout(go, 6500);
+  }
+
   var current = read();
   if (current) apply(current);
   else if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', show, { once: true });
+    document.addEventListener('DOMContentLoaded', showWhenClear, { once: true });
   } else {
-    show();
+    showWhenClear();
   }
 })();

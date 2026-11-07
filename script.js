@@ -217,9 +217,6 @@ const T = {
     'footer.copy':    '© 2026 Lanthir. Všechna práva vyhrazena.',
 
     'nav.work': 'Reference',
-    'nav.obs': 'Observabilita',
-    'form.bundle.grp3': '── Samostatná služba ──',
-    'form.bundle.opt7': 'Observabilita na míru',
     'fact.1.unit':  'dní',
     'fact.1.label': 'průměrné dodání webu',
     'fact.2.label': 'web na míru už od',
@@ -462,9 +459,6 @@ const T = {
     'footer.copy':    '© 2026 Lanthir. All rights reserved.',
 
     'nav.work': 'Work',
-    'nav.obs': 'Observability',
-    'form.bundle.grp3': '── Separate service ──',
-    'form.bundle.opt7': 'Custom observability',
     'fact.1.unit':  'days',
     'fact.1.label': 'average website delivery',
     'fact.2.label': 'custom website from',
@@ -707,9 +701,6 @@ const T = {
     'footer.copy':    '© 2026 Lanthir. Wszelkie prawa zastrzeżone.',
 
     'nav.work': 'Realizacje',
-    'nav.obs': 'Obserwowalność',
-    'form.bundle.grp3': '── Osobna usługa ──',
-    'form.bundle.opt7': 'Obserwowalność na miarę',
     'fact.1.unit':  'dni',
     'fact.1.label': 'średni czas realizacji strony',
     'fact.2.label': 'strona na zamówienie już od',
@@ -740,11 +731,6 @@ const T = {
   }
 };
 
-/* A sub-page brings its own strings (e.g. obs-i18n.js, loaded before this
-   file) and they join the one dictionary, so the language switch, the
-   remembered choice and the shared nav and footer work the same everywhere. */
-if (window.LANTHIR_T) Object.keys(window.LANTHIR_T).forEach(l => T[l] && Object.assign(T[l], window.LANTHIR_T[l]));
-
 /* ── Capability gates ─────────────────────── */
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -772,16 +758,15 @@ let heroReady = false;
    faster animation than a first visit, which reads as the timing being wrong
    rather than as a considerate shortcut. Skip-on-intent already covers anyone
    who does not want to wait. */
-/* The logo splash (below) is decided in <head> before first paint, so the
-   timings can be fixed here. When it has played, the streaks have already
-   been on screen while the overlay cleared, so the backdrop-alone hold drops
-   to a beat, and the long second line sweeps a little faster — the splash has
-   already spent part of the visitor's patience. */
+/* After the logo splash (below) the backdrop has already been on screen while
+   the black ground cleared, so the headline follows the flight closely and
+   both lines sweep faster: the visitor has already watched one sequence, and
+   the page has to finish arriving within about two seconds of the reveal.
+   The splash is decided in <head> before first paint, so this is fixed here. */
 const SPLASH = document.documentElement.classList.contains('splash-on') && !RM;
-const PAGE = document.body.dataset.page || 'home';
-const INTRO = PAGE === 'obs'
-  ? { hold: SPLASH ? 380 : 650, l1: 900, l2: 1150, char: 800, gap: 200 }
-  : { hold: SPLASH ? 450 : 1100, l1: 1000, l2: SPLASH ? 1500 : 1850, char: 850, gap: 250 };
+const INTRO = SPLASH
+  ? { hold: 350, l1: 600, l2: 560, char: 720, gap: 60 }
+  : { hold: 1100, l1: 1000, l2: 1850, char: 850, gap: 250 };
 
 /* the copy carries a 180ms internal stagger and a ~650ms transition, so it
    starts this far before the headline's last character lands and the two
@@ -800,7 +785,7 @@ const HERO_STEP = {
   /* Touch gets the bar straight away. Holding it back on a phone meant the
      burger sat there looking like a control for three and a half seconds
      before it became one. */
-  nav:  (FINE && !SPLASH) ? Math.max(INTRO.hold + 260, HERO_SETTLED - COPY_TAIL + 260) : 0
+  nav:  SPLASH ? 520 : FINE ? Math.max(INTRO.hold + 260, HERO_SETTLED - COPY_TAIL + 260) : 0
 };
 const heroWaiting = [];
 const onHeroReady = cb => (heroReady ? cb() : heroWaiting.push(cb));
@@ -815,26 +800,39 @@ const tryHero = () => {
   document.documentElement.dataset.hero = 'ready';
   heroWaiting.splice(0).forEach(cb => cb());
 };
-const markHeroReady = () => { backdropUp = true; tryHero(); };
-window.__heroBackdrop = markHeroReady;   /* page backdrops outside this file (topology.js) */
+let splashGo = null;   /* set by the splash: it starts once the backdrop is up */
+const markHeroReady = () => {
+  backdropUp = true;
+  if (splashGo) splashGo();
+  tryHero();
+};
 setTimeout(markHeroReady, 1200);
 
 /* ══════════════════════════════════════════════
    LOGO SPLASH — the mark reads its own signal
-   The 28 rays of the mark are a radial readout. On arrival they are measured
-   one by one, clockwise from the top: each starts as a point on the inner
-   ring and springs out to its length with its own overshoot, a scan runs once
-   round the circle, and then the whole lockup flies into the nav bar and
-   becomes the logo there. Once per session, decided in <head> so the page
-   never flashes before it. Any input ends it at once (see Skip on intent).
+   The page opens on a black ground with nothing but the mark. Its 28 rays are
+   a radial readout: they are measured one by one, clockwise from the top,
+   each springing out from the inner ring with its own overshoot; the wordmark
+   rises beside them and one scan runs round the circle. Then the hand-off:
+   the lockup travels into the nav bar and becomes the logo there, while the
+   black ground dissolves into the hero and the streaks settle from a slight
+   zoom, and the headline folds in behind it.
+
+   Smoothness, in order of what used to break it:
+   - The shader compiles while the screen is still black, before the first
+     ray moves, so no compile can stall the animation. The streaks then hold
+     their first frame under the ground and only run once they are revealed.
+   - The wordmark waits for its own face, so no font swap shifts it mid-rise.
+   - The flight, the ground and the backdrop zoom are compositor animations.
+   - The clock advances by at most two frames per frame: a busy main thread
+     pauses the reading instead of making it skip.
+   - The lockup and the bar's own logo cross-fade on landing, so a sub-pixel
+     difference between them never shows as a jump.
+   Once per session, decided in <head> so the page never flashes before it.
+   Any input ends it at once (see Skip on intent).
 ══════════════════════════════════════════════ */
-/* Heavy start-up work (a shader compile is ~100ms of blocked main thread)
-   waits here while the splash is drawing, and runs the moment the lockup
-   takes off — the flight and the fade are compositor animations, so a busy
-   main thread no longer shows. */
 const afterSplash = [];
 const whenSplashClear = f => (splashClear ? f() : afterSplash.push(f));
-window.__whenSplashClear = whenSplashClear;
 const RAYS = [[60,38,60,13.35],[64.9,38.55,68.7,21.89],[69.55,40.18,77.28,24.12],[73.72,42.8,90.87,21.29],[77.2,46.28,94.4,32.57],[79.82,50.45,98.92,41.26],[81.45,55.1,97.99,51.33],[82,60,104.62,60],[81.45,64.9,111.66,71.79],[79.82,69.55,99.68,79.11],[77.2,73.72,93.02,86.33],[73.72,77.2,86.33,93.01],[69.55,79.82,81.07,103.76],[64.9,81.45,69.8,102.92],[60,82,60,104.41],[55.1,81.45,52.35,93.51],[50.45,79.82,39.79,101.97],[46.28,77.2,31.22,96.09],[42.8,73.72,20.36,91.61],[40.18,69.55,19.9,79.31],[38.55,64.9,26.55,67.63],[38,60,19.77,60],[38.55,55.1,9.43,48.46],[40.18,50.45,20.51,40.98],[42.8,46.28,30.95,36.83],[46.28,42.8,37.52,31.82],[50.45,40.18,39.75,17.96],[55.1,38.55,48.03,7.54]];
 const finishSplash = (() => {
   const root = document.getElementById('splash');
@@ -846,62 +844,54 @@ const finishSplash = (() => {
   const lock = root.querySelector('.splash-lock');
   const g = root.querySelector('.splash-rays');
   const word = root.querySelector('.splash-word');
+  const navLogo = document.querySelector('.nav-logo');
   const NS = 'http://www.w3.org/2000/svg';
 
-  /* timeline, ms from start */
-  const T = { rays: 140, stag: 17, word: 460, scan: 1060, scanDur: 520, fly: 1580, flyDur: 640 };
+  /* timeline, ms from the first ray */
+  const T = { stag: 16, word: 380, scan: 880, scanDur: 440, fly: 1380, flyDur: 820 };
   const N = RAYS.length;
-  /* seeded so every visit draws the same reading */
-  let seed = 7;
+  let seed = 7;   /* seeded: every visit draws the same reading */
   const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
   const lines = RAYS.map(() => {
     const l = document.createElementNS(NS, 'line');
     l.setAttribute('opacity', '0');
     g.appendChild(l);
-    return { el: l, zeta: 0.32 + rnd() * 0.3, w: 15 + rnd() * 6 };
+    return { el: l, zeta: 0.34 + rnd() * 0.28, w: 15 + rnd() * 6 };
   });
 
-  /* split the word so each letter can rise from behind its own baseline */
+  /* each letter rises from behind its own baseline */
   const txt = word.textContent;
   word.textContent = '';
   [...txt].forEach((ch, i) => {
-    const s = document.createElement('span');
-    s.textContent = ch;
-    s.style.setProperty('--i', i);
-    word.appendChild(s);
+    const sp = document.createElement('span');
+    sp.textContent = ch;
+    sp.style.setProperty('--i', i);
+    word.appendChild(sp);
   });
 
-  /* scale the lockup as a true multiple of the nav logo, so the flight is a
-     single uniform scale and the type lands on the type */
-  const navLogo = document.querySelector('.nav-logo');
-  const fit = () => {
-    const S = Math.max(1.6, Math.min(3.2, (innerWidth * 0.78) / 150));
-    lock.style.setProperty('--S', S.toFixed(3));
-  };
-  fit();
+  /* the lockup is a true multiple of the nav lockup, so the flight is one
+     uniform scale and the type lands on the type */
+  lock.style.setProperty('--S', Math.max(1.6, Math.min(3.2, (innerWidth * 0.78) / 150)).toFixed(3));
 
-  /* underdamped spring: 0 → 1 with an overshoot set by zeta */
+  /* underdamped spring 0 → 1, overshoot set by zeta */
   const spring = (t, z, w) => {
     if (t <= 0) return 0;
     const wd = w * Math.sqrt(1 - z * z);
     return 1 - Math.exp(-z * w * t) * (Math.cos(wd * t) + (z * w / wd) * Math.sin(wd * t));
   };
 
-  /* The clock advances by at most two frames per frame: a long task on the
-     main thread (fonts, the heading split) pauses the reading instead of
-     making it jump ahead and skip half the rays. */
-  let raf = 0, last = 0, t = 0, done = false, flying = false;
+  let raf = 0, last = 0, t = 0, started = false, flying = false, done = false;
   const draw = now => {
     t += last ? Math.min(34, now - last) : 0;
     last = now;
     const head = (t - T.scan) / T.scanDur * (N + 6) - 3;
     for (let i = 0; i < N; i++) {
       const r = RAYS[i], L = lines[i];
-      const ti = (t - T.rays - i * T.stag) / 1000;
+      const ti = (t - i * T.stag) / 1000;
       let k = spring(ti - 0.07, L.zeta, L.w);
       if (t > T.scan && t < T.scan + T.scanDur + 200) {
-        let d = Math.abs(i - head);
-        k *= 1 + 0.2 * Math.exp(-(d * d) / 3.2);
+        const d = Math.abs(i - head);
+        k *= 1 + 0.18 * Math.exp(-(d * d) / 3.2);
       }
       L.el.setAttribute('opacity', ti > 0 ? Math.min(1, ti / 0.08).toFixed(3) : '0');
       L.el.setAttribute('x1', r[0]); L.el.setAttribute('y1', r[1]);
@@ -910,53 +900,79 @@ const finishSplash = (() => {
     }
     if (t >= T.word) root.classList.add('word-in');
     if (t >= T.fly && !flying) fly();
-    if (!done && t < T.fly + 200) raf = requestAnimationFrame(draw);
+    if (!done && !flying) raf = requestAnimationFrame(draw);
   };
 
+  const release = () => {
+    splashClear = true;
+    html.classList.add('splash-clearing');
+    afterSplash.splice(0).forEach(f => f());
+    tryHero();
+  };
   const land = () => {
     if (done) return;
     done = true;
     cancelAnimationFrame(raf);
-    html.classList.remove('splash-on');
-    root.remove();
+    html.classList.add('splash-landed');            /* lockup and bar logo cross-fade */
+    setTimeout(() => {
+      html.classList.remove('splash-on', 'splash-clearing', 'splash-landed');
+      root.remove();
+      dispatchEvent(new Event('lanthir:splashdone'));
+    }, 260);
   };
 
-  /* hand-off: measure both marks, fly one onto the other, clear the ground */
+  /* hand-off: measure both marks, fly one onto the other, dissolve the ground */
   const fly = () => {
     flying = true;
-    splashClear = true;
-    afterSplash.splice(0).forEach(f => f());
-    document.body.classList.add('nav-in');
     if (navLogo) navLogo.querySelectorAll('.fold').forEach(el => el.classList.add('in'));
-    tryHero();
     const to = navLogo && navLogo.querySelector('.logo-img').getBoundingClientRect();
     const from = root.querySelector('.splash-mark').getBoundingClientRect();
     const lr = lock.getBoundingClientRect();
     root.classList.add('clearing');
-    if (!to || !to.width) { setTimeout(land, 420); return; }
-    const s = to.width / from.width;
-    const dx = to.left - (lr.left + (from.left - lr.left) * s);
-    const dy = to.top - (lr.top + (from.top - lr.top) * s);
+    release();
+    setTimeout(() => document.body.classList.add('nav-in'), 240);
+    if (!to || !to.width) { setTimeout(land, 600); return; }
+    const sc = to.width / from.width;
+    const dx = to.left - (lr.left + (from.left - lr.left) * sc);
+    const dy = to.top - (lr.top + (from.top - lr.top) * sc);
     const a = lock.animate(
-      [{ transform: 'none' }, { transform: `translate(${dx}px, ${dy}px) scale(${s})` }],
-      { duration: T.flyDur, easing: 'cubic-bezier(.65,0,.2,1)', fill: 'forwards' }
+      [{ transform: 'none' }, { transform: `translate(${dx}px, ${dy}px) scale(${sc})` }],
+      { duration: T.flyDur, easing: 'cubic-bezier(.76,0,.24,1)', fill: 'forwards' }
     );
     a.onfinish = land;
-    setTimeout(land, T.flyDur + 300);   /* belt and braces if onfinish never comes */
+    setTimeout(land, T.flyDur + 400);   /* if onfinish never comes */
   };
 
-  /* the splash is only ever covering the page: start straight away */
-  raf = requestAnimationFrame(draw);
+  /* Start only once the backdrop has compiled and drawn (or given up) and the
+     wordmark's face is in, capped so a slow network never holds the black
+     screen for long. Until then the screen is simply black. */
+  let fontIn = false;
+  const go = () => {
+    if (started || !backdropUp || !fontIn) return;
+    started = true;
+    raf = requestAnimationFrame(draw);
+  };
+  splashGo = go;
+  const fonts = document.fonts && document.fonts.load
+    ? document.fonts.load('500 40px "JetBrains Mono"').catch(() => {})
+    : Promise.resolve();
+  fonts.then(() => { fontIn = true; go(); });
+  setTimeout(() => { fontIn = true; backdropUp = true; go(); }, 900);
 
   /* skip: a short fade, the bar up, the hero released */
   return () => {
     if (done) return;
-    splashClear = true;
-    afterSplash.splice(0).forEach(f => f());
-    document.body.classList.add('nav-in');
     if (navLogo) navLogo.querySelectorAll('.fold').forEach(el => el.classList.add('in'));
+    document.body.classList.add('nav-in');
     root.classList.add('skip');
-    setTimeout(land, 220);
+    release();
+    done = true;
+    cancelAnimationFrame(raf);
+    setTimeout(() => {
+      html.classList.remove('splash-on', 'splash-clearing', 'splash-landed');
+      root.remove();
+      dispatchEvent(new Event('lanthir:splashdone'));
+    }, 220);
   };
 })();
 
@@ -1011,7 +1027,6 @@ function applyLang(lang) {
   if (window.__wheelSync) window.__wheelSync();
   /* innerHTML above just destroyed every split heading — rebuild them */
   if (window.__foldSync) window.__foldSync();
-  if (window.__pageSync) window.__pageSync(lang);
 }
 document.querySelectorAll('.ls-btn').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
 
@@ -1050,7 +1065,7 @@ navLinks.addEventListener('click', e => { if (e.target === navLinks) setMenu(fal
   const els = document.querySelectorAll('.reveal');
   if (RM) { els.forEach(e => e.classList.add('in')); return; }
   /* siblings entering together cascade rather than popping as a block */
-  document.querySelectorAll('.ref-grid, .price-grid, .people, .steps, .contact-info, .cmp, .obs-faq-list, .obs-get').forEach(g => {
+  document.querySelectorAll('.ref-grid, .price-grid, .people, .steps, .contact-info').forEach(g => {
     Array.from(g.children).filter(c => c.classList.contains('reveal'))
       .forEach((c, i) => c.style.setProperty('--d', (i * 0.045).toFixed(3) + 's'));
   });
@@ -1281,6 +1296,7 @@ function bootLightfall() {
     requestAnimationFrame(frame);
     if (!W) { fit(); return; }
     if (document.hidden || !vis) return;   /* stop drawing once past the hero */
+    if (drawn && !splashClear) return;      /* first frame drawn; hold it under the splash */
     const dt = last ? Math.min((now - last) / 1000, .05) : 0;
     last = now;
     const k = 1 - Math.exp(-dt / 0.15);    /* mouseDampening 0.15 */
@@ -1310,9 +1326,12 @@ function bootLightfall() {
   const go = () => (window.requestIdleCallback || (f => setTimeout(f, 160)))(
     () => bootLightfall(), { timeout: 350 }
   );
-  const start = () => whenSplashClear(go);
-  if (document.readyState === 'complete') start();
-  else addEventListener('load', start, { once: true });
+  /* With the splash the screen is black anyway, so compile straight away,
+     before the first ray moves; the animation itself then waits under the
+     ground (see the frame loop) until the ground starts to clear. */
+  if (SPLASH) bootLightfall();
+  else if (document.readyState === 'complete') go();
+  else addEventListener('load', go, { once: true });
 })();
 
 /* ══════════════════════════════════════════════
@@ -1927,12 +1946,6 @@ document.getElementById('toTop')?.addEventListener('click', () => scrollTo({ top
   const form = document.getElementById('contactForm');
   const ok = document.getElementById('formSuccess');
   if (!form) return;
-
-  /* /?balicek=dohled#kontakt — a page that sends the visitor here says what
-     they came about, so the select does not ask again */
-  const want = new URLSearchParams(location.search).get('balicek');
-  const pick = want && document.querySelector('#fbundle option[value="' + want.replace(/[^a-z]/g, '') + '"]');
-  if (pick) pick.selected = true;
 
   const consent = document.getElementById('fgdpr');
   const fields = [
