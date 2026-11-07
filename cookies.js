@@ -130,7 +130,7 @@
     var fired = false;
     function go() { if (fired) return; fired = true; setTimeout(show, 1400); }
     window.addEventListener('lanthir:splashdone', go, { once: true });
-    setTimeout(go, 6500);
+    setTimeout(go, 8000);
   }
 
   var current = read();

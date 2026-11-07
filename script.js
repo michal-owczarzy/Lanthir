@@ -848,7 +848,7 @@ const finishSplash = (() => {
   const NS = 'http://www.w3.org/2000/svg';
 
   /* timeline, ms from the first ray */
-  const T = { stag: 16, word: 380, scan: 880, scanDur: 440, fly: 1380, flyDur: 820 };
+  const T = { stag: 22, word: 560, scan: 1300, scanDur: 620, fly: 2150, flyDur: 980 };
   const N = RAYS.length;
   let seed = 7;   /* seeded: every visit draws the same reading */
   const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
@@ -856,7 +856,7 @@ const finishSplash = (() => {
     const l = document.createElementNS(NS, 'line');
     l.setAttribute('opacity', '0');
     g.appendChild(l);
-    return { el: l, zeta: 0.34 + rnd() * 0.28, w: 15 + rnd() * 6 };
+    return { el: l, zeta: 0.34 + rnd() * 0.28, w: 12 + rnd() * 5 };
   });
 
   /* each letter rises from behind its own baseline */
@@ -930,7 +930,7 @@ const finishSplash = (() => {
     const lr = lock.getBoundingClientRect();
     root.classList.add('clearing');
     release();
-    setTimeout(() => document.body.classList.add('nav-in'), 240);
+    setTimeout(() => document.body.classList.add('nav-in'), 320);
     if (!to || !to.width) { setTimeout(land, 600); return; }
     const sc = to.width / from.width;
     const dx = to.left - (lr.left + (from.left - lr.left) * sc);
