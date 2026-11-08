@@ -29,9 +29,6 @@
   --blue:    #1aa9c7;
   --cyan:    #1fcded;
   --spark:   #3edc97;      /* the mark's green: status, success, "online" */
-  /* Cyan through blue into violet. --btn-ink is the label colour this fill can
-     carry: white peaks at 3.46:1 on the blue midpoint, dark ink clears 5:1
-     across the band the label actually sits in. */
   /* only the hover edge light still uses a ramp, and it stays in one hue */
   --grad:     linear-gradient(-225deg, #a8f4ff 0%, #1fcded 100%);
   --grad-ink: linear-gradient(var(--ink), var(--ink));
@@ -43,14 +40,15 @@
      3.7:1. Headings never hit that corner (they use t 0.06-0.54), so text
      keeps the full ramp. */
   --grad-btn: linear-gradient(-225deg, #22E1FF 0%, #1D8FE1 100%);
-  --btn-ink:  #04121c;
-  /* The action is one flat colour, the brand cyan: the only cyan surface on
-     a page of indigo and violet, so the eye finds it without any glow. Hover
-     lifts it lighter, press darkens it a step — both raise the contrast with
-     the dark ink rather than lower it. */
-  --btn:       #1fcded;
-  --btn-hi:    #5edcf3;
-  --btn-press: #19b6d3;
+  /* The action is the page's own ink turned into a surface: an ice-white
+     key with graphite type on the dark ground, inverted to a graphite key on
+     the light chapters. No hue at all, so it reads as the instrument's
+     control rather than as decoration, and the cyan is left to the mark and
+     the readouts. Hover lifts to pure white, press steps down a tone. */
+  --btn-ink:   #0d0e10;
+  --btn:       #eef1f2;
+  --btn-hi:    #ffffff;
+  --btn-press: #d3d8dc;
 
   /* type */
   --f-display: 'Archivo', 'Inter', system-ui, sans-serif;
@@ -1226,6 +1224,10 @@ body.intro-skip .nav {
   --hair:  rgba(15,17,19,.12);
   --hair-2:rgba(15,17,19,.24);
   --accent-text: #087286;
+  --btn:       #0f1113;
+  --btn-hi:    #2b3036;
+  --btn-press: #000000;
+  --btn-ink:   #eef1f2;
   background: var(--void);
   color: var(--ink);
 }
