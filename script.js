@@ -884,8 +884,7 @@ const finishSplash = (() => {
 
   /* the lockup is a true multiple of the nav lockup, so the flight is one
      uniform scale and the type lands on the type */
-  /* capped at 2.4 so the lockup fits the band above the headline */
-  lock.style.setProperty('--S', Math.max(1.6, Math.min(2.4, (innerWidth * 0.78) / 150)).toFixed(3));
+  lock.style.setProperty('--S', Math.max(1.6, Math.min(3.2, (innerWidth * 0.78) / 150)).toFixed(3));
 
   /* underdamped spring 0 → 1, overshoot set by zeta */
   const spring = (t, z, w) => {
@@ -964,9 +963,6 @@ const finishSplash = (() => {
   const go = () => {
     if (started || !backdropUp || !fontIn) return;
     started = true;
-    /* the page is no longer under a black ground, so the hero (streaks, bar)
-       is released as the mark starts drawing rather than when it flies */
-    release();
     raf = requestAnimationFrame(draw);
   };
   splashGo = go;
