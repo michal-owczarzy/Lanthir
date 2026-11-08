@@ -40,15 +40,13 @@
      3.7:1. Headings never hit that corner (they use t 0.06-0.54), so text
      keeps the full ramp. */
   --grad-btn: linear-gradient(-225deg, #22E1FF 0%, #1D8FE1 100%);
-  /* The action is the page's own ink turned into a surface: an ice-white
-     key with graphite type on the dark ground, inverted to a graphite key on
-     the light chapters. No hue at all, so it reads as the instrument's
-     control rather than as decoration, and the cyan is left to the mark and
-     the readouts. Hover lifts to pure white, press steps down a tone. */
-  --btn-ink:   #0d0e10;
-  --btn:       #eef1f2;
-  --btn-hi:    #ffffff;
-  --btn-press: #d3d8dc;
+  /* The action is one flat colour, the mark's cyan, with dark ink (10:1).
+     Hover lifts it lighter, press darkens it a step — both raise the
+     contrast with the ink rather than lower it. */
+  --btn-ink:   #04121c;
+  --btn:       #1fcded;
+  --btn-hi:    #5edcf3;
+  --btn-press: #19b6d3;
 
   /* type */
   --f-display: 'Archivo', 'Inter', system-ui, sans-serif;
@@ -1224,10 +1222,6 @@ body.intro-skip .nav {
   --hair:  rgba(15,17,19,.12);
   --hair-2:rgba(15,17,19,.24);
   --accent-text: #087286;
-  --btn:       #0f1113;
-  --btn-hi:    #2b3036;
-  --btn-press: #000000;
-  --btn-ink:   #eef1f2;
   background: var(--void);
   color: var(--ink);
 }
@@ -1290,6 +1284,8 @@ html.splash-landed .splash-lock { opacity: 0; }
   color: var(--ink);
   line-height: 1.15;
 }
+.splash-word { opacity: 0; }          /* until split: no static word on the black */
+.splash-word.is-split { opacity: 1; }
 .splash-word span {
   display: inline-block;
   transform: translate3d(0, 105%, 0);

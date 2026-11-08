@@ -868,6 +868,7 @@ const finishSplash = (() => {
     sp.style.setProperty('--i', i);
     word.appendChild(sp);
   });
+  word.classList.add('is-split');   /* only now may the word be shown at all */
 
   /* the lockup is a true multiple of the nav lockup, so the flight is one
      uniform scale and the type lands on the type */
