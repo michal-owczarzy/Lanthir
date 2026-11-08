@@ -123,14 +123,13 @@
     show();
   };
 
-  /* With the logo splash running, the banner waits until the page has
-     arrived, so it does not slide in over the hand-off. */
+  /* The banner goes up straight away. While the logo splash runs it slides
+     in underneath the black ground (z-index 200 against the splash's 1000),
+     so it is already in place when the page is revealed and never slides in
+     over the hand-off. Waiting for the splash to finish plus 1.4s made the
+     banner text, the largest text on a phone, the page's LCP at ~7s. */
   function showWhenClear() {
-    if (!document.documentElement.classList.contains('splash-on')) return show();
-    var fired = false;
-    function go() { if (fired) return; fired = true; setTimeout(show, 1400); }
-    window.addEventListener('lanthir:splashdone', go, { once: true });
-    setTimeout(go, 8000);
+    show();
   }
 
   var current = read();

@@ -1129,7 +1129,11 @@ function bootLightfall() {
   const forced = new URLSearchParams(location.search).get('lightfall');
   if (forced === 'off' || TIER === 0 || RM) { staticWash(); markHeroReady(); return; }
 
-  const gl = cv.getContext('webgl', { alpha: true, antialias: true, premultipliedAlpha: false });
+  /* failIfMajorPerformanceCaveat: with no real GPU (software GL such as
+     SwiftShader on a blocklisted driver, or a lab machine) the raymarch runs on
+     the CPU and eats the main thread for the life of the page. Those devices
+     get the static wash instead. */
+  const gl = cv.getContext('webgl', { alpha: true, antialias: true, premultipliedAlpha: false, failIfMajorPerformanceCaveat: true });
   if (!gl) { staticWash(); markHeroReady(); return; }
 
   const VERT = [
@@ -1290,19 +1294,24 @@ function bootLightfall() {
      DPR 3 would otherwise be shading four times the pixels of a laptop. */
   const DPR = Math.min(devicePixelRatio || 1, FINE ? (TIER === 2 ? 1.75 : 1.25) : 1);
   let W = 0, H = 0;
-  const fit = () => {
-    W = cv.clientWidth; H = cv.clientHeight;
-    if (!W || !H) return;
+  const fit = (w, h) => {
+    if (!w || !h) return;
+    W = w; H = h;
     cv.width = Math.round(W * DPR);
     cv.height = Math.round(H * DPR);
     gl.viewport(0, 0, cv.width, cv.height);
     gl.uniform3f(uRes, cv.width, cv.height, 1);
   };
-  fit();
-  requestAnimationFrame(fit);          /* the canvas sits inside the hero — wait for layout */
-  addEventListener('load', fit);
-  let rq = false;
-  addEventListener('resize', () => { if (rq) return; rq = true; setTimeout(() => { rq = false; fit(); }, 150); });
+  /* The size comes from a ResizeObserver instead of clientWidth/clientHeight.
+     Reading layout straight after the page was styled forced a synchronous
+     reflow (~140ms on a throttled phone); the observer is handed the size from
+     the layout the browser does anyway, and it also covers resizes. The canvas
+     is sized by CSS (100% × 100%), so setting its backing store never feeds
+     back into the observed box. */
+  new ResizeObserver(es => {
+    const r = es[es.length - 1].contentRect;
+    fit(r.width, r.height);
+  }).observe(cv);
 
   const mt = [0, 0], mc = [0, 0];
   if (FINE) addEventListener('pointermove', e => {
@@ -1318,7 +1327,7 @@ function bootLightfall() {
   let last = 0, drawn = false;
   (function frame(now) {
     requestAnimationFrame(frame);
-    if (!W) { fit(); return; }
+    if (!W) return;                         /* the observer has not reported a size yet */
     if (document.hidden || !vis) return;   /* stop drawing once past the hero */
     if (drawn && !splashClear) return;      /* first frame drawn; hold it under the splash */
     const dt = last ? Math.min((now - last) / 1000, .05) : 0;
@@ -1451,24 +1460,30 @@ function bootLightfall() {
      background-size would leave every gradient character painting nothing —
      the <em> would simply be invisible — so refuse and let the caller retry
      on the next frame. */
-  const project = el => {
+  /* Split into a read and a write pass. Measuring a character straight after
+     styling the previous one made the browser recompute style for every
+     single character; now every heading is measured first and written after. */
+  const measureHead = el => {
     const gs = el.querySelectorAll('.fold-c.grad');
-    if (!gs.length) return true;
+    if (!gs.length) return { ok: true };
     const w = el.offsetWidth, h = el.offsetHeight;
-    if (!w || !h) return false;
+    if (!w || !h) return { ok: false };
     const [hx, hy] = absOffset(el);
-    gs.forEach(c => {
-      const [cx, cy] = absOffset(c);
-      c.style.backgroundSize = w + 'px ' + h + 'px';
-      c.style.backgroundPosition = (hx - cx) + 'px ' + (hy - cy) + 'px';
+    return { ok: true, gs, w, h, hx, hy, offs: Array.from(gs, absOffset) };
+  };
+  const paintHead = m => {
+    if (!m.gs) return;
+    m.gs.forEach((c, i) => {
+      c.style.backgroundSize = m.w + 'px ' + m.h + 'px';
+      c.style.backgroundPosition = (m.hx - m.offs[i][0]) + 'px ' + (m.hy - m.offs[i][1]) + 'px';
     });
-    return true;
   };
 
   let tries = 0;
   const projectAll = () => {
-    const pending = heads.filter(el => !project(el));
-    if (pending.length && ++tries < 60) requestAnimationFrame(projectAll);
+    const ms = heads.map(measureHead);
+    ms.forEach(paintHead);
+    if (ms.some(m => !m.ok) && ++tries < 60) requestAnimationFrame(projectAll);
   };
 
   const io = RM ? null : new IntersectionObserver(es => es.forEach(e => {
@@ -1679,12 +1694,13 @@ function bootLightfall() {
   const PITCH = FINE ? 1.55 : 2.15;
   let rowH = 64, railTravel = 0;
   const measure = () => {
+    /* both reads before any write, so the second read does not force layout */
     const fs = parseFloat(getComputedStyle(items[0]).fontSize) || 34;
+    const railH = rail ? rail.clientHeight : 0;
     rowH = Math.max(fs * PITCH, 1);
     /* the selection slot is exactly one row tall, so it frames the active word */
     if (slot) slot.style.setProperty('--slot', Math.round(rowH) + 'px');
     if (rail) {
-      const railH = rail.clientHeight;
       const thumbH = Math.max(railH / n, 18);
       rail.style.setProperty('--thumb-h', thumbH.toFixed(1) + 'px');
       railTravel = Math.max(railH - thumbH, 0);
