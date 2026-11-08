@@ -6,26 +6,35 @@
 ═══════════════════════════════════════════════════════════ */
 
 :root {
-  /* surface + ink */
-  --void:  #06090f;
-  --ink:   #eef4ff;
-  --soft:  #c3d2e6;
-  --dim:   #7a9cc0;
-  --faint: #3d5a7a;
-  --hair:  rgba(238,244,255,.10);
-  --hair-2:rgba(238,244,255,.18);
+  /* ── Colour: graphite and signal ─────────────────
+     A neutral graphite instrument instead of navy: no blue tint in the
+     greys, so the one saturated colour on the page is the signal. Cyan (from
+     the mark) marks what you can act on; green (also from the mark) means
+     "running". Two sections turn into light chapters with a hard cut,
+     the way a datasheet switches to its tables. No violet anywhere. */
+  --void:    #0d0e10;      /* ground */
+  --surface: #16181b;      /* one tone step up: cards, panels, fields */
+  --surface-2: #1d2024;    /* a second step, for nested surfaces */
+  --ink:   #eef1f2;
+  --soft:  #b9bfc5;
+  --dim:   #8a9199;        /* 6.2:1 on the ground */
+  --faint: #545a61;
+  --hair:  rgba(238,241,242,.10);
+  --hair-2:rgba(238,241,242,.18);
+  --accent-text: #1fcded;  /* the signal when it is text; darker on light chapters */
 
   /* brand — unchanged */
-  --iris:    #3a2ee0;
-  --iris-hi: #4b3ef5;
-  --blue:    #1e7be5;
+  --iris:    #1fcded;      /* violet retired: old names now point at the signal */
+  --iris-hi: #1fcded;
+  --blue:    #1aa9c7;
   --cyan:    #1fcded;
-  --spark:   #36f0d6;
+  --spark:   #3edc97;      /* the mark's green: status, success, "online" */
   /* Cyan through blue into violet. --btn-ink is the label colour this fill can
      carry: white peaks at 3.46:1 on the blue midpoint, dark ink clears 5:1
      across the band the label actually sits in. */
-  --grad:     linear-gradient(-225deg, #22E1FF 0%, #1D8FE1 48%, #625EB1 100%);
-  --grad-ink: linear-gradient(-225deg, #22E1FF 0%, #1D8FE1 48%, #625EB1 100%);
+  /* only the hover edge light still uses a ramp, and it stays in one hue */
+  --grad:     linear-gradient(-225deg, #a8f4ff 0%, #1fcded 100%);
+  --grad-ink: linear-gradient(var(--ink), var(--ink));
 
   /* Buttons take the cyan-to-blue part of the same ramp, not the violet tail.
      On a wide, short button the -225deg line drives well into the violet at
@@ -79,7 +88,7 @@ a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 ul, ol { list-style: none; }
 input, textarea, select, button { font: inherit; }
-::selection { background: rgba(30,123,229,.45); color: #fff; }
+::selection { background: rgba(31,205,237,.35); color: var(--ink); }
 :focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 4px; }
 body.no-scroll { overflow: hidden; }
 
@@ -113,16 +122,16 @@ body.no-scroll { overflow: hidden; }
      still the thing you notice first. */
   background:
     linear-gradient(90deg,
-      rgba(4,6,20,.88) 0%,
-      rgba(4,6,20,.8)  30%,
-      rgba(4,6,20,.34) 58%,
-      rgba(4,6,20,0)   78%),
+      rgba(13,14,16,.88) 0%,
+      rgba(13,14,16,.8)  30%,
+      rgba(13,14,16,.34) 58%,
+      rgba(13,14,16,0)   78%),
     linear-gradient(180deg,
-      rgba(4,6,20,.62) 0%,
-      rgba(4,6,20,.1)  18%,
-      rgba(4,6,20,0)   38%,
-      rgba(6,9,15,.55) 84%,
-      #06090f 100%);
+      rgba(13,14,16,.62) 0%,
+      rgba(13,14,16,.1)  18%,
+      rgba(13,14,16,0)   38%,
+      rgba(13,14,16,.55) 84%,
+      #0d0e10 100%);
 }
 .nav, main, .footer { position: relative; z-index: 2; }
 
@@ -159,10 +168,8 @@ body.no-scroll { overflow: hidden; }
 
 .hero-h1 em, .h2 em {
   font-style: normal;
-  background: var(--grad-ink);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  /* one face, one colour: the words carry the emphasis */
+  color: inherit;
 }
 /* ── FoldText ─────────────────────────────────
    Each character hangs from a hinge along its top edge and swings down into
@@ -202,11 +209,8 @@ body.no-scroll { overflow: hidden; }
 /* characters inside <em> carry the brand gradient; the slice each one shows is
    positioned by JS so the ramp runs unbroken across the whole heading */
 .fold-c.grad {
-  background-image: var(--grad-ink);
-  background-repeat: no-repeat;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  /* headlines are one ink now; inherit it, so light chapters get theirs */
+  color: inherit;
 }
 /* the hero headline is folding, so it opts out of the hero copy's fade-up;
    running both at once muddies each other */
@@ -219,7 +223,7 @@ body.no-scroll { overflow: hidden; }
   font-weight: 500;
   letter-spacing: .2em;
   text-transform: uppercase;
-  color: var(--cyan);
+  color: var(--dim);
   margin-bottom: var(--s1);
 }
 .lede { font-size: 18px; font-weight: 200; color: var(--soft); max-width: 52ch; }
@@ -298,7 +302,7 @@ body.no-scroll { overflow: hidden; }
   /* near-black ink on the cyan: 10:1 */
   color: var(--btn-ink);
 }
-.btn--ghost { background: rgba(238,244,255,.03); border: 1px solid var(--hair-2); color: var(--soft); }
+.btn--ghost { background: transparent; border: 1px solid var(--hair-2); color: var(--ink); }
 .btn--full { width: 100%; }
 @media (hover: hover) {
   /* brightness is a composited filter — no layout, no paint of the gradient */
@@ -335,7 +339,7 @@ body.nav-in .nav { opacity: 1; }
   inset: 0;
   z-index: -1;
   opacity: 0;
-  background: rgba(6,9,15,.72);
+  background: rgba(13,14,16,.94);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--hair);
@@ -466,11 +470,8 @@ body.ready .hero-cue { opacity: 1; }
   display: block;
   border-radius: var(--radius);
   border: 1px solid var(--hair);
-  background:
-    linear-gradient(180deg, rgba(238,244,255,.035) 0%, rgba(238,244,255,0) 42%),
-    #0a0f18;
+  background: var(--surface);
   isolation: isolate;
-  box-shadow: 0 1px 2px rgba(0,0,0,.22), 0 8px 26px rgba(0,0,0,.28);
   transition: transform .45s var(--e-out), border-color .45s var(--e-out);
 }
 .glow::before {
@@ -523,10 +524,9 @@ body.ready .hero-cue { opacity: 1; }
   inset: var(--halo);
   border-radius: var(--radius);
   box-shadow:
-    0 0 1px 0 rgba(31,205,237,.55),
-    0 0 6px 0 rgba(31,205,237,.34),
-    0 0 18px 0 rgba(30,123,229,.24),
-    0 0 var(--halo) 2px rgba(58,46,224,.18);
+    0 0 1px 0 rgba(31,205,237,.6),
+    0 0 6px 0 rgba(31,205,237,.3),
+    0 0 18px 0 rgba(31,205,237,.16);
 }
 .glow-in { position: relative; z-index: 1; display: block; }
 @media (hover: hover) { .glow:hover { border-color: var(--hair-2); } }
@@ -554,7 +554,7 @@ body.ready .hero-cue { opacity: 1; }
 .wheel-idx { color: var(--dim); }
 .wheel-idx b { font-weight: 500; color: var(--cyan); font-variant-numeric: tabular-nums; }
 .wheel-idx i { font-style: normal; margin-left: 7px; }
-.wheel-hint { color: var(--faint); }
+.wheel-hint { color: var(--dim); }
 
 .wheel-stage { position: relative; padding-left: 30px; }
 /* rail — the thumb rides `pos` straight out of the wheel's own spring loop */
@@ -567,7 +567,7 @@ body.ready .hero-cue { opacity: 1; }
   position: absolute; left: 0; top: 0;
   width: 2px; border-radius: 2px;
   height: var(--thumb-h, 34px);
-  background: linear-gradient(180deg, var(--cyan), var(--iris-hi));
+  background: var(--cyan);
   box-shadow: 0 0 10px rgba(31,205,237,.45);
   will-change: transform;
 }
@@ -631,9 +631,7 @@ body.ready .hero-cue { opacity: 1; }
   border-radius: 15px;
   overflow: hidden;
   background:
-    radial-gradient(120% 90% at 18% 0%, rgba(30,123,229,.14), transparent 62%),
-    radial-gradient(90% 80% at 92% 100%, rgba(58,46,224,.13), transparent 58%),
-    #070b12;
+    var(--surface);
 }
 .pv {
   position: absolute; inset: 0;
@@ -656,9 +654,9 @@ body.ready .hero-cue { opacity: 1; }
 .pv-tile--hi { fill: rgba(31,205,237,.10); stroke: rgba(31,205,237,.32); }
 .pv-panel { fill: rgba(238,244,255,.03); stroke: rgba(238,244,255,.075); stroke-width: 1; }
 .pv-sum   { fill: rgba(54,240,214,.6); }
-.pv-btn, .pv-nbtn { fill: var(--iris); }
+.pv-btn, .pv-nbtn { fill: var(--cyan); }
 .pv-badge { fill: var(--cyan); }
-.pv-tick  { fill: none; stroke: #06090f; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.pv-tick  { fill: none; stroke: var(--void); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .pv-line  { fill: none; stroke: var(--cyan); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .pv-pt    { fill: var(--spark); }
 .pv-day   { fill: rgba(238,244,255,.05); }
@@ -668,11 +666,11 @@ body.ready .hero-cue { opacity: 1; }
 .pv-tick--slot { stroke: var(--spark); stroke-width: 2.2; }
 .pv-old rect  { fill: rgba(122,156,192,.17); }
 .pv-old .pv-old-img { fill: rgba(122,156,192,.09); }
-.pv-new-img   { fill: rgba(30,123,229,.2); stroke: rgba(31,205,237,.25); stroke-width: 1; }
+.pv-new-img   { fill: rgba(31,205,237,.14); stroke: rgba(31,205,237,.25); stroke-width: 1; }
 .pv-nb        { fill: rgba(238,244,255,.24); }
 .pv-nb--h     { fill: rgba(31,205,237,.75); }
 .pv-div    { stroke: rgba(238,244,255,.14); stroke-width: 1; stroke-dasharray: 3 5; fill: none; }
-.pv-divh   { fill: #0a1017; stroke: rgba(31,205,237,.5); stroke-width: 1.5; }
+.pv-divh   { fill: var(--void); stroke: rgba(31,205,237,.5); stroke-width: 1.5; }
 .pv-divarr { fill: none; stroke: var(--cyan); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 
 /* scene motion — only the pane on screen animates, and only once per entry */
@@ -713,7 +711,7 @@ body.ready .hero-cue { opacity: 1; }
   aspect-ratio: 16 / 10;
   border-radius: 10px;
   overflow: hidden;
-  background: radial-gradient(circle at 50% 35%, rgba(30,123,229,.12), transparent 70%), #0a0f17;
+  background: var(--surface-2);
 }
 /* A poster carries the tile at load; the live site is mounted on hover, so the
    page no longer pulls four full customer sites (and their autoplaying hero
@@ -736,7 +734,7 @@ body.ready .hero-cue { opacity: 1; }
 }
 .ref-frame.live iframe { opacity: 1; }
 .ref-cap { display: block; padding: 15px 6px 17px; }
-.ref-ind { display: block; font-family: var(--f-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--spark); }
+.ref-ind { display: block; font-family: var(--f-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); }
 .ref-name {
   display: block; margin-top: 6px;
   font-family: var(--f-display);
@@ -764,7 +762,7 @@ body.ready .hero-cue { opacity: 1; }
   content: '';
   width: 5px; height: 5px; border-radius: 50%;
   background: var(--spark);
-  box-shadow: 0 0 7px rgba(255,46,139,.7);
+  /* live = running: the mark's green, no glow */
 }
 .ref--live { border-color: rgba(53,214,232,.26); }
 @media (hover: hover) { .ref:hover { transform: translate3d(0,-5px,0); } }
@@ -784,19 +782,16 @@ body.ready .hero-cue { opacity: 1; }
   gap: 14px;
   margin: calc(var(--s2) * -0.5) 0 var(--s2);
   padding: 14px 20px;
-  border: 1px solid rgba(31,205,237,.22);
   border-radius: 14px;
-  background:
-    linear-gradient(96deg, rgba(31,205,237,.09) 0%, rgba(58,46,224,.07) 55%, rgba(31,205,237,0) 100%),
-    rgba(238,244,255,.02);
+  background: var(--surface);
 }
-.price-incl svg { width: 19px; height: 19px; flex-shrink: 0; color: var(--spark); }
+.price-incl svg { width: 19px; height: 19px; flex-shrink: 0; color: var(--accent-text); }
 .price-incl p { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; margin: 0; }
 .price-incl strong {
   font-family: var(--f-mono);
   font-size: 11px; font-weight: 500;
   letter-spacing: .18em; text-transform: uppercase;
-  color: var(--cyan);
+  color: var(--ink);
 }
 .price-incl span { font-size: 15px; color: var(--soft); }
 
@@ -810,15 +805,9 @@ body.ready .hero-cue { opacity: 1; }
    surface. Deliberately quiet: it should read as the card the eye lands on
    first, not as a sales ribbon shouting over the price. */
 .price--pick {
-  border-color: rgba(31,205,237,.4);
-  background:
-    linear-gradient(180deg, rgba(31,205,237,.055) 0%, rgba(31,205,237,0) 34%),
-    linear-gradient(180deg, rgba(238,244,255,.035) 0%, rgba(238,244,255,0) 42%),
-    #0a0f18;
-  box-shadow:
-    0 1px 2px rgba(0,0,0,.22),
-    0 8px 26px rgba(0,0,0,.3),
-    0 0 34px -8px rgba(31,205,237,.3);
+  /* the chosen card is told apart by one solid signal edge, not a glow */
+  border: 2px solid var(--cyan);
+  background: var(--surface);
 }
 .price--pick .glow-in { padding-top: 40px; }
 .price-flag {
@@ -828,22 +817,21 @@ body.ready .hero-cue { opacity: 1; }
   transform: translateY(-50%);
   display: inline-flex; align-items: center; gap: 7px;
   padding: 6px 13px;
-  border: 1px solid rgba(31,205,237,.36);
+  border: 1px solid var(--cyan);
   border-radius: 999px;
-  background: #0b1220;
+  background: var(--cyan);
   font-family: var(--f-mono);
   font-size: 10.5px; font-weight: 500;
   letter-spacing: .17em; text-transform: uppercase;
-  color: var(--cyan);
+  color: var(--btn-ink);
   white-space: nowrap;
 }
 .price-flag::before {
   content: '';
   width: 5px; height: 5px; border-radius: 50%;
-  background: var(--spark);
-  box-shadow: 0 0 7px rgba(54,240,214,.8);
+  background: var(--btn-ink);
 }
-.price-tier { font-family: var(--f-mono); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--cyan); }
+.price-tier { font-family: var(--f-mono); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); }
 .price-name {
   margin: 12px 0 8px;
   font-family: var(--f-display);
@@ -858,12 +846,12 @@ body.ready .hero-cue { opacity: 1; }
   font-size: clamp(2.5rem, 3.2vw, 3.2rem);
   line-height: 1; letter-spacing: -0.03em;
 }
-.price-amount .num--lead { background: var(--grad-ink); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.price-amount .num--lead { color: var(--accent-text); }
 .price-amount .num--sm { font-size: clamp(1.7rem, 2.2vw, 2.1rem); }
 .price-amount .from, .price-amount .cur, .price-amount .per { font-size: 15px; color: var(--soft); }
 .feats { margin-bottom: var(--s2); display: flex; flex-direction: column; gap: 13px; }
 .feats li { position: relative; padding-left: 21px; font-size: 16px; line-height: 1.5; color: var(--ink); }
-.feats li::before { content: ''; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: rgba(31,205,237,.6); }
+.feats li::before { content: ''; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--faint); }
 .price .btn { margin-top: auto; align-self: flex-start; }
 .price-note { margin-top: var(--s3); font-size: 13px; color: var(--faint); }
 
@@ -883,7 +871,7 @@ body.ready .hero-cue { opacity: 1; }
 .steps-line i {
   position: absolute; inset: 0;
   border-radius: 2px;
-  background: linear-gradient(180deg, var(--iris-hi) 0%, var(--blue) 42%, var(--cyan) 76%, var(--spark) 100%);
+  background: var(--cyan);
   transform: scaleY(var(--p, 0));
   transform-origin: top center;
   will-change: transform;
@@ -895,7 +883,7 @@ body.ready .hero-cue { opacity: 1; }
   position: relative;
   display: flex; align-items: center; justify-content: center;
   width: 52px; height: 52px; border-radius: 50%;
-  background: #080d15;
+  background: var(--surface);
   box-shadow: inset 0 0 0 1px var(--hair);
   transform: scale(.93);
   transition: transform .5s var(--e-spring), box-shadow .5s var(--e-out);
@@ -903,9 +891,8 @@ body.ready .hero-cue { opacity: 1; }
 .step.on .step-mark {
   transform: scale(1);
   box-shadow:
-    inset 0 0 0 1.5px rgba(31,205,237,.6),
-    0 0 0 6px rgba(31,205,237,.06),
-    0 0 26px rgba(31,205,237,.2);
+    inset 0 0 0 2px var(--cyan),
+    0 0 0 6px rgba(31,205,237,.08);
 }
 /* a single ping on activation — physics, not decoration */
 .step-mark::after {
@@ -988,7 +975,7 @@ body.ready .hero-cue { opacity: 1; }
   width: 14px; height: 1.5px;
   margin: -.75px 0 0 -7px;
   border-radius: 2px;
-  background: var(--cyan);
+  background: var(--accent-text);
   transition: transform .3s var(--e-out), opacity .3s var(--e-out);
 }
 .faq-item summary i::after { transform: rotate(90deg); }
@@ -1013,13 +1000,13 @@ body.ready .hero-cue { opacity: 1; }
   max-width: 300px;
   border-radius: 16px;
   overflow: hidden;
-  background: radial-gradient(circle at 50% 30%, #0e1626, #080d16);
+  background: var(--surface-2);
 }
 .person-photo { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
 .person-photo--headshot { object-position: 50% 0%; }
 .person-fallback { display: none; position: absolute; inset: 0; align-items: center; justify-content: center; color: rgba(122,156,192,.4); }
 .person-fallback svg { width: 70px; height: 70px; }
-.person-role { display: block; margin-top: var(--s1); font-family: var(--f-mono); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--spark); }
+.person-role { display: block; margin-top: var(--s1); font-family: var(--f-mono); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); }
 .person-name {
   margin-top: 9px;
   font-family: var(--f-display);
@@ -1029,7 +1016,7 @@ body.ready .hero-cue { opacity: 1; }
 .person-bio { margin-top: 12px; color: var(--soft); font-size: 16px; }
 .person-links { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; }
 .person-links a { font-size: 14px; font-weight: 400; color: var(--dim); align-self: flex-start; transition: color .25s var(--e-out); }
-.person-links a:hover { color: var(--spark); }
+.person-links a:hover { color: var(--cyan); }
 .person-skills { margin-top: 15px; font-family: var(--f-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
 
 /* ── Contact ──────────────────────────────────── */
@@ -1037,7 +1024,7 @@ body.ready .hero-cue { opacity: 1; }
 .ci { margin-bottom: var(--s2); }
 .ci-label { display: block; margin-bottom: 9px; font-family: var(--f-mono); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); }
 .ci-val { font-size: clamp(1.15rem, 1.7vw, 1.45rem); font-weight: 200; transition: color .25s var(--e-out); }
-a.ci-val:hover { color: var(--spark); }
+a.ci-val:hover { color: var(--cyan); }
 .form-shell { --radius: 24px; }
 .form-shell .glow-in { padding: 32px 30px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s2); }
@@ -1051,14 +1038,14 @@ a.ci-val:hover { color: var(--spark); }
   transition: border-color .25s var(--e-out);
 }
 .fg input::placeholder, .fg textarea::placeholder { color: var(--faint); }
-.fg input:focus, .fg select:focus, .fg textarea:focus { outline: 0; border-bottom-color: var(--spark); }
+.fg input:focus, .fg select:focus, .fg textarea:focus { outline: 0; border-bottom-color: var(--cyan); }
 .fg textarea { resize: vertical; min-height: 92px; }
 .fg select {
   appearance: none; -webkit-appearance: none; cursor: pointer;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%237a9cc0' stroke-width='1.5' stroke-linecap='round'/></svg>");
   background-repeat: no-repeat; background-position: right 4px center; padding-right: 28px;
 }
-.fg select option { background: #0a0f18; color: var(--ink); }
+.fg select option { background: var(--surface); color: var(--ink); }
 .fg.invalid input, .fg.invalid textarea, .fg.invalid select { border-bottom-color: #ff6b6b; }
 
 /* ── Consent ──────────────────────────────────
@@ -1101,7 +1088,7 @@ a.ci-val:hover { color: var(--spark); }
   border-radius: 6px;
   background: rgba(238,244,255,.03);
   display: flex; align-items: center; justify-content: center;
-  color: #06090f;
+  color: var(--void);
   transition: background .22s var(--e-out), border-color .22s var(--e-out), transform var(--t-press) ease-out;
 }
 .consent-box svg { width: 14px; height: 14px; opacity: 0; transform: scale(.6); transition: opacity .18s ease-out, transform .3s var(--e-spring); }
@@ -1188,8 +1175,8 @@ a.ci-val:hover { color: var(--spark); }
   font-variation-settings: 'wdth' 122, 'wght' 500;
   font-size: clamp(3.4rem, 15vw, 12.5rem);
   line-height: .85; letter-spacing: -0.045em; white-space: nowrap;
-  background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
-  opacity: .2;
+  /* the name returns at full width as a tone step, not a glow */
+  color: var(--surface-2);
 }
 .footer-bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; color: var(--faint); }
 .footer-legal-links { display: flex; align-items: center; gap: 8px 22px; flex-wrap: wrap; margin-right: auto; }
@@ -1221,6 +1208,33 @@ body.intro-skip .nav {
   transition-delay: 0s !important;
   transition-duration: .2s !important;
 }
+
+/* ── Light chapters ───────────────────────────
+   Pricing and the FAQ turn the page to a cool light grey with a hard cut at
+   the section edges: the datasheet pages of the instrument. Everything inside
+   draws from the same tokens, so redefining them here re-colours the whole
+   section. The signal stays the same cyan on buttons; as text it darkens to
+   a teal that reads on the light ground (4.9:1). */
+.chapter-light {
+  --void:    #eceef0;
+  --surface: #f8f9fa;
+  --surface-2: #e1e4e7;
+  --ink:   #0f1113;
+  --soft:  #343a40;
+  --dim:   #59616a;
+  --faint: #737b83;
+  --hair:  rgba(15,17,19,.12);
+  --hair-2:rgba(15,17,19,.24);
+  --accent-text: #087286;
+  background: var(--void);
+  color: var(--ink);
+}
+.chapter-light .glow-edge { display: none; }
+.chapter-light .glow::before { opacity: 0; }
+.chapter-light .price--pick { border-color: var(--ink); }
+.chapter-light .price-flag { background: var(--ink); border-color: var(--ink); color: var(--void); }
+.chapter-light .price-flag::before { background: var(--cyan); }
+.chapter-light ::selection { background: rgba(8,114,134,.25); color: var(--ink); }
 
 /* ── Logo splash ──────────────────────────────
    Shown only when <head> has put `splash-on` on <html> (first page of a
@@ -1367,7 +1381,7 @@ body.no-scroll .cc.on { transform: translate3d(-50%, calc(100% + 24px), 0); }
   padding: 18px 22px;
   border: 1px solid var(--hair-2);
   border-radius: 18px;
-  background: #0a0f18;
+  background: var(--surface);
   box-shadow: 0 2px 8px rgba(0,0,0,.4), 0 18px 50px -12px rgba(0,0,0,.75);
 }
 .cc-copy strong {
@@ -1443,11 +1457,11 @@ body.no-scroll .cc.on { transform: translate3d(-50%, calc(100% + 24px), 0); }
      the top open so the effect is still the first thing you see. */
   .hero-scrim {
     background: linear-gradient(180deg,
-      rgba(4,6,20,.42) 0%,
-      rgba(4,6,20,.74) 26%,
-      rgba(4,6,20,.76) 70%,
-      rgba(6,9,15,.88) 90%,
-      #06090f 100%);
+      rgba(13,14,16,.42) 0%,
+      rgba(13,14,16,.74) 26%,
+      rgba(13,14,16,.76) 70%,
+      rgba(13,14,16,.88) 90%,
+      #0d0e10 100%);
   }
   .nav-inner { height: 66px; gap: 16px; }
   .nav-cta { display: none; }
@@ -1462,7 +1476,7 @@ body.no-scroll .cc.on { transform: translate3d(-50%, calc(100% + 24px), 0); }
     display: flex;
     flex-direction: column; align-items: center; justify-content: center;
     gap: 0; margin: 0;
-    background: #06090f;            /* fully opaque: the hero behind it is bright */
+    background: var(--void);        /* fully opaque: the hero behind it is bright */
     opacity: 0;
     visibility: hidden;
     transition: opacity .28s var(--e-out), visibility 0s linear .28s;

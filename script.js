@@ -1100,7 +1100,7 @@ function bootLightfall() {
 
   const staticWash = () => {
     cv.style.background =
-      'radial-gradient(70% 60% at 50% 0%, #3348ff 0%, #241a9e 42%, #0a0f2e 100%)';
+      'radial-gradient(70% 60% at 50% 0%, #11505c 0%, #0c2a31 42%, #0d0e10 100%)';
   };
   /* ?lightfall=off renders the static wash instead — useful for comparing the
      two on real hardware without a redeploy. */
@@ -1235,15 +1235,17 @@ function bootLightfall() {
   const U = n => gl.getUniformLocation(prog, n);
   const hex = h => [parseInt(h.slice(1, 3), 16) / 255, parseInt(h.slice(3, 5), 16) / 255, parseInt(h.slice(5, 7), 16) / 255];
 
-  /* props exactly as given in the reference usage */
-  const COLORS = ['#A6C8FF', '#5227FF', '#FF9FFC'];
+  /* The reference props, recoloured to the mark: ice, signal cyan and the
+     mark's green instead of the component's stock violet and pink, over a
+     deep teal glow instead of electric blue. */
+  const COLORS = ['#DDF6FB', '#1FCDED', '#3EDC97'];
   const rgb = COLORS.map(hex);
   const avg = rgb.reduce((a, c) => [a[0] + c[0] / 3, a[1] + c[1] / 3, a[2] + c[2] / 3], [0, 0, 0]);
   gl.uniform3fv(U('uColor0'), rgb[0]);
   gl.uniform3fv(U('uColor1'), rgb[1]);
   gl.uniform3fv(U('uColor2'), rgb[2]);
   gl.uniform1i(U('uColorCount'), 3);
-  gl.uniform3fv(U('uBgColor'), hex('#0A29FF'));
+  gl.uniform3fv(U('uBgColor'), hex('#0B5260'));
   gl.uniform3fv(U('uMouseColor'), avg);
   gl.uniform1f(U('uSpeed'), 1.0);
   gl.uniform1i(U('uStreakCount'), TIER === 2 ? 8 : 4);
@@ -1317,7 +1319,7 @@ function bootLightfall() {
    thing once the browser has drawn and is idle. */
 (function () {
   const cv = document.getElementById('lightfall');
-  if (cv) cv.style.background = 'radial-gradient(70% 60% at 50% 0%, #3348ff 0%, #241a9e 42%, #0a0f2e 100%)';
+  if (cv) cv.style.background = 'radial-gradient(70% 60% at 50% 0%, #11505c 0%, #0c2a31 42%, #0d0e10 100%)';
   /* Idle, not just post-load: firing straight after `load` simply moved the
      100ms compile on top of largest-contentful-paint instead of first paint.
      The timeout is short, though — the headline now waits on this shader, and
