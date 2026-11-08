@@ -403,18 +403,10 @@ body.nav-in .nav { opacity: 1; }
 .hero-copy .lede { margin-top: var(--s1); }
 .row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: var(--s2); }
 
-.hero-copy > * {
-  opacity: 0;
-  transform: translate3d(0, 22px, 0);
-  /* trimmed from .7s: this now runs at the end of a sequence rather than at
-     page load, so every millisecond here is added to the wait before the
-     primary button is legible */
-  transition: opacity .5s var(--e-out), transform .55s var(--e-spring);
-}
-body.ready .hero-copy > * { opacity: 1; transform: none; }
-body.ready .hero-copy > :nth-child(2) { transition-delay: .06s; }
-body.ready .hero-copy > :nth-child(3) { transition-delay: .12s; }
-body.ready .hero-copy > :nth-child(4) { transition-delay: .18s; }
+/* The hero copy is on screen from the first frame. It is the page's largest
+   text (the LCP element) and the reason anyone came, so it no longer waits
+   for the intro: the motion lives in the streaks and the logo splash. */
+.hero-copy > * { opacity: 1; transform: none; }
 
 .hero-cue {
   z-index: 2;
@@ -761,6 +753,9 @@ body.ready .hero-cue { opacity: 1; }
   /* live = running: the mark's green, no glow */
 }
 .ref--live { border-color: rgba(53,214,232,.26); }
+/* a concept is a sample, not a client: same pill, no signal colour */
+.ref-badge--concept { border-color: rgba(238,244,255,.2); background: transparent; color: var(--dim); }
+.ref-badge--concept::before { background: var(--dim); }
 @media (hover: hover) { .ref:hover { transform: translate3d(0,-5px,0); } }
 .ref-more { margin-top: var(--s2); }
 
@@ -850,6 +845,8 @@ body.ready .hero-cue { opacity: 1; }
 .feats li::before { content: ''; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--faint); }
 .price .btn { margin-top: auto; align-self: flex-start; }
 .price-note { margin-top: var(--s3); font-size: 13px; color: var(--faint); }
+.price-more a { color: var(--accent-text); text-decoration: underline; text-underline-offset: 3px; }
+.price-more a:hover { color: var(--ink); }
 
 /* ── Process ──────────────────────────────────
    A timeline whose rail fills in lockstep with the scroll — the fill is
@@ -1132,7 +1129,7 @@ a.ci-val:hover { color: var(--cyan); }
    one arrives rather than needing a rewrite. 44px target, hairline top-edge
    light, and the same 160ms press feedback the buttons use. */
 .footer-social { margin-top: 24px; }
-.footer-social h5 {
+.footer-social .footer-title {
   margin-bottom: 11px;
   font-family: var(--f-mono); font-size: 11px; font-weight: 500;
   letter-spacing: .2em; text-transform: uppercase; color: var(--dim);
@@ -1161,7 +1158,7 @@ a.ci-val:hover { color: var(--cyan); }
 .social-link:active { transform: scale(.97); }
 
 .footer-nav { display: flex; gap: clamp(40px,6vw,88px); }
-.footer-col h5 { margin-bottom: 18px; font-family: var(--f-mono); font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); }
+.footer-col .footer-title { margin-bottom: 18px; font-family: var(--f-mono); font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); }
 .footer-col a { display: block; margin-bottom: 12px; font-size: 14px; font-weight: 400; color: var(--soft); transition: color .25s var(--e-out); }
 .footer-col a:hover { color: var(--ink); }
 .footer-mark { overflow: hidden; margin: clamp(56px,7vw,100px) 0 24px; }
@@ -1239,13 +1236,16 @@ body.intro-skip .nav {
    into the hero while the lockup travels into the nav. If script.js never
    runs, the failsafe animation takes the overlay away on its own. */
 .splash { display: none; }
+/* The lockup draws in the empty band under the bar, above the headline, so
+   the hero copy stays readable the whole time; the ground is see-through. */
 html.splash-on .splash {
   display: flex;
   position: fixed;
   inset: 0;
   z-index: 1000;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding-top: max(84px, 11vh);
   pointer-events: none;
   animation: splash-failsafe .4s linear 7.5s forwards;
 }
@@ -1253,7 +1253,7 @@ html.splash-on .splash {
 .splash-ground {
   position: absolute;
   inset: 0;
-  background: #000;
+  background: transparent;
   transition: opacity 1.15s cubic-bezier(.65,0,.35,1) .1s;
 }
 .splash.clearing .splash-ground { opacity: 0; }

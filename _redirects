@@ -7,3 +7,39 @@
 # Cloudflare Pages nezná, proto tu není.
 /customer/instalater-voboril      https://instalatervoboril.cz/          301
 /customer/instalater-voboril/*    https://instalatervoboril.cz/:splat    301
+
+# Města bez vlastního lokálního obsahu jsou sloučená do rozcestníku /tvorba-webu/
+# (SEO audit 11/2026: 20 téměř shodných stránek = riziko doorway pages).
+# Soubory těchto stránek jsou smazané, takže se obyčejné 301 uplatní.
+/tvorba-webu/havirov      /tvorba-webu/    301
+/tvorba-webu/havirov/     /tvorba-webu/    301
+/tvorba-webu/frydek-mistek      /tvorba-webu/    301
+/tvorba-webu/frydek-mistek/     /tvorba-webu/    301
+/tvorba-webu/opava      /tvorba-webu/    301
+/tvorba-webu/opava/     /tvorba-webu/    301
+/tvorba-webu/orlova      /tvorba-webu/    301
+/tvorba-webu/orlova/     /tvorba-webu/    301
+/tvorba-webu/bohumin      /tvorba-webu/    301
+/tvorba-webu/bohumin/     /tvorba-webu/    301
+/tvorba-webu/jablunkov      /tvorba-webu/    301
+/tvorba-webu/jablunkov/     /tvorba-webu/    301
+/tvorba-webu/novy-jicin      /tvorba-webu/    301
+/tvorba-webu/novy-jicin/     /tvorba-webu/    301
+/tvorba-webu/koprivnice      /tvorba-webu/    301
+/tvorba-webu/koprivnice/     /tvorba-webu/    301
+/tvorba-webu/olomouc      /tvorba-webu/    301
+/tvorba-webu/olomouc/     /tvorba-webu/    301
+/tvorba-webu/prerov      /tvorba-webu/    301
+/tvorba-webu/prerov/     /tvorba-webu/    301
+/tvorba-webu/prostejov      /tvorba-webu/    301
+/tvorba-webu/prostejov/     /tvorba-webu/    301
+/tvorba-webu/zlin      /tvorba-webu/    301
+/tvorba-webu/zlin/     /tvorba-webu/    301
+/tvorba-webu/vsetin      /tvorba-webu/    301
+/tvorba-webu/vsetin/     /tvorba-webu/    301
+/tvorba-webu/kromeriz      /tvorba-webu/    301
+/tvorba-webu/kromeriz/     /tvorba-webu/    301
+/tvorba-webu/uherske-hradiste      /tvorba-webu/    301
+/tvorba-webu/uherske-hradiste/     /tvorba-webu/    301
+/tvorba-webu/sumperk      /tvorba-webu/    301
+/tvorba-webu/sumperk/     /tvorba-webu/    301

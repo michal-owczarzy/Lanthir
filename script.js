@@ -11,22 +11,22 @@ const T = {
     'nav.about':    'O nás',
     'nav.faq': 'FAQ',
     'faq.tag': 'Časté dotazy',
-    'faq.heading': 'Na co se ptáte<br><em>nejčastěji</em>',
+    'faq.heading': 'Na co se ptáte <br><em>nejčastěji</em>',
     'faq.1.q': 'Můžu si web ponechat v samosprávě?',
     'faq.1.a': 'Ano. K samosprávě je ovšem potřeba mít účet na GitHubu a také znalost Gitu a editace kódu. Celou námi naprogramovanou stránku vám rádi předáme.',
     'faq.2.q': 'Co když takové znalosti neovládám?',
     'faq.2.a': 'Pokud takové schopnosti nemáte, máme pro naše zákazníky vytvořenou interní aplikaci, ve které si zákazník může upravovat obrázky a texty bez jakékoliv interakce se zdrojovým kódem. Tato aplikace je hrazena formou předplatného.',
     'faq.3.q': 'Jak dlouho trvá webovou stránku nasadit?',
-    'faq.3.a': 'V Lanthiru vždy lpíme na individuálním zákaznickém přístupu, proto je to u každého zákazníka jiné a vždy záleží na komunikaci z jeho strany. Po technické stránce jsme schopni webovou stránku nasadit za dva dny.',
+    'faq.3.a': 'Běžný web dodáme do 14 dní od schválení návrhu. Nejvíc záleží na tom, jak rychle se domluvíme na textech a fotkách. Samotné technické nasazení hotového webu zvládneme za dva dny.',
     'faq.4.q': 'Co když mi webová stránka přestane fungovat? Pomůžete mi?',
     'faq.4.a': 'Přesně pro tento případ nabízíme podporu ve formě předplatného. Stránky ovšem nepadají ze dne na den, ale vždy tomu předchází déle trvající problém. Proto nabízíme i monitoring webových stránek. Náš monitoring dokáže výpadek predikovat tak, že jsme schopni mu zamezit. Pokud jej predikovat nedokážeme, umíme velmi efektivně zkrátit dobu prostoje, protože víme, kde chyba nastala.',
     'faq.5.q': 'Jsou vaše ceny pevně dané?',
-    'faq.5.a': 'Nejsou. Ceny jsou ovlivněny primárně časovou náročností tvorby webu a množstvím webů a balíčků, které si u nás zákazník objedná. Ceny jsou individuální, tudíž pro sjednání ceny pro váš web prosím kontaktujte našeho obchodního zástupce.',
+    'faq.5.a': 'Ano, pro rozsah vypsaný u každého balíčku. Ceny v ceníku jsou výchozí. Pokud potřebujete víc, třeba další podstránky, napojení na jiné systémy nebo texty, připravíme vám předem nabídku s konečnou cenou, takže víte, kolik zaplatíte, ještě než začneme.',
     'nav.contact':  'Kontakt',
     'nav.cta':      'Nezávazná poptávka',
 
     'hero.l1': 'My jsme <em>Lanthir</em>',
-    'hero.l2': 'Váš technologický partner pro růst a provoz firmy',
+    'hero.l2': 'Tvorba webových stránek na míru a jejich správa',
     'hero.sub': 'Navrhujeme webové stránky na míru a staráme se o jejich provoz. Webová aplikace, e-shop nebo rezervační systém — s SSL, hostingem, SEO optimalizací a monitoringem dostupnosti.',
     'hero.btn1':     'Zobrazit ceník',
     'hero.btn2':     'Nezávazná konzultace',
@@ -34,7 +34,7 @@ const T = {
     'hero.building': 'Váš web se připravuje...',
 
     'svc.tag': 'Co děláme',
-    'svc.heading': 'Naše<br><em>produkty</em>',
+    'svc.heading': 'Naše <br><em>produkty</em>',
     'svc.hint': 'Táhněte nebo rolujte',
     'svc.hint.touch': 'Klepněte pro výběr',
     'svc.sub':     'Tvorba webových stránek pro živnostníky i firmy — od jednoduché landing page po plnohodnotnou webovou aplikaci. Každý web dodáváme včetně domény, hostingu a SSL certifikátu.',
@@ -50,7 +50,7 @@ const T = {
     'svc.5.title': 'Webová aplikace',
     'svc.5.desc':  'Komplexní webová aplikace s přihlášením, databází a vlastní logikou. Portály, dashboardy, interní nástroje.',
     'svc.6.title': 'Redesign webu',
-    'svc.6.desc':  '',
+    'svc.6.desc':  'Současný web převedeme do moderní a rychlé podoby. Zachováme obsah i adresy stránek, aby web nepřišel o pozice ve vyhledávání.',
 
     'price.tag':      'Ceník',
     'price.heading': 'Ceny za <em>naše služby</em>',
@@ -130,7 +130,7 @@ const T = {
     'sub.3.f5': 'Prioritní SLA',
 
     'proc.tag':     'Jak pracujeme',
-    'proc.heading': 'Náš postup<br><em>se zákazníkem</em>',
+    'proc.heading': 'Náš postup <br><em>se zákazníkem</em>',
     'proc.sub':     'Transparentní proces od první schůzky po spuštění. Vždy víte, ve které fázi se projekt nachází.',
     'proc.1.title': 'Konzultace',
     'proc.1.desc':  'Poznáme vás, vaše cíle a potřeby. Bezplatná konzultace bez závazků — osobně nebo online.',
@@ -155,7 +155,7 @@ const T = {
     'wstat.4': 'Roky zkušeností',
 
     'about.tag':     'O nás',
-    'about.heading': 'Kdo stojí<br><em>za Lanthirem</em>',
+    'about.heading': 'Kdo stojí <br><em>za Lanthirem</em>',
     'about.1.role':  'Zakladatel &amp; CTO',
     'about.1.bio':   'Zakladatel Lanthiru se specializací na monitoring a DevOps. Navrhuje a vyvíjí technická řešení, která fungují spolehlivě a přinášejí klientům reálné výsledky.',
     'about.2.role':  'Head of Sales',
@@ -208,6 +208,8 @@ const T = {
     'about.2.alt':    'Mariusz Chmiel, Head of Sales v Lanthiru',
     'sticky.cta':     'Nezávazná poptávka',
     'footer.col1.h':  'Služby',
+    'footer.webdev':  'Tvorba webu',
+    'price.more':     'Jak tvorba webu probíhá a co je v ceně →',
     'footer.col2.h':  'Společnost',
     'form.err.name':  'Vyplňte prosím jméno.',
     'form.err.email': 'Zadejte platný e-mail.',
@@ -226,13 +228,14 @@ const T = {
     'fact.4.label': 'odpovídáme na poptávku do',
 
     'work.tag': 'Reference',
-    'work.heading': 'Naše <em>reference</em>',
-    'work.sub': 'Weby, které jsme vytvořili pro naše zákazníky. Klikněte a projděte si je jako skutečný web.',
+    'work.heading': 'Realizace <em>a návrhy</em>',
+    'work.sub': 'Štítek „Ostrý provoz“ mají weby, které už běží u klientů. „Návrh“ jsou ukázky, které jsme připravili pro místní firmy. Klikněte a projděte si je jako skutečný web.',
     'work.open': 'Otevřít živý web',
     'work.all':     'Zobrazit všechny ukázky',
     'work.1.ind':   'Restaurace',
     'work.7.ind':   'Instalatérství &amp; koupelny',
     'work.live':    'Ostrý provoz',
+    'work.concept': 'Návrh',
     'work.1.note':  'Denní menu · rezervace',
     'work.2.ind':   'Autoservis',
     'work.2.note':  'Služby · objednání',
@@ -253,22 +256,22 @@ const T = {
     'nav.about':    'About',
     'nav.faq': 'FAQ',
     'faq.tag': 'Frequently asked',
-    'faq.heading': 'What people ask<br><em>most often</em>',
+    'faq.heading': 'What people ask <br><em>most often</em>',
     'faq.1.q': 'Can I maintain the website myself?',
     'faq.1.a': 'Yes. Self-maintenance does require a GitHub account and a working knowledge of Git and editing code. We are happy to hand over the entire site we built for you.',
     'faq.2.q': 'What if I do not have those skills?',
     'faq.2.a': 'If you do not, we have built an in-house application for our clients where you can edit images and text without touching the source code at all. That application is billed as a subscription.',
     'faq.3.q': 'How long does it take to launch a website?',
-    'faq.3.a': 'At Lanthir we insist on an individual approach, so it differs for every client and always depends on how quickly we hear back from you. Technically we can have a site live in two days.',
+    'faq.3.a': 'A typical website is delivered within 14 days of approving the design. The biggest factor is how quickly we settle the texts and photos. The technical launch of a finished site takes us two days.',
     'faq.4.q': 'What if my website stops working? Will you help?',
     'faq.4.a': 'That is exactly what our subscription support is for. Websites rarely fail overnight, there is almost always a longer-running problem first. That is why we also offer website monitoring. Our monitoring can predict an outage in time for us to prevent it. Where we cannot predict it, we can cut the downtime sharply, because we already know where the fault is.',
     'faq.5.q': 'Are your prices fixed?',
-    'faq.5.a': 'No. Prices depend mainly on how much time the build takes and on how many sites and packages you order from us. They are individual, so to agree a price for your site, please contact our sales representative.',
+    'faq.5.a': 'Yes, for the scope listed in each package. The prices in the price list are starting prices. If you need more, such as extra subpages, integrations with other systems or copywriting, we prepare a quote with the final price up front, so you know what you will pay before we start.',
     'nav.contact':  'Contact',
     'nav.cta':      'Get a Quote',
 
     'hero.l1': 'We are <em>Lanthir</em>',
-    'hero.l2': 'Your technology partner for growth and operations',
+    'hero.l2': 'Custom website design and ongoing care',
     'hero.sub': 'We design custom websites and keep them running. A web application, e-shop or booking system — with SSL, hosting, SEO optimisation and uptime monitoring included.',
     'hero.btn1':     'View Pricing',
     'hero.btn2':     'Free Consultation',
@@ -276,7 +279,7 @@ const T = {
     'hero.building': 'Your website is being prepared...',
 
     'svc.tag': 'What we do',
-    'svc.heading': 'Our<br><em>products</em>',
+    'svc.heading': 'Our <br><em>products</em>',
     'svc.hint': 'Drag or scroll',
     'svc.hint.touch': 'Tap to choose',
     'svc.sub':     'Custom web development for freelancers and businesses — from a simple landing page to a full web application. Every website includes domain, hosting and SSL certificate.',
@@ -292,7 +295,7 @@ const T = {
     'svc.5.title': 'Web Application',
     'svc.5.desc':  'Complex web app with login, database and custom logic. Portals, dashboards, internal tools.',
     'svc.6.title': 'Website Redesign',
-    'svc.6.desc':  '',
+    'svc.6.desc':  'We rebuild your current website into a fast, modern one and keep its content and page addresses, so it does not lose its search rankings.',
 
     'price.tag':      'Pricing',
     'price.heading': 'Prices for <em>our services</em>',
@@ -372,7 +375,7 @@ const T = {
     'sub.3.f5': 'Priority SLA',
 
     'proc.tag':     'How We Work',
-    'proc.heading': 'How we work<br><em>with you</em>',
+    'proc.heading': 'How we work <br><em>with you</em>',
     'proc.sub':     'Transparent process from first meeting to launch. You always know which phase the project is in.',
     'proc.1.title': 'Consultation',
     'proc.1.desc':  'We get to know you, your goals and needs. Free consultation with no commitment — in person or online.',
@@ -397,7 +400,7 @@ const T = {
     'wstat.4': 'Years of experience',
 
     'about.tag':     'About Us',
-    'about.heading': 'Who is behind<br><em>Lanthir</em>',
+    'about.heading': 'Who is behind <br><em>Lanthir</em>',
     'about.1.role':  'Founder &amp; CTO',
     'about.1.bio':   'Founder of Lanthir, specialized in monitoring and DevOps. Designs and develops technical solutions that run reliably and deliver real results for clients.',
     'about.2.role':  'Head of Sales',
@@ -450,6 +453,8 @@ const T = {
     'about.2.alt':    'Mariusz Chmiel, Head of Sales at Lanthir',
     'sticky.cta':     'Get a free quote',
     'footer.col1.h':  'Services',
+    'footer.webdev':  'Website development',
+    'price.more':     'How a website build works and what is included →',
     'footer.col2.h':  'Company',
     'form.err.name':  'Please enter your name.',
     'form.err.email': 'Enter a valid email address.',
@@ -468,13 +473,14 @@ const T = {
     'fact.4.label': 'we reply to enquiries within',
 
     'work.tag': 'Selected work',
-    'work.heading': 'Our <em>references</em>',
-    'work.sub': 'Websites we have built for our clients. Click through and browse them as real sites.',
+    'work.heading': 'Work <em>and concepts</em>',
+    'work.sub': '“Live client” sites are already running for our clients. “Concept” tiles are samples we designed for local businesses. Click through and browse them as real sites.',
     'work.open': 'Open the live site',
     'work.all':     'View all work',
     'work.1.ind':   'Restaurant',
     'work.7.ind':   'Plumbing &amp; bathrooms',
     'work.live':    'Live client',
+    'work.concept': 'Concept',
     'work.1.note':  'Daily menu · reservations',
     'work.2.ind':   'Car Service',
     'work.2.note':  'Services · booking',
@@ -495,22 +501,22 @@ const T = {
     'nav.about':    'O nas',
     'nav.faq': 'FAQ',
     'faq.tag': 'Częste pytania',
-    'faq.heading': 'O co pytacie<br><em>najczęściej</em>',
+    'faq.heading': 'O co pytacie <br><em>najczęściej</em>',
     'faq.1.q': 'Czy mogę utrzymywać stronę samodzielnie?',
     'faq.1.a': 'Tak. Do samodzielnego utrzymania potrzebne jest jednak konto na GitHubie oraz znajomość Gita i edycji kodu. Całą stworzoną przez nas stronę chętnie przekażemy.',
     'faq.2.q': 'A jeśli nie mam takich umiejętności?',
     'faq.2.a': 'Jeśli ich nie masz, przygotowaliśmy dla naszych klientów wewnętrzną aplikację, w której można edytować zdjęcia i teksty bez żadnego kontaktu z kodem źródłowym. Aplikacja rozliczana jest w formie abonamentu.',
     'faq.3.q': 'Jak długo trwa wdrożenie strony?',
-    'faq.3.a': 'W Lanthirze zawsze stawiamy na indywidualne podejście, więc u każdego klienta wygląda to inaczej i zawsze zależy od komunikacji z jego strony. Od strony technicznej jesteśmy w stanie wdrożyć stronę w dwa dni.',
+    'faq.3.a': 'Typową stronę dostarczamy w ciągu 14 dni od zatwierdzenia projektu. Najwięcej zależy od tego, jak szybko uzgodnimy teksty i zdjęcia. Samo techniczne wdrożenie gotowej strony zajmuje nam dwa dni.',
     'faq.4.q': 'Co jeśli moja strona przestanie działać? Pomożecie?',
     'faq.4.a': 'Dokładnie na ten przypadek oferujemy wsparcie w formie abonamentu. Strony nie padają jednak z dnia na dzień, ale zawsze poprzedza to dłużej trwający problem. Dlatego oferujemy również monitoring stron. Nasz monitoring potrafi przewidzieć awarię na tyle wcześnie, że jesteśmy w stanie jej zapobiec. Jeśli nie uda się jej przewidzieć, potrafimy bardzo skutecznie skrócić czas przestoju, bo wiemy, gdzie wystąpił błąd.',
     'faq.5.q': 'Czy wasze ceny są sztywne?',
-    'faq.5.a': 'Nie. Ceny zależą przede wszystkim od czasochłonności realizacji oraz od liczby stron i pakietów zamówionych u nas. Są indywidualne, więc w celu ustalenia ceny dla Twojej strony prosimy o kontakt z naszym przedstawicielem handlowym.',
+    'faq.5.a': 'Tak, dla zakresu opisanego w każdym pakiecie. Ceny w cenniku są cenami początkowymi. Jeśli potrzebujesz więcej, na przykład dodatkowych podstron, integracji z innymi systemami lub tekstów, z góry przygotujemy ofertę z ceną końcową, więc wiesz, ile zapłacisz, zanim zaczniemy.',
     'nav.contact':  'Kontakt',
     'nav.cta':      'Bezpłatna wycena',
 
     'hero.l1': 'Jesteśmy <em>Lanthir</em>',
-    'hero.l2': 'Twój partner technologiczny dla wzrostu i utrzymania firmy',
+    'hero.l2': 'Strony internetowe na zamówienie i ich obsługa',
     'hero.sub': 'Projektujemy strony internetowe na zamówienie i dbamy o ich działanie. Aplikacja webowa, sklep lub system rezerwacji — z SSL, hostingiem, optymalizacją SEO i monitoringiem dostępności.',
     'hero.btn1':     'Zobacz cennik',
     'hero.btn2':     'Bezpłatna konsultacja',
@@ -518,7 +524,7 @@ const T = {
     'hero.building': 'Twoja strona jest przygotowywana...',
 
     'svc.tag': 'Co robimy',
-    'svc.heading': 'Nasze<br><em>produkty</em>',
+    'svc.heading': 'Nasze <br><em>produkty</em>',
     'svc.hint': 'Przeciągnij lub przewiń',
     'svc.hint.touch': 'Dotknij, aby wybrać',
     'svc.sub':     'Tworzenie stron internetowych dla freelancerów i firm — od prostej strony wizytówki po rozbudowaną aplikację webową. Każda strona zawiera domenę, hosting i certyfikat SSL.',
@@ -534,7 +540,7 @@ const T = {
     'svc.5.title': 'Aplikacja webowa',
     'svc.5.desc':  'Złożona aplikacja z logowaniem, bazą danych i własną logiką. Portale, dashboardy, narzędzia wewnętrzne.',
     'svc.6.title': 'Redesign strony',
-    'svc.6.desc':  '',
+    'svc.6.desc':  'Przebudujemy obecną stronę na nowoczesną i szybką. Zachowamy treści i adresy podstron, żeby strona nie straciła pozycji w wyszukiwarce.',
 
     'price.tag':      'Cennik',
     'price.heading': 'Ceny za <em>nasze usługi</em>',
@@ -614,7 +620,7 @@ const T = {
     'sub.3.f5': 'Priorytetowe SLA',
 
     'proc.tag':     'Jak pracujemy',
-    'proc.heading': 'Nasz proces<br><em>z klientem</em>',
+    'proc.heading': 'Nasz proces <br><em>z klientem</em>',
     'proc.sub':     'Transparentny proces od pierwszego spotkania do uruchomienia. Zawsze wiesz, w której fazie jest projekt.',
     'proc.1.title': 'Konsultacja',
     'proc.1.desc':  'Poznajemy Cię, Twoje cele i potrzeby. Bezpłatna konsultacja bez zobowiązań — osobiście lub online.',
@@ -639,7 +645,7 @@ const T = {
     'wstat.4': 'Lata doświadczenia',
 
     'about.tag':     'O nas',
-    'about.heading': 'Kto stoi<br><em>za Lanthirem</em>',
+    'about.heading': 'Kto stoi <br><em>za Lanthirem</em>',
     'about.1.role':  'Założyciel &amp; CTO',
     'about.1.bio':   'Założyciel Lanthira specjalizujący się w monitoringu i DevOps. Projektuje i wdraża rozwiązania techniczne, które działają niezawodnie i przynoszą klientom realne wyniki.',
     'about.2.role':  'Head of Sales',
@@ -692,6 +698,8 @@ const T = {
     'about.2.alt':    'Mariusz Chmiel, Head of Sales w Lanthirze',
     'sticky.cta':     'Bezpłatna wycena',
     'footer.col1.h':  'Usługi',
+    'footer.webdev':  'Tworzenie stron',
+    'price.more':     'Jak przebiega tworzenie strony i co jest w cenie →',
     'footer.col2.h':  'Firma',
     'form.err.name':  'Podaj proszę imię.',
     'form.err.email': 'Podaj poprawny adres e-mail.',
@@ -710,13 +718,14 @@ const T = {
     'fact.4.label': 'odpowiadamy na zapytania w',
 
     'work.tag': 'Realizacje',
-    'work.heading': 'Nasze <em>realizacje</em>',
-    'work.sub': 'Strony, które stworzyliśmy dla naszych klientów. Kliknij i przejrzyj je jak prawdziwe strony.',
+    'work.heading': 'Realizacje <em>i projekty</em>',
+    'work.sub': '„Klient na żywo” to strony, które już działają u klientów. „Projekt” to próbki, które przygotowaliśmy dla lokalnych firm. Kliknij i przejrzyj je jak prawdziwe strony.',
     'work.open': 'Otwórz żywą stronę',
     'work.all':     'Zobacz wszystkie realizacje',
     'work.1.ind':   'Restauracja',
     'work.7.ind':   'Hydraulika &amp; łazienki',
     'work.live':    'Klient na żywo',
+    'work.concept': 'Projekt',
     'work.1.note':  'Menu dnia · rezerwacje',
     'work.2.ind':   'Serwis samochodowy',
     'work.2.note':  'Usługi · umawianie',
@@ -781,11 +790,14 @@ const HERO_SETTLED = L2_START + INTRO.l2 + INTRO.char;
 const HERO_STEP = {
   l1: INTRO.hold,
   l2: L2_START,
-  copy: Math.max(INTRO.hold + 120, HERO_SETTLED - COPY_TAIL),
+  /* The headline and copy are static now (visible from the first frame), so
+     nothing waits for the old fold sequence: the cue and the bar follow the
+     backdrop's first frame. HERO_SETTLED and COPY_TAIL stay for reference. */
+  copy: INTRO.hold + 120,
   /* Touch gets the bar straight away. Holding it back on a phone meant the
      burger sat there looking like a control for three and a half seconds
      before it became one. */
-  nav:  SPLASH ? 520 : FINE ? Math.max(INTRO.hold + 260, HERO_SETTLED - COPY_TAIL + 260) : 0
+  nav:  SPLASH ? 520 : FINE ? INTRO.hold + 260 : 0
 };
 const heroWaiting = [];
 const onHeroReady = cb => (heroReady ? cb() : heroWaiting.push(cb));
@@ -872,7 +884,8 @@ const finishSplash = (() => {
 
   /* the lockup is a true multiple of the nav lockup, so the flight is one
      uniform scale and the type lands on the type */
-  lock.style.setProperty('--S', Math.max(1.6, Math.min(3.2, (innerWidth * 0.78) / 150)).toFixed(3));
+  /* capped at 2.4 so the lockup fits the band above the headline */
+  lock.style.setProperty('--S', Math.max(1.6, Math.min(2.4, (innerWidth * 0.78) / 150)).toFixed(3));
 
   /* underdamped spring 0 → 1, overshoot set by zeta */
   const spring = (t, z, w) => {
@@ -951,6 +964,9 @@ const finishSplash = (() => {
   const go = () => {
     if (started || !backdropUp || !fontIn) return;
     started = true;
+    /* the page is no longer under a black ground, so the hero (streaks, bar)
+       is released as the mark starts drawing rather than when it flies */
+    release();
     raf = requestAnimationFrame(draw);
   };
   splashGo = go;
@@ -1348,7 +1364,10 @@ function bootLightfall() {
    language change, which wipes the split — so this re-runs from applyLang.
 ══════════════════════════════════════════════ */
 (function () {
-  const heads = Array.from(document.querySelectorAll('.hero-l1, .hero-l2, .h2, .logo-text, .nav-links a:not(.m-cta)'));
+  /* The hero headline is not folded: it has to be legible from the first
+     frame (it sits right above the LCP paragraph), so only the section
+     headings, the logo text and the nav still fold in. */
+  const heads = Array.from(document.querySelectorAll('.h2, .logo-text, .nav-links a:not(.m-cta)'));
   if (!heads.length) return;
 
   /* Nav items are their own fold containers rather than one container round
