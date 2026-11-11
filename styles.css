@@ -95,18 +95,21 @@ body.no-scroll { overflow: hidden; }
 }
 .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 
-/* ── Lightfall canvas ─────────────────────────
-   Lives inside the hero, not behind the page: the effect carries a vivid
-   background of its own, which would fight the dark sections below. */
-#lightfall {
-  position: absolute;
+/* ── Gradient ASCII field ─────────────────────
+   Fixed behind the whole page; script.js moves its horizon with the scroll.
+   Content sits above it (main, nav and footer are z-index 2); the light
+   chapters cover it with their own ground. With reduced motion it is a
+   still background of the hero only. */
+.ascii-bg {
+  position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100%;
   z-index: 0;
   pointer-events: none;
-  display: block;
 }
+.ascii-bg.is-still { position: absolute; bottom: auto; height: 100vh; height: 100svh; }
+.ascii-canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+/* no WebGL2 (or no GPU): a still wash behind the first screen */
+html.ascii-off .hero { background: radial-gradient(70% 60% at 50% 0%, #11505c 0%, #0c2a31 42%, #0d0e10 100%); }
 .hero-scrim {
   position: absolute;
   inset: 0;
@@ -387,6 +390,17 @@ body.nav-in .nav { opacity: 1; }
 .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .burger.open span:nth-child(2) { opacity: 0; }
 .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Eight links, the language switch and the action only fit on one row from
+   about 1200px. Below that (and above the burger) the two links that only
+   jump within the page step aside; the burger menu and the footer still
+   list them. */
+.nav-links a, .nav-cta { white-space: nowrap; }
+@media (min-width: 881px) and (max-width: 1199px) {
+  .nav-links .nav-opt { display: none; }
+  .nav-inner { gap: 24px; }
+  .nav-links { gap: 20px; }
+}
 
 /* ── Hero ─────────────────────────────────────── */
 .hero {
@@ -1171,6 +1185,21 @@ a.ci-val:hover { color: var(--cyan); }
   /* the name returns at full width as a tone step, not a glow */
   color: var(--surface-2);
 }
+/* The legal line stands on ground: a full-width band of the page's own
+   colour, so the closing sky (ascii.js) glows between the name and this
+   band and never sits under the small print. */
+.footer-bar { position: relative; isolation: isolate; }
+.footer-bar::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -16px;
+  bottom: -24px;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: var(--void);
+}
 .footer-bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; color: var(--faint); }
 .footer-legal-links { display: flex; align-items: center; gap: 8px 22px; flex-wrap: wrap; margin-right: auto; }
 .footer-legal-links a, .footer-legal-links .cc-reopen {
@@ -1300,8 +1329,8 @@ html.splash-on .nav-logo .fold-c { transition: none !important; }
 /* The hero is received rather than switched on: under the black ground the
    streaks sit slightly zoomed and settle as the ground dissolves. Transform
    only, so it runs on the compositor alongside the flight. */
-#lightfall { transition: transform 1.9s cubic-bezier(.16,1,.3,1); }
-html.splash-on:not(.splash-clearing) #lightfall { transform: scale(1.07); }
+#asciiBg { transition: transform 1.9s cubic-bezier(.16,1,.3,1); }
+html.splash-on:not(.splash-clearing) #asciiBg { transform: scale(1.07); }
 
 /* ── Sticky mobile CTA ────────────────────────
    Desktop keeps its header button, so this is phone-only. It sits above the

@@ -222,6 +222,36 @@ const T = {
     'footer.copy':    '© 2026 Lanthir. Všechna práva vyhrazena.',
 
     'nav.work': 'Reference',
+    'nav.obs': "Observabilita",
+    'form.bundle.grp3': "── Samostatná služba ──",
+    'form.bundle.opt7': "Observabilita na míru",
+    'obs.tag': "Observabilita",
+    'obs.h': "Observabilita<br><em>na míru</em>",
+    'obs.sub': "Samostatná služba, nezávislá na tvorbě webu. Napojíme cokoliv, co u vás běží, a postavíme nad tím dashboardy a upozornění. O problému se dozvíme dřív než vaši zákazníci a víme, kde ho hledat.",
+    'obs.p1h': "Sběr odkudkoliv",
+    'obs.p1': "Servery, síť, cloud, kontejnery, aplikace i výrobní a IoT zařízení. Agenti, SNMP, API, OpenTelemetry, logy.",
+    'obs.p2h': "Dashboardy na míru",
+    'obs.p2': "Technik vidí detail každé služby, vedení stav celé firmy na jeden pohled.",
+    'obs.p3h': "Upozornění a eskalace",
+    'obs.p3': "Když se něco blíží hranici, víme o tom první. Reakční dobu si domluvíme ve smlouvě.",
+    'obs.cta': "Probrat observabilitu",
+    'obs.note': "Cenu připravíme na míru po konzultaci, která je zdarma.",
+    'obs.db.h': "Takhle může vypadat váš dashboard",
+    'obs.db.sub': "Každý dashboard navrhujeme na míru. Technik v něm vidí detail každé služby, vedení stav celé firmy na jeden pohled. Najeďte na kterýkoliv uzel v mapě.",
+    'obs.db.env': "Produkce · 13 služeb",
+    'obs.db.live': "Živě",
+    'obs.db.sample': "Ukázková data",
+    'obs.db.map': "Mapa služeb",
+    'obs.db.k1': "Dostupnost · 30 dní",
+    'obs.db.k2': "Latence p95",
+    'obs.db.k3': "Chybovost",
+    'obs.db.k4': "Provoz",
+    'obs.db.chart': "Provoz v reálném čase · Gb/s",
+    'obs.db.logs': "Živé logy",
+    'obs.db.heat': "Latence podle služeb · posledních 48 minut",
+    'obs.db.slo': "Spolehlivost (SLO 99,9 %)",
+    'obs.db.budget': "Zbývá 71 % rozpočtu chyb na tento měsíc",
+    'obs.db.alert': "Disk /data se zaplní zhruba za 6 dní. Navrhujeme rozšířit svazek do pátku.",
     'fact.1.unit':  'dní',
     'fact.1.label': 'průměrné dodání webu',
     'fact.2.label': 'web na míru už od',
@@ -470,6 +500,36 @@ const T = {
     'footer.copy':    '© 2026 Lanthir. All rights reserved.',
 
     'nav.work': 'Work',
+    'nav.obs': "Observability",
+    'form.bundle.grp3': "── Separate service ──",
+    'form.bundle.opt7': "Custom observability",
+    'obs.tag': "Observability",
+    'obs.h': "Observability<br><em>built to measure</em>",
+    'obs.sub': "A service of its own, independent of web development. We connect anything you run and build dashboards and alerts on top of it. We hear about a problem before your customers do, and we know where to look.",
+    'obs.p1h': "Collection from anywhere",
+    'obs.p1': "Servers, network, cloud, containers, applications, production and IoT devices. Agents, SNMP, APIs, OpenTelemetry, logs.",
+    'obs.p2h': "Dashboards built for you",
+    'obs.p2': "Engineers see the detail of every service, management sees the whole company at a glance.",
+    'obs.p3h': "Alerts and escalation",
+    'obs.p3': "When something nears its limit, we know first. Response times are agreed in the contract.",
+    'obs.cta': "Talk about observability",
+    'obs.note': "We price it to measure after a free consultation.",
+    'obs.db.h': "This is what your dashboard could look like",
+    'obs.db.sub': "Every dashboard is designed for you. Engineers see the detail of every service, management sees the state of the whole company at a glance. Hover over any node on the map.",
+    'obs.db.env': "Production · 13 services",
+    'obs.db.live': "Live",
+    'obs.db.sample': "Sample data",
+    'obs.db.map': "Service map",
+    'obs.db.k1': "Uptime · 30 days",
+    'obs.db.k2': "Latency p95",
+    'obs.db.k3': "Error rate",
+    'obs.db.k4': "Traffic",
+    'obs.db.chart': "Live traffic · Gb/s",
+    'obs.db.logs': "Live logs",
+    'obs.db.heat': "Latency by service · last 48 minutes",
+    'obs.db.slo': "Reliability (SLO 99.9 %)",
+    'obs.db.budget': "71 % of this month’s error budget left",
+    'obs.db.alert': "Disk /data will be full in about 6 days. We suggest growing the volume by Friday.",
     'fact.1.unit':  'days',
     'fact.1.label': 'average website delivery',
     'fact.2.label': 'custom website from',
@@ -718,6 +778,36 @@ const T = {
     'footer.copy':    '© 2026 Lanthir. Wszelkie prawa zastrzeżone.',
 
     'nav.work': 'Realizacje',
+    'nav.obs': "Obserwowalność",
+    'form.bundle.grp3': "── Osobna usługa ──",
+    'form.bundle.opt7': "Obserwowalność na miarę",
+    'obs.tag': "Obserwowalność",
+    'obs.h': "Obserwowalność<br><em>na miarę</em>",
+    'obs.sub': "Osobna usługa, niezależna od tworzenia stron. Podłączymy wszystko, co u Ciebie działa, i zbudujemy na tym pulpity i alerty. O problemie dowiadujemy się przed Twoimi klientami i wiemy, gdzie go szukać.",
+    'obs.p1h': "Zbieranie skądkolwiek",
+    'obs.p1': "Serwery, sieć, chmura, kontenery, aplikacje oraz urządzenia produkcyjne i IoT. Agenci, SNMP, API, OpenTelemetry, logi.",
+    'obs.p2h': "Pulpity na miarę",
+    'obs.p2': "Technik widzi szczegóły każdej usługi, zarząd stan całej firmy na jeden rzut oka.",
+    'obs.p3h': "Alerty i eskalacja",
+    'obs.p3': "Gdy coś zbliża się do progu, wiemy o tym pierwsi. Czas reakcji ustalamy w umowie.",
+    'obs.cta': "Porozmawiajmy o obserwowalności",
+    'obs.note': "Cenę przygotujemy na miarę po bezpłatnej konsultacji.",
+    'obs.db.h': "Tak może wyglądać Twój pulpit",
+    'obs.db.sub': "Każdy pulpit projektujemy na miarę. Technik widzi szczegóły każdej usługi, zarząd stan całej firmy na jeden rzut oka. Najedź na dowolny węzeł na mapie.",
+    'obs.db.env': "Produkcja · 13 usług",
+    'obs.db.live': "Na żywo",
+    'obs.db.sample': "Dane przykładowe",
+    'obs.db.map': "Mapa usług",
+    'obs.db.k1': "Dostępność · 30 dni",
+    'obs.db.k2': "Opóźnienie p95",
+    'obs.db.k3': "Odsetek błędów",
+    'obs.db.k4': "Ruch",
+    'obs.db.chart': "Ruch na żywo · Gb/s",
+    'obs.db.logs': "Logi na żywo",
+    'obs.db.heat': "Opóźnienie wg usług · ostatnie 48 minut",
+    'obs.db.slo': "Niezawodność (SLO 99,9 %)",
+    'obs.db.budget': "Zostało 71 % budżetu błędów na ten miesiąc",
+    'obs.db.alert': "Dysk /data zapełni się za około 6 dni. Proponujemy powiększyć wolumen do piątku.",
     'fact.1.unit':  'dni',
     'fact.1.label': 'średni czas realizacji strony',
     'fact.2.label': 'strona na zamówienie już od',
@@ -1049,6 +1139,7 @@ function applyLang(lang) {
   if (window.__wheelSync) window.__wheelSync();
   /* innerHTML above just destroyed every split heading — rebuild them */
   if (window.__foldSync) window.__foldSync();
+  if (window.__pageSync) window.__pageSync(lang);
 }
 document.querySelectorAll('.ls-btn').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
 
@@ -1112,259 +1203,102 @@ if (RM) document.body.classList.add('ready');
 if (RM) document.body.classList.add('nav-in');
 
 /* ══════════════════════════════════════════════
-   LIGHTFALL — the React Bits component, ported to raw WebGL
-   Same fragment shader; no `ogl`, since this project has no bundler.
-   Props match the reference usage exactly.
+   GRADIENT ASCII — the page's horizon (ascii.js)
+   One fixed field behind the whole page, in the mark's colours. The page
+   reads as a descent and a return:
+     · at the top you look at the sky: the full field, the horizon low;
+     · scrolling into the content the horizon rises and the page drops below
+       it — behind the reading there is only dark ground, with the horizon's
+       glow left at the top edge;
+     · at the footer the horizon comes back down and the sky opens again
+       behind the closing name.
+   The light chapters (pricing, FAQ) pass over it like paper pages. The
+   field holds its first frame under the logo splash and plays its own
+   reveal as the black ground dissolves. With reduced motion it is a still
+   hero background; on weak or GPU-less devices, a static wash.
 ══════════════════════════════════════════════ */
-function bootLightfall() {
-  const cv = document.getElementById('lightfall');
-  if (!cv) return;
-
-  const staticWash = () => {
-    cv.style.background =
-      'radial-gradient(70% 60% at 50% 0%, #11505c 0%, #0c2a31 42%, #0d0e10 100%)';
-  };
-  /* ?lightfall=off renders the static wash instead — useful for comparing the
-     two on real hardware without a redeploy. */
-  const forced = new URLSearchParams(location.search).get('lightfall');
-  if (forced === 'off' || TIER === 0 || RM) { staticWash(); markHeroReady(); return; }
-
-  /* failIfMajorPerformanceCaveat: with no real GPU (software GL such as
-     SwiftShader on a blocklisted driver, or a lab machine) the raymarch runs on
-     the CPU and eats the main thread for the life of the page. Those devices
-     get the static wash instead. */
-  const gl = cv.getContext('webgl', { alpha: true, antialias: true, premultipliedAlpha: false, failIfMajorPerformanceCaveat: true });
-  if (!gl) { staticWash(); markHeroReady(); return; }
-
-  const VERT = [
-    'attribute vec2 position;',
-    'void main() { gl_Position = vec4(position, 0.0, 1.0); }'
-  ].join('\n');
-
-  const FRAG = [
-    'precision highp float;',
-    'uniform vec3  iResolution;',
-    'uniform vec2  iMouse;',
-    'uniform float iTime;',
-    'uniform vec3  uColor0; uniform vec3 uColor1; uniform vec3 uColor2;',
-    'uniform int   uColorCount;',
-    'uniform vec3  uBgColor;',
-    'uniform vec3  uMouseColor;',
-    'uniform float uSpeed;',
-    'uniform int   uStreakCount;',
-    'uniform float uStreakWidth;',
-    'uniform float uStreakLength;',
-    'uniform float uGlow;',
-    'uniform float uDensity;',
-    'uniform float uTwinkle;',
-    'uniform float uZoom;',
-    'uniform float uBgGlow;',
-    'uniform float uOpacity;',
-    'uniform float uMouseEnabled;',
-    'uniform float uMouseStrength;',
-    'uniform float uMouseRadius;',
-    '',
-    'vec3 palette(float h) {',
-    '  int count = uColorCount; if (count < 1) count = 1;',
-    '  int idx = int(floor(clamp(h, 0.0, 0.999999) * float(count)));',
-    '  if (idx <= 0) return uColor0;',
-    '  if (idx == 1) return uColor1;',
-    '  return uColor2;',
-    '}',
-    'vec3 tanhv(vec3 x) { vec3 e = exp(-2.0 * x); return (1.0 - e) / (1.0 + e); }',
-    '',
-    'vec2 sceneC(vec2 frag, vec2 r) {',
-    '  vec2 P = (frag + frag - r) / r.x;',
-    '  float z = 0.0; float d = 1e3; vec4 O = vec4(0.0);',
-    '  for (int k = 0; k < 39; k++) {',
-    '    if (d <= 1e-4) break;',
-    '    O = z * normalize(vec4(P, uZoom, 0.0)) - vec4(0.0, 4.0, 1.0, 0.0) / 4.5;',
-    '    d = 1.0 - sqrt(length(O * O));',
-    '    z += d;',
-    '  }',
-    '  return vec2(O.x, atan(O.z, O.y));',
-    '}',
-    '',
-    'void mainImage(out vec4 o, vec2 C) {',
-    '  vec2 r = iResolution.xy;',
-    '  vec2 uv0 = (C + C - r) / r.x;',
-    '  float T = 0.1 * iTime * uSpeed + 9.0;',
-    '  float angRings = max(1.0, floor(6.28318530718 * max(uDensity, 0.05) + 0.5));',
-    '  vec2 Y = vec2(5e-3, 6.28318530718 / angRings);',
-    '',
-    '  vec2 c0 = sceneC(C, r);',
-    '  vec2 cdx = sceneC(C + vec2(1.0, 0.0), r);',
-    '  vec2 cdy = sceneC(C + vec2(0.0, 1.0), r);',
-    '  vec2 dCx = cdx - c0; vec2 dCy = cdy - c0;',
-    '  dCx.y -= 6.28318530718 * floor(dCx.y / 6.28318530718 + 0.5);',
-    '  dCy.y -= 6.28318530718 * floor(dCy.y / 6.28318530718 + 0.5);',
-    '  vec2 fw = abs(dCx) + abs(dCy);',
-    '  C = c0;',
-    '',
-    '  vec2 P = vec2(2.0, 1.0) * uv0 - (r / r.x) * vec2(0.0, 1.0);',
-    '  vec4 O = vec4(uBgColor * 90.0 * uBgGlow / (1e3 * dot(P, P) + 6.0), 0.0);',
-    '',
-    '  float mGlow = 0.0;',
-    '  if (uMouseEnabled > 0.5) {',
-    '    vec2 mN = (iMouse + iMouse - r) / r.x;',
-    '    float md = length(uv0 - mN);',
-    '    mGlow = exp(-md * md / max(uMouseRadius * uMouseRadius, 1e-4)) * uMouseStrength;',
-    '    O.rgb += uMouseColor * mGlow * 0.25;',
-    '  }',
-    '',
-    '  float zr = 5e-4 * uStreakWidth;',
-    '  vec2 rr = vec2(max(length(fw), 1e-5));',
-    '  float tail = 19.0 / max(uStreakLength, 0.05);',
-    '',
-    '  for (int m = 0; m < 16; m++) {',
-    '    if (m >= uStreakCount) break;',
-    '    float jf = float(m) + 1.0;',
-    '    float ic = fract(sin(dot(vec2(jf, floor(C.x / Y.x + 0.5)), vec2(7.0, 11.0)) * 73.0));',
-    '    vec2 Pp = C - (T + T * ic) * vec2(0.0, 1.0);',
-    '    Pp -= floor(Pp / Y + 0.5) * Y;',
-    '    float h = fract(8663.0 * ic);',
-    '    vec3 col = palette(h);',
-    '    float weight = mix(1.5, 1.0 + sin(T + 7.0 * h + 4.0), uTwinkle);',
-    '    weight *= (1.0 + mGlow * 2.0);',
-    '    vec2 inner = vec2(length(max(Pp, vec2(-1.0, 0.0))), length(Pp) - zr) - zr;',
-    '    vec2 sm = vec2(1.0) - smoothstep(-rr, rr, inner);',
-    '    O.rgb += dot(sm, vec2(exp(tail * Pp.y), 3.0)) * col * weight;',
-    '    C.x += Y.x / 8.0;',
-    '  }',
-    '',
-    '  vec3 colr = sqrt(tanhv(max(O.rgb * uGlow - vec3(0.04, 0.08, 0.02), 0.0)));',
-    '  o = vec4(colr, uOpacity);',
-    '}',
-    'void main() { vec4 c; mainImage(c, gl_FragCoord.xy); gl_FragColor = c; }'
-  ].join('\n');
-
-  const sh = (t, src) => {
-    const o = gl.createShader(t);
-    gl.shaderSource(o, src); gl.compileShader(o);
-    if (!gl.getShaderParameter(o, gl.COMPILE_STATUS)) { console.warn(gl.getShaderInfoLog(o)); return null; }
-    return o;
-  };
-  const vs = sh(gl.VERTEX_SHADER, VERT), fs = sh(gl.FRAGMENT_SHADER, FRAG);
-  if (!vs || !fs) { staticWash(); markHeroReady(); return; }
-  const prog = gl.createProgram();
-  gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
-  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { console.warn(gl.getProgramInfoLog(prog)); staticWash(); markHeroReady(); return; }
-  gl.useProgram(prog);
-
-  const buf = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-  const loc = gl.getAttribLocation(prog, 'position');
-  gl.enableVertexAttribArray(loc);
-  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-
-  const U = n => gl.getUniformLocation(prog, n);
-  const hex = h => [parseInt(h.slice(1, 3), 16) / 255, parseInt(h.slice(3, 5), 16) / 255, parseInt(h.slice(5, 7), 16) / 255];
-
-  /* The reference props, recoloured to the mark: ice, signal cyan and the
-     mark's green instead of the component's stock violet and pink, over a
-     deep teal glow instead of electric blue. */
-  const COLORS = ['#DDF6FB', '#1FCDED', '#3EDC97'];
-  const rgb = COLORS.map(hex);
-  const avg = rgb.reduce((a, c) => [a[0] + c[0] / 3, a[1] + c[1] / 3, a[2] + c[2] / 3], [0, 0, 0]);
-  gl.uniform3fv(U('uColor0'), rgb[0]);
-  gl.uniform3fv(U('uColor1'), rgb[1]);
-  gl.uniform3fv(U('uColor2'), rgb[2]);
-  gl.uniform1i(U('uColorCount'), 3);
-  gl.uniform3fv(U('uBgColor'), hex('#0B5260'));
-  gl.uniform3fv(U('uMouseColor'), avg);
-  gl.uniform1f(U('uSpeed'), 1.0);
-  gl.uniform1i(U('uStreakCount'), TIER === 2 ? 8 : 4);
-  gl.uniform1f(U('uStreakWidth'), 1.0);
-  gl.uniform1f(U('uStreakLength'), 1.0);
-  gl.uniform1f(U('uGlow'), 1.0);
-  gl.uniform1f(U('uDensity'), 1.0);
-  gl.uniform1f(U('uTwinkle'), 1.0);
-  gl.uniform1f(U('uZoom'), 2.0);
-  gl.uniform1f(U('uBgGlow'), 1.0);
-  gl.uniform1f(U('uOpacity'), 1.0);
-  gl.uniform1f(U('uMouseEnabled'), FINE ? 1 : 0);
-  gl.uniform1f(U('uMouseStrength'), 1.0);
-  gl.uniform1f(U('uMouseRadius'), 0.6);
-
-  const uRes = U('iResolution'), uTime = U('iTime'), uMouse = U('iMouse');
-
-  /* A full-bleed 39-step raymarch is fragment-bound, so the backing store is
-     what decides whether this holds 60fps. Phones get 1× — a tall phone at
-     DPR 3 would otherwise be shading four times the pixels of a laptop. */
-  const DPR = Math.min(devicePixelRatio || 1, FINE ? (TIER === 2 ? 1.75 : 1.25) : 1);
-  let W = 0, H = 0;
-  const fit = (w, h) => {
-    if (!w || !h) return;
-    W = w; H = h;
-    cv.width = Math.round(W * DPR);
-    cv.height = Math.round(H * DPR);
-    gl.viewport(0, 0, cv.width, cv.height);
-    gl.uniform3f(uRes, cv.width, cv.height, 1);
-  };
-  /* The size comes from a ResizeObserver instead of clientWidth/clientHeight.
-     Reading layout straight after the page was styled forced a synchronous
-     reflow (~140ms on a throttled phone); the observer is handed the size from
-     the layout the browser does anyway, and it also covers resizes. The canvas
-     is sized by CSS (100% × 100%), so setting its backing store never feeds
-     back into the observed box. */
-  new ResizeObserver(es => {
-    const r = es[es.length - 1].contentRect;
-    fit(r.width, r.height);
-  }).observe(cv);
-
-  const mt = [0, 0], mc = [0, 0];
-  if (FINE) addEventListener('pointermove', e => {
-    const r = cv.getBoundingClientRect();
-    mt[0] = (e.clientX - r.left) * DPR;
-    mt[1] = (r.height - (e.clientY - r.top)) * DPR;
-  }, { passive: true });
-
-  let vis = true;
-  new IntersectionObserver(e => { vis = e[e.length - 1].isIntersecting; })
-    .observe(document.querySelector('.hero') || cv);
-
-  let last = 0, drawn = false;
-  (function frame(now) {
-    requestAnimationFrame(frame);
-    if (!W) return;                         /* the observer has not reported a size yet */
-    if (document.hidden || !vis) return;   /* stop drawing once past the hero */
-    if (drawn && !splashClear) return;      /* first frame drawn; hold it under the splash */
-    const dt = last ? Math.min((now - last) / 1000, .05) : 0;
-    last = now;
-    const k = 1 - Math.exp(-dt / 0.15);    /* mouseDampening 0.15 */
-    mc[0] += (mt[0] - mc[0]) * k;
-    mc[1] += (mt[1] - mc[1]) * k;
-    gl.uniform2f(uMouse, mc[0], mc[1]);
-    gl.uniform1f(uTime, now * 0.001);
-    gl.drawArrays(gl.TRIANGLES, 0, 3);
-    /* the streaks are on screen — the headline may now fold down over them */
-    if (!drawn) { drawn = true; markHeroReady(); }
-  })(0);
-}
-
-/* Compiling and linking a 39-step raymarch at highp is a single ~100ms block of
-   main thread, and doing it inline pushed first contentful paint from 72ms to
-   164ms — the whole page waited on the hero's shader. So paint the gradient
-   wash straight away (the hero band is never empty), then upgrade to the real
-   thing once the browser has drawn and is idle. */
 (function () {
-  const cv = document.getElementById('lightfall');
-  if (cv) cv.style.background = 'radial-gradient(70% 60% at 50% 0%, #11505c 0%, #0c2a31 42%, #0d0e10 100%)';
-  /* Idle, not just post-load: firing straight after `load` simply moved the
-     100ms compile on top of largest-contentful-paint instead of first paint.
-     The timeout is short, though — the headline now waits on this shader, and
-     a loose idle deadline let the boot drift far enough that the text fell
-     back to its own timer instead of being cued by the backdrop. */
-  const go = () => (window.requestIdleCallback || (f => setTimeout(f, 160)))(
-    () => bootLightfall(), { timeout: 350 }
-  );
-  /* With the splash the screen is black anyway, so compile straight away,
-     before the first ray moves; the animation itself then waits under the
-     ground (see the frame loop) until the ground starts to clear. */
-  if (SPLASH) bootLightfall();
-  else if (document.readyState === 'complete') go();
-  else addEventListener('load', go, { once: true });
+  const host = document.getElementById('asciiBg');
+  const hero = document.querySelector('.hero');
+  if (!host || !hero) { markHeroReady(); return; }
+
+  const fallback = () => {
+    document.documentElement.classList.add('ascii-off');
+    markHeroReady();
+  };
+  const boot = () => {
+    const forced = new URLSearchParams(location.search).get('ascii');
+    if (forced === 'off' || TIER === 0 || !window.LanthirAscii) { fallback(); return; }
+    if (RM) host.classList.add('is-still');           /* a hero background, nothing scroll-linked */
+    const field = window.LanthirAscii(host, {
+      /* the user's settings, with the ramp moved from royal blue to the
+         mark's teal-to-ice-to-cyan */
+      colors: ['#0d4a57', '#eef1f2', '#a8f4ff', '#1fcded'],
+      shape: 'horizon', characters: ' =+xX0S8#@', cellSize: 18, density: 0.8,
+      glyphOpacity: 0.85, glow: 0.2, depthOfField: 0, flicker: 0.2, softness: 0.5,
+      scale: 1, flow: 0.5, speed: 1, gradientOpacity: 0.9, grain: 0.08, variation: 0,
+      mouseInteraction: FINE, scrambleRadius: 0.1, clickEffect: 'wave', intro: true,
+      lightMode: false, reduce: RM, dpr: TIER === 2 ? 0 : 1.5,
+      /* ?ascii=force runs it even on software GL, for testing without a GPU */
+      allowSoftware: forced === 'force'
+    });
+    if (!field) { fallback(); return; }
+    if (SPLASH) field.hold(true);
+    field.onFirst(markHeroReady);
+    whenSplashClear(() => { field.hold(false); field.startIntro(); });
+    if (!RM) scene(field);
+  };
+
+  /* The descent and the return, smoothed so a flick of the wheel glides.
+     While reading, the horizon is lifted clean off the top of the screen, so
+     nothing moves behind the text. Out there, unseen, the field flips: the
+     sky now lies below the horizon, and at the footer the horizon comes back
+     up from the bottom edge with the sky behind the closing name, while the
+     footer's links stay on dark ground. */
+  const scene = field => {
+    const footer = document.querySelector('.footer');
+    const OFF = 0.95;                   /* horizon lift that clears the screen */
+    const END = 0.38;                   /* flipped: sky across the bottom third */
+    const ease = x => (x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x));
+    let target = 0, cur = 0, raf = 0, last = 0, flipped = false, wantFlip = false;
+    const measure = () => {
+      const y = scrollY, vh = innerHeight;
+      const down = ease(y / Math.max(1, hero.offsetHeight * 0.9));
+      const max = document.documentElement.scrollHeight - vh;
+      const endFrom = footer ? footer.offsetTop - vh * 0.6 : Infinity;
+      const back = ease((y - endFrom) / Math.max(1, max - endFrom));
+      wantFlip = y > hero.offsetHeight * 1.5 && y > (endFrom - vh);
+      target = wantFlip ? OFF - (OFF - END) * back : OFF * down;
+      field.setThrottle(cur > OFF - 0.02 && target > OFF - 0.02 ? 3 : 1);
+    };
+    const tick = now => {
+      raf = 0;
+      const dt = last ? Math.min(0.05, (now - last) / 1000) : 1 / 60;
+      last = now;
+      /* the flip only ever happens while the horizon is off screen */
+      if (wantFlip !== flipped && cur > OFF - 0.03) { flipped = wantFlip; field.setFlip(flipped); }
+      const goal = wantFlip !== flipped ? OFF : target;
+      cur += (goal - cur) * (1 - Math.exp(-dt * 7));
+      if (Math.abs(goal - cur) < 0.0005) cur = goal;
+      field.setLift(cur);
+      if (cur !== target || wantFlip !== flipped) raf = requestAnimationFrame(tick);
+      else last = 0;
+    };
+    const kick = () => { measure(); if (!raf) raf = requestAnimationFrame(tick); };
+    addEventListener('scroll', kick, { passive: true });
+    addEventListener('resize', kick, { passive: true });
+    kick();
+  };
+
+  /* With the splash the screen is black anyway: compile now, before the
+     first ray moves. Otherwise wait until the page has painted and is idle,
+     so the first paint never waits on the shaders. */
+  if (SPLASH) boot();
+  else {
+    const go = () => (window.requestIdleCallback || (f => setTimeout(f, 160)))(boot, { timeout: 350 });
+    if (document.readyState === 'complete') go();
+    else addEventListener('load', go, { once: true });
+  }
 })();
 
 /* ══════════════════════════════════════════════
@@ -1999,6 +1933,13 @@ document.getElementById('toTop')?.addEventListener('click', () => scrollTo({ top
   const form = document.getElementById('contactForm');
   const ok = document.getElementById('formSuccess');
   if (!form) return;
+
+  /* a section's own call to action says what it is about, so the select
+     does not have to ask again */
+  document.querySelectorAll('[data-bundle]').forEach(a => a.addEventListener('click', () => {
+    const sel = document.getElementById('fbundle');
+    if (sel && sel.querySelector('option[value="' + a.dataset.bundle + '"]')) sel.value = a.dataset.bundle;
+  }));
 
   const consent = document.getElementById('fgdpr');
   const fields = [
