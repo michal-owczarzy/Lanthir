@@ -1416,12 +1416,14 @@ document.getElementById('baAfter').src = FOTO.after;
   var BRANCH_AT = [0.130, 0.391, 0.652, 0.913];
   var riserLen = riser.getTotalLength ? riser.getTotalLength() : 0;
 
-  var lastY = window.scrollY, ticking = false, actDone = -1, playMobile = null;
+  var lastY = window.scrollY, ticking = false, actDone = -1;
 
   /* Rozměry se čtou jen při resize / po načtení obrázků, ne v každém snímku.
      scrollHeight i offsetHeight nutí prohlížeč přepočítat layout — uvnitř
      scrollovacího cyklu to je ta nejdražší věc, kterou lze udělat. */
   var mDoc = 0, mHero = 0, mActTop = 0, mActSpan = 1, mVH = 0;
+  var mSvgTop = 0, mScrubVH = 0, mLastW = 0;
+  var actSvg = document.getElementById('actSvg');
   function measure(){
     mVH = window.innerHeight;
     mDoc = document.documentElement.scrollHeight - mVH;
@@ -1429,6 +1431,12 @@ document.getElementById('baAfter').src = FOTO.after;
     var box = act.getBoundingClientRect();
     mActTop = box.top + window.scrollY;
     mActSpan = Math.max(1, act.offsetHeight - mVH);
+    mSvgTop = actSvg.getBoundingClientRect().top + window.scrollY;
+    // Adresní řádek na mobilu mění výšku výřezu při každém scrollu. Pro scrub
+    // držíme největší naměřenou výšku, jinak by kreslení cukalo; při otočení
+    // telefonu (změna šířky) se hodnota nastaví znovu.
+    if (window.innerWidth !== mLastW){ mLastW = window.innerWidth; mScrubVH = mVH; }
+    else mScrubVH = Math.max(mScrubVH, mVH);
   }
 
   function readout(idx){
@@ -1473,59 +1481,19 @@ document.getElementById('baAfter').src = FOTO.after;
     var stage = document.getElementById('actStage');
     stage.style.position = 'sticky';
     stage.style.top = '0';
+  } else if (RM.matches){
+    // omezený pohyb: rovnou hotový stav, nic se nekreslí
+    setAct(1);
+    steps.forEach(function(st){ st.classList.add('is-on'); });
+    readout(3);
   } else {
-    // Bez pinnování (mobil / omezený pohyb) se schéma rozehraje jednorázově,
-    // až na něj uživatel doscrolluje — mobil tak dostane stejný moment jako desktop.
+    /* Mobil: bez pinnování, ale kreslení je navázané na scroll stejně jako na
+       desktopu (viz frame). Dřív se tu schéma jednou přehrálo samo — jenže
+       spouštěč počítal s horní hranou celé sekce, a nad schématem jsou na mobilu
+       čtyři karty, takže se animace odehrála ~500 px pod okrajem displeje a
+       uživatel ji nikdy neviděl. Scrub se propásnout nedá. */
     setAct(0);
     readout(0);
-
-    var played = false;
-    playMobile = play;                 // záložní spouštěč ze scroll handleru
-
-    /* Bez pinnování se schéma rozehraje CSS přechody, ne rAF smyčkou:
-       je to odolnější (nezávisí na snímkové frekvenci) a levnější — na mobilu
-       tak neběží žádná animační smyčka, jen pár přechodů na pěti prvcích. */
-    function play(){
-      if (played) return;
-      played = true;
-      if (RM.matches){ finish(); return; }
-
-      var E = 'cubic-bezier(.16,1,.3,1)';
-      riser.style.transition = 'stroke-dashoffset 1.5s ' + E;
-      riser.style.strokeDashoffset = '0';
-
-      for (var i = 0; i < branches.length; i++){
-        var t = 0.28 + i * 0.3;
-        branches[i].style.transition = 'stroke-dashoffset .5s ' + E + ' ' + t + 's';
-        branches[i].style.strokeDashoffset = '0';
-        tees[i].style.transition = 'opacity .3s linear ' + t + 's';
-        tees[i].setAttribute('opacity', '1');
-        fixtures[i].style.transition = 'opacity .45s ease ' + (t + 0.22) + 's';
-        fixtures[i].setAttribute('opacity', '1');
-      }
-
-      [0, 1, 2, 3].forEach(function(i){
-        setTimeout(function(){
-          readout(i);
-          steps.forEach(function(st, j){ st.classList.toggle('is-on', j <= i); });
-        }, 280 + i * 300);
-      });
-    }
-
-    function finish(){
-      setAct(1);
-      steps.forEach(function(st){ st.classList.add('is-on'); });
-      readout(3);
-    }
-
-    if ('IntersectionObserver' in window){
-      var aio = new IntersectionObserver(function(en){
-        if (en[0].isIntersecting){ play(); aio.disconnect(); }
-      }, { threshold: 0, rootMargin: '0px 0px -25% 0px' });
-      aio.observe(document.getElementById('actSvg'));
-    } else {
-      finish();
-    }
   }
 
   function frame(){
@@ -1554,10 +1522,17 @@ document.getElementById('baAfter').src = FOTO.after;
       }
 
       /* akt */
-      if (!PIN && playMobile && y + vh > mActTop + 200) playMobile();
-
+      var p = -1;
       if (PIN){
-        var p = clamp((y - mActTop) / mActSpan, 0, 1);
+        p = clamp((y - mActTop) / mActSpan, 0, 1);
+      } else {
+        // kreslí se, jak schéma projíždí displejem: začne, když je jeho horní
+        // hrana v 90 % výšky výřezu, hotovo je, když dojede do 20 %
+        var svgTopVp = mSvgTop - y;
+        p = clamp((mScrubVH * 0.9 - svgTopVp) / (mScrubVH * 0.7), 0, 1);
+      }
+
+      if (p >= 0){
 
         setAct(p);
 
