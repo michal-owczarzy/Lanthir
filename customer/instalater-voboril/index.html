@@ -418,6 +418,17 @@ html.is-revealed .rv > i,.is-in .rv > i{transform:none}
   .act__step{background:var(--basalt-2);border-color:var(--line)}
   .act__num{color:var(--copper)}
   .act__step h3{color:var(--ink)}
+
+  /* Na mobilu jde schéma hned pod nadpis, nad karty. Dřív bylo až pod čtyřmi
+     kartami, takže se k animaci došlo pozdě a odehrávala se u spodního okraje,
+     kde ji zakrývala lišta „Zavolat“ a palec. */
+  .act__stage{display:flex;flex-direction:column;align-items:stretch;gap:0;padding-block:var(--s5)}
+  .act__copy{display:contents}
+  .act__copy > .label{order:1}
+  .act__copy > h2{order:2}
+  .act__view{order:3;margin-bottom:var(--s4)}
+  .act__steps{order:4}
+  .act__note{order:5}
 }
 
 /* ============================================================
@@ -730,7 +741,7 @@ html.is-revealed .rv > i,.is-in .rv > i{transform:none}
 <!-- ══════════════ AKT: INSTALATÉRSKÉ PRÁCE ══════════════ -->
 <section class="act" id="instalaterske">
   <div class="wrap act__stage" id="actStage">
-    <div>
+    <div class="act__copy">
       <p class="label up">Instalatérské práce</p>
       <h2 class="t-h2 up" style="margin:18px 0 var(--s3)">Hlavní<br>činnost</h2>
 
@@ -1527,9 +1538,10 @@ document.getElementById('baAfter').src = FOTO.after;
         p = clamp((y - mActTop) / mActSpan, 0, 1);
       } else {
         // kreslí se, jak schéma projíždí displejem: začne, když je jeho horní
-        // hrana v 90 % výšky výřezu, hotovo je, když dojede do 20 %
+        // hrana v 75 % výšky výřezu (celé nad lištou „Zavolat“), hotovo je
+        // ve 30 % — všechny ikony tak naskakují ve středu displeje, ne pod palcem
         var svgTopVp = mSvgTop - y;
-        p = clamp((mScrubVH * 0.9 - svgTopVp) / (mScrubVH * 0.7), 0, 1);
+        p = clamp((mScrubVH * 0.75 - svgTopVp) / (mScrubVH * 0.45), 0, 1);
       }
 
       if (p >= 0){
