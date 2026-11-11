@@ -1340,7 +1340,11 @@ html.splash-on:not(.splash-clearing) #lightfall { transform: scale(1.07); }
     opacity: 1;
     pointer-events: auto;
   }
-  .sticky-cta:active { transform: translate3d(-50%, 0, 0) scale(.97); }
+  /* Press feedback is colour only. A scale on :active also fired whenever a
+     scroll gesture started on the button — it sits right under the thumb —
+     so the button shrank and sprang back on every such scroll. */
+  .sticky-cta:active { background: var(--btn-press); }
+  .sticky-cta { -webkit-tap-highlight-color: transparent; }
   /* the open menu owns the screen */
   body.no-scroll .sticky-cta { opacity: 0; pointer-events: none; }
 }

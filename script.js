@@ -1941,44 +1941,54 @@ function bootLightfall() {
 })();
 
 /* ── Sticky mobile CTA ─────────────────────
-   Appears once the hero's own buttons are gone, and stands down over the
-   contact section — a floating button covering the form it points at is just
-   an obstacle. Driven by two observers rather than a scroll handler so it
-   costs nothing while idle. */
+   Appears once the hero's own buttons have scrolled away, and stands down
+   over the contact section — a floating button covering the form it points
+   at is just an obstacle.
+
+   It used to be driven by two IntersectionObservers with percentage root
+   margins. On a phone the viewport height changes while scrolling (the
+   browser's toolbar slides in and out), so those percentages moved under the
+   thumb: around the contact section a small scroll back and forth flipped
+   the button in and out a dozen times. Now both edges are measured in pixels
+   from the real elements, with a 200px dead band — wider than any toolbar —
+   between "hide" and "show again", so the state can only change once per
+   real crossing. One passive scroll listener, at most one read per frame. */
 (function () {
   const cta = document.getElementById('stickyCta');
   if (!cta) return;
-  const hero = document.querySelector('.hero');
-  const contact = document.getElementById('kontakt');
-  const footer = document.querySelector('.footer');
-  if (!hero) return;
+  const row = document.querySelector('.hero-copy .row') || document.querySelector('.hero');
+  const contact = document.getElementById('kontakt') || document.querySelector('.footer');
+  if (!row) return;
 
-  let pastHero = false, atTarget = false;
+  const BAND = 200;
+  let pastHero = false, atTarget = false, on = null, queued = false;
+
   const sync = () => {
-    const on = pastHero && !atTarget;
+    queued = false;
+    const vh = innerHeight;
+    const rowBottom = row.getBoundingClientRect().bottom;
+    const contactTop = contact ? contact.getBoundingClientRect().top : Infinity;
+    /* past the hero once its buttons are fully above the screen; back only
+       when they are well inside it again */
+    if (!pastHero && rowBottom < 0) pastHero = true;
+    else if (pastHero && rowBottom > BAND) pastHero = false;
+    /* at the form once its section is 200px into the screen; free again only
+       when that section has dropped below the screen's bottom edge */
+    if (!atTarget && contactTop < vh - BAND) atTarget = true;
+    else if (atTarget && contactTop > vh) atTarget = false;
+
+    const next = pastHero && !atTarget;
+    if (next === on) return;
+    on = next;
     cta.classList.toggle('on', on);
     /* keep it out of the tab order and off screen readers while hidden */
     cta.setAttribute('aria-hidden', on ? 'false' : 'true');
     cta.tabIndex = on ? 0 : -1;
   };
-
-  new IntersectionObserver(es => {
-    pastHero = !es[es.length - 1].isIntersecting;
-    sync();
-  }, { rootMargin: '-40% 0px 0px 0px' }).observe(hero);
-
-  /* An observer callback carries only the entries that *changed*, not every
-     element being watched — so `es.some(...)` reported whichever of the two
-     happened to be in that batch, and the button stayed up over the form it
-     points at. Hold each target's state and combine them. */
-  const inView = new Map();
-  const target = new IntersectionObserver(es => {
-    es.forEach(e => inView.set(e.target, e.isIntersecting));
-    atTarget = [...inView.values()].some(Boolean);
-    sync();
-  }, { rootMargin: '0px 0px -10% 0px' });
-  if (contact) target.observe(contact);
-  if (footer) target.observe(footer);
+  const queue = () => { if (!queued) { queued = true; requestAnimationFrame(sync); } };
+  addEventListener('scroll', queue, { passive: true });
+  addEventListener('resize', queue, { passive: true });
+  sync();
 })();
 
 /* ── Back to top ──────────────────────────── */
