@@ -12,14 +12,28 @@
   --err:  #ff7a85;
 }
 
-/* ── Section ─────────────────────────────────── */
+/* ── Další služby ──────────────────────────────
+   Websites are the work; these sit beside it, near the end of the page.
+   A list that grows: one card per service, what it is and the action on
+   the left, what it covers on the right. A new service is one more <li>. */
 .obs-head { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(32px, 5vw, 80px); align-items: end; margin-bottom: var(--s2); }
 .obs-head .lede { max-width: 54ch; }
-.obs-points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: var(--s2); }
-.obs-points h3 { font-family: var(--f-display); font-variation-settings: 'wdth' 106, 'wght' 500; font-weight: 500; font-size: 1.2rem; letter-spacing: -0.012em; color: var(--ink); }
-.obs-points p { margin-top: 8px; font-size: 16px; line-height: 1.55; color: var(--soft); max-width: 36ch; }
+.more-list { display: grid; gap: var(--s1); list-style: none; margin: 0; padding: 0; }
+.more-item { --radius: 24px; }
+.more-item > .glow-in { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 5vw, 80px); padding: clamp(28px, 4vw, 56px); }
+.more-name { font-family: var(--f-display); font-variation-settings: 'wdth' 110, 'wght' 500; font-weight: 500; font-size: clamp(1.6rem, 2.5vw, 2.2rem); line-height: 1.08; letter-spacing: -0.024em; color: var(--ink); text-wrap: balance; }
+.more-desc { margin-top: 16px; font-size: 17px; line-height: 1.55; color: var(--soft); max-width: 44ch; }
+.more-points { display: grid; gap: var(--s1); align-content: start; }
+.more-points h4 { font-family: var(--f-display); font-variation-settings: 'wdth' 106, 'wght' 500; font-weight: 500; font-size: 1.15rem; letter-spacing: -0.012em; color: var(--ink); }
+.more-points p { margin-top: 6px; font-size: 16px; line-height: 1.55; color: var(--soft); max-width: 48ch; }
 .obs-cta { display: flex; align-items: center; gap: 16px 24px; flex-wrap: wrap; margin-top: var(--s2); }
 .obs-cta p { font-size: 15px; color: var(--dim); }
+
+/* The sample board closes the section: its own small heading, then the board. */
+.obs-board { margin-top: var(--s3); }
+.obs-board-head { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(32px, 5vw, 80px); align-items: end; margin-bottom: var(--s2); }
+.obs-board-head h3 { font-family: var(--f-display); font-variation-settings: 'wdth' 110, 'wght' 500; font-weight: 500; font-size: clamp(1.4rem, 2.2vw, 1.9rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
+.obs-board-head p { font-size: 16px; line-height: 1.55; color: var(--soft); max-width: 52ch; }
 
 /* ── Dashboard — a sample board, running ───────
    The one place the page is allowed to look like the future: glass panels
@@ -205,8 +219,8 @@
   .dash-grid { grid-template-columns: 1fr; grid-template-areas: "map" "kpis" "chart" "logs" "heat" "slo"; }
 }
 @media (max-width: 880px) {
-  .obs-head { grid-template-columns: 1fr; gap: 16px; }
-  .obs-points { grid-template-columns: 1fr; }
+  .obs-head, .obs-board-head { grid-template-columns: 1fr; gap: 16px; }
+  .more-item > .glow-in { grid-template-columns: 1fr; gap: var(--s2); }
   .dash { padding: 10px; border-radius: 14px; }
   .dash-top { gap: 8px 12px; padding: 4px 4px 12px; }
   .dash-sample { margin-left: 0; }

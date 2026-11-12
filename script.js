@@ -223,21 +223,23 @@ const T = {
 
     'nav.work': 'Reference',
     'nav.obs': "Observabilita",
-    'form.bundle.grp3': "── Samostatná služba ──",
+    'form.bundle.grp3': "── Další služby ──",
     'form.bundle.opt7': "Observabilita na míru",
-    'obs.tag': "Observabilita",
-    'obs.h': "Observabilita<br><em>na míru</em>",
-    'obs.sub': "Samostatná služba, nezávislá na tvorbě webu. Napojíme cokoliv, co u vás běží, a postavíme nad tím dashboardy a upozornění. O problému se dozvíme dřív než vaši zákazníci a víme, kde ho hledat.",
-    'obs.p1h': "Sběr odkudkoliv",
-    'obs.p1': "Servery, síť, cloud, kontejnery, aplikace i výrobní a IoT zařízení. Agenti, SNMP, API, OpenTelemetry, logy.",
-    'obs.p2h': "Dashboardy na míru",
-    'obs.p2': "Technik vidí detail každé služby, vedení stav celé firmy na jeden pohled.",
-    'obs.p3h': "Upozornění a eskalace",
-    'obs.p3': "Když se něco blíží hranici, víme o tom první. Reakční dobu si domluvíme ve smlouvě.",
-    'obs.cta': "Probrat observabilitu",
-    'obs.note': "Cenu připravíme na míru po konzultaci, která je zdarma.",
+    'more.tag': "Další služby",
+    'more.h': "Víc než<br><em>jen weby</em>",
+    'more.sub': "Hlavně tvoříme weby. Vedle nich nabízíme samostatné služby, které si můžete objednat i bez webu.",
+    'obs.name': "Máte přehled, co se děje ve vaší síti?",
+    'obs.sub': "Observabilita jako služba: data ze všech serverů, zařízení a aplikací svedeme na jedno místo, postavíme nad nimi přehledné dashboardy a hlídáme je za vás. Nekupujete další software, který byste museli sami nastavovat a sledovat.",
+    'obs.p1h': "Data ze všech zařízení na jednom místě",
+    'obs.p1': "Servery, síť, cloud, aplikace, kamery, výrobní i IoT zařízení. Napojíme všechno, co u vás běží, bez ohledu na výrobce.",
+    'obs.p2h': "Přehled pro techniky i vedení",
+    'obs.p2': "Technik vidí detail každé služby, vedení stav celé firmy na jeden pohled. Žádné hledání v pěti různých nástrojích.",
+    'obs.p3h': "Hlídáme to za vás",
+    'obs.p3': "Když se něco blíží hranici, víme o tom dřív než vaši zákazníci a ozveme se. Reakční dobu si dáme do smlouvy.",
+    'obs.cta': "Domluvit konzultaci",
+    'obs.note': "Cenu připravíme podle rozsahu po konzultaci, která je zdarma.",
     'obs.db.h': "Takhle může vypadat váš dashboard",
-    'obs.db.sub': "Každý dashboard navrhujeme na míru. Technik v něm vidí detail každé služby, vedení stav celé firmy na jeden pohled. Najeďte na kterýkoliv uzel v mapě.",
+    'obs.db.sub': "Data v ukázce jsou smyšlená. Váš dashboard navrhneme podle toho, co u vás skutečně běží. Najeďte nebo klepněte na kterýkoliv uzel v mapě.",
     'obs.db.env': "Produkce · 13 služeb",
     'obs.db.live': "Živě",
     'obs.db.sample': "Ukázková data",
@@ -501,21 +503,23 @@ const T = {
 
     'nav.work': 'Work',
     'nav.obs': "Observability",
-    'form.bundle.grp3': "── Separate service ──",
+    'form.bundle.grp3': "── Other services ──",
     'form.bundle.opt7': "Custom observability",
-    'obs.tag': "Observability",
-    'obs.h': "Observability<br><em>built to measure</em>",
-    'obs.sub': "A service of its own, independent of web development. We connect anything you run and build dashboards and alerts on top of it. We hear about a problem before your customers do, and we know where to look.",
-    'obs.p1h': "Collection from anywhere",
-    'obs.p1': "Servers, network, cloud, containers, applications, production and IoT devices. Agents, SNMP, APIs, OpenTelemetry, logs.",
-    'obs.p2h': "Dashboards built for you",
-    'obs.p2': "Engineers see the detail of every service, management sees the whole company at a glance.",
-    'obs.p3h': "Alerts and escalation",
-    'obs.p3': "When something nears its limit, we know first. Response times are agreed in the contract.",
-    'obs.cta': "Talk about observability",
-    'obs.note': "We price it to measure after a free consultation.",
+    'more.tag': "Other services",
+    'more.h': "More than<br><em>websites</em>",
+    'more.sub': "Websites are our main work. Alongside them we offer separate services you can order without a website.",
+    'obs.name': "Do you know what is happening on your network?",
+    'obs.sub': "Observability as a service: we bring the data from all your servers, devices and applications into one place, build clear dashboards on top of it and keep watch for you. You are not buying another piece of software to set up and look after yourself.",
+    'obs.p1h': "Every device in one place",
+    'obs.p1': "Servers, network, cloud, applications, cameras, production and IoT devices. We connect whatever you run, whoever made it.",
+    'obs.p2h': "A view for engineers and for management",
+    'obs.p2': "Engineers see the detail of every service, management sees the whole company at a glance. No more digging through five different tools.",
+    'obs.p3h': "We keep watch for you",
+    'obs.p3': "When something nears its limit, we know before your customers do and we get in touch. Response times go into the contract.",
+    'obs.cta': "Book a consultation",
+    'obs.note': "We price it by scope after a free consultation.",
     'obs.db.h': "This is what your dashboard could look like",
-    'obs.db.sub': "Every dashboard is designed for you. Engineers see the detail of every service, management sees the state of the whole company at a glance. Hover over any node on the map.",
+    'obs.db.sub': "The data in this sample is made up. We design your dashboard around what you actually run. Hover over or tap any node on the map.",
     'obs.db.env': "Production · 13 services",
     'obs.db.live': "Live",
     'obs.db.sample': "Sample data",
@@ -779,21 +783,23 @@ const T = {
 
     'nav.work': 'Realizacje',
     'nav.obs': "Obserwowalność",
-    'form.bundle.grp3': "── Osobna usługa ──",
+    'form.bundle.grp3': "── Inne usługi ──",
     'form.bundle.opt7': "Obserwowalność na miarę",
-    'obs.tag': "Obserwowalność",
-    'obs.h': "Obserwowalność<br><em>na miarę</em>",
-    'obs.sub': "Osobna usługa, niezależna od tworzenia stron. Podłączymy wszystko, co u Ciebie działa, i zbudujemy na tym pulpity i alerty. O problemie dowiadujemy się przed Twoimi klientami i wiemy, gdzie go szukać.",
-    'obs.p1h': "Zbieranie skądkolwiek",
-    'obs.p1': "Serwery, sieć, chmura, kontenery, aplikacje oraz urządzenia produkcyjne i IoT. Agenci, SNMP, API, OpenTelemetry, logi.",
-    'obs.p2h': "Pulpity na miarę",
-    'obs.p2': "Technik widzi szczegóły każdej usługi, zarząd stan całej firmy na jeden rzut oka.",
-    'obs.p3h': "Alerty i eskalacja",
-    'obs.p3': "Gdy coś zbliża się do progu, wiemy o tym pierwsi. Czas reakcji ustalamy w umowie.",
-    'obs.cta': "Porozmawiajmy o obserwowalności",
-    'obs.note': "Cenę przygotujemy na miarę po bezpłatnej konsultacji.",
+    'more.tag': "Inne usługi",
+    'more.h': "Nie tylko<br><em>strony www</em>",
+    'more.sub': "Przede wszystkim tworzymy strony www. Obok nich oferujemy osobne usługi, które możesz zamówić także bez strony.",
+    'obs.name': "Wiesz, co dzieje się w Twojej sieci?",
+    'obs.sub': "Obserwowalność jako usługa: dane ze wszystkich serwerów, urządzeń i aplikacji zbierzemy w jednym miejscu, zbudujemy na nich czytelne pulpity i pilnujemy ich za Ciebie. Nie kupujesz kolejnego oprogramowania, które musisz sam konfigurować i doglądać.",
+    'obs.p1h': "Dane ze wszystkich urządzeń w jednym miejscu",
+    'obs.p1': "Serwery, sieć, chmura, aplikacje, kamery, urządzenia produkcyjne i IoT. Podłączymy wszystko, co u Ciebie działa, niezależnie od producenta.",
+    'obs.p2h': "Widok dla techników i dla zarządu",
+    'obs.p2': "Technik widzi szczegóły każdej usługi, zarząd stan całej firmy na jeden rzut oka. Bez szukania w pięciu różnych narzędziach.",
+    'obs.p3h': "Pilnujemy tego za Ciebie",
+    'obs.p3': "Gdy coś zbliża się do progu, wiemy o tym przed Twoimi klientami i odzywamy się. Czas reakcji zapisujemy w umowie.",
+    'obs.cta': "Umów konsultację",
+    'obs.note': "Cenę przygotujemy według zakresu po bezpłatnej konsultacji.",
     'obs.db.h': "Tak może wyglądać Twój pulpit",
-    'obs.db.sub': "Każdy pulpit projektujemy na miarę. Technik widzi szczegóły każdej usługi, zarząd stan całej firmy na jeden rzut oka. Najedź na dowolny węzeł na mapie.",
+    'obs.db.sub': "Dane w przykładzie są zmyślone. Twój pulpit zaprojektujemy według tego, co u Ciebie faktycznie działa. Najedź albo stuknij w dowolny węzeł na mapie.",
     'obs.db.env': "Produkcja · 13 usług",
     'obs.db.live': "Na żywo",
     'obs.db.sample': "Dane przykładowe",
@@ -1466,73 +1472,354 @@ if (RM) document.body.classList.add('nav-in');
 })();
 
 /* ══════════════════════════════════════════════
-   SPECULAR BUTTON — the React Bits component, in CSS
-   radius 18 · thickness 1 · shineSize 10 · shineFade 40 · speed .35
-   followMouse · proximity 250 · intensity 1 · autoAnimate false
+   SPECULAR BUTTON — React Bits SpecularButton, ported to plain JS
+   radius pill · thickness 1.2 · shineSize 10 · shineFade 34 · glow 1
+   intensity 1 · idleIntensity .35 · proximity 250 · followMouse
 
-   JS writes two custom properties per button and nothing else. The glint
-   eases toward the cursor rather than snapping, which is what stops it
-   reading as a hover state and starts it reading as light.
+   The shader is the reference one. What changed is how it is hosted: the
+   page has a dozen buttons and a browser allows only a handful of WebGL
+   contexts (the ASCII field already holds one), so a single hidden context
+   draws every button in turn and each button's own 2D canvas copies its
+   frame out. Only buttons on screen and still moving are drawn.
+
+   The label moves into its own span on start so applyLang() can rewrite
+   the text without wiping the canvas next to it.
 ══════════════════════════════════════════════ */
 (function () {
   const btns = Array.from(document.querySelectorAll('.btn'));
-  if (!btns.length || !FINE || RM) return;
+  if (!btns.length) return;
 
-  const PROX = 250, SPEED = 0.35, INTENSITY = 1;
-  const box = new Array(btns.length);
-  const cur = btns.map(() => ({ a: 90, n: 0 }));
-  const tgt = btns.map(() => ({ a: 90, n: 0 }));
-  let stale = true, raf = null, last = 0, px = -1e5, py = -1e5;
+  btns.forEach(b => {
+    const label = document.createElement('span');
+    label.className = 'btn-label';
+    while (b.firstChild) label.appendChild(b.firstChild);
+    const key = b.getAttribute('data-i18n');
+    if (key) { label.setAttribute('data-i18n', key); b.removeAttribute('data-i18n'); }
+    b.appendChild(label);
+  });
 
-  const measure = () => {
-    stale = false;
-    for (let i = 0; i < btns.length; i++) box[i] = btns[i].getBoundingClientRect();
+  const PAD = 24;
+  const THICKNESS = 1.2, SHINE = 10, FADE = 34, GLOW = 1;
+  const INTENSITY = 1, IDLE = 0.35, PROX = 250;
+  const FOLLOW = !RM;
+
+  const VERT = `#version 300 es
+in vec2 aPosition;
+void main() { gl_Position = vec4(aPosition, 0.0, 1.0); }`;
+
+  const FRAG = `#version 300 es
+precision highp float;
+uniform vec2 uCenter;
+uniform vec2 uHalf;
+uniform float uRadius;
+uniform float uPx;
+uniform float uSpot;
+uniform vec2 uEntry;
+uniform vec3 uLineColor;
+uniform vec4 uBaseColor;
+uniform float uIntensity;
+uniform vec2 uWindow;
+uniform float uThickness;
+uniform float uGlow;
+out vec4 outColor;
+
+float roundedBox(vec2 p, vec2 b, float r) {
+  vec2 q = abs(p) - b + r;
+  return length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - r;
+}
+float loopPosition(vec2 p, vec2 b, float r) {
+  vec2 inner = b - r;
+  float arc = 1.5707963 * r;
+  float quarter = inner.x + inner.y + arc;
+  vec2 a = abs(p);
+  vec2 q = a - inner;
+  float s = q.x > 0.0 && q.y > 0.0
+    ? inner.y + atan(q.y, q.x) * r
+    : (q.x > q.y ? min(a.y, inner.y) : inner.y + arc + inner.x - min(a.x, inner.x));
+  if (p.x < 0.0) s = p.y >= 0.0 ? 2.0 * quarter - s : 2.0 * quarter + s;
+  else if (p.y < 0.0) s = 4.0 * quarter - s;
+  return s / max(4.0 * quarter, 0.0001);
+}
+float lobe(float position, float center) {
+  float gap = abs(fract(position - center + 0.5) - 0.5);
+  return 1.0 - smoothstep(uWindow.x, uWindow.x + uWindow.y, gap);
+}
+void main() {
+  vec2 p = gl_FragCoord.xy - uCenter;
+  float d = roundedBox(p, uHalf, uRadius);
+  float position = loopPosition(p, uHalf, uRadius);
+  float key = lobe(position, uSpot);
+  float back = lobe(position, uSpot + 0.5);
+  float streak = key + back * 0.45;
+  float width = max(uThickness * uPx * mix(1.0, max(key, back), 0.6), 0.35);
+  float band = smoothstep(-width - 0.6, -width + 0.6, d) * (1.0 - smoothstep(-0.6, 0.6, d));
+  float hair = smoothstep(-uPx - 0.6, -uPx + 0.6, d) * (1.0 - smoothstep(-0.6, 0.6, d));
+  float inside = 1.0 - smoothstep(-0.6, 0.6, d);
+  vec2 pool = (p - uEntry) / (uHalf.y * vec2(1.6, 1.1));
+  float glow = streak * 0.2 * exp(-abs(d + width * 0.5) / (5.0 * uPx)) + inside * 0.08 * exp(-dot(pool, pool));
+  float light = clamp((band * streak + glow * uGlow) * uIntensity, 0.0, 1.0);
+  vec4 base = vec4(uBaseColor.rgb, 1.0) * uBaseColor.a * hair * 0.6;
+  outColor = vec4(uLineColor, 1.0) * light + base * (1.0 - light);
+}`;
+
+  const glc = document.createElement('canvas');
+  glc.width = glc.height = 1;
+  const gl = glc.getContext('webgl2', {
+    alpha: true, premultipliedAlpha: true, antialias: false, depth: false, stencil: false
+  });
+  if (!gl) return;   /* the CSS hairline on .btn--ghost:not(.has-light) stands in */
+
+  const compile = (type, src) => {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if (gl.getShaderParameter(s, gl.COMPILE_STATUS)) return s;
+    gl.deleteShader(s);
+    return null;
+  };
+  const vs = compile(gl.VERTEX_SHADER, VERT), fs = compile(gl.FRAGMENT_SHADER, FRAG);
+  if (!vs || !fs) return;
+  const prog = gl.createProgram();
+  gl.attachShader(prog, vs);
+  gl.attachShader(prog, fs);
+  gl.bindAttribLocation(prog, 0, 'aPosition');
+  gl.linkProgram(prog);
+  gl.deleteShader(vs);
+  gl.deleteShader(fs);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
+
+  const U = {};
+  ['uCenter', 'uHalf', 'uRadius', 'uPx', 'uSpot', 'uEntry', 'uLineColor', 'uBaseColor',
+   'uIntensity', 'uWindow', 'uThickness', 'uGlow'].forEach(n => { U[n] = gl.getUniformLocation(prog, n); });
+  const vao = gl.createVertexArray();
+  gl.bindVertexArray(vao);
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+  gl.enableVertexAttribArray(0);
+  gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+  gl.bindVertexArray(null);
+
+  /* any CSS colour, through a 1px 2D canvas, to 0-1 rgba */
+  const probe = document.createElement('canvas').getContext('2d', { willReadFrequently: true });
+  const colours = new Map();
+  const toRgba = value => {
+    value = (value || '').trim() || 'transparent';
+    if (colours.has(value)) return colours.get(value);
+    probe.clearRect(0, 0, 1, 1);
+    probe.fillStyle = '#000';
+    probe.fillStyle = value;
+    probe.fillRect(0, 0, 1, 1);
+    const d = probe.getImageData(0, 0, 1, 1).data;
+    const a = d[3] / 255;
+    /* getImageData un-premultiplies, so the channels are the colour itself */
+    const rgba = [d[0] / 255, d[1] / 255, d[2] / 255, a];
+    colours.set(value, rgba);
+    return rgba;
   };
 
-  /* shortest way round the circle, so a glint near 0deg does not spin the
-     long way to 359deg */
-  const easeAngle = (a, b, k) => a + ((((b - a) % 360) + 540) % 360 - 180) * k;
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const wrap = v => v - Math.floor(v);
+
+  const loopPosition = (x, y, hx, hy, r) => {
+    const ix = hx - r, iy = hy - r;
+    const arc = (Math.PI / 2) * r;
+    const quarter = ix + iy + arc;
+    const ax = Math.abs(x), ay = Math.abs(y);
+    const qx = ax - ix, qy = ay - iy;
+    let s;
+    if (qx > 0 && qy > 0) s = iy + Math.atan2(qy, qx) * r;
+    else if (qx > qy) s = Math.min(ay, iy);
+    else s = iy + arc + ix - Math.min(ax, ix);
+    if (x < 0) s = y >= 0 ? 2 * quarter - s : 2 * quarter + s;
+    else if (y < 0) s = 4 * quarter - s;
+    return wrap(s / Math.max(4 * quarter, 0.0001));
+  };
+
+  const rimPoint = (pos, hx, hy, r) => {
+    const ix = hx - r, iy = hy - r;
+    const arc = (Math.PI / 2) * r;
+    const quarter = ix + iy + arc;
+    let s = wrap(pos) * 4 * quarter;
+    let sx = 1, sy = 1;
+    if (s > 3 * quarter) { s = 4 * quarter - s; sy = -1; }
+    else if (s > 2 * quarter) { s -= 2 * quarter; sx = -1; sy = -1; }
+    else if (s > quarter) { s = 2 * quarter - s; sx = -1; }
+    let x = ix - (s - iy - arc), y = hy;
+    if (s <= iy) { x = hx; y = s; }
+    else if (s <= iy + arc) {
+      const ang = (s - iy) / Math.max(r, 0.0001);
+      x = ix + Math.cos(ang) * r;
+      y = iy + Math.sin(ang) * r;
+    }
+    return [x * sx, y * sy];
+  };
+
+  const items = btns.map(b => {
+    const c = document.createElement('canvas');
+    c.className = 'btn-light';
+    c.setAttribute('aria-hidden', 'true');
+    b.insertBefore(c, b.firstChild);
+    b.classList.add('has-light');
+    return {
+      b, c, ctx: c.getContext('2d'),
+      w: 0, h: 0, ratio: 1, radius: 0,
+      line: [1, 1, 1, 1], base: [0, 0, 0, 0],
+      spot: 0, level: IDLE, press: 0,
+      ready: false, visible: false, dirty: true, rect: null
+    };
+  });
+
+  const ptr = { x: 0, y: 0, known: false };
+  let raf = 0, last = 0, stale = true;
+
+  const radiusOf = it => Math.min(it.radius, it.w / 2, it.h / 2);
+  /* the rest position is the top-left shoulder, where a light from above
+     and to the left would catch the rim */
+  const restSpot = it => {
+    const r = radiusOf(it), inset = r * (1 - Math.SQRT1_2);
+    return loopPosition(inset - it.w / 2, it.h / 2 - inset, it.w / 2, it.h / 2, r);
+  };
+
+  const measure = it => {
+    const w = it.b.offsetWidth, h = it.b.offsetHeight;
+    it.w = w; it.h = h;
+    if (!w || !h) return;
+    it.ratio = Math.min(window.devicePixelRatio || 1, 2);
+    const cw = Math.max(1, Math.round((w + PAD * 2) * it.ratio));
+    const ch = Math.max(1, Math.round((h + PAD * 2) * it.ratio));
+    if (it.c.width !== cw || it.c.height !== ch) { it.c.width = cw; it.c.height = ch; }
+    const cs = getComputedStyle(it.b);
+    it.radius = parseFloat(cs.borderTopLeftRadius) || 0;
+    it.line = toRgba(cs.getPropertyValue('--sb-line'));
+    it.base = toRgba(cs.getPropertyValue('--sb-base'));
+    it.dirty = true;
+  };
+
+  /* where the light should sit for the current pointer, or null */
+  const aim = it => {
+    if (!FOLLOW || !ptr.known || !it.rect) return null;
+    const rect = it.rect;
+    const scale = rect.width / it.w || 1;
+    const hx = it.w / 2, hy = it.h / 2;
+    const x = (ptr.x - rect.left - rect.width / 2) / scale;
+    const y = (rect.top + rect.height / 2 - ptr.y) / scale;
+    const dist = Math.hypot(Math.max(Math.abs(x) - hx, 0), Math.max(Math.abs(y) - hy, 0));
+    const t = clamp(1 - dist / PROX, 0, 1);
+    const near = t * t * (3 - 2 * t);
+    const nearest = loopPosition(x, y, hx, hy, radiusOf(it));
+    if (dist > 0) return { spot: nearest, near };
+    /* inside the button the light drifts back toward the shoulder the
+       deeper the pointer goes, so it does not snap across the body */
+    const depth = clamp(Math.min(hx - Math.abs(x), hy - Math.abs(y)) / (hy * 0.8), 0, 1);
+    const sway = restSpot(it) - (x / hx) * 0.06 - (y / hy) * 0.02;
+    const off = sway - nearest - Math.round(sway - nearest);
+    return { spot: wrap(nearest + off * depth * depth * (3 - 2 * depth)), near };
+  };
+
+  const draw = it => {
+    const { w, h, c } = it;
+    if (!w || !h) return;
+    if (glc.width < c.width || glc.height < c.height) {
+      glc.width = Math.max(glc.width, c.width);
+      glc.height = Math.max(glc.height, c.height);
+    }
+    const sx = c.width / (w + PAD * 2), sy = c.height / (h + PAD * 2);
+    const r = radiusOf(it);
+    const [rx, ry] = rimPoint(it.spot, w / 2, h / 2, r);
+    const len = Math.hypot(rx, ry);
+    const pull = 1 - Math.min(0.35 * (h / 2), len) / Math.max(len, 0.0001);
+    gl.viewport(0, 0, c.width, c.height);
+    gl.useProgram(prog);
+    gl.uniform2f(U.uCenter, (PAD + w / 2) * sx, (PAD + h / 2) * sy);
+    gl.uniform2f(U.uHalf, (w / 2) * sx, (h / 2) * sy);
+    gl.uniform1f(U.uRadius, r * sx);
+    gl.uniform1f(U.uPx, it.ratio);
+    gl.uniform1f(U.uSpot, it.spot);
+    gl.uniform2f(U.uEntry, rx * pull * sx, ry * pull * sy);
+    gl.uniform3f(U.uLineColor, it.line[0], it.line[1], it.line[2]);
+    gl.uniform4f(U.uBaseColor, it.base[0], it.base[1], it.base[2], it.base[3]);
+    gl.uniform1f(U.uIntensity, INTENSITY * it.line[3] * (it.level + it.press * 0.8));
+    gl.uniform2f(U.uWindow, SHINE / 360 + it.press * 0.06, FADE / 360 + 0.0001);
+    gl.uniform1f(U.uThickness, THICKNESS);
+    gl.uniform1f(U.uGlow, GLOW);
+    gl.bindVertexArray(vao);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+    gl.bindVertexArray(null);
+    /* the viewport sits at GL's bottom-left, which is the bottom of the image */
+    it.ctx.clearRect(0, 0, c.width, c.height);
+    it.ctx.drawImage(glc, 0, glc.height - c.height, c.width, c.height, 0, 0, c.width, c.height);
+  };
 
   const frame = now => {
-    const dt = last ? Math.min((now - last) / 1000, .05) : 1 / 60;
+    raf = 0;
+    const dt = last ? Math.min(0.05, (now - last) / 1000) : 1 / 60;
     last = now;
-    if (stale) measure();
-    const k = 1 - Math.pow(1 - SPEED, dt * 60);
-
-    let alive = false;
-    for (let i = 0; i < btns.length; i++) {
-      const r = box[i];
-      if (!r || !r.width) continue;
-      /* distance from the pointer to the button's box, 0 when inside it */
-      const dx = Math.max(r.left - px, 0, px - r.right);
-      const dy = Math.max(r.top - py, 0, py - r.bottom);
-      const near = Math.max(0, 1 - Math.sqrt(dx * dx + dy * dy) / PROX) * INTENSITY;
-      tgt[i].n = near;
-      if (near > 0) {
-        const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-        let deg = Math.atan2(py - cy, px - cx) * (180 / Math.PI) + 90;
-        if (deg < 0) deg += 360;
-        tgt[i].a = deg;
-      }
-
-      const c = cur[i];
-      c.n += (tgt[i].n - c.n) * k;
-      c.a = (easeAngle(c.a, tgt[i].a, k) % 360 + 360) % 360;   /* keep it bounded */
-      if (c.n < 0.002) c.n = 0;
-
-      btns[i].style.setProperty('--near', c.n.toFixed(3));
-      btns[i].style.setProperty('--sa', c.a.toFixed(1) + 'deg');
-      if (c.n > 0 || tgt[i].n > 0) alive = true;
+    if (stale) {
+      stale = false;
+      for (const it of items) if (it.visible) it.rect = it.b.getBoundingClientRect();
     }
-
-    raf = alive ? requestAnimationFrame(frame) : (last = 0, null);
+    let busy = false;
+    for (const it of items) {
+      if (!it.visible || !it.w) continue;
+      if (!it.ready) { it.spot = restSpot(it); it.level = IDLE; it.ready = true; it.dirty = true; }
+      const target = aim(it);
+      const steering = !!target && target.near > 0;
+      let diff = (steering ? target.spot : restSpot(it)) - it.spot;
+      diff -= Math.round(diff);
+      it.spot = wrap(it.spot + diff * (1 - Math.exp(-dt * 8)));
+      const level = IDLE + (1 - IDLE) * (target ? target.near : 0);
+      it.level += (level - it.level) * (1 - Math.exp(-dt * 7));
+      it.press *= Math.exp(-dt * 5);
+      const settling = Math.abs(diff) > 0.0002 || Math.abs(level - it.level) > 0.001 || it.press > 0.002;
+      if (settling || it.dirty) { draw(it); it.dirty = false; }
+      if (settling) busy = true;
+    }
+    if (busy) raf = requestAnimationFrame(frame);
+    else last = 0;
   };
+  const wake = () => { if (!raf) raf = requestAnimationFrame(frame); };
 
-  const wake = () => { if (raf == null) { last = 0; raf = requestAnimationFrame(frame); } };
-  addEventListener('pointermove', e => { px = e.clientX; py = e.clientY; wake(); }, { passive: true });
-  addEventListener('scroll', () => { stale = true; wake(); }, { passive: true });
-  addEventListener('resize', () => { stale = true; wake(); });
-  addEventListener('pointerleave', () => { px = py = -1e5; wake(); });
+  const byButton = new Map(items.map(it => [it.b, it]));
+  const ro = new ResizeObserver(es => {
+    es.forEach(e => { const it = byButton.get(e.target); if (it) measure(it); });
+    stale = true;
+    wake();
+  });
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => {
+      const it = byButton.get(e.target);
+      if (!it) return;
+      it.visible = e.isIntersecting;
+      if (it.visible) it.dirty = true;
+    });
+    stale = true;
+    last = 0;
+    wake();
+  }, { rootMargin: '40px' });
+  items.forEach(it => { ro.observe(it.b); io.observe(it.b); });
+
+  addEventListener('pointermove', e => {
+    ptr.x = e.clientX; ptr.y = e.clientY; ptr.known = true;
+    wake();
+  }, { passive: true });
+  const end = e => {
+    if (e.pointerType === 'mouse') return;
+    ptr.known = false;
+    wake();
+  };
+  addEventListener('pointerup', end, { passive: true });
+  addEventListener('pointercancel', end, { passive: true });
+  document.documentElement.addEventListener('pointerleave', () => { ptr.known = false; wake(); });
+  items.forEach(it => it.b.addEventListener('pointerdown', e => {
+    ptr.x = e.clientX; ptr.y = e.clientY; ptr.known = true;
+    it.press = 1;
+    stale = true;
+    wake();
+  }));
+  addEventListener('scroll', () => { stale = true; if (ptr.known) wake(); }, { passive: true });
+  addEventListener('resize', () => { stale = true; items.forEach(measure); wake(); });
+  /* the display face changes the label widths once it has loaded */
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { items.forEach(measure); stale = true; wake(); });
 })();
 
 /* ══════════════════════════════════════════════

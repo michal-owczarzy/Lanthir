@@ -107,6 +107,14 @@ body.no-scroll { overflow: hidden; }
   pointer-events: none;
 }
 .ascii-bg.is-still { position: absolute; bottom: auto; height: 100vh; height: 100svh; }
+/* The trace (trail.js): a canvas in page coordinates, re-anchored around the
+   screen as it scrolls. Above the page (it only runs in the margin), below
+   the bar, never in the way of a click. */
+.trail { position: absolute; top: 0; left: 0; width: 0; height: 0; z-index: 3; pointer-events: none; }
+.trail canvas { position: absolute; top: 0; left: 0; display: block; will-change: transform; }
+/* a section's label takes the signal colour once the line has reached it */
+.tag { transition: color .6s var(--e-out); }
+.tag.is-hit { color: var(--accent-text); }
 .ascii-canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
 /* no WebGL2 (or no GPU): a still wash behind the first screen */
 html.ascii-off .hero { background: radial-gradient(70% 60% at 50% 0%, #11505c 0%, #0c2a31 42%, #0d0e10 100%); }
@@ -170,6 +178,9 @@ html.ascii-off .hero { background: radial-gradient(70% 60% at 50% 0%, #11505c 0%
   /* one face, one colour: the words carry the emphasis */
   color: inherit;
 }
+/* ...with one exception: the name in the hero takes the colour of the
+   buttons, so the first thing in cyan on the page is Lanthir itself */
+.hero-h1 .hero-l1 em { color: var(--btn); }
 /* ── FoldText ─────────────────────────────────
    Each character hangs from a hinge along its top edge and swings down into
    the page. Reference props: splitBy char · hinge top · trigger scroll ·
@@ -228,85 +239,94 @@ html.ascii-off .hero { background: radial-gradient(70% 60% at 50% 0%, #11505c 0%
 .lede { font-size: 18px; font-weight: 200; color: var(--soft); max-width: 52ch; }
 
 /* ── Buttons — SpecularButton ──────────────────
-   A 1px edge carrying a bright specular glint that tracks the cursor and
-   fades in as it approaches. The reference props map to these:
+   A port of the React Bits SpecularButton (the WebGL part lives in
+   script.js). Light runs round the rim: a bright key on the stretch of edge
+   nearest the cursor, a weaker back light opposite it, and a soft pool where
+   the light enters the body. With the cursor away a third of it stays on the
+   top-left shoulder, so the button reads as a lit object rather than a flat
+   sticker. Reference props, kept as they are:
 
-     radius 18 · thickness 1 · shineSize 10deg · shineFade 40deg
-     speed 0.35 · proximity 250px · intensity 1 · autoAnimate false
+     radius pill · thickness 1.2 · shineSize 10 · shineFade 34 · glow 1
+     intensity 1 · idleIntensity .35 · proximity 250 · followMouse
 
-   JS writes only --sa (the glint's angle) and --near (0-1 proximity); the
-   look is all CSS, and the colours are the Lanthir brand ones untouched. */
+   The colours are read by the script from --sb-line (the light) and
+   --sb-base (the hairline under it), so each variant and each light chapter
+   sets its own here. The label is the display face in sentence case; the old
+   12px monospace capitals were most of what made the buttons look generated.
+   One shape everywhere: the full pill, decided once. */
 .btn {
-  --sa: 90deg;
-  --near: 0;
-  --thickness: 1px;
-  --shine: 10deg;
-  --fade: 40deg;
+  --sb-line: #ffffff;
+  --sb-base: rgba(238,241,242,.34);
   position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-height: 48px;
-  padding: 14px 28px;
+  min-height: 52px;
+  padding: 14px 30px;
   border: 0;
-  border-radius: 18px;
-  font-family: var(--f-mono);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: .12em;
-  text-transform: uppercase;
+  border-radius: 999px;
+  font-family: var(--f-display);
+  font-variation-settings: 'wdth' 106, 'wght' 540;
+  font-weight: 540;
+  font-size: 15.5px;
+  line-height: 1.15;
+  letter-spacing: -0.006em;
+  white-space: nowrap;
   cursor: pointer;
-  isolation: isolate;
-  transition: transform var(--t-press) ease-out, filter .25s var(--e-out),
-              background .25s var(--e-out), border-color .25s var(--e-out), color .25s var(--e-out);
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .25s cubic-bezier(.2,.8,.2,1),
+              background-color .25s var(--e-out), color .25s var(--e-out);
 }
-/* instant press feedback — this is what makes a control feel like it is
-   listening, and it stays between .95 and .98 so it reads as pressure */
+/* pressure, not a bounce: the light flashes wider at the same moment */
 .btn:active { transform: scale(.97); }
-.btn--solid:active { background: var(--btn-press); }
-/* the glint itself */
-.btn::after {
-  content: '';
+.btn-light {
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: var(--thickness);
-  background: conic-gradient(from var(--sa) at 50% 50%,
-    #fff 0deg,
-    #fff calc(var(--shine) / 2),
-    transparent var(--fade),
-    transparent calc(360deg - var(--fade)),
-    #fff calc(360deg - var(--shine) / 2),
-    #fff 360deg);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  opacity: var(--near);
+  inset: -24px;
+  z-index: 1;
+  display: block;
+  width: calc(100% + 48px);
+  height: calc(100% + 48px);
   pointer-events: none;
-  z-index: 2;
 }
-/* The primary buttons fade across the existing palette rather than sitting on
-   one flat indigo. The ramp is held to the deep half of the brand — #7060ff
-   through --iris-hi and --iris to --blue — because white on the cyan/spark end
-   of --grad is only 1.9:1. Those stops keep their job on the near-black
-   background, where they are bright *against* it rather than under text.
+.btn-label {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: inherit;
+}
 
-   Depth follows the apple-design rules: a hairline of light along the top edge
-   to imply a source above, and three small stacked shadows instead of one big
-   blur, which is what separates a lit object from a drop-shadow filter. */
+/* The action keeps the brand cyan with dark ink (10:1); the light on it is
+   white. Its hairline is switched off: on the lighter hover fill a cyan line
+   would show as a darker ring. */
 .btn--solid {
+  --sb-base: transparent;
   background: var(--btn);
-  /* near-black ink on the cyan: 10:1 */
   color: var(--btn-ink);
 }
-.btn--ghost { background: transparent; border: 1px solid var(--hair-2); color: var(--ink); }
+.btn--solid:active { background: var(--btn-press); }
+/* The second action is clear glass: almost no body, a graphite hairline and
+   the light. This is the reference look as it was drawn. */
+.btn--ghost {
+  background: rgba(238,241,242,.04);
+  color: var(--ink);
+}
+/* without WebGL there is no light, so the hairline comes from CSS instead */
+.btn--ghost:not(.has-light) { box-shadow: inset 0 0 0 1px var(--hair-2); }
+/* on the light chapters white light would vanish into the ground: it turns
+   into the teal the text uses there, over a darker hairline */
+.chapter-light .btn--ghost {
+  --sb-line: #087286;
+  --sb-base: rgba(15,17,19,.42);
+  background: rgba(15,17,19,.03);
+}
 .btn--full { width: 100%; }
 @media (hover: hover) {
-  /* brightness is a composited filter — no layout, no paint of the gradient */
   .btn--solid:hover { background: var(--btn-hi); }
-  .btn--ghost:hover { border-color: rgba(31,205,237,.5); color: var(--ink); }
+  .btn--ghost:hover { background: rgba(238,241,242,.075); }
+  .chapter-light .btn--ghost:hover { background: rgba(15,17,19,.055); }
 }
 
 /* ── Nav ──────────────────────────────────────── */
@@ -379,7 +399,7 @@ body.nav-in .nav { opacity: 1; }
 .ls-btn:active { transform: scale(.94); }
 .ls-btn:hover { color: var(--soft); }
 .ls-btn.active { color: var(--ink); }
-.nav-cta { min-height: 42px; padding: 11px 22px; }
+.nav-cta { min-height: 44px; padding: 10px 22px; font-size: 14.5px; }
 .burger {
   display: none; position: relative; z-index: 120;
   width: 44px; height: 44px;
@@ -391,15 +411,25 @@ body.nav-in .nav { opacity: 1; }
 .burger.open span:nth-child(2) { opacity: 0; }
 .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Eight links, the language switch and the action only fit on one row from
-   about 1200px. Below that (and above the burger) the two links that only
-   jump within the page step aside; the burger menu and the footer still
-   list them. */
+/* Seven links, the language switch and the action fit on one row at the
+   full gaps from 1200px, and at tighter gaps from about 1120px. Below that
+   (and above the burger) the two links that only jump within the page step
+   aside; the burger menu and the footer still list them. */
 .nav-links a, .nav-cta { white-space: nowrap; }
 @media (min-width: 881px) and (max-width: 1199px) {
-  .nav-links .nav-opt { display: none; }
   .nav-inner { gap: 24px; }
   .nav-links { gap: 20px; }
+}
+@media (min-width: 881px) and (max-width: 1119px) {
+  .nav-links .nav-opt { display: none; }
+}
+/* Just above the burger the Czech and Polish actions are long enough to push
+   the row past the container by ~30px; the gaps and the action tighten. */
+@media (min-width: 881px) and (max-width: 1023px) {
+  .nav-inner { gap: 16px; }
+  .nav-links { gap: 16px; }
+  .nav-cta { padding-inline: 16px; }
+  .ls-btn { min-width: 40px; }
 }
 
 /* ── Hero ─────────────────────────────────────── */
@@ -1347,14 +1377,15 @@ html.splash-on:not(.splash-clearing) #asciiBg { transform: scale(1.07); }
     align-items: center; justify-content: center;
     gap: 10px;
     min-height: 52px;
-    padding: 15px 26px;
-    border-radius: 18px;
+    padding: 15px 28px;
+    border-radius: 999px;
     background: var(--btn);
     /* it floats over the page, so it keeps one plain shadow to sit above it */
     box-shadow: 0 8px 24px rgba(0,0,0,.45);
-    font-family: var(--f-mono);
-    font-size: 12px; font-weight: 500;
-    letter-spacing: .12em; text-transform: uppercase;
+    font-family: var(--f-display);
+    font-variation-settings: 'wdth' 106, 'wght' 540;
+    font-size: 15px; font-weight: 540;
+    letter-spacing: -0.006em;
     color: var(--btn-ink);
     white-space: nowrap;
     /* parked below the fold edge until it is called for */
@@ -1427,13 +1458,14 @@ body.no-scroll .cc.on { transform: translate3d(-50%, calc(100% + 24px), 0); }
 .cc-btn {
   min-height: 44px;
   padding: 12px 20px;
-  border-radius: 14px;
+  border-radius: 999px;
   border: 1px solid var(--hair-2);
   background: rgba(238,244,255,.04);
-  color: var(--soft);
-  font-family: var(--f-mono);
-  font-size: 11.5px; font-weight: 500;
-  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink);
+  font-family: var(--f-display);
+  font-variation-settings: 'wdth' 106, 'wght' 540;
+  font-size: 14.5px; font-weight: 540;
+  letter-spacing: -0.006em;
   white-space: nowrap;
   cursor: pointer;
   transition: transform var(--t-press) ease-out, border-color .25s var(--e-out), color .25s var(--e-out);
@@ -1447,7 +1479,7 @@ body.no-scroll .cc.on { transform: translate3d(-50%, calc(100% + 24px), 0); }
 @media (max-width: 720px) {
   .cc-in { flex-direction: column; align-items: stretch; gap: 16px; padding: 18px; }
   .cc-act { display: grid; grid-template-columns: 1fr 1fr; }
-  .cc-btn { padding: 12px 10px; font-size: 11px; }
+  .cc-btn { padding: 12px 10px; font-size: 14px; }
   .cc-copy p { font-size: 13.5px; }
   /* the sticky CTA would sit under the banner — stand it down while asking */
   body:has(.cc) .sticky-cta { opacity: 0; pointer-events: none; }
@@ -1548,12 +1580,12 @@ body.no-scroll .cc.on { transform: translate3d(-50%, calc(100% + 24px), 0); }
     min-height: 48px;
     margin-top: 22px;
     padding: 14px 30px;
-    border-radius: 18px;
+    border-radius: 999px;
     background: var(--btn);
-    font-family: var(--f-mono);
-    font-variation-settings: normal;
-    font-size: 12px; font-weight: 500;
-    letter-spacing: .12em; text-transform: uppercase;
+    font-family: var(--f-display);
+    font-variation-settings: 'wdth' 106, 'wght' 540;
+    font-size: 16px; font-weight: 540;
+    letter-spacing: -0.006em;
     color: var(--btn-ink);
     transition: transform var(--t-press) ease-out;
   }
@@ -1630,7 +1662,7 @@ body.no-scroll .cc.on { transform: translate3d(-50%, calc(100% + 24px), 0); }
   .fg input, .fg select, .fg textarea { font-size: 16px; }  /* 16px stops iOS zooming on focus */
   .ci-val { font-size: 17px; }
   .footer-mark span { font-size: 46px; }
-  .btn { font-size: 11.5px; }
+  .btn { font-size: 15px; padding-inline: 26px; }
 }
 
 /* ── Reduced motion ───────────────────────────────
@@ -1652,5 +1684,4 @@ body.no-scroll .cc.on { transform: translate3d(-50%, calc(100% + 24px), 0); }
   .step.on .step-mark::after { animation: none !important; }
   /* the fold is a rotation, so it goes; the text just appears */
   .fold-c { transform: none !important; opacity: 1 !important; }
-  .btn::after { opacity: 0 !important; }
 }

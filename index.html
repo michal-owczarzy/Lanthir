@@ -323,13 +323,12 @@
       <ul class="nav-links" id="navLinks">
         <li style="--i:0"><a href="#sluzby"    data-i18n="nav.services">Služby</a></li>
         <li style="--i:1"><a href="#reference" data-i18n="nav.work">Reference</a></li>
-        <li style="--i:2"><a href="#observabilita" data-i18n="nav.obs">Observabilita</a></li>
-        <li style="--i:3"><a href="#cenik"     data-i18n="nav.pricing">Ceník</a></li>
-        <li style="--i:4" class="nav-opt"><a href="#postup"    data-i18n="nav.process">Postup</a></li>
-        <li style="--i:5" class="nav-opt"><a href="#faq"       data-i18n="nav.faq">FAQ</a></li>
-        <li style="--i:6"><a href="#about"     data-i18n="nav.about">O nás</a></li>
-        <li style="--i:7"><a href="#kontakt"   data-i18n="nav.contact">Kontakt</a></li>
-        <li style="--i:8" class="nav-links-cta"><a href="#kontakt" class="m-cta" data-i18n="nav.cta">Nezávazná poptávka</a></li>
+        <li style="--i:2"><a href="#cenik"     data-i18n="nav.pricing">Ceník</a></li>
+        <li style="--i:3" class="nav-opt"><a href="#postup"    data-i18n="nav.process">Postup</a></li>
+        <li style="--i:4" class="nav-opt"><a href="#faq"       data-i18n="nav.faq">FAQ</a></li>
+        <li style="--i:5"><a href="#about"     data-i18n="nav.about">O nás</a></li>
+        <li style="--i:6"><a href="#kontakt"   data-i18n="nav.contact">Kontakt</a></li>
+        <li style="--i:7" class="nav-links-cta"><a href="#kontakt" class="m-cta" data-i18n="nav.cta">Nezávazná poptávka</a></li>
       </ul>
       <div class="lang-switch">
         <button class="ls-btn active" data-lang="cs">CZ</button>
@@ -343,6 +342,10 @@
 
   <!-- ═══ GRADIENT ASCII — the horizon behind the whole page (ascii.js) ═══ -->
   <div class="ascii-bg" id="asciiBg" aria-hidden="true"></div>
+
+  <!-- ═══ THE TRACE — a line of the same characters, drawn down the margin
+       through a checkpoint at every section (trail.js) ═══ -->
+  <div class="trail" id="trail" aria-hidden="true"><canvas></canvas></div>
 
   <main>
 
@@ -524,78 +527,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ OBSERVABILITY — a separate, custom service; sample board (dashboard.js) ═══ -->
-  <section class="section" id="observabilita">
-    <div class="container">
-      <header class="obs-head">
-        <div class="head reveal" style="margin-bottom:0">
-          <span class="tag" data-i18n="obs.tag">Observabilita</span>
-          <h2 class="h2" data-i18n="obs.h">Observabilita<br><em>na míru</em></h2>
-        </div>
-        <p class="lede reveal" data-i18n="obs.sub">Samostatná služba, nezávislá na tvorbě webu. Napojíme cokoliv, co u vás běží, a postavíme nad tím dashboardy a upozornění. O problému se dozvíme dřív než vaši zákazníci a víme, kde ho hledat.</p>
-      </header>
-
-      <div class="dash reveal" id="dash" data-ui>
-        <div class="dash-top">
-          <img src="/logo-mark.svg" alt="" class="dash-logo">
-          <b class="dash-name">Lanthir Observe</b>
-          <span class="dash-env" data-i18n="obs.db.env">Produkce · 13 služeb</span>
-          <span class="dash-live"><i aria-hidden="true"></i><span data-i18n="obs.db.live">Živě</span></span>
-          <time class="dash-clock" id="dashClock">--:--:--</time>
-          <span class="dash-sample" data-i18n="obs.db.sample">Ukázková data</span>
-        </div>
-
-        <div class="dash-grid">
-          <div class="dp dp-map">
-            <h3 class="dp-h" data-i18n="obs.db.map">Mapa služeb</h3>
-            <svg class="dash-map" id="dashMap" viewBox="0 0 700 330" role="group" aria-label="Mapa služeb: internet, firewall, load balancer, tři webové servery, API, databáze, cache, fronta, souborový server, VPN pobočky a IoT brána"></svg>
-            <div class="dash-read" id="dashRead" aria-live="polite"></div>
-          </div>
-
-          <div class="dp dp-kpis">
-            <div class="kpi"><span class="kpi-l" data-i18n="obs.db.k1">Dostupnost · 30 dní</span><b class="kpi-v" data-k="up">99,982 %</b><canvas class="kpi-sp" aria-hidden="true"></canvas></div>
-            <div class="kpi"><span class="kpi-l" data-i18n="obs.db.k2">Latence p95</span><b class="kpi-v" data-k="p95">182 ms</b><canvas class="kpi-sp" aria-hidden="true"></canvas></div>
-            <div class="kpi"><span class="kpi-l" data-i18n="obs.db.k3">Chybovost</span><b class="kpi-v" data-k="err">0,04 %</b><canvas class="kpi-sp" aria-hidden="true"></canvas></div>
-            <div class="kpi"><span class="kpi-l" data-i18n="obs.db.k4">Provoz</span><b class="kpi-v" data-k="thr">1,82 Gb/s</b><canvas class="kpi-sp" aria-hidden="true"></canvas></div>
-          </div>
-
-          <div class="dp dp-chart">
-            <h3 class="dp-h"><span data-i18n="obs.db.chart">Provoz v reálném čase · Gb/s</span><span class="dp-legend"><i class="lg-in"></i>in <i class="lg-out"></i>out</span></h3>
-            <canvas class="dash-chart" id="dashChart" aria-hidden="true"></canvas>
-          </div>
-
-          <div class="dp dp-logs">
-            <h3 class="dp-h" data-i18n="obs.db.logs">Živé logy</h3>
-            <ol class="dash-logs" id="dashLogs"></ol>
-          </div>
-
-          <div class="dp dp-heat">
-            <h3 class="dp-h" data-i18n="obs.db.heat">Latence podle služeb · posledních 48 minut</h3>
-            <canvas class="dash-heat" id="dashHeat" aria-hidden="true"></canvas>
-          </div>
-
-          <div class="dp dp-slo">
-            <h3 class="dp-h" data-i18n="obs.db.slo">Spolehlivost (SLO 99,9 %)</h3>
-            <div class="slo-bar" aria-hidden="true"><i style="--v:.71"></i></div>
-            <p class="slo-txt" data-i18n="obs.db.budget">Zbývá 71 % rozpočtu chyb na tento měsíc</p>
-            <p class="slo-alert"><b>srv-files</b> <span data-i18n="obs.db.alert">Disk /data se zaplní zhruba za 6 dní. Navrhujeme rozšířit svazek do pátku.</span></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="obs-points">
-        <div class="reveal"><h3 data-i18n="obs.p1h">Sběr odkudkoliv</h3><p data-i18n="obs.p1">Servery, síť, cloud, kontejnery, aplikace i výrobní a IoT zařízení. Agenti, SNMP, API, OpenTelemetry, logy.</p></div>
-        <div class="reveal"><h3 data-i18n="obs.p2h">Dashboardy na míru</h3><p data-i18n="obs.p2">Technik vidí detail každé služby, vedení stav celé firmy na jeden pohled.</p></div>
-        <div class="reveal"><h3 data-i18n="obs.p3h">Upozornění a eskalace</h3><p data-i18n="obs.p3">Když se něco blíží hranici, víme o tom první. Reakční dobu si domluvíme ve smlouvě.</p></div>
-      </div>
-
-      <div class="obs-cta reveal">
-        <a href="#kontakt" class="btn btn--solid" data-bundle="dohled" data-i18n="obs.cta">Probrat observabilitu</a>
-        <p data-i18n="obs.note">Cenu připravíme na míru po konzultaci, která je zdarma.</p>
       </div>
     </div>
   </section>
@@ -937,6 +868,97 @@
     </div>
   </section>
 
+  <!-- ═══ MORE SERVICES — websites are the work; these sit beside it.
+       A list that grows: one card per service. Observability is the first;
+       its sample board (dashboard.js) closes the section. ═══ -->
+  <section class="section" id="dalsi-sluzby">
+    <div class="container">
+      <header class="obs-head">
+        <div class="head reveal" style="margin-bottom:0">
+          <span class="tag" data-i18n="more.tag">Další služby</span>
+          <h2 class="h2" data-i18n="more.h">Víc než<br><em>jen weby</em></h2>
+        </div>
+        <p class="lede reveal" data-i18n="more.sub">Hlavně tvoříme weby. Vedle nich nabízíme samostatné služby, které si můžete objednat i bez webu.</p>
+      </header>
+
+      <ul class="more-list" role="list">
+        <li class="glow more-item reveal" id="observabilita">
+          <span class="glow-edge" aria-hidden="true"></span>
+          <div class="glow-in">
+            <div class="more-main">
+              <h3 class="more-name" data-i18n="obs.name">Máte přehled, co se děje ve vaší síti?</h3>
+              <p class="more-desc" data-i18n="obs.sub">Observabilita jako služba: data ze všech serverů, zařízení a aplikací svedeme na jedno místo, postavíme nad nimi přehledné dashboardy a hlídáme je za vás. Nekupujete další software, který byste museli sami nastavovat a sledovat.</p>
+              <div class="obs-cta">
+                <a href="#kontakt" class="btn btn--solid" data-bundle="dohled" data-i18n="obs.cta">Domluvit konzultaci</a>
+                <p data-i18n="obs.note">Cenu připravíme podle rozsahu po konzultaci, která je zdarma.</p>
+              </div>
+            </div>
+            <div class="more-points">
+              <div><h4 data-i18n="obs.p1h">Data ze všech zařízení na jednom místě</h4><p data-i18n="obs.p1">Servery, síť, cloud, aplikace, kamery, výrobní i IoT zařízení. Napojíme všechno, co u vás běží, bez ohledu na výrobce.</p></div>
+              <div><h4 data-i18n="obs.p2h">Přehled pro techniky i vedení</h4><p data-i18n="obs.p2">Technik vidí detail každé služby, vedení stav celé firmy na jeden pohled. Žádné hledání v pěti různých nástrojích.</p></div>
+              <div><h4 data-i18n="obs.p3h">Hlídáme to za vás</h4><p data-i18n="obs.p3">Když se něco blíží hranici, víme o tom dřív než vaši zákazníci a ozveme se. Reakční dobu si dáme do smlouvy.</p></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="obs-board">
+        <header class="obs-board-head reveal">
+          <h3 data-i18n="obs.db.h">Takhle může vypadat váš dashboard</h3>
+          <p data-i18n="obs.db.sub">Data v ukázce jsou smyšlená. Váš dashboard navrhneme podle toho, co u vás skutečně běží. Najeďte nebo klepněte na kterýkoliv uzel v mapě.</p>
+        </header>
+
+        <div class="dash reveal" id="dash" data-ui>
+          <div class="dash-top">
+            <img src="/logo-mark.svg" alt="" class="dash-logo">
+            <b class="dash-name">Lanthir Observe</b>
+            <span class="dash-env" data-i18n="obs.db.env">Produkce · 13 služeb</span>
+            <span class="dash-live"><i aria-hidden="true"></i><span data-i18n="obs.db.live">Živě</span></span>
+            <time class="dash-clock" id="dashClock">--:--:--</time>
+            <span class="dash-sample" data-i18n="obs.db.sample">Ukázková data</span>
+          </div>
+
+          <div class="dash-grid">
+            <div class="dp dp-map">
+              <h3 class="dp-h" data-i18n="obs.db.map">Mapa služeb</h3>
+              <svg class="dash-map" id="dashMap" viewBox="0 0 700 330" role="group" aria-label="Mapa služeb: internet, firewall, load balancer, tři webové servery, API, databáze, cache, fronta, souborový server, VPN pobočky a IoT brána"></svg>
+              <div class="dash-read" id="dashRead" aria-live="polite"></div>
+            </div>
+
+            <div class="dp dp-kpis">
+              <div class="kpi"><span class="kpi-l" data-i18n="obs.db.k1">Dostupnost · 30 dní</span><b class="kpi-v" data-k="up">99,982 %</b><canvas class="kpi-sp" aria-hidden="true"></canvas></div>
+              <div class="kpi"><span class="kpi-l" data-i18n="obs.db.k2">Latence p95</span><b class="kpi-v" data-k="p95">182 ms</b><canvas class="kpi-sp" aria-hidden="true"></canvas></div>
+              <div class="kpi"><span class="kpi-l" data-i18n="obs.db.k3">Chybovost</span><b class="kpi-v" data-k="err">0,04 %</b><canvas class="kpi-sp" aria-hidden="true"></canvas></div>
+              <div class="kpi"><span class="kpi-l" data-i18n="obs.db.k4">Provoz</span><b class="kpi-v" data-k="thr">1,82 Gb/s</b><canvas class="kpi-sp" aria-hidden="true"></canvas></div>
+            </div>
+
+            <div class="dp dp-chart">
+              <h3 class="dp-h"><span data-i18n="obs.db.chart">Provoz v reálném čase · Gb/s</span><span class="dp-legend"><i class="lg-in"></i>in <i class="lg-out"></i>out</span></h3>
+              <canvas class="dash-chart" id="dashChart" aria-hidden="true"></canvas>
+            </div>
+
+            <div class="dp dp-logs">
+              <h3 class="dp-h" data-i18n="obs.db.logs">Živé logy</h3>
+              <ol class="dash-logs" id="dashLogs"></ol>
+            </div>
+
+            <div class="dp dp-heat">
+              <h3 class="dp-h" data-i18n="obs.db.heat">Latence podle služeb · posledních 48 minut</h3>
+              <canvas class="dash-heat" id="dashHeat" aria-hidden="true"></canvas>
+            </div>
+
+            <div class="dp dp-slo">
+              <h3 class="dp-h" data-i18n="obs.db.slo">Spolehlivost (SLO 99,9 %)</h3>
+              <div class="slo-bar" aria-hidden="true"><i style="--v:.71"></i></div>
+              <p class="slo-txt" data-i18n="obs.db.budget">Zbývá 71 % rozpočtu chyb na tento měsíc</p>
+              <p class="slo-alert"><b>srv-files</b> <span data-i18n="obs.db.alert">Disk /data se zaplní zhruba za 6 dní. Navrhujeme rozšířit svazek do pátku.</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ CONTACT ═══ -->
   <section class="section" id="kontakt">
     <div class="container">
@@ -972,7 +994,7 @@
                   <option value="zaklad"   data-i18n="form.bundle.opt4">ZÁKLAD — 399 Kč/měsíc</option>
                   <option value="plus"     data-i18n="form.bundle.opt5">PLUS — 899 Kč/měsíc</option>
                   <option value="komplex"  data-i18n="form.bundle.opt6">KOMPLEX — od 2 499 Kč/měsíc</option>
-                  <option value="" disabled data-i18n="form.bundle.grp3">── Samostatná služba ──</option>
+                  <option value="" disabled data-i18n="form.bundle.grp3">── Další služby ──</option>
                   <option value="dohled"   data-i18n="form.bundle.opt7">Observabilita na míru</option>
                 </select>
               </div>
@@ -1030,11 +1052,11 @@
             <a href="/tvorba-webu/" data-i18n="footer.webdev">Tvorba webu</a>
             <a href="/sprava-webu/" data-i18n="footer.care">Správa webu</a>
             <a href="/monitoring-webu/" data-i18n="footer.monitoring">Monitoring webu</a>
-            <a href="#observabilita" data-i18n="nav.obs">Observabilita</a>
             <a href="#sluzby" data-i18n="svc.5.title">Webová aplikace</a>
             <a href="#sluzby" data-i18n="svc.2.title">E-shop</a>
             <a href="#sluzby" data-i18n="svc.3.title">Rezervační systém</a>
             <a href="#sluzby" data-i18n="svc.6.title">Redesign webu</a>
+            <a href="#observabilita" data-i18n="nav.obs">Observabilita</a>
           </div>
           <div class="footer-col">
             <p class="footer-title" data-i18n="footer.col2.h">Společnost</p>
@@ -1074,5 +1096,6 @@
   <script src="/ascii.js" defer></script>
   <script src="/script.js" defer></script>
   <script src="/dashboard.js" defer></script>
+  <script src="/trail.js" defer></script>
 </body>
 </html>
