@@ -283,7 +283,7 @@ html.ascii-off .hero { background: radial-gradient(70% 60% at 50% 0%, #11505c 0%
 .btn:active { transform: scale(.97); }
 .btn-light {
   position: absolute;
-  inset: -24px;
+  top: -24px; left: -24px;
   z-index: 1;
   display: block;
   width: calc(100% + 48px);
@@ -411,25 +411,30 @@ body.nav-in .nav { opacity: 1; }
 .burger.open span:nth-child(2) { opacity: 0; }
 .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Seven links, the language switch and the action fit on one row at the
-   full gaps from 1200px, and at tighter gaps from about 1120px. Below that
-   (and above the burger) the two links that only jump within the page step
-   aside; the burger menu and the footer still list them. */
+/* Eight links, the language switch and the action fit on one row from
+   1280px. Below that (and above the burger) the links that only jump within
+   the page step aside: Postup and FAQ first, then Kontakt, which the action
+   beside it already leads to. The burger menu and the footer still list
+   all of them. */
 .nav-links a, .nav-cta { white-space: nowrap; }
 @media (min-width: 881px) and (max-width: 1199px) {
   .nav-inner { gap: 24px; }
   .nav-links { gap: 20px; }
 }
-@media (min-width: 881px) and (max-width: 1119px) {
+@media (min-width: 881px) and (max-width: 1279px) {
   .nav-links .nav-opt { display: none; }
 }
+@media (min-width: 881px) and (max-width: 1099px) {
+  .nav-links .nav-opt2 { display: none; }
+}
 /* Just above the burger the Czech and Polish actions are long enough to push
-   the row past the container by ~30px; the gaps and the action tighten. */
+   the row past the container; the gaps, the tracking and the action tighten. */
 @media (min-width: 881px) and (max-width: 1023px) {
   .nav-inner { gap: 16px; }
-  .nav-links { gap: 16px; }
+  .nav-links { gap: 14px; }
+  .nav-links a { letter-spacing: .05em; }
   .nav-cta { padding-inline: 16px; }
-  .ls-btn { min-width: 40px; }
+  .ls-btn { min-width: 36px; }
 }
 
 /* ── Hero ─────────────────────────────────────── */
@@ -1684,4 +1689,16 @@ body.no-scroll .cc.on { transform: translate3d(-50%, calc(100% + 24px), 0); }
   .step.on .step-mark::after { animation: none !important; }
   /* the fold is a rotation, so it goes; the text just appears */
   .fold-c { transform: none !important; opacity: 1 !important; }
+}
+
+/* Short phones: the open menu holds eight links and the action, so on a
+   screen under 700px tall the list tightens until its first item clears the
+   bar at the top; under 600px it tightens again, and it can scroll. */
+@media (max-width: 880px) and (max-height: 700px) {
+  .nav-links a { padding-block: 10px; font-size: 24px; }
+  .nav-links .m-cta { margin-top: 14px; }
+}
+@media (max-width: 880px) and (max-height: 600px) {
+  .nav-links { overflow-y: auto; }
+  .nav-links a { padding-block: 7px; font-size: 21px; }
 }

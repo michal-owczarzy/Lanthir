@@ -1,0 +1,323 @@
+/* ═══════════════════════════════════════════════════════════
+   /observabilita/ — the service page
+   Builds on styles.css and dashboard.css (same tokens, type, buttons, nav,
+   footer, FAQ and the sample dashboard). Only what this page adds is here.
+   Order of the argument: what it is → what it brings → what an hour down
+   costs you → what we connect → a service, not a tool → how it runs →
+   a sample → questions → talk to us.
+═══════════════════════════════════════════════════════════ */
+
+/* ── Hero: copy on the left, the network as one living graph on the right */
+.op-hero { padding: clamp(104px, 12vh, 136px) 0 clamp(40px, 6vw, 80px); }
+.op-hero-in {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: center;
+  min-height: min(72vh, 720px);
+}
+.op-h1 {
+  font-family: var(--f-display);
+  font-variation-settings: 'wdth' 116, 'wght' 500;
+  font-weight: 500;
+  font-size: clamp(2.7rem, 6.2vw, 5.6rem);
+  line-height: .96;
+  letter-spacing: -0.038em;
+}
+.op-lead {
+  margin-top: clamp(24px, 3vw, 36px);
+  max-width: 44ch;
+  font-size: clamp(17px, 1.45vw, 20px);
+  line-height: 1.55;
+  color: var(--soft);
+}
+.op-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: clamp(28px, 3.4vw, 40px); }
+
+.op-topo { margin: 0; }
+.topology {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  aspect-ratio: 1 / 1;
+  margin-left: auto;
+  overflow: hidden;
+}
+/* The preset's camera (distance 270) leaves the sphere at about two thirds
+   of its canvas. The canvas is drawn larger than its box and cropped, so the
+   sphere fills the column without touching the preset. */
+.topology canvas {
+  position: absolute;
+  top: -14%; left: -14%;
+  width: 128%;
+  height: 128%;
+  display: block;
+  /* a vertical swipe over the graph still scrolls the page */
+  touch-action: pan-y;
+}
+.topology.is-off { display: none; }
+.op-topo figcaption {
+  max-width: 680px;
+  margin: 8px 0 0 auto;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--dim);
+  text-align: center;
+}
+
+/* ── What it brings: four outcomes, set large, no boxes */
+.op-value-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s2) clamp(32px, 6vw, 96px);
+}
+.op-value-list h3,
+.op-src-list h3,
+.op-steps h3 {
+  font-family: var(--f-display);
+  font-variation-settings: 'wdth' 110, 'wght' 500;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.op-value-list h3 { font-size: clamp(1.55rem, 2.6vw, 2.25rem); }
+.op-value-list h3::before {
+  /* one cyan beat on each outcome, the same signal the buttons carry */
+  content: '';
+  display: block;
+  width: 10px; height: 10px;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  background: var(--btn);
+}
+.op-value-list p { margin-top: 14px; max-width: 46ch; font-size: 17px; line-height: 1.6; color: var(--soft); }
+
+/* ── What an hour down costs (a light chapter) */
+.op-calc-in {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  grid-template-areas: "copy form" "note form";
+  grid-template-rows: auto 1fr;
+  gap: var(--s1) clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+.op-calc-copy { grid-area: copy; }
+.op-calc-copy .lede { margin-top: var(--s1); }
+.op-calc-note {
+  grid-area: note;
+  align-self: end;
+  max-width: 30ch;
+  font-family: var(--f-display);
+  font-variation-settings: 'wdth' 106, 'wght' 500;
+  font-weight: 500;
+  font-size: clamp(1.2rem, 1.9vw, 1.6rem);
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+}
+.op-calc-form {
+  grid-area: form;
+  display: grid;
+  gap: 30px;
+  padding: clamp(24px, 3.2vw, 44px);
+  border-radius: 24px;
+  background: var(--surface);
+}
+.op-field label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--soft);
+}
+.op-field output {
+  flex-shrink: 0;
+  font-family: var(--f-display);
+  font-variation-settings: 'wdth' 106, 'wght' 540;
+  font-weight: 540;
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  white-space: nowrap;
+}
+/* range: a flat track that fills up to the thumb, a thumb big enough for a
+   thumb */
+.op-field input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 36px;
+  margin-top: 6px;
+  background: transparent;
+  cursor: pointer;
+  touch-action: pan-y;
+  --track: rgba(15,17,19,.14);
+  --on: var(--accent-text);
+}
+.op-field input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--on) 0 var(--fill, 50%), var(--track) var(--fill, 50%) 100%);
+}
+.op-field input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 26px; height: 26px;
+  margin-top: -10px;
+  border: 4px solid var(--surface);
+  border-radius: 50%;
+  background: var(--btn);
+  box-shadow: 0 1px 4px rgba(0,0,0,.28);
+  transition: transform .2s var(--e-out);
+}
+.op-field input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.12); }
+.op-field input[type="range"]::-moz-range-track { height: 6px; border-radius: 999px; background: var(--track); }
+.op-field input[type="range"]::-moz-range-progress { height: 6px; border-radius: 999px; background: var(--on); }
+.op-field input[type="range"]::-moz-range-thumb {
+  width: 18px; height: 18px;
+  border: 4px solid var(--surface);
+  border-radius: 50%;
+  background: var(--btn);
+  box-shadow: 0 1px 4px rgba(0,0,0,.28);
+}
+.op-field input[type="range"]:focus { outline: none; }
+.op-field input[type="range"]:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 4px; border-radius: 10px; }
+
+.op-result { padding-top: 26px; border-top: 0; }
+.op-result-l { font-size: 16px; color: var(--soft); }
+.op-result-v {
+  margin-top: 8px;
+  font-family: var(--f-display);
+  font-variation-settings: 'wdth' 112, 'wght' 540;
+  font-weight: 540;
+  font-size: clamp(2.5rem, 5.2vw, 3.9rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.op-result-d { margin-top: 12px; font-size: 16px; color: var(--soft); }
+.op-result-d b { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* ── What we connect */
+.op-src-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s2) clamp(28px, 4vw, 64px);
+}
+.op-src-list h3 { font-size: clamp(1.2rem, 1.6vw, 1.4rem); }
+.op-src-list p { margin-top: 10px; font-size: 16px; line-height: 1.6; color: var(--soft); max-width: 40ch; }
+.op-src-how { margin-top: var(--s2); font-size: 15.5px; color: var(--dim); }
+
+/* ── A service, not a tool: two fields side by side, ours the brighter */
+.op-vs-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.op-vs-col {
+  padding: clamp(26px, 3.4vw, 48px);
+  border-radius: 24px;
+  background: var(--surface);
+}
+.op-vs-col--us { background: var(--surface-2); }
+.op-vs-col h3 {
+  margin-bottom: 24px;
+  font-family: var(--f-display);
+  font-variation-settings: 'wdth' 110, 'wght' 500;
+  font-weight: 500;
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  letter-spacing: -0.018em;
+  line-height: 1.15;
+  color: var(--soft);
+}
+.op-vs-col--us h3 { color: var(--accent-text); }
+.op-vs-col li {
+  position: relative;
+  padding-left: 32px;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--dim);
+}
+.op-vs-col li + li { margin-top: 16px; }
+.op-vs-col li::before {
+  content: '';
+  position: absolute;
+  left: 2px; top: .62em;
+  width: 12px; height: 2px;
+  border-radius: 2px;
+  background: var(--faint);
+}
+.op-vs-col--us li { color: var(--ink); }
+.op-vs-col--us li::before {
+  /* a check, drawn with two borders */
+  top: .3em;
+  width: 7px; height: 12px;
+  border: solid var(--accent-text);
+  border-width: 0 2px 2px 0;
+  border-radius: 0;
+  background: none;
+  transform: rotate(45deg);
+}
+
+/* ── How it runs */
+.op-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--s2) clamp(24px, 3vw, 48px);
+  counter-reset: step;
+}
+.op-steps li { counter-increment: step; }
+.op-steps li::before {
+  content: counter(step);
+  display: block;
+  margin-bottom: 18px;
+  font-family: var(--f-display);
+  font-variation-settings: 'wdth' 110, 'wght' 500;
+  font-size: clamp(2.4rem, 3.4vw, 3.2rem);
+  line-height: 1;
+  color: var(--accent-text);
+}
+.op-steps h3 { font-size: clamp(1.2rem, 1.6vw, 1.4rem); }
+.op-steps p { margin-top: 10px; font-size: 16px; line-height: 1.6; color: var(--soft); }
+
+/* ── Sample dashboard: the section already has its gap */
+.op-board .obs-board { margin-top: 0; }
+
+/* ── Close */
+.op-end-in {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: var(--s1) clamp(32px, 6vw, 96px);
+  align-items: end;
+}
+.op-end .h2 { font-size: clamp(2.2rem, 4.8vw, 4.2rem); }
+.op-end-side p { max-width: 40ch; font-size: 18px; line-height: 1.55; color: var(--soft); }
+.op-end-side .op-actions { margin-top: 28px; }
+
+/* ── Tablet */
+@media (max-width: 1080px) {
+  .op-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .op-src-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ── Phone composition */
+@media (max-width: 880px) {
+  .op-hero { padding-top: 104px; }
+  .op-hero-in { grid-template-columns: minmax(0, 1fr); min-height: 0; gap: 8px; }
+  .topology { max-width: 520px; margin: 0 auto; }
+  .op-topo figcaption { margin: 0 auto; max-width: 40ch; }
+  .op-value-list { grid-template-columns: 1fr; gap: 40px; }
+  .op-calc-in { grid-template-columns: 1fr; grid-template-areas: "copy" "form" "note"; grid-template-rows: auto; gap: 32px; }
+  .op-calc-note { max-width: 32ch; }
+  .op-vs-grid { grid-template-columns: 1fr; }
+  .op-end-in { grid-template-columns: 1fr; align-items: start; }
+}
+@media (max-width: 560px) {
+  /* sized to the screen, so the longest one-word line (Polish
+     "Obserwowalność") still fits a 320px phone */
+  .op-h1 { font-size: min(2.7rem, 10vw); }
+  .op-src-list, .op-steps { grid-template-columns: 1fr; gap: 36px; }
+  .op-actions .btn { flex: 1 1 100%; }
+  .op-field label { flex-direction: column; gap: 4px; }
+  .op-value-list p, .op-src-list p, .op-steps p, .op-vs-col li { font-size: 16px; }
+}

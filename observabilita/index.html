@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Observabilita jako služba: celá síť na jednom místě | Lanthir</title>
+  <meta name="description" content="Víte o problému dřív než vaši zákazníci. Data ze serverů, sítě, cloudu i výroby svedeme na jedno místo, postavíme nad nimi dashboardy a hlídáme je za vás.">
+  <meta name="author" content="Lanthir">
+  <link rel="canonical" href="https://lanthir.cz/observabilita/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#0d0e10">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lanthir.cz/observabilita/">
+  <meta property="og:title" content="Observabilita jako služba | Lanthir">
+  <meta property="og:description" content="Máte přehled, co se děje ve vaší síti? Data ze všech zařízení svedeme na jedno místo a hlídáme je za vás.">
+  <meta property="og:image" content="https://lanthir.cz/og-image.png">
+  <meta property="og:locale" content="cs_CZ">
+  <meta property="og:site_name" content="Lanthir">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Lanthir","item":"https://lanthir.cz/"},
+      {"@type":"ListItem","position":2,"name":"Observabilita","item":"https://lanthir.cz/observabilita/"}]},
+    {"@type":"Service","@id":"https://lanthir.cz/observabilita/#service","url":"https://lanthir.cz/observabilita/",
+     "name":"Observabilita jako služba","serviceType":"Monitoring a observabilita IT infrastruktury",
+     "description":"Napojení serverů, sítě, cloudu, aplikací a zařízení na jedno místo, dashboardy na míru, upozornění a průběžné hlídání.",
+     "provider":{"@type":"ProfessionalService","@id":"https://lanthir.cz/#organization","name":"Lanthir","url":"https://lanthir.cz/"},
+     "areaServed":{"@type":"Country","name":"Česká republika"}},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Musíme kvůli tomu měnit, co už máme?","acceptedAnswer":{"@type":"Answer","text":"Ne. Napojíme se na to, co u vás už běží. Pokud nějaký monitoring máte, navážeme na něj a doplníme ho."}},
+      {"@type":"Question","name":"Co když máme zařízení od různých výrobců?","acceptedAnswer":{"@type":"Answer","text":"To je běžné. Většina zařízení umí posílat data standardní cestou (SNMP, API, logy) a tam, kde to nejde, nasadíme agenta."}},
+      {"@type":"Question","name":"Kolik to stojí?","acceptedAnswer":{"@type":"Answer","text":"Záleží na tom, kolik zařízení a služeb hlídáme a jak rychlou reakci potřebujete. Cenu připravíme po konzultaci, která je zdarma."}},
+      {"@type":"Question","name":"Kdo uvidí naše data?","acceptedAnswer":{"@type":"Answer","text":"Vy a my. Přístupy k dashboardům nastavíme podle toho, kdo ve firmě co potřebuje vidět."}}
+    ]}
+  ]}
+  </script>
+
+  <!-- Our own CSS first — it is the only render-blocking request we want. -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/dashboard.css">
+
+  <!-- Fonts load async: `display=swap` already tolerates a late arrival, so there
+       is no reason to block first paint on a third-party round trip. The axis
+       ranges are trimmed to what the stylesheet actually asks for. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" media="print" onload="this.media='all'"
+        href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..600&family=Inter:wght@200;400;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..600&family=Inter:wght@200;400;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  </noscript>
+
+  <!-- Google Analytics — loaded ONLY after the visitor has agreed.
+       Analytics cookies are not "strictly necessary", so under the ePrivacy
+       directive and GDPR they need prior, active consent: the tag must not be
+       requested at all until then. The banner in cookies.js sets the flag. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.__loadAnalytics = function () {
+      if (window.__analyticsLoaded) return;
+      window.__analyticsLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-VQRNZH1QTF';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      /* IP anonymisation on, and no ad signals */
+      gtag('config', 'G-VQRNZH1QTF', { anonymize_ip: true, allow_google_signals: false });
+    };
+  </script>
+  <script src="/cookies.js" defer></script>
+  <link rel="stylesheet" href="/obs-page.css">
+</head>
+<body class="op-page">
+
+  <!-- ═══ NAV ═══ -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/logo-mark.svg" alt="" class="logo-img">
+        <span class="logo-text">Lanthir</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li style="--i:0"><a href="/#sluzby"    data-i18n="nav.services">Služby</a></li>
+        <li style="--i:1"><a href="/#reference" data-i18n="nav.work">Reference</a></li>
+        <li style="--i:2"><a href="/#cenik"     data-i18n="nav.pricing">Ceník</a></li>
+        <li style="--i:3"><a href="/observabilita/" class="active" aria-current="page" data-i18n="nav.obs">Observabilita</a></li>
+        <li style="--i:4" class="nav-opt"><a href="/#postup"    data-i18n="nav.process">Postup</a></li>
+        <li style="--i:5" class="nav-opt"><a href="/#faq"       data-i18n="nav.faq">FAQ</a></li>
+        <li style="--i:6"><a href="/#about"     data-i18n="nav.about">O nás</a></li>
+        <li style="--i:7" class="nav-opt2"><a href="/#kontakt"   data-i18n="nav.contact">Kontakt</a></li>
+        <li style="--i:8" class="nav-links-cta"><a href="/#kontakt" class="m-cta" data-i18n="nav.cta">Nezávazná poptávka</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="ls-btn active" data-lang="cs">CZ</button>
+        <button class="ls-btn" data-lang="en">EN</button>
+        <button class="ls-btn" data-lang="pl">PL</button>
+      </div>
+      <a href="/#kontakt" class="btn btn--solid nav-cta" data-i18n="nav.cta">Nezávazná poptávka</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main id="main">
+
+  <!-- ═══ HERO — the customer's network as one living graph (topology.js) ═══ -->
+  <section class="op-hero" id="home">
+    <div class="container op-hero-in">
+      <div class="op-hero-copy">
+        <h1 class="op-h1" data-i18n="op.h1">Observabilita<br>jako služba</h1>
+        <p class="op-lead" data-i18n="op.lead">Víte o problému dřív než vaši zákazníci. Data ze všech serverů, sítě a zařízení svedeme na jedno místo, postavíme nad nimi přehledné dashboardy a hlídáme je za vás.</p>
+        <div class="op-actions" data-sticky-anchor>
+          <a href="/?sluzba=dohled#kontakt" class="btn btn--solid" data-i18n="op.cta">Domluvit konzultaci zdarma</a>
+          <a href="#vypadek" class="btn btn--ghost" data-i18n="op.cta2">Kolik stojí výpadek</a>
+        </div>
+      </div>
+      <figure class="op-topo">
+        <div class="topology" id="topology"><canvas aria-hidden="true"></canvas></div>
+        <figcaption data-i18n="op.topo">Vaše síť jako jeden celek: servery, pobočky, cloud i stroje ve výrobě.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ═══ WHAT IT BRINGS ═══ -->
+  <section class="section op-value" id="prinos">
+    <div class="container">
+      <header class="obs-head">
+        <h2 class="h2 reveal" data-i18n="op.val.h">Co vám to přinese</h2>
+        <p class="lede reveal" data-i18n="op.val.sub">Monitoring není cíl. Cílem je, aby firma jela, lidé mohli pracovat a zákazníci nenarazili na zavřené dveře.</p>
+      </header>
+      <ul class="op-value-list" role="list">
+        <li class="reveal"><h3 data-i18n="op.val.1h">Méně výpadků</h3><p data-i18n="op.val.1">Většina výpadků se ohlásí předem: plnící se disk, přehřátý server, linka na hraně kapacity. Uvidíme to včas a vyřešíme, než se práce zastaví.</p></li>
+        <li class="reveal"><h3 data-i18n="op.val.2h">Rychlejší řešení</h3><p data-i18n="op.val.2">Když se něco stane, nehledáme hodiny, kde je chyba. Víme, které zařízení zlobí, od kdy a co se změnilo.</p></li>
+        <li class="reveal"><h3 data-i18n="op.val.3h">Bez vlastního specialisty</h3><p data-i18n="op.val.3">Nemusíte nabírat ani zaškolovat člověka, který bude monitoring nastavovat a sledovat. Platíte za výsledek, ne za další úvazek.</p></li>
+        <li class="reveal"><h3 data-i18n="op.val.4h">Rozhodnutí podle dat</h3><p data-i18n="op.val.4">Vedení vidí, jak jsou systémy vytížené a kam to směřuje. Nový server nebo rychlejší linku koupíte, až je opravdu potřeba, ne pro jistotu.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══ WHAT AN HOUR DOWN COSTS — the visitor's own numbers (obs-page.js) ═══ -->
+  <section class="section chapter-light op-calc" id="vypadek">
+    <div class="container op-calc-in">
+      <div class="op-calc-copy">
+        <h2 class="h2 reveal" data-i18n="op.calc.h">Kolik vás stojí<br>hodina výpadku?</h2>
+        <p class="lede reveal" data-i18n="op.calc.sub">Spočítejte si to sami. Nastavte, kolik lidí nemůže pracovat a o kolik tržeb přicházíte. Nic se nikam neodesílá.</p>
+      </div>
+      <form class="op-calc-form reveal" id="calc" onsubmit="return false">
+        <div class="op-field">
+          <label for="cPeople"><span data-i18n="op.calc.people">Kolik lidí nemůže pracovat</span><output id="cPeopleOut" for="cPeople">15</output></label>
+          <input type="range" id="cPeople" min="1" max="200" step="1" value="15">
+        </div>
+        <div class="op-field">
+          <label for="cRate"><span data-i18n="op.calc.rate">Kolik firmu stojí hodina jednoho člověka</span><output id="cRateOut" for="cRate">450 Kč</output></label>
+          <input type="range" id="cRate" min="200" max="1500" step="50" value="450">
+        </div>
+        <div class="op-field">
+          <label for="cSales"><span data-i18n="op.calc.sales">Tržby za hodinu, které při výpadku nepřijdou</span><output id="cSalesOut" for="cSales">10 000 Kč</output></label>
+          <input type="range" id="cSales" min="0" max="100000" step="1000" value="10000">
+        </div>
+        <div class="op-result" aria-live="polite">
+          <p class="op-result-l" data-i18n="op.calc.res">Jedna hodina výpadku vás stojí zhruba</p>
+          <p class="op-result-v" id="cHour">16 750 Kč</p>
+          <p class="op-result-d"><span data-i18n="op.calc.day">Celý pracovní den výpadku:</span> <b id="cDay">134 000 Kč</b></p>
+        </div>
+      </form>
+      <p class="op-calc-note reveal" data-i18n="op.calc.note">Observabilita je o tom, aby tahle čísla zůstala jen na papíře: problém zachytíme dřív, než práci zastaví.</p>
+    </div>
+  </section>
+
+  <!-- ═══ SOURCES ═══ -->
+  <section class="section op-src" id="zdroje">
+    <div class="container">
+      <header class="obs-head">
+        <h2 class="h2 reveal" data-i18n="op.src.h">Všechna zařízení<br>na jednom místě</h2>
+        <p class="lede reveal" data-i18n="op.src.sub">Nezáleží na výrobci ani na tom, jestli zařízení stojí ve skříni ve sklepě, nebo běží v cloudu. Napojíme ho tak, jak to umí.</p>
+      </header>
+      <ul class="op-src-list" role="list">
+        <li class="reveal"><h3 data-i18n="op.src.1h">Servery</h3><p data-i18n="op.src.1">Zátěž, paměť, disky, běžící služby a zálohy. Windows i Linux, fyzické i virtuální.</p></li>
+        <li class="reveal"><h3 data-i18n="op.src.2h">Síť</h3><p data-i18n="op.src.2">Routery, switche, Wi-Fi a firewally. Vytížení linek, výpadky a neobvyklý provoz.</p></li>
+        <li class="reveal"><h3 data-i18n="op.src.3h">Cloud a kontejnery</h3><p data-i18n="op.src.3">Služby v Azure, AWS nebo Google Cloud, Kubernetes a Docker. Výkon, dostupnost i chyby.</p></li>
+        <li class="reveal"><h3 data-i18n="op.src.4h">Aplikace a weby</h3><p data-i18n="op.src.4">Dostupnost, rychlost odezvy a chyby, ze kterých poznáme, co zákazníkům nefunguje.</p></li>
+        <li class="reveal"><h3 data-i18n="op.src.5h">Kancelářská technika</h3><p data-i18n="op.src.5">Tiskárny, kamery, záložní zdroje a další zařízení, která nikdo nehlídá, dokud nepřestanou fungovat.</p></li>
+        <li class="reveal"><h3 data-i18n="op.src.6h">Výroba a IoT</h3><p data-i18n="op.src.6">Stroje, čidla a řídicí systémy. Teploty, tlaky, stavy linek a odstávky.</p></li>
+      </ul>
+      <p class="op-src-how reveal" data-i18n="op.src.how">Napojujeme přes agenty, SNMP, API, OpenTelemetry a logy.</p>
+    </div>
+  </section>
+
+  <!-- ═══ A SERVICE, NOT A PRODUCT ═══ -->
+  <section class="section op-vs" id="sluzba">
+    <div class="container">
+      <header class="head">
+        <h2 class="h2 reveal" data-i18n="op.svc.h">Neprodáváme software.<br>Dodáváme službu.</h2>
+        <p class="lede reveal" data-i18n="op.svc.sub">Monitorovací nástroj si může koupit každý. Jenže ho pak někdo musí nastavit, udržovat a hlavně sledovat. To děláme my.</p>
+      </header>
+      <div class="op-vs-grid">
+        <div class="op-vs-col reveal">
+          <h3 data-i18n="op.svc.a.h">Když si koupíte nástroj</h3>
+          <ul role="list">
+            <li data-i18n="op.svc.a.1">Instalaci a nastavení řešíte sami.</li>
+            <li data-i18n="op.svc.a.2">Upozornění chodí do schránky, kterou nikdo nečte.</li>
+            <li data-i18n="op.svc.a.3">Když se něco rozbije v noci, ráno se to dozvíte od zákazníků.</li>
+            <li data-i18n="op.svc.a.4">Licence, aktualizace a údržba jsou práce navíc.</li>
+          </ul>
+        </div>
+        <div class="op-vs-col op-vs-col--us reveal">
+          <h3 data-i18n="op.svc.b.h">Když máte nás</h3>
+          <ul role="list">
+            <li data-i18n="op.svc.b.1">Všechno napojíme a nastavíme za vás.</li>
+            <li data-i18n="op.svc.b.2">Upozornění vyhodnocujeme my a ozveme se, když je potřeba jednat.</li>
+            <li data-i18n="op.svc.b.3">Reakční dobu si dáme do smlouvy.</li>
+            <li data-i18n="op.svc.b.4">Jednou za měsíc dostanete přehled, co se dělo a co doporučujeme.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT RUNS ═══ -->
+  <section class="section op-how" id="postup">
+    <div class="container">
+      <header class="head">
+        <h2 class="h2 reveal" data-i18n="op.how.h">Jak to probíhá</h2>
+      </header>
+      <ol class="op-steps" role="list">
+        <li class="reveal"><h3 data-i18n="op.how.1h">Konzultace zdarma</h3><p data-i18n="op.how.1">Projdeme, co u vás běží a co vás trápí. Řekneme, co má smysl hlídat a co ne.</p></li>
+        <li class="reveal"><h3 data-i18n="op.how.2h">Napojení</h3><p data-i18n="op.how.2">Napojíme zařízení a služby, které jsme spolu vybrali, a ověříme, že data chodí správně.</p></li>
+        <li class="reveal"><h3 data-i18n="op.how.3h">Dashboardy a upozornění</h3><p data-i18n="op.how.3">Postavíme přehledy pro techniky i pro vedení a nastavíme, kdy a komu se má ozvat upozornění.</p></li>
+        <li class="reveal"><h3 data-i18n="op.how.4h">Hlídání</h3><p data-i18n="op.how.4">Od té chvíle to hlídáme my. Když se něco blíží hranici, ozveme se dřív, než to poznají vaši zákazníci.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ═══ SAMPLE DASHBOARD (dashboard.js) ═══ -->
+  <section class="section op-board" id="ukazka">
+    <div class="container">
+      <div class="obs-board">
+          <header class="obs-board-head reveal">
+            <h2 class="h2 reveal" data-i18n="obs.db.h">Takhle může vypadat váš dashboard</h2>
+            <p data-i18n="obs.db.sub">Data v ukázce jsou smyšlená. Váš dashboard navrhneme podle toho, co u vás skutečně běží. Najeďte nebo klepněte na kterýkoliv uzel v mapě.</p>
+          </header>
+
+          <div class="dash reveal" id="dash" data-ui>
+            <div class="dash-top">
+              <img src="/logo-mark.svg" alt="" class="dash-logo">
+              <b class="dash-name">Lanthir Observe</b>
+              <span class="dash-env" data-i18n="obs.db.env">Produkce · 13 služeb</span>
+              <span class="dash-live"><i aria-hidden="true"></i><span data-i18n="obs.db.live">Živě</span></span>
+              <time class="dash-clock" id="dashClock">--:--:--</time>
+              <span class="dash-sample" data-i18n="obs.db.sample">Ukázková data</span>
+            </div>
+
+            <div class="dash-grid">
+              <div class="dp dp-map">
+                <h3 class="dp-h" data-i18n="obs.db.map">Mapa služeb</h3>
+                <svg class="dash-map" id="dashMap" viewBox="0 0 700 330" role="group" aria-label="Mapa služeb: internet, firewall, load balancer, tři webové servery, API, databáze, cache, fronta, souborový server, VPN pobočky a IoT brána"></svg>
+                <div class="dash-read" id="dashRead" aria-live="polite"></div>
+              </div>
+
+              <div class="dp dp-kpis">
+                <div class="kpi"><span class="kpi-l" data-i18n="obs.db.k1">Dostupnost · 30 dní</span><b class="kpi-v" data-k="up">99,982 %</b><canvas class="kpi-sp" aria-hidden="true"></canvas></div>
+                <div class="kpi"><span class="kpi-l" data-i18n="obs.db.k2">Latence p95</span><b class="kpi-v" data-k="p95">182 ms</b><canvas class="kpi-sp" aria-hidden="true"></canvas></div>
+                <div class="kpi"><span class="kpi-l" data-i18n="obs.db.k3">Chybovost</span><b class="kpi-v" data-k="err">0,04 %</b><canvas class="kpi-sp" aria-hidden="true"></canvas></div>
+                <div class="kpi"><span class="kpi-l" data-i18n="obs.db.k4">Provoz</span><b class="kpi-v" data-k="thr">1,82 Gb/s</b><canvas class="kpi-sp" aria-hidden="true"></canvas></div>
+              </div>
+
+              <div class="dp dp-chart">
+                <h3 class="dp-h"><span data-i18n="obs.db.chart">Provoz v reálném čase · Gb/s</span><span class="dp-legend"><i class="lg-in"></i>in <i class="lg-out"></i>out</span></h3>
+                <canvas class="dash-chart" id="dashChart" aria-hidden="true"></canvas>
+              </div>
+
+              <div class="dp dp-logs">
+                <h3 class="dp-h" data-i18n="obs.db.logs">Živé logy</h3>
+                <ol class="dash-logs" id="dashLogs"></ol>
+              </div>
+
+              <div class="dp dp-heat">
+                <h3 class="dp-h" data-i18n="obs.db.heat">Latence podle služeb · posledních 48 minut</h3>
+                <canvas class="dash-heat" id="dashHeat" aria-hidden="true"></canvas>
+              </div>
+
+              <div class="dp dp-slo">
+                <h3 class="dp-h" data-i18n="obs.db.slo">Spolehlivost (SLO 99,9 %)</h3>
+                <div class="slo-bar" aria-hidden="true"><i style="--v:.71"></i></div>
+                <p class="slo-txt" data-i18n="obs.db.budget">Zbývá 71 % rozpočtu chyb na tento měsíc</p>
+                <p class="slo-alert"><b>srv-files</b> <span data-i18n="obs.db.alert">Disk /data se zaplní zhruba za 6 dní. Navrhujeme rozšířit svazek do pátku.</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- ═══ QUESTIONS ═══ -->
+  <section class="section chapter-light op-faq" id="otazky">
+    <div class="container">
+      <header class="head">
+        <h2 class="h2 reveal" data-i18n="op.faq.h">Časté otázky</h2>
+      </header>
+      <div class="faq">
+        <details class="faq-item reveal">
+          <summary><span data-i18n="op.q1">Musíme kvůli tomu měnit, co už máme?</span><i aria-hidden="true"></i></summary>
+          <div class="faq-a"><p data-i18n="op.a1">Ne. Napojíme se na to, co u vás už běží. Pokud nějaký monitoring máte, navážeme na něj a doplníme ho.</p></div>
+        </details>
+        <details class="faq-item reveal">
+          <summary><span data-i18n="op.q2">Co když máme zařízení od různých výrobců?</span><i aria-hidden="true"></i></summary>
+          <div class="faq-a"><p data-i18n="op.a2">To je běžné. Většina zařízení umí posílat data standardní cestou (SNMP, API, logy) a tam, kde to nejde, nasadíme agenta.</p></div>
+        </details>
+        <details class="faq-item reveal">
+          <summary><span data-i18n="op.q3">Kolik to stojí?</span><i aria-hidden="true"></i></summary>
+          <div class="faq-a"><p data-i18n="op.a3">Záleží na tom, kolik zařízení a služeb hlídáme a jak rychlou reakci potřebujete. Cenu připravíme po konzultaci, která je zdarma.</p></div>
+        </details>
+        <details class="faq-item reveal">
+          <summary><span data-i18n="op.q4">Kdo uvidí naše data?</span><i aria-hidden="true"></i></summary>
+          <div class="faq-a"><p data-i18n="op.a4">Vy a my. Přístupy k dashboardům nastavíme podle toho, kdo ve firmě co potřebuje vidět.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CLOSE ═══ -->
+  <section class="section op-end" id="kontakt">
+    <div class="container op-end-in">
+      <h2 class="h2 reveal" data-i18n="op.end.h">Chcete vidět,<br>co se u vás děje?</h2>
+      <div class="op-end-side reveal">
+        <p data-i18n="op.end.sub">Konzultace je zdarma a nezávazná. Ozvěte se a domluvíme se, co má smysl hlídat.</p>
+        <div class="op-actions">
+          <a href="/?sluzba=dohled#kontakt" class="btn btn--solid" data-i18n="op.cta">Domluvit konzultaci zdarma</a>
+          <a href="tel:+420725528165" class="btn btn--ghost">+420 725 528 165</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-row"><img src="/logo-mark.svg" alt="" class="footer-logo"><span class="footer-name">Lanthir</span></div>
+          <p data-i18n="footer.tagline">Technologický partner pro růst a provoz firmy.</p>
+          <p class="footer-legal">Ing. Michal Owczarzy <br><span data-i18n="footer.ico">IČO</span> 23741945</p>
+          <span class="status"><span class="dot" aria-hidden="true"></span><span data-i18n="footer.status">všechny systémy online</span></span>
+          <div class="footer-social">
+            <p class="footer-title" data-i18n="footer.social">Sledujte nás</p>
+            <ul class="social-row">
+              <li><a href="https://www.instagram.com/lanthircz/" class="social-link"
+                     target="_blank" rel="noopener me" aria-label="Lanthir na Instagramu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.2" y="2.2" width="19.6" height="19.6" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.15" fill="currentColor" stroke="none"/></svg>
+              </a></li>
+              <li><a href="https://www.facebook.com/profile.php?id=61588706684278" class="social-link"
+                     target="_blank" rel="noopener me" aria-label="Lanthir na Facebooku">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-nav">
+          <div class="footer-col">
+            <p class="footer-title" data-i18n="footer.col1.h">Služby</p>
+            <a href="/tvorba-webu/" data-i18n="footer.webdev">Tvorba webu</a>
+            <a href="/sprava-webu/" data-i18n="footer.care">Správa webu</a>
+            <a href="/monitoring-webu/" data-i18n="footer.monitoring">Monitoring webu</a>
+            <a href="/#sluzby" data-i18n="svc.5.title">Webová aplikace</a>
+            <a href="/#sluzby" data-i18n="svc.2.title">E-shop</a>
+            <a href="/#sluzby" data-i18n="svc.3.title">Rezervační systém</a>
+            <a href="/#sluzby" data-i18n="svc.6.title">Redesign webu</a>
+            <a href="/observabilita/" data-i18n="nav.obs">Observabilita</a>
+          </div>
+          <div class="footer-col">
+            <p class="footer-title" data-i18n="footer.col2.h">Společnost</p>
+            <a href="/#reference" data-i18n="nav.work">Reference</a>
+            <a href="/#cenik"   data-i18n="nav.pricing">Ceník</a>
+            <a href="/#postup"  data-i18n="nav.process">Postup</a>
+            <a href="/#kontakt" data-i18n="nav.contact">Kontakt</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-mark" aria-hidden="true"><span>LANTHIR</span></div>
+      <div class="footer-bar">
+        <span data-i18n="footer.copy">© 2026 Lanthir. Všechna práva vyhrazena.</span>
+        <nav class="footer-legal-links" aria-label="Právní informace">
+          <a href="/zasady-ochrany-osobnich-udaju/" data-i18n="footer.privacy">Zásady ochrany osobních údajů</a>
+          <a href="/informace-pro-spotrebitele/" data-i18n="footer.consumer">Informace pro spotřebitele</a>
+          <button type="button" class="cc-reopen" data-i18n="footer.cookies"
+                  onclick="window.__cookieSettings && window.__cookieSettings()">Nastavení cookies</button>
+        </nav>
+        <button class="to-top" id="toTop" aria-label="Zpět nahoru"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></button>
+      </div>
+    </div>
+  </footer>
+
+  </main>
+
+  <a class="sticky-cta" id="stickyCta" href="/?sluzba=dohled#kontakt" tabindex="-1" aria-hidden="true">
+    <span data-i18n="sticky.cta">Nezávazná poptávka</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+  </a>
+
+  <script src="/script.js" defer></script>
+  <script src="/dashboard.js" defer></script>
+  <script src="/topology.js" defer></script>
+  <script src="/obs-page.js" defer></script>
+</body>
+</html>

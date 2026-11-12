@@ -238,6 +238,77 @@ const T = {
     'obs.p3': "Když se něco blíží hranici, víme o tom dřív než vaši zákazníci a ozveme se. Reakční dobu si dáme do smlouvy.",
     'obs.cta': "Domluvit konzultaci",
     'obs.note': "Cenu připravíme podle rozsahu po konzultaci, která je zdarma.",
+    "obs.more": "Víc o observabilitě",
+    "op.h1": "Observabilita<br>jako služba",
+    "op.lead": "Víte o problému dřív než vaši zákazníci. Data ze všech serverů, sítě a zařízení svedeme na jedno místo, postavíme nad nimi přehledné dashboardy a hlídáme je za vás.",
+    "op.cta": "Domluvit konzultaci zdarma",
+    "op.cta2": "Kolik stojí výpadek",
+    "op.topo": "Vaše síť jako jeden celek: servery, pobočky, cloud i stroje ve výrobě.",
+    "op.val.h": "Co vám to přinese",
+    "op.val.sub": "Monitoring není cíl. Cílem je, aby firma jela, lidé mohli pracovat a zákazníci nenarazili na zavřené dveře.",
+    "op.val.1h": "Méně výpadků",
+    "op.val.1": "Většina výpadků se ohlásí předem: plnící se disk, přehřátý server, linka na hraně kapacity. Uvidíme to včas a vyřešíme, než se práce zastaví.",
+    "op.val.2h": "Rychlejší řešení",
+    "op.val.2": "Když se něco stane, nehledáme hodiny, kde je chyba. Víme, které zařízení zlobí, od kdy a co se změnilo.",
+    "op.val.3h": "Bez vlastního specialisty",
+    "op.val.3": "Nemusíte nabírat ani zaškolovat člověka, který bude monitoring nastavovat a sledovat. Platíte za výsledek, ne za další úvazek.",
+    "op.val.4h": "Rozhodnutí podle dat",
+    "op.val.4": "Vedení vidí, jak jsou systémy vytížené a kam to směřuje. Nový server nebo rychlejší linku koupíte, až je opravdu potřeba, ne pro jistotu.",
+    "op.calc.h": "Kolik vás stojí<br>hodina výpadku?",
+    "op.calc.sub": "Spočítejte si to sami. Nastavte, kolik lidí nemůže pracovat a o kolik tržeb přicházíte. Nic se nikam neodesílá.",
+    "op.calc.people": "Kolik lidí nemůže pracovat",
+    "op.calc.rate": "Kolik firmu stojí hodina jednoho člověka",
+    "op.calc.sales": "Tržby za hodinu, které při výpadku nepřijdou",
+    "op.calc.res": "Jedna hodina výpadku vás stojí zhruba",
+    "op.calc.day": "Celý pracovní den výpadku:",
+    "op.calc.note": "Observabilita je o tom, aby tahle čísla zůstala jen na papíře: problém zachytíme dřív, než práci zastaví.",
+    "op.src.h": "Všechna zařízení<br>na jednom místě",
+    "op.src.sub": "Nezáleží na výrobci ani na tom, jestli zařízení stojí ve skříni ve sklepě, nebo běží v cloudu. Napojíme ho tak, jak to umí.",
+    "op.src.1h": "Servery",
+    "op.src.1": "Zátěž, paměť, disky, běžící služby a zálohy. Windows i Linux, fyzické i virtuální.",
+    "op.src.2h": "Síť",
+    "op.src.2": "Routery, switche, Wi-Fi a firewally. Vytížení linek, výpadky a neobvyklý provoz.",
+    "op.src.3h": "Cloud a kontejnery",
+    "op.src.3": "Služby v Azure, AWS nebo Google Cloud, Kubernetes a Docker. Výkon, dostupnost i chyby.",
+    "op.src.4h": "Aplikace a weby",
+    "op.src.4": "Dostupnost, rychlost odezvy a chyby, ze kterých poznáme, co zákazníkům nefunguje.",
+    "op.src.5h": "Kancelářská technika",
+    "op.src.5": "Tiskárny, kamery, záložní zdroje a další zařízení, která nikdo nehlídá, dokud nepřestanou fungovat.",
+    "op.src.6h": "Výroba a IoT",
+    "op.src.6": "Stroje, čidla a řídicí systémy. Teploty, tlaky, stavy linek a odstávky.",
+    "op.src.how": "Napojujeme přes agenty, SNMP, API, OpenTelemetry a logy.",
+    "op.svc.h": "Neprodáváme software.<br>Dodáváme službu.",
+    "op.svc.sub": "Monitorovací nástroj si může koupit každý. Jenže ho pak někdo musí nastavit, udržovat a hlavně sledovat. To děláme my.",
+    "op.svc.a.h": "Když si koupíte nástroj",
+    "op.svc.a.1": "Instalaci a nastavení řešíte sami.",
+    "op.svc.a.2": "Upozornění chodí do schránky, kterou nikdo nečte.",
+    "op.svc.a.3": "Když se něco rozbije v noci, ráno se to dozvíte od zákazníků.",
+    "op.svc.a.4": "Licence, aktualizace a údržba jsou práce navíc.",
+    "op.svc.b.h": "Když máte nás",
+    "op.svc.b.1": "Všechno napojíme a nastavíme za vás.",
+    "op.svc.b.2": "Upozornění vyhodnocujeme my a ozveme se, když je potřeba jednat.",
+    "op.svc.b.3": "Reakční dobu si dáme do smlouvy.",
+    "op.svc.b.4": "Jednou za měsíc dostanete přehled, co se dělo a co doporučujeme.",
+    "op.how.h": "Jak to probíhá",
+    "op.how.1h": "Konzultace zdarma",
+    "op.how.1": "Projdeme, co u vás běží a co vás trápí. Řekneme, co má smysl hlídat a co ne.",
+    "op.how.2h": "Napojení",
+    "op.how.2": "Napojíme zařízení a služby, které jsme spolu vybrali, a ověříme, že data chodí správně.",
+    "op.how.3h": "Dashboardy a upozornění",
+    "op.how.3": "Postavíme přehledy pro techniky i pro vedení a nastavíme, kdy a komu se má ozvat upozornění.",
+    "op.how.4h": "Hlídání",
+    "op.how.4": "Od té chvíle to hlídáme my. Když se něco blíží hranici, ozveme se dřív, než to poznají vaši zákazníci.",
+    "op.faq.h": "Časté otázky",
+    "op.q1": "Musíme kvůli tomu měnit, co už máme?",
+    "op.a1": "Ne. Napojíme se na to, co u vás už běží. Pokud nějaký monitoring máte, navážeme na něj a doplníme ho.",
+    "op.q2": "Co když máme zařízení od různých výrobců?",
+    "op.a2": "To je běžné. Většina zařízení umí posílat data standardní cestou (SNMP, API, logy) a tam, kde to nejde, nasadíme agenta.",
+    "op.q3": "Kolik to stojí?",
+    "op.a3": "Záleží na tom, kolik zařízení a služeb hlídáme a jak rychlou reakci potřebujete. Cenu připravíme po konzultaci, která je zdarma.",
+    "op.q4": "Kdo uvidí naše data?",
+    "op.a4": "Vy a my. Přístupy k dashboardům nastavíme podle toho, kdo ve firmě co potřebuje vidět.",
+    "op.end.h": "Chcete vidět,<br>co se u vás děje?",
+    "op.end.sub": "Konzultace je zdarma a nezávazná. Ozvěte se a domluvíme se, co má smysl hlídat.",
     'obs.db.h': "Takhle může vypadat váš dashboard",
     'obs.db.sub': "Data v ukázce jsou smyšlená. Váš dashboard navrhneme podle toho, co u vás skutečně běží. Najeďte nebo klepněte na kterýkoliv uzel v mapě.",
     'obs.db.env': "Produkce · 13 služeb",
@@ -518,6 +589,77 @@ const T = {
     'obs.p3': "When something nears its limit, we know before your customers do and we get in touch. Response times go into the contract.",
     'obs.cta': "Book a consultation",
     'obs.note': "We price it by scope after a free consultation.",
+    "obs.more": "More about observability",
+    "op.h1": "Observability<br>as a service",
+    "op.lead": "Know about a problem before your customers do. We bring the data from all your servers, network and devices into one place, build clear dashboards on top of it and keep watch for you.",
+    "op.cta": "Book a free consultation",
+    "op.cta2": "What downtime costs",
+    "op.topo": "Your network as one whole: servers, branches, cloud and the machines on the shop floor.",
+    "op.val.h": "What you get",
+    "op.val.sub": "Monitoring is not the goal. The goal is a business that keeps running, people who can work and customers who never find the door shut.",
+    "op.val.1h": "Fewer outages",
+    "op.val.1": "Most outages announce themselves: a filling disk, an overheating server, a line at the edge of its capacity. We see it in time and fix it before work stops.",
+    "op.val.2h": "Faster fixes",
+    "op.val.2": "When something happens, nobody spends hours looking for the fault. We know which device is acting up, since when and what changed.",
+    "op.val.3h": "No specialist to hire",
+    "op.val.3": "You don't have to hire or train someone to set up and watch the monitoring. You pay for the result, not for another job position.",
+    "op.val.4h": "Decisions based on data",
+    "op.val.4": "Management sees how loaded the systems are and where it is heading. You buy a new server or a faster line when it is really needed, not just in case.",
+    "op.calc.h": "What does an hour<br>of downtime cost you?",
+    "op.calc.sub": "Work it out yourself. Set how many people cannot work and how much revenue you lose. Nothing is sent anywhere.",
+    "op.calc.people": "People who cannot work",
+    "op.calc.rate": "What an hour of one person costs the company",
+    "op.calc.sales": "Revenue per hour that does not come in",
+    "op.calc.res": "One hour of downtime costs you roughly",
+    "op.calc.day": "A full working day of downtime:",
+    "op.calc.note": "Observability is about keeping these numbers on paper: we catch the problem before it stops work.",
+    "op.src.h": "Every device<br>in one place",
+    "op.src.sub": "It doesn't matter who made it or whether it sits in a cupboard in the basement or runs in the cloud. We connect it the way it can be connected.",
+    "op.src.1h": "Servers",
+    "op.src.1": "Load, memory, disks, running services and backups. Windows and Linux, physical and virtual.",
+    "op.src.2h": "Network",
+    "op.src.2": "Routers, switches, Wi-Fi and firewalls. Line usage, outages and unusual traffic.",
+    "op.src.3h": "Cloud and containers",
+    "op.src.3": "Services in Azure, AWS or Google Cloud, Kubernetes and Docker. Performance, availability and errors.",
+    "op.src.4h": "Applications and websites",
+    "op.src.4": "Availability, response times and the errors that tell us what is not working for your customers.",
+    "op.src.5h": "Office equipment",
+    "op.src.5": "Printers, cameras, UPS units and other devices nobody watches until they stop working.",
+    "op.src.6h": "Production and IoT",
+    "op.src.6": "Machines, sensors and control systems. Temperatures, pressures, line states and downtime.",
+    "op.src.how": "We connect through agents, SNMP, APIs, OpenTelemetry and logs.",
+    "op.svc.h": "We don't sell software.<br>We deliver a service.",
+    "op.svc.sub": "Anyone can buy a monitoring tool. But then someone has to set it up, maintain it and above all watch it. That is what we do.",
+    "op.svc.a.h": "When you buy a tool",
+    "op.svc.a.1": "You install and configure it yourself.",
+    "op.svc.a.2": "Alerts go to an inbox nobody reads.",
+    "op.svc.a.3": "If something breaks at night, you hear about it from customers in the morning.",
+    "op.svc.a.4": "Licences, updates and maintenance are extra work.",
+    "op.svc.b.h": "When you have us",
+    "op.svc.b.1": "We connect and set up everything for you.",
+    "op.svc.b.2": "We assess the alerts and get in touch when action is needed.",
+    "op.svc.b.3": "Response times go into the contract.",
+    "op.svc.b.4": "Once a month you get an overview of what happened and what we recommend.",
+    "op.how.h": "How it works",
+    "op.how.1h": "Free consultation",
+    "op.how.1": "We go through what you run and what bothers you. We tell you what is worth watching and what is not.",
+    "op.how.2h": "Connection",
+    "op.how.2": "We connect the devices and services we chose together and check that the data arrives correctly.",
+    "op.how.3h": "Dashboards and alerts",
+    "op.how.3": "We build views for engineers and for management and set when and to whom an alert should go.",
+    "op.how.4h": "Watching",
+    "op.how.4": "From then on, we keep watch. When something nears its limit, we get in touch before your customers notice.",
+    "op.faq.h": "Frequently asked questions",
+    "op.q1": "Do we have to change what we already have?",
+    "op.a1": "No. We connect to what you already run. If you have some monitoring, we build on it and fill the gaps.",
+    "op.q2": "What if our devices come from different vendors?",
+    "op.a2": "That is normal. Most devices can send data in a standard way (SNMP, APIs, logs), and where they can't, we deploy an agent.",
+    "op.q3": "How much does it cost?",
+    "op.a3": "It depends on how many devices and services we watch and how fast a response you need. We prepare a price after a free consultation.",
+    "op.q4": "Who will see our data?",
+    "op.a4": "You and us. We set up dashboard access according to who in your company needs to see what.",
+    "op.end.h": "Want to see what is<br>going on in your network?",
+    "op.end.sub": "The consultation is free and without obligation. Get in touch and we will agree on what is worth watching.",
     'obs.db.h': "This is what your dashboard could look like",
     'obs.db.sub': "The data in this sample is made up. We design your dashboard around what you actually run. Hover over or tap any node on the map.",
     'obs.db.env': "Production · 13 services",
@@ -798,6 +940,77 @@ const T = {
     'obs.p3': "Gdy coś zbliża się do progu, wiemy o tym przed Twoimi klientami i odzywamy się. Czas reakcji zapisujemy w umowie.",
     'obs.cta': "Umów konsultację",
     'obs.note': "Cenę przygotujemy według zakresu po bezpłatnej konsultacji.",
+    "obs.more": "Więcej o obserwowalności",
+    "op.h1": "Obserwowalność<br>jako usługa",
+    "op.lead": "Wiesz o problemie wcześniej niż Twoi klienci. Dane ze wszystkich serwerów, sieci i urządzeń zbierzemy w jednym miejscu, zbudujemy na nich czytelne pulpity i pilnujemy ich za Ciebie.",
+    "op.cta": "Umów bezpłatną konsultację",
+    "op.cta2": "Ile kosztuje awaria",
+    "op.topo": "Twoja sieć jako jedna całość: serwery, oddziały, chmura i maszyny na produkcji.",
+    "op.val.h": "Co Ci to da",
+    "op.val.sub": "Monitoring nie jest celem. Celem jest firma, która działa, ludzie, którzy mogą pracować, i klienci, którzy nie trafiają na zamknięte drzwi.",
+    "op.val.1h": "Mniej awarii",
+    "op.val.1": "Większość awarii zapowiada się wcześniej: zapełniający się dysk, przegrzany serwer, łącze na granicy przepustowości. Zobaczymy to na czas i naprawimy, zanim praca stanie.",
+    "op.val.2h": "Szybsze rozwiązywanie",
+    "op.val.2": "Gdy coś się dzieje, nikt nie szuka godzinami, gdzie jest błąd. Wiemy, które urządzenie sprawia problem, od kiedy i co się zmieniło.",
+    "op.val.3h": "Bez własnego specjalisty",
+    "op.val.3": "Nie musisz zatrudniać ani szkolić osoby, która będzie konfigurować i obserwować monitoring. Płacisz za wynik, a nie za kolejny etat.",
+    "op.val.4h": "Decyzje oparte na danych",
+    "op.val.4": "Zarząd widzi, jak obciążone są systemy i dokąd to zmierza. Nowy serwer czy szybsze łącze kupujesz wtedy, gdy są naprawdę potrzebne, a nie na wszelki wypadek.",
+    "op.calc.h": "Ile kosztuje Cię<br>godzina awarii?",
+    "op.calc.sub": "Policz to sam. Ustaw, ile osób nie może pracować i ile przychodu tracisz. Nic nie jest nigdzie wysyłane.",
+    "op.calc.people": "Ile osób nie może pracować",
+    "op.calc.rate": "Ile firmę kosztuje godzina jednej osoby",
+    "op.calc.sales": "Przychód na godzinę, który nie wpłynie",
+    "op.calc.res": "Jedna godzina awarii kosztuje Cię około",
+    "op.calc.day": "Cały dzień pracy bez systemów:",
+    "op.calc.note": "Obserwowalność polega na tym, żeby te liczby zostały tylko na papierze: wychwycimy problem, zanim zatrzyma pracę.",
+    "op.src.h": "Wszystkie urządzenia<br>w jednym miejscu",
+    "op.src.sub": "Nie ma znaczenia producent ani to, czy urządzenie stoi w szafie w piwnicy, czy działa w chmurze. Podłączymy je tak, jak się da.",
+    "op.src.1h": "Serwery",
+    "op.src.1": "Obciążenie, pamięć, dyski, działające usługi i kopie zapasowe. Windows i Linux, fizyczne i wirtualne.",
+    "op.src.2h": "Sieć",
+    "op.src.2": "Routery, switche, Wi-Fi i firewalle. Obciążenie łączy, przerwy i nietypowy ruch.",
+    "op.src.3h": "Chmura i kontenery",
+    "op.src.3": "Usługi w Azure, AWS lub Google Cloud, Kubernetes i Docker. Wydajność, dostępność i błędy.",
+    "op.src.4h": "Aplikacje i strony",
+    "op.src.4": "Dostępność, czas odpowiedzi i błędy, po których poznamy, co nie działa Twoim klientom.",
+    "op.src.5h": "Sprzęt biurowy",
+    "op.src.5": "Drukarki, kamery, zasilacze awaryjne i inne urządzenia, których nikt nie pilnuje, dopóki nie przestaną działać.",
+    "op.src.6h": "Produkcja i IoT",
+    "op.src.6": "Maszyny, czujniki i systemy sterowania. Temperatury, ciśnienia, stany linii i przestoje.",
+    "op.src.how": "Podłączamy przez agentów, SNMP, API, OpenTelemetry i logi.",
+    "op.svc.h": "Nie sprzedajemy oprogramowania.<br>Dostarczamy usługę.",
+    "op.svc.sub": "Narzędzie do monitoringu może kupić każdy. Ale potem ktoś musi je skonfigurować, utrzymywać i przede wszystkim obserwować. To robimy my.",
+    "op.svc.a.h": "Gdy kupisz narzędzie",
+    "op.svc.a.1": "Instalację i konfigurację robisz sam.",
+    "op.svc.a.2": "Alerty trafiają do skrzynki, której nikt nie czyta.",
+    "op.svc.a.3": "Gdy coś zepsuje się w nocy, rano dowiesz się o tym od klientów.",
+    "op.svc.a.4": "Licencje, aktualizacje i utrzymanie to dodatkowa praca.",
+    "op.svc.b.h": "Gdy masz nas",
+    "op.svc.b.1": "Wszystko podłączymy i skonfigurujemy za Ciebie.",
+    "op.svc.b.2": "Alerty oceniamy my i odzywamy się, gdy trzeba działać.",
+    "op.svc.b.3": "Czas reakcji zapisujemy w umowie.",
+    "op.svc.b.4": "Raz w miesiącu dostajesz podsumowanie, co się działo i co zalecamy.",
+    "op.how.h": "Jak to wygląda",
+    "op.how.1h": "Bezpłatna konsultacja",
+    "op.how.1": "Przejdziemy przez to, co u Ciebie działa i co Ci przeszkadza. Powiemy, co warto pilnować, a co nie.",
+    "op.how.2h": "Podłączenie",
+    "op.how.2": "Podłączymy urządzenia i usługi, które razem wybraliśmy, i sprawdzimy, czy dane spływają poprawnie.",
+    "op.how.3h": "Pulpity i alerty",
+    "op.how.3": "Zbudujemy widoki dla techników i dla zarządu oraz ustawimy, kiedy i do kogo ma trafić alert.",
+    "op.how.4h": "Pilnowanie",
+    "op.how.4": "Od tej chwili pilnujemy tego my. Gdy coś zbliża się do progu, odezwiemy się, zanim zauważą to Twoi klienci.",
+    "op.faq.h": "Najczęstsze pytania",
+    "op.q1": "Czy musimy zmieniać to, co już mamy?",
+    "op.a1": "Nie. Podłączymy się do tego, co u Ciebie już działa. Jeśli masz jakiś monitoring, nawiążemy do niego i go uzupełnimy.",
+    "op.q2": "Co jeśli mamy urządzenia różnych producentów?",
+    "op.a2": "To normalne. Większość urządzeń potrafi wysyłać dane standardową drogą (SNMP, API, logi), a tam, gdzie się nie da, wdrożymy agenta.",
+    "op.q3": "Ile to kosztuje?",
+    "op.a3": "To zależy od tego, ile urządzeń i usług pilnujemy i jak szybkiej reakcji potrzebujesz. Cenę przygotujemy po bezpłatnej konsultacji.",
+    "op.q4": "Kto zobaczy nasze dane?",
+    "op.a4": "Ty i my. Dostępy do pulpitów ustawimy według tego, kto w firmie co musi widzieć.",
+    "op.end.h": "Chcesz zobaczyć,<br>co się u Ciebie dzieje?",
+    "op.end.sub": "Konsultacja jest bezpłatna i niezobowiązująca. Odezwij się, a ustalimy, co warto pilnować.",
     'obs.db.h': "Tak może wyglądać Twój pulpit",
     'obs.db.sub': "Dane w przykładzie są zmyślone. Twój pulpit zaprojektujemy według tego, co u Ciebie faktycznie działa. Najedź albo stuknij w dowolny węzeł na mapie.",
     'obs.db.env': "Produkcja · 13 usług",
@@ -902,7 +1115,7 @@ const HERO_STEP = {
   /* Touch gets the bar straight away. Holding it back on a phone meant the
      burger sat there looking like a control for three and a half seconds
      before it became one. */
-  nav:  SPLASH ? 520 : FINE ? INTRO.hold + 260 : 0
+  nav:  SPLASH ? 520 : (FINE && document.getElementById('asciiBg')) ? INTRO.hold + 260 : 0
 };
 const heroWaiting = [];
 const onHeroReady = cb => (heroReady ? cb() : heroWaiting.push(cb));
@@ -1685,7 +1898,15 @@ void main() {
     it.w = w; it.h = h;
     if (!w || !h) return;
     it.ratio = Math.min(window.devicePixelRatio || 1, 2);
-    const cw = Math.max(1, Math.round((w + PAD * 2) * it.ratio));
+    /* A full-width button on a phone sits closer to the screen edge than the
+       light's 24px margin, and a canvas poking past the edge makes the page
+       scroll sideways on iOS. The canvas is cut short on the right instead;
+       the shader works from the left edge, so nothing else moves. */
+    const room = document.documentElement.clientWidth - it.b.getBoundingClientRect().right;
+    it.padR = Math.max(0, Math.min(PAD, Math.floor(room)));
+    it.cssW = w + PAD + it.padR;
+    it.c.style.width = it.cssW + 'px';
+    const cw = Math.max(1, Math.round(it.cssW * it.ratio));
     const ch = Math.max(1, Math.round((h + PAD * 2) * it.ratio));
     if (it.c.width !== cw || it.c.height !== ch) { it.c.width = cw; it.c.height = ch; }
     const cs = getComputedStyle(it.b);
@@ -1723,7 +1944,7 @@ void main() {
       glc.width = Math.max(glc.width, c.width);
       glc.height = Math.max(glc.height, c.height);
     }
-    const sx = c.width / (w + PAD * 2), sy = c.height / (h + PAD * 2);
+    const sx = c.width / it.cssW, sy = c.height / (h + PAD * 2);
     const r = radiusOf(it);
     const [rx, ry] = rimPoint(it.spot, w / 2, h / 2, r);
     const len = Math.hypot(rx, ry);
@@ -2177,7 +2398,7 @@ void main() {
 (function () {
   const cta = document.getElementById('stickyCta');
   if (!cta) return;
-  const row = document.querySelector('.hero-copy .row') || document.querySelector('.hero');
+  const row = document.querySelector('.hero-copy .row') || document.querySelector('[data-sticky-anchor]') || document.querySelector('.hero');
   const contact = document.getElementById('kontakt') || document.querySelector('.footer');
   if (!row) return;
 
@@ -2220,6 +2441,12 @@ document.getElementById('toTop')?.addEventListener('click', () => scrollTo({ top
   const form = document.getElementById('contactForm');
   const ok = document.getElementById('formSuccess');
   if (!form) return;
+
+  /* a link from another page can name the service, /?sluzba=dohled#kontakt */
+  const preKey = new URLSearchParams(location.search).get('sluzba');
+  const preSel = document.getElementById('fbundle');
+  if (preKey && preSel && window.CSS && CSS.escape &&
+      preSel.querySelector('option[value="' + CSS.escape(preKey) + '"]')) preSel.value = preKey;
 
   /* a section's own call to action says what it is about, so the select
      does not have to ask again */
