@@ -11,8 +11,8 @@
 .op-hero { padding: clamp(104px, 12vh, 136px) 0 clamp(40px, 6vw, 80px); }
 .op-hero-in {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-  gap: clamp(24px, 4vw, 64px);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: clamp(24px, 3vw, 48px);
   align-items: center;
   min-height: min(72vh, 720px);
 }
@@ -24,6 +24,14 @@
   line-height: .96;
   letter-spacing: -0.038em;
 }
+/* Each line of the title is one long word ("Observabilita", Polish
+   "Obserwowalność"), so the size follows the width of its own column and
+   the word never runs into the graph. */
+@supports (container-type: inline-size) {
+  .op-hero-copy { container-type: inline-size; }
+  .op-h1 { font-size: min(5.6rem, 14.6cqi); }
+  html[lang="pl"] .op-h1 { font-size: min(5.6rem, 11cqi); }
+}
 .op-lead {
   margin-top: clamp(24px, 3vw, 36px);
   max-width: 44ch;
@@ -33,36 +41,31 @@
 }
 .op-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: clamp(28px, 3.4vw, 40px); }
 
-.op-topo { margin: 0; }
+/* The graph is the page's picture: its box runs out to the edge of the
+   container and is held to the height of the screen, so the whole sphere
+   is on the first screen. */
 .topology {
   position: relative;
-  width: 100%;
-  max-width: 680px;
+  width: calc(100% + var(--gutter));
+  width: min(calc(100% + var(--gutter)), calc(100vh - 120px));
   aspect-ratio: 1 / 1;
   margin-left: auto;
+  margin-right: calc(-1 * var(--gutter));
   overflow: hidden;
 }
-/* The preset's camera (distance 270) leaves the sphere at about two thirds
-   of its canvas. The canvas is drawn larger than its box and cropped, so the
-   sphere fills the column without touching the preset. */
+/* The preset's camera (distance 270) leaves the sphere at about 69% of its
+   canvas. The canvas is drawn larger than its box and cropped, so the
+   sphere fills about 92% of the box without touching the preset. */
 .topology canvas {
   position: absolute;
-  top: -14%; left: -14%;
-  width: 128%;
-  height: 128%;
+  top: -17%; left: -17%;
+  width: 134%;
+  height: 134%;
   display: block;
   /* a vertical swipe over the graph still scrolls the page */
   touch-action: pan-y;
 }
 .topology.is-off { display: none; }
-.op-topo figcaption {
-  max-width: 680px;
-  margin: 8px 0 0 auto;
-  font-size: 14.5px;
-  line-height: 1.5;
-  color: var(--dim);
-  text-align: center;
-}
 
 /* ── What it brings: four outcomes, set large, no boxes */
 .op-value-list {
@@ -303,9 +306,13 @@
 /* ── Phone composition */
 @media (max-width: 880px) {
   .op-hero { padding-top: 104px; }
-  .op-hero-in { grid-template-columns: minmax(0, 1fr); min-height: 0; gap: 8px; }
-  .topology { max-width: 520px; margin: 0 auto; }
-  .op-topo figcaption { margin: 0 auto; max-width: 40ch; }
+  .op-hero-in { grid-template-columns: minmax(0, 1fr); min-height: 0; gap: 12px; }
+  /* under the copy, edge to edge on a phone, held to 640px on a tablet */
+  .topology {
+    --w: min(calc(100% + 2 * var(--gutter)), 640px);
+    width: var(--w);
+    margin: 0 0 0 calc((100% - var(--w)) / 2);
+  }
   .op-value-list { grid-template-columns: 1fr; gap: 40px; }
   .op-calc-in { grid-template-columns: 1fr; grid-template-areas: "copy" "form" "note"; grid-template-rows: auto; gap: 32px; }
   .op-calc-note { max-width: 32ch; }
@@ -313,9 +320,11 @@
   .op-end-in { grid-template-columns: 1fr; align-items: start; }
 }
 @media (max-width: 560px) {
-  /* sized to the screen, so the longest one-word line (Polish
-     "Obserwowalność") still fits a 320px phone */
-  .op-h1 { font-size: min(2.7rem, 10vw); }
+  /* without container queries: sized to the screen, so the longest
+     one-word line (Polish "Obserwowalność") still fits a 320px phone */
+  @supports not (container-type: inline-size) {
+    .op-h1 { font-size: min(2.7rem, 10vw); }
+  }
   .op-src-list, .op-steps { grid-template-columns: 1fr; gap: 36px; }
   .op-actions .btn { flex: 1 1 100%; }
   .op-field label { flex-direction: column; gap: 4px; }
