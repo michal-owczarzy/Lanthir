@@ -1235,6 +1235,9 @@ a.ci-val:hover { color: var(--cyan); }
   transform: translateX(-50%);
   background: var(--void);
 }
+/* 100vw counts the scrollbar on a desktop, so the band is clipped to the
+   footer's own width rather than reaching 8px past the page */
+.footer { overflow-x: clip; }
 .footer-bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; color: var(--faint); }
 .footer-legal-links { display: flex; align-items: center; gap: 8px 22px; flex-wrap: wrap; margin-right: auto; }
 .footer-legal-links a, .footer-legal-links .cc-reopen {
