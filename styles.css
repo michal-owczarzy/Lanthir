@@ -500,7 +500,8 @@ body.ready .hero-cue { opacity: 1; }
   --angle: 45deg;
   --sens: 30;
   --radius: 28px;
-  --halo: 40px;
+  /* never wider than the page margin, or the bloom reaches past the screen */
+  --halo: min(40px, var(--gutter));
   --cone: 25deg;
   --lume: 1;
   position: relative;

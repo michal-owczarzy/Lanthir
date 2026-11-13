@@ -28,7 +28,7 @@
   if (!ctx) { host.remove(); return; }
 
   const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const STOPS = ['sluzby', 'reference', 'cenik', 'postup', 'faq', 'about', 'dalsi-sluzby', 'kontakt'];
+  const STOPS = ['sluzby', 'reference', 'cenik', 'postup', 'dalsi-sluzby', 'about', 'faq', 'kontakt'];
   const FONT = '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace';
   const HEAD = '@#8S0Xx';     /* the resting head, brightest first: the hero's ramp */
   const BOIL = '@#8S0Xx+=';   /* what the head churns through while it draws */
@@ -66,9 +66,11 @@
     const hero = document.querySelector('.hero');
     const mark = document.querySelector('.footer-mark');
     const footer = document.querySelector('.footer');
+    /* in page order whatever the list says: every leg must run downwards */
     const marks = STOPS.map(id => document.getElementById(id))
       .map(s => s && { sec: s, tag: s.querySelector('.tag') })
-      .filter(m => m && m.tag && m.tag.offsetParent);
+      .filter(m => m && m.tag && m.tag.offsetParent)
+      .sort((a, b) => docTop(a.tag) - docTop(b.tag));
     const tags = marks.map(m => m.tag);
     /* a rebuild keeps the head where it was on the page, and the nodes it
        has passed stay lit without landing again */

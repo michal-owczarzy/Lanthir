@@ -324,10 +324,10 @@
         <li style="--i:0"><a href="#sluzby"    data-i18n="nav.services">Služby</a></li>
         <li style="--i:1"><a href="#reference" data-i18n="nav.work">Reference</a></li>
         <li style="--i:2"><a href="#cenik"     data-i18n="nav.pricing">Ceník</a></li>
-        <li style="--i:3"><a href="/observabilita/" data-i18n="nav.obs">Observabilita</a></li>
-        <li style="--i:4" class="nav-opt"><a href="#postup"    data-i18n="nav.process">Postup</a></li>
-        <li style="--i:5" class="nav-opt"><a href="#faq"       data-i18n="nav.faq">FAQ</a></li>
-        <li style="--i:6"><a href="#about"     data-i18n="nav.about">O nás</a></li>
+        <li style="--i:3" class="nav-opt"><a href="#postup"    data-i18n="nav.process">Postup</a></li>
+        <li style="--i:4"><a href="/observabilita/" data-i18n="nav.obs">Observabilita</a></li>
+        <li style="--i:5"><a href="#about"     data-i18n="nav.about">O nás</a></li>
+        <li style="--i:6" class="nav-opt"><a href="#faq"       data-i18n="nav.faq">FAQ</a></li>
         <li style="--i:7" class="nav-opt2"><a href="#kontakt"   data-i18n="nav.contact">Kontakt</a></li>
         <li style="--i:8" class="nav-links-cta"><a href="#kontakt" class="m-cta" data-i18n="nav.cta">Nezávazná poptávka</a></li>
       </ul>
@@ -780,95 +780,6 @@
     </div>
   </section>
 
-  <!-- ═══ ABOUT ═══ -->
-  <!-- ═══ FAQ ═══
-       <details>/<summary> rather than a JS accordion: the answers are in the
-       DOM whether or not they are open, which is what search engines index and
-       what a screen reader can reach. The FAQPage schema below mirrors them. -->
-  <section class="section chapter-light" id="faq">
-    <div class="container">
-      <header class="head reveal">
-        <span class="tag" data-i18n="faq.tag">Časté dotazy</span>
-        <h2 class="h2" data-i18n="faq.heading">Na co se ptáte <br><em>nejčastěji</em></h2>
-      </header>
-
-      <div class="faq">
-        <details class="faq-item reveal">
-          <summary><span data-i18n="faq.1.q">Můžu si web ponechat v samosprávě?</span><i aria-hidden="true"></i></summary>
-          <div class="faq-a"><p data-i18n="faq.1.a">Ano. K samosprávě je ovšem potřeba mít účet na GitHubu a také znalost Gitu a editace kódu. Celou námi naprogramovanou stránku vám rádi předáme.</p></div>
-        </details>
-
-        <details class="faq-item reveal">
-          <summary><span data-i18n="faq.2.q">Co když takové znalosti neovládám?</span><i aria-hidden="true"></i></summary>
-          <div class="faq-a"><p data-i18n="faq.2.a">Pokud takové schopnosti nemáte, máme pro naše zákazníky vytvořenou interní aplikaci, ve které si zákazník může upravovat obrázky a texty bez jakékoliv interakce se zdrojovým kódem. Tato aplikace je hrazena formou předplatného.</p></div>
-        </details>
-
-        <details class="faq-item reveal">
-          <summary><span data-i18n="faq.3.q">Jak dlouho trvá webovou stránku nasadit?</span><i aria-hidden="true"></i></summary>
-          <div class="faq-a"><p data-i18n="faq.3.a">Běžný web dodáme do 14 dní od schválení návrhu. Nejvíc záleží na tom, jak rychle se domluvíme na textech a fotkách. Samotné technické nasazení hotového webu zvládneme za dva dny.</p></div>
-        </details>
-
-        <details class="faq-item reveal">
-          <summary><span data-i18n="faq.4.q">Co když mi webová stránka přestane fungovat? Pomůžete mi?</span><i aria-hidden="true"></i></summary>
-          <div class="faq-a"><p data-i18n="faq.4.a">Přesně pro tento případ nabízíme podporu ve formě předplatného. Stránky ovšem nepadají ze dne na den, ale vždy tomu předchází déle trvající problém. Proto nabízíme i monitoring webových stránek. Náš monitoring dokáže výpadek predikovat tak, že jsme schopni mu zamezit. Pokud jej predikovat nedokážeme, umíme velmi efektivně zkrátit dobu prostoje, protože víme, kde chyba nastala.</p></div>
-        </details>
-
-        <details class="faq-item reveal">
-          <summary><span data-i18n="faq.5.q">Jsou vaše ceny pevně dané?</span><i aria-hidden="true"></i></summary>
-          <div class="faq-a"><p data-i18n="faq.5.a">Ano, pro rozsah vypsaný u každého balíčku. Ceny v ceníku jsou výchozí. Pokud potřebujete víc, třeba další podstránky, napojení na jiné systémy nebo texty, připravíme vám předem nabídku s konečnou cenou, takže víte, kolik zaplatíte, ještě než začneme.</p></div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="about">
-    <div class="container">
-      <header class="head reveal">
-        <span class="tag" data-i18n="about.tag">O nás</span>
-        <h2 class="h2" data-i18n="about.heading">Kdo stojí <br><em>za Lanthirem</em></h2>
-      </header>
-      <div class="people">
-        <article class="glow person reveal">
-          <span class="glow-edge" aria-hidden="true"></span>
-          <div class="glow-in">
-            <div class="person-photo-wrap">
-              <img src="/michal.jpg" alt="Ing. Michal Owczarzy, zakladatel a CTO Lanthiru" data-i18n-alt="about.1.alt" class="person-photo" loading="lazy" width="760" height="1139"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-              <div class="person-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-            </div>
-            <span class="person-role" data-i18n="about.1.role">Zakladatel &amp; CTO</span>
-            <h3 class="person-name">Ing. Michal Owczarzy</h3>
-            <p class="person-bio" data-i18n="about.1.bio">Zakladatel Lanthiru se specializací na monitoring a DevOps. Navrhuje a vyvíjí technická řešení, která fungují spolehlivě a přinášejí klientům reálné výsledky.</p>
-            <div class="person-links">
-              <a href="mailto:michal.owczarzy@lanthir.cz">michal.owczarzy@lanthir.cz</a>
-              <a href="https://www.linkedin.com/in/michalowczarzy/" target="_blank" rel="noopener">LinkedIn ↗</a>
-            </div>
-            <p class="person-skills">HTML / CSS · JavaScript · Zabbix · GitLab CI/CD · Kubernetes</p>
-          </div>
-        </article>
-
-        <article class="glow person reveal">
-          <span class="glow-edge" aria-hidden="true"></span>
-          <div class="glow-in">
-            <div class="person-photo-wrap">
-              <img src="/mariusz.jpg" alt="Mariusz Chmiel, Head of Sales v Lanthiru" data-i18n-alt="about.2.alt" class="person-photo person-photo--headshot" loading="lazy" width="760" height="1140"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-              <div class="person-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-            </div>
-            <span class="person-role" data-i18n="about.2.role">Head of Sales</span>
-            <h3 class="person-name">Mariusz Chmiel</h3>
-            <p class="person-bio" data-i18n="about.2.bio">Zodpovídá za rozvoj obchodních vztahů a pomáhá klientům najít ideální řešení pro jejich projekt. Váš první kontakt, když zvažujete spolupráci s Lanthirem.</p>
-            <div class="person-links">
-              <a href="mailto:mariusz.chmiel@lanthir.cz">mariusz.chmiel@lanthir.cz</a>
-              <a href="https://www.linkedin.com/in/mariusz-chmiel-49485628a/" target="_blank" rel="noopener">LinkedIn ↗</a>
-            </div>
-            <p class="person-skills">Obchod · CRM · Project Management · B2B</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <!-- ═══ MORE SERVICES — websites are the work; these sit beside it.
        A list that grows: one card per service. Observability is the first;
        its sample board (dashboard.js) closes the section. ═══ -->
@@ -957,6 +868,95 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section class="section" id="about">
+    <div class="container">
+      <header class="head reveal">
+        <span class="tag" data-i18n="about.tag">O nás</span>
+        <h2 class="h2" data-i18n="about.heading">Kdo stojí <br><em>za Lanthirem</em></h2>
+      </header>
+      <div class="people">
+        <article class="glow person reveal">
+          <span class="glow-edge" aria-hidden="true"></span>
+          <div class="glow-in">
+            <div class="person-photo-wrap">
+              <img src="/michal.jpg" alt="Ing. Michal Owczarzy, zakladatel a CTO Lanthiru" data-i18n-alt="about.1.alt" class="person-photo" loading="lazy" width="760" height="1139"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="person-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            </div>
+            <span class="person-role" data-i18n="about.1.role">Zakladatel &amp; CTO</span>
+            <h3 class="person-name">Ing. Michal Owczarzy</h3>
+            <p class="person-bio" data-i18n="about.1.bio">Zakladatel Lanthiru se specializací na monitoring a DevOps. Navrhuje a vyvíjí technická řešení, která fungují spolehlivě a přinášejí klientům reálné výsledky.</p>
+            <div class="person-links">
+              <a href="mailto:michal.owczarzy@lanthir.cz">michal.owczarzy@lanthir.cz</a>
+              <a href="https://www.linkedin.com/in/michalowczarzy/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            </div>
+            <p class="person-skills">HTML / CSS · JavaScript · Zabbix · GitLab CI/CD · Kubernetes</p>
+          </div>
+        </article>
+
+        <article class="glow person reveal">
+          <span class="glow-edge" aria-hidden="true"></span>
+          <div class="glow-in">
+            <div class="person-photo-wrap">
+              <img src="/mariusz.jpg" alt="Mariusz Chmiel, Head of Sales v Lanthiru" data-i18n-alt="about.2.alt" class="person-photo person-photo--headshot" loading="lazy" width="760" height="1140"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="person-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            </div>
+            <span class="person-role" data-i18n="about.2.role">Head of Sales</span>
+            <h3 class="person-name">Mariusz Chmiel</h3>
+            <p class="person-bio" data-i18n="about.2.bio">Zodpovídá za rozvoj obchodních vztahů a pomáhá klientům najít ideální řešení pro jejich projekt. Váš první kontakt, když zvažujete spolupráci s Lanthirem.</p>
+            <div class="person-links">
+              <a href="mailto:mariusz.chmiel@lanthir.cz">mariusz.chmiel@lanthir.cz</a>
+              <a href="https://www.linkedin.com/in/mariusz-chmiel-49485628a/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            </div>
+            <p class="person-skills">Obchod · CRM · Project Management · B2B</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ═══
+       <details>/<summary> rather than a JS accordion: the answers are in the
+       DOM whether or not they are open, which is what search engines index and
+       what a screen reader can reach. The FAQPage schema below mirrors them. -->
+  <section class="section chapter-light" id="faq">
+    <div class="container">
+      <header class="head reveal">
+        <span class="tag" data-i18n="faq.tag">Časté dotazy</span>
+        <h2 class="h2" data-i18n="faq.heading">Na co se ptáte <br><em>nejčastěji</em></h2>
+      </header>
+
+      <div class="faq">
+        <details class="faq-item reveal">
+          <summary><span data-i18n="faq.1.q">Můžu si web ponechat v samosprávě?</span><i aria-hidden="true"></i></summary>
+          <div class="faq-a"><p data-i18n="faq.1.a">Ano. K samosprávě je ovšem potřeba mít účet na GitHubu a také znalost Gitu a editace kódu. Celou námi naprogramovanou stránku vám rádi předáme.</p></div>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary><span data-i18n="faq.2.q">Co když takové znalosti neovládám?</span><i aria-hidden="true"></i></summary>
+          <div class="faq-a"><p data-i18n="faq.2.a">Pokud takové schopnosti nemáte, máme pro naše zákazníky vytvořenou interní aplikaci, ve které si zákazník může upravovat obrázky a texty bez jakékoliv interakce se zdrojovým kódem. Tato aplikace je hrazena formou předplatného.</p></div>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary><span data-i18n="faq.3.q">Jak dlouho trvá webovou stránku nasadit?</span><i aria-hidden="true"></i></summary>
+          <div class="faq-a"><p data-i18n="faq.3.a">Běžný web dodáme do 14 dní od schválení návrhu. Nejvíc záleží na tom, jak rychle se domluvíme na textech a fotkách. Samotné technické nasazení hotového webu zvládneme za dva dny.</p></div>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary><span data-i18n="faq.4.q">Co když mi webová stránka přestane fungovat? Pomůžete mi?</span><i aria-hidden="true"></i></summary>
+          <div class="faq-a"><p data-i18n="faq.4.a">Přesně pro tento případ nabízíme podporu ve formě předplatného. Stránky ovšem nepadají ze dne na den, ale vždy tomu předchází déle trvající problém. Proto nabízíme i monitoring webových stránek. Náš monitoring dokáže výpadek predikovat tak, že jsme schopni mu zamezit. Pokud jej predikovat nedokážeme, umíme velmi efektivně zkrátit dobu prostoje, protože víme, kde chyba nastala.</p></div>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary><span data-i18n="faq.5.q">Jsou vaše ceny pevně dané?</span><i aria-hidden="true"></i></summary>
+          <div class="faq-a"><p data-i18n="faq.5.a">Ano, pro rozsah vypsaný u každého balíčku. Ceny v ceníku jsou výchozí. Pokud potřebujete víc, třeba další podstránky, napojení na jiné systémy nebo texty, připravíme vám předem nabídku s konečnou cenou, takže víte, kolik zaplatíte, ještě než začneme.</p></div>
+        </details>
       </div>
     </div>
   </section>
