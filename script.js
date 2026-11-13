@@ -209,8 +209,6 @@ const T = {
     'sticky.cta':     'Nezávazná poptávka',
     'footer.col1.h':  'Služby',
     'footer.webdev':  'Tvorba webu',
-    'price.more':     'Jak tvorba webu probíhá a co je v ceně →',
-    'price.more2':    'Kompletní ceník a srovnání tarifů →',
     'footer.care':    'Správa webu',
     'footer.monitoring': 'Monitoring webu',
     'footer.col2.h':  'Společnost',
@@ -562,8 +560,6 @@ const T = {
     'sticky.cta':     'Get a free quote',
     'footer.col1.h':  'Services',
     'footer.webdev':  'Website development',
-    'price.more':     'How a website build works and what is included →',
-    'price.more2':    'Full price list and plan comparison →',
     'footer.care':    'Website care',
     'footer.monitoring': 'Website monitoring',
     'footer.col2.h':  'Company',
@@ -915,8 +911,6 @@ const T = {
     'sticky.cta':     'Bezpłatna wycena',
     'footer.col1.h':  'Usługi',
     'footer.webdev':  'Tworzenie stron',
-    'price.more':     'Jak przebiega tworzenie strony i co jest w cenie →',
-    'price.more2':    'Pełny cennik i porównanie pakietów →',
     'footer.care':    'Opieka nad stroną',
     'footer.monitoring': 'Monitoring strony',
     'footer.col2.h':  'Firma',
@@ -1333,7 +1327,13 @@ const endIntro = () => {
 const TIER = (() => {
   const c = navigator.connection || {};
   if (c.saveData || /2g|slow-2g/.test(c.effectiveType || '')) return 0;
-  const mem = navigator.deviceMemory || 0, cpu = navigator.hardwareConcurrency || 0;
+  const mem = navigator.deviceMemory || 0;
+  /* Safari on iOS reports 2 cores on every iPhone and iPad (WebKit caps the
+     number against fingerprinting), so there the count says nothing; taken
+     at face value it sent every iPhone to the lite tier, without the field. */
+  const IOS = /iP(hone|od|ad)/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const cpu = IOS ? 0 : (navigator.hardwareConcurrency || 0);
   if ((mem && mem <= 2) || (cpu && cpu <= 2)) return 0;
   if ((mem && mem <= 4) || (cpu && cpu <= 4) || (!FINE && innerWidth < 820)) return 1;
   return 2;

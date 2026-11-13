@@ -895,8 +895,6 @@ body.ready .hero-cue { opacity: 1; }
 .feats li::before { content: ''; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--faint); }
 .price .btn { margin-top: auto; align-self: flex-start; }
 .price-note { margin-top: var(--s3); font-size: 13px; color: var(--faint); }
-.price-more a { color: var(--accent-text); text-decoration: underline; text-underline-offset: 3px; }
-.price-more a:hover { color: var(--ink); }
 
 /* ── Process ──────────────────────────────────
    A timeline whose rail fills in lockstep with the scroll — the fill is
@@ -1707,60 +1705,58 @@ body.no-scroll .cc.on { transform: translate3d(-50%, calc(100% + 24px), 0); }
   .nav-links a { padding-block: 7px; font-size: 21px; }
 }
 
-/* ── Phone hero: the horizon is the picture ─────────────────────
-   On a phone the copy used to stand in the middle of a veiled field, so the
-   first screen read as grey text on grey. Here the field is left clear
-   across the top of the screen as the hero's picture, with a dark bed only
-   under the bar, and the copy stands at the foot on its own dark ground:
-   the name set large, the line that says what we do in full ink, both
-   actions the full width of a thumb. Desktop is untouched. */
+/* ── Phone hero: the desktop's composition, turned upright ──────────
+   On the desktop the field fills the hero and the copy stands on a veil to
+   one side of it. A phone has no side to spare, so the field keeps the top
+   of the screen, where its sky is brightest, and the copy stands below it
+   on a veil over the dark ground under the horizon, at the desktop's
+   proportions: the name on one line as the one large thing, the promise and
+   the paragraph in the desktop's greys, the two actions at their own width.
+   Desktop is untouched. */
 @media (max-width: 880px) {
   .hero {
     align-items: flex-end;
     padding-top: 96px;
-    padding-bottom: calc(4vh + 68px);
+    padding-bottom: calc(4vh + 64px);
   }
+  /* a bed under the bar, so the language switch reads over the sky; below
+     it the sky stays clear */
   .hero-scrim {
     background: linear-gradient(180deg,
-      rgba(13,14,16,.92) 0,
-      rgba(13,14,16,.7) 66px,
-      rgba(13,14,16,0) 132px);
+      rgba(13,14,16,.9) 0,
+      rgba(13,14,16,.72) 66px,
+      rgba(13,14,16,.22) 112px,
+      rgba(13,14,16,0) 150px);
   }
-  /* the copy's own bed: it rises out of the field and is solid by the
-     first line of the name */
+  /* without WebGL the hero shows a still teal wash instead of the field:
+     the bar needs no bed over it, so the wash is not hidden under one */
+  html.ascii-off .hero-scrim {
+    background: linear-gradient(180deg, rgba(13,14,16,.45) 0, rgba(13,14,16,0) 120px);
+  }
+  /* the copy's veil: it rises out of the field and is dense enough by the
+     first line for 15px text, while the field still shows through it */
   .hero-copy::before {
     content: '';
     position: absolute;
     z-index: -1;
     left: 0; right: 0;
-    top: -112px; bottom: -50vh;
+    top: -96px; bottom: -50vh;
     pointer-events: none;
     background: linear-gradient(180deg,
       rgba(13,14,16,0) 0,
-      rgba(13,14,16,.8) 84px,
-      #0d0e10 124px);
+      rgba(13,14,16,.6) 64px,
+      rgba(13,14,16,.84) 112px,
+      rgba(13,14,16,.9) 100%);
   }
   .hero-h1 { max-width: none; }
-  .hero-l1 { font-size: min(15vw, 4.4rem); line-height: .98; letter-spacing: -0.036em; }
-  .hero-l2 {
-    margin-top: .6em;
-    max-width: 24ch;
-    font-size: min(5.4vw, 1.6rem);
-    line-height: 1.3;
-    color: var(--ink);
-  }
-  .hero-copy .lede { color: var(--ink); }
+  .hero-l1 { font-size: min(9.4vw, 4.4rem); line-height: 1.02; }
+  .hero-l2 { margin-top: .5em; max-width: 26ch; font-size: min(4.6vw, 1.6rem); line-height: 1.3; }
 }
+/* the two actions do not fit side by side on a phone: stacked, they share
+   the width of the longer one, so they read as a pair */
 @media (max-width: 560px) {
-  .hero-copy .lede { font-size: 16px; }
-  .hero-copy .row { gap: 12px; }
-  .hero-copy .row .btn { flex: 1 1 100%; }
-}
-/* short phones keep the field in view above the copy */
-@media (max-width: 560px) and (max-height: 720px) {
-  .hero { padding-top: 84px; }
-  .hero-l1 { font-size: 13vw; }
-  .hero-copy .lede { font-size: 15px; line-height: 1.5; }
+  .hero-copy .row { display: inline-grid; gap: 10px; margin-top: 28px; }
+  .hero-copy .row .btn { padding-inline: 26px; }
 }
 
 /* The narrowest phones: a long label ("Więcej o obserwowalności") may not
