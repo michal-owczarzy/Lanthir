@@ -66,9 +66,10 @@
     const hero = document.querySelector('.hero');
     const mark = document.querySelector('.footer-mark');
     const footer = document.querySelector('.footer');
-    const tags = STOPS.map(id => document.getElementById(id))
-      .map(s => s && s.querySelector('.tag'))
-      .filter(t => t && t.offsetParent);
+    const marks = STOPS.map(id => document.getElementById(id))
+      .map(s => s && { sec: s, tag: s.querySelector('.tag') })
+      .filter(m => m && m.tag && m.tag.offsetParent);
+    const tags = marks.map(m => m.tag);
     /* a rebuild keeps the head where it was on the page, and the nodes it
        has passed stay lit without landing again */
     const headY = S.length && cur >= 0 ? S[Math.min(S.length - 1, Math.floor(cur))].y : -1;
@@ -81,8 +82,15 @@
     const cpX = L - clamp(L * 0.3, fs * 0.9, 46);     /* the node, just left of the label */
     const outer = Math.max(fs * 0.5, L * 0.14);
     const D = Math.max(0, cpX - outer);
-    const xo = outer + D * 0.4, amp = D * 0.25;       /* the lane the line wanders in */
-    laneW = cpX + fs * 2;
+    let xo = outer + D * 0.4, amp = D * 0.25;         /* the lane the line wanders in */
+    /* On a phone the margin is a few pixels wide and the wander above would
+       be a ruler. There the line sways across the whole margin instead, and
+       in the open gap before each section it swings out into the page and
+       back in to the checkpoint. */
+    const narrow = L < 60;
+    const swing = narrow ? Math.min(W * 0.3, 150) : 0;
+    if (narrow) { xo = L * 0.45; amp = L * 0.26; }
+    laneW = cpX + swing + fs * 2;
     contentL = L; cpX0 = cpX;
 
     const lights = Array.from(document.querySelectorAll('.chapter-light'))
@@ -91,7 +99,17 @@
 
     const heroEnd = docTop(hero) + hero.offsetHeight;
     const start = { x: W / 2, y: heroEnd - H * 0.04 };          /* the foot of the scroll cue */
-    const stops = tags.map(t => ({ x: cpX, y: docTop(t) + t.offsetHeight / 2, tag: t }));
+    /* the open gap above each label: the previous block's bottom padding and
+       this section's top padding, where nothing is set */
+    const gapTop = m => {
+      const prev = m.sec.previousElementSibling;
+      const pad = prev ? parseFloat(getComputedStyle(prev).paddingBottom) || 0 : 0;
+      return docTop(m.sec) - pad;
+    };
+    const stops = marks.map(m => {
+      const y = docTop(m.tag) + m.tag.offsetHeight / 2;
+      return { x: cpX, y, tag: m.tag, g0: gapTop(m), g1: docTop(m.tag) - fs * 0.9 };
+    });
     const end = { x: xo, y: docTop(mark) + mark.offsetHeight * 0.5 };
     docEnd = footer ? docTop(footer) + footer.offsetHeight : document.documentElement.scrollHeight;
     sweepY = stops[0].y;
@@ -116,10 +134,18 @@
       const r = Math.min(0.42, (H * 0.32) / len);
       const n = Math.max(1, Math.round(len / (H * 0.85)));
       const sign = k % 2 ? 1 : -1;
+      /* the swing into the gap before the next checkpoint, if there is room */
+      const g0 = swing && !lastLeg ? Math.max(a.y + fs * 3, b.g0 + fs * 2) : 0;
+      const gh = swing && !lastLeg ? b.g1 - g0 : 0;
       legs.push({ a, b, len, p: t => {
         const env = lastLeg ? ss(0, r, t) : ss(0, r, t) * ss(0, r, 1 - t);
-        const x = a.x + (xo - a.x) * env + sign * amp * Math.sin(Math.PI * n * t) * env * (lastLeg ? 1 - t : 1);
-        return [x, a.y + len * t];
+        let x = a.x + (xo - a.x) * env + sign * amp * Math.sin(Math.PI * n * t) * env * (lastLeg ? 1 - t : 1);
+        const y = a.y + len * t;
+        if (gh > fs * 6 && y > g0 && y < b.g1) {
+          const k = Math.sin(Math.PI * (y - g0) / gh);
+          x += swing * k * k;
+        }
+        return [x, y];
       } });
     }
 

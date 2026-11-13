@@ -67,11 +67,21 @@
 }
 .topology.is-off { display: none; }
 
-/* ── What it brings: four outcomes, set large, no boxes */
+/* ── What it brings: four outcomes as rows on the header's own grid, the
+   claim set large on the left and what it means on the right. The rows are
+   held by their alignment and the space between them; nothing marks them. */
 .op-value-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--s2) clamp(32px, 6vw, 96px);
+  gap: clamp(36px, 4.4vw, 64px);
+  /* collapses with the header's own margin: the header stands clearly
+     apart from the rows, further than they stand from each other */
+  margin-top: clamp(40px, 7vw, 104px);
+}
+.op-value-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  gap: 12px clamp(32px, 5vw, 80px);
+  align-items: baseline;
 }
 .op-value-list h3,
 .op-src-list h3,
@@ -83,17 +93,8 @@
   line-height: 1.1;
   color: var(--ink);
 }
-.op-value-list h3 { font-size: clamp(1.55rem, 2.6vw, 2.25rem); }
-.op-value-list h3::before {
-  /* one cyan beat on each outcome, the same signal the buttons carry */
-  content: '';
-  display: block;
-  width: 10px; height: 10px;
-  margin-bottom: 18px;
-  border-radius: 50%;
-  background: var(--btn);
-}
-.op-value-list p { margin-top: 14px; max-width: 46ch; font-size: 17px; line-height: 1.6; color: var(--soft); }
+.op-value-list h3 { font-size: clamp(1.5rem, 2.4vw, 2.1rem); }
+.op-value-list p { max-width: 50ch; font-size: 18px; line-height: 1.6; color: var(--soft); }
 
 /* ── What an hour down costs (a light chapter) */
 .op-calc-in {
@@ -208,12 +209,15 @@
 /* ── What we connect */
 .op-src-list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--s2) clamp(28px, 4vw, 64px);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--s2) clamp(24px, 3vw, 48px);
 }
 .op-src-list h3 { font-size: clamp(1.2rem, 1.6vw, 1.4rem); }
 .op-src-list p { margin-top: 10px; font-size: 16px; line-height: 1.6; color: var(--soft); max-width: 40ch; }
-.op-src-how { margin-top: var(--s2); font-size: 15.5px; color: var(--dim); }
+/* the eighth place closes the grid with how it is all connected, set one
+   step quieter than the devices */
+.op-src-list .op-src-how h3 { color: var(--soft); }
+.op-src-list .op-src-how p { color: var(--dim); }
 
 /* ── A service, not a tool: two fields side by side, ours the brighter */
 .op-vs-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
@@ -313,7 +317,8 @@
     width: var(--w);
     margin: 0 0 0 calc((100% - var(--w)) / 2);
   }
-  .op-value-list { grid-template-columns: 1fr; gap: 40px; }
+  .op-value-list { gap: 40px; }
+  .op-value-list li { grid-template-columns: minmax(0, 1fr); }
   .op-calc-in { grid-template-columns: 1fr; grid-template-areas: "copy" "form" "note"; grid-template-rows: auto; gap: 32px; }
   .op-calc-note { max-width: 32ch; }
   .op-vs-grid { grid-template-columns: 1fr; }
