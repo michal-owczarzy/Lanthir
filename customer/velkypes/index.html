@@ -3,292 +3,426 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>VELKYPES – krmiva a chovatelské potřeby, Karviná-Ráj</title>
-<meta name="description" content="Krmiva a chovatelské potřeby pro psy i kočky v Karviné-Ráji, u Lidlu. Acana, Orijen, Brit Care, Hill's, Josera, K9, Magnusson. Otevřeno každý den. Tel. 731 271 987.">
+<title>VELKYPES – krmiva a chovatelské potřeby, Karviná-Ráj | objednávka k vyzvednutí</title>
+<meta name="description" content="Krmiva a chovatelské potřeby pro psy i kočky v Karviné-Ráji, u Lidlu. Vyberte online, vyzvedněte a zaplaťte v prodejně. Acana, Orijen, Brit Care, Hill's, Josera, K9, Magnusson. Tel. 731 271 987.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#e8e8e3">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23181715'/%3E%3Ccircle cx='16' cy='20' r='6' fill='%23bfb21a'/%3E%3Ccircle cx='8' cy='12' r='3' fill='%23bfb21a'/%3E%3Ccircle cx='13' cy='7' r='3' fill='%23bfb21a'/%3E%3Ccircle cx='19' cy='7' r='3' fill='%23bfb21a'/%3E%3Ccircle cx='24' cy='12' r='3' fill='%23bfb21a'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#f4f4f2">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23181715'/%3E%3Cpath d='M16 15c4 0 7 4 7 7s-3 4-7 4-7-1-7-4 3-7 7-7z' fill='%23f2c200'/%3E%3Ccircle cx='8' cy='13' r='2.6' fill='%23f2c200'/%3E%3Ccircle cx='12.5' cy='8' r='2.6' fill='%23f2c200'/%3E%3Ccircle cx='19.5' cy='8' r='2.6' fill='%23f2c200'/%3E%3Ccircle cx='24' cy='13' r='2.6' fill='%23f2c200'/%3E%3C/svg%3E">
 <link rel="preload" as="font" type="font/woff2" href="fonts/gambarino-400-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/general-sans-400-normal.woff2" crossorigin>
-<link rel="preload" as="image" href="img/mastif-800.jpg" imagesrcset="img/mastif-800.jpg 800w, img/mastif-1600.jpg 1600w" imagesizes="(max-width:860px) 100vw, 50vw">
+<script>
+  /* úvodní animace loga: jen první stránka v relaci, ne s omezeným pohybem, ne na kotvě */
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-velkypes') && !location.hash))) {
+      sessionStorage.setItem('intro-velkypes', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
 <style>
 @font-face{font-family:"Gambarino";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/gambarino-400-normal.woff2) format("woff2")}
 @font-face{font-family:"General Sans";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/general-sans-400-normal.woff2) format("woff2")}
 @font-face{font-family:"General Sans";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/general-sans-500-normal.woff2) format("woff2")}
 
-/* Tokeny: papír cedule na dveřích, černý tisk, mosazná značka „otevřeno“ */
+/* Tokeny: papír cedule, černý tisk, slunečná žlutá cenovky a markýza nad dveřmi */
 :root{
-  --bg:#e8e8e3; --surface:#dcdcd6; --surface-2:#d0d0c9; --ink:#181715; --muted:#55544e;
-  --accent:#bfb21a; --accent-ink:#181715; --paper:#f4f4f2;
+  --bg:#f4f4f2; --paper:#ffffff; --surface:#e9e7e1; --surface-2:#dedbd3; --ink:#181715; --muted:#5a5852;
+  --accent:#f2c200; --accent-2:#e0b300; --zelena:#2f6b4a;
   --display:"Gambarino",Georgia,serif; --text:"General Sans",system-ui,sans-serif;
   --s-small:clamp(.875rem,.85rem + .1vw,.9375rem);
-  --s-body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
-  --s-lead:clamp(1.25rem,1.1rem + .7vw,1.625rem);
+  --s-body:clamp(1rem,.97rem + .2vw,1.125rem);
+  --s-lead:clamp(1.1875rem,1.05rem + .6vw,1.5rem);
   --s-head:clamp(2.5rem,1.4rem + 3.6vw,4.5rem);
-  --m:12px; --g:clamp(20px,4vw,56px); --r:16px;
+  --m:clamp(16px,3.4vw,48px); --r:14px;
   --ease:cubic-bezier(.2,.7,.2,1);
 }
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:96px}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--s-body)/1.5 var(--text);-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
-h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
+h1,h2,h3,p,ul,ol,figure{margin:0}
 ul,ol{padding:0;list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-.wrap{padding-left:var(--g);padding-right:var(--g)}
-.disp{font-family:var(--display);font-weight:400;letter-spacing:-.02em;line-height:.92}
+.wrap{padding-left:var(--m);padding-right:var(--m)}
+.disp{font-family:var(--display);font-weight:400;letter-spacing:-.02em;line-height:.95}
 .num{font-variant-numeric:tabular-nums}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 .ribbon{background:#3a2ee0;color:#fff;font:400 15px/1.4 var(--text);text-align:center;padding:9px 16px}
 .ribbon a{font-weight:500;text-underline-offset:2px}
 
-.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:var(--r);background:var(--ink);color:var(--paper);font:500 var(--s-body)/1 var(--text);text-decoration:none;border:0;cursor:pointer;overflow:hidden;transition:transform .15s var(--ease)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;background:var(--accent);color:var(--ink);font:500 var(--s-body)/1 var(--text);text-decoration:none;border:0;cursor:pointer;transition:transform .15s var(--ease),background-color .2s}
 .btn:active{transform:scale(.97)}
-.btn::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:repeating-linear-gradient(90deg,var(--accent) 0 14px,transparent 14px 28px);transform:translateY(100%);transition:transform .25s var(--ease)} /* taste-skill-ignore: proužek markýzy, ne přechod */
-@media (hover:hover){.btn:hover::after{transform:none}}
+.btn.ink{background:var(--ink);color:var(--paper)}
+.btn.ghost{background:transparent;box-shadow:inset 0 0 0 2px var(--ink)}
+@media (hover:hover){.btn:hover{background:var(--accent-2)}.btn.ink:hover{background:#34322d}.btn.ghost:hover{background:var(--ink);color:var(--paper)}}
 
-/* ========== ÚVOD — cedule vedle fotky ========== */
-.hero{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px;min-height:100svh}
-.cedule{background:var(--paper);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;text-align:center;overflow:hidden;padding-bottom:28px}
-.markyza{display:flex;width:100%;height:56px;flex:none}
-.markyza i{flex:1;background:var(--ink)}
-.markyza i:nth-child(even){background:var(--paper)}
-.cedule-in{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:36px 28px 20px}
-.logo{font:500 clamp(1.5rem,1rem + 1.6vw,2.25rem)/1 var(--text);letter-spacing:.16em}
+/* ========== LOGO — tlapka (kreslí se v úvodu) ========== */
+.logo{display:inline-flex;align-items:center;gap:.45em;font:500 21px/1 var(--text);letter-spacing:.16em;text-decoration:none;color:var(--ink)}
+.logo svg{width:1.55em;height:1.55em;flex:none;overflow:visible}
+.logo .t{fill:var(--ink)}
+.logo .o{fill:none;stroke:var(--ink);stroke-width:2.2}
 .logo b{font-weight:500;color:var(--muted)}
-.cedule h1{font-size:clamp(2.5rem,1rem + 3.6vw,3.75rem)}
-.cedule .sent{max-width:36ch;font-size:var(--s-body)}
-.stav{display:inline-flex;align-items:center;gap:12px;padding:10px 18px;border-radius:var(--r);background:var(--surface);font:500 var(--s-body)/1.25 var(--text);text-align:left}
-.stav .tecka{flex:none;width:12px;height:12px;border-radius:50%;background:var(--muted)}
-.stav.otevreno{background:var(--accent)}
-.stav.otevreno .tecka{background:var(--ink);animation:tep 2s ease-in-out infinite}
-@keyframes tep{50%{transform:scale(.6)}}
-.cedule-links{display:flex;gap:22px;justify-content:center;font-size:var(--s-small);flex-wrap:wrap}
-.foto{position:sticky;top:12px;height:calc(100svh - 24px);border-radius:var(--r);overflow:hidden;background:var(--ink)}
-.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;opacity:0;transition:opacity 1.6s ease-in-out}
-.foto img.on{opacity:1}
-.foto figcaption{position:absolute;left:16px;bottom:16px;background:var(--paper);border-radius:10px;padding:6px 12px;font-size:var(--s-small)}
 
-/* ========== OTEVÍRACÍ DOBA — obří slovo a pruhy ========== */
-.doba{max-width:640px;margin:clamp(120px,14vw,200px) auto 0;padding:0 var(--g);container-type:inline-size}
-.doba h2{font-size:26.5cqw;line-height:.8;letter-spacing:-.03em}
-.dny{margin-top:20px;display:flex;flex-direction:column;gap:6px}
-.den{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px;padding:0 18px;background:var(--surface);border-radius:6px;font-size:var(--s-body)}
+/* ========== Úvodní animace: tlapky dojdou k logu ========== */
+.intro{display:none}
+html.intro-on .intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;pointer-events:none;animation:pojistka .3s linear 7s forwards}
+.intro-ground{position:absolute;inset:0;background:var(--bg);overflow:hidden}
+.stopy{position:absolute;inset:0;width:100%;height:100%}
+.stopy use{fill:var(--accent);opacity:0}
+.intro-lock{position:relative;visibility:hidden}
+.intro.ready .intro-lock{visibility:visible}
+.intro-m{display:inline-block;overflow:hidden;vertical-align:top;padding:.12em 0 .08em;margin:-.12em 0 -.08em}
+.intro-m>span{display:inline-block}
+html.intro-on [data-intro-land]{opacity:0;animation:ukaz 0s 7.2s forwards}
+html.intro-on.intro-landed [data-intro-land]{opacity:1;transition:opacity .25s ease-out}
+@keyframes pojistka{to{opacity:0;visibility:hidden}}
+@keyframes ukaz{to{opacity:1}}
+
+/* ========== HORNÍ LIŠTA a HLAVIČKA ========== */
+.lista{background:var(--ink);color:#e6e4dd;font-size:var(--s-small)}
+.lista .in{display:flex;justify-content:space-between;align-items:center;gap:8px 24px;flex-wrap:wrap;padding-top:9px;padding-bottom:9px}
+.stav{display:inline-flex;align-items:center;gap:10px}
+.stav .tecka{width:9px;height:9px;border-radius:50%;background:#8a877e;flex:none}
+.stav.otevreno .tecka{background:#5fd38d;box-shadow:0 0 0 0 rgba(95,211,141,.6);animation:tep 2s ease-out infinite}
+@keyframes tep{70%{box-shadow:0 0 0 8px rgba(95,211,141,0)}100%{box-shadow:0 0 0 0 rgba(95,211,141,0)}}
+.lista a{text-decoration:none;font-weight:500}
+.hlavicka{position:sticky;top:0;z-index:40;background:var(--bg)}
+.hlavicka .in{display:flex;align-items:center;gap:20px;height:76px}
+.hledat{flex:1;max-width:520px;margin-left:auto;position:relative}
+.hledat input{width:100%;height:48px;border:0;border-radius:999px;background:var(--paper);padding:0 18px 0 46px;font-size:var(--s-body)}
+.hledat input:focus{outline:2px solid var(--ink);outline-offset:0}
+.hledat svg{position:absolute;left:16px;top:50%;width:20px;height:20px;margin-top:-10px;fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round}
+.kosik-btn{position:relative;display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 18px 0 14px;border-radius:999px;border:0;background:var(--ink);color:var(--paper);cursor:pointer;font-weight:500}
+.kosik-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.kosik-btn .pocet{min-width:24px;height:24px;border-radius:12px;background:var(--accent);color:var(--ink);font:500 14px/24px var(--text);text-align:center;padding:0 6px}
+.markyza{display:flex;height:14px}
+.markyza i{flex:1;background:var(--ink)}
+.markyza i:nth-child(even){background:var(--accent)}
+
+/* ========== ÚVOD ========== */
+.hero{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;align-items:center;padding-top:clamp(28px,4vw,56px);padding-bottom:clamp(48px,6vw,88px)}
+.hero-copy{grid-column:1/7}
+.hero h1{font-size:clamp(3rem,1.2rem + 5vw,6rem)}
+.hero h1 .ln{display:block;overflow:hidden;padding:.06em 0 .08em;margin:-.06em 0 -.08em}
+.hero h1 .ln>span{display:block}
+.hero .lede{margin-top:22px;font-size:var(--s-lead);line-height:1.4;max-width:34ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.vyhody{display:flex;flex-wrap:wrap;gap:12px 26px;margin-top:30px}
+.vyhody li{display:flex;align-items:center;gap:10px;font-weight:500}
+.vyhody svg{width:26px;height:26px;fill:none;stroke:var(--zelena);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.hero-vis{grid-column:8/-1;position:relative}
+.foto{position:relative;aspect-ratio:4/5;border-radius:24px;overflow:hidden;background:var(--ink)}
+.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%;opacity:0;transition:opacity 1.4s ease-in-out}
+.foto img.on{opacity:1}
+.cedulka{position:absolute;left:-28px;bottom:28px;background:var(--paper);border-radius:var(--r);padding:16px 20px;max-width:260px}
+.cedulka b{display:block;font:400 1.5rem/1.1 var(--display)}
+.cedulka span{font-size:var(--s-small);color:var(--muted)}
+
+/* ========== KATEGORIE ========== */
+.kategorie{padding-top:clamp(56px,6vw,88px)}
+.kategorie h2,.obchod h2,.jak h2,.znacky h2,.prodejna h2{font-size:var(--s-head)}
+.kat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:32px}
+.kat{position:relative;display:block;border:0;padding:0;border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;background:var(--ink);cursor:pointer;text-align:left}
+.kat img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),opacity .4s}
+.kat span{position:absolute;left:10px;right:10px;bottom:10px;background:var(--paper);border-radius:10px;padding:10px 12px;font:500 var(--s-body)/1.2 var(--text)}
+@media (hover:hover){.kat:hover img{transform:scale(1.06);opacity:.9}}
+
+/* ========== OBCHOD ========== */
+.obchod{padding-top:clamp(88px,10vw,140px)}
+.obchod-head{display:flex;justify-content:space-between;align-items:end;gap:16px 32px;flex-wrap:wrap}
+.obchod-head p{max-width:46ch}
+.filtry{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:28px;position:sticky;top:90px;z-index:20;background:var(--bg);padding:12px 0}
+.chip{height:44px;padding:0 18px;border-radius:999px;border:0;background:var(--surface);cursor:pointer;font-weight:500;transition:background-color .2s,color .2s}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+@media (hover:hover){.chip:not([aria-pressed="true"]):hover{background:var(--surface-2)}}
+.filtry select{height:44px;border:0;border-radius:999px;background:var(--surface);padding:0 16px;font-weight:500;cursor:pointer}
+.filtry .vpravo{margin-left:auto;display:flex;gap:10px;align-items:center}
+.filtry .kolik{font-size:var(--s-small);color:var(--muted)}
+.mrizka{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px}
+.produkt{display:flex;flex-direction:column;background:var(--paper);border-radius:18px;padding:10px 10px 16px}
+.obal{position:relative;border-radius:12px;aspect-ratio:1;display:grid;place-items:center;overflow:hidden}
+.obal svg{width:82%;height:82%;overflow:visible;transition:transform .5s var(--ease)}
+@media (hover:hover){.produkt:hover .obal svg{transform:translateY(-4px) rotate(-2deg)}}
+.obal .pro{position:absolute;left:10px;top:10px;background:var(--paper);border-radius:999px;padding:3px 10px;font-size:13px;font-weight:500}
+.produkt .zn{margin:14px 6px 0;font:400 1.25rem/1.1 var(--display)}
+.produkt h3{margin:4px 6px 0;font:400 var(--s-body)/1.35 var(--text);min-height:2.7em}
+.produkt .dole{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:14px 6px 0}
+.produkt select{height:40px;border:0;border-radius:999px;background:var(--surface);padding:0 12px;font-size:15px;font-weight:500;max-width:56%}
+.produkt .cena{font:500 1.375rem/1 var(--text);white-space:nowrap}
+.pridat{position:relative;margin:12px 6px 0;height:46px;border:0;border-radius:999px;background:var(--accent);color:var(--ink);font-weight:500;cursor:pointer;overflow:hidden;transition:background-color .2s}
+.pridat svg{width:20px;height:20px;vertical-align:-4px;margin-right:6px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.pridat.ok{background:var(--zelena);color:#fff}
+@media (hover:hover){.pridat:not(.ok):hover{background:var(--accent-2)}}
+.prazdno{grid-column:1/-1;background:var(--paper);border-radius:18px;padding:40px;text-align:center}
+.prazdno p{margin-top:8px;color:var(--muted)}
+.ukazka{margin-top:18px;font-size:var(--s-small);color:var(--muted)}
+.letec{position:fixed;left:0;top:0;width:64px;height:64px;z-index:90;pointer-events:none;border-radius:12px;display:grid;place-items:center}
+.letec svg{width:100%;height:100%}
+
+/* ========== JAK NAKOUPIT ========== */
+.jak{padding-top:clamp(96px,11vw,160px)}
+.jak{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;align-items:start}
+.jak-l{grid-column:1/6;position:sticky;top:120px}
+.jak-l p{margin-top:18px;font-size:var(--s-lead);line-height:1.4;max-width:30ch}
+.jak-l img{margin-top:28px;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:22px}
+.jak-grid{grid-column:7/-1;display:flex;flex-direction:column;gap:clamp(36px,5vw,64px);padding-top:8px}
+.krok{display:grid;grid-template-columns:88px 1fr;column-gap:24px;align-items:start}
+.krok .ik{grid-row:1/span 2;width:88px;height:88px;border-radius:50%;background:var(--accent);display:grid;place-items:center}
+.krok:nth-child(2) .ik{background:var(--paper)}
+.krok:nth-child(3) .ik{background:var(--ink);color:var(--accent)}
+.krok svg{width:52px;height:52px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.krok h3{font:400 clamp(2rem,1.4rem + 1.8vw,3.25rem)/1.02 var(--display)}
+.krok p{margin-top:10px;font-size:var(--s-lead);line-height:1.4;max-width:30ch}
+
+/* ========== ZNAČKY — pás, který jede se scrollem ========== */
+.znacky{padding-top:clamp(96px,11vw,160px);overflow:hidden}
+.pas-zn{display:flex;gap:56px;white-space:nowrap;margin-top:28px;font:400 clamp(2.75rem,1.6rem + 4vw,5.5rem)/1.1 var(--display);letter-spacing:-.02em;will-change:transform}
+.pas-zn span::after{content:"·";color:var(--accent-2);margin-left:56px}
+.znacky p{margin-top:24px;max-width:56ch}
+
+/* ========== PRODEJNA ========== */
+.prodejna{padding-top:clamp(96px,11vw,160px);padding-bottom:clamp(88px,10vw,140px);display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;row-gap:28px;align-items:start}
+.prodejna-l{grid-column:1/6}
+.prodejna-l p{margin-top:18px;font-size:var(--s-lead);line-height:1.4}
+.prodejna-l .adr{font-size:var(--s-body);margin-top:20px}
+.prodejna-l .akce{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.dny{grid-column:7/-1;display:flex;flex-direction:column;gap:6px}
+.den{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px;padding:0 18px;background:var(--paper);border-radius:10px}
 .den span:first-child{font-weight:500}
 .den.dnes{background:var(--ink);color:var(--paper)}
 .den.dnes span:first-child::after{content:" · dnes";font-weight:400;color:var(--accent)}
-.doba .pozn{margin-top:16px;font-size:var(--s-small);color:var(--muted)}
-
-/* ========== SORTIMENT — tištěný ceník se zoubky ========== */
-.sortiment{margin-top:clamp(120px,14vw,200px);background:var(--ink);padding-top:clamp(80px,9vw,140px);padding-bottom:clamp(80px,9vw,140px);display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;row-gap:24px;align-items:start}
-.list{grid-column:2/7;background:var(--paper);padding:64px clamp(24px,3vw,48px);
-  clip-path:polygon(0 12px,4% 0,8% 12px,12% 0,16% 12px,20% 0,24% 12px,28% 0,32% 12px,36% 0,40% 12px,44% 0,48% 12px,52% 0,56% 12px,60% 0,64% 12px,68% 0,72% 12px,76% 0,80% 12px,84% 0,88% 12px,92% 0,96% 12px,100% 0,100% calc(100% - 12px),96% 100%,92% calc(100% - 12px),88% 100%,84% calc(100% - 12px),80% 100%,76% calc(100% - 12px),72% 100%,68% calc(100% - 12px),64% 100%,60% calc(100% - 12px),56% 100%,52% calc(100% - 12px),48% 100%,44% calc(100% - 12px),40% 100%,36% calc(100% - 12px),32% 100%,28% calc(100% - 12px),24% 100%,20% calc(100% - 12px),16% 100%,12% calc(100% - 12px),8% 100%,4% calc(100% - 12px),0 100%)}
-.list h2{text-align:center;font-size:clamp(2.5rem,1.6rem + 2.4vw,3.5rem)}
-.skupina{margin-top:44px}
-.skupina h3{font:500 var(--s-lead)/1.2 var(--text);margin-bottom:14px}
-.polozka{display:flex;align-items:baseline;gap:10px;padding:8px 0}
-.polozka .n{font-size:var(--s-body)}
-.polozka .tecky{flex:1;border-bottom:4px dotted #b9b8b0;transform:translateY(-4px)}
-.polozka .v{font-size:var(--s-small);color:var(--muted);white-space:nowrap}
-.sort-foto{grid-column:8/12;display:grid;grid-template-columns:1fr 1fr;gap:12px;position:sticky;top:24px}
-.sort-foto figure{border-radius:var(--r);overflow:hidden}
-.sort-foto figure:first-child{grid-column:1/-1}
-.sort-foto img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform 1.2s var(--ease)}
-.sort-foto figure:first-child img{aspect-ratio:3/2}
-@media (hover:hover){.sort-foto figure:hover img{transform:scale(1.05)}}
-.sort-foto figcaption{color:var(--paper);font-size:var(--s-small);padding-top:8px}
-
-/* ========== ZNAČKY — jména v řadě ========== */
-.znacky{padding-top:clamp(120px,14vw,200px)}
-.znacky h2{font-size:var(--s-head)}
-.znacky ul{display:flex;flex-wrap:wrap;gap:6px 0;margin-top:40px}
-.znacky li{font:400 clamp(2rem,1rem + 3.4vw,4.25rem)/1.1 var(--display);letter-spacing:-.02em;padding-right:.5em}
-.znacky li:not(:last-child)::after{content:"·";padding-left:.5em;color:var(--accent)}
-.znacky p{margin-top:28px;max-width:52ch}
-
-/* ========== JAK K NÁM — list s ústřižkem ========== */
-.kudy{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;padding-top:clamp(120px,14vw,200px);align-items:center}
-.kudy-list{grid-column:2/7;background:var(--paper);padding:60px}
-.kudy-list h2{font-size:var(--s-head)}
-.kudy-list p{margin-top:22px;font-size:var(--s-lead);line-height:1.4}
-.kudy-list .adr{margin-top:28px;font-size:var(--s-body)}
-.kudy-list .btn{margin-top:28px}
-.ustrizek{border-top:5px dotted var(--bg);margin:48px -60px -60px;padding:22px 60px;background:var(--surface);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 20px}
-.ustrizek a{font-weight:500;text-decoration:none}
-@media (hover:hover){.ustrizek a:hover{text-decoration:underline}}
-.kudy figure{grid-column:8/-1;border-radius:var(--r);overflow:hidden}
-.kudy figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
-
-/* ========== DOTAZ — kupón ========== */
-.kupon-wrap{padding-top:clamp(120px,14vw,200px);padding-bottom:clamp(96px,10vw,140px)}
-.kupon{display:grid;grid-template-columns:46% 54%;background:var(--accent);border-radius:14px;
-  -webkit-mask:radial-gradient(circle 14px at 46% 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 14px at 46% 100%,#0000 98%,#000) bottom/100% 51% no-repeat; /* taste-skill-ignore: maska výřezů kupónu */
-  mask:radial-gradient(circle 14px at 46% 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 14px at 46% 100%,#0000 98%,#000) bottom/100% 51% no-repeat} /* taste-skill-ignore: maska výřezů kupónu */
-.kupon-l{padding:48px;display:flex;flex-direction:column;justify-content:space-between;gap:32px;border-right:5px dotted var(--bg)}
-.kupon-l h2{font-size:clamp(2.25rem,1.4rem + 2.6vw,3.5rem)}
-.kupon-r{padding:48px;display:flex;flex-direction:column;gap:10px}
-.kupon-r input,.kupon-r textarea{border:0;border-radius:0;background:#d4c83a;color:var(--ink);font:400 var(--s-body)/1.4 var(--text);padding:14px 18px;width:100%}
-.kupon-r input{height:54px}
-.kupon-r textarea{min-height:110px;resize:vertical}
-.kupon-r input::placeholder,.kupon-r textarea::placeholder{color:#4d4810}
-.kupon-r input:focus,.kupon-r textarea:focus{background:#e3d95a;outline:2px solid var(--ink);outline-offset:0}
-.kupon-r button{height:58px;border:0;border-radius:var(--r);background:var(--ink);color:var(--paper);font:500 var(--s-body)/1 var(--text);cursor:pointer;transition:transform .15s var(--ease)}
-.kupon-r button:active{transform:scale(.98)}
+.dny .pozn{font-size:var(--s-small);color:var(--muted);margin-top:6px}
 
 footer{background:var(--ink);color:var(--paper)}
-footer .pruhy{display:flex;height:8px}
+footer .pruhy{display:flex;height:10px}
 footer .pruhy i{flex:1;background:var(--accent)}
 footer .pruhy i:nth-child(even){background:var(--ink)}
 footer .in{padding-top:56px;padding-bottom:32px}
 footer .big{font:500 clamp(3.5rem,1rem + 12vw,13rem)/.9 var(--text);letter-spacing:.06em}
 footer .fine{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 32px;margin-top:28px;font-size:var(--s-small);color:#b9b8b0}
 
-/* ========== Pohyb ========== */
-.js .cedule-in>*{opacity:0;transform:translateY(18px);animation:vstup .7s var(--ease) forwards}
-.js .cedule-in>*:nth-child(2){animation-delay:.08s}.js .cedule-in>*:nth-child(3){animation-delay:.16s}.js .cedule-in>*:nth-child(4){animation-delay:.24s}.js .cedule-in>*:nth-child(5){animation-delay:.32s}
-.js .markyza i{transform:scaleY(0);transform-origin:top;animation:roleta .6s var(--ease) forwards;animation-delay:calc(var(--i) * 25ms)}
-@keyframes vstup{to{opacity:1;transform:none}}
-@keyframes roleta{to{transform:none}}
-.js [data-r]{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(var(--i,0) * 75ms)}
-.js [data-r].in{opacity:1;transform:none}
+/* ========== KOŠÍK — panel zprava ========== */
+dialog.kosik{margin:0 0 0 auto;height:100%;max-height:100%;width:min(460px,100%);max-width:100%;border:0;padding:0;background:var(--bg);color:var(--ink)}
+dialog.kosik::backdrop{background:rgba(24,23,21,.45)}
+.kosik-in{display:flex;flex-direction:column;height:100%}
+.kosik-head{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;background:var(--paper)}
+.kosik-head h2{font:400 2rem/1 var(--display)}
+.zavrit{width:44px;height:44px;border-radius:50%;border:0;background:var(--surface);cursor:pointer;font-size:24px;line-height:1}
+.kosik-body{flex:1;overflow:auto;padding:16px 22px}
+.polozka{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:12px;background:var(--paper);border-radius:14px;margin-bottom:8px}
+.polozka .mini{width:64px;height:64px;border-radius:10px;display:grid;place-items:center}
+.polozka .mini svg{width:86%;height:86%}
+.polozka b{display:block;font-weight:500;line-height:1.25}
+.polozka small{color:var(--muted)}
+.polozka .qty{display:flex;align-items:center;gap:4px;margin-top:8px}
+.polozka .qty button{width:32px;height:32px;border-radius:50%;border:0;background:var(--surface);cursor:pointer;font-size:18px;line-height:1}
+.polozka .qty span{min-width:26px;text-align:center;font-weight:500}
+.polozka .r{text-align:right;display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.polozka .r button{border:0;background:none;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:14px;padding:4px 0}
+.kosik-prazdny{text-align:center;padding:48px 12px;color:var(--muted)}
+.kosik-prazdny svg{width:72px;height:72px;margin:0 auto 12px;fill:none;stroke:var(--muted);stroke-width:1.8}
+.kosik-foot{padding:18px 22px 22px;background:var(--paper)}
+.soucet{display:flex;justify-content:space-between;align-items:baseline;font-size:var(--s-lead)}
+.soucet b{font:500 1.75rem/1 var(--text)}
+.kosik-foot p{font-size:var(--s-small);color:var(--muted);margin:8px 0 14px}
+.kosik-foot .btn{width:100%}
+.rez{display:flex;flex-direction:column;gap:10px}
+.rez label{font-size:var(--s-small);font-weight:500}
+.rez input,.rez select,.rez textarea{width:100%;height:50px;border:0;border-radius:12px;background:var(--paper);padding:0 14px;font-size:var(--s-body)}
+.rez textarea{height:84px;padding:12px 14px;resize:vertical}
+.rez input:focus,.rez select:focus,.rez textarea:focus{outline:2px solid var(--ink);outline-offset:0}
+.rez .chyba{color:#b3261e;font-size:var(--s-small);min-height:1.2em}
+.hotovo{text-align:center;padding:40px 8px}
+.hotovo svg{width:84px;height:84px;margin:0 auto 18px;fill:none;stroke:var(--zelena);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.hotovo h3{font:400 2rem/1.05 var(--display)}
+.hotovo p{margin-top:12px;color:var(--muted)}
+.zpet{border:0;background:none;padding:0 0 12px;cursor:pointer;font-weight:500;text-decoration:underline}
+
+/* ========== Pohyb: výchozí stavy pro GSAP (bez skriptu se nic neschová) ========== */
+.js [data-r]{opacity:0;transform:translateY(24px)}
+.js .hero h1 .ln>span{transform:translateY(105%)}
+.js [data-h]{opacity:0;transform:translateY(16px)}
+.pocet.bump{animation:bump .45s var(--ease)}
+@keyframes bump{30%{transform:scale(1.35)}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .js .cedule-in>*,.js .markyza i{animation:none;opacity:1;transform:none}
-  .stav.otevreno .tecka{animation:none}
+  .js [data-r],.js [data-h],.js .hero h1 .ln>span{opacity:1;transform:none}
   .foto img{transition:none}
-  .js [data-r]{opacity:1;transform:none;transition:none}
+  .stav.otevreno .tecka{animation:none}
+  .pocet.bump{animation:none}
 }
 
-/* ========== Telefon ========== */
+/* ========== Tablet a telefon ========== */
+@media (max-width:1100px){
+  .mrizka{grid-template-columns:repeat(3,1fr)}
+  .kat-grid{grid-template-columns:repeat(3,1fr)}
+  .kat{aspect-ratio:4/3}
+}
 @media (max-width:860px){
+  .hero{display:block}
+  .hero-vis{margin-top:36px}
+  .foto{aspect-ratio:4/3}
+  .cedulka{left:12px;bottom:12px}
+  .hledat{display:none}
+  .hlavicka .in{justify-content:space-between}
+  .mrizka{grid-template-columns:1fr 1fr;gap:10px}
+  .jak{display:block}
+  .jak-l{position:static}
+  .jak-grid{margin-top:40px}
+  .prodejna{display:block}
+  .dny{margin-top:36px}
+  .filtry .vpravo{margin-left:0;width:100%}
+}
+@media (max-width:560px){
   .ribbon{font-size:14px;padding:8px 14px}
-  .hero{display:flex;flex-direction:column-reverse;min-height:0}
-  .foto{position:relative;top:0;height:min(48svh,46vw + 120px)}
-  .cedule{margin-top:-36px;position:relative;z-index:1}
-  .foto figcaption{top:14px;bottom:auto}
-  .markyza{height:40px}
-  .cedule h1{font-size:min(10vw,3.5rem)}
-  .cedule-in{gap:16px;padding:28px 20px 16px}
-  .sortiment,.kudy{display:block}
-  .list{margin:0 calc(var(--g) * -1 + 12px);padding:56px 20px}
-  .polozka .v{font-size:14px}
-  .sort-foto{position:static;margin-top:40px}
-  .kudy-list{padding:36px 24px;margin:0 calc(var(--g) * -1 + 12px)}
-  .ustrizek{margin:40px -24px -36px;padding:20px 24px;flex-direction:column}
-  .kudy figure{margin-top:24px}
-  .kupon{grid-template-columns:1fr;
-    -webkit-mask:radial-gradient(circle 14px at 0 40%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% 40%,#0000 98%,#000) right/51% 100% no-repeat; /* taste-skill-ignore */
-    mask:radial-gradient(circle 14px at 0 40%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% 40%,#0000 98%,#000) right/51% 100% no-repeat} /* taste-skill-ignore: maska výřezů kupónu */
-  .kupon-l{border-right:0;border-bottom:5px dotted var(--bg);padding:32px 24px}
-  .kupon-r{padding:32px 24px}
+  .lista .in{justify-content:center}
+  .lista .tel{display:none}
+  .hlavicka .in{height:64px}
+  .logo{font-size:18px}
+  .kosik-btn .txt{display:none}
+  .hero h1{font-size:min(13.4vw,3.6rem)}
+  .hero-cta .btn{flex:1 1 100%}
+  .kat-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .filtry{position:static;gap:8px}
+  .chip{height:40px;padding:0 14px}
+  .filtry select{height:40px}
+  .produkt{padding:6px 6px 12px;border-radius:14px}
+  .produkt .zn{font-size:1.0625rem;margin:10px 4px 0}
+  .produkt h3{font-size:14px;margin:2px 4px 0}
+  .produkt .dole{flex-direction:column;align-items:stretch;margin:10px 4px 0}
+  .produkt select{max-width:none;height:36px;font-size:14px}
+  .produkt .cena{font-size:1.125rem}
+  .pridat{margin:10px 4px 0;height:42px;font-size:15px}
+  .pridat svg{display:none}
   footer .big{font-size:14vw}
 }
 </style>
 </head>
 <body>
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro-ground">
+    <svg class="stopy" id="stopy" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice">
+      <defs><g id="tl"><path d="M0 4c6 0 10 6 10 10s-4 6-10 6-10-2-10-6 4-10 10-10z"/><circle cx="-10" cy="-2" r="3.6"/><circle cx="-4" cy="-9" r="3.6"/><circle cx="4" cy="-9" r="3.6"/><circle cx="10" cy="-2" r="3.6"/></g></defs>
+    </svg>
+  </div>
+</div>
+
 <div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
 
-<header class="hero">
-  <div class="cedule">
-    <div class="markyza" aria-hidden="true" id="markyza"></div>
-    <div class="cedule-in">
-      <p class="logo">VELKY<b>PES</b></p>
-      <h1 class="disp">Krmiva pro psy<br> i kočky</h1>
-      <p class="sent">Krmiva a chovatelské potřeby v Karviné-Ráji, hned u Lidlu a kousek od nonstop Tesca. Otevřeno každý den v týdnu.</p>
-      <p class="stav" id="stav" aria-live="polite"><span class="tecka"></span><span id="stav-t">Otevřeno Po–Pá 8:00–17:45, So–Ne 9:00–14:00</span></p>
-      <a class="btn" href="#kudy">Jak k nám</a>
-    </div>
-    <nav class="cedule-links" aria-label="Stránka"><a href="#doba">Otevírací doba</a><a href="#sortiment">Sortiment</a><a href="#znacky">Značky</a><a href="#dotaz">Dotaz</a></nav>
+<div class="lista"><div class="in wrap">
+  <p class="stav" id="stav" aria-live="polite"><span class="tecka"></span><span id="stav-t">Po–Pá 8:00–17:45, So–Ne 9:00–14:00</span></p>
+  <p>Objednejte online, vyzvedněte v prodejně u Lidlu</p>
+  <a class="tel" href="tel:+420731271987">731 271 987</a>
+</div></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="#" data-intro-land aria-label="VELKYPES – na začátek stránky">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path class="t f" d="M20 18c5 0 9 5 9 9s-4 6-9 6-9-2-9-6 4-9 9-9z"/><circle class="t f" cx="9" cy="16" r="3.6"/><circle class="t f" cx="14.5" cy="9" r="3.6"/><circle class="t f" cx="25.5" cy="9" r="3.6"/><circle class="t f" cx="31" cy="16" r="3.6"/><path class="o d" d="M20 18c5 0 9 5 9 9s-4 6-9 6-9-2-9-6 4-9 9-9z" pathLength="1"/></svg><span><span class="w">VELKY</span><b class="w">PES</b></span>
+    </a>
+    <label class="hledat"><span class="vh">Hledat v nabídce</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="hledat" type="search" placeholder="Hledat krmivo, značku, potřeby…" autocomplete="off"></label>
+    <button class="kosik-btn" id="kosik-btn" type="button" aria-haspopup="dialog" aria-controls="kosik"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="txt">Košík</span><span class="pocet num" id="pocet">0</span></button>
   </div>
-  <figure class="foto" id="foto">
-    <img class="on" src="img/mastif-800.jpg" srcset="img/mastif-800.jpg 800w, img/mastif-1600.jpg 1600w" sizes="(max-width:860px) 100vw, 50vw" width="800" height="1169" alt="Velký hnědý pes sedí na tmavém pozadí" fetchpriority="high">
-    <img src="img/bernardyn-800.jpg" srcset="img/bernardyn-800.jpg 800w, img/bernardyn-1600.jpg 1600w" sizes="(max-width:860px) 100vw, 50vw" width="800" height="533" alt="Bernardýn stojí na trávě před domem" loading="lazy">
-    <img src="img/ovcak-800.jpg" srcset="img/ovcak-800.jpg 800w, img/ovcak-1600.jpg 1600w" sizes="(max-width:860px) 100vw, 50vw" width="800" height="1200" alt="Německý ovčák v postroji na lavičce" loading="lazy">
-    <img src="img/kocka-800.jpg" srcset="img/kocka-800.jpg 800w, img/kocka-1600.jpg 1600w" sizes="(max-width:860px) 100vw, 50vw" width="800" height="1199" alt="Kotě zvedá tlapku na mentolovém pozadí" loading="lazy">
-    <figcaption id="foto-cap">Pro velké psy</figcaption>
-  </figure>
+  <div class="markyza" id="markyza" aria-hidden="true"></div>
 </header>
 
 <main>
-<section class="doba" id="doba" aria-labelledby="doba-h">
-  <h2 id="doba-h" class="disp" data-r>Otevřeno</h2>
+<section class="hero wrap" aria-labelledby="hero-h">
+  <div class="hero-copy">
+    <h1 id="hero-h" class="disp"><span class="ln"><span>Krmivo pro psy</span></span><span class="ln"><span>i kočky online</span></span></h1>
+    <p class="lede" data-h>Vyberte krmivo a potřeby na webu. Připravíme je v prodejně v Karviné-Ráji u Lidlu a zaplatíte až při vyzvednutí.</p>
+    <div class="hero-cta" data-h>
+      <a class="btn" href="#obchod">Prohlédnout nabídku</a>
+      <a class="btn ghost" href="#jak">Jak to funguje</a>
+    </div>
+    <ul class="vyhody" data-h>
+      <li><svg viewBox="0 0 26 26" aria-hidden="true"><path class="d" d="m5 13.5 5 5L21 7" pathLength="1"/></svg>Bez registrace</li>
+      <li><svg viewBox="0 0 26 26" aria-hidden="true"><path class="d" d="m5 13.5 5 5L21 7" pathLength="1"/></svg>Platba až v prodejně</li>
+      <li><svg viewBox="0 0 26 26" aria-hidden="true"><path class="d" d="m5 13.5 5 5L21 7" pathLength="1"/></svg>Otevřeno i o víkendu</li>
+    </ul>
+  </div>
+  <div class="hero-vis" data-h>
+    <figure class="foto" id="foto">
+      <img class="on" src="img/mastif-800.jpg" srcset="img/mastif-800.jpg 800w, img/mastif-1600.jpg 1600w" sizes="(max-width:860px) 92vw, 40vw" width="800" height="1169" alt="Velký hnědý pes sedí na tmavém pozadí" fetchpriority="high">
+      <img src="img/bernardyn-800.jpg" srcset="img/bernardyn-800.jpg 800w, img/bernardyn-1600.jpg 1600w" sizes="(max-width:860px) 92vw, 40vw" width="800" height="533" alt="Bernardýn stojí na trávě před domem" loading="lazy">
+      <img src="img/ovcak-800.jpg" srcset="img/ovcak-800.jpg 800w, img/ovcak-1600.jpg 1600w" sizes="(max-width:860px) 92vw, 40vw" width="800" height="1200" alt="Německý ovčák v postroji na lavičce" loading="lazy">
+      <img src="img/kocka-800.jpg" srcset="img/kocka-800.jpg 800w, img/kocka-1600.jpg 1600w" sizes="(max-width:860px) 92vw, 40vw" width="800" height="1199" alt="Kotě zvedá tlapku na mentolovém pozadí" loading="lazy">
+    </figure>
+    <p class="cedulka"><b>tř. 17. listopadu 873/6</b><span>Karviná-Ráj, hned u Lidlu</span></p>
+  </div>
+</section>
+
+<section class="kategorie wrap" aria-labelledby="kat-h">
+  <h2 id="kat-h" class="disp" data-r>Co hledáte</h2>
+  <div class="kat-grid">
+    <button class="kat" type="button" data-r data-pro="pes" data-k="granule"><img src="img/granule-800.jpg" width="800" height="533" alt="" loading="lazy"><span>Granule pro psy</span></button>
+    <button class="kat" type="button" data-r data-pro="kocka" data-k="vse"><img src="img/kocka-800.jpg" width="800" height="1199" alt="" loading="lazy"><span>Všechno pro kočky</span></button>
+    <button class="kat" type="button" data-r data-pro="vse" data-k="kapsicky"><img src="img/miska-800.jpg" width="800" height="533" alt="" loading="lazy"><span>Kapsičky a konzervy</span></button>
+    <button class="kat" type="button" data-r data-pro="vse" data-k="pamlsky"><img src="img/pamlsky-800.jpg" width="800" height="532" alt="" loading="lazy"><span>Pamlsky</span></button>
+    <button class="kat" type="button" data-r data-pro="vse" data-k="doma"><img src="img/skrabadlo-800.jpg" width="800" height="1350" alt="" loading="lazy"><span>Pelechy, toalety, škrabadla</span></button>
+    <button class="kat" type="button" data-r data-pro="vse" data-k="ven"><img src="img/obleceni-800.jpg" width="800" height="1198" alt="" loading="lazy"><span>Ven a na cesty</span></button>
+  </div>
+</section>
+
+<section class="obchod wrap" id="obchod" aria-labelledby="ob-h">
+  <div class="obchod-head">
+    <h2 id="ob-h" class="disp" data-r>Nabídka</h2>
+    <p data-r>Vyberte zboží a velikost balení. Rezervaci Vám potvrdíme a připravíme ji v prodejně.</p>
+  </div>
+  <div class="filtry" role="group" aria-label="Filtrovat nabídku">
+    <button class="chip" type="button" data-pro="vse" aria-pressed="true">Vše</button>
+    <button class="chip" type="button" data-pro="pes" aria-pressed="false">Pes</button>
+    <button class="chip" type="button" data-pro="kocka" aria-pressed="false">Kočka</button>
+    <label class="vh" for="kat">Kategorie</label>
+    <select id="kat"><option value="vse">Všechny kategorie</option><option value="granule">Granule</option><option value="kapsicky">Kapsičky a konzervy</option><option value="pamlsky">Pamlsky</option><option value="doma">Doma</option><option value="ven">Ven a na cesty</option></select>
+    <div class="vpravo"><span class="kolik" id="kolik" aria-live="polite"></span><label class="vh" for="razeni">Řazení</label><select id="razeni"><option value="dop">Doporučené</option><option value="levne">Od nejlevnějšího</option><option value="drahe">Od nejdražšího</option></select></div>
+  </div>
+  <ul class="mrizka" id="mrizka"></ul>
+  <p class="ukazka">Sortiment a ceny jsou v náhledu ukázkové. Doplníme je podle skutečné nabídky prodejny.</p>
+</section>
+
+<section class="jak wrap" id="jak" aria-labelledby="jak-h">
+  <div class="jak-l">
+    <h2 id="jak-h" class="disp" data-r>Jak nakoupit</h2>
+    <p data-r>Nákup bez registrace a bez placení předem. Zboží Vám připravíme a čeká na Vás v prodejně.</p>
+    <img data-r src="img/miska-800.jpg" srcset="img/miska-800.jpg 800w, img/miska-1600.jpg 1600w" sizes="(max-width:860px) 92vw, 40vw" width="800" height="533" alt="Buldoček jí z kovové misky" loading="lazy">
+  </div>
+  <ol class="jak-grid">
+    <li class="krok" data-r><span class="ik"><svg viewBox="0 0 64 64" aria-hidden="true"><path class="d" d="M14 22h36l-3 30a3 3 0 0 1-3 3H20a3 3 0 0 1-3-3z" pathLength="1"/><path class="d" d="M24 22v-4a8 8 0 0 1 16 0v4" pathLength="1"/><path class="d" d="m25 39 5 5 9-10" pathLength="1"/></svg></span><h3>Vyberete zboží</h3><p>Krmivo, pamlsky nebo potřeby přidáte do košíku, třeba z mobilu cestou z práce.</p></li>
+    <li class="krok" data-r><span class="ik"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="d" x="12" y="14" width="40" height="40" rx="6" pathLength="1"/><path class="d" d="M12 26h40M24 9v10M40 9v10" pathLength="1"/><path class="d" d="m25 41 5 4 9-9" pathLength="1"/></svg></span><h3>Zarezervujete</h3><p>Vyplníte jméno, telefon a den, kdy se pro zboží zastavíte.</p></li>
+    <li class="krok" data-r><span class="ik"><svg viewBox="0 0 64 64" aria-hidden="true"><path class="d" d="M10 28 32 12l22 16" pathLength="1"/><path class="d" d="M16 26v26h32V26" pathLength="1"/><path class="d" d="M27 52V38h10v14" pathLength="1"/></svg></span><h3>Vyzvednete a zaplatíte</h3><p>Zboží máte připravené v prodejně u Lidlu. Platíte až na místě.</p></li>
+  </ol>
+</section>
+
+<section class="znacky" id="znacky" aria-labelledby="zn-h">
+  <div class="wrap"><h2 id="zn-h" class="disp" data-r>Značky, které vedeme</h2></div>
+  <div class="pas-zn" id="pas-zn" aria-label="Acana, Orijen, Brit Care, Hill's, Josera, K9, Magnusson Original, EssentialFoods"><span>Acana</span><span>Orijen</span><span>Brit Care</span><span>Hill's</span><span>Josera</span><span>K9</span><span>Magnusson Original</span><span>EssentialFoods</span><span aria-hidden="true">Acana</span><span aria-hidden="true">Orijen</span><span aria-hidden="true">Brit Care</span><span aria-hidden="true">Hill's</span></div>
+  <div class="wrap"><p data-r>A další. Když hledáte konkrétní krmivo, které v nabídce nevidíte, zavolejte nebo napište a zjistíme, jestli ho seženeme.</p></div>
+</section>
+
+<section class="prodejna wrap" id="prodejna" aria-labelledby="pr-h">
+  <div class="prodejna-l">
+    <h2 id="pr-h" class="disp" data-r>Prodejna u Lidlu</h2>
+    <p data-r>Najdete nás na třídě 17. listopadu v Ráji, hned u Lidlu a kousek od nonstop Tesca.</p>
+    <p class="adr" data-r>tř. 17. listopadu 873/6, 734 01 Karviná-Ráj<br><a href="tel:+420731271987">731 271 987</a> · <a href="mailto:info@velkypes.cz">info@velkypes.cz</a></p>
+    <div class="akce" data-r><a class="btn ink" href="https://mapy.cz/zakladni?q=t%C5%99.%2017.%20listopadu%20873%2F6%2C%20Karvin%C3%A1" target="_blank" rel="noopener">Otevřít v mapě</a><a class="btn ghost" href="tel:+420731271987">Zavolat</a></div>
+  </div>
   <ul class="dny" id="dny">
     <li class="den" data-d="1" data-r><span>Pondělí</span><span class="num">8:00–13:00, 13:45–17:45</span></li>
-    <li class="den" data-d="2" data-r style="--i:1"><span>Úterý</span><span class="num">8:00–13:00, 13:45–17:45</span></li>
-    <li class="den" data-d="3" data-r style="--i:2"><span>Středa</span><span class="num">8:00–13:00, 13:45–17:45</span></li>
-    <li class="den" data-d="4" data-r style="--i:3"><span>Čtvrtek</span><span class="num">8:00–13:00, 13:45–17:45</span></li>
-    <li class="den" data-d="5" data-r style="--i:4"><span>Pátek</span><span class="num">8:00–13:00, 13:45–17:45</span></li>
-    <li class="den" data-d="6" data-r style="--i:5"><span>Sobota</span><span class="num">9:00–14:00</span></li>
-    <li class="den" data-d="0" data-r style="--i:6"><span>Neděle</span><span class="num">9:00–14:00</span></li>
+    <li class="den" data-d="2" data-r><span>Úterý</span><span class="num">8:00–13:00, 13:45–17:45</span></li>
+    <li class="den" data-d="3" data-r><span>Středa</span><span class="num">8:00–13:00, 13:45–17:45</span></li>
+    <li class="den" data-d="4" data-r><span>Čtvrtek</span><span class="num">8:00–13:00, 13:45–17:45</span></li>
+    <li class="den" data-d="5" data-r><span>Pátek</span><span class="num">8:00–13:00, 13:45–17:45</span></li>
+    <li class="den" data-d="6" data-r><span>Sobota</span><span class="num">9:00–14:00</span></li>
+    <li class="den" data-d="0" data-r><span>Neděle</span><span class="num">9:00–14:00</span></li>
+    <li class="pozn">Ve státní svátky se otevírací doba může lišit.</li>
   </ul>
-  <p class="pozn" data-r>Ve státní svátky se otevírací doba může lišit.</p>
-</section>
-
-<section class="sortiment wrap" id="sortiment" aria-labelledby="sort-h">
-  <div class="list" data-r>
-    <h2 id="sort-h" class="disp">Co u nás koupíte</h2>
-    <div class="skupina">
-      <h3>Krmivo</h3>
-      <p class="polozka"><span class="n">Granule</span><span class="tecky"></span><span class="v">psi i kočky</span></p>
-      <p class="polozka"><span class="n">Kapsičky</span><span class="tecky"></span><span class="v">psi i kočky</span></p>
-      <p class="polozka"><span class="n">Konzervy</span><span class="tecky"></span><span class="v">psi i kočky</span></p>
-      <p class="polozka"><span class="n">Pamlsky</span><span class="tecky"></span><span class="v">psi i kočky</span></p>
-    </div>
-    <div class="skupina">
-      <h3>Doma</h3>
-      <p class="polozka"><span class="n">Pelechy</span><span class="tecky"></span><span class="v">psi i kočky</span></p>
-      <p class="polozka"><span class="n">Toalety</span><span class="tecky"></span><span class="v">kočky</span></p>
-      <p class="polozka"><span class="n">Podestýlky</span><span class="tecky"></span><span class="v">kočky</span></p>
-      <p class="polozka"><span class="n">Škrabadla</span><span class="tecky"></span><span class="v">kočky</span></p>
-    </div>
-    <div class="skupina">
-      <h3>Ven a na cesty</h3>
-      <p class="polozka"><span class="n">Tašky</span><span class="tecky"></span><span class="v">psi i kočky</span></p>
-      <p class="polozka"><span class="n">Oblečení</span><span class="tecky"></span><span class="v">psi</span></p>
-    </div>
-  </div>
-  <div class="sort-foto">
-    <figure data-r><img src="img/granule-800.jpg" width="800" height="533" alt="Granule zblízka" loading="lazy"><figcaption>Granule</figcaption></figure>
-    <figure data-r style="--i:1"><img src="img/skrabadlo-800.jpg" width="800" height="1350" alt="Kotě na škrabadle" loading="lazy"><figcaption>Škrabadla</figcaption></figure>
-    <figure data-r style="--i:2"><img src="img/obleceni-800.jpg" width="800" height="1198" alt="Malý pes v oblečku na žlutém pozadí" loading="lazy"><figcaption>Oblečení</figcaption></figure>
-    <figure data-r style="--i:3"><img src="img/pamlsky-800.jpg" width="800" height="532" alt="Pamlsky ve tvaru kostiček" loading="lazy"><figcaption>Pamlsky</figcaption></figure>
-    <figure data-r style="--i:4"><img src="img/miska-800.jpg" width="800" height="533" alt="Buldoček jí z kovové misky" loading="lazy"><figcaption>Kapsičky a konzervy</figcaption></figure>
-  </div>
-</section>
-
-<section class="znacky wrap" id="znacky" aria-labelledby="zn-h">
-  <h2 id="zn-h" class="disp" data-r>Značky, které vedeme</h2>
-  <ul>
-    <li data-r>Acana</li><li data-r style="--i:1">Orijen</li><li data-r style="--i:2">Brit Care</li><li data-r style="--i:3">Hill's</li><li data-r style="--i:4">Josera</li><li data-r style="--i:5">K9</li><li data-r style="--i:6">Magnusson Original</li><li data-r style="--i:7">EssentialFoods</li>
-  </ul>
-  <p data-r>A další. Když hledáte konkrétní krmivo, napište nám nebo zavolejte, než se vydáte na cestu.</p>
-</section>
-
-<section class="kudy wrap" id="kudy" aria-labelledby="kudy-h">
-  <div class="kudy-list" data-r>
-    <h2 id="kudy-h" class="disp">Jak k nám</h2>
-    <p>Najdete nás na třídě 17. listopadu v Ráji, hned u Lidlu a kousek od nonstop Tesca.</p>
-    <p class="adr">tř. 17. listopadu 873/6<br>734 01 Karviná-Ráj</p>
-    <a class="btn" href="https://mapy.cz/zakladni?q=t%C5%99.%2017.%20listopadu%20873%2F6%2C%20Karvin%C3%A1" target="_blank" rel="noopener">Otevřít v mapě</a>
-    <div class="ustrizek"><a href="tel:+420731271987">731 271 987</a><a href="mailto:info@velkypes.cz">info@velkypes.cz</a></div>
-  </div>
-  <figure data-r style="--i:1"><img src="img/ovcak-800.jpg" width="800" height="1200" alt="Německý ovčák v postroji odpočívá na lavičce" loading="lazy"></figure>
-</section>
-
-<section class="kupon-wrap wrap" id="dotaz" aria-labelledby="dot-h">
-  <div class="kupon" data-r>
-    <div class="kupon-l">
-      <h2 id="dot-h" class="disp">Máte to skladem?</h2>
-      <p>Napište, jaké krmivo nebo potřeby sháníte. Otevře se Vám e-mail, který stačí odeslat, a my odpovíme.</p>
-    </div>
-    <form class="kupon-r" id="form">
-      <input id="f-jm" placeholder="Jméno" autocomplete="name" aria-label="Jméno">
-      <input id="f-tel" placeholder="Telefon" autocomplete="tel" inputmode="tel" aria-label="Telefon">
-      <textarea id="f-co" placeholder="Co sháníte, třeba Acana pro velké psy, 11,4 kg" aria-label="Co sháníte"></textarea>
-      <button type="submit">Připravit e-mail</button>
-    </form>
-  </div>
 </section>
 </main>
 
@@ -298,23 +432,49 @@ footer .fine{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
     <p class="big" aria-hidden="true">VELKYPES</p>
     <div class="fine">
       <span>Petr Hlava · IČO 73957623 · tř. 17. listopadu 873/6, Karviná-Ráj</span>
-      <span>Fotografie: Unsplash (ilustrační)</span>
+      <span>Fotografie: Unsplash (ilustrační) · obaly zboží jsou kreslené</span>
     </div>
   </div>
 </footer>
 
+<dialog class="kosik" id="kosik" aria-labelledby="kosik-h">
+  <div class="kosik-in">
+    <div class="kosik-head"><h2 id="kosik-h">Košík</h2><button class="zavrit" type="button" id="zavrit" aria-label="Zavřít košík">×</button></div>
+    <div class="kosik-body" id="kosik-body"></div>
+    <div class="kosik-foot" id="kosik-foot"></div>
+  </div>
+</dialog>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
 <script>
-document.documentElement.classList.add('js');
+/* Úvod: k logu dojde řada žlutých tlapek */
+window.INTRO_EXTRA = function(tl, root){
+  var svg = root.querySelector('#stopy'), NS = 'http://www.w3.org/2000/svg', h = '';
+  for (var i = 0; i < 7; i++){
+    var x = 40 + i * 42, y = 570 - i * 38 + (i % 2 ? -16 : 16), a = -48 + (i % 2 ? 8 : -8);
+    h += '<use href="#tl" transform="translate(' + x + ' ' + y + ') rotate(' + (a + 90) + ') scale(2.2)"/>';
+  }
+  svg.insertAdjacentHTML('beforeend', h);
+  tl.to(svg.querySelectorAll('use'), {opacity:1, duration:.18, stagger:.09, ease:'none'}, 0)
+    .to(svg.querySelectorAll('use'), {opacity:.25, duration:.6, stagger:.09}, .5);
+};
+</script>
+<script src="js/intro.js"></script>
+<script>
 (function(){
   var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // markýza a pruhy v patičce
-  var mk = document.getElementById('markyza'), h = '';
-  for (var i = 0; i < 24; i++) h += '<i style="--i:' + i + '"></i>';
-  mk.innerHTML = h; document.getElementById('pruhy').innerHTML = h.replace(/ style="[^"]*"/g,'');
+  var hasG = !!(window.gsap && window.ScrollTrigger);
+  var $ = function(id){ return document.getElementById(id); };
+  var kc = new Intl.NumberFormat('cs-CZ');
+  var cena = function(n){ return kc.format(n) + ' Kč'; };
 
-  // Živý stav prodejny podle pražského času
+  /* markýza a pruhy v patičce */
+  var h = ''; for (var i = 0; i < 28; i++) h += '<i></i>';
+  $('markyza').innerHTML = h; $('pruhy').innerHTML = h;
+
+  /* ===== Živý stav prodejny podle pražského času ===== */
   var ROZVRH = {1:[[480,780],[825,1065]],2:[[480,780],[825,1065]],3:[[480,780],[825,1065]],4:[[480,780],[825,1065]],5:[[480,780],[825,1065]],6:[[540,840]],0:[[540,840]]};
-  var DNY = ['v neděli','v pondělí','v úterý','ve středu','ve čtvrtek','v pátek','v sobotu'];
   function hm(m){ return Math.floor(m/60) + ':' + ('0' + m%60).slice(-2); }
   function ted(){
     var p = new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Prague',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()), o = {};
@@ -322,39 +482,319 @@ document.documentElement.classList.add('js');
     return {d:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(o.weekday), m:(+o.hour % 24) * 60 + (+o.minute)};
   }
   function stav(){
-    var t = ted(), dnes = ROZVRH[t.d], el = document.getElementById('stav'), tx = document.getElementById('stav-t'), txt, open = false;
+    var t = ted(), dnes = ROZVRH[t.d], txt, open = false;
     for (var i = 0; i < dnes.length; i++){
       if (t.m >= dnes[i][0] && t.m < dnes[i][1]){ open = true; txt = 'Teď otevřeno, do ' + hm(dnes[i][1]); if (i === 0 && dnes.length > 1) txt += ', pak polední pauza'; break; }
     }
     if (!open){
       if (dnes.length > 1 && t.m >= dnes[0][1] && t.m < dnes[1][0]) txt = 'Polední pauza, otevíráme ve ' + hm(dnes[1][0]);
       else if (t.m < dnes[0][0]) txt = 'Zavřeno, otevíráme dnes v ' + hm(dnes[0][0]);
-      else { var z = (t.d + 1) % 7; txt = 'Zavřeno, otevíráme zítra v ' + hm(ROZVRH[z][0][0]); }
+      else txt = 'Zavřeno, otevíráme zítra v ' + hm(ROZVRH[(t.d + 1) % 7][0][0]);
     }
-    el.classList.toggle('otevreno', open); tx.textContent = txt;
+    $('stav').classList.toggle('otevreno', open); $('stav-t').textContent = txt;
     document.querySelectorAll('.den').forEach(function(li){ li.classList.toggle('dnes', +li.dataset.d === t.d); });
   }
   stav(); setInterval(stav, 30000);
 
-  // Pomalé prolínání fotek
-  var fotos = [].slice.call(document.querySelectorAll('#foto img')), cap = document.getElementById('foto-cap'), CAP = ['Pro velké psy','Pro velké psy','Pro psy všech velikostí','I pro kočky'], k = 0, tm;
-  function dalsi(){ fotos[k].classList.remove('on'); k = (k + 1) % fotos.length; fotos[k].classList.add('on'); cap.textContent = CAP[k]; }
-  function start(){ if (!RM && !tm) tm = setInterval(dalsi, 5600); }
-  function stop(){ clearInterval(tm); tm = null; }
-  document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
-  start();
+  /* fotky v úvodu se pomalu prolínají */
+  var fotos = [].slice.call(document.querySelectorAll('#foto img')), fk = 0, ft;
+  function dalsi(){ fotos[fk].classList.remove('on'); fk = (fk + 1) % fotos.length; fotos[fk].classList.add('on'); }
+  function fstart(){ if (!RM && !ft) ft = setInterval(dalsi, 5600); }
+  document.addEventListener('visibilitychange', function(){ if (document.hidden){ clearInterval(ft); ft = null; } else fstart(); });
+  fstart();
 
-  document.getElementById('form').addEventListener('submit', function(e){
-    e.preventDefault();
-    var g = function(id){ return document.getElementById(id).value.trim(); };
-    var body = 'Dobrý den,\n\nsháním: ' + (g('f-co') || '') + '\n\n' + (g('f-jm') || '') + (g('f-tel') ? '\nTelefon: ' + g('f-tel') : '') + '\n';
-    location.href = 'mailto:info@velkypes.cz?subject=' + encodeURIComponent('Dotaz na zboží') + '&body=' + encodeURIComponent(body);
+  /* ===== Ukázkový sortiment (značky z prodejny, ceny ukázkové) =====
+     pro: pes | kocka | oba · k: granule | kapsicky | pamlsky | doma | ven · typ: kreslený obal */
+  var P = [
+    {id:'acana-velka', z:'Acana', n:'Granule pro dospělé psy velkých plemen', pro:'pes', k:'granule', typ:'pytel', c:'#1f3b4d', s:'VELKÁ PLEMENA', v:[['2 kg',699],['11,4 kg',2590]], dop:1},
+    {id:'orijen-pes', z:'Orijen', n:'Granule pro dospělé psy', pro:'pes', k:'granule', typ:'pytel', c:'#7a2e1f', s:'ADULT', v:[['2 kg',849],['11,4 kg',3190]], dop:2},
+    {id:'brit-care-jehneci', z:'Brit Care', n:'Granule pro velká plemena, jehněčí s rýží', pro:'pes', k:'granule', typ:'pytel', c:'#2f6b4a', s:'JEHNĚČÍ', v:[['3 kg',549],['12 kg',1590]], dop:3},
+    {id:'magnusson-pes', z:'Magnusson', n:'Pečené krmivo pro dospělé psy', pro:'pes', k:'granule', typ:'pytel', c:'#8a5a1c', s:'PEČENÉ', v:[['4,5 kg',999],['14 kg',2690]], dop:6},
+    {id:'josera-pes', z:'Josera', n:'Granule pro dospělé psy', pro:'pes', k:'granule', typ:'pytel', c:'#3b3a7a', s:'ADULT', v:[['4,5 kg',699],['12,5 kg',1490]], dop:8},
+    {id:'k9-pes', z:'K9', n:'Granule pro aktivní psy', pro:'pes', k:'granule', typ:'pytel', c:'#181715', s:'AKTIVNÍ', v:[['3 kg',459],['15 kg',1690]], dop:10},
+    {id:'hills-pes', z:"Hill's", n:'Granule pro dospělé psy středních plemen', pro:'pes', k:'granule', typ:'pytel', c:'#2a5c8a', s:'MEDIUM', v:[['2,5 kg',599],['14 kg',2290]], dop:11},
+    {id:'essential-pes', z:'EssentialFoods', n:'Granule pro dospělé psy', pro:'pes', k:'granule', typ:'pytel', c:'#5b6b2f', s:'ADULT', v:[['3 kg',899],['12 kg',2890]], dop:14},
+    {id:'orijen-kocka', z:'Orijen', n:'Granule pro kočky a koťata', pro:'kocka', k:'granule', typ:'pytel', c:'#a3472a', s:'KOČKA', v:[['1,8 kg',749],['5,4 kg',1890]], dop:4},
+    {id:'brit-care-kocka', z:'Brit Care', n:'Granule pro dospělé kočky', pro:'kocka', k:'granule', typ:'pytel', c:'#6a3d7a', s:'KOČKA', v:[['2 kg',449],['7 kg',1290]], dop:7},
+    {id:'josera-kocka', z:'Josera', n:'Granule pro dospělé kočky', pro:'kocka', k:'granule', typ:'pytel', c:'#2f5f6b', s:'KOČKA', v:[['2 kg',399],['10 kg',1590]], dop:12},
+    {id:'hills-kocka', z:"Hill's", n:'Granule pro kastrované kočky', pro:'kocka', k:'granule', typ:'pytel', c:'#4a6fa5', s:'KASTRÁT', v:[['1,5 kg',499],['3 kg',899]], dop:15},
+    {id:'brit-kapsicky', z:'Brit Care', n:'Kapsičky pro kočky, výběr příchutí', pro:'kocka', k:'kapsicky', typ:'kapsa', c:'#c0632b', s:'12 × 85 g', v:[['12 × 85 g',299],['24 × 85 g',569]], dop:5},
+    {id:'josera-konzerva', z:'Josera', n:'Konzerva pro psy, hovězí', pro:'pes', k:'kapsicky', typ:'plechovka', c:'#3b3a7a', s:'HOVĚZÍ', v:[['400 g',69],['6 × 400 g',389]], dop:13},
+    {id:'pamlsky-pes', z:'Pamlsky', n:'Sušené hovězí kousky pro psy', pro:'pes', k:'pamlsky', typ:'pamlsky', c:'#b0412e', s:'HOVĚZÍ', v:[['200 g',149],['500 g',329]], dop:9},
+    {id:'pamlsky-kocka', z:'Pamlsky', n:'Křupavé polštářky pro kočky', pro:'kocka', k:'pamlsky', typ:'pamlsky', c:'#6a3d7a', s:'POLŠTÁŘKY', v:[['60 g',59],['3 × 60 g',159]], dop:16},
+    {id:'pelech', z:'Pelechy', n:'Pelech pro psy s vyjímatelným polštářem', pro:'pes', k:'doma', typ:'pelech', c:'#8a7a5c', v:[['M · 70 cm',699],['L · 90 cm',899]], dop:17},
+    {id:'skrabadlo', z:'Škrabadla', n:'Škrabadlo pro kočky se dvěma patry', pro:'kocka', k:'doma', typ:'skrabadlo', c:'#c9b48a', v:[['90 cm',1290]], dop:18},
+    {id:'toaleta', z:'Toalety', n:'Toaleta pro kočky s víkem a dvířky', pro:'kocka', k:'doma', typ:'toaleta', c:'#5b8a7a', v:[['standard',549]], dop:19},
+    {id:'podestylka', z:'Podestýlky', n:'Hrudkující podestýlka pro kočky', pro:'kocka', k:'doma', typ:'podestylka', c:'#4a6fa5', v:[['10 l',199],['20 l',359]], dop:20},
+    {id:'taska', z:'Ven a na cesty', n:'Přepravní taška pro kočky a malé psy', pro:'oba', k:'ven', typ:'taska', c:'#2f5f6b', v:[['do 6 kg',699]], dop:21},
+    {id:'plastenka', z:'Oblečení', n:'Pláštěnka pro psy s reflexním pruhem', pro:'pes', k:'ven', typ:'plastenka', c:'#e0b300', v:[['S',399],['M',449],['L',499]], dop:22}
+  ];
+  var TILE = {granule:'#efe3c8', kapsicky:'#f3dccb', pamlsky:'#efd9d0', doma:'#dde6df', ven:'#dfe4ee'};
+
+  /* ===== Kreslené obaly zboží (SVG) ===== */
+  function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/'/g,'&#39;'); }
+  function hlava(pro, x, y, col){
+    if (pro === 'kocka') return '<path d="M' + x + ' ' + y + 'm-14 4 2-16 9 8h6l9-8 2 16c0 9-6 14-14 14s-14-5-14-14z" fill="' + col + '"/>';
+    return '<g transform="translate(' + x + ' ' + y + ')" fill="' + col + '"><path d="M-11-9c-7-2-11 5-10 13 1 5 5 6 7 3zM11-9c7-2 11 5 10 13-1 5-5 6-7 3z"/><ellipse cx="0" cy="0" rx="11" ry="11.5"/><ellipse cx="0" cy="7" rx="7" ry="5.5" opacity=".75"/><ellipse cx="0" cy="4.5" rx="2.6" ry="2" fill="#181715" opacity=".55"/></g>';
+  }
+  /* velikost písma tak, aby se název vešel na obal (odhad šířky znaku) */
+  function fit(t, max, base, k){ return Math.min(base, max / (String(t).length * (k || .5))).toFixed(1); }
+  function stitek(t, y, c){ var w = Math.min(108, Math.max(56, t.length * 6.6 + 18)); return '<rect x="' + (100 - w/2) + '" y="' + y + '" width="' + w + '" height="22" rx="11" fill="#fff" opacity=".92"/><text x="100" y="' + (y + 15.5) + '" text-anchor="middle" fill="' + c + '" style="font:500 ' + fit(t, w - 14, 10.5, .68) + 'px General Sans,sans-serif;letter-spacing:.06em">' + esc(t) + '</text>'; }
+  function obal(p){
+    var c = p.c, s = '';
+    if (p.typ === 'pytel') s =
+      '<path d="M52 46q48-6 96 0l10 128q-58 10-116 0z" fill="' + c + '"/>' +
+      '<rect x="54" y="28" width="92" height="20" rx="4" fill="' + c + '"/><rect x="54" y="28" width="92" height="20" rx="4" fill="#000" opacity=".22"/>' +
+      '<path d="M62 32v12M72 32v12M82 32v12M92 32v12M102 32v12M112 32v12M122 32v12M132 32v12M142 32v12" stroke="#fff" stroke-opacity=".3" stroke-width="2"/>' +
+      '<text x="100" y="88" text-anchor="middle" fill="#fff" style="font:400 ' + fit(p.z, 86, 25) + 'px Gambarino,Georgia,serif">' + esc(p.z) + '</text>' +
+      stitek(p.s, 102, c) +
+      hlava(p.pro, 100, 148, 'rgba(255,255,255,.85)');
+    else if (p.typ === 'kapsa') s =
+      '<path d="M64 36h72l8 140H56z" fill="' + c + '"/><path d="M64 36h72v10H64z" fill="#000" opacity=".2"/>' +
+      '<path d="M78 128h44l2 30H76z" fill="#fff" opacity=".9"/><circle cx="92" cy="140" r="5" fill="' + c + '"/><circle cx="106" cy="146" r="4" fill="' + c + '"/>' +
+      '<text x="100" y="84" text-anchor="middle" fill="#fff" style="font:400 ' + fit(p.z, 70, 21) + 'px Gambarino,Georgia,serif">' + esc(p.z) + '</text>' +
+      '<text x="100" y="106" text-anchor="middle" fill="#fff" style="font:500 10px General Sans,sans-serif;letter-spacing:.06em">' + esc(p.s) + '</text>';
+    else if (p.typ === 'plechovka') s =
+      '<rect x="58" y="54" width="84" height="110" fill="' + c + '"/><ellipse cx="100" cy="164" rx="42" ry="10" fill="' + c + '"/>' +
+      '<ellipse cx="100" cy="54" rx="42" ry="10" fill="#cfcac0"/><ellipse cx="100" cy="54" rx="34" ry="7" fill="#b8b2a6"/>' +
+      '<rect x="58" y="90" width="84" height="40" fill="#fff" opacity=".92"/>' +
+      '<text x="100" y="80" text-anchor="middle" fill="#fff" style="font:400 ' + fit(p.z, 76, 21) + 'px Gambarino,Georgia,serif">' + esc(p.z) + '</text>' +
+      '<text x="100" y="115" text-anchor="middle" fill="' + c + '" style="font:500 11px General Sans,sans-serif;letter-spacing:.06em">' + esc(p.s) + '</text>' +
+      hlava(p.pro, 100, 150, 'rgba(255,255,255,.85)');
+    else if (p.typ === 'pamlsky') s =
+      '<path d="M58 40h84l6 136H52z" fill="' + c + '"/><rect x="58" y="40" width="84" height="8" fill="#000" opacity=".25"/>' +
+      '<rect x="70" y="104" width="60" height="52" rx="26" fill="#fff" opacity=".9"/>' +
+      '<path d="M84 124h32M84 136h24" stroke="' + c + '" stroke-width="6" stroke-linecap="round"/>' +
+      '<text x="100" y="78" text-anchor="middle" fill="#fff" style="font:400 ' + fit(p.z, 80, 21) + 'px Gambarino,Georgia,serif">' + esc(p.z) + '</text>' +
+      '<text x="100" y="94" text-anchor="middle" fill="#fff" style="font:500 ' + fit(p.s, 80, 9.5, .68) + 'px General Sans,sans-serif;letter-spacing:.06em">' + esc(p.s) + '</text>';
+    else if (p.typ === 'pelech') s =
+      '<ellipse cx="100" cy="128" rx="78" ry="40" fill="' + c + '"/><ellipse cx="100" cy="120" rx="58" ry="26" fill="#efe7d6"/><ellipse cx="100" cy="122" rx="46" ry="18" fill="#e2d8c2"/>' +
+      '<path d="M40 126q-4 22 60 30 64-8 60-30" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="4"/>';
+    else if (p.typ === 'skrabadlo') s =
+      '<rect x="40" y="166" width="120" height="12" rx="4" fill="#8a7a5c"/><rect x="62" y="70" width="16" height="96" fill="' + c + '"/><rect x="122" y="104" width="16" height="62" fill="' + c + '"/>' +
+      '<path d="M62 84h16M62 98h16M62 112h16M62 126h16M62 140h16M62 154h16M122 118h16M122 132h16M122 146h16" stroke="#8a7a5c" stroke-width="2"/>' +
+      '<rect x="44" y="58" width="58" height="12" rx="4" fill="#8a7a5c"/><rect x="104" y="92" width="58" height="12" rx="4" fill="#8a7a5c"/><circle cx="148" cy="122" r="7" fill="#e0b300"/><path d="M148 104v11" stroke="#5a5852" stroke-width="2"/>';
+    else if (p.typ === 'toaleta') s =
+      '<rect x="40" y="110" width="120" height="56" rx="10" fill="' + c + '"/><path d="M46 112q0-62 54-62t54 62z" fill="' + c + '"/><path d="M46 112q0-62 54-62t54 62z" fill="#fff" opacity=".18"/>' +
+      '<path d="M80 112a20 20 0 0 1 40 0z" fill="#181715" opacity=".55"/><rect x="40" y="108" width="120" height="8" fill="#000" opacity=".15"/>';
+    else if (p.typ === 'podestylka') s =
+      '<path d="M58 60h84l-8 112H66z" fill="' + c + '"/><rect x="52" y="48" width="96" height="16" rx="5" fill="' + c + '"/><rect x="52" y="48" width="96" height="16" rx="5" fill="#000" opacity=".2"/>' +
+      '<path d="M76 40q24-14 48 0" fill="none" stroke="#5a5852" stroke-width="4"/><rect x="70" y="96" width="60" height="40" rx="6" fill="#fff" opacity=".9"/>' +
+      '<text x="100" y="121" text-anchor="middle" fill="' + c + '" style="font:500 12px General Sans,sans-serif;letter-spacing:.08em">' + esc(p.v[0][0].toUpperCase()) + '</text>' + hlava('kocka', 100, 158, 'rgba(255,255,255,.85)');
+    else if (p.typ === 'taska') s =
+      '<path d="M70 70q30-40 60 0" fill="none" stroke="#5a5852" stroke-width="6"/><rect x="36" y="70" width="128" height="94" rx="16" fill="' + c + '"/>' +
+      '<rect x="52" y="86" width="56" height="62" rx="8" fill="#fff" opacity=".85"/><path d="M52 98h56M52 110h56M52 122h56M52 134h56M64 86v62M76 86v62M88 86v62M100 86v62" stroke="' + c + '" stroke-opacity=".5" stroke-width="2"/><rect x="118" y="96" width="34" height="8" rx="4" fill="#fff" opacity=".6"/>';
+    else if (p.typ === 'plastenka') s =
+      '<path d="M62 52q38-16 76 0l16 34-14 6-6 66q-34 12-68 0l-6-66-14-6z" fill="' + c + '"/><path d="M68 112h64" stroke="#e6e4dd" stroke-width="8"/><path d="M86 52q14 14 28 0" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="4"/>';
+    return '<svg viewBox="0 0 200 200" aria-hidden="true">' + s + '</svg>';
+  }
+
+  /* ===== Košík (pamatuje si ho prohlížeč) ===== */
+  var KEY = 'velkypes-kosik', kosik = [];
+  try { kosik = JSON.parse(localStorage.getItem(KEY) || '[]') || []; } catch (e) { kosik = []; }
+  function uloz(){ try { localStorage.setItem(KEY, JSON.stringify(kosik)); } catch (e) {} }
+  function najdi(id){ for (var i = 0; i < P.length; i++) if (P[i].id === id) return P[i]; }
+  function soucet(){ return kosik.reduce(function(a, x){ var p = najdi(x.id); return a + (p ? p.v[x.vi][1] * x.q : 0); }, 0); }
+  function kusu(){ return kosik.reduce(function(a, x){ return a + x.q; }, 0); }
+  function pocet(bump){
+    var el = $('pocet'); el.textContent = kusu();
+    $('kosik-btn').setAttribute('aria-label', 'Košík, ' + kusu() + ' ks, ' + cena(soucet()));
+    if (bump && !RM){ el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); }
+  }
+  function pridej(id, vi){
+    var r = kosik.filter(function(x){ return x.id === id && x.vi === vi; })[0];
+    if (r) r.q = Math.min(99, r.q + 1); else kosik.push({id:id, vi:vi, q:1});
+    uloz();
+  }
+
+  /* ===== Výpis zboží: filtr, hledání, řazení ===== */
+  var F = {pro:'vse', k:'vse', q:'', r:'dop'};
+  var norm = function(t){ return t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); };
+  function vyber(){
+    var q = norm(F.q.trim());
+    var out = P.filter(function(p){
+      if (F.pro !== 'vse' && p.pro !== F.pro && p.pro !== 'oba') return false;
+      if (F.k !== 'vse' && p.k !== F.k) return false;
+      if (q && norm(p.z + ' ' + p.n + ' ' + (p.s || '')).indexOf(q) < 0) return false;
+      return true;
+    });
+    out.sort(function(a, b){ return F.r === 'levne' ? a.v[0][1] - b.v[0][1] : F.r === 'drahe' ? b.v[0][1] - a.v[0][1] : a.dop - b.dop; });
+    return out;
+  }
+  var mrizka = $('mrizka');
+  function karta(p){
+    var opts = p.v.map(function(v, i){ return '<option value="' + i + '">' + esc(v[0]) + '</option>'; }).join('');
+    var pro = p.pro === 'pes' ? 'pes' : p.pro === 'kocka' ? 'kočka' : 'pes i kočka';
+    return '<li class="produkt" data-id="' + p.id + '">' +
+      '<div class="obal" style="background:' + (TILE[p.k] || '#eee') + '">' + obal(p) + '<span class="pro">' + pro + '</span></div>' +
+      '<p class="zn">' + esc(p.z) + '</p><h3>' + esc(p.n) + '</h3>' +
+      '<div class="dole">' + (p.v.length > 1 ? '<label class="vh" for="v-' + p.id + '">Balení</label><select id="v-' + p.id + '">' + opts + '</select>' : '<span class="muted" style="color:var(--muted);font-size:15px">' + esc(p.v[0][0]) + '</span>') +
+      '<span class="cena num">' + cena(p.v[0][1]) + '</span></div>' +
+      '<button class="pridat" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Do košíku</span></button></li>';
+  }
+  function vypis(anim){
+    var list = vyber();
+    $('kolik').textContent = list.length + ' ' + (list.length === 1 ? 'položka' : list.length > 1 && list.length < 5 ? 'položky' : 'položek');
+    mrizka.innerHTML = list.length ? list.map(karta).join('') :
+      '<li class="prazdno"><b>Nic takového v nabídce nevidíme.</b><p>Zkuste jiné slovo, nebo nám zavolejte na 731 271 987, krmivo Vám rádi objednáme.</p></li>';
+    if (anim && hasG && !RM) gsap.from(mrizka.children, {opacity:0, y:18, scale:.98, duration:.45, stagger:.035, ease:'power3.out', clearProps:'all'});
+  }
+  mrizka.addEventListener('change', function(e){
+    if (e.target.tagName !== 'SELECT') return;
+    var li = e.target.closest('.produkt'), p = najdi(li.dataset.id);
+    li.querySelector('.cena').textContent = cena(p.v[+e.target.value][1]);
+  });
+  mrizka.addEventListener('click', function(e){
+    var b = e.target.closest('.pridat'); if (!b) return;
+    var li = b.closest('.produkt'), p = najdi(li.dataset.id), sel = li.querySelector('select'), vi = sel ? +sel.value : 0;
+    pridej(p.id, vi);
+    let_do_kosiku(li.querySelector('.obal'), p);
+    b.classList.add('ok'); b.querySelector('span').textContent = 'Přidáno';
+    b.querySelector('svg').innerHTML = '<path class="ck" d="m5 12.5 4.5 4.5L19 7"/>';
+    if (hasG && !RM){ var ck = b.querySelector('.ck'), L = Math.ceil(ck.getTotalLength()) + 1; gsap.fromTo(ck, {strokeDasharray:L + ' ' + L, strokeDashoffset:L}, {strokeDashoffset:0, duration:.4, ease:'power2.out'}); }
+    clearTimeout(b._t); b._t = setTimeout(function(){ b.classList.remove('ok'); b.querySelector('span').textContent = 'Do košíku'; b.querySelector('svg').innerHTML = '<path d="M12 5v14M5 12h14"/>'; }, 1600);
   });
 
-  var els = document.querySelectorAll('[data-r]');
-  if (RM || !('IntersectionObserver' in window)) { els.forEach(function(el){el.classList.add('in')}); return; }
-  var io = new IntersectionObserver(function(en){ en.forEach(function(x){ if (x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } }); }, {rootMargin:'0px 0px -8% 0px'});
-  els.forEach(function(el){ io.observe(el); });
+  /* obal zboží odletí obloukem do košíku */
+  function let_do_kosiku(od, p){
+    if (!hasG || RM){ pocet(true); return; }
+    var a = od.getBoundingClientRect(), cil = $('kosik-btn').getBoundingClientRect();
+    var el = document.createElement('div'); el.className = 'letec'; el.style.background = od.style.background; el.innerHTML = obal(p);
+    document.body.appendChild(el);
+    var x0 = a.left + a.width/2 - 32, y0 = a.top + a.height/2 - 32, x1 = cil.left + cil.width/2 - 32, y1 = cil.top + cil.height/2 - 32;
+    gsap.set(el, {x:x0, y:y0, scale:Math.min(2.4, a.width/64)});
+    var tl = gsap.timeline({onComplete:function(){ el.remove(); pocet(true); }});
+    tl.to(el, {x:x1, duration:.8, ease:'power1.inOut'}, 0)
+      .to(el, {y:Math.min(y0, y1) - 120, duration:.38, ease:'power2.out'}, 0)
+      .to(el, {y:y1, duration:.42, ease:'power2.in'}, .38)
+      .to(el, {scale:.3, rotation:-18, duration:.8, ease:'power2.in'}, 0)
+      .to(el, {opacity:0, duration:.12}, .7);
+  }
+
+  /* filtry */
+  var chips = [].slice.call(document.querySelectorAll('.chip'));
+  function nastav(o, posun){
+    for (var k in o) F[k] = o[k];
+    chips.forEach(function(c){ c.setAttribute('aria-pressed', c.dataset.pro === F.pro ? 'true' : 'false'); });
+    $('kat').value = F.k; $('razeni').value = F.r;
+    if ($('hledat').value !== F.q) $('hledat').value = F.q;
+    vypis(true);
+    if (posun) $('obchod').scrollIntoView({behavior: RM ? 'auto' : 'smooth'});
+  }
+  chips.forEach(function(c){ c.addEventListener('click', function(){ nastav({pro:c.dataset.pro}); }); });
+  $('kat').addEventListener('change', function(){ nastav({k:this.value}); });
+  $('razeni').addEventListener('change', function(){ nastav({r:this.value}); });
+  document.querySelectorAll('.kat').forEach(function(b){ b.addEventListener('click', function(){ nastav({pro:b.dataset.pro, k:b.dataset.k, q:''}, true); }); });
+  var qt; $('hledat').addEventListener('input', function(){ var v = this.value; clearTimeout(qt); qt = setTimeout(function(){ nastav({q:v}); }, 180); });
+  $('hledat').addEventListener('keydown', function(e){ if (e.key === 'Enter'){ e.preventDefault(); nastav({q:this.value}, true); } });
+
+  /* ===== Košík a rezervace k vyzvednutí ===== */
+  var dlg = $('kosik'), body = $('kosik-body'), foot = $('kosik-foot'), krok = 'kosik';
+  var DNY = ['neděle','pondělí','úterý','středa','čtvrtek','pátek','sobota'];
+  function terminy(){
+    var t = ted(), out = [];
+    for (var i = 0; i < 7; i++){
+      var d = new Date(Date.now() + i * 864e5), wd = (t.d + i) % 7, r = ROZVRH[wd];
+      if (i === 0 && t.m > r[r.length - 1][1] - 60) continue;   /* dnes už nestihneme připravit */
+      var dat = d.toLocaleDateString('cs-CZ', {day:'numeric', month:'numeric', timeZone:'Europe/Prague'});
+      out.push((i === 0 ? 'dnes, ' : i === 1 ? 'zítra, ' : '') + DNY[wd] + ' ' + dat + ' (' + hm(r[0][0]) + '–' + hm(r[r.length - 1][1]) + ')');
+    }
+    return out;
+  }
+  function kresli(){
+    if (krok === 'kosik'){
+      if (!kosik.length){
+        body.innerHTML = '<div class="kosik-prazdny"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><p>Košík je zatím prázdný.</p></div>';
+        foot.innerHTML = '<button class="btn ink" type="button" data-a="zavrit">Vybrat zboží</button>';
+        return;
+      }
+      body.innerHTML = kosik.map(function(x, i){
+        var p = najdi(x.id); if (!p) return '';
+        return '<div class="polozka"><div class="mini" style="background:' + (TILE[p.k] || '#eee') + '">' + obal(p) + '</div>' +
+          '<div><b>' + esc(p.z) + '</b><small>' + esc(p.n) + ' · ' + esc(p.v[x.vi][0]) + '</small>' +
+          '<div class="qty"><button type="button" data-a="minus" data-i="' + i + '" aria-label="Ubrat kus">−</button><span>' + x.q + '</span><button type="button" data-a="plus" data-i="' + i + '" aria-label="Přidat kus">+</button></div></div>' +
+          '<div class="r"><b class="num">' + cena(p.v[x.vi][1] * x.q) + '</b><button type="button" data-a="pryc" data-i="' + i + '">Odebrat</button></div></div>';
+      }).join('');
+      foot.innerHTML = '<div class="soucet"><span>Celkem</span><b class="num">' + cena(soucet()) + '</b></div><p>Platíte až při vyzvednutí v prodejně.</p><button class="btn" type="button" data-a="dal">Pokračovat k rezervaci</button>';
+    } else if (krok === 'rez'){
+      body.innerHTML = '<button class="zpet" type="button" data-a="zpet">← Zpět do košíku</button><form class="rez" id="rez" novalidate>' +
+        '<label for="r-jm">Jméno a příjmení</label><input id="r-jm" autocomplete="name" required>' +
+        '<label for="r-tel">Telefon</label><input id="r-tel" type="tel" inputmode="tel" autocomplete="tel" required>' +
+        '<label for="r-mail">E-mail (nepovinné)</label><input id="r-mail" type="email" autocomplete="email">' +
+        '<label for="r-den">Kdy si zboží vyzvednete</label><select id="r-den">' + terminy().map(function(t){ return '<option>' + t + '</option>'; }).join('') + '</select>' +
+        '<label for="r-pozn">Poznámka (nepovinné)</label><textarea id="r-pozn"></textarea><p class="chyba" id="r-chyba" aria-live="assertive"></p></form>';
+      foot.innerHTML = '<div class="soucet"><span>' + kusu() + ' ks</span><b class="num">' + cena(soucet()) + '</b></div><p>Otevře se Vám e-mail s rezervací. Po odeslání se Vám ozveme, až bude zboží připravené.</p><button class="btn" type="button" data-a="odeslat">Odeslat rezervaci</button>';
+    }
+  }
+  function otevri(){ krok = 'kosik'; kresli(); if (!dlg.open) dlg.showModal(); if (hasG && !RM) gsap.fromTo(dlg, {xPercent:100}, {xPercent:0, duration:.45, ease:'power3.out'}); }
+  function zavri(){ if (!dlg.open) return; if (hasG && !RM) gsap.to(dlg, {xPercent:100, duration:.3, ease:'power2.in', onComplete:function(){ dlg.close(); }}); else dlg.close(); }
+  $('kosik-btn').addEventListener('click', otevri);
+  $('zavrit').addEventListener('click', zavri);
+  dlg.addEventListener('cancel', function(e){ e.preventDefault(); zavri(); });
+  dlg.addEventListener('click', function(e){ if (e.target === dlg) zavri(); });
+  dlg.addEventListener('click', function(e){
+    var b = e.target.closest('[data-a]'); if (!b) return;
+    var a = b.dataset.a, i = +b.dataset.i;
+    if (a === 'zavrit'){ zavri(); $('obchod').scrollIntoView({behavior: RM ? 'auto' : 'smooth'}); return; }
+    if (a === 'plus'){ kosik[i].q = Math.min(99, kosik[i].q + 1); }
+    if (a === 'minus'){ kosik[i].q -= 1; if (kosik[i].q < 1) kosik.splice(i, 1); }
+    if (a === 'pryc'){ kosik.splice(i, 1); }
+    if (a === 'dal'){ krok = 'rez'; kresli(); $('r-jm').focus(); return; }
+    if (a === 'zpet'){ krok = 'kosik'; kresli(); return; }
+    if (a === 'odeslat'){ odesli(); return; }
+    uloz(); pocet(false); kresli();
+  });
+  function odesli(){
+    var g = function(id){ return $(id).value.trim(); }, ch = $('r-chyba');
+    if (!g('r-jm')){ ch.textContent = 'Napište prosím jméno, ať víme, pro koho zboží připravit.'; $('r-jm').focus(); return; }
+    if (g('r-tel').replace(/\D/g, '').length < 9){ ch.textContent = 'Napište prosím telefon, ať se Vám můžeme ozvat, až bude zboží připravené.'; $('r-tel').focus(); return; }
+    var c = 'VP-' + Date.now().toString(36).slice(-5).toUpperCase();
+    var radky = kosik.map(function(x){ var p = najdi(x.id); return x.q + '× ' + p.z + ' – ' + p.n + ', ' + p.v[x.vi][0] + ' – ' + cena(p.v[x.vi][1] * x.q); });
+    var text = 'Dobrý den,\n\nposílám rezervaci z webu k vyzvednutí v prodejně (' + c + '):\n\n' + radky.join('\n') + '\n\nCelkem: ' + cena(soucet()) + ' (platba při vyzvednutí)\nVyzvednutí: ' + g('r-den') + '\n\nJméno: ' + g('r-jm') + '\nTelefon: ' + g('r-tel') + (g('r-mail') ? '\nE-mail: ' + g('r-mail') : '') + (g('r-pozn') ? '\nPoznámka: ' + g('r-pozn') : '') + '\n';
+    location.href = 'mailto:info@velkypes.cz?subject=' + encodeURIComponent('Rezervace ' + c + ' – ' + g('r-jm')) + '&body=' + encodeURIComponent(text);
+    kosik = []; uloz(); pocet(false); krok = 'hotovo';
+    body.innerHTML = '<div class="hotovo"><svg viewBox="0 0 84 84" aria-hidden="true"><circle class="hk" cx="42" cy="42" r="36"/><path class="hk" d="m26 43 11 11 22-24"/></svg><h3>Rezervace ' + c + '</h3><p>V e-mailu máte rezervaci připravenou. Stačí ho odeslat a ozveme se Vám, až bude zboží v prodejně připravené.</p></div>';
+    foot.innerHTML = '<button class="btn ink" type="button" data-a="zavrit">Zpět do obchodu</button>';
+    if (hasG && !RM) body.querySelectorAll('.hk').forEach(function(el, n){ var L = Math.ceil(el.getTotalLength()) + 1; gsap.fromTo(el, {strokeDasharray:L + ' ' + L, strokeDashoffset:L}, {strokeDashoffset:0, duration:.6, delay:n * .35, ease:'power2.out'}); });
+  }
+
+  vypis(false); pocet(false);
+
+  /* ===== POHYB — GSAP + ScrollTrigger =====
+     Úvod: nadpis vyjede po řádcích, výhody se odškrtnou. Při scrollu: dlaždice
+     kategorií a zboží najíždí po skupinách, ikony v „Jak nakoupit“ se nakreslí,
+     pás značek jede do strany podle scrollu, markýza v patičce se rozvine.     */
+  if (!hasG){ document.documentElement.classList.remove('js'); return; }
+  gsap.registerPlugin(ScrollTrigger);
+  function cara(els){ return gsap.utils.toArray(els).map(function(el){ var L = Math.ceil(el.getTotalLength()) + 1; el.removeAttribute('pathLength'); gsap.set(el, {strokeDasharray:L + ' ' + L, strokeDashoffset:L}); return el; }); }
+  var mm = gsap.matchMedia();
+  mm.add('(prefers-reduced-motion: reduce)', function(){ gsap.set('[data-r],[data-h],.hero h1 .ln>span', {clearProps:'all'}); });
+  mm.add('(prefers-reduced-motion: no-preference)', function(){
+    cara('.vyhody .d');
+    var hero = gsap.timeline({paused:true, defaults:{ease:'power3.out'}});
+    hero.to('.hero h1 .ln>span', {y:0, duration:.8, stagger:.08})
+        .to('[data-h]', {opacity:1, y:0, duration:.6, stagger:.08}, .2)
+        .to('.vyhody .d', {strokeDashoffset:0, duration:.35, stagger:.15, ease:'power2.out'}, .7)
+        .from('.markyza i', {scaleY:0, transformOrigin:'50% 0%', duration:.4, stagger:.015, ease:'power2.out'}, 0);
+    afterIntro(function(){ hero.play(); });
+
+    ScrollTrigger.batch('[data-r]', {start:'top 90%', once:true, onEnter:function(b){
+      gsap.to(b, {opacity:1, y:0, duration:.7, ease:'power3.out', stagger:.07, overwrite:true});
+    }});
+
+    /* zboží: karty najedou po řadách, jak přijdou do okna */
+    gsap.set('.produkt', {opacity:0, y:24});
+    ScrollTrigger.batch('.produkt', {start:'top 92%', once:true, onEnter:function(b){
+      gsap.to(b, {opacity:1, y:0, duration:.6, ease:'power3.out', stagger:.06, clearProps:'opacity,transform'});
+    }});
+
+    document.querySelectorAll('.krok').forEach(function(k, i){
+      gsap.to(cara(k.querySelectorAll('.d')), {strokeDashoffset:0, duration:.8, ease:'power2.inOut', stagger:.18, delay:.15 + i * .1, scrollTrigger:{trigger:k, start:'top 85%', once:true}});
+    });
+
+    gsap.fromTo('#pas-zn', {xPercent:0}, {xPercent:-28, ease:'none', scrollTrigger:{trigger:'#znacky', start:'top bottom', end:'bottom top', scrub:.6}});
+    gsap.from('#pruhy i', {scaleY:0, transformOrigin:'50% 0%', duration:.5, stagger:.02, ease:'power2.out', scrollTrigger:{trigger:'footer', start:'top 95%', once:true}});
+  });
 })();
 </script>
 </body>

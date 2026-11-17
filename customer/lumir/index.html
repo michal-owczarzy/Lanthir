@@ -10,6 +10,18 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%232f5d3a'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23e8c9a8' stroke-width='5'/%3E%3C/svg%3E">
 <link rel="preload" as="font" type="font/woff2" href="fonts/rokkitt-800-normal-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/literata-400-normal-latin.woff2" crossorigin>
+<script>
+  /* úvodní animace loga: jen první stránka v relaci, ne s omezeným pohybem, ne na kotvě */
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-lumir') && !location.hash))) {
+      sessionStorage.setItem('intro-lumir', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
 <style>
 @font-face{font-family:"Rokkitt";font-style:normal;font-weight:800;font-display:swap;src:url(fonts/rokkitt-800-normal-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:"Rokkitt";font-style:normal;font-weight:800;font-display:swap;src:url(fonts/rokkitt-800-normal-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -117,9 +129,7 @@ ul,ol{padding:0;list-style:none}
 .usen-text p+p{margin-top:18px}
 .usen-list{grid-column:7/-1;display:flex;flex-direction:column;gap:22px}
 .usen-list li{display:grid;grid-template-columns:28px 1fr;gap:14px;font-size:var(--s-lead);line-height:1.3}
-.usen-list li::before{content:"";width:20px;height:20px;border-radius:50%;border:5px solid var(--ink);margin-top:.22em}
 .vykres{grid-column:1/-1;background:var(--bila);display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;align-items:center;padding:clamp(24px,4vw,56px)}
-.vykres img{grid-column:1/8;width:100%;mix-blend-mode:multiply}
 .vykres figcaption{grid-column:9/-1;font-size:var(--s-body)}
 .vykres figcaption b{display:block;font:800 var(--s-lead)/1 var(--display);text-transform:uppercase;margin-bottom:10px}
 
@@ -141,8 +151,8 @@ ul,ol{padding:0;list-style:none}
 .bar button{background:var(--bg);color:var(--ink);border:0;font:600 var(--s-lead)/1.1 var(--text);cursor:pointer;min-height:96px;transition:background-color .2s,transform .15s var(--ease)}
 .bar button:active{transform:scale(.98)}
 @media (hover:hover){.bar button:hover{background:#fff}}
-.hint{margin-top:14px;font-size:var(--s-small);min-height:1.6em}
-.hint.warn{color:#ffd8a8;font-weight:600}
+.hint{margin-top:14px;font-size:var(--s-small);min-height:58px}
+.hint .warn{color:#ffd8a8;font-weight:600}
 .kontakt{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:72px;font-size:var(--s-body)}
 .kontakt dt{font-size:var(--s-small);opacity:.8;margin-bottom:6px}
 .kontakt a{text-decoration:none;font-weight:600}
@@ -153,13 +163,41 @@ footer{padding-top:clamp(56px,7vw,96px);padding-bottom:40px}
 footer .big{font-size:clamp(5rem,2rem + 18vw,19rem);line-height:.8;letter-spacing:-.02em}
 footer .fine{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;margin-top:28px;font-size:var(--s-small);color:var(--muted)}
 
-/* ========== Pohyb ========== */
-.js [data-r]{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(var(--i,0) * 80ms)}
-.js [data-r].in{opacity:1;transform:none}
+/* ========== Úvodní animace: prstenec manžety se roztočí jako na soustruhu ========== */
+.intro{display:none}
+html.intro-on .intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;pointer-events:none;animation:pojistka .3s linear 7s forwards}
+.intro-ground{position:absolute;inset:0;background:var(--bg)}
+.intro-lock{position:relative;visibility:hidden}
+.intro.ready .intro-lock{visibility:visible}
+.intro-fly{position:relative;display:block;font-family:var(--display);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:.85;color:var(--ink)}
+.intro-ring{position:absolute;left:50%;top:50%;width:5em;height:5em;margin:-2.5em 0 0 -2.5em;overflow:visible}
+.intro-ring .kruh{fill:none;stroke:var(--ink);stroke-width:2}
+.intro-ring .usen-p{fill:none;stroke:var(--usen);stroke-width:21}
+.intro-ring .zarez{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round}
+.intro-m{display:inline-block;overflow:hidden;vertical-align:top;padding:.1em 0 .06em;margin:-.1em 0 -.06em}
+.intro-m>span{display:inline-block}
+html.intro-on [data-intro-land]{opacity:0;animation:ukaz 0s 7.2s forwards}
+html.intro-on.intro-landed [data-intro-land]{opacity:1;transition:opacity .25s ease-out}
+@keyframes pojistka{to{opacity:0;visibility:hidden}}
+@keyframes ukaz{to{opacity:1}}
+
+/* ========== Pohyb: výchozí stavy pro GSAP (bez skriptu se nic neschová) ========== */
+.js [data-r],.js [data-h]{opacity:0;transform:translateY(24px)}
+.js .vykres .plot{clip-path:inset(0 100% 0 0)}
+.vykres .plot{position:relative;grid-column:1/8}
+.vykres .plot img{width:100%;mix-blend-mode:multiply}
+.vykres .pero{position:absolute;top:-4%;bottom:-4%;left:0;width:2px;background:var(--accent);opacity:0}
+.usen-list svg{width:22px;height:22px;margin-top:.18em;fill:none;stroke:var(--ink);stroke-width:5}
+.nahled{flex:none;width:58px;height:58px;overflow:visible}
+.nahled .max{fill:none;stroke:rgba(255,255,255,.35);stroke-width:1.5;stroke-dasharray:3 4}
+.nahled .man{fill:none;stroke:var(--usen);stroke-width:7}
+.hint{display:flex;align-items:center;gap:14px}
 @media (hover:hover){.spec:hover .t img{transform:scale(1.05) rotate(-2deg)}}
+.spec .t img{transition:transform .5s var(--ease)}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .js [data-r]{opacity:1;transform:none;transition:none}
+  .js [data-r],.js [data-h]{opacity:1;transform:none}
+  .js .vykres .plot{clip-path:none}
   .strip{animation:none}
   .tile img{transition:none}
 }
@@ -217,15 +255,21 @@ footer .fine{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 
 </style>
 </head>
 <body>
+<div class="intro" id="intro" aria-hidden="true" data-scale=".4">
+  <div class="intro-ground"></div>
+  <div class="intro-lock">
+    <span class="intro-fly"><svg class="intro-ring intro-only" viewBox="0 0 200 200"><circle class="usen-p f" cx="100" cy="100" r="81"/><circle class="kruh d" cx="100" cy="100" r="92" pathLength="1"/><circle class="kruh d" cx="100" cy="100" r="70" pathLength="1"/><path class="zarez d" d="M100 8v22" pathLength="1"/></svg><span class="w">Lumir</span></span>
+  </div>
+</div>
 <div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
 
 <header class="hero wrap" id="nahoru">
   <div class="hero-head">
-    <h1><span class="disp">Lumir</span><span class="sub">Kožené manžety a těsnění z hovězí usně</span></h1>
-    <p class="hero-desc">Vyrábíme manžety podle ČSN, zpětné klapky, špalíky a hardyspojky. Formy na jakýkoli rozměr až do průměru 800 mm. <a href="tel:+420603373420">603 373 420</a></p>
+    <h1><span class="disp" data-intro-land>Lumir</span><span class="sub" data-h>Kožené manžety a těsnění z hovězí usně</span></h1>
+    <p class="hero-desc" data-h>Vyrábíme manžety podle ČSN, zpětné klapky, špalíky a hardyspojky. Formy na jakýkoli rozměr až do průměru 800 mm. <a href="tel:+420603373420">603 373 420</a></p>
   </div>
 
-  <div class="stage">
+  <div class="stage" data-h>
     <div class="names" role="group" aria-label="Výrobky">
       <button type="button" data-k="m" aria-pressed="true">Miskové manžety M</button>
       <button type="button" data-k="v" aria-pressed="false">Střechové manžety V</button>
@@ -251,7 +295,7 @@ footer .fine{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 
     <p class="hero-side">Petrovice u Karviné 259<br>Po–Pá 6:00–15:00</p>
   </div>
 
-  <nav class="hero-foot" aria-label="Stránka">
+  <nav class="hero-foot" aria-label="Stránka" data-h>
     <a href="#dilna">Z dílny</a>
     <a href="#katalog">Výrobky</a>
     <a href="#usen">Useň</a>
@@ -266,15 +310,15 @@ footer .fine{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 
       <h2 id="dilna-h">Z naší dílny v Petrovicích</h2>
       <p style="margin-top:14px">Formy na manžety vyrobíme na jakýkoli rozměr, který potřebujete, až do průměru 800 mm.</p>
     </div>
-    <p class="low" data-r style="--i:1">Na fotografiích soustruh s kotoučem pro formu velkého průměru a hotové miskové manžety.</p>
+    <p class="low" data-r>Na fotografiích soustruh s kotoučem pro formu velkého průměru a hotové miskové manžety.</p>
   </div>
   <div class="run" tabindex="0" aria-label="Fotografie z dílny, posuňte do strany">
     <figure class="lift" data-r><img src="img/kuba-soustruh-960.jpg" srcset="img/kuba-soustruh-480.jpg 480w, img/kuba-soustruh-960.jpg 960w" sizes="(max-width:860px) 92vw, 50vw" width="960" height="640" alt="Pracovník u soustruhu obrábí formu velkého průměru" loading="lazy"><figcaption><span>Forma pro velkou manžetu</span><span>soustruh</span></figcaption></figure>
-    <figure data-r style="--i:1"><img src="img/dilna-soustruh-480.jpg" width="480" height="480" alt="Stohy usňových výseků vedle soustruhu" loading="lazy"><figcaption><span>Výseky z usně</span><span>dílna</span></figcaption></figure>
-    <figure data-r style="--i:2"><img src="img/soustruh-detail-480.jpg" width="480" height="480" alt="Detail sklíčidla soustruhu při obrábění" loading="lazy"><figcaption><span>Soustružení</span><span>detail</span></figcaption></figure>
-    <figure data-r style="--i:3"><img src="img/kotouc-480.jpg" width="480" height="270" alt="Kotouč na soustruhu v dílně" loading="lazy"><figcaption><span>Kotouč</span><span>obrábění</span></figcaption></figure>
-    <figure data-r style="--i:4"><img src="img/miskove-foto-480.jpg" width="480" height="320" alt="Pět hotových kožených miskových manžet" loading="lazy"><figcaption><span>Miskové manžety</span><span>hotové</span></figcaption></figure>
-    <figure data-r style="--i:5"><img src="img/k-kloboukova-2-480.jpg" width="480" height="480" alt="Kloboučkové manžety různých velikostí na dřevěném stole" loading="lazy"><figcaption><span>Kloboučkové</span><span>sada</span></figcaption></figure>
+    <figure data-r><img src="img/dilna-soustruh-480.jpg" width="480" height="480" alt="Stohy usňových výseků vedle soustruhu" loading="lazy"><figcaption><span>Výseky z usně</span><span>dílna</span></figcaption></figure>
+    <figure data-r><img src="img/soustruh-detail-480.jpg" width="480" height="480" alt="Detail sklíčidla soustruhu při obrábění" loading="lazy"><figcaption><span>Soustružení</span><span>detail</span></figcaption></figure>
+    <figure data-r><img src="img/kotouc-480.jpg" width="480" height="270" alt="Kotouč na soustruhu v dílně" loading="lazy"><figcaption><span>Kotouč</span><span>obrábění</span></figcaption></figure>
+    <figure data-r><img src="img/miskove-foto-480.jpg" width="480" height="320" alt="Pět hotových kožených miskových manžet" loading="lazy"><figcaption><span>Miskové manžety</span><span>hotové</span></figcaption></figure>
+    <figure data-r><img src="img/k-kloboukova-2-480.jpg" width="480" height="480" alt="Kloboučkové manžety různých velikostí na dřevěném stole" loading="lazy"><figcaption><span>Kloboučkové</span><span>sada</span></figcaption></figure>
   </div>
 </section>
 
@@ -285,12 +329,12 @@ footer .fine{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 
   </div>
   <ul class="specs">
     <li class="spec" data-r><div class="t f1"><img src="img/m-miskova-480.jpg" width="480" height="480" alt="" loading="lazy"></div><h3>Miskové manžety M</h3><p>ČSN 02 9267 · od ⌀ 10 mm</p></li>
-    <li class="spec wide" data-r style="--i:1"><div class="t f2"><img src="img/v-strechova-960.jpg" width="960" height="960" alt="" loading="lazy"></div><h3>Střechové manžety V</h3><p>ČSN 02 9263 · V-profil, obvykle vícevrstvé · od ⌀ 28 mm</p></li>
-    <li class="spec" data-r style="--i:2"><div class="t f3"><img src="img/u-dvojita-480.jpg" width="480" height="480" alt="" loading="lazy"></div><h3>Dvojité manžety U</h3><p>ČSN 02 9262 · od ⌀ 24 mm</p></li>
+    <li class="spec wide" data-r><div class="t f2"><img src="img/v-strechova-960.jpg" width="960" height="960" alt="" loading="lazy"></div><h3>Střechové manžety V</h3><p>ČSN 02 9263 · V-profil, obvykle vícevrstvé · od ⌀ 28 mm</p></li>
+    <li class="spec" data-r><div class="t f3"><img src="img/u-dvojita-480.jpg" width="480" height="480" alt="" loading="lazy"></div><h3>Dvojité manžety U</h3><p>ČSN 02 9262 · od ⌀ 24 mm</p></li>
     <li class="spec" data-r><div class="t f2"><img src="img/k-kloboukova-480.jpg" width="480" height="480" alt="" loading="lazy"></div><h3>Kloboučkové manžety K</h3><p>ČSN 02 9266 · od ⌀ 24 mm</p></li>
-    <li class="spec" data-r style="--i:1"><div class="t f3"><img src="img/klapka-480.jpg" width="480" height="480" alt="" loading="lazy"></div><h3>Zpětné klapky</h3><p>Kožené, bez přítěže</p></li>
-    <li class="spec" data-r style="--i:2"><div class="t f1"><img src="img/spalik-480.jpg" width="480" height="480" alt="" loading="lazy"></div><h3>Lepené špalíky a válečky</h3><p>Lepené z usně</p></li>
-    <li class="spec" data-r style="--i:3"><div class="t f2"><img src="img/hardyspojka-480.jpg" width="480" height="480" alt="" loading="lazy"></div><h3>Hardyspojky a těsnění</h3><p>Výseky z usně</p></li>
+    <li class="spec" data-r><div class="t f3"><img src="img/klapka-480.jpg" width="480" height="480" alt="" loading="lazy"></div><h3>Zpětné klapky</h3><p>Kožené, bez přítěže</p></li>
+    <li class="spec" data-r><div class="t f1"><img src="img/spalik-480.jpg" width="480" height="480" alt="" loading="lazy"></div><h3>Lepené špalíky a válečky</h3><p>Lepené z usně</p></li>
+    <li class="spec" data-r><div class="t f2"><img src="img/hardyspojka-480.jpg" width="480" height="480" alt="" loading="lazy"></div><h3>Hardyspojky a těsnění</h3><p>Výseky z usně</p></li>
   </ul>
 
   <div class="normy" data-r>
@@ -309,18 +353,18 @@ footer .fine{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 
 
 <section class="usen wrap" id="usen" aria-labelledby="usen-h">
   <h2 id="usen-h" class="disp" data-r>Technická hovězí useň</h2>
-  <div class="usen-text" data-r style="--i:1">
+  <div class="usen-text" data-r>
     <p>Manžety z technické hovězí usně se hodí do hydraulických lisů, čerpadel a průmyslových strojů. Používají se také při renovaci starších zařízení.</p>
     <p>Po vytvarování useň impregnujeme voskem nebo parafínem. Impregnace zlepšuje těsnicí vlastnosti a chrání useň před vysycháním a opotřebením.</p>
   </div>
   <ul class="usen-list">
-    <li data-r>Vysoká pevnost a odolnost proti opotřebení</li>
-    <li data-r style="--i:1">Přizpůsobí se povrchu válce</li>
-    <li data-r style="--i:2">Spolehlivě těsní při nízkém i středním tlaku</li>
-    <li data-r style="--i:3">Při správné impregnaci dlouho vydrží</li>
+    <li data-r><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="d" cx="12" cy="12" r="8" pathLength="1"/></svg>Vysoká pevnost a odolnost proti opotřebení</li>
+    <li data-r><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="d" cx="12" cy="12" r="8" pathLength="1"/></svg>Přizpůsobí se povrchu válce</li>
+    <li data-r><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="d" cx="12" cy="12" r="8" pathLength="1"/></svg>Spolehlivě těsní při nízkém i středním tlaku</li>
+    <li data-r><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="d" cx="12" cy="12" r="8" pathLength="1"/></svg>Při správné impregnaci dlouho vydrží</li>
   </ul>
-  <figure class="vykres" data-r>
-    <img src="img/vykres-m-960.jpg" width="960" height="478" alt="Technický výkres miskové manžety s rozměry D, d, v, s a R" loading="lazy">
+  <figure class="vykres">
+    <div class="plot"><img src="img/vykres-m-960.jpg" width="960" height="478" alt="Technický výkres miskové manžety s rozměry D, d, v, s a R" loading="lazy"><i class="pero" aria-hidden="true"></i></div>
     <figcaption><b>Misková manžeta M</b>Normy určují jmenovité rozměry, mezní úchylky, druh usně i způsob impregnace. V poptávce stačí uvést vnější průměr D, nebo přiložit výkres.</figcaption>
   </figure>
 </section>
@@ -332,8 +376,8 @@ footer .fine{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 
   </div>
   <div class="wrap">
     <div class="pop-head"><h2 id="pop-h" class="disp" data-r>Poptávka manžet</h2>
-    <p class="lead" data-r style="--i:1">Vyberte typ, napište průměr a počet kusů. Otevře se Vám e-mail s připravenou poptávkou, ke kterému můžete přiložit výkres.</p></div>
-    <form class="bar" id="form" data-r style="--i:2" novalidate>
+    <p class="lead" data-r>Vyberte typ, napište průměr a počet kusů. Otevře se Vám e-mail s připravenou poptávkou, ke kterému můžete přiložit výkres.</p></div>
+    <form class="bar" id="form" data-r novalidate>
       <div class="cell"><label for="typ">Typ</label>
         <select id="typ" name="typ">
           <option value="m">Misková M (ČSN 02 9267)</option>
@@ -347,27 +391,35 @@ footer .fine{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 
       <div class="cell"><label for="ks">Počet kusů</label><input id="ks" name="ks" inputmode="numeric" placeholder="např. 10" autocomplete="off"></div>
       <button type="submit">Připravit e-mail</button>
     </form>
-    <p class="hint" id="hint" aria-live="polite">Manžety vyrábíme do průměru 800 mm.</p>
+    <div class="hint"><svg class="nahled" viewBox="0 0 64 64" aria-hidden="true"><circle class="max" cx="32" cy="32" r="30"/><circle class="man" id="man" cx="32" cy="32" r="9"/></svg><p id="hint" aria-live="polite">Manžety vyrábíme do průměru 800 mm.</p></div>
     <dl class="kontakt">
       <div data-r><dt>Telefon</dt><dd><a href="tel:+420603373420">+420 603 373 420</a><br>pan Jakub Lukosz</dd></div>
-      <div data-r style="--i:1"><dt>E-mail</dt><dd><a href="mailto:lumir@lumir.cz">lumir@lumir.cz</a></dd></div>
-      <div data-r style="--i:2"><dt>Adresa</dt><dd>Petrovice u Karviné 259<br>735 72 Petrovice u Karviné</dd></div>
-      <div data-r style="--i:3"><dt>Provozní doba</dt><dd>Po–Pá 6:00–15:00<br>So–Ne zavřeno</dd></div>
+      <div data-r><dt>E-mail</dt><dd><a href="mailto:lumir@lumir.cz">lumir@lumir.cz</a></dd></div>
+      <div data-r><dt>Adresa</dt><dd>Petrovice u Karviné 259<br>735 72 Petrovice u Karviné</dd></div>
+      <div data-r><dt>Provozní doba</dt><dd>Po–Pá 6:00–15:00<br>So–Ne zavřeno</dd></div>
     </dl>
   </div>
 </section>
 </main>
 
 <footer class="wrap">
-  <p class="big disp" aria-hidden="true">Lumir</p>
+  <p class="big disp" aria-hidden="true" id="big">Lumir</p>
   <div class="fine">
     <span>LUKO seals s.r.o. · IČO 28567196 · DIČ CZ28567196 · Petrovice u Karviné 259</span>
     <span>Výroba kožených manžet, těsnění a klapek</span>
   </div>
 </footer>
 
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
 <script>
-document.documentElement.classList.add('js');
+/* Prstenec se v úvodu roztočí jako obrobek na soustruhu (zářez ukazuje otáčení) */
+window.INTRO_EXTRA = function(tl, root){
+  tl.fromTo(root.querySelector('.intro-ring'), {rotation:-200}, {rotation:0, duration:1.5, ease:'power3.out', transformOrigin:'50% 50%'}, 0);
+};
+</script>
+<script src="js/intro.js"></script>
+<script>
 (function(){
   var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var D = {
@@ -402,7 +454,7 @@ document.documentElement.classList.add('js');
   var NAZEV = {m:'Misková manžeta M (ČSN 02 9267)', v:'Střechová manžeta V (ČSN 02 9263)', u:'Dvojitá manžeta U (ČSN 02 9262)', k:'Kloboučková manžeta K (ČSN 02 9266)', klapka:'Zpětná klapka kožená', jine:'Jiný výsek z usně'};
   function check(){
     var d = parseInt(pr.value.replace(/\D/g,''),10), t = typ.value, min = D[t] && D[t].min;
-    hint.classList.remove('warn');
+    hint.classList.remove('warn'); ring(d);
     if (!pr.value) { hint.textContent = min ? 'Typ ' + t.toUpperCase() + ' vyrábíme v průměru ' + min + ' až 800 mm.' : 'Rozměry napište do e-mailu, případně přiložte výkres.'; return true; }
     if (isNaN(d)) { hint.textContent = 'Průměr napište v milimetrech, třeba 120.'; hint.classList.add('warn'); return false; }
     if (d > 800) { hint.textContent = 'Největší průměr, který vyrobíme, je 800 mm.'; hint.classList.add('warn'); return false; }
@@ -416,11 +468,67 @@ document.documentElement.classList.add('js');
     location.href = 'mailto:lumir@lumir.cz?subject=' + encodeURIComponent('Poptávka – ' + NAZEV[typ.value]) + '&body=' + encodeURIComponent(body);
   });
 
-  // Postupné objevování obsahu sekcí
-  var els = document.querySelectorAll('[data-r]');
-  if (RM || !('IntersectionObserver' in window)) { els.forEach(function(el){el.classList.add('in')}); return; }
-  var io = new IntersectionObserver(function(en){ en.forEach(function(x){ if (x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } }); }, {rootMargin:'0px 0px -8% 0px'});
-  els.forEach(function(el){ io.observe(el); });
+  /* Náhled manžety u poptávky: prstenec v měřítku k největšímu průměru 800 mm */
+  function ring(d){
+    var r = (!d || isNaN(d)) ? 9 : Math.max(3, Math.min(30, 30 * d / 800));
+    if (window.gsap && !RM) gsap.to('#man', {attr:{r:r}, duration:.45, ease:'power3.out', overwrite:true});
+    else document.getElementById('man').setAttribute('r', r);
+  }
+
+  /* ===== POHYB — GSAP + ScrollTrigger =====
+     Úvod: po přistání názvu najede podtitul, vzorek a jména výrobků. Při scrollu:
+     fotky z dílny vyjedou jedna po druhé, výrobky se „položí“ na dlaždice,
+     řádky norem najedou zleva, kroužky u vlastností usně se nakreslí, technický
+     výkres se vykreslí pod perem plotru a velký název v patičce vyjede po písmenech. */
+  if (!window.gsap || !window.ScrollTrigger){ document.documentElement.classList.remove('js'); return; }
+  gsap.registerPlugin(ScrollTrigger);
+  var mm = gsap.matchMedia();
+  /* kreslení tahu: skutečná délka cesty (GSAP zaokrouhluje px, s pathLength="1" by tah jen přeskočil) */
+  function cara(els){ return gsap.utils.toArray(els).map(function(el){ var L = Math.ceil(el.getTotalLength()) + 1; el.removeAttribute('pathLength'); gsap.set(el, {strokeDasharray:L + ' ' + L, strokeDashoffset:L}); return el; }); }
+
+
+  mm.add('(prefers-reduced-motion: reduce)', function(){
+    gsap.set('[data-r],[data-h]', {clearProps:'all'});
+  });
+
+  mm.add('(prefers-reduced-motion: no-preference)', function(){
+    var hero = gsap.timeline({paused:true, defaults:{ease:'power3.out'}});
+    hero.to('[data-h]', {opacity:1, y:0, duration:.8, stagger:.1})
+        .from('.tile', {clipPath:'inset(100% 0% 0% 0%)', duration:1, ease:'power3.inOut'}, .15)
+        .from('.names button', {x:-16, opacity:0, duration:.5, stagger:.05, clearProps:'opacity,transform'}, .35);
+    afterIntro(function(){ hero.play(); });
+
+    ScrollTrigger.batch('[data-r]', {start:'top 88%', once:true, onEnter:function(b){
+      gsap.to(b, {opacity:1, y:0, duration:.8, ease:'power3.out', stagger:.09, overwrite:true});
+    }});
+
+    /* výrobky se položí na dlaždice */
+    document.querySelectorAll('.spec').forEach(function(sp){
+      gsap.from(sp.querySelector('.t img'), {rotation:-10, scale:.82, duration:1, ease:'back.out(1.6)', scrollTrigger:{trigger:sp, start:'top 85%', once:true}});
+    });
+
+    /* řádky norem najedou zleva */
+    gsap.from('.normy tbody tr', {x:-24, opacity:0, duration:.6, ease:'power3.out', stagger:.08, scrollTrigger:{trigger:'.normy', start:'top 80%', once:true}});
+
+    /* kroužky u vlastností usně se nakreslí */
+    cara('.usen-list .d');
+    gsap.to('.usen-list .d', {strokeDashoffset:0, duration:.9, ease:'power2.inOut', stagger:.15, scrollTrigger:{trigger:'.usen-list', start:'top 80%', once:true}});
+
+    /* výkres pod perem plotru: odkrývá se se scrollem, pero jede po hraně */
+    var plot = gsap.timeline({scrollTrigger:{trigger:'.vykres', start:'top 78%', end:'center 45%', scrub:.6}});
+    plot.set('.vykres .pero', {opacity:1})
+        .to('.vykres .plot', {clipPath:'inset(0 0% 0 0)', ease:'none', duration:1}, 0)
+        .fromTo('.vykres .pero', {left:'0%'}, {left:'100%', ease:'none', duration:1}, 0)
+        .to('.vykres .pero', {opacity:0, duration:.08}, .94);
+
+    /* dílna: zvednutá fotka se při průjezdu jemně přiblíží */
+    gsap.fromTo('.run .lift img', {scale:1.08}, {scale:1, ease:'none', scrollTrigger:{trigger:'.run', start:'top bottom', end:'bottom top', scrub:true}});
+
+    /* patička: název vyjede po písmenech */
+    var big = document.getElementById('big'), t = big.textContent; big.textContent = '';
+    t.split('').forEach(function(ch){ var m = document.createElement('span'), x = document.createElement('span'); m.style.cssText = 'display:inline-block;overflow:hidden;vertical-align:top'; x.style.display = 'inline-block'; x.textContent = ch; m.appendChild(x); big.appendChild(m); });
+    gsap.from('#big span span', {yPercent:110, duration:.9, ease:'power4.out', stagger:.06, scrollTrigger:{trigger:'footer', start:'top 85%', once:true}});
+  });
 })();
 </script>
 </body>

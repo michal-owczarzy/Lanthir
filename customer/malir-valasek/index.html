@@ -4,341 +4,431 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Malíř Vladimír Valášek – malování a nátěry, Karviná</title>
-<meta name="description" content="Malířské a natěračské práce v Karviné a okolí, úklid po malování. Vladimír Valášek, Petrovická 2099/15a, Karviná-Hranice. Tel. 731 614 442.">
+<meta name="description" content="Malířské a natěračské práce v Karviné a okolí: malování pokojů, nátěry dveří, oken a kovu, úklid po malování. Spočítejte si plochu a domluvte termín. Tel. 731 614 442.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#0d2a1c">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230d2a1c'/%3E%3Cpath d='M4 11h18a6 6 0 0 1 0 12H4z' fill='%23f6e016'/%3E%3C/svg%3E">
-<link rel="preload" as="font" type="font/woff2" href="fonts/libre-franklin-700-normal-latin.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="fonts/source-serif-4-400-normal-latin.woff2" crossorigin>
+<meta name="theme-color" content="#eef1ec">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%23f6e016'/%3E%3Crect x='7' y='9' width='27' height='11' rx='3' fill='%230f2318'/%3E%3Cpath d='M34 14.5h5v10H22v5' fill='none' stroke='%230f2318' stroke-width='3'/%3E%3Cpath d='M22 30v11' stroke='%230f2318' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/bricolage-grotesque-500_800-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-400_600-normal-latin.woff2" crossorigin>
+<link rel="preload" as="image" href="img/zluta-1600.jpg" imagesrcset="img/zluta-800.jpg 800w, img/zluta-1600.jpg 1600w" imagesizes="100vw">
+<script>
+  /* úvodní animace loga: jen první stránka v relaci, ne s omezeným pohybem, ne na kotvě */
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-valasek') && !location.hash))) {
+      sessionStorage.setItem('intro-valasek', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
 <style>
-@font-face{font-family:"Libre Franklin";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/libre-franklin-700-normal-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:"Libre Franklin";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/libre-franklin-700-normal-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/source-serif-4-400-normal-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/source-serif-4-400-normal-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:"Source Serif 4";font-style:italic;font-weight:400;font-display:swap;src:url(fonts/source-serif-4-400-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:"Source Serif 4";font-style:italic;font-weight:400;font-display:swap;src:url(fonts/source-serif-4-400-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:500 800;font-display:swap;src:url(fonts/bricolage-grotesque-500_800-normal-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:500 800;font-display:swap;src:url(fonts/bricolage-grotesque-500_800-normal-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Instrument Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/instrument-sans-400_600-normal-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Instrument Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/instrument-sans-400_600-normal-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 
-/* Tokeny: lahvově zelený inkoust, žlutá barva na válečku, čerstvě vymalovaná bílá.
-   Motiv: stopa válečku – pruh s jedním rovným a jedním zakulaceným koncem. */
+/* Tokeny: čerstvě vymalovaná stěna, tmavě zelená firmy, žlutá z válečku */
 :root{
-  --bg:#f7f7f5; --surface:#ebebe7; --ink:#0d2a1c; --muted:#4d5a53;
-  --accent:#f6e016; --accent-ink:#0d2a1c;
-  --modra:#a9cbd9; --bila:#e6e6e1; --sv-zelena:#cfe3c6;
-  --display:"Libre Franklin",system-ui,sans-serif; --text:"Source Serif 4",Georgia,serif;
-  --s-small:clamp(.9375rem,.9rem + .1vw,1rem);
+  --wall:#eef1ec; --white:#ffffff; --ink:#0f2318; --green:#1d5a3e; --yellow:#f6e016; --yellow-2:#e3cd00; --muted:#46554c;
+  --glass:rgba(255,255,255,.4); --glass-edge:rgba(255,255,255,.8);
+  --display:"Bricolage Grotesque",system-ui,sans-serif; --text:"Instrument Sans",system-ui,sans-serif;
+  --s-small:clamp(.875rem,.85rem + .1vw,.9375rem);
   --s-body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
-  --s-lead:clamp(1.25rem,1.1rem + .7vw,1.625rem);
-  --s-head:clamp(2.25rem,1.3rem + 3.6vw,4.25rem);
-  --m:clamp(20px,4vw,56px);
-  --stopa:0 999px 999px 0;
-  --ease:cubic-bezier(.2,.7,.2,1);
+  --s-lead:clamp(1.1875rem,1.05rem + .6vw,1.5rem);
+  --s-head:clamp(2.5rem,1.4rem + 3.8vw,4.75rem);
+  --m:clamp(16px,4vw,56px); --r:22px;
+  --ease:cubic-bezier(.16,1,.3,1);
 }
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--s-body)/1.55 var(--text);-webkit-font-smoothing:antialiased}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:96px}
+body{margin:0;background:var(--wall);color:var(--ink);font:400 var(--s-body)/1.55 var(--text);-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
 h1,h2,h3,p,ul,ol,figure{margin:0}
 ul,ol{padding:0;list-style:none}
-:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px}
 .wrap{padding-left:var(--m);padding-right:var(--m)}
-h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:.95}
+.disp{font-family:var(--display);font-weight:800;letter-spacing:-.025em;line-height:.98}
 .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-.ribbon{background:#3a2ee0;color:#fff;font:400 15px/1.4 var(--text);text-align:center;padding:9px 16px}
+.ribbon{position:relative;z-index:60;background:#3a2ee0;color:#fff;font:400 15px/1.4 var(--text);text-align:center;padding:9px 16px}
 .ribbon a{font-weight:600;text-underline-offset:2px}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 34px 0 26px;border-radius:var(--stopa);background:var(--ink);color:#fff;font:700 var(--s-body)/1 var(--display);letter-spacing:-.01em;text-decoration:none;border:0;cursor:pointer;transition:transform .15s var(--ease),padding .3s var(--ease)}
+/* ========== SKLO — mráz, průsvit, světlá hrana, hloubka ========== */
+.glass{position:relative;background:var(--glass);-webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);border-radius:var(--r);box-shadow:inset 0 0 0 1px var(--glass-edge),inset 0 2px 0 rgba(255,255,255,.7),inset 0 -1px 0 rgba(15,35,24,.08)}
+.glass.tma{background:rgba(9,24,16,.4);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.3),inset 0 -1px 0 rgba(0,0,0,.2)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.glass{background:rgba(255,255,255,.9)}.glass.tma{background:rgba(9,24,16,.88)}}
+@media (prefers-reduced-transparency:reduce){.glass{background:var(--white);-webkit-backdrop-filter:none;backdrop-filter:none}.glass.tma{background:var(--ink)}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border-radius:999px;background:var(--yellow);color:var(--ink);font:600 var(--s-body)/1 var(--text);text-decoration:none;border:0;cursor:pointer;transition:transform .2s var(--ease),background-color .2s}
 .btn:active{transform:scale(.97)}
-@media (hover:hover){.btn:hover{padding-right:46px}}
-.btn--y{background:var(--accent);color:var(--ink)}
+.btn.sklo{background:rgba(255,255,255,.18);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.45);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.btn.zelena{background:var(--green);color:#fff}
+@media (hover:hover){.btn:hover{background:var(--yellow-2);transform:translateY(-2px)}.btn.sklo:hover{background:rgba(255,255,255,.3)}.btn.zelena:hover{background:var(--ink)}}
 
-/* ========== ÚVOD — stoh pruhů od válečku ========== */
-.hero{background:var(--ink);color:#fff;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;padding-top:24px}
-.hero-top{display:flex;justify-content:space-between;align-items:center;font-size:var(--s-small)}
-.hero-top .jm{font:700 var(--s-body)/1 var(--display);text-decoration:none}
-.hero-top a{text-decoration:none}
-.hero h1{text-align:center;text-transform:uppercase;font-size:clamp(3.5rem,1rem + 9vw,10rem);line-height:.9;margin-top:clamp(48px,7vh,96px)}
-.hero .lede{text-align:center;max-width:46ch;margin:22px auto 0;font-size:var(--s-lead);line-height:1.35;color:#e9efe9}
-.stoh{position:relative;flex:1;min-height:340px;margin-top:clamp(36px,5vh,64px)}
-.pruh{position:absolute;left:0;width:86%;height:100%;border-radius:var(--stopa);display:block;text-decoration:none;color:var(--ink);transition:transform .45s var(--ease)}
-.pruh span{position:absolute;top:14px;font:700 var(--s-small)/1 var(--display);letter-spacing:0}
-.pruh:nth-child(1){top:0;background:var(--modra);transform:translateX(-4%)}
-.pruh:nth-child(2){top:56px;background:var(--bila);transform:translateX(-10%)}
-.pruh:nth-child(3){top:112px;background:var(--sv-zelena);transform:translateX(-2%)}
-.pruh:nth-child(4){top:168px;background:var(--accent);transform:translateX(-7%);height:calc(100% - 168px + 40px)}
-.pruh:nth-child(1) span{left:calc(var(--m) + 10%)}.pruh:nth-child(2) span{left:calc(var(--m) + 30%)}.pruh:nth-child(3) span{left:calc(var(--m) + 50%)}
-@media (hover:hover){.pruh:not(.front):hover{transform:translateX(0)}}
-.pruh.front{cursor:default}
-.front .front-in{position:absolute;left:calc(var(--m) + 4%);right:20%;top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px}
-.front .front-in p{font-size:var(--s-body);max-width:34ch}
+/* ========== LOGO — váleček (kreslí se v úvodu) ========== */
+.logo{display:inline-flex;align-items:center;gap:.36em;font:800 24px/1 var(--display);letter-spacing:-.02em;text-decoration:none;color:var(--ink)}
+.logo svg{width:1.45em;height:1.45em;flex:none;overflow:visible}
+.logo .val{fill:var(--yellow)}
+.logo .obr{fill:none;stroke:var(--ink);stroke-width:2.8;stroke-linejoin:round;stroke-linecap:round}
+.logo .ruk{fill:none;stroke:var(--ink);stroke-width:6;stroke-linecap:round}
 
-/* ========== CO DĚLÁME — body se značkou, fotka v pruhu ========== */
-.co{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;padding-top:clamp(120px,13vw,200px);align-items:start}
-.co-foto{grid-column:1/6;margin-left:calc(var(--m) * -1 - 2vw);position:sticky;top:24px;height:78svh;max-height:720px;border-radius:var(--stopa);overflow:hidden;background:var(--surface)}
-.co-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .24s ease-out}
-.co-foto img.on{opacity:1}
-.co-text{grid-column:7/-1}
-.co-text h2{font-size:var(--s-head)}
-.co-text>p{margin-top:20px;max-width:46ch}
-.body{display:grid;grid-template-columns:1fr 1fr;gap:12px 40px;margin-top:56px}
-.bod{padding:14px 16px 16px;margin:0 -16px;border-radius:0 28px 28px 0;transition:background-color .24s,opacity .24s;cursor:default}
-.body.hovering .bod{opacity:.45}
-.body.hovering .bod.on{opacity:1;background:var(--surface)}
-.bod h3{display:flex;align-items:center;gap:12px;font-size:var(--s-lead);letter-spacing:-.02em;line-height:1.1}
-.bod h3::before{content:"";flex:none;width:1.3em;height:.62em;border-radius:var(--stopa);background:var(--c,var(--accent))}
-.bod p{margin-top:8px;color:var(--muted);font-size:var(--s-small);line-height:1.5}
-.bod img{display:none}
+/* ========== Úvodní animace: váleček natáhne žlutý pruh ========== */
+.intro{display:none}
+html.intro-on .intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;pointer-events:none;animation:pojistka .3s linear 7s forwards}
+.intro-ground{position:absolute;inset:0;background:var(--wall);overflow:hidden}
+.intro-pas{position:absolute;left:-5vw;right:-5vw;top:50%;height:min(30vh,240px);margin-top:calc(min(30vh,240px) / -2);background:var(--yellow);border-radius:0 999px 999px 0;transform:scaleX(0);transform-origin:left center}
+.intro-lock{position:relative;visibility:hidden}
+.intro.ready .intro-lock{visibility:visible}
+.intro-m{display:inline-block;overflow:hidden;vertical-align:top;padding:.16em 0 .08em;margin:-.16em 0 -.08em}
+.intro-m>span{display:inline-block}
+html.intro-on [data-intro-land]{opacity:0;animation:ukaz 0s 7.2s forwards}
+html.intro-on.intro-landed [data-intro-land]{opacity:1;transition:opacity .25s ease-out}
+@keyframes pojistka{to{opacity:0;visibility:hidden}}
+@keyframes ukaz{to{opacity:1}}
 
-/* ========== JAK TO PROBÍHÁ — z nepořádku čisto ========== */
-.jak{padding-top:clamp(120px,13vw,200px)}
-.jak-head{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;align-items:end}
-.jak-head h2{grid-column:1/6;font-size:var(--s-head)}
-.jak-head p{grid-column:7/12}
-.schema{display:block;width:100%;height:auto;margin-top:56px}
-.kroky{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
-.kroky h3{font-size:var(--s-lead);letter-spacing:-.02em}
-.kroky p{margin-top:8px;max-width:30ch}
+/* ========== NAVIGACE — skleněná lišta ========== */
+.nav{position:sticky;top:12px;z-index:50;margin:12px var(--m) -78px;height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 10px 0 22px;border-radius:999px}
+.nav .links{display:flex;gap:26px;font-size:var(--s-body)}
+.nav .links a{text-decoration:none;padding:8px 0;position:relative}
+.nav .links a::after{content:"";position:absolute;left:0;right:0;bottom:3px;height:3px;border-radius:2px;background:var(--yellow-2);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+@media (hover:hover){.nav .links a:hover::after{transform:none}}
+.nav .btn{min-height:48px;padding:0 20px}
+.nav .btn svg{width:18px;height:18px}
 
-/* ========== KALKULAČKA — žluté pole ========== */
-.plocha{background:var(--accent);margin-top:clamp(120px,13vw,200px);padding-top:clamp(80px,9vw,140px);padding-bottom:clamp(80px,9vw,140px);display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;row-gap:40px;align-items:start}
-.plocha-head{grid-column:1/6}
-.plocha-head h2{font-size:var(--s-head)}
-.plocha-head p{margin-top:20px;max-width:40ch}
-.plocha-form{grid-column:7/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.pole{background:#fff26a;border-radius:0 22px 22px 0;padding:14px 18px;display:flex;flex-direction:column;gap:4px}
-.pole:focus-within{background:#fff}
-.pole label{font-size:var(--s-small)}
-.pole input{border:0;background:transparent;font:700 clamp(1.75rem,1.3rem + 1.4vw,2.5rem)/1.1 var(--display);color:var(--ink);width:100%;outline:none;padding:0}
-.zatrh{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:6px}
-.zatrh label{display:flex;align-items:center;gap:10px;font-size:var(--s-body);cursor:pointer;min-height:44px}
-.zatrh input{width:22px;height:22px;accent-color:var(--ink)}
-.vysl{grid-column:1/-1;background:var(--ink);color:#fff;border-radius:var(--stopa);padding:22px 48px 22px 26px;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-top:32px}
-.vysl .m2{font:700 clamp(2.5rem,1.6rem + 3vw,4.25rem)/1 var(--display);letter-spacing:-.03em}
-.vysl p{font-size:var(--s-small);color:#d5ded8;max-width:36ch}
+/* ========== ÚVOD — fotka, na ní sklo ========== */
+.hero{position:relative;min-height:calc(100svh - 40px);display:flex;align-items:flex-end;padding:120px var(--m) var(--m);overflow:hidden;background:var(--ink)}
+.hero-foto{position:absolute;inset:0}
+.hero-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.hero-foto::after{content:"";position:absolute;inset:0;background:rgba(9,24,16,.2)}
+.hero-panel{width:min(640px,100%);padding:clamp(26px,3.4vw,44px);overflow:hidden}
+.hero h1{font-size:clamp(3rem,1.2rem + 5.6vw,6.5rem)}
+.hero h1 .slovo{display:inline-block;overflow:hidden;padding:.12em 0 .06em;margin:-.12em 0 -.06em;vertical-align:top}
+.hero h1 .slovo>span{display:inline-block}
+.hero .lede{margin-top:18px;font-size:var(--s-lead);line-height:1.4;max-width:30ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.hero .pozn{margin-top:16px;font-size:var(--s-small);color:rgba(255,255,255,.8)}
+.odlesk{position:absolute;top:-20%;bottom:-20%;left:0;width:34%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.22) 50%,rgba(255,255,255,0));transform:translateX(-120%) skewX(-12deg);pointer-events:none} /* taste-skill-ignore: odlesk skla */
 
-/* ========== GALERIE — fotky v pruzích ========== */
-.galerie{padding-top:clamp(120px,13vw,200px)}
-.galerie h2{font-size:var(--s-head);max-width:16ch}
-.pasy{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:48px}
-.pasy figure{overflow:hidden;border-radius:var(--stopa);position:relative}
-.pasy img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
-@media (hover:hover){.pasy figure:hover img{transform:scale(1.05)}}
-.pasy figure:nth-child(1){grid-column:1/9;height:clamp(220px,26vw,380px)}
-.pasy figure:nth-child(2){grid-column:9/-1;height:clamp(220px,26vw,380px)}
-.pasy figure:nth-child(3){grid-column:1/6;height:clamp(200px,22vw,320px)}
-.pasy figure:nth-child(4){grid-column:6/-1;height:clamp(200px,22vw,320px)}
-.pasy figcaption{position:absolute;left:18px;bottom:14px;background:var(--bg);padding:4px 12px;font-size:var(--s-small)}
+/* ========== PRUH VÁLEČKU přes celou stránku ========== */
+main{position:relative;isolation:isolate}
+.pruh{position:absolute;left:0;top:0;width:100%;height:100%;z-index:-1;pointer-events:none;overflow:visible}
+.pruh path{fill:none;stroke:var(--yellow);stroke-linecap:round;stroke-linejoin:round}
 
-/* ========== DOTAZY — kartotéka ========== */
-.dotazy{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;padding-top:clamp(120px,13vw,200px)}
-.dotazy h2{grid-column:3/11;font-size:var(--s-head)}
-.karty{grid-column:3/11;margin-top:48px;display:flex;flex-direction:column}
-.karta{--c:var(--surface);position:relative;margin-top:-18px;background:var(--c);border-radius:0 0 28px 0;padding:0}
-.karta:first-child{margin-top:0}
-.karta:nth-child(3n+2){--c:var(--bila)}
-.karta:nth-child(3n){--c:var(--sv-zelena)}
-.karta summary{list-style:none;cursor:pointer;position:relative;padding:58px 28px 30px;display:block}
-.karta summary::-webkit-details-marker{display:none}
-.karta .tab{position:absolute;top:-30px;left:var(--x,0);height:42px;padding:0 26px 0 18px;background:var(--c);border-radius:var(--stopa);display:flex;align-items:center;font:700 var(--s-small)/1 var(--display)}
-.karta .q{font:600 var(--s-lead)/1.25 var(--text);display:block}
-.karta[open] .q{margin-bottom:0}
-.karta p{padding:0 28px 34px;max-width:52ch}
-.karta:nth-child(1) .tab{--x:0}.karta:nth-child(2) .tab{--x:150px}.karta:nth-child(3) .tab{--x:300px}.karta:nth-child(4) .tab{--x:450px}.karta:nth-child(5) .tab{--x:600px}
-.karta+.karta{margin-top:24px}
+/* ========== SLUŽBY — skleněné karty nad pruhem ========== */
+.sluzby{padding-top:clamp(96px,11vw,160px)}
+.sluzby-head{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;align-items:end}
+.sluzby-head h2{grid-column:1/8;font-size:var(--s-head)}
+.sluzby-head p{grid-column:8/-1;font-size:var(--s-lead);line-height:1.4}
+.sl-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(24px,4vw,64px);margin-top:56px;align-items:start}
+.sl-foto{position:sticky;top:104px;padding:10px;height:min(72vh,640px)}
+.sl-foto .ram{position:relative;width:100%;height:100%;border-radius:14px;overflow:hidden}
+.sl-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .7s var(--ease),transform 1.2s var(--ease)}
+.sl-foto img.on{opacity:1;transform:none}
+.sl-list{display:flex;flex-direction:column;gap:clamp(28px,4vw,56px);padding:clamp(12px,3vw,40px) 0 clamp(40px,8vh,96px)}
+.sl-bod{display:grid;grid-template-columns:1fr auto;gap:8px 24px;align-items:start;cursor:default}
+.sl-bod h3{position:relative;justify-self:start;font:800 clamp(2rem,1.2rem + 2.6vw,3.75rem)/1.02 var(--display);letter-spacing:-.025em;padding:0 .12em;margin-left:-.12em;isolation:isolate}
+.sl-bod .barva{position:absolute;left:0;right:0;top:52%;bottom:-2%;z-index:-1;background:var(--yellow);border-radius:999px;transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+.sl-bod.on .barva{transform:none}
+.sl-bod p{grid-column:1;font-size:var(--s-lead);line-height:1.4;color:var(--muted);max-width:34ch}
+.sl-bod svg{grid-column:2;grid-row:1/span 2;width:64px;height:64px;fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.sl-bod svg .z{stroke:var(--yellow-2);stroke-width:3}
+.sl-bod>img{display:none}
 
-/* ========== KONTAKT — kupón k odstřižení ========== */
-.kupon-wrap{padding-top:clamp(120px,13vw,200px);padding-bottom:clamp(96px,10vw,140px)}
-.kupon{position:relative;display:grid;grid-template-columns:46% 54%;background:var(--ink);color:#fff;border-radius:14px;
-  -webkit-mask:radial-gradient(circle 14px at 46% 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 14px at 46% 100%,#0000 98%,#000) bottom/100% 51% no-repeat; /* taste-skill-ignore: maska výřezů kupónu, ne viditelný přechod */
-  mask:radial-gradient(circle 14px at 46% 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 14px at 46% 100%,#0000 98%,#000) bottom/100% 51% no-repeat} /* taste-skill-ignore: maska výřezů kupónu */
-.kupon-l{padding:48px;display:flex;flex-direction:column;justify-content:space-between;gap:32px;border-right:5px dotted var(--bg)}
-.kupon-l h2{text-transform:uppercase;font-size:clamp(2rem,1.2rem + 2.6vw,3.25rem);line-height:1.05}
-.kupon-l .tel{font:700 clamp(1.75rem,1.2rem + 1.6vw,2.5rem)/1 var(--display);text-decoration:none;color:var(--accent)}
-.kupon-l p{font-size:var(--s-body);color:#d5ded8}
-.kupon-r{padding:48px;display:flex;flex-direction:column;gap:10px}
-.kupon-r input,.kupon-r select{height:54px;border:0;border-radius:0;background:#1d4330;color:#fff;font:400 var(--s-body)/1 var(--text);padding:0 18px;width:100%}
-.kupon-r input::placeholder{color:#b9c7bf}
-.kupon-r input:focus,.kupon-r select:focus{background:#2a5a41;outline:2px solid var(--accent);outline-offset:0}
-.kupon-r button{height:58px;border:0;border-radius:var(--stopa);background:var(--accent);color:var(--ink);font:700 var(--s-body)/1 var(--display);cursor:pointer;margin-top:6px;transition:transform .15s var(--ease)}
-.kupon-r button:active{transform:scale(.98)}
-.kupon-r .pozn{font-size:var(--s-small);color:#b9c7bf}
+/* ========== POSTUP — tah válečkem přes tři kroky ========== */
+.postup{padding-top:clamp(120px,13vw,190px)}
+.postup-in{padding:clamp(28px,4vw,56px)}
+.postup h2{font-size:var(--s-head);max-width:14ch}
+.postup .lead{margin-top:18px;max-width:52ch;font-size:var(--s-lead);line-height:1.4}
+.tah{display:block;width:100%;height:auto;margin-top:36px;overflow:visible}
+.tah .stopa{fill:none;stroke:rgba(15,35,24,.12);stroke-width:26;stroke-linecap:round}
+.tah .barva{fill:none;stroke:var(--yellow);stroke-width:26;stroke-linecap:round}
+.tah .uzel{fill:var(--ink)}
+.tah .uzel-t{fill:var(--yellow);font:700 15px/1 var(--display)}
+.kroky{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:10px}
+.kroky h3{font:700 clamp(1.375rem,1.15rem + .7vw,1.75rem)/1.15 var(--display)}
+.kroky p{margin-top:6px;color:var(--muted)}
 
-footer{background:var(--ink);color:#fff;padding-top:clamp(56px,7vw,96px);padding-bottom:36px;overflow:hidden}
-footer .big{font:700 clamp(4rem,1rem + 13vw,15rem)/.85 var(--display);letter-spacing:-.045em;text-transform:uppercase;white-space:nowrap}
-footer .fine{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 32px;margin-top:28px;font-size:var(--s-small);color:#b9c7bf}
+/* ========== PLOCHA — živý model místnosti ========== */
+.plocha{padding-top:clamp(120px,13vw,190px)}
+.plocha-in{display:grid;grid-template-columns:5fr 7fr;gap:clamp(20px,3vw,48px);padding:clamp(24px,3.4vw,48px);align-items:center}
+.plocha h2{font-size:var(--s-head)}
+.plocha .lead{margin-top:16px;max-width:40ch}
+.pole-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px}
+.pole{display:flex;flex-direction:column;gap:6px}
+.pole label{font-size:var(--s-small);color:var(--muted)}
+.pole input{height:56px;border:0;box-shadow:inset 0 0 0 1px rgba(15,35,24,.1);border-radius:14px;background:rgba(255,255,255,.75);font:600 1.375rem/1 var(--display);color:var(--ink);padding:0 14px;width:100%}
+.pole input:focus{outline:none;box-shadow:inset 0 0 0 2px var(--green);background:#fff}
+.zatrh{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:16px;font-size:var(--s-body)}
+.zatrh label{display:flex;align-items:center;gap:10px;cursor:pointer}
+.zatrh input{width:22px;height:22px;accent-color:var(--green)}
+.vysl{margin-top:24px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px}
+.m2{font:800 clamp(3rem,2rem + 3.4vw,4.75rem)/1 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.vysl p{font-size:var(--s-small);color:var(--muted);flex-basis:100%}
+.mistnost{width:100%;height:auto;overflow:visible}
+.mistnost .podlaha{fill:rgba(15,35,24,.07);stroke:rgba(15,35,24,.35);stroke-width:1.2}
+.mistnost .stena{fill:var(--yellow);stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round}
+.mistnost .stena.b{fill:#efd900}
+.mistnost .strop{fill:rgba(246,224,22,.28);stroke:var(--ink);stroke-width:1.2;stroke-dasharray:5 5}
+.mistnost .otvor{fill:#ffffff;stroke:var(--ink);stroke-width:1.4}
+.mistnost text{font:600 14px/1 var(--text);fill:var(--ink)}
+.mistnost .kota{font-weight:400;fill:var(--muted)}
 
-/* ========== Pohyb ========== */
-.js .hero h1,.js .hero .lede{opacity:0;transform:translateY(24px);animation:vstup .8s var(--ease) forwards}
-.js .hero .lede{animation-delay:.12s}
-.js .pruh{animation:valec 1s var(--ease) both}
-.js .pruh:nth-child(1){animation-delay:.25s}.js .pruh:nth-child(2){animation-delay:.35s}.js .pruh:nth-child(3){animation-delay:.45s}.js .pruh:nth-child(4){animation-delay:.55s}
-@keyframes vstup{to{opacity:1;transform:none}}
-@keyframes valec{from{clip-path:inset(0 100% 0 0 round 0 999px 999px 0)}to{clip-path:inset(0 0 0 0 round 0 999px 999px 0)}}
-.js [data-r]{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(var(--i,0) * 80ms)}
-.js [data-r].in{opacity:1;transform:none}
-.schema rect{transition:transform 1.4s var(--ease),opacity 1s}
-.js .schema:not(.in) rect{transform:translateX(-24px);opacity:.0}
-.m2.bump{animation:bump .35s var(--ease)}
-@keyframes bump{40%{transform:translateY(-4px)}}
+/* ========== GALERIE ========== */
+.galerie{padding-top:clamp(120px,13vw,190px)}
+.galerie h2{font-size:var(--s-head)}
+.pasy{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:40px}
+.pasy figure{position:relative;border-radius:var(--r);overflow:hidden}
+.pasy figure:nth-child(1){grid-column:1/8;height:clamp(300px,36vw,560px)}
+.pasy figure:nth-child(2){grid-column:8/-1;height:clamp(300px,36vw,560px)}
+.pasy figure:nth-child(3){grid-column:1/5;height:clamp(300px,30vw,480px)}
+.pasy figure:nth-child(4){grid-column:5/-1;height:clamp(300px,30vw,480px)}
+.pasy img{position:absolute;left:0;top:-8%;width:100%;height:116%;object-fit:cover}
+.pasy figcaption{position:absolute;left:12px;bottom:12px;padding:7px 14px;border-radius:999px;font-size:var(--s-small);color:#fff}
+
+/* ========== DOTAZY — skleněné karty, otevřená jen jedna ========== */
+.dotazy{padding-top:clamp(120px,13vw,190px);display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px}
+.dotazy h2{grid-column:1/5;font-size:var(--s-head)}
+.faq{grid-column:6/-1;display:flex;flex-direction:column;gap:10px}
+.faq details{border-radius:18px;padding:4px 24px}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:16px 0;font:700 clamp(1.1875rem,1.05rem + .5vw,1.4375rem)/1.25 var(--display)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{flex:none;position:relative;width:30px;height:30px;border-radius:50%;background:var(--yellow)}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:8px;right:8px;top:14px;height:2px;background:var(--ink);transition:transform .35s var(--ease)}
+.faq summary i::after{transform:rotate(90deg)}
+.faq details[open] summary i::after{transform:rotate(0)}
+.faq details p{padding:0 0 20px;max-width:56ch}
+
+/* ========== KONTAKT — SMS na skle nad fotkou ========== */
+.kontakt{padding-top:clamp(120px,13vw,190px);padding-bottom:clamp(80px,9vw,140px)}
+.kontakt-in{position:relative;border-radius:calc(var(--r) + 8px);overflow:hidden;padding:clamp(20px,4vw,64px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);align-items:center;min-height:620px}
+.kontakt-foto{position:absolute;inset:0}
+.kontakt-foto img{width:100%;height:100%;object-fit:cover}
+.kontakt-l{position:relative;color:#fff;padding:clamp(22px,3vw,40px)}
+.kontakt-l h2{font-size:var(--s-head);max-width:10ch}
+.kontakt-l .tel{display:inline-block;margin-top:22px;font:800 clamp(2.25rem,1.4rem + 2.8vw,3.75rem)/1 var(--display);letter-spacing:-.02em;text-decoration:none;background:var(--yellow);color:var(--ink);padding:10px 20px;border-radius:999px;white-space:nowrap}
+.kontakt-l p{margin-top:16px;max-width:34ch;font-size:var(--s-lead);line-height:1.4}
+.sms{padding:clamp(20px,2.6vw,32px);display:flex;flex-direction:column;gap:10px}
+.sms input,.sms select{height:56px;border:0;border-radius:14px;background:rgba(255,255,255,.78);font:400 var(--s-body)/1.3 var(--text);color:var(--ink);padding:0 16px;width:100%}
+.sms input:focus,.sms select:focus{outline:none;box-shadow:inset 0 0 0 2px var(--green);background:#fff}
+.sms button{margin-top:6px}
+.sms .pozn{font-size:var(--s-small);color:var(--ink)}
+
+footer{padding-bottom:36px}
+footer .big{font:800 clamp(4.5rem,1rem + 17vw,17rem)/.85 var(--display);letter-spacing:-.045em;color:var(--green)}
+footer .fine{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 32px;margin-top:22px;font-size:var(--s-small);color:var(--muted)}
+
+/* ========== Pohyb: výchozí stavy pro GSAP (bez skriptu se nic neschová) ========== */
+.js [data-r]{opacity:0;transform:translateY(28px)}
+.js .hero-panel{opacity:0;transform:translateY(40px)}
+.js .hero h1 .slovo>span{transform:translateY(110%)}
+.m2.bump{animation:bump .4s var(--ease)}
+@keyframes bump{40%{transform:translateY(-5px)}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .js .hero h1,.js .hero .lede,.js .pruh{animation:none;opacity:1;transform:none;clip-path:none}
-  .js .pruh:nth-child(1){transform:translateX(-4%)}.js .pruh:nth-child(2){transform:translateX(-10%)}.js .pruh:nth-child(3){transform:translateX(-2%)}.js .pruh:nth-child(4){transform:translateX(-7%)}
-  .js [data-r]{opacity:1;transform:none;transition:none}
-  .js .schema:not(.in) rect{transform:none;opacity:1}
+  .js [data-r],.js .hero-panel,.js .hero h1 .slovo>span{opacity:1;transform:none}
+  .karta,.btn{transition:none}
   .m2.bump{animation:none}
 }
 
-/* ========== Telefon ========== */
-@media (max-width:860px){
+/* ========== Tablet a telefon ========== */
+@media (max-width:980px){
+  .nav .links{display:none}
+  .sluzby-head{display:block}
+  .sluzby-head p{margin-top:16px}
+  .sl-grid{display:block}
+  .sl-foto{display:none}
+  .sl-bod>img{display:block;grid-column:1/-1;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:16px;margin-top:10px}
+  .plocha-in{grid-template-columns:1fr}
+  .dotazy{display:block}
+  .faq{margin-top:32px}
+  .kontakt-in{grid-template-columns:1fr;min-height:0}
+}
+@media (max-width:600px){
   .ribbon{font-size:14px;padding:8px 14px}
-  .hero h1{font-size:15vw;margin-top:56px;line-height:1.06}
-  .hero .lede{font-size:var(--s-body)}
-  .stoh{min-height:300px}
-  .pruh{width:96%}
-  .pruh:nth-child(2){top:48px}.pruh:nth-child(3){top:96px}.pruh:nth-child(4){top:144px;height:calc(100% - 144px + 40px)}
-  .pruh:nth-child(1) span{left:calc(var(--m) + 4%)}.pruh:nth-child(2) span{left:calc(var(--m) + 16%)}.pruh:nth-child(3) span{left:calc(var(--m) + 28%)}
-  .front .front-in{left:calc(var(--m) + 8%);right:8%;top:24px;flex-direction:column;align-items:flex-start}
-  .front .btn{width:100%}
-  .co,.plocha,.dotazy{display:block}
-  .co-foto{position:relative;top:0;width:82vw;height:60svh;margin-left:calc(var(--m) * -1)}
-  .co-text{margin-top:40px}
-  .body{grid-template-columns:1fr;gap:6px}
-  .body.hovering .bod{opacity:1}
-  .bod img{display:block;margin-top:14px;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--stopa)}
-  .jak-head{display:block}
-  .jak-head p{margin-top:16px}
-  .kroky{grid-template-columns:1fr;gap:24px}
-  .plocha-form{margin-top:32px;grid-template-columns:1fr 1fr 1fr;gap:8px}
-  .pole{padding:12px}
-  .pole label{font-size:14px}
-  .vysl{padding:20px 36px 20px 22px}
+  .nav{height:58px;margin-bottom:-70px;padding:0 6px 0 16px}
+  .nav .btn span{display:none}
+  .nav .btn{width:46px;min-height:46px;padding:0}
+  .logo{font-size:21px}
+  .hero{padding:96px 10px 10px;min-height:calc(100svh - 56px)}
+  .hero h1{font-size:min(15vw,4rem)}
+  .hero-cta .btn{flex:1 1 100%}
+  .sl-bod svg{width:48px;height:48px}
+  .kroky{grid-template-columns:1fr;gap:18px}
+  .kroky>div{text-align:left!important;position:relative;padding-left:52px}
+  .kroky>div::before{content:attr(data-n);position:absolute;left:0;top:-2px;width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--yellow);display:grid;place-items:center;font:700 17px/1 var(--display)}
+  .tah{display:none}
+  .pole-row{gap:8px}
+  .pole input{padding:0 10px;font-size:1.2rem}
   .pasy{grid-template-columns:1fr 1fr;gap:10px}
-  .pasy figure:nth-child(n){grid-column:auto;height:44vw}
-  .pasy figure:nth-child(1),.pasy figure:nth-child(4){grid-column:1/-1;height:56vw}
-  .karty{margin-top:56px}
-  .karta:nth-child(n) .tab{--x:calc((var(--n,0)) * 48px)}
-  .karta:nth-child(2) .tab{--n:1}.karta:nth-child(3) .tab{--n:2}.karta:nth-child(4) .tab{--n:3}.karta:nth-child(5) .tab{--n:4}
-  .karta summary{padding:52px 20px 24px}
-  .karta p{padding:0 20px 28px}
-  .kupon{grid-template-columns:1fr;
-    -webkit-mask:radial-gradient(circle 14px at 0 44%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% 44%,#0000 98%,#000) right/51% 100% no-repeat; /* taste-skill-ignore */
-    mask:radial-gradient(circle 14px at 0 44%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% 44%,#0000 98%,#000) right/51% 100% no-repeat} /* taste-skill-ignore: maska výřezů kupónu */
-  .kupon-l{border-right:0;border-bottom:5px dotted var(--bg);padding:32px 24px}
-  .kupon-r{padding:32px 24px}
-  footer .big{font-size:16vw}
+  .pasy figure:nth-child(n){grid-column:auto;height:52vw}
+  .pasy figure:nth-child(1),.pasy figure:nth-child(4){grid-column:1/-1;height:62vw}
+  .faq details{padding:2px 16px}
+  .kontakt-in{padding:14px;border-radius:var(--r)}
+  footer .big{font-size:21vw}
 }
 </style>
 </head>
 <body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"><div class="intro-pas"></div></div></div>
+
 <div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
 
-<header class="hero">
-  <div class="hero-top wrap">
-    <a class="jm" href="#">V. Valášek</a>
-    <a href="tel:+420731614442">731 614 442</a>
-  </div>
-  <h1 class="wrap">Malíř Valášek</h1>
-  <p class="lede wrap">Malířské a natěračské práce v Karviné. Po malování u Vás můžeme i uklidit.</p>
-  <nav class="stoh" aria-label="Části stránky">
-    <a class="pruh" href="#co"><span>Malování a nátěry</span></a>
-    <a class="pruh" href="#jak"><span>Jak to probíhá</span></a>
-    <a class="pruh" href="#plocha"><span>Spočítat plochu</span></a>
-    <div class="pruh front">
-      <div class="front-in">
-        <a class="btn" href="tel:+420731614442">Zavolat 731 614 442</a>
-        <p>Domluvte si termín. Můžete poslat i SMS.</p>
-      </div>
-    </div>
-  </nav>
+<header class="nav glass">
+  <a class="logo" href="#" data-intro-land aria-label="Malíř Valášek – na začátek stránky">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><rect class="val f" x="7" y="8" width="27" height="12" rx="3"/><rect class="obr d" x="7" y="8" width="27" height="12" rx="3" pathLength="1"/><path class="obr d" d="M34 14h5v10H22v5" pathLength="1"/><path class="ruk d" d="M22 31v11" pathLength="1"/></svg><span class="w">Valášek</span>
+  </a>
+  <nav class="links" aria-label="Stránka"><a href="#sluzby">Služby</a><a href="#postup">Postup</a><a href="#plocha">Plocha</a><a href="#kontakt">Kontakt</a></nav>
+  <a class="btn" href="tel:+420731614442" aria-label="Zavolat 731 614 442"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg><span>731 614 442</span></a>
 </header>
 
-<main>
-<section class="co wrap" id="co" aria-labelledby="co-h">
-  <div class="co-foto" aria-hidden="true">
-    <img class="on" data-k="0" src="img/zluta-1600.jpg" srcset="img/zluta-800.jpg 800w, img/zluta-1600.jpg 1600w" sizes="45vw" width="1600" height="1068" alt="" loading="lazy">
-    <img data-k="1" src="img/pokoj-800.jpg" width="800" height="533" alt="" loading="lazy">
-    <img data-k="2" src="img/stetce-800.jpg" width="800" height="1200" alt="" loading="lazy">
-    <img data-k="3" src="img/plechovka-800.jpg" width="800" height="533" alt="" loading="lazy">
-    <img data-k="4" src="img/zakryti-800.jpg" width="800" height="1200" alt="" loading="lazy">
-  </div>
-  <div class="co-text">
-    <h2 id="co-h" data-r>Malování, nátěry, úklid</h2>
-    <p data-r style="--i:1">Provádíme veškeré malířské a natěračské práce. Když chcete, po malování u Vás i uklidíme.</p>
-    <ul class="body" id="body">
-      <li class="bod on" data-k="0" style="--c:var(--accent)" data-r><h3>Malování pokojů</h3><p>Byty, domy, kuchyně, chodby i schodiště.</p><img src="img/zluta-800.jpg" width="800" height="534" alt="Malíř maluje stěnu žlutou barvou" loading="lazy"></li>
-      <li class="bod" data-k="1" style="--c:var(--modra)" data-r><h3>Tapetování</h3><p>Tapety na celou stěnu i jako akcent.</p><img src="img/pokoj-800.jpg" width="800" height="533" alt="Vymalovaný obývací pokoj" loading="lazy"></li>
-      <li class="bod" data-k="2" style="--c:var(--sv-zelena)" data-r><h3>Nátěry dveří a oken</h3><p>Dřevěné dveře, okna a zárubně.</p><img src="img/stetce-800.jpg" width="800" height="1200" alt="Dva štětce na plátně" loading="lazy"></li>
-      <li class="bod" data-k="3" style="--c:var(--bila)" data-r><h3>Nátěry kovu</h3><p>Radiátory, zábradlí a kovové prvky.</p><img src="img/plechovka-800.jpg" width="800" height="533" alt="Štětec v plechovce s barvou" loading="lazy"></li>
-      <li class="bod" data-k="4" style="--c:var(--accent)" data-r><h3>Úklid po malování</h3><p>Po práci uklidíme, aby byl byt hned k užívání.</p><img src="img/zakryti-800.jpg" width="800" height="1200" alt="Řemeslník u zakrytého okna při práci" loading="lazy"></li>
-          </ul>
-  </div>
-</section>
-
-<section class="jak wrap" id="jak" aria-labelledby="jak-h">
-  <div class="jak-head">
-    <h2 id="jak-h" data-r>Z nepořádku čistý pokoj</h2>
-    <p data-r style="--i:1">Malování přinese do bytu nepořádek. Naším cílem je, aby po nás zůstal vymalovaný a uklizený byt.</p>
-  </div>
-  <svg class="schema" id="schema" viewBox="0 0 1200 260" role="img" aria-label="Rozházené čtverečky se v prostředním pruhu srovnají do pásu a vpravo do úhledných řad"></svg>
-  <div class="kroky">
-    <div data-r><h3>Domluvíme se</h3><p>Zavoláte nebo pošlete SMS a domluvíme rozsah práce a termín.</p></div>
-    <div data-r style="--i:1"><h3>Vymalujeme</h3><p>Malování a nátěry podle domluvy, místnost po místnosti.</p></div>
-    <div data-r style="--i:2"><h3>Uklidíme</h3><p>Pokud chcete, po malování u Vás uklidíme.</p></div>
-  </div>
-</section>
-
-<section class="plocha wrap" id="plocha" aria-labelledby="plocha-h">
-  <div class="plocha-head">
-    <h2 id="plocha-h" data-r>Kolik metrů vymalovat</h2>
-    <p data-r style="--i:1">Zadejte rozměry místnosti. Plochu stěn a stropu pak stačí říct do telefonu nebo napsat do SMS.</p>
-  </div>
-  <form class="plocha-form" id="plochaForm" data-r>
-    <div class="pole"><label for="d">Délka (m)</label><input id="d" inputmode="decimal" value="4"></div>
-    <div class="pole"><label for="s">Šířka (m)</label><input id="s" inputmode="decimal" value="3,5"></div>
-    <div class="pole"><label for="v">Výška (m)</label><input id="v" inputmode="decimal" value="2,6"></div>
-    <div class="zatrh">
-      <label><input type="checkbox" id="strop" checked> I strop</label>
-      <label><input type="checkbox" id="okna" checked> Odečíst okno a dveře</label>
+<section class="hero" aria-labelledby="hero-h">
+  <div class="hero-foto"><img src="img/zluta-1600.jpg" srcset="img/zluta-800.jpg 800w, img/zluta-1600.jpg 1600w" sizes="100vw" width="1600" height="1068" alt="Malíř maluje stěnu žlutou barvou" fetchpriority="high"></div>
+  <div class="hero-panel glass tma">
+    <span class="odlesk" aria-hidden="true"></span>
+    <h1 id="hero-h" class="disp"><span class="slovo"><span>Malíř</span></span> <span class="slovo"><span>Valášek</span></span></h1>
+    <p class="lede">Malování a nátěry v Karviné a okolí. Po malování u Vás i uklidíme.</p>
+    <div class="hero-cta">
+      <a class="btn" href="tel:+420731614442">Zavolat 731 614 442</a>
+      <a class="btn sklo" href="#plocha">Spočítat plochu</a>
     </div>
-    <div class="vysl" aria-live="polite"><span class="m2" id="m2">0 m²</span><p id="rozpad">stěny a strop</p></div>
-  </form>
+    <p class="pozn">Termín domluvíme po telefonu nebo přes SMS.</p>
+  </div>
+</section>
+
+<main>
+<svg class="pruh" id="pruh" aria-hidden="true"><path id="pruh-p" pathLength="1"/></svg>
+
+<section class="sluzby wrap" id="sluzby" aria-labelledby="sl-h">
+  <div class="sluzby-head">
+    <h2 id="sl-h" class="disp" data-r>Malování, nátěry, úklid</h2>
+    <p data-r>Provádíme veškeré malířské a natěračské práce. Když chcete, po malování u Vás i uklidíme.</p>
+  </div>
+  <div class="sl-grid">
+    <figure class="sl-foto glass" aria-hidden="true"><div class="ram">
+      <img class="on" data-k="0" src="img/valecek-800.jpg" srcset="img/valecek-800.jpg 800w, img/valecek-1600.jpg 1600w" sizes="40vw" width="1600" height="1200" alt="" loading="lazy">
+      <img data-k="1" src="img/pokoj-800.jpg" width="800" height="533" alt="" loading="lazy">
+      <img data-k="2" src="img/stetce-800.jpg" width="800" height="1200" alt="" loading="lazy">
+      <img data-k="3" src="img/plechovka-800.jpg" width="800" height="533" alt="" loading="lazy">
+      <img data-k="4" src="img/zakryti-800.jpg" width="800" height="1200" alt="" loading="lazy">
+    </div></figure>
+    <ul class="sl-list" id="sl-list">
+      <li class="sl-bod on" data-k="0" data-r>
+        <h3><span class="barva" aria-hidden="true"></span>Malování pokojů</h3><p>Byty, domy, kuchyně, chodby i schodiště.</p>
+        <svg viewBox="0 0 52 52" aria-hidden="true"><rect class="d" x="8" y="8" width="30" height="12" rx="3" pathLength="1"/><path class="d" d="M38 14h5v11H24v6" pathLength="1"/><path class="d z" d="M24 33v12" pathLength="1"/></svg>
+        <img src="img/valecek-800.jpg" width="800" height="600" alt="Váleček s bílou barvou na stěně" loading="lazy">
+      </li>
+      <li class="sl-bod" data-k="1" data-r>
+        <h3><span class="barva" aria-hidden="true"></span>Tapetování</h3><p>Tapety na celou stěnu i jako akcent.</p>
+        <svg viewBox="0 0 52 52" aria-hidden="true"><path class="d" d="M9 8h28a6 6 0 0 1 0 12H9z" pathLength="1"/><path class="d" d="M14 20v24h22V20" pathLength="1"/><path class="d z" d="M20 28h10M20 35h10" pathLength="1"/></svg>
+        <img src="img/pokoj-800.jpg" width="800" height="533" alt="Vymalovaný obývací pokoj" loading="lazy">
+      </li>
+      <li class="sl-bod" data-k="2" data-r>
+        <h3><span class="barva" aria-hidden="true"></span>Nátěry dveří a oken</h3><p>Dřevěné dveře, okna a zárubně.</p>
+        <svg viewBox="0 0 52 52" aria-hidden="true"><path class="d" d="M14 46V8h24v38" pathLength="1"/><path class="d" d="M8 46h36" pathLength="1"/><path class="d z" d="M32 26v3" pathLength="1"/></svg>
+        <img src="img/stetce-800.jpg" width="800" height="1200" alt="Dva štětce na plátně" loading="lazy">
+      </li>
+      <li class="sl-bod" data-k="3" data-r>
+        <h3><span class="barva" aria-hidden="true"></span>Nátěry kovu</h3><p>Radiátory, zábradlí a kovové prvky.</p>
+        <svg viewBox="0 0 52 52" aria-hidden="true"><path class="d" d="M10 14a3 3 0 0 1 6 0v24a3 3 0 0 1-6 0zM20 14a3 3 0 0 1 6 0v24a3 3 0 0 1-6 0zM30 14a3 3 0 0 1 6 0v24a3 3 0 0 1-6 0z" pathLength="1"/><path class="d z" d="M4 20h6m26 0h12" pathLength="1"/></svg>
+        <img src="img/plechovka-800.jpg" width="800" height="533" alt="Štětec v plechovce s barvou" loading="lazy">
+      </li>
+      <li class="sl-bod" data-k="4" data-r>
+        <h3><span class="barva" aria-hidden="true"></span>Úklid po malování</h3><p>Po práci uklidíme, aby byl byt hned k užívání.</p>
+        <svg viewBox="0 0 52 52" aria-hidden="true"><path class="d" d="M34 6 26 26" pathLength="1"/><path class="d" d="M16 26h18l4 18H12z" pathLength="1"/><path class="d z" d="M20 34v10M26 34v10M32 34v10" pathLength="1"/></svg>
+        <img src="img/zakryti-800.jpg" width="800" height="1200" alt="Řemeslník u zakrytého okna při práci" loading="lazy">
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="postup wrap" id="postup" aria-labelledby="po-h">
+  <div class="postup-in glass" data-r>
+    <h2 id="po-h" class="disp">Z nepořádku čistý pokoj</h2>
+    <p class="lead">Malování přinese do bytu nepořádek. Naším cílem je, aby po nás zůstal vymalovaný a uklizený byt.</p>
+    <svg class="tah" id="tah" viewBox="0 0 1000 80" aria-hidden="true">
+      <path class="stopa" d="M40 40C220 10 320 70 500 40S780 10 960 40"/>
+      <path class="barva" id="tah-b" d="M40 40C220 10 320 70 500 40S780 10 960 40" pathLength="1"/>
+      <g class="uzly"><circle class="uzel" cx="40" cy="40" r="20"/><text class="uzel-t" x="40" y="45" text-anchor="middle">1</text><circle class="uzel" cx="500" cy="40" r="20"/><text class="uzel-t" x="500" y="45" text-anchor="middle">2</text><circle class="uzel" cx="960" cy="40" r="20"/><text class="uzel-t" x="960" y="45" text-anchor="middle">3</text></g>
+    </svg>
+    <div class="kroky">
+      <div data-n="1"><h3>Domluvíme se</h3><p>Zavoláte nebo pošlete SMS a domluvíme rozsah práce a termín.</p></div>
+      <div data-n="2" style="text-align:center"><h3>Vymalujeme</h3><p>Malování a nátěry podle domluvy, místnost po místnosti.</p></div>
+      <div data-n="3" style="text-align:right"><h3>Uklidíme</h3><p>Pokud chcete, po malování u Vás uklidíme.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="plocha wrap" id="plocha" aria-labelledby="pl-h">
+  <div class="plocha-in glass" data-r>
+    <div>
+      <h2 id="pl-h" class="disp">Kolik metrů vymalovat</h2>
+      <p class="lead">Zadejte rozměry místnosti. Plochu stěn a stropu pak stačí říct do telefonu nebo napsat do SMS.</p>
+      <form id="plochaForm">
+        <div class="pole-row">
+          <div class="pole"><label for="d">Délka (m)</label><input id="d" inputmode="decimal" value="4"></div>
+          <div class="pole"><label for="s">Šířka (m)</label><input id="s" inputmode="decimal" value="3,5"></div>
+          <div class="pole"><label for="v">Výška (m)</label><input id="v" inputmode="decimal" value="2,6"></div>
+        </div>
+        <div class="vysl" aria-live="polite"><span class="m2" id="m2">0 m²</span><p id="rozpad">stěny a strop</p></div>
+        <div class="zatrh">
+          <label><input type="checkbox" id="strop" checked> Počítat i strop</label>
+          <label><input type="checkbox" id="okna" checked> Odečíst okno a dveře</label>
+        </div>
+        <a class="btn zelena" href="#kontakt" style="margin-top:22px">Poslat plochu v SMS</a>
+      </form>
+    </div>
+    <svg class="mistnost" id="mistnost" viewBox="0 0 440 330" role="img" aria-label="Model místnosti podle zadaných rozměrů">
+      <polygon class="podlaha" id="m-podlaha"/>
+      <polygon class="stena b" id="m-zad"/>
+      <polygon class="stena" id="m-lev"/>
+      <polygon class="otvor" id="m-okno"/>
+      <polygon class="otvor" id="m-dvere"/>
+      <polygon class="strop" id="m-strop"/>
+      <text class="kota" id="k-d" text-anchor="middle"></text>
+      <text class="kota" id="k-s" text-anchor="middle"></text>
+      <text class="kota" id="k-v" text-anchor="end"></text>
+    </svg>
+  </div>
 </section>
 
 <section class="galerie wrap" aria-labelledby="gal-h">
-  <h2 id="gal-h" data-r>Barva, štětec, váleček</h2>
+  <h2 id="gal-h" class="disp" data-r>Barva, štětec, váleček</h2>
   <div class="pasy">
-    <figure data-r><img src="img/modra-1600.jpg" srcset="img/modra-800.jpg 800w, img/modra-1600.jpg 1600w" sizes="(max-width:860px) 92vw, 66vw" width="1600" height="1118" alt="Váleček nanáší modrou barvu na bílou stěnu" loading="lazy"><figcaption>Malování válečkem</figcaption></figure>
-    <figure data-r style="--i:1"><img src="img/valecek-800.jpg" width="800" height="600" alt="Váleček s bílou barvou na stěně" loading="lazy"><figcaption>Bílá na bílou</figcaption></figure>
-    <figure data-r><img src="img/leseni-800.jpg" width="800" height="1200" alt="Malíř na lešení u stropu" loading="lazy"><figcaption>Stropy</figcaption></figure>
-    <figure data-r style="--i:1"><img src="img/plechovka-1600.jpg" srcset="img/plechovka-800.jpg 800w, img/plechovka-1600.jpg 1600w" sizes="(max-width:860px) 46vw, 58vw" width="1600" height="1067" alt="Štětec v plechovce bílé barvy" loading="lazy"><figcaption>Nátěry</figcaption></figure>
+    <figure data-r><img src="img/modra-1600.jpg" srcset="img/modra-800.jpg 800w, img/modra-1600.jpg 1600w" sizes="(max-width:600px) 92vw, 58vw" width="1600" height="1118" alt="Váleček nanáší modrou barvu na bílou stěnu" loading="lazy"><figcaption class="glass tma">Malování válečkem</figcaption></figure>
+    <figure data-r><img src="img/leseni-800.jpg" width="800" height="1200" alt="Malíř na lešení u stropu" loading="lazy"><figcaption class="glass tma">Stropy</figcaption></figure>
+    <figure data-r><img src="img/stetce-800.jpg" width="800" height="1200" alt="Dva štětce na plátně" loading="lazy"><figcaption class="glass tma">Štětce</figcaption></figure>
+    <figure data-r><img src="img/pokoj-1600.jpg" srcset="img/pokoj-800.jpg 800w, img/pokoj-1600.jpg 1600w" sizes="(max-width:600px) 92vw, 66vw" width="1600" height="1067" alt="Vymalovaný obývací pokoj" loading="lazy"><figcaption class="glass tma">Hotový pokoj</figcaption></figure>
   </div>
 </section>
 
 <section class="dotazy wrap" aria-labelledby="dot-h">
-  <h2 id="dot-h" data-r>Časté dotazy</h2>
-  <div class="karty" id="karty">
-    <details class="karta" open data-r><summary><span class="tab">Úklid</span><span class="q">Uklidíte po malování?</span></summary><p>Ano. Úklid po malování nabízíme jako službu navíc, stačí to říct při domluvě.</p></details>
-    <details class="karta" data-r><summary><span class="tab">Cena</span><span class="q">Kolik malování stojí?</span></summary><p>Záleží na ploše a rozsahu práce. Cenu Vám řekneme při domluvě, plochu si můžete předem spočítat výše.</p></details>
-    <details class="karta" data-r><summary><span class="tab">Objednání</span><span class="q">Jak se objednat?</span></summary><p>Zavolejte na 731 614 442, nebo pošlete SMS přes formulář níže. Ozveme se a domluvíme se na termínu.</p></details>
-    <details class="karta" data-r><summary><span class="tab">Kde</span><span class="q">Kam jezdíte?</span></summary><p>Sídlíme v Karviné-Hranicích. Karviná a okolí, vzdálenější místa se domluvíme po telefonu.</p></details>
-    <details class="karta" data-r><summary><span class="tab">Nábytek</span><span class="q">Musím vystěhovat pokoj?</span></summary><p>Domluvíme se předem, co je potřeba odnést a co jen zakryjeme.</p></details>
+  <h2 id="dot-h" class="disp" data-r>Časté dotazy</h2>
+  <div class="faq" id="faq">
+    <details class="glass" open data-r><summary>Uklidíte po malování?<i aria-hidden="true"></i></summary><p>Ano. Úklid po malování nabízíme jako službu navíc, stačí to říct při domluvě.</p></details>
+    <details class="glass" data-r><summary>Kolik malování stojí?<i aria-hidden="true"></i></summary><p>Záleží na ploše a rozsahu práce. Cenu Vám řekneme při domluvě, plochu si můžete předem spočítat výše.</p></details>
+    <details class="glass" data-r><summary>Jak se objednat?<i aria-hidden="true"></i></summary><p>Zavolejte na 731 614 442, nebo pošlete SMS přes formulář níže. Ozveme se a domluvíme se na termínu.</p></details>
+    <details class="glass" data-r><summary>Kam jezdíte?<i aria-hidden="true"></i></summary><p>Sídlíme v Karviné-Hranicích. Karviná a okolí, vzdálenější místa se domluvíme po telefonu.</p></details>
+    <details class="glass" data-r><summary>Musím vystěhovat pokoj?<i aria-hidden="true"></i></summary><p>Domluvíme se předem, co je potřeba odnést a co jen zakryjeme.</p></details>
   </div>
 </section>
 
-<section class="kupon-wrap wrap" id="kontakt" aria-labelledby="kup-h">
-  <div class="kupon" data-r>
-    <div class="kupon-l">
-      <h2 id="kup-h">Domluvte si malování</h2>
-      <div><a class="tel" href="tel:+420731614442">731 614 442</a><p style="margin-top:12px">Vyplňte formulář vpravo a v telefonu se Vám otevře hotová SMS. Stačí ji odeslat.</p></div>
+<section class="kontakt wrap" id="kontakt" aria-labelledby="kup-h">
+  <div class="kontakt-in" data-r>
+    <div class="kontakt-foto"><img src="img/plechovka-1600.jpg" srcset="img/plechovka-800.jpg 800w, img/plechovka-1600.jpg 1600w" sizes="92vw" width="1600" height="1067" alt="" loading="lazy"></div>
+    <div class="kontakt-l glass tma">
+      <h2 id="kup-h" class="disp">Domluvte si malování</h2>
+      <a class="tel" href="tel:+420731614442">731 614 442</a>
+      <p>Vyplňte formulář a v telefonu se Vám otevře hotová SMS. Stačí ji odeslat.</p>
     </div>
-    <form class="kupon-r" id="sms">
+    <form class="sms glass" id="sms">
       <label class="vh" for="k-jm">Jméno</label><input id="k-jm" placeholder="Jméno" autocomplete="name">
       <label class="vh" for="k-co">Co malovat</label><input id="k-co" placeholder="Co malovat, např. 2 pokoje a chodba">
       <label class="vh" for="k-kde">Místo</label><input id="k-kde" placeholder="Kde, např. Karviná-Mizerov">
       <label class="vh" for="k-kdy">Kdy</label><select id="k-kdy"><option value="">Kdy by se Vám to hodilo?</option><option>co nejdřív</option><option>do měsíce</option><option>za 1–3 měsíce</option><option>termín domluvíme</option></select>
-      <button type="submit">Připravit SMS</button>
+      <button class="btn" type="submit">Připravit SMS</button>
       <p class="pozn">Na počítači číslo prostě vytočte: 731 614 442.</p>
     </form>
   </div>
@@ -346,53 +436,86 @@ footer .fine{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
 </main>
 
 <footer class="wrap">
-  <p class="big" aria-hidden="true">Valášek</p>
+  <p class="big" aria-hidden="true" id="big">Valášek</p>
   <div class="fine">
     <span>Vladimír Valášek · Petrovická 2099/15a, 733 01 Karviná-Hranice · IČO 15447251</span>
     <span>Fotografie: Unsplash (ilustrační)</span>
   </div>
 </footer>
 
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
 <script>
-document.documentElement.classList.add('js');
+/* Úvod: obrys válečku se nakreslí a za ním se natáhne žlutý pruh přes celou obrazovku */
+window.INTRO_EXTRA = function(tl, root){
+  tl.to(root.querySelector('.intro-pas'), {scaleX:1, duration:1.1, ease:'power3.inOut'}, .35);
+};
+</script>
+<script src="js/intro.js"></script>
+<script>
 (function(){
   var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // Index s náhledem: najetí na bod přepne fotku v pruhu
-  var body = document.getElementById('body'), bods = [].slice.call(body.querySelectorAll('.bod')), fotos = [].slice.call(document.querySelectorAll('.co-foto img'));
-  function pick(k){ bods.forEach(function(b){ b.classList.toggle('on', b.dataset.k===k); }); fotos.forEach(function(f){ f.classList.toggle('on', f.dataset.k===k); }); }
-  if (matchMedia('(hover:hover)').matches){
-    bods.forEach(function(b){ b.addEventListener('pointerenter', function(){ body.classList.add('hovering'); pick(b.dataset.k); }); });
-    body.addEventListener('pointerleave', function(){ body.classList.remove('hovering'); });
-  }
+  var hasG = !!(window.gsap && window.ScrollTrigger);
 
-  // Schéma: rozházené → pruh válečku → úhledné řady
-  var svg = document.getElementById('schema'), NS = 'http://www.w3.org/2000/svg', seed = 7;
-  function rnd(){ seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
-  var out = '';
-  for (var i = 0; i < 54; i++){ out += '<rect x="'+(20+rnd()*340).toFixed(0)+'" y="'+(20+rnd()*210).toFixed(0)+'" width="13" height="13" fill="'+(i%2?'#d3d3cc':'#a9cbd9')+'" style="transition-delay:'+(i*8)+'ms"/>'; }
-  out += '<rect x="420" y="98" width="380" height="64" rx="0" fill="#f6e016" style="transition-delay:300ms"/><rect x="760" y="98" width="64" height="64" rx="32" fill="#f6e016" style="transition-delay:300ms"/>';
-  for (var r = 0; r < 4; r++) for (var c = 0; c < 13; c++){ out += '<rect x="'+(880+c*24)+'" y="'+(70+r*32)+'" width="13" height="13" fill="#0d2a1c" style="transition-delay:'+(500+(r*13+c)*10)+'ms"/>'; }
-  svg.innerHTML = out;
-
-  // Kalkulačka plochy
+  /* ===== Kalkulačka plochy s živým modelem místnosti ===== */
   var f = {d:document.getElementById('d'), s:document.getElementById('s'), v:document.getElementById('v'), strop:document.getElementById('strop'), okna:document.getElementById('okna')};
-  var m2 = document.getElementById('m2'), rozpad = document.getElementById('rozpad'), last = 0;
+  var m2 = document.getElementById('m2'), rozpad = document.getElementById('rozpad'), last = -1;
   function n(el){ var x = parseFloat(String(el.value).replace(',','.')); return isNaN(x) || x < 0 ? 0 : Math.min(x, 60); }
   function fmt(x){ return (Math.round(x*10)/10).toLocaleString('cs-CZ'); }
+
+  /* izometrie: x = délka (zadní stěna), y = šířka (levá stěna), z = výška */
+  var C = Math.cos(Math.PI/6), VW = 440, VH = 330, PAD = 34, $ = function(id){ return document.getElementById(id); };
+  function model(d, s, v){
+    d = Math.max(d, .5); s = Math.max(s, .5); v = Math.max(v, .5);
+    var iso = function(p){ return [(p[0] - p[1]) * C, (p[0] + p[1]) * .5 - p[2]]; };
+    var all = [[0,0,0],[d,0,0],[0,s,0],[d,s,0],[0,0,v],[d,0,v],[0,s,v],[d,s,v]].map(iso);
+    var xs = all.map(function(q){ return q[0]; }), ys = all.map(function(q){ return q[1]; });
+    var minx = Math.min.apply(0, xs), maxx = Math.max.apply(0, xs), miny = Math.min.apply(0, ys), maxy = Math.max.apply(0, ys);
+    var k = Math.min((VW - 2*PAD) / (maxx - minx), (VH - 2*PAD) / (maxy - miny));
+    var ox = (VW - (maxx - minx) * k) / 2, oy = (VH - (maxy - miny) * k) / 2;
+    var P = function(x, y, z){ var q = iso([x, y, z]); return [(q[0] - minx) * k + ox, (q[1] - miny) * k + oy]; };
+    var poly = function(a){ return a.map(function(p){ return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' '); };
+    var ow = Math.max(.1, Math.min(1.5, d - .2)), oz1 = Math.min(.9, v * .35), oz2 = Math.max(oz1 + .1, Math.min(2.4, v - .1)), ox1 = d/2 - ow/2;
+    var dw = Math.max(.1, Math.min(.8, s - .2)), dz = Math.max(.1, Math.min(2, v - .1)), dy1 = Math.max(.1, s * .62 - dw/2);
+    var mid = function(a, b){ return [(a[0]+b[0])/2, (a[1]+b[1])/2]; };
+    var kd = mid(P(0,0,0), P(d,0,0)), ks = mid(P(0,0,0), P(0,s,0)), kv = mid(P(0,0,0), P(0,0,v));
+    return {
+      podlaha: poly([P(0,0,0), P(d,0,0), P(d,s,0), P(0,s,0)]),
+      zad: poly([P(0,0,0), P(d,0,0), P(d,0,v), P(0,0,v)]),
+      lev: poly([P(0,0,0), P(0,s,0), P(0,s,v), P(0,0,v)]),
+      okno: poly([P(ox1,0,oz1), P(ox1+ow,0,oz1), P(ox1+ow,0,oz2), P(ox1,0,oz2)]),
+      dvere: poly([P(0,dy1,0), P(0,dy1+dw,0), P(0,dy1+dw,dz), P(0,dy1,dz)]),
+      strop: poly([P(0,0,v), P(d,0,v), P(d,s,v), P(0,s,v)]),
+      kd: [kd[0] + 22, kd[1] + 22], ks: [ks[0] - 22, ks[1] + 22], kv: [kv[0] - 10, kv[1] + 5]
+    };
+  }
+  var first = true;
+  function kresli(d, s, v){
+    var M = model(d, s, v), t = (!hasG || RM || first) ? 0 : .5;
+    ['podlaha','zad','lev','okno','dvere','strop'].forEach(function(id){
+      var el = $('m-' + id);
+      if (t) gsap.to(el, {attr:{points:M[id]}, duration:t, ease:'power3.out', overwrite:'auto'}); else el.setAttribute('points', M[id]);
+    });
+    var vis = function(el, on){ if (t) gsap.to(el, {opacity:on ? 1 : 0, duration:.3, overwrite:'auto'}); else el.style.opacity = on ? 1 : 0; };
+    vis($('m-okno'), f.okna.checked); vis($('m-dvere'), f.okna.checked); vis($('m-strop'), f.strop.checked);
+    [['k-d', M.kd, fmt(d) + ' m'], ['k-s', M.ks, fmt(s) + ' m'], ['k-v', M.kv, fmt(v) + ' m']].forEach(function(x){ var el = $(x[0]); el.setAttribute('x', x[1][0].toFixed(1)); el.setAttribute('y', x[1][1].toFixed(1)); el.textContent = x[2]; });
+    first = false;
+  }
   function calc(){
     var d = n(f.d), s = n(f.s), v = n(f.v);
     var steny = 2*(d+s)*v, odecet = f.okna.checked ? 1.5*1.5 + 0.8*2 : 0, strop = f.strop.checked ? d*s : 0;
     steny = Math.max(0, steny - odecet); var celkem = steny + strop;
     m2.textContent = fmt(celkem) + ' m²';
     rozpad.textContent = 'stěny ' + fmt(steny) + ' m²' + (strop ? ' + strop ' + fmt(strop) + ' m²' : '') + (odecet ? ', odečteno okno 1,5 × 1,5 m a dveře 0,8 × 2 m' : '');
-    if (!RM && celkem !== last){ m2.classList.remove('bump'); void m2.offsetWidth; m2.classList.add('bump'); }
+    if (!RM && last >= 0 && celkem !== last){ m2.classList.remove('bump'); void m2.offsetWidth; m2.classList.add('bump'); }
     last = celkem; window.__plocha = fmt(celkem);
+    kresli(d, s, v);
   }
   document.getElementById('plochaForm').addEventListener('input', calc);
   document.getElementById('plochaForm').addEventListener('submit', function(e){ e.preventDefault(); });
   calc();
 
-  // SMS kupón
+  /* SMS: v telefonu se otevře hotová zpráva (iOS odděluje tělo znakem &) */
   document.getElementById('sms').addEventListener('submit', function(e){
     e.preventDefault();
     var g = function(id){ return document.getElementById(id).value.trim(); };
@@ -400,14 +523,110 @@ document.documentElement.classList.add('js');
     location.href = 'sms:+420731614442' + (/iPhone|iPad|Mac/.test(navigator.userAgent) ? '&' : '?') + 'body=' + encodeURIComponent(t);
   });
 
-  // Kartotéka: otevřená je vždy jen jedna karta
-  var karty = [].slice.call(document.querySelectorAll('.karta'));
+  /* služby: aktivní položka dostane žlutý tah a přepne fotku (najetím i scrollem) */
+  var body = [].slice.call(document.querySelectorAll('.sl-bod')), slf = [].slice.call(document.querySelectorAll('.sl-foto img'));
+  function vyber(k){ body.forEach(function(b){ b.classList.toggle('on', b.dataset.k === k); }); slf.forEach(function(i){ i.classList.toggle('on', i.dataset.k === k); }); }
+  body.forEach(function(b){ b.addEventListener('pointerenter', function(){ vyber(b.dataset.k); }); });
+  window.__vyber = vyber;
+
+  /* dotazy: otevřená je vždy jen jedna karta */
+  var karty = [].slice.call(document.querySelectorAll('.faq details'));
   karty.forEach(function(k){ k.addEventListener('toggle', function(){ if (k.open) karty.forEach(function(o){ if (o !== k) o.open = false; }); }); });
 
-  var els = [].slice.call(document.querySelectorAll('[data-r]')); els.push(svg);
-  if (RM || !('IntersectionObserver' in window)) { els.forEach(function(el){el.classList.add('in')}); return; }
-  var io = new IntersectionObserver(function(en){ en.forEach(function(x){ if (x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } }); }, {rootMargin:'0px 0px -8% 0px'});
-  els.forEach(function(el){ io.observe(el); });
+  /* ===== Pruh válečku: tahy nahoru a dolů přes celou výšku obsahu ===== */
+  var main = document.querySelector('main'), pruh = document.getElementById('pruh'), pp = document.getElementById('pruh-p');
+  function cesta(){
+    var W = main.clientWidth, H = main.scrollHeight, w = Math.max(44, Math.min(130, W * .09));
+    var L = W < 600 ? W * .16 : W * .14, R = W - L, seg = H / 4.2, y = 0, x = R, d = 'M' + R.toFixed(0) + ' ' + (-w).toFixed(0);
+    for (var i = 0; i < 4; i++){
+      var nx = x === R ? L : R, y1 = y + seg * .72, y2 = y + seg;
+      d += ' L' + x.toFixed(0) + ' ' + y1.toFixed(0) + ' C' + x.toFixed(0) + ' ' + (y1 + seg * .22).toFixed(0) + ' ' + nx.toFixed(0) + ' ' + (y2 - seg * .02).toFixed(0) + ' ' + nx.toFixed(0) + ' ' + (y2 + seg * .2).toFixed(0);
+      x = nx; y = y2 + seg * .2;
+    }
+    d += ' L' + x.toFixed(0) + ' ' + (H - w).toFixed(0);
+    pruh.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    pp.setAttribute('d', d); pp.style.strokeWidth = w;
+  }
+  cesta();
+
+  /* ===== POHYB — GSAP + ScrollTrigger =====
+     Úvod: sklo s nadpisem vyplave, slova vyjedou, po skle přejede odlesk a fotka
+     se usadí. Při scrollu: žlutý pruh válečku se maluje přes celou stránku za
+     skleněnými panely, ikony služeb se nakreslí, tah válečkem spojí tři kroky,
+     stěny modelu místnosti se natřou a fotky v galerii mají paralaxu.         */
+  if (!hasG){ document.documentElement.classList.remove('js'); return; }
+  gsap.registerPlugin(ScrollTrigger);
+  var mm = gsap.matchMedia();
+  /* kreslení tahu: skutečná délka cesty (GSAP zaokrouhluje px, s pathLength="1" by tah jen přeskočil) */
+  function cara(els){ return gsap.utils.toArray(els).map(function(el){ var L = Math.ceil(el.getTotalLength()) + 1; el.removeAttribute('pathLength'); gsap.set(el, {strokeDasharray:L + ' ' + L, strokeDashoffset:L}); return el; }); }
+
+  mm.add('(prefers-reduced-motion: reduce)', function(){
+    gsap.set('[data-r],.hero-panel,.hero h1 .slovo>span', {clearProps:'all'});
+  });
+
+  mm.add('(prefers-reduced-motion: no-preference)', function(){
+    var hero = gsap.timeline({paused:true, defaults:{ease:'power3.out'}});
+    hero.fromTo('.hero-foto img', {scale:1.14}, {scale:1, duration:2.2, ease:'power2.out'}, 0)
+        .to('.hero-panel', {opacity:1, y:0, duration:.6, ease:'expo.out'}, 0)
+        .to('.hero h1 .slovo>span', {y:0, duration:.7, stagger:.08}, .1)
+        .from('.hero .lede, .hero-cta, .hero .pozn', {opacity:0, y:14, duration:.5, stagger:.06}, .3)
+        .to('.odlesk', {xPercent:420, duration:1.4, ease:'power2.inOut'}, .7);
+    afterIntro(function(){ hero.play(); });
+
+    /* fotka v úvodu při odjezdu zpomalí (paralaxa) */
+    gsap.to('.hero-foto', {yPercent:12, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
+
+    ScrollTrigger.batch('[data-r]', {start:'top 88%', once:true, onEnter:function(b){
+      gsap.to(b, {opacity:1, y:0, duration:.9, ease:'expo.out', stagger:.08, overwrite:true});
+    }});
+
+    /* pruh válečku se maluje se scrollem */
+    var pruhTw;
+    function pruhAnim(){
+      if (pruhTw){ pruhTw.scrollTrigger.kill(); pruhTw.kill(); }
+      cara(pp);
+      pruhTw = gsap.to(pp, {strokeDashoffset:0, ease:'none', scrollTrigger:{trigger:main, start:'top 75%', end:'bottom bottom', scrub:.8}});
+    }
+    pruhAnim();
+    window.__pruhAnim = pruhAnim;
+
+    /* ikony služeb se nakreslí */
+    document.querySelectorAll('.sl-bod svg').forEach(function(svg){
+      var d = cara(svg.querySelectorAll('.d'));
+      gsap.to(d, {strokeDashoffset:0, duration:1, ease:'power2.inOut', stagger:.18, scrollTrigger:{trigger:svg, start:'top 88%', once:true}});
+    });
+
+    /* při scrollu se aktivní stane položka uprostřed okna */
+    document.querySelectorAll('.sl-bod').forEach(function(b){
+      ScrollTrigger.create({trigger:b, start:'top 60%', end:'bottom 40%', onToggle:function(st){ if (st.isActive) window.__vyber(b.dataset.k); }});
+    });
+
+    /* tah válečkem spojí tři kroky */
+    var tb = cara('#tah-b')[0];
+    var tah = gsap.timeline({scrollTrigger:{trigger:'#tah', start:'top 80%', end:'top 35%', scrub:.6}});
+    tah.to(tb, {strokeDashoffset:0, ease:'none', duration:1}, 0)
+       .from('.uzly circle, .uzly text', {scale:0, transformOrigin:'50% 50%', stagger:.45, duration:.12, ease:'back.out(3)'}, 0);
+
+    /* stěny modelu místnosti se natřou */
+    gsap.from('#m-zad, #m-lev', {fillOpacity:0, duration:.9, stagger:.25, ease:'power2.out', scrollTrigger:{trigger:'#mistnost', start:'top 80%', once:true}});
+
+    /* paralaxa fotek v galerii */
+    document.querySelectorAll('.pasy figure').forEach(function(fi){
+      gsap.fromTo(fi.querySelector('img'), {yPercent:-6}, {yPercent:6, ease:'none', scrollTrigger:{trigger:fi, start:'top bottom', end:'bottom top', scrub:true}});
+    });
+
+    /* patička: jméno vyjede po písmenech */
+    var big = document.getElementById('big'), t = big.textContent; big.textContent = '';
+    t.split('').forEach(function(ch){ var m = document.createElement('span'), x = document.createElement('span'); m.style.cssText = 'display:inline-block;overflow:hidden;vertical-align:top;padding:.1em 0 .04em;margin:-.1em 0 -.04em'; x.style.display = 'inline-block'; x.textContent = ch; m.appendChild(x); big.appendChild(m); });
+    gsap.from('#big span span', {yPercent:110, duration:1, ease:'power4.out', stagger:.05, scrollTrigger:{trigger:'footer', start:'top 90%', once:true}});
+  });
+
+  /* po načtení obrázků a písma se změní výška stránky: přepočítat pruh i spouštěče */
+  var rt;
+  function refresh(){ clearTimeout(rt); rt = setTimeout(function(){ cesta(); if (window.__pruhAnim) window.__pruhAnim(); ScrollTrigger.refresh(); }, 150); }
+  addEventListener('load', refresh);
+  addEventListener('resize', refresh);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
 })();
 </script>
 </body>
