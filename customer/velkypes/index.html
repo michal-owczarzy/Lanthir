@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VELKYPES – krmiva a chovatelské potřeby, Karviná-Ráj</title>
+<meta name="description" content="Krmiva a chovatelské potřeby pro psy i kočky v Karviné-Ráji, u Lidlu. Acana, Orijen, Brit Care, Hill's, Josera, K9, Magnusson. Otevřeno každý den. Tel. 731 271 987.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#e8e8e3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23181715'/%3E%3Ccircle cx='16' cy='20' r='6' fill='%23bfb21a'/%3E%3Ccircle cx='8' cy='12' r='3' fill='%23bfb21a'/%3E%3Ccircle cx='13' cy='7' r='3' fill='%23bfb21a'/%3E%3Ccircle cx='19' cy='7' r='3' fill='%23bfb21a'/%3E%3Ccircle cx='24' cy='12' r='3' fill='%23bfb21a'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/gambarino-400-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/general-sans-400-normal.woff2" crossorigin>
+<link rel="preload" as="image" href="img/mastif-800.jpg" imagesrcset="img/mastif-800.jpg 800w, img/mastif-1600.jpg 1600w" imagesizes="(max-width:860px) 100vw, 50vw">
+<style>
+@font-face{font-family:"Gambarino";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/gambarino-400-normal.woff2) format("woff2")}
+@font-face{font-family:"General Sans";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/general-sans-400-normal.woff2) format("woff2")}
+@font-face{font-family:"General Sans";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/general-sans-500-normal.woff2) format("woff2")}
+
+/* Tokeny: papír cedule na dveřích, černý tisk, mosazná značka „otevřeno“ */
+:root{
+  --bg:#e8e8e3; --surface:#dcdcd6; --surface-2:#d0d0c9; --ink:#181715; --muted:#55544e;
+  --accent:#bfb21a; --accent-ink:#181715; --paper:#f4f4f2;
+  --display:"Gambarino",Georgia,serif; --text:"General Sans",system-ui,sans-serif;
+  --s-small:clamp(.875rem,.85rem + .1vw,.9375rem);
+  --s-body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
+  --s-lead:clamp(1.25rem,1.1rem + .7vw,1.625rem);
+  --s-head:clamp(2.5rem,1.4rem + 3.6vw,4.5rem);
+  --m:12px; --g:clamp(20px,4vw,56px); --r:16px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--s-body)/1.5 var(--text);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{padding-left:var(--g);padding-right:var(--g)}
+.disp{font-family:var(--display);font-weight:400;letter-spacing:-.02em;line-height:.92}
+.num{font-variant-numeric:tabular-nums}
+
+.ribbon{background:#3a2ee0;color:#fff;font:400 15px/1.4 var(--text);text-align:center;padding:9px 16px}
+.ribbon a{font-weight:500;text-underline-offset:2px}
+
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:var(--r);background:var(--ink);color:var(--paper);font:500 var(--s-body)/1 var(--text);text-decoration:none;border:0;cursor:pointer;overflow:hidden;transition:transform .15s var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:repeating-linear-gradient(90deg,var(--accent) 0 14px,transparent 14px 28px);transform:translateY(100%);transition:transform .25s var(--ease)} /* taste-skill-ignore: proužek markýzy, ne přechod */
+@media (hover:hover){.btn:hover::after{transform:none}}
+
+/* ========== ÚVOD — cedule vedle fotky ========== */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px;min-height:100svh}
+.cedule{background:var(--paper);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;text-align:center;overflow:hidden;padding-bottom:28px}
+.markyza{display:flex;width:100%;height:56px;flex:none}
+.markyza i{flex:1;background:var(--ink)}
+.markyza i:nth-child(even){background:var(--paper)}
+.cedule-in{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:36px 28px 20px}
+.logo{font:500 clamp(1.5rem,1rem + 1.6vw,2.25rem)/1 var(--text);letter-spacing:.16em}
+.logo b{font-weight:500;color:var(--muted)}
+.cedule h1{font-size:clamp(2.5rem,1rem + 3.6vw,3.75rem)}
+.cedule .sent{max-width:36ch;font-size:var(--s-body)}
+.stav{display:inline-flex;align-items:center;gap:12px;padding:10px 18px;border-radius:var(--r);background:var(--surface);font:500 var(--s-body)/1.25 var(--text);text-align:left}
+.stav .tecka{flex:none;width:12px;height:12px;border-radius:50%;background:var(--muted)}
+.stav.otevreno{background:var(--accent)}
+.stav.otevreno .tecka{background:var(--ink);animation:tep 2s ease-in-out infinite}
+@keyframes tep{50%{transform:scale(.6)}}
+.cedule-links{display:flex;gap:22px;justify-content:center;font-size:var(--s-small);flex-wrap:wrap}
+.foto{position:sticky;top:12px;height:calc(100svh - 24px);border-radius:var(--r);overflow:hidden;background:var(--ink)}
+.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;opacity:0;transition:opacity 1.6s ease-in-out}
+.foto img.on{opacity:1}
+.foto figcaption{position:absolute;left:16px;bottom:16px;background:var(--paper);border-radius:10px;padding:6px 12px;font-size:var(--s-small)}
+
+/* ========== OTEVÍRACÍ DOBA — obří slovo a pruhy ========== */
+.doba{max-width:640px;margin:clamp(120px,14vw,200px) auto 0;padding:0 var(--g);container-type:inline-size}
+.doba h2{font-size:26.5cqw;line-height:.8;letter-spacing:-.03em}
+.dny{margin-top:20px;display:flex;flex-direction:column;gap:6px}
+.den{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px;padding:0 18px;background:var(--surface);border-radius:6px;font-size:var(--s-body)}
+.den span:first-child{font-weight:500}
+.den.dnes{background:var(--ink);color:var(--paper)}
+.den.dnes span:first-child::after{content:" · dnes";font-weight:400;color:var(--accent)}
+.doba .pozn{margin-top:16px;font-size:var(--s-small);color:var(--muted)}
+
+/* ========== SORTIMENT — tištěný ceník se zoubky ========== */
+.sortiment{margin-top:clamp(120px,14vw,200px);background:var(--ink);padding-top:clamp(80px,9vw,140px);padding-bottom:clamp(80px,9vw,140px);display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;row-gap:24px;align-items:start}
+.list{grid-column:2/7;background:var(--paper);padding:64px clamp(24px,3vw,48px);
+  clip-path:polygon(0 12px,4% 0,8% 12px,12% 0,16% 12px,20% 0,24% 12px,28% 0,32% 12px,36% 0,40% 12px,44% 0,48% 12px,52% 0,56% 12px,60% 0,64% 12px,68% 0,72% 12px,76% 0,80% 12px,84% 0,88% 12px,92% 0,96% 12px,100% 0,100% calc(100% - 12px),96% 100%,92% calc(100% - 12px),88% 100%,84% calc(100% - 12px),80% 100%,76% calc(100% - 12px),72% 100%,68% calc(100% - 12px),64% 100%,60% calc(100% - 12px),56% 100%,52% calc(100% - 12px),48% 100%,44% calc(100% - 12px),40% 100%,36% calc(100% - 12px),32% 100%,28% calc(100% - 12px),24% 100%,20% calc(100% - 12px),16% 100%,12% calc(100% - 12px),8% 100%,4% calc(100% - 12px),0 100%)}
+.list h2{text-align:center;font-size:clamp(2.5rem,1.6rem + 2.4vw,3.5rem)}
+.skupina{margin-top:44px}
+.skupina h3{font:500 var(--s-lead)/1.2 var(--text);margin-bottom:14px}
+.polozka{display:flex;align-items:baseline;gap:10px;padding:8px 0}
+.polozka .n{font-size:var(--s-body)}
+.polozka .tecky{flex:1;border-bottom:4px dotted #b9b8b0;transform:translateY(-4px)}
+.polozka .v{font-size:var(--s-small);color:var(--muted);white-space:nowrap}
+.sort-foto{grid-column:8/12;display:grid;grid-template-columns:1fr 1fr;gap:12px;position:sticky;top:24px}
+.sort-foto figure{border-radius:var(--r);overflow:hidden}
+.sort-foto figure:first-child{grid-column:1/-1}
+.sort-foto img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform 1.2s var(--ease)}
+.sort-foto figure:first-child img{aspect-ratio:3/2}
+@media (hover:hover){.sort-foto figure:hover img{transform:scale(1.05)}}
+.sort-foto figcaption{color:var(--paper);font-size:var(--s-small);padding-top:8px}
+
+/* ========== ZNAČKY — jména v řadě ========== */
+.znacky{padding-top:clamp(120px,14vw,200px)}
+.znacky h2{font-size:var(--s-head)}
+.znacky ul{display:flex;flex-wrap:wrap;gap:6px 0;margin-top:40px}
+.znacky li{font:400 clamp(2rem,1rem + 3.4vw,4.25rem)/1.1 var(--display);letter-spacing:-.02em;padding-right:.5em}
+.znacky li:not(:last-child)::after{content:"·";padding-left:.5em;color:var(--accent)}
+.znacky p{margin-top:28px;max-width:52ch}
+
+/* ========== JAK K NÁM — list s ústřižkem ========== */
+.kudy{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;padding-top:clamp(120px,14vw,200px);align-items:center}
+.kudy-list{grid-column:2/7;background:var(--paper);padding:60px}
+.kudy-list h2{font-size:var(--s-head)}
+.kudy-list p{margin-top:22px;font-size:var(--s-lead);line-height:1.4}
+.kudy-list .adr{margin-top:28px;font-size:var(--s-body)}
+.kudy-list .btn{margin-top:28px}
+.ustrizek{border-top:5px dotted var(--bg);margin:48px -60px -60px;padding:22px 60px;background:var(--surface);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 20px}
+.ustrizek a{font-weight:500;text-decoration:none}
+@media (hover:hover){.ustrizek a:hover{text-decoration:underline}}
+.kudy figure{grid-column:8/-1;border-radius:var(--r);overflow:hidden}
+.kudy figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
+
+/* ========== DOTAZ — kupón ========== */
+.kupon-wrap{padding-top:clamp(120px,14vw,200px);padding-bottom:clamp(96px,10vw,140px)}
+.kupon{display:grid;grid-template-columns:46% 54%;background:var(--accent);border-radius:14px;
+  -webkit-mask:radial-gradient(circle 14px at 46% 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 14px at 46% 100%,#0000 98%,#000) bottom/100% 51% no-repeat; /* taste-skill-ignore: maska výřezů kupónu */
+  mask:radial-gradient(circle 14px at 46% 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 14px at 46% 100%,#0000 98%,#000) bottom/100% 51% no-repeat} /* taste-skill-ignore: maska výřezů kupónu */
+.kupon-l{padding:48px;display:flex;flex-direction:column;justify-content:space-between;gap:32px;border-right:5px dotted var(--bg)}
+.kupon-l h2{font-size:clamp(2.25rem,1.4rem + 2.6vw,3.5rem)}
+.kupon-r{padding:48px;display:flex;flex-direction:column;gap:10px}
+.kupon-r input,.kupon-r textarea{border:0;border-radius:0;background:#d4c83a;color:var(--ink);font:400 var(--s-body)/1.4 var(--text);padding:14px 18px;width:100%}
+.kupon-r input{height:54px}
+.kupon-r textarea{min-height:110px;resize:vertical}
+.kupon-r input::placeholder,.kupon-r textarea::placeholder{color:#4d4810}
+.kupon-r input:focus,.kupon-r textarea:focus{background:#e3d95a;outline:2px solid var(--ink);outline-offset:0}
+.kupon-r button{height:58px;border:0;border-radius:var(--r);background:var(--ink);color:var(--paper);font:500 var(--s-body)/1 var(--text);cursor:pointer;transition:transform .15s var(--ease)}
+.kupon-r button:active{transform:scale(.98)}
+
+footer{background:var(--ink);color:var(--paper)}
+footer .pruhy{display:flex;height:8px}
+footer .pruhy i{flex:1;background:var(--accent)}
+footer .pruhy i:nth-child(even){background:var(--ink)}
+footer .in{padding-top:56px;padding-bottom:32px}
+footer .big{font:500 clamp(3.5rem,1rem + 12vw,13rem)/.9 var(--text);letter-spacing:.06em}
+footer .fine{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 32px;margin-top:28px;font-size:var(--s-small);color:#b9b8b0}
+
+/* ========== Pohyb ========== */
+.js .cedule-in>*{opacity:0;transform:translateY(18px);animation:vstup .7s var(--ease) forwards}
+.js .cedule-in>*:nth-child(2){animation-delay:.08s}.js .cedule-in>*:nth-child(3){animation-delay:.16s}.js .cedule-in>*:nth-child(4){animation-delay:.24s}.js .cedule-in>*:nth-child(5){animation-delay:.32s}
+.js .markyza i{transform:scaleY(0);transform-origin:top;animation:roleta .6s var(--ease) forwards;animation-delay:calc(var(--i) * 25ms)}
+@keyframes vstup{to{opacity:1;transform:none}}
+@keyframes roleta{to{transform:none}}
+.js [data-r]{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(var(--i,0) * 75ms)}
+.js [data-r].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .cedule-in>*,.js .markyza i{animation:none;opacity:1;transform:none}
+  .stav.otevreno .tecka{animation:none}
+  .foto img{transition:none}
+  .js [data-r]{opacity:1;transform:none;transition:none}
+}
+
+/* ========== Telefon ========== */
+@media (max-width:860px){
+  .ribbon{font-size:14px;padding:8px 14px}
+  .hero{display:flex;flex-direction:column-reverse;min-height:0}
+  .foto{position:relative;top:0;height:min(48svh,46vw + 120px)}
+  .cedule{margin-top:-36px;position:relative;z-index:1}
+  .foto figcaption{top:14px;bottom:auto}
+  .markyza{height:40px}
+  .cedule h1{font-size:min(10vw,3.5rem)}
+  .cedule-in{gap:16px;padding:28px 20px 16px}
+  .sortiment,.kudy{display:block}
+  .list{margin:0 calc(var(--g) * -1 + 12px);padding:56px 20px}
+  .polozka .v{font-size:14px}
+  .sort-foto{position:static;margin-top:40px}
+  .kudy-list{padding:36px 24px;margin:0 calc(var(--g) * -1 + 12px)}
+  .ustrizek{margin:40px -24px -36px;padding:20px 24px;flex-direction:column}
+  .kudy figure{margin-top:24px}
+  .kupon{grid-template-columns:1fr;
+    -webkit-mask:radial-gradient(circle 14px at 0 40%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% 40%,#0000 98%,#000) right/51% 100% no-repeat; /* taste-skill-ignore */
+    mask:radial-gradient(circle 14px at 0 40%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% 40%,#0000 98%,#000) right/51% 100% no-repeat} /* taste-skill-ignore: maska výřezů kupónu */
+  .kupon-l{border-right:0;border-bottom:5px dotted var(--bg);padding:32px 24px}
+  .kupon-r{padding:32px 24px}
+  footer .big{font-size:14vw}
+}
+</style>
+</head>
+<body>
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hero">
+  <div class="cedule">
+    <div class="markyza" aria-hidden="true" id="markyza"></div>
+    <div class="cedule-in">
+      <p class="logo">VELKY<b>PES</b></p>
+      <h1 class="disp">Krmiva pro psy<br> i kočky</h1>
+      <p class="sent">Krmiva a chovatelské potřeby v Karviné-Ráji, hned u Lidlu a kousek od nonstop Tesca. Otevřeno každý den v týdnu.</p>
+      <p class="stav" id="stav" aria-live="polite"><span class="tecka"></span><span id="stav-t">Otevřeno Po–Pá 8:00–17:45, So–Ne 9:00–14:00</span></p>
+      <a class="btn" href="#kudy">Jak k nám</a>
+    </div>
+    <nav class="cedule-links" aria-label="Stránka"><a href="#doba">Otevírací doba</a><a href="#sortiment">Sortiment</a><a href="#znacky">Značky</a><a href="#dotaz">Dotaz</a></nav>
+  </div>
+  <figure class="foto" id="foto">
+    <img class="on" src="img/mastif-800.jpg" srcset="img/mastif-800.jpg 800w, img/mastif-1600.jpg 1600w" sizes="(max-width:860px) 100vw, 50vw" width="800" height="1169" alt="Velký hnědý pes sedí na tmavém pozadí" fetchpriority="high">
+    <img src="img/bernardyn-800.jpg" srcset="img/bernardyn-800.jpg 800w, img/bernardyn-1600.jpg 1600w" sizes="(max-width:860px) 100vw, 50vw" width="800" height="533" alt="Bernardýn stojí na trávě před domem" loading="lazy">
+    <img src="img/ovcak-800.jpg" srcset="img/ovcak-800.jpg 800w, img/ovcak-1600.jpg 1600w" sizes="(max-width:860px) 100vw, 50vw" width="800" height="1200" alt="Německý ovčák v postroji na lavičce" loading="lazy">
+    <img src="img/kocka-800.jpg" srcset="img/kocka-800.jpg 800w, img/kocka-1600.jpg 1600w" sizes="(max-width:860px) 100vw, 50vw" width="800" height="1199" alt="Kotě zvedá tlapku na mentolovém pozadí" loading="lazy">
+    <figcaption id="foto-cap">Pro velké psy</figcaption>
+  </figure>
+</header>
+
+<main>
+<section class="doba" id="doba" aria-labelledby="doba-h">
+  <h2 id="doba-h" class="disp" data-r>Otevřeno</h2>
+  <ul class="dny" id="dny">
+    <li class="den" data-d="1" data-r><span>Pondělí</span><span class="num">8:00–13:00, 13:45–17:45</span></li>
+    <li class="den" data-d="2" data-r style="--i:1"><span>Úterý</span><span class="num">8:00–13:00, 13:45–17:45</span></li>
+    <li class="den" data-d="3" data-r style="--i:2"><span>Středa</span><span class="num">8:00–13:00, 13:45–17:45</span></li>
+    <li class="den" data-d="4" data-r style="--i:3"><span>Čtvrtek</span><span class="num">8:00–13:00, 13:45–17:45</span></li>
+    <li class="den" data-d="5" data-r style="--i:4"><span>Pátek</span><span class="num">8:00–13:00, 13:45–17:45</span></li>
+    <li class="den" data-d="6" data-r style="--i:5"><span>Sobota</span><span class="num">9:00–14:00</span></li>
+    <li class="den" data-d="0" data-r style="--i:6"><span>Neděle</span><span class="num">9:00–14:00</span></li>
+  </ul>
+  <p class="pozn" data-r>Ve státní svátky se otevírací doba může lišit.</p>
+</section>
+
+<section class="sortiment wrap" id="sortiment" aria-labelledby="sort-h">
+  <div class="list" data-r>
+    <h2 id="sort-h" class="disp">Co u nás koupíte</h2>
+    <div class="skupina">
+      <h3>Krmivo</h3>
+      <p class="polozka"><span class="n">Granule</span><span class="tecky"></span><span class="v">psi i kočky</span></p>
+      <p class="polozka"><span class="n">Kapsičky</span><span class="tecky"></span><span class="v">psi i kočky</span></p>
+      <p class="polozka"><span class="n">Konzervy</span><span class="tecky"></span><span class="v">psi i kočky</span></p>
+      <p class="polozka"><span class="n">Pamlsky</span><span class="tecky"></span><span class="v">psi i kočky</span></p>
+    </div>
+    <div class="skupina">
+      <h3>Doma</h3>
+      <p class="polozka"><span class="n">Pelechy</span><span class="tecky"></span><span class="v">psi i kočky</span></p>
+      <p class="polozka"><span class="n">Toalety</span><span class="tecky"></span><span class="v">kočky</span></p>
+      <p class="polozka"><span class="n">Podestýlky</span><span class="tecky"></span><span class="v">kočky</span></p>
+      <p class="polozka"><span class="n">Škrabadla</span><span class="tecky"></span><span class="v">kočky</span></p>
+    </div>
+    <div class="skupina">
+      <h3>Ven a na cesty</h3>
+      <p class="polozka"><span class="n">Tašky</span><span class="tecky"></span><span class="v">psi i kočky</span></p>
+      <p class="polozka"><span class="n">Oblečení</span><span class="tecky"></span><span class="v">psi</span></p>
+    </div>
+  </div>
+  <div class="sort-foto">
+    <figure data-r><img src="img/granule-800.jpg" width="800" height="533" alt="Granule zblízka" loading="lazy"><figcaption>Granule</figcaption></figure>
+    <figure data-r style="--i:1"><img src="img/skrabadlo-800.jpg" width="800" height="1350" alt="Kotě na škrabadle" loading="lazy"><figcaption>Škrabadla</figcaption></figure>
+    <figure data-r style="--i:2"><img src="img/obleceni-800.jpg" width="800" height="1198" alt="Malý pes v oblečku na žlutém pozadí" loading="lazy"><figcaption>Oblečení</figcaption></figure>
+    <figure data-r style="--i:3"><img src="img/pamlsky-800.jpg" width="800" height="532" alt="Pamlsky ve tvaru kostiček" loading="lazy"><figcaption>Pamlsky</figcaption></figure>
+    <figure data-r style="--i:4"><img src="img/miska-800.jpg" width="800" height="533" alt="Buldoček jí z kovové misky" loading="lazy"><figcaption>Kapsičky a konzervy</figcaption></figure>
+  </div>
+</section>
+
+<section class="znacky wrap" id="znacky" aria-labelledby="zn-h">
+  <h2 id="zn-h" class="disp" data-r>Značky, které vedeme</h2>
+  <ul>
+    <li data-r>Acana</li><li data-r style="--i:1">Orijen</li><li data-r style="--i:2">Brit Care</li><li data-r style="--i:3">Hill's</li><li data-r style="--i:4">Josera</li><li data-r style="--i:5">K9</li><li data-r style="--i:6">Magnusson Original</li><li data-r style="--i:7">EssentialFoods</li>
+  </ul>
+  <p data-r>A další. Když hledáte konkrétní krmivo, napište nám nebo zavolejte, než se vydáte na cestu.</p>
+</section>
+
+<section class="kudy wrap" id="kudy" aria-labelledby="kudy-h">
+  <div class="kudy-list" data-r>
+    <h2 id="kudy-h" class="disp">Jak k nám</h2>
+    <p>Najdete nás na třídě 17. listopadu v Ráji, hned u Lidlu a kousek od nonstop Tesca.</p>
+    <p class="adr">tř. 17. listopadu 873/6<br>734 01 Karviná-Ráj</p>
+    <a class="btn" href="https://mapy.cz/zakladni?q=t%C5%99.%2017.%20listopadu%20873%2F6%2C%20Karvin%C3%A1" target="_blank" rel="noopener">Otevřít v mapě</a>
+    <div class="ustrizek"><a href="tel:+420731271987">731 271 987</a><a href="mailto:info@velkypes.cz">info@velkypes.cz</a></div>
+  </div>
+  <figure data-r style="--i:1"><img src="img/ovcak-800.jpg" width="800" height="1200" alt="Německý ovčák v postroji odpočívá na lavičce" loading="lazy"></figure>
+</section>
+
+<section class="kupon-wrap wrap" id="dotaz" aria-labelledby="dot-h">
+  <div class="kupon" data-r>
+    <div class="kupon-l">
+      <h2 id="dot-h" class="disp">Máte to skladem?</h2>
+      <p>Napište, jaké krmivo nebo potřeby sháníte. Otevře se Vám e-mail, který stačí odeslat, a my odpovíme.</p>
+    </div>
+    <form class="kupon-r" id="form">
+      <input id="f-jm" placeholder="Jméno" autocomplete="name" aria-label="Jméno">
+      <input id="f-tel" placeholder="Telefon" autocomplete="tel" inputmode="tel" aria-label="Telefon">
+      <textarea id="f-co" placeholder="Co sháníte, třeba Acana pro velké psy, 11,4 kg" aria-label="Co sháníte"></textarea>
+      <button type="submit">Připravit e-mail</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="pruhy" aria-hidden="true" id="pruhy"></div>
+  <div class="in wrap">
+    <p class="big" aria-hidden="true">VELKYPES</p>
+    <div class="fine">
+      <span>Petr Hlava · IČO 73957623 · tř. 17. listopadu 873/6, Karviná-Ráj</span>
+      <span>Fotografie: Unsplash (ilustrační)</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // markýza a pruhy v patičce
+  var mk = document.getElementById('markyza'), h = '';
+  for (var i = 0; i < 24; i++) h += '<i style="--i:' + i + '"></i>';
+  mk.innerHTML = h; document.getElementById('pruhy').innerHTML = h.replace(/ style="[^"]*"/g,'');
+
+  // Živý stav prodejny podle pražského času
+  var ROZVRH = {1:[[480,780],[825,1065]],2:[[480,780],[825,1065]],3:[[480,780],[825,1065]],4:[[480,780],[825,1065]],5:[[480,780],[825,1065]],6:[[540,840]],0:[[540,840]]};
+  var DNY = ['v neděli','v pondělí','v úterý','ve středu','ve čtvrtek','v pátek','v sobotu'];
+  function hm(m){ return Math.floor(m/60) + ':' + ('0' + m%60).slice(-2); }
+  function ted(){
+    var p = new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Prague',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()), o = {};
+    p.forEach(function(x){ o[x.type] = x.value; });
+    return {d:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(o.weekday), m:(+o.hour % 24) * 60 + (+o.minute)};
+  }
+  function stav(){
+    var t = ted(), dnes = ROZVRH[t.d], el = document.getElementById('stav'), tx = document.getElementById('stav-t'), txt, open = false;
+    for (var i = 0; i < dnes.length; i++){
+      if (t.m >= dnes[i][0] && t.m < dnes[i][1]){ open = true; txt = 'Teď otevřeno, do ' + hm(dnes[i][1]); if (i === 0 && dnes.length > 1) txt += ', pak polední pauza'; break; }
+    }
+    if (!open){
+      if (dnes.length > 1 && t.m >= dnes[0][1] && t.m < dnes[1][0]) txt = 'Polední pauza, otevíráme ve ' + hm(dnes[1][0]);
+      else if (t.m < dnes[0][0]) txt = 'Zavřeno, otevíráme dnes v ' + hm(dnes[0][0]);
+      else { var z = (t.d + 1) % 7; txt = 'Zavřeno, otevíráme zítra v ' + hm(ROZVRH[z][0][0]); }
+    }
+    el.classList.toggle('otevreno', open); tx.textContent = txt;
+    document.querySelectorAll('.den').forEach(function(li){ li.classList.toggle('dnes', +li.dataset.d === t.d); });
+  }
+  stav(); setInterval(stav, 30000);
+
+  // Pomalé prolínání fotek
+  var fotos = [].slice.call(document.querySelectorAll('#foto img')), cap = document.getElementById('foto-cap'), CAP = ['Pro velké psy','Pro velké psy','Pro psy všech velikostí','I pro kočky'], k = 0, tm;
+  function dalsi(){ fotos[k].classList.remove('on'); k = (k + 1) % fotos.length; fotos[k].classList.add('on'); cap.textContent = CAP[k]; }
+  function start(){ if (!RM && !tm) tm = setInterval(dalsi, 5600); }
+  function stop(){ clearInterval(tm); tm = null; }
+  document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
+  start();
+
+  document.getElementById('form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var g = function(id){ return document.getElementById(id).value.trim(); };
+    var body = 'Dobrý den,\n\nsháním: ' + (g('f-co') || '') + '\n\n' + (g('f-jm') || '') + (g('f-tel') ? '\nTelefon: ' + g('f-tel') : '') + '\n';
+    location.href = 'mailto:info@velkypes.cz?subject=' + encodeURIComponent('Dotaz na zboží') + '&body=' + encodeURIComponent(body);
+  });
+
+  var els = document.querySelectorAll('[data-r]');
+  if (RM || !('IntersectionObserver' in window)) { els.forEach(function(el){el.classList.add('in')}); return; }
+  var io = new IntersectionObserver(function(en){ en.forEach(function(x){ if (x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } }); }, {rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>

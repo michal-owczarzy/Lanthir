@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KREYSON – Ivan Kříž | Revize a elektroinstalace do 1000 V, Karviná</title>
+<meta name="description" content="Revize elektrických zařízení a hromosvodů do 1000 V, elektroinstalace, opravy a výroba rozvaděčů do IP65. Ivan Kříž – KREYSON, Karviná-Ráj, tel. 603 709 695.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ff7a1f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ff7a1f'/%3E%3Cpath d='M18 4 9 18h6l-2 10 9-14h-6z' fill='%23050f16'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/anton-400-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/work-sans-400-normal-latin.woff2" crossorigin>
+<style>
+@font-face{font-family:"Anton";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/anton-400-normal-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Anton";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/anton-400-normal-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Work Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/work-sans-400-normal-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Work Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/work-sans-400-normal-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+/* Tokeny: výstražná oranžová a modročerná, jako tabulka „Pozor, elektrické zařízení“ */
+:root{
+  --bg:#ff7a1f; --surface:#ff8a3a; --surface-2:#f06c12; --ink:#050f16; --muted:#4a1d04;
+  --accent:#050f16; --accent-ink:#ff7a1f; --white:#ffffff;
+  --display:"Anton",Impact,sans-serif; --text:"Work Sans",system-ui,sans-serif;
+  --s-small:clamp(.875rem,.85rem + .1vw,.9375rem);
+  --s-body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
+  --s-lead:clamp(1.25rem,1.1rem + .7vw,1.625rem);
+  --s-head:clamp(2.75rem,1.2rem + 5vw,5.5rem);
+  --m:clamp(20px,3.4vw,48px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--s-body)/1.5 var(--text);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{padding-left:var(--m);padding-right:var(--m)}
+.disp{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:-.01em;line-height:1}
+.num{font-variant-numeric:tabular-nums}
+
+.ribbon{background:#3a2ee0;color:#fff;font:400 15px/1.4 var(--text);text-align:center;padding:9px 16px}
+.ribbon a{font-weight:600;text-underline-offset:2px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;background:var(--accent);color:var(--accent-ink);font:600 var(--s-body)/1 var(--text);text-decoration:none;border:0;cursor:pointer;transition:transform .15s var(--ease),background-color .2s,color .2s}
+.btn:active{transform:scale(.97)}
+@media (hover:hover){.btn:hover{background:var(--white);color:var(--ink)}}
+
+/* ========== ÚVOD — prázdno, pak věta na ose ========== */
+.hero{position:relative;min-height:100svh;display:grid;grid-template-rows:auto 1fr;padding-top:36px;padding-bottom:64px}
+.top{display:grid;grid-template-columns:42% 1fr auto;align-items:center;gap:16px}
+.word{font:600 var(--s-body)/1.2 var(--text);text-decoration:none}
+.word span{display:block;font-weight:400;font-size:var(--s-small)}
+.links{display:flex;gap:28px;font-size:var(--s-body)}
+.links a{position:relative;text-decoration:none;padding:8px 0}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+@media (hover:hover){.links a:hover::after{transform:none}}
+.hero-body{align-self:end;display:grid;grid-template-columns:42% 1fr;gap:16px;align-items:end}
+.hero-body p{font-size:var(--s-lead);line-height:1.35;max-width:30ch;padding-right:24px}
+.hero h1{font-size:clamp(3.5rem,1rem + 7.2vw,8.5rem);line-height:1;letter-spacing:-.01em}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em;white-space:nowrap}
+.hero h1 .ln>span{display:block}
+.opr{position:absolute;right:var(--m);top:44%;max-width:30ch;text-align:right;font-size:var(--s-small);color:var(--muted)}
+
+/* ========== CO DĚLÁME — řádky v jedné velikosti ========== */
+.prace{background:var(--ink);color:var(--bg);padding-top:clamp(96px,11vw,160px);padding-bottom:clamp(96px,11vw,160px)}
+.prace h2{font-size:var(--s-head);color:var(--bg)}
+.prace-grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;margin-top:56px;align-items:start}
+.prace-list{grid-column:1/8}
+.prace-list h3{position:sticky;top:0;background:var(--ink);font:600 var(--s-lead)/1.2 var(--text);color:var(--bg);padding:18px 0 14px;margin-top:48px}
+.prace-list h3:first-child{margin-top:0}
+.prace-list li{display:grid;grid-template-columns:1fr auto;gap:20px;font-size:clamp(1.125rem,.9rem + .9vw,1.75rem);line-height:1.3;color:#fff;padding:9px 0}
+.prace-list li small{font-size:var(--s-small);color:#f7b48a;align-self:center;text-align:right}
+.prace-foto{grid-column:9/-1;position:sticky;top:24px;display:flex;flex-direction:column;gap:12px}
+.prace-foto img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.prace-foto figcaption{font-size:var(--s-small);color:#f7b48a}
+
+/* ========== CENÍK — jedna věta s cenou ========== */
+.cena{padding-top:clamp(96px,11vw,160px);padding-bottom:clamp(96px,11vw,160px)}
+.cena h2{font-size:clamp(3.25rem,1rem + 7vw,8.25rem);line-height:1.02}
+.cena h2 .blok{background:var(--ink);color:var(--bg);padding:0 .15em;display:inline-block;line-height:1}
+.cena-row{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;align-items:end;margin-top:56px}
+.cena-row p{grid-column:1/8;font-size:var(--s-lead);line-height:1.4}
+.cena-row .btn{grid-column:10/-1;justify-self:end}
+
+/* ========== KALKULAČKA REVIZE — bílé pole ========== */
+.kalk{background:var(--white);padding-top:clamp(80px,9vw,140px);padding-bottom:clamp(80px,9vw,140px);display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;row-gap:40px}
+.kalk-head{grid-column:1/6}
+.kalk-head h2{font-size:var(--s-head)}
+.kalk-head p{margin-top:24px;max-width:40ch}
+.kalk-head .ex{margin-top:20px;font-size:var(--s-small);color:#3c3c3c;max-width:46ch}
+.kalk-form{grid-column:7/-1}
+.row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;padding:12px 0}
+.row:nth-child(odd){background:#f4f1ee;margin:0 -16px;padding:12px 16px}
+.row label{font-size:var(--s-body);line-height:1.35}
+.row label small{display:block;font-size:var(--s-small);color:#555}
+.step{display:flex;align-items:center;gap:4px}
+.step button{width:44px;height:44px;border:0;background:var(--ink);color:var(--white);font:600 22px/1 var(--text);cursor:pointer;transition:transform .12s var(--ease),background-color .2s}
+.step button:active{transform:scale(.92)}
+@media (hover:hover){.step button:hover{background:#26323b}}
+.step input{width:56px;height:44px;border:0;background:transparent;text-align:center;font:600 var(--s-lead)/1 var(--text);color:var(--ink);-moz-appearance:textfield}
+.step input::-webkit-outer-spin-button,.step input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.sleva{display:grid;gap:8px;margin-top:20px}
+.sleva label{font-size:var(--s-body)}
+.sleva select{height:52px;border:0;background:#f4f1ee;font:400 var(--s-body)/1 var(--text);padding:0 14px;color:var(--ink)}
+.vysledek{margin-top:28px;background:var(--bg);padding:24px;display:grid;grid-template-columns:1fr auto;gap:12px 20px;align-items:end}
+.vysledek .suma{font:400 clamp(2.5rem,1.6rem + 3vw,4rem)/1 var(--display);white-space:nowrap}
+.vysledek p{font-size:var(--s-small);grid-column:1/-1;color:var(--muted)}
+
+/* ========== SLEVY — srovnání slovy ========== */
+.slevy{padding-top:clamp(96px,11vw,160px);padding-bottom:clamp(96px,11vw,160px)}
+.slevy h2{font-size:var(--s-head)}
+.tab{display:grid;grid-template-columns:5fr 3fr 3fr;margin-top:48px;position:relative}
+.tab>div{display:contents}
+.tab span{display:flex;align-items:center;min-height:72px;padding:12px 16px;font-size:var(--s-body)}
+.tab .cap{font-size:var(--s-lead);font-weight:500}
+.tab .zebra span{background:var(--surface)}
+.tab .hd span{font-weight:600;min-height:56px}
+.tab .feat{background:var(--ink)!important;color:var(--bg)}
+.tab .hd .feat{padding-top:36px}
+.tab b{font:400 clamp(2.5rem,1.6rem + 3vw,4rem)/1 var(--display);margin-right:10px}
+.slevy-pozn{margin-top:28px;font-size:var(--s-small);color:var(--muted);max-width:60ch}
+
+/* ========== FOTO PÁS ========== */
+.pas{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}
+.pas img{width:100%;height:clamp(240px,34vw,520px);object-fit:cover}
+.pas figure{position:relative;overflow:hidden}
+.pas figcaption{font-size:var(--s-small);margin-top:8px}
+
+/* ========== DOTAZY ========== */
+.faq{padding-top:clamp(96px,11vw,160px);padding-bottom:clamp(96px,11vw,160px)}
+.faq h2{font-size:var(--s-head);max-width:12ch}
+.faq-list{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;margin-top:80px}
+.faq-list>div{grid-column:5/-1;display:flex;flex-direction:column;gap:12px}
+details{padding:14px 24px;margin:0 -24px;transition:background-color .25s}
+details[open]{background:var(--surface)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:24px;align-items:center;font-size:var(--s-lead);line-height:1.3;padding:8px 0}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";flex:none;width:12px;height:12px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg) translateY(-3px);transition:transform .25s var(--ease)}
+details[open] summary::after{transform:rotate(-135deg) translateY(-3px)}
+details p{font-size:var(--s-body);max-width:52ch;padding:8px 0 10px}
+
+/* ========== KONTAKT — e-mail jako titulek ========== */
+.kontakt{background:var(--ink);color:var(--bg);min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;padding-top:56px;padding-bottom:40px}
+.kontakt h2{font:500 var(--s-lead)/1.3 var(--text);max-width:30ch}
+.kontakt .mail{align-self:end;margin-bottom:10vh;font-size:clamp(2.6rem,.4rem + 8.2vw,9.25rem);text-decoration:none;word-break:break-word;transition:color .25s}
+@media (hover:hover){.kontakt .mail:hover{color:#fff}}
+.kontakt .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px 32px;font-size:var(--s-body)}
+.kontakt .foot a{text-decoration:none;font-weight:600}
+.kontakt .credit{font-size:var(--s-small);color:#c96a2c;margin-top:24px}
+
+/* ========== Pohyb ========== */
+.js .hero h1 .ln>span{transform:translateY(105%);animation:vyjede .9s var(--ease) forwards}
+.js .hero h1 .ln:nth-child(2)>span{animation-delay:.11s}
+.js .hero-body p,.js .hero .cta-top{opacity:0;animation:fade .6s ease-out .55s forwards}
+@keyframes vyjede{to{transform:none}}
+@keyframes fade{to{opacity:1}}
+.js [data-r]{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(var(--i,0) * 75ms)}
+.js [data-r].in{opacity:1;transform:none}
+.pas img{transition:transform 1.2s var(--ease)}
+@media (hover:hover){.pas figure:hover img{transform:scale(1.04)}}
+.suma.bump{animation:bump .35s var(--ease)}
+@keyframes bump{40%{transform:translateY(-4px)}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .hero h1 .ln>span,.js .hero-body p,.js .hero .cta-top{animation:none;transform:none;opacity:1}
+  .js [data-r]{opacity:1;transform:none;transition:none}
+  .suma.bump{animation:none}
+}
+
+/* ========== Telefon ========== */
+@media (max-width:860px){
+  .ribbon{font-size:14px;padding:8px 14px}
+  .top{grid-template-columns:1fr auto}
+  .links{display:none}
+  .hero{padding-bottom:28px;min-height:78svh}
+  .hero-body{display:flex;flex-direction:column-reverse;align-items:flex-start;gap:20px}
+  .hero h1{font-size:11.5vw}
+  .hero-body p{font-size:var(--s-body);padding:0}
+  .opr{position:static;text-align:left;margin-top:24px;align-self:start}
+  .prace-grid{display:block}
+  .prace-foto{position:static;margin-top:48px}
+  .prace-foto img{aspect-ratio:4/3}
+  .prace-list li{grid-template-columns:1fr;gap:2px}
+  .prace-list li small{text-align:left}
+  .cena-row{display:block}
+  .cena-row .btn{margin-top:28px;width:100%}
+  .kalk{display:block}
+  .kalk-form{margin-top:40px}
+  .vysledek{grid-template-columns:1fr}
+  .vysledek .btn{width:100%}
+  .row:nth-child(odd){margin:0 calc(var(--m) * -1);padding:12px var(--m)}
+  .tab{display:block}
+  .tab>div{display:block;margin-bottom:8px}
+  .tab>div:nth-child(odd){background:var(--surface)}
+  .tab>div:nth-child(even){background:var(--surface-2)}
+  .tab .hd{display:none!important}
+  .tab span{min-height:0;padding:6px 16px;background:transparent!important}
+  .tab .cap{padding-top:16px}
+  .tab span.feat{background:var(--ink)!important}
+  .tab span:last-child{padding-bottom:16px}
+  .tab span[data-l]::before{content:attr(data-l);font-size:var(--s-body);margin-right:14px;align-self:center;min-width:13ch}
+  .pas{grid-template-columns:1fr 1fr}
+  .pas figure:first-child{grid-column:1/-1}
+  .pas img{height:auto;aspect-ratio:1}
+  .pas figure:first-child img{aspect-ratio:4/3}
+  .faq{margin-top:40px}
+  .faq-list{display:block;margin-top:40px}
+  details{margin:0 calc(var(--m) * -1);padding:12px var(--m)}
+  .kontakt{min-height:86svh}
+  .kontakt .mail{font-size:11.5vw;margin-bottom:6vh}
+  .kontakt .foot{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hero wrap">
+  <div class="top">
+    <a class="word" href="#">KREYSON<span>Ivan Kříž</span></a>
+    <nav class="links" aria-label="Stránka"><a href="#prace">Co děláme</a><a href="#cena">Ceník</a><a href="#dotazy">Dotazy</a></nav>
+    <a class="btn cta-top" href="#kalkulacka">Spočítat revizi</a>
+  </div>
+  <p class="opr">Práce provádíme na základě oprávnění ev. č. 9034/7/01/EZ-M,O,,R-E2/B</p>
+  <div class="hero-body">
+    <p>Revize elektroinstalací a hromosvodů, montáže, opravy a výroba rozvaděčů. Karviná-Ráj a okolí.</p>
+    <h1 class="disp"><span class="ln"><span>Revize a elektro</span></span><span class="ln"><span>do 1000 V</span></span></h1>
+  </div>
+</header>
+
+<main>
+<section class="prace wrap" id="prace" aria-labelledby="prace-h">
+  <h2 id="prace-h" class="disp" data-r>Co děláme</h2>
+  <div class="prace-grid">
+    <div class="prace-list">
+      <h3>Revize elektrických zařízení</h3>
+      <ul>
+        <li data-r>Výchozí a pravidelné revize elektroinstalací <small>objekty třídy A, B</small></li>
+        <li data-r>Výchozí a pravidelné revize hromosvodů</li>
+        <li data-r>Revize elektrických strojů a zařízení <small>do 1000 V</small></li>
+        <li data-r>Revize ručního nářadí a spotřebičů <small>ČSN 33 1600, 33 1610</small></li>
+        <li data-r>Kontroly funkčnosti proudových chráničů</li>
+        <li data-r>Určení vnějších vlivů prostředí <small>ČSN 33 2000-3, -5-51</small></li>
+        <li data-r>Opravy závad zjištěných při revizi</li>
+        <li data-r>Obnovení dokumentace a situační schémata</li>
+      </ul>
+      <h3>Elektroinstalační práce</h3>
+      <ul>
+        <li data-r>Elektroinstalace nové i rekonstrukce <small>byty, provozovny</small></li>
+        <li data-r>Montáže, revize a opravy hromosvodů</li>
+        <li data-r>Elektrické vytápění, dodávka a montáž</li>
+        <li data-r>Osvětlení kanceláří, hal a škol</li>
+        <li data-r>Zabezpečovací zařízení a videotelefony</li>
+        <li data-r>Podružné měření spotřeby elektřiny</li>
+        <li data-r>Rozvaděče nízkého napětí <small>krytí do IP65</small></li>
+        <li data-r>Rozvody počítačových sítí</li>
+        <li data-r>Projektová dokumentace s rozpočtem</li>
+      </ul>
+    </div>
+    <figure class="prace-foto" data-r>
+      <img src="img/mereni-800.jpg" srcset="img/mereni-800.jpg 800w, img/mereni-1600.jpg 1600w" sizes="(max-width:860px) 92vw, 30vw" width="800" height="600" alt="Měření v rozvaděči multimetrem" loading="lazy">
+      <figcaption>Měření v rozvaděči při revizi</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="cena wrap" id="cena" aria-labelledby="cena-h">
+  <h2 id="cena-h" class="disp" data-r>První hodina práce <span class="blok num">250 Kč</span></h2>
+  <div class="cena-row">
+    <p data-r style="--i:1">Každá další započatá hodina 160 Kč. Situační schémata od 500 Kč podle rozsahu. V Karviné jezdíme bez cestovného, jinde účtujeme 4,90 Kč za kilometr. Ceny jsou bez DPH.</p>
+    <a class="btn" href="#kontakt" data-r style="--i:2">Objednat práci</a>
+  </div>
+</section>
+
+<section class="kalk wrap" id="kalkulacka" aria-labelledby="kalk-h">
+  <div class="kalk-head">
+    <h2 id="kalk-h" class="disp" data-r>Kolik stojí revize</h2>
+    <p data-r style="--i:1">Revizi účtujeme po položkách podle ceníku. Zadejte, co u Vás máte, a uvidíte orientační cenu i se zpracováním revizní zprávy.</p>
+    <p class="ex" data-r style="--i:2">Příklad: revize samostatné zásuvky pro plynový kotel vyjde na 530 Kč bez DPH.</p>
+  </div>
+  <form class="kalk-form" id="kalk" data-r>
+    <div class="row"><label for="q1">Rozvaděč do 10 přístrojů v poli <small>113 Kč za pole</small></label><div class="step"><button type="button" aria-label="Ubrat pole">−</button><input id="q1" type="number" min="0" max="99" value="1" data-p="113" inputmode="numeric"><button type="button" aria-label="Přidat pole">+</button></div></div>
+    <div class="row"><label for="q2">Rozvaděč s 10 až 30 přístroji v poli <small>185 Kč za pole</small></label><div class="step"><button type="button" aria-label="Ubrat pole">−</button><input id="q2" type="number" min="0" max="99" value="0" data-p="185" inputmode="numeric"><button type="button" aria-label="Přidat pole">+</button></div></div>
+    <div class="row"><label for="q3">Elektrické okruhy do 10 vývodů <small>62 Kč za okruh, běžný prostor</small></label><div class="step"><button type="button" aria-label="Ubrat okruh">−</button><input id="q3" type="number" min="0" max="999" value="6" data-p="62" inputmode="numeric"><button type="button" aria-label="Přidat okruh">+</button></div></div>
+    <div class="row"><label for="q4">Pevně připojená svítidla <small>30 Kč za kus</small></label><div class="step"><button type="button" aria-label="Ubrat svítidlo">−</button><input id="q4" type="number" min="0" max="999" value="8" data-p="30" inputmode="numeric"><button type="button" aria-label="Přidat svítidlo">+</button></div></div>
+    <div class="row"><label for="q5">Proudové chrániče <small>31 Kč za měření</small></label><div class="step"><button type="button" aria-label="Ubrat chránič">−</button><input id="q5" type="number" min="0" max="99" value="1" data-p="31" inputmode="numeric"><button type="button" aria-label="Přidat chránič">+</button></div></div>
+    <div class="row"><label for="q6">Svody hromosvodu <small>62 Kč stav + 98 Kč měření uzemnění</small></label><div class="step"><button type="button" aria-label="Ubrat svod">−</button><input id="q6" type="number" min="0" max="99" value="0" data-p="160" inputmode="numeric"><button type="button" aria-label="Přidat svod">+</button></div></div>
+    <div class="row"><label for="q7">Ruční nářadí a spotřebiče třídy I <small>72 Kč za kus</small></label><div class="step"><button type="button" aria-label="Ubrat kus">−</button><input id="q7" type="number" min="0" max="999" value="0" data-p="72" inputmode="numeric"><button type="button" aria-label="Přidat kus">+</button></div></div>
+    <div class="sleva"><label for="sl">Máte starší revizní zprávu?</label>
+      <select id="sl"><option value="0">Ne, nemám</option><option value="25">Platnou, od nás (sleva 25 %)</option><option value="20">Neplatnou, od nás (sleva 20 %)</option><option value="15">Platnou, od jiné firmy (sleva 15 %)</option><option value="10">Neplatnou, od jiné firmy (sleva 10 %)</option></select></div>
+    <div class="vysledek" aria-live="polite">
+      <span class="suma num" id="suma">0 Kč</span>
+      <a class="btn" id="objednat" href="mailto:kreyson@kreyson.com">Objednat revizi</a>
+      <p>Orientační cena bez DPH, včetně zpracování revizní zprávy (25 % z ceny úkonů). Přesný rozsah měření určíme na místě.</p>
+    </div>
+  </form>
+</section>
+
+<section class="slevy wrap" id="slevy" aria-labelledby="slevy-h">
+  <h2 id="slevy-h" class="disp" data-r>Slevy na revize</h2>
+  <div class="tab" role="table" aria-label="Slevy podle předložené dokumentace" data-r style="--i:1">
+    <div class="hd" role="row"><span role="columnheader">Když předložíte</span><span role="columnheader" class="feat">Sleva, zpráva od nás</span><span role="columnheader">Sleva, zpráva od jiné firmy</span></div>
+    <div class="zebra" role="row"><span role="rowheader" class="cap">Platnou revizní zprávu</span><span role="cell" class="feat" data-l="Sleva, od nás"><b>25 %</b></span><span role="cell" data-l="Sleva, jiná firma"><b>15 %</b></span></div>
+    <div role="row"><span role="rowheader" class="cap">Neplatnou revizní zprávu</span><span role="cell" class="feat" data-l="Sleva, od nás"><b>20 %</b></span><span role="cell" data-l="Sleva, jiná firma"><b>10 %</b></span></div>
+    <div class="zebra" role="row"><span role="rowheader" class="cap">Původní dokumentaci</span><span role="cell" class="feat" data-l="Sleva, od nás"><b>10 %</b></span><span role="cell" data-l="Sleva, jiná firma"><b>10 %</b></span></div>
+  </div>
+  <p class="slevy-pozn" data-r>Sleva za původní dokumentaci platí, když pro Vás zhotovujeme dokumentaci novou.</p>
+</section>
+
+<div class="pas wrap" aria-label="Fotografie">
+  <figure data-r><img src="img/rozvadec-1600.jpg" srcset="img/rozvadec-800.jpg 800w, img/rozvadec-1600.jpg 1600w" sizes="(max-width:860px) 92vw, 50vw" width="1600" height="2400" alt="Rozvaděč nízkého napětí s jističi a svorkovnicemi" loading="lazy"><figcaption>Rozvaděče nízkého napětí do krytí IP65</figcaption></figure>
+  <figure data-r style="--i:1"><img src="img/blesk-800.jpg" width="800" height="1200" alt="Blesk nad stromy v noci" loading="lazy"><figcaption>Revize hromosvodů</figcaption></figure>
+  <figure data-r style="--i:2"><img src="img/kleste-800.jpg" width="800" height="533" alt="Klešťový měřicí přístroj a nářadí elektrikáře" loading="lazy"><figcaption>Měření při revizi</figcaption></figure>
+</div>
+
+<section class="faq wrap" id="dotazy" aria-labelledby="faq-h">
+  <h2 id="faq-h" class="disp" data-r>Na co se nás ptáte</h2>
+  <div class="faq-list"><div>
+    <details open data-r><summary>Co všechno je v ceně revize?</summary><p>Každý úkon má v ceníku svou cenu: kontrola rozvaděče, okruhů, spotřebičů a jednotlivá měření. Ke součtu se připočítá 25 % za zjištění základních údajů a vypracování revizní zprávy.</p></details>
+    <details data-r style="--i:1"><summary>Platím cestovné?</summary><p>V Karviné ne. Mimo Karvinou účtujeme 4,90 Kč za kilometr.</p></details>
+    <details data-r style="--i:2"><summary>Opravíte i závady, které revize najde?</summary><p>Ano. Revize děláme včetně následného odstranění revizních závad.</p></details>
+    <details data-r style="--i:3"><summary>Revidujete i nářadí a spotřebiče ve firmě?</summary><p>Ano, děláme periodické i výchozí revize elektrického ručního nářadí a spotřebičů podle ČSN 33 1600 a ČSN 33 1610.</p></details>
+    <details data-r style="--i:4"><summary>Chybí mi dokumentace k elektroinstalaci. Co s tím?</summary><p>Dokumentaci obnovíme a zhotovíme situační schémata. Cena začíná na 500 Kč podle rozsahu. Když předložíte původní dokumentaci, máte slevu 10 %.</p></details>
+    <details data-r style="--i:5"><summary>Vyrobíte rozvaděč na míru?</summary><p>Ano, vyrábíme a dodáváme rozvaděče nízkého napětí různých druhů a typů, s krytím maximálně IP65.</p></details>
+  </div></div>
+</section>
+</main>
+
+<footer class="kontakt wrap" id="kontakt">
+  <h2>Napište nám, co potřebujete zrevidovat nebo opravit. Ozveme se.</h2>
+  <a class="mail disp" href="mailto:kreyson@kreyson.com">kreyson@<br>kreyson.com</a>
+  <div>
+    <div class="foot">
+      <span><a href="tel:+420603709695">603 709 695</a> · Ivan Kříž – KREYSON</span>
+      <span>Na Stráni 384/13, 734 01 Karviná-Ráj</span>
+    </div>
+    <p class="credit">Fotografie: Unsplash (ilustrační)</p>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Kalkulačka revize podle ceníku: součet úkonů + 25 % za revizní zprávu − sleva
+  var form = document.getElementById('kalk'), inputs = [].slice.call(form.querySelectorAll('input[type=number]')),
+      sl = document.getElementById('sl'), suma = document.getElementById('suma'), obj = document.getElementById('objednat');
+  var fmt = new Intl.NumberFormat('cs-CZ');
+  function val(i){ var v = parseInt(i.value,10); return isNaN(v)||v<0 ? 0 : Math.min(v, +i.max); }
+  function calc(){
+    var base = 0, lines = [];
+    inputs.forEach(function(i){ var n = val(i); if (n){ base += n * +i.dataset.p; lines.push('- ' + form.querySelector('label[for='+i.id+']').firstChild.textContent.trim() + ': ' + n); } });
+    var total = Math.round(base * 1.25 * (1 - (+sl.value)/100));
+    suma.textContent = fmt.format(total) + ' Kč';
+    if (!RM){ suma.classList.remove('bump'); void suma.offsetWidth; suma.classList.add('bump'); }
+    var body = 'Dobrý den,\n\nmám zájem o revizi elektroinstalace. Podle kalkulačky na webu:\n' + (lines.join('\n') || '- (nic nezadáno)') + (+sl.value ? '\nMám starší revizní zprávu (sleva ' + sl.value + ' %).' : '') + '\nOrientační cena: ' + fmt.format(total) + ' Kč bez DPH\n\nAdresa objektu:\nTelefon:\n';
+    obj.href = 'mailto:kreyson@kreyson.com?subject=' + encodeURIComponent('Objednávka revize') + '&body=' + encodeURIComponent(body);
+  }
+  form.querySelectorAll('.step').forEach(function(s){
+    var b = s.querySelectorAll('button'), i = s.querySelector('input');
+    b[0].addEventListener('click', function(){ i.value = Math.max(0, val(i) - 1); calc(); });
+    b[1].addEventListener('click', function(){ i.value = Math.min(+i.max, val(i) + 1); calc(); });
+  });
+  form.addEventListener('input', calc); form.addEventListener('submit', function(e){ e.preventDefault(); });
+  calc();
+
+  var els = document.querySelectorAll('[data-r]');
+  if (RM || !('IntersectionObserver' in window)) { els.forEach(function(el){el.classList.add('in')}); return; }
+  var io = new IntersectionObserver(function(en){ en.forEach(function(x){ if (x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } }); }, {rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
