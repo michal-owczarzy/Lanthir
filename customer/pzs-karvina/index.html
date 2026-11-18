@@ -4,13 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Polska Szkoła Podstawowa i Przedszkole w Karwinie</title>
-<meta name="description" content="Szkoła podstawowa i przedszkole z polskim językiem nauczania w Karwinie-Frysztacie, ul. Dr. Olszaka 156/2. Aktualności, zapisy do 1. klasy, przedszkole Bajlandia, świetlica, odgłaszanie obiadów i kontakt.">
+<meta name="description" content="Szkoła podstawowa i przedszkole z polskim językiem nauczania w Karwinie-Frysztacie, ul. Dr. Olszaka 156/2. Aktualności i kalendarz wydarzeń szkoły i przedszkola, zapisy do 1. klasy, odgłaszanie obiadów i kontakt.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%239cc2df'/%3E%3Cpath d='M6 15h36M9 15v24M39 39V15M20 15v24M28 39V15M5 39h38' fill='none' stroke='%231b2230' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preload" as="font" type="font/woff2" href="fonts/pilcrow-rounded-700.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/pilcrow-rounded-400.woff2" crossorigin>
-<link rel="preload" as="image" href="img/szkola-960.jpg">
 <script>
   /* úvodní animace loga: jen první stránka v relaci, ne s omezeným pohybem, ne na kotvě */
   try {
@@ -125,118 +124,86 @@ html.intro-on.intro-landed [data-intro-land]{opacity:1;transition:opacity .25s e
 .nav .btn{min-height:48px;padding:0 20px}
 .menu-btn{display:none}
 
-/* ========== ÚVOD — obří okno, za ním budova ========== */
-.hero{position:relative;overflow:hidden;min-height:calc(100svh - 80px - 38px);display:flex;align-items:center;padding:clamp(40px,7vh,96px) var(--m) clamp(56px,9vh,110px)}
-.hero-copy{position:relative;z-index:2;width:min(47vw,760px)}
-.hero h1{font:700 var(--s-hero)/.94 var(--f);letter-spacing:-.04em}
-.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
-.hero h1 .ln>span{display:block}
-.hero .lede{margin-top:40px;max-width:31ch;font-size:clamp(19px,17px + .35vw,22px);line-height:1.45}
-.hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px;margin-top:40px}
-.hero .adr{margin-top:56px;font-size:var(--s-small);color:var(--muted)}
-.hero-okno{--fr:clamp(18px,2.6vw,40px);position:absolute;z-index:1;height:120vh;aspect-ratio:.7;left:calc(50% + 4vw);top:50%;transform:translateY(-50%)}
-.hero-okno img{object-position:50% 62%}
-
-/* ========== DEN VE ŠKOLE — živá fasáda ========== */
-.dzien{--pole:var(--sky);--txt:var(--ink);--zed:#ffffff;--riz:#f3f7fa;--linka:var(--ink);--sklo:#2f3d57;--sklo-x:#5a6b88;--spoj:transparent;--hv:0;
-  background:var(--pole);color:var(--txt);transition:background-color .6s,color .6s;padding:clamp(72px,8vw,120px) var(--m)}
-.dzien.noc{--pole:var(--ink);--txt:#fff;--zed:#2a3550;--riz:#303c59;--linka:var(--sky);--sklo:#141a27;--sklo-x:#2f3b55;--hv:1}
-.dzien.harc{--hv:1}
-.dzien-in{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col);align-items:center}
-.dzien-tekst{grid-column:1 / span 5}
-.dzien .pod{margin-top:24px;max-width:36ch}
-.zegar{margin-top:40px;display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
-.zegar output{font:700 var(--s-hero)/.9 var(--f);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
-.zegar .zd{font:700 var(--s-mid)/1 var(--f)}
-.plan{margin-top:28px}
-.plan li{display:grid;grid-template-columns:20px 1fr auto;align-items:center;column-gap:14px;padding:5px 0;transition:opacity .3s}
-.plan li.off{opacity:.55}
-.plan .co{font-weight:500}
-.plan .kdy{font-variant-numeric:tabular-nums}
-.plan .stan{grid-column:2 / -1;font-size:var(--s-small);font-weight:700;display:none}
-.plan li.on .stan{display:block}
-.ik{width:16px;height:19px}
-.ik rect{fill:var(--sklo);transition:fill .3s}
-.ik path{fill:none;stroke:var(--pole);stroke-width:1.4}
-.plan li.on .ik rect{fill:var(--lamp)}
-.oi{margin-top:24px;padding:18px 20px;border-radius:var(--r);background:rgba(255,255,255,.55);max-width:46ch}
-.dzien.noc .oi{background:rgba(255,255,255,.08)}
-.oi a{font-weight:700}
-.ovl{margin-top:24px;display:grid;grid-template-columns:auto 1fr auto;gap:16px 20px;align-items:center}
-.dni{display:flex;background:rgba(255,255,255,.5);border-radius:6px;padding:4px;grid-column:1 / -1;justify-self:start}
-.dzien.noc .dni{background:rgba(255,255,255,.1)}
-.dni label{position:relative}
-.dni input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
-.dni span{display:block;white-space:nowrap;padding:10px 16px;border-radius:4px;font-weight:700;font-size:16px;transition:background-color .2s}
-.dni input:checked+span{background:var(--ground);color:var(--ink)}
-.dni input:focus-visible+span{outline:3px solid var(--txt);outline-offset:2px}
-.cas{grid-column:1 / 3;display:flex;align-items:center;gap:14px}
-.cas span{font-weight:700;font-size:16px}
-.cas input{flex:1;accent-color:var(--ink);height:32px;cursor:pointer;min-width:0}
-.dzien.noc .cas input{accent-color:var(--lamp)}
-.teraz{border:0;border-radius:6px;min-height:44px;padding:0 18px;font-weight:700;font-size:16px;background:var(--ink);color:#fff;cursor:pointer;transition:transform .2s var(--ease)}
-.dzien.noc .teraz{background:var(--lamp);color:var(--ink)}
-.teraz:active{transform:scale(.96)}
-.dzien-fasada{grid-column:6 / -1;align-self:end;margin-right:calc(var(--m) * -.4)}
-.fasada{width:100%;height:auto;overflow:visible}
-.fasada .zed{fill:var(--zed);transition:fill .6s}
-.fasada .rizalit{fill:var(--riz);transition:fill .6s}
-.fasada .dl{fill:none;stroke:var(--linka);stroke-width:2.6;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round;transition:stroke .6s}
-.fasada .okn rect{fill:var(--sklo);transition:fill .45s}
-.fasada .okn path{fill:none;stroke:var(--zed);stroke-width:2;vector-effect:non-scaling-stroke;transition:stroke .6s}
-.fasada .okn.lit rect{fill:var(--lamp)}
-.fasada .nebe{opacity:var(--hv);transition:opacity .8s}
-.fasada .nebe circle{fill:var(--lamp)}
-.fasada .spoj{fill:none;stroke:var(--sky);stroke-width:1.4;vector-effect:non-scaling-stroke;stroke-dasharray:3 4;opacity:.7}
-.dzien:not(.noc) .fasada .nebe circle{fill:var(--ink)}
-.dzien:not(.noc) .fasada .spoj{stroke:var(--ink)}
-
-/* ========== AKTUALITY — seznam s okénky ========== */
-.akt-h{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.kat{margin-top:88px}
-.kat-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:40px}
-.kat-h .ile{font-size:16px;color:var(--muted)}
-.wpisy{display:grid;grid-template-columns:1fr 1fr;column-gap:64px;row-gap:36px}
-.wpis{display:grid;grid-template-columns:64px 1fr;column-gap:20px;align-items:start}
-.mini{position:relative;width:64px;height:64px;border-radius:6px;overflow:hidden;background:var(--sky)}
+/* ========== START — aktuality a kalendář na první obrazovce ========== */
+.start{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col);padding:clamp(28px,4.5vh,56px) var(--m) 0;align-items:start}
+.start-h{grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px 48px;margin-bottom:clamp(28px,4.5vh,48px)}
+.start h1{font:700 clamp(40px,4.6vw,76px)/.95 var(--f);letter-spacing:-.04em}
+.start h1 .ln{display:inline-block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em;vertical-align:top}
+.start h1 .ln>span{display:inline-block}
+.start .lede{max-width:46ch;color:var(--muted);padding-bottom:4px}
+.feed{grid-column:1 / span 8;grid-row:2}
+.feed-h{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px;margin-bottom:6px}
+.feed-h h2{font:700 var(--s-mid)/1 var(--f);letter-spacing:-.02em}
+.filtr{display:flex;background:var(--surface);border-radius:6px;padding:4px}
+.filtr button{border:0;background:transparent;min-height:42px;padding:0 16px;border-radius:4px;font-weight:700;font-size:16px;color:var(--muted);cursor:pointer;transition:background-color .2s,color .2s}
+.filtr button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.news{display:grid;grid-template-columns:128px minmax(0,1fr) auto;column-gap:28px;padding:26px 0}
+.news[hidden]{display:none}
+.news-meta{display:flex;flex-direction:column;gap:2px;padding-top:3px}
+.news-meta time{font-weight:700;font-variant-numeric:tabular-nums}
+.kat-l{font-size:15px;color:var(--muted)}
+.news h3{font-size:22px;font-weight:700;line-height:1.2;letter-spacing:-.01em;text-wrap:balance}
+.news .lead{margin-top:8px;max-width:60ch}
+.news-top{background:var(--sky-l);border-radius:var(--r);padding:28px 28px 30px;margin:10px 0 6px}
+.news-top h3{font-size:var(--s-mid);line-height:1.08;letter-spacing:-.02em}
+.news .mini{width:72px;height:72px;margin-top:4px}
+.wiecej{margin-top:10px}
+.wiecej summary{list-style:none;display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-weight:700;min-height:40px}
+.wiecej summary>[lang]{text-decoration:underline;text-decoration-color:var(--sky-d);text-decoration-thickness:3px;text-underline-offset:6px}
+.wiecej summary::-webkit-details-marker{display:none}
+.wiecej summary::after{content:"+";font-size:22px;line-height:1;transition:transform .3s var(--ease)}
+.wiecej[open] summary::after{transform:rotate(45deg)}
+.wiecej .z2,.wiecej[open] .z1{display:none}
+.wiecej[open] .z2{display:inline}
+.mini{position:relative;border-radius:6px;overflow:hidden;background:var(--sky);flex:none}
 .mini img{width:100%;height:100%;object-fit:cover}
 .mini::before,.mini::after{content:"";position:absolute;background:#fff}
 .mini.foto::after{left:0;right:0;top:34%;height:3px}
 .mini.foto::before{left:50%;top:34%;bottom:0;width:3px;transform:translateX(-50%)}
-.mini.data{display:grid;grid-template-rows:34% 1fr;text-align:center;line-height:1}
-.mini.data::after{left:0;right:0;top:34%;height:3px}
-.mini.data::before{display:none}
-.mini.data .mc{display:grid;place-items:center;font-size:13px;font-weight:700}
-.mini.data .dd{display:grid;place-items:center;font-size:26px;font-weight:700;letter-spacing:-.03em;background:var(--sky-l)}
-.wpis-t{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
-.wpis-t h4{margin:0;font-size:18px;font-weight:700;line-height:1.25}
-.wpis-t h4 a{text-decoration:none}
-@media (hover:hover){.wpis-t h4 a:hover{text-decoration:underline;text-decoration-color:var(--sky-d);text-decoration-thickness:3px}}
-.wpis-t time{flex:none;font-size:var(--s-small);color:var(--muted);font-variant-numeric:tabular-nums}
-.wpis p{margin-top:6px;font-size:16px;line-height:1.5;color:var(--muted);max-width:42ch}
+.tresc{padding-top:8px;max-width:62ch}
+.tresc p+p{margin-top:10px}
+.zrodlo{display:inline-block;margin-top:14px;font-size:15px;color:var(--muted)}
+.starsze{margin-top:14px}
+.kal{grid-column:9 / -1;grid-row:2}
+.kal-box{background:var(--sky);border-radius:var(--r);padding:24px 24px 18px}
+.kal h2{font:700 var(--s-mid)/1 var(--f);letter-spacing:-.02em;margin-bottom:14px}
+.ev{display:grid;grid-template-columns:54px minmax(0,1fr);column-gap:16px;padding:10px 0}
+.ev[hidden]{display:none}
+.ev-tile{display:grid;grid-template-rows:34% 1fr;width:54px;height:60px;border-radius:6px;overflow:hidden;background:#fff;text-align:center;line-height:1;position:relative}
+.ev-tile::after{content:"";position:absolute;left:0;right:0;top:34%;height:3px;background:var(--sky)}
+.ev-tile .m{display:grid;place-items:center;font-size:13px;font-weight:700;background:var(--sky-l)}
+.ev-tile .dd{display:grid;place-items:center;font-size:24px;font-weight:700;letter-spacing:-.03em;padding-top:3px}
+.ev-txt b{display:block;font-size:17px;line-height:1.25}
+.ev-gdzie{display:block;font-size:15px;margin-top:2px}
+.ics{border:0;background:none;padding:6px 0 0;font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:4px;cursor:pointer;color:var(--ink)}
+.kal-wiecej{margin-top:6px;border:0;border-radius:6px;min-height:44px;padding:0 16px;background:rgba(255,255,255,.6);font-weight:700;font-size:16px;cursor:pointer;transition:background-color .2s}
+@media (hover:hover){.kal-wiecej:hover{background:#fff}.filtr button:hover{color:var(--ink)}.filtr button[aria-pressed="true"]:hover{color:#fff}}
+.kal-pusto{padding:10px 0}
+.szybkie{margin-top:12px;display:grid;gap:8px}
+.szybkie h3{font-size:18px;font-weight:700;margin:12px 0 2px}
+.szybkie a{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:54px;padding:0 20px;border-radius:6px;background:var(--surface);font-weight:700;text-decoration:none;transition:background-color .2s,transform .25s var(--ease)}
+.szybkie a::after{content:"→";transition:transform .25s var(--ease)}
+@media (hover:hover){.szybkie a:hover{background:var(--surface-2)}.szybkie a:hover::after{transform:translateX(4px)}}
+.szybkie a:active{transform:scale(.98)}
 
-/* ========== ZÁPIS — rozházené, stužka, řady ========== */
-.zap-top{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col);align-items:end}
-.zap-top .h2{grid-column:1 / span 5}
-.zap-top .zap-p{grid-column:7 / -1;max-width:44ch}
-.diag-w{margin-top:64px}
-.diag{width:100%;height:auto;display:block}
-.diag-v{display:none}
-.diag .g rect{stroke:none}
-.diag .g path{fill:none;stroke:#fff;stroke-width:1.6}
-.diag .p1 rect{fill:var(--sky-l)}
-.diag .p2 rect{fill:var(--surface-2)}
-.diag .p3 rect{fill:var(--sky-d)}
-.diag .ac rect{fill:var(--sky)}
-.kroki{display:grid;grid-template-columns:repeat(3,1fr);column-gap:var(--col);margin-top:40px}
-.krok b{display:block;font-size:22px;font-weight:700;margin-bottom:8px}
-.krok p{max-width:34ch}
-.zap-dol{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col);margin-top:72px;align-items:center}
-.scio{grid-column:1 / span 7;padding:32px 36px;border-radius:var(--r);background:var(--sky)}
-.scio p{font:700 var(--s-mid)/1.15 var(--f);letter-spacing:-.02em;max-width:24ch}
-.scio small{display:block;margin-top:14px;font-size:var(--s-small)}
-.zap-akcje{grid-column:9 / -1;display:flex;flex-direction:column;align-items:flex-start;gap:18px}
-.zap-akcje p{font-size:16px;color:var(--muted)}
+/* ========== ZÁPIS ========== */
+.zapisy{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col);align-items:start}
+.zap-l{grid-column:1 / span 6}
+.zap-p{margin-top:24px;max-width:46ch}
+.kroki{margin-top:36px;display:grid;gap:22px}
+.krok{display:grid;grid-template-columns:22px 1fr;column-gap:16px}
+.ik{width:16px;height:19px;display:block}
+.krok .ik{margin-top:4px}
+.krok .ik{fill:var(--sky);stroke:#fff;stroke-width:1.4}
+.krok b{display:block;font-size:20px;font-weight:700;margin-bottom:4px}
+.krok p{max-width:44ch}
+.zap-akcje{margin-top:36px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px}
+.zap-akcje p{flex-basis:100%;font-size:16px;color:var(--muted)}
+.zap-foto{--fr:clamp(14px,1.6vw,26px);grid-column:8 / -1;grid-row:1 / span 2;aspect-ratio:.82}
+.zap-foto img{object-position:50% 60%}
+.scio{grid-column:1 / span 6;margin-top:48px;padding:30px 34px;border-radius:var(--r);background:var(--surface)}
+.scio p{font:700 clamp(22px,16px + 1vw,30px)/1.18 var(--f);letter-spacing:-.015em;max-width:30ch}
+.scio small{display:block;margin-top:12px;font-size:var(--s-small)}
 
 /* ========== MATEŘSKÁ ŠKOLA — logo před oknem ========== */
 .ms{position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col);align-items:end;padding-top:clamp(40px,6vh,80px)}
@@ -307,15 +274,6 @@ html.intro-on.intro-landed [data-intro-land]{opacity:1;transition:opacity .25s e
 .hist-txt .lata{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin-top:16px;font-size:16px;color:#e7edf3}
 .hist-txt .lata b{color:#fff;font-variant-numeric:tabular-nums}
 
-/* ========== PARTNEŘI — dlaždice ========== */
-.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.tile{background:var(--surface);border-radius:var(--r);aspect-ratio:3 / 2;padding:24px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
-.tile b{font-size:clamp(20px,14px + .9vw,28px);font-weight:700;line-height:1.1;letter-spacing:-.015em}
-.tile p{font-size:15px;line-height:1.45;color:var(--muted)}
-.tile.hl{grid-column:span 2;aspect-ratio:auto;background:var(--sky)}
-.tile.hl h2{font:700 clamp(32px,3vw,52px)/1 var(--f);letter-spacing:-.03em}
-.tile.hl p{color:var(--ink);font-size:16px;max-width:40ch}
-
 /* ========== KONTAKT ========== */
 .kontakt{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col);align-items:start}
 .kon-foto{--fr:clamp(12px,1.6vw,24px);grid-column:1 / span 6;aspect-ratio:1.1;position:sticky;top:104px}
@@ -356,8 +314,12 @@ html.intro-on.intro-landed [data-intro-land]{opacity:1;transition:opacity .25s e
 @media (max-width:1100px){
   .nav .links{gap:20px}
   .hist-txt{grid-column:7 / -1}
-  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .tile{aspect-ratio:auto;min-height:170px}
+  .nav .links{display:none}
+  .menu-btn{display:inline-flex;align-items:center;min-height:48px;padding:0 16px;border:0;border-radius:6px;background:var(--surface);font-weight:700;font-size:16px;cursor:pointer}
+  .nav.open .links{display:flex;position:absolute;top:80px;left:0;right:0;flex-direction:column;gap:0;background:var(--ground);padding:8px var(--m) 24px}
+  .nav.open .links a{font-size:22px;padding:12px 0}
+  .feed{grid-column:1 / span 7}
+  .kal{grid-column:8 / -1}
 }
 @media (max-width:980px){
   .nav .links{display:none}
@@ -369,26 +331,24 @@ html.intro-on.intro-landed [data-intro-land]{opacity:1;transition:opacity .25s e
 /* ========== MOBIL — samostatná kompozice ========== */
 @media (max-width:900px){
   :root{--gap:104px}
-  .hero{display:block;min-height:0;padding:40px var(--m) 0}
-  .hero-copy{width:auto}
-  .hero h1{font-size:11.5vw}
-  .hero .lede{margin-top:28px}
-  .hero-cta{margin-top:32px}
-  .hero .adr{margin-top:28px}
-  .hero-okno{--fr:18px;position:relative;left:auto;top:auto;transform:none;height:auto;width:100%;aspect-ratio:.72;margin-top:40px;margin-bottom:-34vw}
-  .hero{overflow:hidden}
-  .dzien-in{display:block}
-  .dzien-fasada{margin:40px 0 0}
-  .zap-top{display:block}
-  .zap-top .zap-p{margin-top:20px}
-  .diag-h{display:none}
-  .diag-v{display:block;max-width:420px}
-  .diag-w{display:grid;grid-template-columns:1fr 38vw;gap:16px;align-items:stretch;margin-top:40px}
-  .kroki{display:flex;flex-direction:column;justify-content:space-between;margin:0}
-  .krok b{font-size:18px}
-  .krok p{font-size:15px}
-  .zap-dol{display:block;margin-top:48px}
-  .zap-akcje{margin-top:28px}
+  .start{padding-top:28px}
+  .start h1{font-size:10.6vw}
+  .start-h{margin-bottom:24px}
+  .start{display:flex;flex-direction:column}
+  .kal{display:contents}
+  .kal-box{order:2;margin-bottom:32px}
+  .feed{order:3}
+  .szybkie{order:4;margin-top:40px}
+  .start-h{order:1}
+  .kal-box{padding:20px 18px 14px}
+  .feed-h{margin-bottom:0}
+  .news{grid-template-columns:minmax(0,1fr) auto;padding:22px 0}
+  .news-meta{grid-column:1 / -1;flex-direction:row;gap:12px;padding:0 0 6px}
+  .news .mini{width:60px;height:60px}
+  .news-top{padding:22px 20px 24px}
+  .zapisy{display:block}
+  .zap-foto{margin-top:40px}
+  .scio{margin-top:24px;padding:24px}
   .ms{display:block;min-height:0}
   .ms-wiz{position:relative;display:grid;place-items:center}
   .ms-okno{width:86vw;max-width:420px}
@@ -428,16 +388,11 @@ html.intro-on.intro-landed [data-intro-land]{opacity:1;transition:opacity .25s e
   .logo .w2{display:none}
   .nav .btn{display:none}
   .lang button{min-width:40px}
-  .wpisy{grid-template-columns:1fr}
-  .tiles{grid-template-columns:1fr 1fr;gap:6px}
-  .tile{padding:18px;min-height:150px}
-  .tile.hl{grid-column:1 / -1}
-  .tile p{font-size:14px}
+  .filtr{width:100%}
+  .filtr button{flex:1;padding:0 8px}
+  .news h3{font-size:20px}
   .dane{grid-template-columns:1fr}
   .dane dd{margin-bottom:8px}
-  .ovl{grid-template-columns:1fr auto}
-  .dni span{padding:10px 12px}
-  .cas{grid-column:1 / -1}
   .ribbon{font-size:14px;padding:8px 14px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -452,7 +407,7 @@ html.intro-on.intro-landed [data-intro-land]{opacity:1;transition:opacity .25s e
 
 <div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ik" viewBox="0 0 12 14"><rect x="0" y="0" width="12" height="14" rx="2"/><path d="M0 4.8H12M6 4.8V14"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ik" viewBox="0 0 12 14"><rect x="0" y="0" width="12" height="14" rx="2" stroke="none"/><path d="M0 4.8H12M6 4.8V14" fill="none"/></symbol></svg>
 
 <header class="nav" id="nav">
   <a class="logo" href="#" data-intro-land data-aria-pl="Polska Szkoła w Karwinie – na początek strony" data-aria-cs="Polská škola v Karviné – na začátek stránky" aria-label="Polska Szkoła w Karwinie – na początek strony">
@@ -461,6 +416,7 @@ html.intro-on.intro-landed [data-intro-land]{opacity:1;transition:opacity .25s e
   </a>
   <nav class="links" id="links" aria-label="Strona">
     <a href="#aktualnosci"><span lang="pl">Aktualności</span><span lang="cs">Aktuality</span></a>
+    <a href="#kalendarz"><span lang="pl">Kalendarz</span><span lang="cs">Kalendář</span></a>
     <a href="#zapisy"><span lang="pl">Zapisy</span><span lang="cs">Zápis</span></a>
     <a href="#przedszkole"><span lang="pl">Przedszkole</span><span lang="cs">Mateřská škola</span></a>
     <a href="#kontakt"><span lang="pl">Kontakt</span><span lang="cs">Kontakt</span></a>
@@ -477,126 +433,105 @@ html.intro-on.intro-landed [data-intro-land]{opacity:1;transition:opacity .25s e
 
 <main>
 
-<!-- ============ ÚVOD ============ -->
-<section class="hero" aria-labelledby="hero-h">
-  <div class="hero-copy">
-    <h1 id="hero-h">
-      <span lang="pl"><span class="ln"><span>Polska szkoła</span></span><span class="ln"><span>w Karwinie</span></span></span>
-      <span lang="cs"><span class="ln"><span>Polská škola</span></span><span class="ln"><span>v Karviné</span></span></span>
+<!-- ============ START: AKTUALITY + KALENDÁŘ ============ -->
+<section class="start" id="aktualnosci" aria-labelledby="start-h">
+  <div class="start-h">
+    <h1 id="start-h">
+      <span lang="pl"><span class="ln"><span>Polska szkoła</span></span> <span class="ln"><span>w Karwinie</span></span></span>
+      <span lang="cs"><span class="ln"><span>Polská škola</span></span> <span class="ln"><span>v Karviné</span></span></span>
     </h1>
-    <p class="lede h-in" lang="pl">Szkoła podstawowa i przedszkole z polskim językiem nauczania we Frysztacie. Uczymy od 1918 roku.</p>
-    <p class="lede h-in" lang="cs">Základní a mateřská škola s polským jazykem vyučovacím ve Fryštátě. Učíme od roku 1918.</p>
-    <div class="hero-cta h-in">
-      <a class="btn" href="#zapisy"><span lang="pl">Zapisy do 1. klasy</span><span lang="cs">Zápis do 1. třídy</span></a>
-      <a class="odkaz" href="#dzien"><span lang="pl">Co dziś w szkole</span><span lang="cs">Co je dnes ve škole</span></a>
-    </div>
-    <p class="adr h-in"><span lang="pl">ul. Dr. Olszaka 156/2, Karwina-Frysztat · sekretariat </span><span lang="cs">Dr. Olszaka 156/2, Karviná-Fryštát · sekretariát </span><a href="tel:+420596317672">596 317 672</a></p>
+    <p class="lede s-in" lang="pl">Szkoła podstawowa i przedszkole z polskim językiem nauczania we Frysztacie, od 1918 roku.</p>
+    <p class="lede s-in" lang="cs">Základní a mateřská škola s polským jazykem vyučovacím ve Fryštátě, od roku 1918.</p>
   </div>
-  <figure class="okno hero-okno">
-    <img src="img/szkola-960.jpg" srcset="img/szkola-640.jpg 640w, img/szkola-960.jpg 960w" sizes="(max-width:900px) 92vw, 56vw" width="960" height="720" alt="Budynek szkoły przy ulicy Dr. Olszaka we Frysztacie" data-alt-pl="Budynek szkoły przy ulicy Dr. Olszaka we Frysztacie" data-alt-cs="Budova školy v ulici Dr. Olszaka ve Fryštátě" fetchpriority="high">
-  </figure>
-</section>
 
-<!-- ============ DEN VE ŠKOLE (živá věc) ============ -->
-<section class="dzien sec" id="dzien" aria-labelledby="dzien-h">
-  <div class="dzien-in">
-    <div class="dzien-tekst">
-      <h2 id="dzien-h" class="h2" data-r><span lang="pl">Dzień w szkole</span><span lang="cs">Den ve škole</span></h2>
-      <p class="pod" lang="pl" data-r>Od 6:15 do 16:45 w budynku przy ulicy Dr. Olszaka. Okna świecą tam, gdzie właśnie coś się dzieje.</p>
-      <p class="pod" lang="cs" data-r>Od 6:15 do 16:45 v budově v ulici Dr. Olszaka. Okna svítí tam, kde se právě něco děje.</p>
-      <p class="zegar" aria-live="polite"><span class="zd" data-zd></span><output data-zc for="cas">7:30</output></p>
-      <div class="ovl" data-ovl hidden>
-        <fieldset class="dni">
-          <legend class="vh"><span lang="pl">Dzień tygodnia</span><span lang="cs">Den v týdnu</span></legend>
-          <label><input type="radio" name="den" value="2"><span><span lang="pl">Pon–czw</span><span lang="cs">Po–čt</span></span></label>
-          <label><input type="radio" name="den" value="5"><span><span lang="pl">Piątek</span><span lang="cs">Pátek</span></span></label>
-          <label><input type="radio" name="den" value="6"><span><span lang="pl">Weekend</span><span lang="cs">Víkend</span></span></label>
-        </fieldset>
-        <label class="cas"><span><span lang="pl">Godzina</span><span lang="cs">Čas</span></span><input id="cas" type="range" min="300" max="1080" step="5" value="450"></label>
-        <button class="teraz" type="button" data-teraz><span lang="pl">Teraz</span><span lang="cs">Teď</span></button>
+  <aside class="kal s-in" id="kalendarz" aria-labelledby="kal-h">
+    <div class="kal-box">
+      <h2 id="kal-h"><span lang="pl">Kalendarz</span><span lang="cs">Kalendář</span></h2>
+      <ol data-kal><li class="ev" data-d="2026-11-24" data-t1="09:00" data-t2="10:00" data-kat="przedszkole"><span class="ev-tile" aria-hidden="true"><span class="m"><span lang="pl">lis</span><span lang="cs">lis</span></span><span class="dd">24</span></span><div class="ev-txt"><b><span lang="pl">Świąteczna sesja fotograficzna</span><span lang="cs">Vánoční focení</span></b><span class="ev-gdzie"><span lang="pl">wt 24.11.</span><span lang="cs">út 24. 11.</span> · <span lang="pl">Przedszkole · 9:00–10:00 i od 12:00</span><span lang="cs">Školka · 9:00–10:00 a od 12:00</span></span><button type="button" class="ics" data-ics="0"><span lang="pl">Dodaj do kalendarza</span><span lang="cs">Přidat do kalendáře</span></button></div></li><li class="ev" data-d="2026-12-16" data-t1="16:00" data-t2="" data-kat="przedszkole"><span class="ev-tile" aria-hidden="true"><span class="m"><span lang="pl">gru</span><span lang="cs">pro</span></span><span class="dd">16</span></span><div class="ev-txt"><b><span lang="pl">Jasełka</span><span lang="cs">Jasełka</span></b><span class="ev-gdzie"><span lang="pl">śr 16.12.</span><span lang="cs">st 16. 12.</span> · <span lang="pl">Dom Przyjaźni · 16:00</span><span lang="cs">Dům přátelství · 16:00</span></span><button type="button" class="ics" data-ics="1"><span lang="pl">Dodaj do kalendarza</span><span lang="cs">Přidat do kalendáře</span></button></div></li><li class="ev" data-d="2027-01-26" data-t1="16:00" data-t2="" data-kat="przedszkole"><span class="ev-tile" aria-hidden="true"><span class="m"><span lang="pl">sty</span><span lang="cs">led</span></span><span class="dd">26</span></span><div class="ev-txt"><b><span lang="pl">Dzień Babci i Dziadka – Czerwone Królestwo</span><span lang="cs">Den babiček a dědečků – Červené království</span></b><span class="ev-gdzie"><span lang="pl">wt 26.1.</span><span lang="cs">út 26. 1.</span> · <span lang="pl">Dom Polski · 16:00</span><span lang="cs">Dům polský · 16:00</span></span><button type="button" class="ics" data-ics="2"><span lang="pl">Dodaj do kalendarza</span><span lang="cs">Přidat do kalendáře</span></button></div></li><li class="ev" data-d="2027-01-27" data-t1="16:00" data-t2="" data-kat="przedszkole"><span class="ev-tile" aria-hidden="true"><span class="m"><span lang="pl">sty</span><span lang="cs">led</span></span><span class="dd">27</span></span><div class="ev-txt"><b><span lang="pl">Dzień Babci i Dziadka – Zielone Królestwo</span><span lang="cs">Den babiček a dědečků – Zelené království</span></b><span class="ev-gdzie"><span lang="pl">śr 27.1.</span><span lang="cs">st 27. 1.</span> · <span lang="pl">Dom Polski · 16:00</span><span lang="cs">Dům polský · 16:00</span></span><button type="button" class="ics" data-ics="3"><span lang="pl">Dodaj do kalendarza</span><span lang="cs">Přidat do kalendáře</span></button></div></li><li class="ev" data-d="2027-02-11" data-t1="14:00" data-t2="17:00" data-kat="szkola"><span class="ev-tile" aria-hidden="true"><span class="m"><span lang="pl">lut</span><span lang="cs">úno</span></span><span class="dd">11</span></span><div class="ev-txt"><b><span lang="pl">Zapisy do 1. klasy</span><span lang="cs">Zápis do 1. třídy</span></b><span class="ev-gdzie"><span lang="pl">czw 11.2.</span><span lang="cs">čt 11. 2.</span> · <span lang="pl">Szkoła · 14:00–17:00</span><span lang="cs">Škola · 14:00–17:00</span></span><button type="button" class="ics" data-ics="4"><span lang="pl">Dodaj do kalendarza</span><span lang="cs">Přidat do kalendáře</span></button></div></li><li class="ev" data-d="2027-04-17" data-t1="14:00" data-t2="" data-kat="przedszkole"><span class="ev-tile" aria-hidden="true"><span class="m"><span lang="pl">kwi</span><span lang="cs">dub</span></span><span class="dd">17</span></span><div class="ev-txt"><b><span lang="pl">Balik maskowy</span><span lang="cs">Maškarní bál</span></b><span class="ev-gdzie"><span lang="pl">sob 17.4.</span><span lang="cs">so 17. 4.</span> · <span lang="pl">Dom Przyjaźni · 14:00</span><span lang="cs">Dům přátelství · 14:00</span></span><button type="button" class="ics" data-ics="5"><span lang="pl">Dodaj do kalendarza</span><span lang="cs">Přidat do kalendáře</span></button></div></li><li class="ev" data-d="2027-04-20" data-t1="09:30" data-t2="" data-kat="przedszkole"><span class="ev-tile" aria-hidden="true"><span class="m"><span lang="pl">kwi</span><span lang="cs">dub</span></span><span class="dd">20</span></span><div class="ev-txt"><b><span lang="pl">Teatr w Cieszynie: „O ognistym ptaku”</span><span lang="cs">Divadlo v Těšíně: „O ognistym ptaku”</span></b><span class="ev-gdzie"><span lang="pl">wt 20.4.</span><span lang="cs">út 20. 4.</span> · <span lang="pl">Przedszkole · wyjazd 9:30</span><span lang="cs">Školka · odjezd 9:30</span></span><button type="button" class="ics" data-ics="6"><span lang="pl">Dodaj do kalendarza</span><span lang="cs">Přidat do kalendáře</span></button></div></li><li class="ev" data-d="2027-05-15" data-t1="" data-t2="" data-kat="przedszkole"><span class="ev-tile" aria-hidden="true"><span class="m"><span lang="pl">maj</span><span lang="cs">kvě</span></span><span class="dd">15</span></span><div class="ev-txt"><b><span lang="pl">Wycieczka rodziców i dzieci w góry</span><span lang="cs">Výlet rodičů a dětí do hor</span></b><span class="ev-gdzie"><span lang="pl">sob 15.5.</span><span lang="cs">so 15. 5.</span> · <span lang="pl">Przedszkole · sobota</span><span lang="cs">Školka · sobota</span></span><button type="button" class="ics" data-ics="7"><span lang="pl">Dodaj do kalendarza</span><span lang="cs">Přidat do kalendáře</span></button></div></li><li class="ev" data-d="2027-05-31" data-t1="" data-t2="" data-kat="przedszkole"><span class="ev-tile" aria-hidden="true"><span class="m"><span lang="pl">maj</span><span lang="cs">kvě</span></span><span class="dd">31</span></span><div class="ev-txt"><b><span lang="pl">Funpark „Žirafa” w Ostrawie</span><span lang="cs">Funpark „Žirafa” v Ostravě</span></b><span class="ev-gdzie"><span lang="pl">pon 31.5.</span><span lang="cs">po 31. 5.</span> · <span lang="pl">Przedszkole</span><span lang="cs">Školka</span></span><button type="button" class="ics" data-ics="8"><span lang="pl">Dodaj do kalendarza</span><span lang="cs">Přidat do kalendáře</span></button></div></li><li class="ev" data-d="2027-06-02" data-t1="09:30" data-t2="" data-kat="przedszkole"><span class="ev-tile" aria-hidden="true"><span class="m"><span lang="pl">cze</span><span lang="cs">čvn</span></span><span class="dd">2</span></span><div class="ev-txt"><b><span lang="pl">Teatr w Cieszynie: „Kulka”</span><span lang="cs">Divadlo v Těšíně: „Kulka”</span></b><span class="ev-gdzie"><span lang="pl">śr 2.6.</span><span lang="cs">st 2. 6.</span> · <span lang="pl">Przedszkole · wyjazd 9:30</span><span lang="cs">Školka · odjezd 9:30</span></span><button type="button" class="ics" data-ics="9"><span lang="pl">Dodaj do kalendarza</span><span lang="cs">Přidat do kalendáře</span></button></div></li><li class="ev" data-d="2027-06-05" data-t1="14:00" data-t2="" data-kat="szkola"><span class="ev-tile" aria-hidden="true"><span class="m"><span lang="pl">cze</span><span lang="cs">čvn</span></span><span class="dd">5</span></span><div class="ev-txt"><b><span lang="pl">Festyn szkoły i przedszkola</span><span lang="cs">Festyn školy a školky</span></b><span class="ev-gdzie"><span lang="pl">sob 5.6.</span><span lang="cs">so 5. 6.</span> · <span lang="pl">Stadion zimowy i ogród szkoły</span><span lang="cs">Zimní stadion a školní zahrada</span></span><button type="button" class="ics" data-ics="10"><span lang="pl">Dodaj do kalendarza</span><span lang="cs">Přidat do kalendáře</span></button></div></li><li class="ev" data-d="2027-06-22" data-t1="16:00" data-t2="" data-kat="przedszkole"><span class="ev-tile" aria-hidden="true"><span class="m"><span lang="pl">cze</span><span lang="cs">čvn</span></span><span class="dd">22</span></span><div class="ev-txt"><b><span lang="pl">Pożegnanie starszaków</span><span lang="cs">Rozloučení s předškoláky</span></b><span class="ev-gdzie"><span lang="pl">wt 22.6.</span><span lang="cs">út 22. 6.</span> · <span lang="pl">Ogród przedszkola · 16:00</span><span lang="cs">Zahrada školky · 16:00</span></span><button type="button" class="ics" data-ics="11"><span lang="pl">Dodaj do kalendarza</span><span lang="cs">Přidat do kalendáře</span></button></div></li></ol>
+      <p class="kal-pusto" data-kal-pusto hidden><span lang="pl">Na razie nie ma zaplanowanych wydarzeń.</span><span lang="cs">Zatím nejsou naplánované žádné akce.</span></p>
+      <button type="button" class="kal-wiecej" data-kal-btn hidden><span data-kal-wiecej><span lang="pl">Cały kalendarz</span><span lang="cs">Celý kalendář</span></span><span data-kal-mniej hidden><span lang="pl">Tylko najbliższe</span><span lang="cs">Jen nejbližší</span></span></button>
+    </div>
+    <nav class="szybkie" aria-labelledby="szyb-h">
+      <h3 id="szyb-h"><span lang="pl">Dla rodziców</span><span lang="cs">Pro rodiče</span></h3>
+      <a href="#obiad"><span lang="pl">Odgłoś obiad</span><span lang="cs">Odhlásit oběd</span></a>
+      <a href="https://pzskarvina.bakalari.cz/"><span lang="pl">E-dziennik Bakaláři</span><span lang="cs">Bakaláři</span></a>
+      <a href="https://www.pzskarvina.cz/stolowka_szkolna.asp?m=5"><span lang="pl">Jadłospis</span><span lang="cs">Jídelníček</span></a>
+      <a href="#zapisy"><span lang="pl">Zapisy do 1. klasy</span><span lang="cs">Zápis do 1. třídy</span></a>
+    </nav>
+  </aside>
+
+  <div class="feed" aria-labelledby="feed-h">
+    <div class="feed-h s-in">
+      <h2 id="feed-h"><span lang="pl">Aktualności</span><span lang="cs">Aktuality</span></h2>
+      <div class="filtr" role="group" data-filtr data-aria-pl="Pokaż aktualności" data-aria-cs="Zobrazit aktuality" aria-label="Pokaż aktualności">
+        <button type="button" data-k="all" aria-pressed="true"><span lang="pl">Wszystkie</span><span lang="cs">Vše</span></button>
+        <button type="button" data-k="szkola" aria-pressed="false"><span lang="pl">Szkoła</span><span lang="cs">Škola</span></button>
+        <button type="button" data-k="przedszkole" aria-pressed="false"><span lang="pl">Przedszkole</span><span lang="cs">Školka</span></button>
       </div>
-      <ul class="plan" data-plan>
-        <li data-od="375" data-do="465" data-dni="1-5"><svg class="ik" aria-hidden="true"><use href="#ik"/></svg><span class="co"><span lang="pl">Świetlica poranna</span><span lang="cs">Ranní družina</span></span><span class="kdy">6:15–7:45</span><span class="stan" data-stan></span></li>
-        <li data-od="450" data-do="930" data-dni="1-5"><svg class="ik" aria-hidden="true"><use href="#ik"/></svg><span class="co"><span lang="pl">Sekretariat</span><span lang="cs">Sekretariát</span></span><span class="kdy">7:30–15:30</span><span class="stan" data-stan></span></li>
-        <li data-od="480" data-do="870" data-dni="1-5"><svg class="ik" aria-hidden="true"><use href="#ik"/></svg><span class="co"><span lang="pl">Lekcje</span><span lang="cs">Vyučování</span></span><span class="kdy">8:00–14:30</span><span class="stan" data-stan></span></li>
-        <li data-od="660" data-do="675" data-dni="1-5"><svg class="ik" aria-hidden="true"><use href="#ik"/></svg><span class="co"><span lang="pl">Odbiór obiadu do domu</span><span lang="cs">Výdej oběda domů</span></span><span class="kdy">11:00–11:15</span><span class="stan" data-stan></span></li>
-        <li data-od="695" data-do="1005" data-dni="1-5"><svg class="ik" aria-hidden="true"><use href="#ik"/></svg><span class="co"><span lang="pl">Świetlica popołudniowa</span><span lang="cs">Odpolední družina</span></span><span class="kdy">11:35–16:45</span><span class="stan" data-stan></span></li>
-        <li data-od="855" data-do="900" data-dni="5"><svg class="ik" aria-hidden="true"><use href="#ik"/></svg><span class="co"><span lang="pl">Zuchy Wilczęta, piątek</span><span lang="cs">Vlčata, pátek</span></span><span class="kdy">14:15–15:00</span><span class="stan" data-stan></span></li>
-        <li data-od="900" data-do="990" data-dni="5"><svg class="ik" aria-hidden="true"><use href="#ik"/></svg><span class="co"><span lang="pl">Harcerze, piątek</span><span lang="cs">Skauti, pátek</span></span><span class="kdy">15:00–16:30</span><span class="stan" data-stan></span></li>
-      </ul>
-      <p class="oi" data-oi>
-        <span lang="pl">Obiad odgłosisz najpóźniej do 6:00 w dniu nieobecności. <a href="#obiad">Odgłoś obiad</a></span>
-        <span lang="cs">Oběd odhlásíte nejpozději do 6:00 v den nepřítomnosti. <a href="#obiad">Odhlásit oběd</a></span>
-      </p>
     </div>
-    <figure class="dzien-fasada" data-r>
-      <svg class="fasada" viewBox="0 -15 72 57" role="img" aria-labelledby="fas-t"><title id="fas-t">Budynek szkoły, okna świecą według pory dnia</title><g class="nebe"><path class="spoj" d="M40 -6 L46 -8.5 L51 -9.2 L56 -8 L57 -3 L64 -3.5 L64.5 -9.5 L56 -8"/><circle cx="40" cy="-6" r=".75"/><circle cx="46" cy="-8.5" r=".75"/><circle cx="51" cy="-9.2" r=".75"/><circle cx="56" cy="-8" r=".75"/><circle cx="57" cy="-3" r=".75"/><circle cx="64" cy="-3.5" r=".75"/><circle cx="64.5" cy="-9.5" r=".75"/></g><rect class="zed" x="5" y="9.5" width="62" height="31.5"/><rect class="rizalit" x="30" y="9.5" width="12" height="31.5"/><g class="okna"><g class="okn" data-k="klasy"><rect x="8" y="12.5" width="5" height="7" rx="0.7"/><path d="M8 14.88H13M10.5 14.88V19.5"/></g><g class="okn" data-k="klasy"><rect x="8" y="22.5" width="5" height="7" rx="0.7"/><path d="M8 24.88H13M10.5 24.88V29.5"/></g><g class="okn" data-k="klasy"><rect x="15.5" y="12.5" width="5" height="7" rx="0.7"/><path d="M15.5 14.88H20.5M18 14.88V19.5"/></g><g class="okn" data-k="klasy"><rect x="15.5" y="22.5" width="5" height="7" rx="0.7"/><path d="M15.5 24.88H20.5M18 24.88V29.5"/></g><g class="okn" data-k="klasy"><rect x="23" y="12.5" width="5" height="7" rx="0.7"/><path d="M23 14.88H28M25.5 14.88V19.5"/></g><g class="okn" data-k="klasy"><rect x="23" y="22.5" width="5" height="7" rx="0.7"/><path d="M23 24.88H28M25.5 24.88V29.5"/></g><g class="okn" data-k="klasy"><rect x="44" y="12.5" width="5" height="7" rx="0.7"/><path d="M44 14.88H49M46.5 14.88V19.5"/></g><g class="okn" data-k="klasy"><rect x="44" y="22.5" width="5" height="7" rx="0.7"/><path d="M44 24.88H49M46.5 24.88V29.5"/></g><g class="okn" data-k="klasy"><rect x="51.5" y="12.5" width="5" height="7" rx="0.7"/><path d="M51.5 14.88H56.5M54 14.88V19.5"/></g><g class="okn" data-k="klasy"><rect x="51.5" y="22.5" width="5" height="7" rx="0.7"/><path d="M51.5 24.88H56.5M54 24.88V29.5"/></g><g class="okn" data-k="klasy"><rect x="59" y="12.5" width="5" height="7" rx="0.7"/><path d="M59 14.88H64M61.5 14.88V19.5"/></g><g class="okn" data-k="klasy"><rect x="59" y="22.5" width="5" height="7" rx="0.7"/><path d="M59 24.88H64M61.5 24.88V29.5"/></g><g class="okn" data-k="swietlica"><rect x="8" y="32.5" width="5" height="6.5" rx="0.7"/><path d="M8 34.71H13M10.5 34.71V39"/></g><g class="okn" data-k="swietlica"><rect x="15.5" y="32.5" width="5" height="6.5" rx="0.7"/><path d="M15.5 34.71H20.5M18 34.71V39"/></g><g class="okn" data-k="swietlica"><rect x="23" y="32.5" width="5" height="6.5" rx="0.7"/><path d="M23 34.71H28M25.5 34.71V39"/></g><g class="okn" data-k="stolowka"><rect x="44" y="32.5" width="5" height="6.5" rx="0.7"/><path d="M44 34.71H49M46.5 34.71V39"/></g><g class="okn" data-k="stolowka"><rect x="51.5" y="32.5" width="5" height="6.5" rx="0.7"/><path d="M51.5 34.71H56.5M54 34.71V39"/></g><g class="okn" data-k="stolowka"><rect x="59" y="32.5" width="5" height="6.5" rx="0.7"/><path d="M59 34.71H64M61.5 34.71V39"/></g><g class="okn" data-k="klasy"><rect x="32.5" y="12" width="7" height="7.5" rx="0.7"/><path d="M32.5 14.55H39.5M36 14.55V19.5"/></g><g class="okn" data-k="sekretariat"><rect x="34" y="22.5" width="4" height="7" rx="0.7"/><path d="M34 24.88H38M36 24.88V29.5"/></g><g class="okn" data-k="drzwi"><rect x="33.5" y="31.5" width="5" height="9.5" rx="0.7"/><path d="M33.5 34.73H38.5M36 34.73V41"/></g></g><g class="linie"><path class="dl" d="M3 9.5H69"/><path class="dl" d="M5 9.5V41M67 41V9.5"/><path class="dl" d="M30 9.5V41M42 41V9.5"/><path class="dl" d="M5 21H30M42 21H67M5 30.8H30M42 30.8H67"/><path class="dl" d="M1 41H71"/></g></svg>
-    </figure>
-  </div>
-</section>
-
-<!-- ============ AKTUALITY ============ -->
-<section class="sec wrap" id="aktualnosci" aria-labelledby="akt-h">
-  <div class="akt-h">
-    <h2 id="akt-h" class="h2" data-r><span lang="pl">Aktualności</span><span lang="cs">Aktuality</span></h2>
-    <a class="odkaz" href="https://www.facebook.com/SPFrysztat/" data-r><span lang="pl">Więcej na Facebooku szkoły</span><span lang="cs">Více na Facebooku školy</span></a>
-  </div>
-
-  <div class="kat">
-    <div class="kat-h"><h3 class="mid" data-r><span lang="pl">Szkoła</span><span lang="cs">Škola</span></h3><span class="ile"><span lang="pl">7 wpisów</span><span lang="cs">7 zpráv</span></span></div>
-    <ul class="wpisy">
-      <li class="wpis" data-r><span class="mini foto"><img src="img/stadion-640.jpg" alt="" loading="lazy" width="640" height="475"></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/nowosc.asp?a=1480"><span lang="pl">Zapraszamy na festyn</span><span lang="cs">Zveme na festyn</span></a></h4><time datetime="2026-05-14">14. 5.</time></div><p lang="pl">Sobota 6.6. od 14:00 na stadionie zimowym i w ogrodzie szkoły. Program, dobra kuchnia i muzyka.</p><p lang="cs">Sobota 6. 6. od 14:00 na zimním stadionu a na školní zahradě. Program, dobré jídlo a hudba.</p></div></li>
-      <li class="wpis" data-r><span class="mini foto"><img src="img/nerki-160.jpg" alt="" loading="lazy" width="160" height="160"></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/nowosc.asp?a=1479"><span lang="pl">Dziewiątacy spisali się na medal</span><span lang="cs">Deváťáci zabodovali</span></a></h4><time datetime="2026-01-17">17. 1.</time></div><p lang="pl">W testach SCIO nasza szkoła znalazła się wśród 10 % najlepszych z matematyki i języka czeskiego.</p><p lang="cs">V testech SCIO patří škola mezi 10 % nejúspěšnějších v matematice a českém jazyce.</p></div></li>
-      <li class="wpis" data-r><span class="mini foto"><img src="img/klasa1-160.jpg" alt="" loading="lazy" width="160" height="160"></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/nowosc.asp?a=1477"><span lang="pl">Zapisy do klasy 1. – informacje</span><span lang="cs">Zápis do 1. třídy – informace</span></a></h4><time datetime="2026-01-05">5. 1.</time></div><p lang="pl">Zgłoszenie elektroniczne, potem jedna wizyta w szkole z dokumentami. Najlepiej razem z dzieckiem.</p><p lang="cs">Elektronická přihláška a pak jedna návštěva ve škole s doklady. Nejlépe i s dítětem.</p></div></li>
-      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">wrz</span><span lang="cs">zář</span></span><span class="dd">26</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/nowosc.asp?a=1475"><span lang="pl">Uwaga! Ćwiczenia Policji</span><span lang="cs">Pozor, cvičení policie</span></a></h4><time datetime="2025-09-26">26. 9. 2025</time></div><p lang="pl">16.10. od 8:00 do 12:00 zmiana organizacji ruchu koło szkoły i przedszkola.</p><p lang="cs">16. 10. od 8:00 do 12:00 změna dopravy u školy a školky.</p></div></li>
-      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">wrz</span><span lang="cs">zář</span></span><span class="dd">19</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/nowosc.asp?a=1474"><span lang="pl">Legitymacja ucznia 2025/2026</span><span lang="cs">Žákovský průkaz 2025/2026</span></a></h4><time datetime="2025-09-19">19. 9. 2025</time></div><p lang="pl">Dokumenty do przedłużenia ważności legitymacji oddajcie do 6.10.</p><p lang="cs">Podklady k prodloužení průkazu odevzdejte do 6. 10.</p></div></li>
-      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">wrz</span><span lang="cs">zář</span></span><span class="dd">9</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/nowosc.asp?a=1473"><span lang="pl">Nowości w nauczaniu matematyki</span><span lang="cs">Novinky ve výuce matematiky</span></a></h4><time datetime="2025-09-09">9. 9. 2025</time></div><p lang="pl">Klasy 4.–9. ćwiczą na fińskiej platformie Eduten, w szkole i w domu, każdy we własnym tempie.</p><p lang="cs">Třídy 4.–9. procvičují na finské platformě Eduten, ve škole i doma, každý svým tempem.</p></div></li>
-      <li class="wpis" data-r><span class="mini foto"><img src="img/niedzwiedzica-900.jpg" alt="" loading="lazy" width="900" height="689"></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/nowosc.asp?a=1472"><span lang="pl">Zuchy i harcerze zapraszają!</span><span lang="cs">Vlčata a skauti zvou!</span></a></h4><time datetime="2025-09-05">5. 9. 2025</time></div><p lang="pl">Zbiórki w piątki. Zgłoszenia z zeszłego roku są ważne do końca roku kalendarzowego.</p><p lang="cs">Schůzky v pátek. Loňské přihlášky platí do konce kalendářního roku.</p></div></li>
-    </ul>
-  </div>
-
-  <div class="kat">
-    <div class="kat-h"><h3 class="mid" data-r><span lang="pl">Przedszkole</span><span lang="cs">Mateřská škola</span></h3><span class="ile"><span lang="pl">7 wpisów</span><span lang="cs">7 zpráv</span></span></div>
-    <ul class="wpisy">
-      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">lis</span><span lang="cs">lis</span></span><span class="dd">10</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=984"><span lang="pl">Wizyta w szkole zdrowotnej</span><span lang="cs">Návštěva zdravotnické školy</span></a></h4><time datetime="2026-11-10">10. 11.</time></div><p lang="pl">W piątek 13.11. starszaki idą na pierwszą z trzech wizyt. Spakujcie pelerynę.</p><p lang="cs">V pátek 13. 11. jdou předškoláci na první ze tří návštěv. Přibalte pláštěnku.</p></div></li>
-      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">lis</span><span lang="cs">lis</span></span><span class="dd">10</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=985"><span lang="pl">Świąteczna sesja fotograficzna</span><span lang="cs">Vánoční focení</span></a></h4><time datetime="2026-11-10">10. 11.</time></div><p lang="pl">Wtorek 24.11. dla chętnych, także z rodzeństwem: 9:00–10:00 albo od 12:00.</p><p lang="cs">Úterý 24. 11. pro zájemce, i se sourozenci: 9:00–10:00 nebo od 12:00.</p></div></li>
-      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">paź</span><span lang="cs">říj</span></span><span class="dd">23</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=983"><span lang="pl">Diagnoza logopedyczna</span><span lang="cs">Logopedická depistáž</span></a></h4><time datetime="2026-10-23">23. 10.</time></div><p lang="pl">12.11. mgr Danuta Bogocz zbada mowę dzieci. Wyniki i zalecenia przekażemy rodzicom.</p><p lang="cs">12. 11. vyšetří Mgr. Danuta Bogocz řeč dětí. Výsledky a doporučení předáme rodičům.</p></div></li>
-      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">wrz</span><span lang="cs">zář</span></span><span class="dd">24</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=982"><span lang="pl">Wakacje jesienne</span><span lang="cs">Podzimní prázdniny</span></a></h4><time datetime="2026-09-24">24. 9.</time></div><p lang="pl">Obecność dziecka 29. i 30.10. zgłoście nauczycielkom do 29.9.</p><p lang="cs">Docházku dítěte 29. a 30. 10. nahlaste učitelkám do 29. 9.</p></div></li>
-      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">wrz</span><span lang="cs">zář</span></span><span class="dd">23</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=981"><span lang="pl">Ważne daty 2026/2027</span><span lang="cs">Důležitá data 2026/2027</span></a></h4><time datetime="2026-09-23">23. 9.</time></div><p lang="pl">Jasełka 16.12., Dzień Babci i Dziadka 26. i 27.1., festyn 5.6.2027.</p><p lang="cs">Jasełka 16. 12., Den babiček a dědečků 26. a 27. 1., festyn 5. 6. 2027.</p></div></li>
-      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">wrz</span><span lang="cs">zář</span></span><span class="dd">14</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=980"><span lang="pl">Wycieczka do ZOO w Ostrawie</span><span lang="cs">Výlet do ZOO Ostrava</span></a></h4><time datetime="2026-09-14">14. 9.</time></div><p lang="pl">Wtorek 22.9., odjazd 8:15, powrót ok. 12:30. Peleryna, przekąska i napój w plecaku.</p><p lang="cs">Úterý 22. 9., odjezd 8:15, návrat kolem 12:30. Pláštěnka, svačina a pití v batůžku.</p></div></li>
-      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">wrz</span><span lang="cs">zář</span></span><span class="dd">8</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=978"><span lang="pl">Lekcje pływania</span><span lang="cs">Plavání</span></a></h4><time datetime="2026-09-08">8. 9.</time></div><p lang="pl">Starszaki w czwartki, średniaki w piątki, 8:00–8:45 na basenie StaRS. Autobus o 7:30.</p><p lang="cs">Předškoláci ve čtvrtek, střední děti v pátek, 8:00–8:45 v bazénu StaRS. Autobus v 7:30.</p></div></li>
-    </ul>
+    <div data-feed><article class="news news-top" data-kat="przedszkole" id="n-p984"><div class="news-meta"><time datetime="2026-11-10">10. 11. 2026</time><span class="kat-l" lang="pl">Przedszkole</span><span class="kat-l" lang="cs">Školka</span></div><div class="news-txt"><h3><span lang="pl">Wizyta w szkole zdrowotnej</span><span lang="cs">Návštěva zdravotnické školy</span></h3><p class="lead" lang="pl">W piątek 13.11. starszaki idą na pierwszą z trzech wizyt. Spakujcie pelerynę.</p><p class="lead" lang="cs">V pátek 13. 11. jdou předškoláci na první ze tří návštěv. Přibalte pláštěnku.</p><details class="wiecej"><summary><span lang="pl"><span class="z1">Czytaj więcej</span><span class="z2">Zwiń</span></span><span lang="cs"><span class="z1">Číst dál</span><span class="z2">Sbalit</span></span></summary><div class="tresc"><div lang="pl"><p>Wizyty są częścią projektu IDZ – Zdravověda pro děti z MŠ (edukacja zdrowotna dla przedszkolaków). Każda poświęcona jest innemu tematowi zdrowia i bezpieczeństwa.</p><p>Wyjście o 9:40, dzieci wracają na obiad.</p></div><div lang="cs"><p>Návštěvy jsou součástí projektu IDZ – Zdravověda pro děti z MŠ. Každá je věnovaná jinému tématu zdraví a bezpečí.</p><p>Odchod v 9:40, děti se vrátí na oběd.</p></div><a class="zrodlo" href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=984"><span lang="pl">Oryginalny wpis</span><span lang="cs">Původní zpráva</span></a></div></details></div></article><article class="news" data-kat="przedszkole" id="n-p985"><div class="news-meta"><time datetime="2026-11-10">10. 11. 2026</time><span class="kat-l" lang="pl">Przedszkole</span><span class="kat-l" lang="cs">Školka</span></div><div class="news-txt"><h3><span lang="pl">Świąteczna sesja fotograficzna</span><span lang="cs">Vánoční focení</span></h3><p class="lead" lang="pl">Wtorek 24.11. dla chętnych, także z rodzeństwem.</p><p class="lead" lang="cs">Úterý 24. 11. pro zájemce, i se sourozenci.</p><details class="wiecej"><summary><span lang="pl"><span class="z1">Czytaj więcej</span><span class="z2">Zwiń</span></span><span lang="cs"><span class="z1">Číst dál</span><span class="z2">Sbalit</span></span></summary><div class="tresc"><div lang="pl"><p>Sesja jest dobrowolna. Zdjęcia z rodzeństwem, które nie chodzi do naszego przedszkola: 9:00–10:00 albo od 12:00.</p><p>Wpiszcie się na listę z konkretną godziną i oddajcie wypełniony druczek nauczycielkom.</p></div><div lang="cs"><p>Focení je dobrovolné. Fotky se sourozenci, kteří nechodí do naší školky: 9:00–10:00 nebo od 12:00.</p><p>Zapište se na seznam s konkrétním časem a vyplněný lístek odevzdejte učitelkám.</p></div><a class="zrodlo" href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=985"><span lang="pl">Oryginalny wpis</span><span lang="cs">Původní zpráva</span></a></div></details></div></article><article class="news" data-kat="przedszkole" id="n-p983"><div class="news-meta"><time datetime="2026-10-23">23. 10. 2026</time><span class="kat-l" lang="pl">Przedszkole</span><span class="kat-l" lang="cs">Školka</span></div><div class="news-txt"><h3><span lang="pl">Diagnoza logopedyczna</span><span lang="cs">Logopedická depistáž</span></h3><p class="lead" lang="pl">12.11. mgr Danuta Bogocz zbada mowę dzieci.</p><p class="lead" lang="cs">12. 11. vyšetří Mgr. Danuta Bogocz řeč dětí.</p><details class="wiecej"><summary><span lang="pl"><span class="z1">Czytaj więcej</span><span class="z2">Zwiń</span></span><span lang="cs"><span class="z1">Číst dál</span><span class="z2">Sbalit</span></span></summary><div class="tresc"><div lang="pl"><p>Po diagnozie przekażemy rodzicom wyniki i ewentualne zalecenia dotyczące rozwoju mowy dziecka.</p></div><div lang="cs"><p>Po vyšetření předáme rodičům výsledky a případná doporučení k vývoji řeči dítěte.</p></div><a class="zrodlo" href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=983"><span lang="pl">Oryginalny wpis</span><span lang="cs">Původní zpráva</span></a></div></details></div></article><article class="news" data-kat="przedszkole" id="n-p982"><div class="news-meta"><time datetime="2026-09-24">24. 9. 2026</time><span class="kat-l" lang="pl">Przedszkole</span><span class="kat-l" lang="cs">Školka</span></div><div class="news-txt"><h3><span lang="pl">Wakacje jesienne</span><span lang="cs">Podzimní prázdniny</span></h3><p class="lead" lang="pl">Obecność dziecka 29. i 30.10. zgłoście nauczycielkom do 29.9.</p><p class="lead" lang="cs">Docházku dítěte 29. a 30. 10. nahlaste učitelkám do 29. 9.</p><details class="wiecej"><summary><span lang="pl"><span class="z1">Czytaj więcej</span><span class="z2">Zwiń</span></span><span lang="cs"><span class="z1">Číst dál</span><span class="z2">Sbalit</span></span></summary><div class="tresc"><div lang="pl"><p>28.10. jest świętem państwowym. Dzieci nieobecne w dniach wakacji mają obiady odgłoszone automatycznie.</p></div><div lang="cs"><p>28. 10. je státní svátek. Dětem, které o prázdninách nepřijdou, se obědy odhlásí automaticky.</p></div><a class="zrodlo" href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=982"><span lang="pl">Oryginalny wpis</span><span lang="cs">Původní zpráva</span></a></div></details></div></article><article class="news" data-kat="przedszkole" id="n-p981"><div class="news-meta"><time datetime="2026-09-23">23. 9. 2026</time><span class="kat-l" lang="pl">Przedszkole</span><span class="kat-l" lang="cs">Školka</span></div><div class="news-txt"><h3><span lang="pl">Ważne daty 2026/2027</span><span lang="cs">Důležitá data 2026/2027</span></h3><p class="lead" lang="pl">Wszystkie imprezy przedszkola na ten rok szkolny. Najbliższe są też w kalendarzu.</p><p class="lead" lang="cs">Všechny akce školky na tento školní rok. Nejbližší jsou i v kalendáři.</p><details class="wiecej"><summary><span lang="pl"><span class="z1">Czytaj więcej</span><span class="z2">Zwiń</span></span><span lang="cs"><span class="z1">Číst dál</span><span class="z2">Sbalit</span></span></summary><div class="tresc"><div lang="pl"><p>21.9. Dzień Przedszkolaka, 22.9. ZOO, 23.9. starszaki w szpitalu „Děti, nebojte se nemocnice”.</p><p>6.10. jesienna impreza z Kicią Kocią, 26.10. lekcje biblioteczne, 10.11. warsztaty muzyczne w Ostrawie, 24.11. sesja świąteczna.</p><p>16.12. Jasełka w Domu Przyjaźni, 26. i 27.1. Dzień Babci i Dziadka w Domu Polskim.</p><p>17.4. balik maskowy, 20.4. i 2.6. teatr w Cieszynie, 15.5. wycieczka w góry, 31.5. Funpark Žirafa, 5.6. festyn, 22.6. pożegnanie starszaków.</p></div><div lang="cs"><p>21. 9. Den předškoláka, 22. 9. ZOO, 23. 9. předškoláci v nemocnici „Děti, nebojte se nemocnice”.</p><p>6. 10. podzimní akce s Kicią Kocią, 26. 10. knihovnické lekce, 10. 11. hudební dílna v Ostravě, 24. 11. vánoční focení.</p><p>16. 12. Jasełka v Domě přátelství, 26. a 27. 1. Den babiček a dědečků v Domě polském.</p><p>17. 4. maškarní bál, 20. 4. a 2. 6. divadlo v Těšíně, 15. 5. výlet do hor, 31. 5. Funpark Žirafa, 5. 6. festyn, 22. 6. rozloučení s předškoláky.</p></div><a class="zrodlo" href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=981"><span lang="pl">Oryginalny wpis</span><span lang="cs">Původní zpráva</span></a></div></details></div></article><article class="news" data-kat="przedszkole" id="n-p980"><div class="news-meta"><time datetime="2026-09-14">14. 9. 2026</time><span class="kat-l" lang="pl">Przedszkole</span><span class="kat-l" lang="cs">Školka</span></div><div class="news-txt"><h3><span lang="pl">Wycieczka do ZOO w Ostrawie</span><span lang="cs">Výlet do ZOO Ostrava</span></h3><p class="lead" lang="pl">Wtorek 22.9., odjazd 8:15, powrót ok. 12:30.</p><p class="lead" lang="cs">Úterý 22. 9., odjezd 8:15, návrat kolem 12:30.</p><details class="wiecej"><summary><span lang="pl"><span class="z1">Czytaj więcej</span><span class="z2">Zwiń</span></span><span lang="cs"><span class="z1">Číst dál</span><span class="z2">Sbalit</span></span></summary><div class="tresc"><div lang="pl"><p>Dotyczy wszystkich dzieci. W tym dniu śniadanie jest odgłoszone, obiad dzieci dostaną zaraz po powrocie.</p><p>Plan: zwiedzanie zoo, place zabaw, przejażdżka ciuchcią.</p><p>Do plecaka: peleryna, przekąska, napój. Wygodne buty i czapka od słońca.</p></div><div lang="cs"><p>Týká se všech dětí. Ten den je svačina odhlášená, oběd děti dostanou hned po návratu.</p><p>Program: prohlídka zoo, hřiště, jízda vláčkem.</p><p>Do batůžku: pláštěnka, svačina, pití. Pohodlné boty a čepice proti slunci.</p></div><a class="zrodlo" href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=980"><span lang="pl">Oryginalny wpis</span><span lang="cs">Původní zpráva</span></a></div></details></div></article><article class="news" data-kat="przedszkole" id="n-p979"><div class="news-meta"><time datetime="2026-09-08">8. 9. 2026</time><span class="kat-l" lang="pl">Przedszkole</span><span class="kat-l" lang="cs">Školka</span></div><div class="news-txt"><h3><span lang="pl">Zapraszamy na zebrania</span><span lang="cs">Zveme na schůzky</span></h3><p class="lead" lang="pl">Wtorek 15.9. o 16:45 Czerwone Królestwo, środa 16.9. o 16:45 Zielone Królestwo.</p><p class="lead" lang="cs">Úterý 15. 9. v 16:45 Červené království, středa 16. 9. v 16:45 Zelené království.</p></div></article><article class="news" data-kat="przedszkole" id="n-p978"><div class="news-meta"><time datetime="2026-09-08">8. 9. 2026</time><span class="kat-l" lang="pl">Przedszkole</span><span class="kat-l" lang="cs">Školka</span></div><div class="news-txt"><h3><span lang="pl">Lekcje pływania</span><span lang="cs">Plavání</span></h3><p class="lead" lang="pl">Starszaki w czwartki, średniaki w piątki, 8:00–8:45 na basenie StaRS.</p><p class="lead" lang="cs">Předškoláci ve čtvrtek, střední děti v pátek, 8:00–8:45 v bazénu StaRS.</p><details class="wiecej"><summary><span lang="pl"><span class="z1">Czytaj więcej</span><span class="z2">Zwiń</span></span><span lang="cs"><span class="z1">Číst dál</span><span class="z2">Sbalit</span></span></summary><div class="tresc"><div lang="pl"><p>Pierwsza lekcja starszaków w czwartek 10.9. (20 lekcji), średniaków w piątek 11.9. (10 lekcji). Autobus odjeżdża o 7:30, powrót ok. 9:10 na śniadanie.</p><p>Kurs kosztuje 1 700 Kč plus transport ok. 320 Kč, płaci się po 10 lekcjach.</p><p>W podpisanym worku: kąpielówki, ręcznik, ewentualnie czepek i okulary.</p></div><div lang="cs"><p>První lekce předškoláků ve čtvrtek 10. 9. (20 lekcí), středních dětí v pátek 11. 9. (10 lekcí). Autobus odjíždí v 7:30, návrat kolem 9:10 ke svačině.</p><p>Kurz stojí 1 700 Kč plus doprava asi 320 Kč, platí se po 10 lekcích.</p><p>V podepsaném pytli: plavky, ručník, případně koupací čepice a brýle.</p></div><a class="zrodlo" href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=978"><span lang="pl">Oryginalny wpis</span><span lang="cs">Původní zpráva</span></a></div></details></div></article><article class="news" data-kat="szkola" data-starsze id="n-s1480"><div class="news-meta"><time datetime="2026-05-14">14. 5. 2026</time><span class="kat-l" lang="pl">Szkoła</span><span class="kat-l" lang="cs">Škola</span></div><div class="news-txt"><h3><span lang="pl">Zapraszamy na festyn</span><span lang="cs">Zveme na festyn</span></h3><p class="lead" lang="pl">Sobota 6.6.2026 od 14:00. Program na stadionie zimowym, atrakcje w ogrodzie szkoły.</p><p class="lead" lang="cs">Sobota 6. 6. 2026 od 14:00. Program na zimním stadionu, atrakce na školní zahradě.</p><details class="wiecej"><summary><span lang="pl"><span class="z1">Czytaj więcej</span><span class="z2">Zwiń</span></span><span lang="cs"><span class="z1">Číst dál</span><span class="z2">Sbalit</span></span></summary><div class="tresc"><div lang="pl"><p>Szanowni Rodzice, drodzy Uczniowie, Absolwenci i Sympatycy szkoły! Zbliża się tradycyjny Festyn Szkolny.</p><p>Koło Macierzy Szkolnej, nauczyciele, pracownicy szkoły i przedszkola oraz uczniowie zapraszają na stadion i do ogrodu. Będzie program, smaczna kuchnia, wiele atrakcji i świetna muzyka. Cieszymy się na spotkanie z Wami!</p></div><div lang="cs"><p>Vážení rodiče, milí žáci, absolventi a příznivci školy! Blíží se tradiční školní festyn.</p><p>Spolek Macierz Szkolna, učitelé, zaměstnanci školy a školky i žáci vás zvou na stadion a na zahradu. Čeká vás program, dobré jídlo, spousta atrakcí a skvělá hudba. Těšíme se na vás!</p></div><a class="zrodlo" href="https://www.pzskarvina.cz/nowosc.asp?a=1480"><span lang="pl">Oryginalny wpis</span><span lang="cs">Původní zpráva</span></a></div></details></div><span class="mini foto" aria-hidden="true"><img src="img/stadion-640.jpg" alt="" loading="lazy"></span></article><article class="news" data-kat="szkola" data-starsze id="n-s1479"><div class="news-meta"><time datetime="2026-01-17">17. 1. 2026</time><span class="kat-l" lang="pl">Szkoła</span><span class="kat-l" lang="cs">Škola</span></div><div class="news-txt"><h3><span lang="pl">Dziewiątacy spisali się na medal</span><span lang="cs">Deváťáci zabodovali</span></h3><p class="lead" lang="pl">W testach SCIO szkoła znalazła się wśród 10 % najlepszych z matematyki i języka czeskiego.</p><p class="lead" lang="cs">V testech SCIO patří škola mezi 10 % nejúspěšnějších v matematice a češtině.</p><details class="wiecej"><summary><span lang="pl"><span class="z1">Czytaj więcej</span><span class="z2">Zwiń</span></span><span lang="cs"><span class="z1">Číst dál</span><span class="z2">Sbalit</span></span></summary><div class="tresc"><div lang="pl"><p>Klasa 9. finiszuje – egzaminy do szkół średnich są coraz bliżej. Jak co roku częścią przygotowań są testy SCIO. Z podsumowania wyników: „Výsledky vašich žáků v matematice a českém jazyce řadí vaši školu mezi 10 % nejúspěšnějších škol v testování.”</p><p>W testach brało udział ponad 20 000 uczniów z całej Republiki Czeskiej. Teraz ważne, żeby nie zasnąć na laurach. W kwietniu wszyscy trzymamy kciuki!</p></div><div lang="cs"><p>Devátá třída finišuje – přijímací zkoušky se blíží. Jako každý rok jsou součástí přípravy testy SCIO. Ze souhrnné zprávy: „Výsledky vašich žáků v matematice a českém jazyce řadí vaši školu mezi 10 % nejúspěšnějších škol v testování.”</p><p>Testů se zúčastnilo přes 20 000 žáků z celé České republiky. Teď je důležité neusnout na vavřínech. V dubnu budeme všichni držet palce!</p></div><a class="zrodlo" href="https://www.pzskarvina.cz/nowosc.asp?a=1479"><span lang="pl">Oryginalny wpis</span><span lang="cs">Původní zpráva</span></a></div></details></div><span class="mini foto" aria-hidden="true"><img src="img/nerki-160.jpg" alt="" loading="lazy"></span></article><article class="news" data-kat="szkola" data-starsze id="n-s1477"><div class="news-meta"><time datetime="2026-01-05">5. 1. 2026</time><span class="kat-l" lang="pl">Szkoła</span><span class="kat-l" lang="cs">Škola</span></div><div class="news-txt"><h3><span lang="pl">Zapisy do klasy 1. – informacje</span><span lang="cs">Zápis do 1. třídy – informace</span></h3><p class="lead" lang="pl">Zgłoszenie elektroniczne od 12.1. do 9.2., zapis w szkole w czwartek 12.2.2026.</p><p class="lead" lang="cs">Elektronická přihláška od 12. 1. do 9. 2., zápis ve škole ve čtvrtek 12. 2. 2026.</p><details class="wiecej"><summary><span lang="pl"><span class="z1">Czytaj więcej</span><span class="z2">Zwiń</span></span><span lang="cs"><span class="z1">Číst dál</span><span class="z2">Sbalit</span></span></summary><div class="tresc"><div lang="pl"><p>Zapraszamy dzieci, które do 31.8.2026 skończą 6 lat. Rodzice mają dwie możliwości.</p><p>Bez dziecka: wypełniacie zgłoszenie elektroniczne, a 12.2. przychodzicie z oryginałami dokumentów (akt urodzenia dziecka i dowód osobisty opiekuna) i podpisujecie prośbę o zapisanie.</p><p>Z dzieckiem: dzieci ze starszymi kolegami i nauczycielami wędrują po szkole i rozwiązują zadania, a rodzice załatwiają formalności przy kawie i placku. Ten wariant polecamy – start 1 września będzie prostszy.</p><p>Pytania: dyrekcja, tel. 596 317 672.</p></div><div lang="cs"><p>Zveme děti, kterým bude do 31. 8. 2026 šest let. Rodiče mají dvě možnosti.</p><p>Bez dítěte: vyplníte elektronickou přihlášku a 12. 2. přijdete s originály dokladů (rodný list dítěte a občanský průkaz zákonného zástupce) a podepíšete žádost o přijetí.</p><p>S dítětem: děti se staršími spolužáky a učiteli projdou školu a plní úkoly, rodiče mezitím vyřídí formality u kávy a koláče. Tuto variantu doporučujeme – start 1. září bude snazší.</p><p>Dotazy: vedení školy, tel. 596 317 672.</p></div><a class="zrodlo" href="https://www.pzskarvina.cz/nowosc.asp?a=1477"><span lang="pl">Oryginalny wpis</span><span lang="cs">Původní zpráva</span></a></div></details></div><span class="mini foto" aria-hidden="true"><img src="img/klasa1-160.jpg" alt="" loading="lazy"></span></article><article class="news" data-kat="szkola" data-starsze id="n-s1476"><div class="news-meta"><time datetime="2025-11-11">11. 11. 2025</time><span class="kat-l" lang="pl">Szkoła</span><span class="kat-l" lang="cs">Škola</span></div><div class="news-txt"><h3><span lang="pl">Termin zapisów do klasy 1.</span><span lang="cs">Termín zápisu do 1. třídy</span></h3><p class="lead" lang="pl">Zapisy na rok szkolny 2026/2027: czwartek 12.2.2026, 14:00–17:00.</p><p class="lead" lang="cs">Zápis na školní rok 2026/2027: čtvrtek 12. 2. 2026, 14:00–17:00.</p><details class="wiecej"><summary><span lang="pl"><span class="z1">Czytaj więcej</span><span class="z2">Zwiń</span></span><span lang="cs"><span class="z1">Číst dál</span><span class="z2">Sbalit</span></span></summary><div class="tresc"><div lang="pl"><p>Pytania prosimy kierować do dyrekcji: smilowski@pzskarvina.cz, 596 317 672. Ulotki ministerstwa o zapisach i odroczeniu obowiązku szkolnego są na edu.gov.cz.</p></div><div lang="cs"><p>Dotazy směřujte na vedení školy: smilowski@pzskarvina.cz, 596 317 672. Letáky MŠMT k zápisu a odkladu školní docházky najdete na edu.gov.cz.</p></div><a class="zrodlo" href="https://www.pzskarvina.cz/nowosc.asp?a=1476"><span lang="pl">Oryginalny wpis</span><span lang="cs">Původní zpráva</span></a></div></details></div></article><article class="news" data-kat="szkola" data-starsze id="n-s1475"><div class="news-meta"><time datetime="2025-09-26">26. 9. 2025</time><span class="kat-l" lang="pl">Szkoła</span><span class="kat-l" lang="cs">Škola</span></div><div class="news-txt"><h3><span lang="pl">Uwaga! Ćwiczenia Policji</span><span lang="cs">Pozor, cvičení policie</span></h3><p class="lead" lang="pl">16.10. od 8:00 do 12:00 ulica Dr. Olszaka i parking koło przedszkola będą zamknięte.</p><p class="lead" lang="cs">16. 10. od 8:00 do 12:00 bude ulice Dr. Olszaka a parkoviště u školky uzavřené.</p><details class="wiecej"><summary><span lang="pl"><span class="z1">Czytaj więcej</span><span class="z2">Zwiń</span></span><span lang="cs"><span class="z1">Číst dál</span><span class="z2">Sbalit</span></span></summary><div class="tresc"><div lang="pl"><p>W budynku Sądu Powiatowego niedaleko szkoły przebiegną ćwiczenia Policji. W okolicy będą uzbrojeni policjanci i więcej samochodów policyjnych, z sądu mogą być słychać wystrzały.</p><p>Na podwórko szkolne nie wjedziecie. Parkujcie koło restauracji Oaza, Domu Przyjaźni, uniwersytetu albo starego boiska ruchu drogowego. Wejście dla pieszych bez ograniczeń.</p><p>Szkoła, przedszkole, stołówka i świetlica działają normalnie.</p></div><div lang="cs"><p>V budově okresního soudu nedaleko školy proběhne cvičení policie. V okolí budou ozbrojení policisté a víc policejních aut, ze soudu mohou být slyšet výstřely.</p><p>Na školní dvůr nevjedete. Parkujte u restaurace Oáza, u Domu přátelství, u univerzity nebo u starého dopravního hřiště. Pěší vstup bez omezení.</p><p>Škola, školka, jídelna i družina fungují normálně.</p></div><a class="zrodlo" href="https://www.pzskarvina.cz/nowosc.asp?a=1475"><span lang="pl">Oryginalny wpis</span><span lang="cs">Původní zpráva</span></a></div></details></div></article><article class="news" data-kat="szkola" data-starsze id="n-s1474"><div class="news-meta"><time datetime="2025-09-19">19. 9. 2025</time><span class="kat-l" lang="pl">Szkoła</span><span class="kat-l" lang="cs">Škola</span></div><div class="news-txt"><h3><span lang="pl">Legitymacja ucznia 2025/2026</span><span lang="cs">Žákovský průkaz 2025/2026</span></h3><p class="lead" lang="pl">Dokumenty do przedłużenia lub wydania legitymacji oddajcie do 6.10.2025.</p><p class="lead" lang="cs">Podklady k prodloužení nebo vydání průkazu odevzdejte do 6. 10. 2025.</p></div></article><article class="news" data-kat="szkola" data-starsze id="n-s1473"><div class="news-meta"><time datetime="2025-09-09">9. 9. 2025</time><span class="kat-l" lang="pl">Szkoła</span><span class="kat-l" lang="cs">Škola</span></div><div class="news-txt"><h3><span lang="pl">Nowości w nauczaniu matematyki</span><span lang="cs">Novinky ve výuce matematiky</span></h3><p class="lead" lang="pl">Klasy 4.–9. ćwiczą na fińskiej platformie Eduten, w szkole i w domu.</p><p class="lead" lang="cs">Třídy 4.–9. procvičují na finské platformě Eduten, ve škole i doma.</p><details class="wiecej"><summary><span lang="pl"><span class="z1">Czytaj więcej</span><span class="z2">Zwiń</span></span><span lang="cs"><span class="z1">Číst dál</span><span class="z2">Sbalit</span></span></summary><div class="tresc"><div lang="pl"><p>Eduten to platforma do ćwiczeń z Finlandii, używana w ponad 50 krajach. Każdy uczeń pracuje we własnym tempie: mocniejsi dostają wyzwania, mniej pewni wsparcie, a nauczyciele od razu widzą postępy.</p><p>W domu wystarczy raz w tygodniu ok. 30 minut. Pytajcie dzieci, co im się udało albo za co zdobyły puchar.</p><p>Pytania: nauczyciel matematyki albo szkolny koordynator Edutenu.</p></div><div lang="cs"><p>Eduten je procvičovací platforma z Finska, používaná ve více než 50 zemích. Každý žák pracuje svým tempem: silnější dostanou výzvy, méně jistí podporu a učitelé hned vidí pokrok.</p><p>Doma stačí jednou týdně asi 30 minut. Ptejte se dětí, co se jim povedlo nebo za co získaly pohár.</p><p>Dotazy: učitel matematiky nebo školní koordinátor Edutenu.</p></div><a class="zrodlo" href="https://www.pzskarvina.cz/nowosc.asp?a=1473"><span lang="pl">Oryginalny wpis</span><span lang="cs">Původní zpráva</span></a></div></details></div></article><article class="news" data-kat="szkola" data-starsze id="n-s1472"><div class="news-meta"><time datetime="2025-09-05">5. 9. 2025</time><span class="kat-l" lang="pl">Szkoła</span><span class="kat-l" lang="cs">Škola</span></div><div class="news-txt"><h3><span lang="pl">Zuchy i harcerze zapraszają!</span><span lang="cs">Vlčata a skauti zvou!</span></h3><p class="lead" lang="pl">Zbiórki w piątki. Harcerze startują od razu, zuchy w pierwszy piątek października.</p><p class="lead" lang="cs">Schůzky v pátek. Skauti začínají hned, vlčata první pátek v říjnu.</p><details class="wiecej"><summary><span lang="pl"><span class="z1">Czytaj więcej</span><span class="z2">Zwiń</span></span><span lang="cs"><span class="z1">Číst dál</span><span class="z2">Sbalit</span></span></summary><div class="tresc"><div lang="pl"><p>Zgłoszenia obecnych członków są ważne do końca roku kalendarzowego. Szóstoklasiści przechodzący z zuchów do drużyny Wielka Niedźwiedzica też nie muszą ich wypełniać.</p><p>Nowi członkowie na razie nie płacą składek. Pytania: drużynowy pwd. Filip Tomanek, filip.tomanek@harcerstwo.cz, +420 734 762 129.</p></div><div lang="cs"><p>Přihlášky stávajících členů platí do konce kalendářního roku. Šesťáci, kteří přecházejí z vlčat do oddílu Wielka Niedźwiedzica, je také vyplňovat nemusí.</p><p>Noví členové zatím neplatí příspěvky. Dotazy: vedoucí pwd. Filip Tomanek, filip.tomanek@harcerstwo.cz, +420 734 762 129.</p></div><a class="zrodlo" href="https://www.pzskarvina.cz/nowosc.asp?a=1472"><span lang="pl">Oryginalny wpis</span><span lang="cs">Původní zpráva</span></a></div></details></div><span class="mini foto" aria-hidden="true"><img src="img/niedzwiedzica-900.jpg" alt="" loading="lazy"></span></article></div>
+    <button type="button" class="btn sv starsze" data-starsze-btn hidden><span lang="pl">Starsze wiadomości</span><span lang="cs">Starší zprávy</span></button>
   </div>
 </section>
 
 <!-- ============ ZÁPIS DO 1. TŘÍDY ============ -->
-<section class="sec wrap" id="zapisy" aria-labelledby="zap-h">
-  <div class="zap-top">
+<section class="sec wrap zapisy" id="zapisy" aria-labelledby="zap-h">
+  <div class="zap-l">
     <h2 id="zap-h" class="h2" data-r><span lang="pl">Zapisy do 1. klasy</span><span lang="cs">Zápis do 1. třídy</span></h2>
     <p class="zap-p" lang="pl" data-r>Zapraszamy dzieci, które do 31.8.2027 skończą 6 lat. Zapis zajmuje jedno popołudnie, a dziecko może przy tym poznać szkołę ze starszymi kolegami.</p>
     <p class="zap-p" lang="cs" data-r>Zveme děti, kterým bude do 31. 8. 2027 šest let. Zápis zabere jedno odpoledne a dítě si při něm se staršími spolužáky projde školu.</p>
-  </div>
-  <div class="diag-w">
-    <svg class="diag diag-h" viewBox="0 0 1200 270" aria-hidden="true"><g class="g p2" transform="rotate(1.2 14.5 111.8)"><rect x="8.6" y="104.9" width="11.8" height="13.8" rx="2"/><path d="M8.6 109.6H20.4M14.5 109.6V118.6"/></g><g class="g p1" transform="rotate(-13.1 17.9 218.2)"><rect x="11.0" y="210.2" width="13.7" height="16.0" rx="2"/><path d="M11.0 215.6H24.7M17.9 215.6V226.2"/></g><g class="g p1" transform="rotate(-10.0 18.5 163.1)"><rect x="13.6" y="157.4" width="9.8" height="11.4" rx="2"/><path d="M13.6 161.3H23.4M18.5 161.3V168.8"/></g><g class="g p2" transform="rotate(8.8 33.0 140.9)"><rect x="27.9" y="135.0" width="10.1" height="11.8" rx="2"/><path d="M27.9 139.0H38.0M33.0 139.0V146.8"/></g><g class="g p2" transform="rotate(-7.8 38.4 61.5)"><rect x="32.1" y="54.2" width="12.5" height="14.6" rx="2"/><path d="M32.1 59.1H44.6M38.4 59.1V68.8"/></g><g class="g p1" transform="rotate(-9.0 44.4 105.4)"><rect x="39.5" y="99.7" width="9.8" height="11.4" rx="2"/><path d="M39.5 103.6H49.3M44.4 103.6V111.1"/></g><g class="g p1" transform="rotate(2.4 48.0 186.5)"><rect x="43.1" y="180.8" width="9.8" height="11.4" rx="2"/><path d="M43.1 184.7H52.9M48.0 184.7V192.2"/></g><g class="g p1" transform="rotate(-19.0 71.0 67.8)"><rect x="65.3" y="61.0" width="11.6" height="13.5" rx="2"/><path d="M65.3 65.6H76.8M71.0 65.6V74.6"/></g><g class="g p2" transform="rotate(-22.8 87.8 229.8)"><rect x="81.6" y="222.6" width="12.3" height="14.4" rx="2"/><path d="M81.6 227.5H94.0M87.8 227.5V237.0"/></g><g class="g p1" transform="rotate(-13.8 89.7 191.4)"><rect x="84.1" y="184.8" width="11.3" height="13.2" rx="2"/><path d="M84.1 189.3H95.4M89.7 189.3V198.0"/></g><g class="g p1" transform="rotate(1.7 93.2 114.1)"><rect x="87.2" y="107.1" width="12.1" height="14.1" rx="2"/><path d="M87.2 111.9H99.3M93.2 111.9V121.2"/></g><g class="g p2" transform="rotate(13.7 93.3 18.7)"><rect x="87.3" y="11.6" width="12.1" height="14.2" rx="2"/><path d="M87.3 16.5H99.4M93.3 16.5V25.8"/></g><g class="g p2" transform="rotate(-19.2 111.0 89.8)"><rect x="104.1" y="81.8" width="13.7" height="15.9" rx="2"/><path d="M104.1 87.3H117.8M111.0 87.3V97.8"/></g><g class="g p1" transform="rotate(-11.1 116.0 190.4)"><rect x="110.8" y="184.4" width="10.3" height="12.1" rx="2"/><path d="M110.8 188.5H121.2M116.0 188.5V196.4"/></g><g class="g p1" transform="rotate(-4.4 120.9 140.2)"><rect x="114.2" y="132.4" width="13.3" height="15.5" rx="2"/><path d="M114.2 137.7H127.6M120.9 137.7V147.9"/></g><g class="g p2" transform="rotate(-8.6 143.8 241.3)"><rect x="138.5" y="235.1" width="10.6" height="12.4" rx="2"/><path d="M138.5 239.3H149.1M143.8 239.3V247.5"/></g><g class="g p1" transform="rotate(7.6 147.4 200.2)"><rect x="141.7" y="193.6" width="11.4" height="13.3" rx="2"/><path d="M141.7 198.1H153.1M147.4 198.1V206.8"/></g><g class="g p2" transform="rotate(1.5 148.6 54.2)"><rect x="142.7" y="47.3" width="11.9" height="13.9" rx="2"/><path d="M142.7 52.0H154.6M148.6 52.0V61.2"/></g><g class="g p1" transform="rotate(12.8 150.7 99.6)"><rect x="145.2" y="93.2" width="10.9" height="12.8" rx="2"/><path d="M145.2 97.5H156.1M150.7 97.5V106.0"/></g><g class="g p2" transform="rotate(7.6 156.3 17.4)"><rect x="150.4" y="10.5" width="11.9" height="13.8" rx="2"/><path d="M150.4 15.2H162.2M156.3 15.2V24.3"/></g><g class="g p1" transform="rotate(17.7 168.2 142.0)"><rect x="162.2" y="134.9" width="12.1" height="14.1" rx="2"/><path d="M162.2 139.7H174.3M168.2 139.7V149.1"/></g><g class="g p1" transform="rotate(4.1 178.4 198.8)"><rect x="173.5" y="193.1" width="9.8" height="11.4" rx="2"/><path d="M173.5 197.0H183.3M178.4 197.0V204.6"/></g><g class="g p1" transform="rotate(-20.9 188.4 60.6)"><rect x="182.1" y="53.2" width="12.7" height="14.8" rx="2"/><path d="M182.1 58.2H194.8M188.4 58.2V68.0"/></g><g class="g p2" transform="rotate(0.1 187.8 25.5)"><rect x="182.8" y="19.7" width="10.0" height="11.7" rx="2"/><path d="M182.8 23.6H192.8M187.8 23.6V31.3"/></g><g class="g p1" transform="rotate(-27.4 190.9 122.5)"><rect x="184.6" y="115.2" width="12.6" height="14.7" rx="2"/><path d="M184.6 120.2H197.2M190.9 120.2V129.9"/></g><g class="g p2" transform="rotate(19.0 204.7 155.1)"><rect x="199.3" y="148.9" width="10.7" height="12.5" rx="2"/><path d="M199.3 153.1H210.0M204.7 153.1V161.4"/></g><g class="g p2" transform="rotate(26.5 207.9 238.1)"><rect x="203.1" y="232.5" width="9.7" height="11.3" rx="2"/><path d="M203.1 236.3H212.8M207.9 236.3V243.7"/></g><g class="g p2" transform="rotate(-16.5 211.4 186.4)"><rect x="206.1" y="180.2" width="10.6" height="12.3" rx="2"/><path d="M206.1 184.4H216.6M211.4 184.4V192.5"/></g><g class="g p1" transform="rotate(-8.2 219.7 65.5)"><rect x="213.9" y="58.7" width="11.5" height="13.5" rx="2"/><path d="M213.9 63.3H225.4M219.7 63.3V72.2"/></g><g class="g p2" transform="rotate(9.6 235.2 35.6)"><rect x="229.1" y="28.5" width="12.2" height="14.2" rx="2"/><path d="M229.1 33.3H241.3M235.2 33.3V42.7"/></g><g class="g p2" transform="rotate(-20.3 245.6 110.1)"><rect x="239.3" y="102.7" width="12.7" height="14.9" rx="2"/><path d="M239.3 107.7H252.0M245.6 107.7V117.5"/></g><g class="g p2" transform="rotate(-11.8 246.1 212.1)"><rect x="239.8" y="204.7" width="12.7" height="14.8" rx="2"/><path d="M239.8 209.7H252.5M246.1 209.7V219.5"/></g><g class="g p1" transform="rotate(-5.4 246.2 139.2)"><rect x="241.0" y="133.2" width="10.4" height="12.2" rx="2"/><path d="M241.0 137.3H251.4M246.2 137.3V145.3"/></g><g class="g p2" transform="rotate(11.5 258.3 54.6)"><rect x="252.5" y="47.8" width="11.7" height="13.6" rx="2"/><path d="M252.5 52.4H264.2M258.3 52.4V61.4"/></g><g class="g p2" transform="rotate(9.7 277.5 36.7)"><rect x="272.5" y="31.0" width="9.9" height="11.5" rx="2"/><path d="M272.5 34.9H282.4M277.5 34.9V42.5"/></g><g class="g p1" transform="rotate(21.0 280.7 240.1)"><rect x="274.8" y="233.3" width="11.7" height="13.7" rx="2"/><path d="M274.8 237.9H286.5M280.7 237.9V247.0"/></g><g class="g p2" transform="rotate(25.1 292.0 157.4)"><rect x="286.4" y="150.9" width="11.2" height="13.1" rx="2"/><path d="M286.4 155.3H297.6M292.0 155.3V163.9"/></g><g class="g p1" transform="rotate(16.1 303.9 84.8)"><rect x="298.5" y="78.5" width="10.8" height="12.6" rx="2"/><path d="M298.5 82.8H309.3M303.9 82.8V91.1"/></g><g class="g p1" transform="rotate(4.2 327.0 53.5)"><rect x="320.3" y="45.6" width="13.4" height="15.7" rx="2"/><path d="M320.3 51.0H333.7M327.0 51.0V61.3"/></g><g class="g p1" transform="rotate(-16.0 326.9 124.0)"><rect x="321.3" y="117.5" width="11.1" height="13.0" rx="2"/><path d="M321.3 121.9H332.5M326.9 121.9V130.5"/></g><g class="g p2" transform="rotate(9.4 333.3 14.4)"><rect x="328.2" y="8.5" width="10.0" height="11.7" rx="2"/><path d="M328.2 12.5H338.3M333.3 12.5V20.3"/></g><g class="g p2" transform="rotate(22.6 335.5 217.1)"><rect x="328.6" y="209.1" width="13.8" height="16.1" rx="2"/><path d="M328.6 214.5H342.4M335.5 214.5V225.1"/></g><g class="g p2" transform="rotate(-6.8 344.2 166.1)"><rect x="337.7" y="158.6" width="12.9" height="15.1" rx="2"/><path d="M337.7 163.7H350.7M344.2 163.7V173.7"/></g><g class="g p2" transform="rotate(-19.0 351.0 96.5)"><rect x="345.4" y="90.0" width="11.2" height="13.1" rx="2"/><path d="M345.4 94.4H356.6M351.0 94.4V103.1"/></g><g class="g p2" transform="rotate(2.8 361.3 235.0)"><rect x="356.0" y="228.8" width="10.6" height="12.4" rx="2"/><path d="M356.0 233.0H366.6M361.3 233.0V241.1"/></g><g class="g p2" transform="rotate(5.3 362.0 45.1)"><rect x="356.7" y="38.8" width="10.7" height="12.5" rx="2"/><path d="M356.7 43.1H367.4M362.0 43.1V51.3"/></g><g class="g p3"><rect x="430.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M430.0 115.8H442.0M436.0 115.8V125.0"/></g><g class="g p3"><rect x="430.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M430.0 132.8H442.0M436.0 132.8V142.0"/></g><g class="g p3"><rect x="430.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M430.0 149.8H442.0M436.0 149.8V159.0"/></g><g class="g p3"><rect x="452.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M452.0 115.8H464.0M458.0 115.8V125.0"/></g><g class="g p3"><rect x="452.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M452.0 132.8H464.0M458.0 132.8V142.0"/></g><g class="g p3"><rect x="452.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M452.0 149.8H464.0M458.0 149.8V159.0"/></g><g class="g p3"><rect x="474.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M474.0 115.8H486.0M480.0 115.8V125.0"/></g><g class="g p3"><rect x="474.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M474.0 132.8H486.0M480.0 132.8V142.0"/></g><g class="g p3"><rect x="474.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M474.0 149.8H486.0M480.0 149.8V159.0"/></g><g class="g p3"><rect x="496.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M496.0 115.8H508.0M502.0 115.8V125.0"/></g><g class="g p3"><rect x="496.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M496.0 132.8H508.0M502.0 132.8V142.0"/></g><g class="g p3"><rect x="496.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M496.0 149.8H508.0M502.0 149.8V159.0"/></g><g class="g p3"><rect x="518.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M518.0 115.8H530.0M524.0 115.8V125.0"/></g><g class="g p3"><rect x="518.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M518.0 132.8H530.0M524.0 132.8V142.0"/></g><g class="g p3"><rect x="518.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M518.0 149.8H530.0M524.0 149.8V159.0"/></g><g class="g p3"><rect x="540.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M540.0 115.8H552.0M546.0 115.8V125.0"/></g><g class="g p3"><rect x="540.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M540.0 132.8H552.0M546.0 132.8V142.0"/></g><g class="g p3"><rect x="540.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M540.0 149.8H552.0M546.0 149.8V159.0"/></g><g class="g p3"><rect x="562.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M562.0 115.8H574.0M568.0 115.8V125.0"/></g><g class="g p3"><rect x="562.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M562.0 132.8H574.0M568.0 132.8V142.0"/></g><g class="g p3"><rect x="562.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M562.0 149.8H574.0M568.0 149.8V159.0"/></g><g class="g p3"><rect x="584.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M584.0 115.8H596.0M590.0 115.8V125.0"/></g><g class="g p3"><rect x="584.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M584.0 132.8H596.0M590.0 132.8V142.0"/></g><g class="g p3"><rect x="584.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M584.0 149.8H596.0M590.0 149.8V159.0"/></g><g class="g p3"><rect x="606.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M606.0 115.8H618.0M612.0 115.8V125.0"/></g><g class="g p3"><rect x="606.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M606.0 132.8H618.0M612.0 132.8V142.0"/></g><g class="g p3"><rect x="606.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M606.0 149.8H618.0M612.0 149.8V159.0"/></g><g class="g p3"><rect x="628.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M628.0 115.8H640.0M634.0 115.8V125.0"/></g><g class="g p3"><rect x="628.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M628.0 132.8H640.0M634.0 132.8V142.0"/></g><g class="g p3"><rect x="628.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M628.0 149.8H640.0M634.0 149.8V159.0"/></g><g class="g p3"><rect x="650.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M650.0 115.8H662.0M656.0 115.8V125.0"/></g><g class="g p3"><rect x="650.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M650.0 132.8H662.0M656.0 132.8V142.0"/></g><g class="g p3"><rect x="650.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M650.0 149.8H662.0M656.0 149.8V159.0"/></g><g class="g p3"><rect x="672.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M672.0 115.8H684.0M678.0 115.8V125.0"/></g><g class="g p3"><rect x="672.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M672.0 132.8H684.0M678.0 132.8V142.0"/></g><g class="g p3"><rect x="672.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M672.0 149.8H684.0M678.0 149.8V159.0"/></g><g class="g p3"><rect x="694.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M694.0 115.8H706.0M700.0 115.8V125.0"/></g><g class="g p3"><rect x="694.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M694.0 132.8H706.0M700.0 132.8V142.0"/></g><g class="g p3"><rect x="694.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M694.0 149.8H706.0M700.0 149.8V159.0"/></g><g class="g p3"><rect x="716.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M716.0 115.8H728.0M722.0 115.8V125.0"/></g><g class="g p3"><rect x="716.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M716.0 132.8H728.0M722.0 132.8V142.0"/></g><g class="g p3"><rect x="716.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M716.0 149.8H728.0M722.0 149.8V159.0"/></g><g class="g p3"><rect x="738.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M738.0 115.8H750.0M744.0 115.8V125.0"/></g><g class="g p3"><rect x="738.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M738.0 132.8H750.0M744.0 132.8V142.0"/></g><g class="g p3"><rect x="738.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M738.0 149.8H750.0M744.0 149.8V159.0"/></g><g class="g ac"><rect x="822.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M822.0 26.8H834.0M828.0 26.8V36.0"/></g><g class="g ac"><rect x="822.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M822.0 74.8H834.0M828.0 74.8V84.0"/></g><g class="g ac"><rect x="822.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M822.0 122.8H834.0M828.0 122.8V132.0"/></g><g class="g ac"><rect x="822.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M822.0 170.8H834.0M828.0 170.8V180.0"/></g><g class="g ac"><rect x="822.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M822.0 218.8H834.0M828.0 218.8V228.0"/></g><g class="g ac"><rect x="859.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M859.0 26.8H871.0M865.0 26.8V36.0"/></g><g class="g ac"><rect x="859.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M859.0 74.8H871.0M865.0 74.8V84.0"/></g><g class="g ac"><rect x="859.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M859.0 122.8H871.0M865.0 122.8V132.0"/></g><g class="g ac"><rect x="859.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M859.0 170.8H871.0M865.0 170.8V180.0"/></g><g class="g ac"><rect x="859.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M859.0 218.8H871.0M865.0 218.8V228.0"/></g><g class="g ac"><rect x="896.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M896.0 26.8H908.0M902.0 26.8V36.0"/></g><g class="g ac"><rect x="896.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M896.0 74.8H908.0M902.0 74.8V84.0"/></g><g class="g ac"><rect x="896.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M896.0 122.8H908.0M902.0 122.8V132.0"/></g><g class="g ac"><rect x="896.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M896.0 170.8H908.0M902.0 170.8V180.0"/></g><g class="g ac"><rect x="896.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M896.0 218.8H908.0M902.0 218.8V228.0"/></g><g class="g ac"><rect x="933.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M933.0 26.8H945.0M939.0 26.8V36.0"/></g><g class="g ac"><rect x="933.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M933.0 74.8H945.0M939.0 74.8V84.0"/></g><g class="g ac"><rect x="933.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M933.0 122.8H945.0M939.0 122.8V132.0"/></g><g class="g ac"><rect x="933.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M933.0 170.8H945.0M939.0 170.8V180.0"/></g><g class="g ac"><rect x="933.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M933.0 218.8H945.0M939.0 218.8V228.0"/></g><g class="g ac"><rect x="970.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M970.0 26.8H982.0M976.0 26.8V36.0"/></g><g class="g ac"><rect x="970.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M970.0 74.8H982.0M976.0 74.8V84.0"/></g><g class="g ac"><rect x="970.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M970.0 122.8H982.0M976.0 122.8V132.0"/></g><g class="g ac"><rect x="970.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M970.0 170.8H982.0M976.0 170.8V180.0"/></g><g class="g ac"><rect x="970.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M970.0 218.8H982.0M976.0 218.8V228.0"/></g><g class="g ac"><rect x="1007.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M1007.0 26.8H1019.0M1013.0 26.8V36.0"/></g><g class="g ac"><rect x="1007.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M1007.0 74.8H1019.0M1013.0 74.8V84.0"/></g><g class="g ac"><rect x="1007.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M1007.0 122.8H1019.0M1013.0 122.8V132.0"/></g><g class="g ac"><rect x="1007.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M1007.0 170.8H1019.0M1013.0 170.8V180.0"/></g><g class="g ac"><rect x="1007.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M1007.0 218.8H1019.0M1013.0 218.8V228.0"/></g><g class="g ac"><rect x="1044.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M1044.0 26.8H1056.0M1050.0 26.8V36.0"/></g><g class="g ac"><rect x="1044.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M1044.0 74.8H1056.0M1050.0 74.8V84.0"/></g><g class="g ac"><rect x="1044.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M1044.0 122.8H1056.0M1050.0 122.8V132.0"/></g><g class="g ac"><rect x="1044.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M1044.0 170.8H1056.0M1050.0 170.8V180.0"/></g><g class="g ac"><rect x="1044.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M1044.0 218.8H1056.0M1050.0 218.8V228.0"/></g><g class="g ac"><rect x="1081.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M1081.0 26.8H1093.0M1087.0 26.8V36.0"/></g><g class="g ac"><rect x="1081.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M1081.0 74.8H1093.0M1087.0 74.8V84.0"/></g><g class="g ac"><rect x="1081.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M1081.0 122.8H1093.0M1087.0 122.8V132.0"/></g><g class="g ac"><rect x="1081.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M1081.0 170.8H1093.0M1087.0 170.8V180.0"/></g><g class="g ac"><rect x="1081.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M1081.0 218.8H1093.0M1087.0 218.8V228.0"/></g><g class="g ac"><rect x="1118.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M1118.0 26.8H1130.0M1124.0 26.8V36.0"/></g><g class="g ac"><rect x="1118.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M1118.0 74.8H1130.0M1124.0 74.8V84.0"/></g><g class="g ac"><rect x="1118.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M1118.0 122.8H1130.0M1124.0 122.8V132.0"/></g><g class="g ac"><rect x="1118.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M1118.0 170.8H1130.0M1124.0 170.8V180.0"/></g><g class="g ac"><rect x="1118.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M1118.0 218.8H1130.0M1124.0 218.8V228.0"/></g><g class="g ac"><rect x="1155.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M1155.0 26.8H1167.0M1161.0 26.8V36.0"/></g><g class="g ac"><rect x="1155.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M1155.0 74.8H1167.0M1161.0 74.8V84.0"/></g><g class="g ac"><rect x="1155.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M1155.0 122.8H1167.0M1161.0 122.8V132.0"/></g><g class="g ac"><rect x="1155.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M1155.0 170.8H1167.0M1161.0 170.8V180.0"/></g><g class="g ac"><rect x="1155.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M1155.0 218.8H1167.0M1161.0 218.8V228.0"/></g></svg>
-    <svg class="diag diag-v" viewBox="0 0 300 420" aria-hidden="true"><g class="g p1" transform="rotate(12.8 262.4 10.5)"><rect x="257.1" y="4.3" width="10.7" height="12.5" rx="2"/><path d="M257.1 8.5H267.8M262.4 8.5V16.8"/></g><g class="g p1" transform="rotate(2.4 122.2 10.9)"><rect x="117.4" y="5.2" width="9.7" height="11.4" rx="2"/><path d="M117.4 9.1H127.1M122.2 9.1V16.6"/></g><g class="g p1" transform="rotate(-11.4 73.3 12.1)"><rect x="67.8" y="5.8" width="10.9" height="12.7" rx="2"/><path d="M67.8 10.1H78.7M73.3 10.1V18.5"/></g><g class="g p1" transform="rotate(-13.1 235.5 23.6)"><rect x="229.0" y="15.9" width="13.1" height="15.3" rx="2"/><path d="M229.0 21.1H242.1M235.5 21.1V31.2"/></g><g class="g p2" transform="rotate(11.5 103.7 29.9)"><rect x="98.0" y="23.2" width="11.4" height="13.3" rx="2"/><path d="M98.0 27.8H109.4M103.7 27.8V36.5"/></g><g class="g p1" transform="rotate(-8.5 203.7 30.7)"><rect x="197.6" y="23.6" width="12.2" height="14.3" rx="2"/><path d="M197.6 28.4H209.8M203.7 28.4V37.8"/></g><g class="g p1" transform="rotate(-22.0 148.6 33.5)"><rect x="142.3" y="26.2" width="12.6" height="14.6" rx="2"/><path d="M142.3 31.2H154.8M148.6 31.2V40.9"/></g><g class="g p2" transform="rotate(15.5 31.0 34.3)"><rect x="24.5" y="26.7" width="13.1" height="15.2" rx="2"/><path d="M24.5 31.9H37.6M31.0 31.9V41.9"/></g><g class="g p2" transform="rotate(5.7 172.5 35.0)"><rect x="167.3" y="28.9" width="10.5" height="12.2" rx="2"/><path d="M167.3 33.1H177.7M172.5 33.1V41.1"/></g><g class="g p1" transform="rotate(-9.0 55.4 35.8)"><rect x="50.5" y="30.1" width="9.8" height="11.4" rx="2"/><path d="M50.5 34.0H60.3M55.4 34.0V41.5"/></g><g class="g p2" transform="rotate(15.2 238.8 44.5)"><rect x="233.7" y="38.6" width="10.1" height="11.7" rx="2"/><path d="M233.7 42.6H243.8M238.8 42.6V50.4"/></g><g class="g p2" transform="rotate(-23.3 87.2 47.4)"><rect x="81.1" y="40.3" width="12.2" height="14.2" rx="2"/><path d="M81.1 45.1H93.3M87.2 45.1V54.5"/></g><g class="g p1" transform="rotate(-20.9 276.7 51.5)"><rect x="270.5" y="44.3" width="12.2" height="14.3" rx="2"/><path d="M270.5 49.2H282.8M276.7 49.2V58.6"/></g><g class="g p2" transform="rotate(-12.6 119.9 53.6)"><rect x="113.3" y="45.9" width="13.2" height="15.4" rx="2"/><path d="M113.3 51.1H126.5M119.9 51.1V61.2"/></g><g class="g p2" transform="rotate(0.9 192.3 56.5)"><rect x="187.2" y="50.5" width="10.2" height="11.9" rx="2"/><path d="M187.2 54.6H197.3M192.3 54.6V62.4"/></g><g class="g p2" transform="rotate(-4.1 56.3 61.6)"><rect x="51.0" y="55.5" width="10.6" height="12.3" rx="2"/><path d="M51.0 59.7H61.6M56.3 59.7V67.8"/></g><g class="g p1" transform="rotate(16.1 256.9 64.0)"><rect x="251.6" y="57.8" width="10.6" height="12.4" rx="2"/><path d="M251.6 62.0H262.2M256.9 62.0V70.2"/></g><g class="g p2" transform="rotate(21.7 94.4 71.5)"><rect x="89.0" y="65.2" width="10.9" height="12.7" rx="2"/><path d="M89.0 69.5H99.9M94.4 69.5V77.8"/></g><g class="g p2" transform="rotate(19.0 131.9 72.5)"><rect x="126.6" y="66.4" width="10.5" height="12.3" rx="2"/><path d="M126.6 70.6H137.2M131.9 70.6V78.7"/></g><g class="g p2" transform="rotate(-6.5 26.0 72.1)"><rect x="21.2" y="66.4" width="9.7" height="11.3" rx="2"/><path d="M21.2 70.2H30.9M26.0 70.2V77.7"/></g><g class="g p2" transform="rotate(13.6 161.3 79.6)"><rect x="155.8" y="73.3" width="10.9" height="12.8" rx="2"/><path d="M155.8 77.6H166.7M161.3 77.6V86.0"/></g><g class="g p2" transform="rotate(-20.3 230.4 81.4)"><rect x="224.2" y="74.2" width="12.3" height="14.3" rx="2"/><path d="M224.2 79.1H236.5M230.4 79.1V88.6"/></g><g class="g p2" transform="rotate(-22.8 270.5 85.0)"><rect x="264.5" y="78.0" width="11.9" height="13.9" rx="2"/><path d="M264.5 82.8H276.5M270.5 82.8V92.0"/></g><g class="g p2" transform="rotate(13.7 63.4 93.7)"><rect x="57.5" y="86.9" width="11.8" height="13.7" rx="2"/><path d="M57.5 91.5H69.3M63.4 91.5V100.6"/></g><g class="g p1" transform="rotate(21.2 39.5 96.3)"><rect x="33.2" y="88.9" width="12.7" height="14.8" rx="2"/><path d="M33.2 94.0H45.8M39.5 94.0V103.7"/></g><g class="g p1" transform="rotate(-8.2 141.2 101.6)"><rect x="135.5" y="95.0" width="11.3" height="13.1" rx="2"/><path d="M135.5 99.5H146.8M141.2 99.5V108.1"/></g><g class="g p1" transform="rotate(24.8 194.1 108.2)"><rect x="187.6" y="100.7" width="12.9" height="15.1" rx="2"/><path d="M187.6 105.8H200.5M194.1 105.8V115.8"/></g><g class="g p1" transform="rotate(-4.4 263.8 110.3)"><rect x="257.4" y="102.8" width="12.8" height="14.9" rx="2"/><path d="M257.4 107.9H270.2M263.8 107.9V117.7"/></g><g class="g p1" transform="rotate(-28.0 13.7 110.1)"><rect x="7.9" y="103.4" width="11.5" height="13.4" rx="2"/><path d="M7.9 107.9H19.4M13.7 107.9V116.8"/></g><g class="g p1" transform="rotate(3.0 68.9 115.9)"><rect x="63.4" y="109.5" width="11.1" height="12.9" rx="2"/><path d="M63.4 113.9H74.5M68.9 113.9V122.4"/></g><g class="g p2" transform="rotate(8.8 283.9 118.4)"><rect x="278.8" y="112.5" width="10.1" height="11.7" rx="2"/><path d="M278.8 116.5H288.9M283.9 116.5V124.3"/></g><g class="g p1" transform="rotate(-2.1 164.3 120.7)"><rect x="158.8" y="114.3" width="11.0" height="12.8" rx="2"/><path d="M158.8 118.7H169.7M164.3 118.7V127.1"/></g><g class="g p2" transform="rotate(-11.8 221.2 121.9)"><rect x="215.1" y="114.7" width="12.2" height="14.3" rx="2"/><path d="M215.1 119.6H227.3M221.2 119.6V129.0"/></g><g class="g p2" transform="rotate(26.5 112.9 121.3)"><rect x="108.1" y="115.6" width="9.7" height="11.3" rx="2"/><path d="M108.1 119.5H117.8M112.9 119.5V126.9"/></g><g class="g p3"><rect x="126.0" y="146.0" width="10.2" height="11.9" rx="2"/><path d="M126.0 150.0H136.2M131.1 150.0V157.9"/></g><g class="g p3"><rect x="143.0" y="146.0" width="10.2" height="11.9" rx="2"/><path d="M143.0 150.0H153.2M148.1 150.0V157.9"/></g><g class="g p3"><rect x="160.0" y="146.0" width="10.2" height="11.9" rx="2"/><path d="M160.0 150.0H170.2M165.1 150.0V157.9"/></g><g class="g p3"><rect x="126.0" y="159.0" width="10.2" height="11.9" rx="2"/><path d="M126.0 163.0H136.2M131.1 163.0V170.9"/></g><g class="g p3"><rect x="143.0" y="159.0" width="10.2" height="11.9" rx="2"/><path d="M143.0 163.0H153.2M148.1 163.0V170.9"/></g><g class="g p3"><rect x="160.0" y="159.0" width="10.2" height="11.9" rx="2"/><path d="M160.0 163.0H170.2M165.1 163.0V170.9"/></g><g class="g p3"><rect x="126.0" y="172.0" width="10.2" height="11.9" rx="2"/><path d="M126.0 176.0H136.2M131.1 176.0V183.9"/></g><g class="g p3"><rect x="143.0" y="172.0" width="10.2" height="11.9" rx="2"/><path d="M143.0 176.0H153.2M148.1 176.0V183.9"/></g><g class="g p3"><rect x="160.0" y="172.0" width="10.2" height="11.9" rx="2"/><path d="M160.0 176.0H170.2M165.1 176.0V183.9"/></g><g class="g p3"><rect x="126.0" y="185.0" width="10.2" height="11.9" rx="2"/><path d="M126.0 189.0H136.2M131.1 189.0V196.9"/></g><g class="g p3"><rect x="143.0" y="185.0" width="10.2" height="11.9" rx="2"/><path d="M143.0 189.0H153.2M148.1 189.0V196.9"/></g><g class="g p3"><rect x="160.0" y="185.0" width="10.2" height="11.9" rx="2"/><path d="M160.0 189.0H170.2M165.1 189.0V196.9"/></g><g class="g p3"><rect x="126.0" y="198.0" width="10.2" height="11.9" rx="2"/><path d="M126.0 202.0H136.2M131.1 202.0V209.9"/></g><g class="g p3"><rect x="143.0" y="198.0" width="10.2" height="11.9" rx="2"/><path d="M143.0 202.0H153.2M148.1 202.0V209.9"/></g><g class="g p3"><rect x="160.0" y="198.0" width="10.2" height="11.9" rx="2"/><path d="M160.0 202.0H170.2M165.1 202.0V209.9"/></g><g class="g p3"><rect x="126.0" y="211.0" width="10.2" height="11.9" rx="2"/><path d="M126.0 215.0H136.2M131.1 215.0V222.9"/></g><g class="g p3"><rect x="143.0" y="211.0" width="10.2" height="11.9" rx="2"/><path d="M143.0 215.0H153.2M148.1 215.0V222.9"/></g><g class="g p3"><rect x="160.0" y="211.0" width="10.2" height="11.9" rx="2"/><path d="M160.0 215.0H170.2M165.1 215.0V222.9"/></g><g class="g p3"><rect x="126.0" y="224.0" width="10.2" height="11.9" rx="2"/><path d="M126.0 228.0H136.2M131.1 228.0V235.9"/></g><g class="g p3"><rect x="143.0" y="224.0" width="10.2" height="11.9" rx="2"/><path d="M143.0 228.0H153.2M148.1 228.0V235.9"/></g><g class="g p3"><rect x="160.0" y="224.0" width="10.2" height="11.9" rx="2"/><path d="M160.0 228.0H170.2M165.1 228.0V235.9"/></g><g class="g p3"><rect x="126.0" y="237.0" width="10.2" height="11.9" rx="2"/><path d="M126.0 241.0H136.2M131.1 241.0V248.9"/></g><g class="g p3"><rect x="143.0" y="237.0" width="10.2" height="11.9" rx="2"/><path d="M143.0 241.0H153.2M148.1 241.0V248.9"/></g><g class="g p3"><rect x="160.0" y="237.0" width="10.2" height="11.9" rx="2"/><path d="M160.0 241.0H170.2M165.1 241.0V248.9"/></g><g class="g p3"><rect x="126.0" y="250.0" width="10.2" height="11.9" rx="2"/><path d="M126.0 254.0H136.2M131.1 254.0V261.9"/></g><g class="g p3"><rect x="143.0" y="250.0" width="10.2" height="11.9" rx="2"/><path d="M143.0 254.0H153.2M148.1 254.0V261.9"/></g><g class="g p3"><rect x="160.0" y="250.0" width="10.2" height="11.9" rx="2"/><path d="M160.0 254.0H170.2M165.1 254.0V261.9"/></g><g class="g ac"><rect x="14.0" y="278.0" width="12.0" height="14.0" rx="2"/><path d="M14.0 282.8H26.0M20.0 282.8V292.0"/></g><g class="g ac"><rect x="54.0" y="278.0" width="12.0" height="14.0" rx="2"/><path d="M54.0 282.8H66.0M60.0 282.8V292.0"/></g><g class="g ac"><rect x="94.0" y="278.0" width="12.0" height="14.0" rx="2"/><path d="M94.0 282.8H106.0M100.0 282.8V292.0"/></g><g class="g ac"><rect x="134.0" y="278.0" width="12.0" height="14.0" rx="2"/><path d="M134.0 282.8H146.0M140.0 282.8V292.0"/></g><g class="g ac"><rect x="174.0" y="278.0" width="12.0" height="14.0" rx="2"/><path d="M174.0 282.8H186.0M180.0 282.8V292.0"/></g><g class="g ac"><rect x="214.0" y="278.0" width="12.0" height="14.0" rx="2"/><path d="M214.0 282.8H226.0M220.0 282.8V292.0"/></g><g class="g ac"><rect x="254.0" y="278.0" width="12.0" height="14.0" rx="2"/><path d="M254.0 282.8H266.0M260.0 282.8V292.0"/></g><g class="g ac"><rect x="14.0" y="314.0" width="12.0" height="14.0" rx="2"/><path d="M14.0 318.8H26.0M20.0 318.8V328.0"/></g><g class="g ac"><rect x="54.0" y="314.0" width="12.0" height="14.0" rx="2"/><path d="M54.0 318.8H66.0M60.0 318.8V328.0"/></g><g class="g ac"><rect x="94.0" y="314.0" width="12.0" height="14.0" rx="2"/><path d="M94.0 318.8H106.0M100.0 318.8V328.0"/></g><g class="g ac"><rect x="134.0" y="314.0" width="12.0" height="14.0" rx="2"/><path d="M134.0 318.8H146.0M140.0 318.8V328.0"/></g><g class="g ac"><rect x="174.0" y="314.0" width="12.0" height="14.0" rx="2"/><path d="M174.0 318.8H186.0M180.0 318.8V328.0"/></g><g class="g ac"><rect x="214.0" y="314.0" width="12.0" height="14.0" rx="2"/><path d="M214.0 318.8H226.0M220.0 318.8V328.0"/></g><g class="g ac"><rect x="254.0" y="314.0" width="12.0" height="14.0" rx="2"/><path d="M254.0 318.8H266.0M260.0 318.8V328.0"/></g><g class="g ac"><rect x="14.0" y="350.0" width="12.0" height="14.0" rx="2"/><path d="M14.0 354.8H26.0M20.0 354.8V364.0"/></g><g class="g ac"><rect x="54.0" y="350.0" width="12.0" height="14.0" rx="2"/><path d="M54.0 354.8H66.0M60.0 354.8V364.0"/></g><g class="g ac"><rect x="94.0" y="350.0" width="12.0" height="14.0" rx="2"/><path d="M94.0 354.8H106.0M100.0 354.8V364.0"/></g><g class="g ac"><rect x="134.0" y="350.0" width="12.0" height="14.0" rx="2"/><path d="M134.0 354.8H146.0M140.0 354.8V364.0"/></g><g class="g ac"><rect x="174.0" y="350.0" width="12.0" height="14.0" rx="2"/><path d="M174.0 354.8H186.0M180.0 354.8V364.0"/></g><g class="g ac"><rect x="214.0" y="350.0" width="12.0" height="14.0" rx="2"/><path d="M214.0 354.8H226.0M220.0 354.8V364.0"/></g><g class="g ac"><rect x="254.0" y="350.0" width="12.0" height="14.0" rx="2"/><path d="M254.0 354.8H266.0M260.0 354.8V364.0"/></g><g class="g ac"><rect x="14.0" y="386.0" width="12.0" height="14.0" rx="2"/><path d="M14.0 390.8H26.0M20.0 390.8V400.0"/></g><g class="g ac"><rect x="54.0" y="386.0" width="12.0" height="14.0" rx="2"/><path d="M54.0 390.8H66.0M60.0 390.8V400.0"/></g><g class="g ac"><rect x="94.0" y="386.0" width="12.0" height="14.0" rx="2"/><path d="M94.0 390.8H106.0M100.0 390.8V400.0"/></g><g class="g ac"><rect x="134.0" y="386.0" width="12.0" height="14.0" rx="2"/><path d="M134.0 390.8H146.0M140.0 390.8V400.0"/></g><g class="g ac"><rect x="174.0" y="386.0" width="12.0" height="14.0" rx="2"/><path d="M174.0 390.8H186.0M180.0 390.8V400.0"/></g><g class="g ac"><rect x="214.0" y="386.0" width="12.0" height="14.0" rx="2"/><path d="M214.0 390.8H226.0M220.0 390.8V400.0"/></g><g class="g ac"><rect x="254.0" y="386.0" width="12.0" height="14.0" rx="2"/><path d="M254.0 390.8H266.0M260.0 390.8V400.0"/></g></svg>
-    <div class="kroki">
-      <div class="krok" data-r><b><span lang="pl">Zgłoszenie</span><span lang="cs">Přihláška</span></b><p lang="pl">Wypełnij zgłoszenie elektroniczne między 11.1. a 8.2.2027.</p><p lang="cs">Vyplňte elektronickou přihlášku mezi 11. 1. a 8. 2. 2027.</p></div>
-      <div class="krok" data-r><b><span lang="pl">Zapis w szkole</span><span lang="cs">Zápis ve škole</span></b><p lang="pl">Czwartek 11.2.2027, 14:00–17:00. Akt urodzenia dziecka i Twój dowód osobisty. Rodzice czekają przy kawie.</p><p lang="cs">Čtvrtek 11. 2. 2027, 14:00–17:00. Rodný list dítěte a Váš občanský průkaz. Rodiče počkají u kávy.</p></div>
-      <div class="krok" data-r><b><span lang="pl">1 września</span><span lang="cs">1. září</span></b><p lang="pl">Pierwszak siada w ławce w szkole, którą już zna.</p><p lang="cs">Prvňáček usedne do lavice ve škole, kterou už zná.</p></div>
-    </div>
-  </div>
-  <div class="zap-dol">
-    <div class="scio" data-r>
-      <p lang="pl">W testach SCIO 2026 nasi dziewiątacy znaleźli się wśród 10 % najlepszych szkół z matematyki i czeskiego.</p>
-      <p lang="cs">V testech SCIO 2026 se naši deváťáci zařadili mezi 10 % nejúspěšnějších škol v matematice a češtině.</p>
-      <small><span lang="pl">Testy pisało ponad 20 000 uczniów z całej Republiki Czeskiej.</span><span lang="cs">Testy psalo přes 20 000 žáků z celé České republiky.</span></small>
-    </div>
+    <ol class="kroki">
+      <li class="krok" data-r><svg class="ik" aria-hidden="true"><use href="#ik"/></svg><div><b><span lang="pl">Zgłoszenie</span><span lang="cs">Přihláška</span></b><p lang="pl">Wypełnij zgłoszenie elektroniczne między 11.1. a 8.2.2027.</p><p lang="cs">Vyplňte elektronickou přihlášku mezi 11. 1. a 8. 2. 2027.</p></div></li>
+      <li class="krok" data-r><svg class="ik" aria-hidden="true"><use href="#ik"/></svg><div><b><span lang="pl">Zapis w szkole</span><span lang="cs">Zápis ve škole</span></b><p lang="pl">Czwartek 11.2.2027, 14:00–17:00. Akt urodzenia dziecka i Twój dowód osobisty. Rodzice czekają przy kawie.</p><p lang="cs">Čtvrtek 11. 2. 2027, 14:00–17:00. Rodný list dítěte a Váš občanský průkaz. Rodiče počkají u kávy.</p></div></li>
+      <li class="krok" data-r><svg class="ik" aria-hidden="true"><use href="#ik"/></svg><div><b><span lang="pl">1 września</span><span lang="cs">1. září</span></b><p lang="pl">Pierwszak siada w ławce w szkole, którą już zna.</p><p lang="cs">Prvňáček usedne do lavice ve škole, kterou už zná.</p></div></li>
+    </ol>
     <div class="zap-akcje" data-r>
       <a class="btn tma" href="#zapisy"><span lang="pl">Zgłoszenie elektroniczne</span><span lang="cs">Elektronická přihláška</span></a>
-      <a class="odkaz" href="https://edu.gov.cz/methodology/informacni-letaky-k-zapisu-do-1-rocniku-zs-a-k-odkladum-povinne-skolni-dochazky/"><span lang="pl">Ulotki ministerstwa o zapisie i odroczeniu</span><span lang="cs">Letáky MŠMT k zápisu a odkladu</span></a>
+      <a class="odkaz" href="https://edu.gov.cz/methodology/informacni-letaky-k-zapisu-do-1-rocniku-zs-a-k-odkladum-povinne-skolni-dochazky/"><span lang="pl">Ulotki ministerstwa</span><span lang="cs">Letáky MŠMT</span></a>
       <p><span lang="pl">Pytania: dyrektor mgr Tomasz Śmiłowski, </span><span lang="cs">Dotazy: ředitel Mgr. Tomasz Śmiłowski, </span><a href="tel:+420596317672">596 317 672</a></p>
     </div>
   </div>
+  <figure class="okno zap-foto" data-r>
+    <img src="img/szkola-960.jpg" srcset="img/szkola-640.jpg 640w, img/szkola-960.jpg 960w" sizes="(max-width:900px) 92vw, 40vw" width="960" height="720" alt="Budynek szkoły przy ulicy Dr. Olszaka we Frysztacie" data-alt-pl="Budynek szkoły przy ulicy Dr. Olszaka we Frysztacie" data-alt-cs="Budova školy v ulici Dr. Olszaka ve Fryštátě" loading="lazy">
+  </figure>
+  <div class="scio" data-r>
+    <p lang="pl">W testach SCIO 2026 nasi dziewiątacy znaleźli się wśród 10 % najlepszych szkół z matematyki i czeskiego.</p>
+    <p lang="cs">V testech SCIO 2026 se naši deváťáci zařadili mezi 10 % nejúspěšnějších škol v matematice a češtině.</p>
+    <small><span lang="pl">Testy pisało ponad 20 000 uczniów z całej Republiki Czeskiej.</span><span lang="cs">Testy psalo přes 20 000 žáků z celé České republiky.</span></small>
+  </div>
+</section>
+
+<!-- ============ ODHLÁŠENÍ OBĚDA — kupon ============ -->
+<section class="sec wrap obiad" id="obiad" aria-labelledby="obiad-h">
+  <form class="kupon" data-r data-kupon action="mailto:kuchnia@pzskarvina.cz" method="post" enctype="text/plain">
+    <div class="kupon-l">
+      <div>
+        <h2 id="obiad-h" class="h2"><span lang="pl">Odgłoś obiad</span><span lang="cs">Odhlásit oběd</span></h2>
+        <p lang="pl" style="margin-top:20px">Najpóźniej do 6:00 w dniu nieobecności. Od drugiego dnia bez odgłoszenia obiad kosztuje pełną cenę.</p>
+        <p lang="cs" style="margin-top:20px">Nejpozději do 6:00 v den nepřítomnosti. Od druhého dne bez odhlášení stojí oběd plnou cenu.</p>
+      </div>
+      <p class="r" lang="pl">Pierwszego dnia choroby obiad odbierzesz do domu 11:00–11:15, jeśli dasz znać kuchni do 10:00.</p>
+      <p class="r" lang="cs">První den nemoci si oběd vyzvednete domů 11:00–11:15, pokud dáte kuchyni vědět do 10:00.</p>
+    </div>
+    <div class="kupon-p">
+      <label class="pole"><span><span lang="pl">Dziecko</span><span lang="cs">Dítě</span></span><input name="dziecko" autocomplete="off" required data-ph-pl="Imię i nazwisko" data-ph-cs="Jméno a příjmení" placeholder="Imię i nazwisko"></label>
+      <label class="pole"><span><span lang="pl">Klasa</span><span lang="cs">Třída</span></span>
+        <select name="klasa" required>
+          <option value="1.">1.</option><option value="2.">2.</option><option value="3.">3.</option><option value="4.">4.</option><option value="5.">5.</option><option value="6.">6.</option><option value="7.">7.</option><option value="8.">8.</option><option value="9.">9.</option>
+          <option value="Przedszkole" data-t-pl="Przedszkole" data-t-cs="Mateřská škola">Przedszkole</option>
+        </select>
+      </label>
+      <div class="dwa">
+        <label class="pole"><span><span lang="pl">Od</span><span lang="cs">Od</span></span><input type="date" name="od" required></label>
+        <label class="pole"><span><span lang="pl">Do</span><span lang="cs">Do</span></span><input type="date" name="do" required></label>
+      </div>
+      <button class="btn tma wyslij" type="submit"><span lang="pl">Wyślij do kuchni</span><span lang="cs">Odeslat do kuchyně</span></button>
+    </div>
+  </form>
+  <p class="obiad-pod" data-r>
+    <a class="odkaz" href="https://www.pzskarvina.cz/stolowka_szkolna.asp?m=5"><span lang="pl">Jadłospis</span><span lang="cs">Jídelníček</span></a>
+    <span><span lang="pl">Kuchnia: Jana Rigová, </span><span lang="cs">Kuchyně: Jana Rigová, </span><a href="tel:+420596317673">596 317 673</a>, <a href="mailto:kuchnia@pzskarvina.cz">kuchnia@pzskarvina.cz</a></span>
+  </p>
 </section>
 
 <!-- ============ MATEŘSKÁ ŠKOLA BAJLANDIA ============ -->
@@ -679,39 +614,6 @@ html.intro-on.intro-landed [data-intro-land]{opacity:1;transition:opacity .25s e
   </div>
 </section>
 
-<!-- ============ ODHLÁŠENÍ OBĚDA — kupon ============ -->
-<section class="sec wrap obiad" id="obiad" aria-labelledby="obiad-h">
-  <form class="kupon" data-r data-kupon action="mailto:kuchnia@pzskarvina.cz" method="post" enctype="text/plain">
-    <div class="kupon-l">
-      <div>
-        <h2 id="obiad-h" class="h2"><span lang="pl">Odgłoś obiad</span><span lang="cs">Odhlásit oběd</span></h2>
-        <p lang="pl" style="margin-top:20px">Najpóźniej do 6:00 w dniu nieobecności. Od drugiego dnia bez odgłoszenia obiad kosztuje pełną cenę.</p>
-        <p lang="cs" style="margin-top:20px">Nejpozději do 6:00 v den nepřítomnosti. Od druhého dne bez odhlášení stojí oběd plnou cenu.</p>
-      </div>
-      <p class="r" lang="pl">Pierwszego dnia choroby obiad odbierzesz do domu 11:00–11:15, jeśli dasz znać kuchni do 10:00.</p>
-      <p class="r" lang="cs">První den nemoci si oběd vyzvednete domů 11:00–11:15, pokud dáte kuchyni vědět do 10:00.</p>
-    </div>
-    <div class="kupon-p">
-      <label class="pole"><span><span lang="pl">Dziecko</span><span lang="cs">Dítě</span></span><input name="dziecko" autocomplete="off" required data-ph-pl="Imię i nazwisko" data-ph-cs="Jméno a příjmení" placeholder="Imię i nazwisko"></label>
-      <label class="pole"><span><span lang="pl">Klasa</span><span lang="cs">Třída</span></span>
-        <select name="klasa" required>
-          <option value="1.">1.</option><option value="2.">2.</option><option value="3.">3.</option><option value="4.">4.</option><option value="5.">5.</option><option value="6.">6.</option><option value="7.">7.</option><option value="8.">8.</option><option value="9.">9.</option>
-          <option value="Przedszkole" data-t-pl="Przedszkole" data-t-cs="Mateřská škola">Przedszkole</option>
-        </select>
-      </label>
-      <div class="dwa">
-        <label class="pole"><span><span lang="pl">Od</span><span lang="cs">Od</span></span><input type="date" name="od" required></label>
-        <label class="pole"><span><span lang="pl">Do</span><span lang="cs">Do</span></span><input type="date" name="do" required></label>
-      </div>
-      <button class="btn tma wyslij" type="submit"><span lang="pl">Wyślij do kuchni</span><span lang="cs">Odeslat do kuchyně</span></button>
-    </div>
-  </form>
-  <p class="obiad-pod" data-r>
-    <a class="odkaz" href="https://www.pzskarvina.cz/stolowka_szkolna.asp?m=5"><span lang="pl">Jadłospis</span><span lang="cs">Jídelníček</span></a>
-    <span><span lang="pl">Kuchnia: Jana Rigová, </span><span lang="cs">Kuchyně: Jana Rigová, </span><a href="tel:+420596317673">596 317 673</a>, <a href="mailto:kuchnia@pzskarvina.cz">kuchnia@pzskarvina.cz</a></span>
-  </p>
-</section>
-
 <!-- ============ OD ROKU 1918 ============ -->
 <section class="sec historia" id="historia" aria-labelledby="hist-h">
   <div class="panel">
@@ -739,19 +641,6 @@ html.intro-on.intro-landed [data-intro-land]{opacity:1;transition:opacity .25s e
       <div data-r><a class="btn" href="https://youtu.be/h2csFFUlWm8"><span lang="pl">Film na 100-lecie szkoły</span><span lang="cs">Film ke 100 letům školy</span></a></div>
     </div>
   </div>
-</section>
-
-<!-- ============ PARTNEŘI ============ -->
-<section class="sec wrap" id="partnerzy" aria-labelledby="part-h">
-  <ul class="tiles">
-    <li class="tile hl" data-r><h2 id="part-h"><span lang="pl">Pomagają nam</span><span lang="cs">Pomáhají nám</span></h2><p lang="pl">Dzięki projektom pierwszaki i przedszkolaki dostają wyprawki, a szkoła ma przyrodniczy ogród.</p><p lang="cs">Díky projektům dostávají prvňáčci a předškoláci výbavu do školy a škola má přírodní zahradu.</p></li>
-    <li class="tile" data-r><b>Macierz Szkolna</b><p lang="pl">Koło rodziców przy szkole</p><p lang="cs">Spolek rodičů při škole</p></li>
-    <li class="tile" data-r><b><span lang="pl">Miasto Karwina</span><span lang="cs">Statutární město Karviná</span></b><p lang="pl">Organ prowadzący szkołę</p><p lang="cs">Zřizovatel školy</p></li>
-    <li class="tile" data-r><b>Instytut Rozwoju Języka Polskiego</b><p lang="pl">Bon Kolbego 2025: wyprawki dla 16 pierwszaków</p><p lang="cs">Bon Kolbego 2025: výbava pro 16 prvňáčků</p></li>
-    <li class="tile" data-r><b><span lang="pl">Fundacja „Pomoc Polakom na Wschodzie”</span><span lang="cs">Nadace „Pomoc Polakom na Wschodzie”</span></b><p lang="pl">Realizuje Bon Pierwszaka i Bon Przedszkolaka</p><p lang="cs">Realizuje Bon Pierwszaka a Bon Przedszkolaka</p></li>
-    <li class="tile" data-r><b><span lang="pl">Ministerstwo Środowiska RC</span><span lang="cs">Ministerstvo životního prostředí</span></b><p lang="pl">Projekt przyrodniczego ogrodu szkolnego</p><p lang="cs">Projekt přírodní školní zahrady</p></li>
-    <li class="tile" data-r><b><span lang="pl">Adopcja na odległość</span><span lang="cs">Adopce na dálku</span></b><p lang="pl">Wspieramy naukę Dickensa i Hadji w Afryce</p><p lang="cs">Podporujeme vzdělání Dickense a Hadji v Africe</p></li>
-  </ul>
 </section>
 
 <!-- ============ KONTAKT ============ -->
@@ -794,7 +683,7 @@ html.intro-on.intro-landed [data-intro-land]{opacity:1;transition:opacity .25s e
 <footer class="stopka" data-stopka>
   <svg class="stopka-fasada" viewBox="0 0 115 40" aria-hidden="true" preserveAspectRatio="xMidYMax meet"><g class="bloky"><rect class="b zed" x="4" y="8" width="47" height="32"/><rect class="b riz" x="51.5" y="5.5" width="12" height="34.5"/><rect class="b zed" x="64" y="8" width="47" height="32"/><rect class="b rimsa" x="2.5" y="6.2" width="48.5" height="1.3"/><rect class="b rimsa" x="64" y="6.2" width="48.5" height="1.3"/></g><g class="okna"><g class="b okno"><rect x="6.5" y="11" width="5" height="7" rx="0.5"/><path d="M6.5 13.38H11.5M9 13.38V18"/></g><g class="b okno"><rect x="6.5" y="21" width="5" height="7" rx="0.5"/><path d="M6.5 23.38H11.5M9 23.38V28"/></g><g class="b okno"><rect x="6.5" y="31" width="5" height="6.5" rx="0.5"/><path d="M6.5 33.21H11.5M9 33.21V37.5"/></g><g class="b okno"><rect x="14" y="11" width="5" height="7" rx="0.5"/><path d="M14 13.38H19M16.5 13.38V18"/></g><g class="b okno"><rect x="14" y="21" width="5" height="7" rx="0.5"/><path d="M14 23.38H19M16.5 23.38V28"/></g><g class="b okno"><rect x="14" y="31" width="5" height="6.5" rx="0.5"/><path d="M14 33.21H19M16.5 33.21V37.5"/></g><g class="b okno"><rect x="21.5" y="11" width="5" height="7" rx="0.5"/><path d="M21.5 13.38H26.5M24 13.38V18"/></g><g class="b okno"><rect x="21.5" y="21" width="5" height="7" rx="0.5"/><path d="M21.5 23.38H26.5M24 23.38V28"/></g><g class="b okno"><rect x="21.5" y="31" width="5" height="6.5" rx="0.5"/><path d="M21.5 33.21H26.5M24 33.21V37.5"/></g><g class="b okno"><rect x="29" y="11" width="5" height="7" rx="0.5"/><path d="M29 13.38H34M31.5 13.38V18"/></g><g class="b okno"><rect x="29" y="21" width="5" height="7" rx="0.5"/><path d="M29 23.38H34M31.5 23.38V28"/></g><g class="b okno"><rect x="29" y="31" width="5" height="6.5" rx="0.5"/><path d="M29 33.21H34M31.5 33.21V37.5"/></g><g class="b okno"><rect x="36.5" y="11" width="5" height="7" rx="0.5"/><path d="M36.5 13.38H41.5M39 13.38V18"/></g><g class="b okno"><rect x="36.5" y="21" width="5" height="7" rx="0.5"/><path d="M36.5 23.38H41.5M39 23.38V28"/></g><g class="b okno"><rect x="36.5" y="31" width="5" height="6.5" rx="0.5"/><path d="M36.5 33.21H41.5M39 33.21V37.5"/></g><g class="b okno"><rect x="44" y="11" width="5" height="7" rx="0.5"/><path d="M44 13.38H49M46.5 13.38V18"/></g><g class="b okno"><rect x="44" y="21" width="5" height="7" rx="0.5"/><path d="M44 23.38H49M46.5 23.38V28"/></g><g class="b okno"><rect x="44" y="31" width="5" height="6.5" rx="0.5"/><path d="M44 33.21H49M46.5 33.21V37.5"/></g><g class="b okno"><rect x="66.5" y="11" width="5" height="7" rx="0.5"/><path d="M66.5 13.38H71.5M69 13.38V18"/></g><g class="b okno"><rect x="66.5" y="21" width="5" height="7" rx="0.5"/><path d="M66.5 23.38H71.5M69 23.38V28"/></g><g class="b okno"><rect x="66.5" y="31" width="5" height="6.5" rx="0.5"/><path d="M66.5 33.21H71.5M69 33.21V37.5"/></g><g class="b okno"><rect x="74" y="11" width="5" height="7" rx="0.5"/><path d="M74 13.38H79M76.5 13.38V18"/></g><g class="b okno"><rect x="74" y="21" width="5" height="7" rx="0.5"/><path d="M74 23.38H79M76.5 23.38V28"/></g><g class="b okno"><rect x="74" y="31" width="5" height="6.5" rx="0.5"/><path d="M74 33.21H79M76.5 33.21V37.5"/></g><g class="b okno"><rect x="81.5" y="11" width="5" height="7" rx="0.5"/><path d="M81.5 13.38H86.5M84 13.38V18"/></g><g class="b okno"><rect x="81.5" y="21" width="5" height="7" rx="0.5"/><path d="M81.5 23.38H86.5M84 23.38V28"/></g><g class="b okno"><rect x="81.5" y="31" width="5" height="6.5" rx="0.5"/><path d="M81.5 33.21H86.5M84 33.21V37.5"/></g><g class="b okno"><rect x="89" y="11" width="5" height="7" rx="0.5"/><path d="M89 13.38H94M91.5 13.38V18"/></g><g class="b okno"><rect x="89" y="21" width="5" height="7" rx="0.5"/><path d="M89 23.38H94M91.5 23.38V28"/></g><g class="b okno"><rect x="89" y="31" width="5" height="6.5" rx="0.5"/><path d="M89 33.21H94M91.5 33.21V37.5"/></g><g class="b okno"><rect x="96.5" y="11" width="5" height="7" rx="0.5"/><path d="M96.5 13.38H101.5M99 13.38V18"/></g><g class="b okno"><rect x="96.5" y="21" width="5" height="7" rx="0.5"/><path d="M96.5 23.38H101.5M99 23.38V28"/></g><g class="b okno"><rect x="96.5" y="31" width="5" height="6.5" rx="0.5"/><path d="M96.5 33.21H101.5M99 33.21V37.5"/></g><g class="b okno"><rect x="104" y="11" width="5" height="7" rx="0.5"/><path d="M104 13.38H109M106.5 13.38V18"/></g><g class="b okno"><rect x="104" y="21" width="5" height="7" rx="0.5"/><path d="M104 23.38H109M106.5 23.38V28"/></g><g class="b okno"><rect x="104" y="31" width="5" height="6.5" rx="0.5"/><path d="M104 33.21H109M106.5 33.21V37.5"/></g><g class="b okno"><rect x="54" y="9.5" width="7" height="8" rx="0.5"/><path d="M54 12.22H61M57.5 12.22V17.5"/></g><g class="b okno"><rect x="55.5" y="20.5" width="4" height="7.5" rx="0.5"/><path d="M55.5 23.05H59.5M57.5 23.05V28"/></g><g class="b okno"><rect x="55" y="30.5" width="5" height="9.5" rx="0.5"/><path d="M55 33.73H60M57.5 33.73V40"/></g></g></svg>
   <div class="stopka-cols">
-    <nav aria-label="Szkoła"><b><span lang="pl">Szkoła</span><span lang="cs">Škola</span></b><ul><li><a href="#aktualnosci"><span lang="pl">Aktualności</span><span lang="cs">Aktuality</span></a></li><li><a href="#dzien"><span lang="pl">Dzień w szkole</span><span lang="cs">Den ve škole</span></a></li><li><a href="#zapisy"><span lang="pl">Zapisy</span><span lang="cs">Zápis</span></a></li><li><a href="#historia"><span lang="pl">Historia</span><span lang="cs">Historie</span></a></li></ul></nav>
+    <nav aria-label="Szkoła"><b><span lang="pl">Szkoła</span><span lang="cs">Škola</span></b><ul><li><a href="#aktualnosci"><span lang="pl">Aktualności</span><span lang="cs">Aktuality</span></a></li><li><a href="#kalendarz"><span lang="pl">Kalendarz</span><span lang="cs">Kalendář</span></a></li><li><a href="#zapisy"><span lang="pl">Zapisy</span><span lang="cs">Zápis</span></a></li><li><a href="#historia"><span lang="pl">Historia</span><span lang="cs">Historie</span></a></li></ul></nav>
     <nav aria-label="Rodzice"><b><span lang="pl">Rodzice</span><span lang="cs">Rodiče</span></b><ul><li><a href="#obiad"><span lang="pl">Odgłoś obiad</span><span lang="cs">Odhlásit oběd</span></a></li><li><a href="https://pzskarvina.bakalari.cz/">Bakaláři</a></li><li><a href="https://www.pzskarvina.cz/dokumenty.asp?m=3&amp;s=1"><span lang="pl">Dokumenty</span><span lang="cs">Dokumenty</span></a></li><li><a href="https://www.pzskarvina.cz/rada-szkoly.asp?m=12"><span lang="pl">Rada Szkoły</span><span lang="cs">Školská rada</span></a></li></ul></nav>
     <nav aria-label="Przedszkole"><b><span lang="pl">Przedszkole</span><span lang="cs">Školka</span></b><ul><li><a href="#przedszkole">Bajlandia</a></li><li><a href="#po-lekcjach"><span lang="pl">Świetlica</span><span lang="cs">Družina</span></a></li><li><a href="https://www.facebook.com/SPFrysztat/">Facebook</a></li></ul></nav>
     <nav aria-label="Pomoc"><b><span lang="pl">Pomoc</span><span lang="cs">Pomoc</span></b><ul><li><a href="mailto:psycholog@pzskarvina.cz"><span lang="pl">Psycholog</span><span lang="cs">Psycholožka</span></a></li><li><a href="https://nntb.cz/s/wmna1"><span lang="pl">Skrzynka zaufania</span><span lang="cs">Schránka důvěry</span></a></li><li><a href="https://www.linkabezpeci.cz/">Linka bezpečí</a></li></ul></nav>
@@ -843,7 +732,6 @@ window.INTRO_EXTRA = function (tl, root, lock) {
     document.querySelectorAll('[data-ph-' + L + ']').forEach(function (el) { el.placeholder = el.getAttribute('data-ph-' + L); });
     document.querySelectorAll('[data-t-' + L + ']').forEach(function (el) { el.textContent = el.getAttribute('data-t-' + L); });
     try { localStorage.setItem('pzs-lang', L); } catch (e) {}
-    if (window.__dzien) window.__dzien();
     if (!langInit && window.gsap && window.ScrollTrigger) {
       /* prvky nového jazyka, které už jsou nad dolní hranou okna, ukaž hned */
       document.querySelectorAll('[data-r]').forEach(function (el) { if (el.getClientRects().length && el.getBoundingClientRect().top < innerHeight) gsap.set(el, { opacity: 1, y: 0 }); });
@@ -859,71 +747,88 @@ window.INTRO_EXTRA = function (tl, root, lock) {
   mb.addEventListener('click', function () { var o = nav.classList.toggle('open'); mb.setAttribute('aria-expanded', String(o)); });
   nav.querySelectorAll('.links a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); }); });
 
-  /* ===== DEN VE ŠKOLE — okna svítí podle času ===== */
-  var sec = document.getElementById('dzien');
-  var rows = [].slice.call(sec.querySelectorAll('[data-plan] li'));
-  var okna = [].slice.call(sec.querySelectorAll('.okn'));
-  var rng = document.getElementById('cas'), out = sec.querySelector('[data-zc]'), zd = sec.querySelector('[data-zd]');
-  var radios = [].slice.call(sec.querySelectorAll('input[name="den"]'));
-  var oi = sec.querySelector('[data-oi]');
-  sec.querySelector('[data-ovl]').hidden = false;
-  var DNI = { pl: ['niedziela', 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota'], cs: ['neděle', 'pondělí', 'úterý', 'středa', 'čtvrtek', 'pátek', 'sobota'] };
-  var T = {
-    pl: { teraz: 'teraz', do: 'do ', od: 'od ', otw: 'otwarte', trw: 'trwają', zamk: 'Szkoła zamknięta',
-      oiDzis: 'Obiad na dziś możesz jeszcze odgłosić, do 6:00.', oiJutro: 'Obiad na jutro odgłosisz do jutra, 6:00.', oiPon: 'Obiad na poniedziałek odgłosisz do poniedziałku, 6:00.',
-      oiChory: 'Dziecko zachorowało? Daj znać kuchni do 10:00, obiad odbierzesz 11:00–11:15.', link: 'Odgłoś obiad' },
-    cs: { teraz: 'teď', do: 'do ', od: 'od ', otw: 'otevřeno', trw: 'probíhá', zamk: 'Škola je zavřená',
-      oiDzis: 'Dnešní oběd ještě odhlásíte, do 6:00.', oiJutro: 'Zítřejší oběd odhlásíte do zítřka, 6:00.', oiPon: 'Pondělní oběd odhlásíte do pondělí, 6:00.',
-      oiChory: 'Dítě onemocnělo? Dejte kuchyni vědět do 10:00, oběd vyzvednete 11:00–11:15.', link: 'Odhlásit oběd' }
-  };
-  var live = true, den = new Date().getDay(), mins = 0;
-  function hm(m) { return Math.floor(m / 60) + ':' + ('0' + (m % 60)).slice(-2); }
-  function inDays(spec, d) { if (spec === '1-5') return d >= 1 && d <= 5; return spec.split(',').indexOf(String(d)) > -1; }
-  function nowMins() { var n = new Date(); return n.getHours() * 60 + n.getMinutes(); }
-  function render() {
-    var L = lang(), t = T[L];
-    if (live) { den = new Date().getDay(); mins = nowMins(); rng.value = Math.max(300, Math.min(1080, mins)); }
-    out.textContent = hm(mins);
-    zd.textContent = live ? DNI[L][den] : (den === 5 ? DNI[L][5] : den === 6 || den === 0 ? (L === 'pl' ? 'weekend' : 'víkend') : (L === 'pl' ? 'pon–czw' : 'po–čt'));
-    radios.forEach(function (r) { r.checked = (r.value === '2' && den >= 1 && den <= 4) || (r.value === '5' && den === 5) || (r.value === '6' && (den === 6 || den === 0)); });
-    var act = {};
-    rows.forEach(function (li) {
-      var od = +li.dataset.od, dd = +li.dataset.do, ok = inDays(li.dataset.dni, den);
-      var on = ok && mins >= od && mins < dd;
-      li.classList.toggle('on', on); li.classList.toggle('off', !on);
-      var st = li.querySelector('[data-stan]');
-      st.textContent = on ? (t.teraz + ' · ' + t.do + hm(dd)) : '';
+  /* ===== AKTUALITY — filtr, starší zprávy ===== */
+  var news = [].slice.call(document.querySelectorAll('[data-feed] .news'));
+  var fBtns = [].slice.call(document.querySelectorAll('[data-filtr] button'));
+  var moreBtn = document.querySelector('[data-starsze-btn]');
+  var kat = 'all', vse = false, NA = 8;
+  function visible() { return news.filter(function (a) { return !a.hidden; }); }
+  function renderFeed() {
+    var n = 0, total = 0;
+    news.forEach(function (a) {
+      var ok = kat === 'all' || a.dataset.kat === kat;
+      if (ok) total++;
+      var vis = ok && (vse || n < NA);
+      if (vis) n++;
+      a.hidden = !vis;
+      a.classList.remove('news-top');
     });
-    var weekday = den >= 1 && den <= 5;
-    var open = weekday && mins >= 375 && mins < 1005;
-    act.drzwi = open;
-    act.klasy = weekday && mins >= 480 && mins < 870;
-    act.swietlica = weekday && ((mins >= 375 && mins < 465) || (mins >= 695 && mins < 1005));
-    act.stolowka = weekday && mins >= 630 && mins < 825;
-    act.sekretariat = weekday && mins >= 450 && mins < 930;
-    okna.forEach(function (o, i) {
-      var on = !!act[o.dataset.k];
-      if (on !== o.classList.contains('lit')) { o.firstChild.style.transitionDelay = (RM ? 0 : (i % 7) * 40) + 'ms'; o.classList.toggle('lit', on); }
-    });
-    sec.classList.toggle('noc', !open);
-    sec.classList.toggle('harc', den === 5 && mins >= 855 && mins < 990);
-    /* oběd */
-    var msg;
-    if (!weekday || (den === 5 && mins >= 360)) msg = t.oiPon;
-    else if (mins < 360) msg = t.oiDzis;
-    else msg = t.oiJutro;
-    if (weekday && mins >= 360 && mins < 600) msg += ' ' + t.oiChory;
-    oi.innerHTML = '';
-    var s = document.createElement('span'); s.textContent = msg + ' ';
-    var a = document.createElement('a'); a.href = '#obiad'; a.textContent = t.link;
-    oi.appendChild(s); oi.appendChild(a);
+    var first = visible()[0];
+    if (first) first.classList.add('news-top');
+    moreBtn.hidden = vse || total <= NA;
   }
-  rng.addEventListener('input', function () { live = false; mins = +rng.value; render(); });
-  radios.forEach(function (r) { r.addEventListener('change', function () { live = false; den = +r.value; mins = +rng.value; render(); }); });
-  sec.querySelector('[data-teraz]').addEventListener('click', function () { live = true; render(); });
-  setInterval(function () { if (live) render(); }, 30000);
-  window.__dzien = render;
-  render();
+  fBtns.forEach(function (b) { b.addEventListener('click', function () {
+    kat = b.dataset.k; vse = false;
+    fBtns.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    renderFeed();
+    if (window.gsap && !RM) gsap.fromTo(visible(), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .45, stagger: .04, ease: 'power2.out' });
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+  }); });
+  moreBtn.addEventListener('click', function () {
+    var before = visible().length;
+    vse = true; renderFeed();
+    var nove = visible().slice(before);
+    if (nove[0]) { var h = nove[0].querySelector('summary'); if (h) h.focus({ preventScroll: true }); }
+    if (window.gsap && !RM) gsap.fromTo(nove, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .45, stagger: .04, ease: 'power2.out' });
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+  });
+  renderFeed();
+  document.querySelectorAll('.wiecej').forEach(function (d) { d.addEventListener('toggle', function () {
+    if (d.open && window.gsap && !RM) gsap.fromTo(d.querySelector('.tresc'), { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: .35, ease: 'power2.out' });
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+  }); });
+
+  /* ===== KALENDÁŘ — jen nadcházející akce, přidání do kalendáře ===== */
+  var evs = [].slice.call(document.querySelectorAll('[data-kal] .ev'));
+  var dnes = new Date(); dnes.setHours(0, 0, 0, 0);
+  var up = evs.filter(function (e) { return new Date(e.dataset.d + 'T23:59:00') >= dnes; });
+  evs.forEach(function (e) { if (up.indexOf(e) < 0) e.parentNode.removeChild(e); });
+  var kalBtn = document.querySelector('[data-kal-btn]'), kalAll = false;
+  var LIM = matchMedia('(max-width:900px)').matches ? 3 : 5;
+  function renderKal() {
+    up.forEach(function (e, i) { e.hidden = !kalAll && i >= LIM; });
+    kalBtn.hidden = up.length <= LIM;
+    kalBtn.querySelector('[data-kal-wiecej]').hidden = kalAll;
+    kalBtn.querySelector('[data-kal-mniej]').hidden = !kalAll;
+    document.querySelector('[data-kal-pusto]').hidden = up.length > 0;
+  }
+  kalBtn.addEventListener('click', function () { kalAll = !kalAll; renderKal(); if (window.ScrollTrigger) ScrollTrigger.refresh(); });
+  renderKal();
+  function icsText(e) {
+    var L = lang(), d = e.dataset.d.replace(/-/g, ''), t1 = e.dataset.t1, t2 = e.dataset.t2;
+    var title = e.querySelector('.ev-txt b [lang="' + L + '"]').textContent;
+    var gd = e.querySelectorAll('.ev-gdzie > [lang="' + L + '"]'); var place = gd[gd.length - 1].textContent;
+    function esc(v) { return v.replace(/\\/g, '\\\\').replace(/([,;])/g, '\\$1'); }
+    var lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Polska Szkola Karwina//Kalendarz//PL', 'BEGIN:VEVENT',
+      'UID:' + d + '-' + e.dataset.kat + '-' + title.length + '@pzskarvina.cz',
+      'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z'];
+    if (t1) {
+      var end = t2 || (('0' + Math.min(23, +t1.slice(0, 2) + 1)).slice(-2) + t1.slice(2));
+      lines.push('DTSTART;TZID=Europe/Prague:' + d + 'T' + t1.replace(':', '') + '00', 'DTEND;TZID=Europe/Prague:' + d + 'T' + end.replace(':', '') + '00');
+    } else {
+      var nx = new Date(e.dataset.d + 'T12:00:00'); nx.setDate(nx.getDate() + 1);
+      lines.push('DTSTART;VALUE=DATE:' + d, 'DTEND;VALUE=DATE:' + nx.toISOString().slice(0, 10).replace(/-/g, ''));
+    }
+    lines.push('SUMMARY:' + esc(title), 'DESCRIPTION:' + esc(place), 'LOCATION:Karviná-Fryštát', 'END:VEVENT', 'END:VCALENDAR');
+    return lines.join('\r\n');
+  }
+  window.__icsText = icsText;
+  document.querySelectorAll('[data-kal] .ics').forEach(function (b) { b.addEventListener('click', function () {
+    var ev = b.closest('.ev');
+    var url = URL.createObjectURL(new Blob([icsText(ev)], { type: 'text/calendar;charset=utf-8' }));
+    var a = document.createElement('a'); a.href = url; a.download = 'pzs-karwina-' + ev.dataset.d + '.ics';
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+  }); });
 
   /* ===== ŠKOLKA — výběr mění barvu okna a fakt ===== */
   var msBtns = [].slice.call(document.querySelectorAll('[data-mslist] button'));
@@ -962,16 +867,13 @@ window.INTRO_EXTRA = function (tl, root, lock) {
   if (!window.gsap || !window.ScrollTrigger || RM) return;
   gsap.registerPlugin(ScrollTrigger);
 
-  /* úvod: řádky titulku vyjedou zpoza účaří, okno se otevře závěrkou */
-  var hero = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
-  var heroImg = document.querySelector('.hero-okno img'), heroOk = document.querySelector('.hero-okno');
-  hero.from('.hero h1 .ln > span', { yPercent: 105, duration: .9, stagger: .11 })
-      .from('.hero .h-in', { y: 24, opacity: 0, duration: .7, stagger: .08 }, '-=.55')
-      .fromTo(heroOk, { clipPath: 'inset(0 0 0 100% round 8px)' }, { clipPath: 'inset(0 0 0 0% round 8px)', duration: 1.1, ease: 'power3.inOut' }, 0.05)
-      .fromTo(heroImg, { scale: 1.12 }, { scale: 1, duration: 1.4, ease: 'power2.out' }, 0.05);
-  if (html.classList.contains('intro-on')) afterIntro(function () { hero.play(); }); else hero.progress(1);
-  /* fotka v okně se při rolování lehce posouvá */
-  gsap.to(heroImg, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  /* první obrazovka: titulek vyjede zpoza účaří, pak kalendář a zprávy jedna po druhé */
+  var st = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+  st.from('.start h1 .ln > span', { yPercent: 105, duration: .9, stagger: .1 })
+    .from('.start .s-in', { y: 22, opacity: 0, duration: .7, stagger: .08 }, '-=.6')
+    .from(visible().slice(0, 5), { y: 24, opacity: 0, duration: .7, stagger: .07 }, '-=.5')
+    .from('.kal .ev:not([hidden])', { x: 18, opacity: 0, duration: .6, stagger: .06 }, '<');
+  if (html.classList.contains('intro-on')) afterIntro(function () { st.play(); }); else st.progress(1);
 
   /* vstupy částí sekcí: nadpis, text, obrázek s odstupem */
   gsap.set('[data-r]', { opacity: 0, y: 26 });
@@ -979,16 +881,8 @@ window.INTRO_EXTRA = function (tl, root, lock) {
     gsap.to(b, { opacity: 1, y: 0, duration: .8, ease: 'power3.out', stagger: .075, overwrite: true });
   } });
 
-  /* fasáda dne: čáry se nakreslí podle rolování */
-  var dl = [].slice.call(document.querySelectorAll('.fasada .dl'));
-  dl.forEach(function (p) { var L = p.getTotalLength(); p.style.strokeDasharray = L + ' ' + L; p.style.strokeDashoffset = L; });
-  gsap.to(dl, { strokeDashoffset: 0, ease: 'none', stagger: .12, scrollTrigger: { trigger: '.dzien-fasada', start: 'top 85%', end: 'top 30%', scrub: .6 } });
-  gsap.from('.fasada .okn', { scale: .4, opacity: 0, transformOrigin: '50% 50%', duration: .5, ease: 'back.out(2)', stagger: { each: .025, from: 'center' }, scrollTrigger: { trigger: '.dzien-fasada', start: 'top 55%', once: true } });
-
-  /* diagram zápisu: vlna zleva doprava */
-  document.querySelectorAll('.diag').forEach(function (svg) {
-    gsap.from(svg.querySelectorAll('.g'), { opacity: 0, scale: .2, transformOrigin: '50% 50%', duration: .45, ease: 'back.out(1.8)', stagger: .006, scrollTrigger: { trigger: svg, start: 'top 80%', once: true } });
-  });
+  /* fotka školy v okně zápisu se při rolování lehce posouvá */
+  gsap.fromTo('.zap-foto img', { yPercent: -6, scale: 1.12 }, { yPercent: 6, scale: 1.12, ease: 'none', scrollTrigger: { trigger: '.zap-foto', start: 'top bottom', end: 'bottom top', scrub: true } });
 
   /* školka: okno vyroste, logo vystoupí */
   gsap.from('.ms-okno', { scale: .86, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '#przedszkole', start: 'top 70%', once: true } });
