@@ -1,0 +1,1013 @@
+<!doctype html>
+<html lang="pl" data-lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Polska Szkoła Podstawowa i Przedszkole w Karwinie</title>
+<meta name="description" content="Szkoła podstawowa i przedszkole z polskim językiem nauczania w Karwinie-Frysztacie, ul. Dr. Olszaka 156/2. Aktualności, zapisy do 1. klasy, przedszkole Bajlandia, świetlica, odgłaszanie obiadów i kontakt.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%239cc2df'/%3E%3Cpath d='M6 15h36M9 15v24M39 39V15M20 15v24M28 39V15M5 39h38' fill='none' stroke='%231b2230' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/pilcrow-rounded-700.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/pilcrow-rounded-400.woff2" crossorigin>
+<link rel="preload" as="image" href="img/szkola-960.jpg">
+<script>
+  /* úvodní animace loga: jen první stránka v relaci, ne s omezeným pohybem, ne na kotvě */
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-pzs') && !location.hash))) {
+      sessionStorage.setItem('intro-pzs', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  /* jazyk: ?lang=cs, jinak uložená volba, jinak polsky */
+  try {
+    var L = (location.search.match(/[?&]lang=(pl|cs)/) || [])[1] || localStorage.getItem('pzs-lang');
+    if (L === 'cs' || L === 'pl') { document.documentElement.setAttribute('data-lang', L); document.documentElement.lang = L; }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<style>
+@font-face{font-family:"Pilcrow Rounded";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/pilcrow-rounded-400.woff2) format("woff2")}
+@font-face{font-family:"Pilcrow Rounded";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/pilcrow-rounded-500.woff2) format("woff2")}
+@font-face{font-family:"Pilcrow Rounded";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/pilcrow-rounded-700.woff2) format("woff2")}
+
+/* Tokeny: bílá křída, inkoust, nebeská modrá ze starého webu školy, světlo v okně */
+:root{
+  --ground:#ffffff; --surface:#eef2f5; --surface-2:#e2e9ef; --ink:#1b2230; --muted:#566070; --soft:#8b94a1;
+  --sky:#9cc2df; --sky-d:#84b0d2; --sky-l:#cfe1ef; --lamp:#ffd45c;
+  --k-z:#a9d39f; --k-c:#f2a796; --k-n:#9cc2df; --k-w:#bfd9ed; --k-g:#e2e9ef;
+  --f:"Pilcrow Rounded",ui-rounded,system-ui,sans-serif;
+  --s-small:15px;
+  --s-body:clamp(17px,16px + .2vw,19px);
+  --s-mid:clamp(26px,18px + 1.25vw,36px);
+  --s-h2:clamp(36px,22px + 3.1vw,72px);
+  --s-hero:clamp(48px,6.4vw,108px);
+  --m:clamp(16px,3.2vw,48px); --col:clamp(16px,2vw,32px); --gap:clamp(112px,13vw,200px);
+  --r:8px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 var(--s-body)/1.55 var(--f);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:.08em}
+h1,h2,h3,p,ul,ol,figure,fieldset,blockquote{margin:0}
+ul,ol{padding:0;list-style:none}
+fieldset{border:0;padding:0;min-width:0}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:4px}
+::selection{background:var(--sky);color:var(--ink)}
+.nw{white-space:nowrap}
+a[href^="tel:"]{white-space:nowrap}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{padding-left:var(--m);padding-right:var(--m)}
+.h2{font:700 var(--s-h2)/.98 var(--f);letter-spacing:-.035em;text-wrap:balance}
+.mid{font:700 var(--s-mid)/1.1 var(--f);letter-spacing:-.02em}
+.sec{margin-top:var(--gap)}
+
+/* dvojjazyčnost: viditelný je jen aktivní jazyk */
+html[data-lang="pl"] body [lang="cs"],html[data-lang="cs"] body [lang="pl"]{display:none!important}
+
+.ribbon{background:var(--ink);color:#fff;font:400 15px/1.4 var(--f);text-align:center;padding:9px 16px}
+.ribbon a{font-weight:700}
+
+/* ========== MOTIV: okno s příčlí ve tvaru T (okna budovy na Dr. Olszaka) ========== */
+.okno{--fr:clamp(10px,2.4vw,36px);--okno:var(--sky);position:relative;background:var(--okno);border-radius:var(--r);overflow:hidden}
+.okno>img{position:absolute;left:var(--fr);top:var(--fr);width:calc(100% - var(--fr)*2);height:calc(100% - var(--fr)*2);object-fit:cover;border-radius:4px}
+.okno::before,.okno::after{content:"";position:absolute;z-index:1;background:var(--okno)}
+.okno::after{left:var(--fr);right:var(--fr);top:34%;height:calc(var(--fr)*.8)}
+.okno::before{left:50%;top:34%;bottom:var(--fr);width:calc(var(--fr)*.8);transform:translateX(-50%)}
+
+/* tlačítka: plná plocha, rohy okna */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border-radius:6px;border:0;background:var(--sky);color:var(--ink);font:700 var(--s-body)/1 var(--f);text-decoration:none;cursor:pointer;transition:transform .25s var(--ease),background-color .2s}
+.btn:active{transform:scale(.97)}
+.btn.tma{background:var(--ink);color:#fff}
+.btn.sv{background:var(--sky-l)}
+@media (hover:hover){.btn:hover{background:var(--sky-d);transform:translateY(-2px)}.btn.tma:hover{background:#2c3850}.btn.sv:hover{background:var(--sky)}}
+.odkaz{font-weight:700;text-decoration:underline;text-decoration-color:var(--sky-d);text-decoration-thickness:3px;text-underline-offset:6px;transition:text-decoration-color .2s}
+@media (hover:hover){.odkaz:hover{text-decoration-color:var(--ink)}}
+
+/* ========== LOGO — fasáda školy, kreslí se v úvodu ========== */
+.logo{display:inline-flex;align-items:center;gap:.6em;font-size:18px;text-decoration:none;color:var(--ink)}
+.logo .znak{width:3.2em;height:auto;flex:none;overflow:visible}
+.logo .znak .d{fill:none;stroke:var(--ink);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.logo .znak .f rect{fill:var(--sky)}
+.logo .znak .f path{fill:none;stroke:#fff;stroke-width:.9}
+.logo .wm{display:flex;flex-direction:column;line-height:1}
+.logo .w{font-weight:700;font-size:1.22em;letter-spacing:-.02em}
+.logo .w2{font-weight:500;font-size:.8em;margin-top:.32em;color:var(--muted)}
+
+/* ========== Úvodní animace ========== */
+.intro{display:none}
+html.intro-on .intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;pointer-events:none;animation:pojistka .3s linear 7s forwards}
+.intro-ground{position:absolute;inset:0;background:var(--ground)}
+.intro-lock{position:relative;visibility:hidden}
+.intro.ready .intro-lock{visibility:visible}
+.intro-m{display:inline-block;overflow:hidden;vertical-align:top;padding:.16em 0 .1em;margin:-.16em 0 -.1em}
+.intro-m>span{display:inline-block}
+html.intro-on [data-intro-land]{opacity:0;animation:ukaz 0s 7.2s forwards}
+html.intro-on.intro-landed [data-intro-land]{opacity:1;transition:opacity .25s ease-out}
+@keyframes pojistka{to{opacity:0;visibility:hidden}}
+@keyframes ukaz{to{opacity:1}}
+
+/* ========== NAVIGACE ========== */
+.nav{position:sticky;top:0;z-index:50;background:var(--ground);height:80px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 var(--m)}
+.nav .links{display:flex;gap:28px;margin-left:auto}
+.nav .links a{text-decoration:none;font-weight:500;padding:8px 0;position:relative}
+.nav .links a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:3px;border-radius:2px;background:var(--sky-d);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+@media (hover:hover){.nav .links a:hover::after{transform:none}}
+.nav-r{display:flex;align-items:center;gap:14px}
+.lang{display:flex;background:var(--surface);border-radius:6px;padding:4px}
+.lang button{border:0;background:transparent;min-width:44px;min-height:40px;border-radius:4px;font-weight:700;font-size:16px;cursor:pointer;color:var(--muted);transition:background-color .2s,color .2s}
+.lang button[aria-pressed="true"]{background:var(--ground);color:var(--ink)}
+.nav .btn{min-height:48px;padding:0 20px}
+.menu-btn{display:none}
+
+/* ========== ÚVOD — obří okno, za ním budova ========== */
+.hero{position:relative;overflow:hidden;min-height:calc(100svh - 80px - 38px);display:flex;align-items:center;padding:clamp(40px,7vh,96px) var(--m) clamp(56px,9vh,110px)}
+.hero-copy{position:relative;z-index:2;width:min(47vw,760px)}
+.hero h1{font:700 var(--s-hero)/.94 var(--f);letter-spacing:-.04em}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.hero h1 .ln>span{display:block}
+.hero .lede{margin-top:40px;max-width:31ch;font-size:clamp(19px,17px + .35vw,22px);line-height:1.45}
+.hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px;margin-top:40px}
+.hero .adr{margin-top:56px;font-size:var(--s-small);color:var(--muted)}
+.hero-okno{--fr:clamp(18px,2.6vw,40px);position:absolute;z-index:1;height:120vh;aspect-ratio:.7;left:calc(50% + 4vw);top:50%;transform:translateY(-50%)}
+.hero-okno img{object-position:50% 62%}
+
+/* ========== DEN VE ŠKOLE — živá fasáda ========== */
+.dzien{--pole:var(--sky);--txt:var(--ink);--zed:#ffffff;--riz:#f3f7fa;--linka:var(--ink);--sklo:#2f3d57;--sklo-x:#5a6b88;--spoj:transparent;--hv:0;
+  background:var(--pole);color:var(--txt);transition:background-color .6s,color .6s;padding:clamp(72px,8vw,120px) var(--m)}
+.dzien.noc{--pole:var(--ink);--txt:#fff;--zed:#2a3550;--riz:#303c59;--linka:var(--sky);--sklo:#141a27;--sklo-x:#2f3b55;--hv:1}
+.dzien.harc{--hv:1}
+.dzien-in{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col);align-items:center}
+.dzien-tekst{grid-column:1 / span 5}
+.dzien .pod{margin-top:24px;max-width:36ch}
+.zegar{margin-top:40px;display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+.zegar output{font:700 var(--s-hero)/.9 var(--f);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.zegar .zd{font:700 var(--s-mid)/1 var(--f)}
+.plan{margin-top:28px}
+.plan li{display:grid;grid-template-columns:20px 1fr auto;align-items:center;column-gap:14px;padding:5px 0;transition:opacity .3s}
+.plan li.off{opacity:.55}
+.plan .co{font-weight:500}
+.plan .kdy{font-variant-numeric:tabular-nums}
+.plan .stan{grid-column:2 / -1;font-size:var(--s-small);font-weight:700;display:none}
+.plan li.on .stan{display:block}
+.ik{width:16px;height:19px}
+.ik rect{fill:var(--sklo);transition:fill .3s}
+.ik path{fill:none;stroke:var(--pole);stroke-width:1.4}
+.plan li.on .ik rect{fill:var(--lamp)}
+.oi{margin-top:24px;padding:18px 20px;border-radius:var(--r);background:rgba(255,255,255,.55);max-width:46ch}
+.dzien.noc .oi{background:rgba(255,255,255,.08)}
+.oi a{font-weight:700}
+.ovl{margin-top:24px;display:grid;grid-template-columns:auto 1fr auto;gap:16px 20px;align-items:center}
+.dni{display:flex;background:rgba(255,255,255,.5);border-radius:6px;padding:4px;grid-column:1 / -1;justify-self:start}
+.dzien.noc .dni{background:rgba(255,255,255,.1)}
+.dni label{position:relative}
+.dni input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.dni span{display:block;white-space:nowrap;padding:10px 16px;border-radius:4px;font-weight:700;font-size:16px;transition:background-color .2s}
+.dni input:checked+span{background:var(--ground);color:var(--ink)}
+.dni input:focus-visible+span{outline:3px solid var(--txt);outline-offset:2px}
+.cas{grid-column:1 / 3;display:flex;align-items:center;gap:14px}
+.cas span{font-weight:700;font-size:16px}
+.cas input{flex:1;accent-color:var(--ink);height:32px;cursor:pointer;min-width:0}
+.dzien.noc .cas input{accent-color:var(--lamp)}
+.teraz{border:0;border-radius:6px;min-height:44px;padding:0 18px;font-weight:700;font-size:16px;background:var(--ink);color:#fff;cursor:pointer;transition:transform .2s var(--ease)}
+.dzien.noc .teraz{background:var(--lamp);color:var(--ink)}
+.teraz:active{transform:scale(.96)}
+.dzien-fasada{grid-column:6 / -1;align-self:end;margin-right:calc(var(--m) * -.4)}
+.fasada{width:100%;height:auto;overflow:visible}
+.fasada .zed{fill:var(--zed);transition:fill .6s}
+.fasada .rizalit{fill:var(--riz);transition:fill .6s}
+.fasada .dl{fill:none;stroke:var(--linka);stroke-width:2.6;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round;transition:stroke .6s}
+.fasada .okn rect{fill:var(--sklo);transition:fill .45s}
+.fasada .okn path{fill:none;stroke:var(--zed);stroke-width:2;vector-effect:non-scaling-stroke;transition:stroke .6s}
+.fasada .okn.lit rect{fill:var(--lamp)}
+.fasada .nebe{opacity:var(--hv);transition:opacity .8s}
+.fasada .nebe circle{fill:var(--lamp)}
+.fasada .spoj{fill:none;stroke:var(--sky);stroke-width:1.4;vector-effect:non-scaling-stroke;stroke-dasharray:3 4;opacity:.7}
+.dzien:not(.noc) .fasada .nebe circle{fill:var(--ink)}
+.dzien:not(.noc) .fasada .spoj{stroke:var(--ink)}
+
+/* ========== AKTUALITY — seznam s okénky ========== */
+.akt-h{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.kat{margin-top:88px}
+.kat-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:40px}
+.kat-h .ile{font-size:16px;color:var(--muted)}
+.wpisy{display:grid;grid-template-columns:1fr 1fr;column-gap:64px;row-gap:36px}
+.wpis{display:grid;grid-template-columns:64px 1fr;column-gap:20px;align-items:start}
+.mini{position:relative;width:64px;height:64px;border-radius:6px;overflow:hidden;background:var(--sky)}
+.mini img{width:100%;height:100%;object-fit:cover}
+.mini::before,.mini::after{content:"";position:absolute;background:#fff}
+.mini.foto::after{left:0;right:0;top:34%;height:3px}
+.mini.foto::before{left:50%;top:34%;bottom:0;width:3px;transform:translateX(-50%)}
+.mini.data{display:grid;grid-template-rows:34% 1fr;text-align:center;line-height:1}
+.mini.data::after{left:0;right:0;top:34%;height:3px}
+.mini.data::before{display:none}
+.mini.data .mc{display:grid;place-items:center;font-size:13px;font-weight:700}
+.mini.data .dd{display:grid;place-items:center;font-size:26px;font-weight:700;letter-spacing:-.03em;background:var(--sky-l)}
+.wpis-t{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.wpis-t h4{margin:0;font-size:18px;font-weight:700;line-height:1.25}
+.wpis-t h4 a{text-decoration:none}
+@media (hover:hover){.wpis-t h4 a:hover{text-decoration:underline;text-decoration-color:var(--sky-d);text-decoration-thickness:3px}}
+.wpis-t time{flex:none;font-size:var(--s-small);color:var(--muted);font-variant-numeric:tabular-nums}
+.wpis p{margin-top:6px;font-size:16px;line-height:1.5;color:var(--muted);max-width:42ch}
+
+/* ========== ZÁPIS — rozházené, stužka, řady ========== */
+.zap-top{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col);align-items:end}
+.zap-top .h2{grid-column:1 / span 5}
+.zap-top .zap-p{grid-column:7 / -1;max-width:44ch}
+.diag-w{margin-top:64px}
+.diag{width:100%;height:auto;display:block}
+.diag-v{display:none}
+.diag .g rect{stroke:none}
+.diag .g path{fill:none;stroke:#fff;stroke-width:1.6}
+.diag .p1 rect{fill:var(--sky-l)}
+.diag .p2 rect{fill:var(--surface-2)}
+.diag .p3 rect{fill:var(--sky-d)}
+.diag .ac rect{fill:var(--sky)}
+.kroki{display:grid;grid-template-columns:repeat(3,1fr);column-gap:var(--col);margin-top:40px}
+.krok b{display:block;font-size:22px;font-weight:700;margin-bottom:8px}
+.krok p{max-width:34ch}
+.zap-dol{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col);margin-top:72px;align-items:center}
+.scio{grid-column:1 / span 7;padding:32px 36px;border-radius:var(--r);background:var(--sky)}
+.scio p{font:700 var(--s-mid)/1.15 var(--f);letter-spacing:-.02em;max-width:24ch}
+.scio small{display:block;margin-top:14px;font-size:var(--s-small)}
+.zap-akcje{grid-column:9 / -1;display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.zap-akcje p{font-size:16px;color:var(--muted)}
+
+/* ========== MATEŘSKÁ ŠKOLA — logo před oknem ========== */
+.ms{position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col);align-items:end;padding-top:clamp(40px,6vh,80px)}
+.ms-wiz{display:contents}
+.ms-okno{--fr:clamp(14px,1.6vw,26px);--okno:var(--k-z);grid-column:6 / span 4;grid-row:1;justify-self:center;align-self:end;width:calc(min(66vh,640px) * .72);max-width:100%;aspect-ratio:.72;transition:background-color .45s;background:var(--okno)}
+.ms-okno::before,.ms-okno::after{transition:background-color .45s}
+.ms-szyba{position:absolute;left:var(--fr);top:var(--fr);right:var(--fr);bottom:var(--fr);border-radius:4px;background:rgba(255,255,255,.42)}
+.ms-logo{grid-column:6 / span 4;grid-row:1;justify-self:center;align-self:start;position:relative;z-index:2;width:min(34vh,240px);mix-blend-mode:multiply;margin-top:calc(clamp(40px,6vh,80px) * -1)}
+.ms-lista{grid-column:1 / span 5;grid-row:1;align-self:end;padding-bottom:4px}
+.ms-lista h2,.ms-lista button{font:700 clamp(26px,18px + 1.4vw,44px)/1.12 var(--f);letter-spacing:-.025em}
+.ms-lista h2{color:var(--soft);margin-bottom:6px}
+.ms-lista button{border:0;background:none;padding:2px 0;text-align:left;cursor:pointer;color:var(--soft);transition:color .25s}
+.ms-lista button[aria-pressed="true"]{color:var(--ink)}
+@media (hover:hover){.ms-lista button:hover{color:var(--ink)}}
+.ms-fakt{grid-column:10 / -1;grid-row:1;align-self:end;max-width:30ch;padding-bottom:4px}
+.ms-fakt p{font-size:var(--s-body)}
+.ms-fakt .cyt{margin-top:28px;font-size:16px;color:var(--muted)}
+
+/* ========== PO VYUČOVÁNÍ — odstavec s obrázky místo slov ========== */
+.po-akapit{font:500 var(--s-mid)/1.22 var(--f);letter-spacing:-.015em;max-width:min(100%,1180px)}
+.slot{--fr:3px;display:inline-block;position:relative;width:1.9em;height:1em;vertical-align:-.12em;border-radius:.18em;overflow:hidden;background:var(--sky)}
+.slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.slot::before,.slot::after{content:"";position:absolute;background:#fff;z-index:1}
+.slot::after{left:0;right:0;top:34%;height:2px}
+.slot::before{left:50%;top:34%;bottom:0;width:2px;transform:translateX(-50%)}
+.po-dol{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col);margin-top:72px}
+.po-dol>.po-zdanie{grid-column:1 / span 5;max-width:36ch}
+.po-dol>.po-zdanie p+p{margin-top:16px}
+.rozw{grid-column:7 / -1;display:grid;gap:10px}
+.rozw details{background:var(--surface);border-radius:var(--r)}
+.rozw summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;font-weight:700;font-size:20px}
+.rozw summary::-webkit-details-marker{display:none}
+.rozw summary::after{content:"+";font-size:28px;line-height:1;transition:transform .3s var(--ease)}
+.rozw details[open] summary::after{transform:rotate(45deg)}
+.rozw .in{padding:0 24px 24px}
+.rozw .in p+p,.rozw .in ul{margin-top:12px}
+.rozw .in li{padding-left:22px;position:relative}
+.rozw .in li::before{content:"";position:absolute;left:0;top:.45em;width:10px;height:12px;border-radius:2px;background:var(--sky)}
+.rozw .in li+li{margin-top:6px}
+
+/* ========== OBĚD — kupon k odstřižení ========== */
+.kupon{--k:var(--sky);display:grid;grid-template-columns:46fr 54fr;position:relative;margin:0 auto;max-width:1180px;min-height:430px;border-radius:14px;background:var(--k);
+  -webkit-mask:radial-gradient(circle 14px at 46% 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 14px at 46% 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
+  mask:radial-gradient(circle 14px at 46% 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 14px at 46% 100%,#0000 98%,#000) bottom/100% 51% no-repeat}
+.kupon-l{padding:48px;display:flex;flex-direction:column;justify-content:space-between;gap:32px;border-right:5px dotted var(--ground)}
+.kupon-l p{max-width:32ch}
+.kupon-l .r{font-size:16px}
+.kupon-p{padding:48px;display:grid;gap:10px;align-content:center}
+.pole{display:flex;align-items:center;gap:12px;min-height:56px;padding:0 18px;border-radius:6px;background:rgba(255,255,255,.55);transition:background-color .2s}
+.pole:focus-within{background:rgba(255,255,255,.85)}
+.pole span{font-size:16px;font-weight:700;min-width:5.5em}
+.pole input,.pole select{flex:1;min-width:0;border:0;background:transparent;font-size:17px;min-height:52px;outline:none}
+.pole select{cursor:pointer}
+.dwa{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dwa .pole span{min-width:auto}
+.kupon .wyslij{min-height:58px;width:100%;border-radius:6px;margin-top:6px}
+.obiad-pod{max-width:1180px;margin:28px auto 0;display:flex;flex-wrap:wrap;gap:12px 32px;font-size:16px}
+
+/* ========== OD ROKU 1918 — tmavý panel ========== */
+.historia{padding:0 20px}
+.panel{position:relative;overflow:hidden;border-radius:12px;background:var(--ink);color:#fff;min-height:min(92svh,860px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto 1fr;column-gap:var(--col);padding:clamp(40px,4vw,64px) clamp(28px,4vw,64px) 0}
+.panel h2{grid-column:1 / span 6;color:var(--sky-l);align-self:start}
+.hist-foto{--okno:var(--sky);--fr:clamp(12px,1.4vw,22px);grid-column:1 / span 5;grid-row:2;align-self:end;width:min(34vw,500px);aspect-ratio:.9;margin-top:56px;margin-bottom:-9%;}
+.hist-foto img{object-position:30% 50%}
+.hist-txt{grid-column:8 / -1;grid-row:1 / span 2;display:flex;flex-direction:column;gap:56px;padding-top:8px;max-width:400px}
+.hist-txt h3{font-size:22px;font-weight:700;margin-bottom:10px;color:var(--sky-l)}
+.hist-txt p{font-size:16px;line-height:1.6;color:#e7edf3}
+.hist-txt .lata{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin-top:16px;font-size:16px;color:#e7edf3}
+.hist-txt .lata b{color:#fff;font-variant-numeric:tabular-nums}
+
+/* ========== PARTNEŘI — dlaždice ========== */
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.tile{background:var(--surface);border-radius:var(--r);aspect-ratio:3 / 2;padding:24px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+.tile b{font-size:clamp(20px,14px + .9vw,28px);font-weight:700;line-height:1.1;letter-spacing:-.015em}
+.tile p{font-size:15px;line-height:1.45;color:var(--muted)}
+.tile.hl{grid-column:span 2;aspect-ratio:auto;background:var(--sky)}
+.tile.hl h2{font:700 clamp(32px,3vw,52px)/1 var(--f);letter-spacing:-.03em}
+.tile.hl p{color:var(--ink);font-size:16px;max-width:40ch}
+
+/* ========== KONTAKT ========== */
+.kontakt{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col);align-items:start}
+.kon-foto{--fr:clamp(12px,1.6vw,24px);grid-column:1 / span 6;aspect-ratio:1.1;position:sticky;top:104px}
+.kon-foto::before{display:none}
+.kon-txt{grid-column:8 / -1;grid-row:1}
+.kon-adr{margin-top:28px;font:700 var(--s-mid)/1.15 var(--f);letter-spacing:-.02em}
+.kon-tel{margin-top:20px;display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center}
+.osoby{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:20px 28px;font-size:16px}
+.osoby b{display:block}
+.osoby span{color:var(--muted)}
+.osoby a{word-break:break-word}
+.dane{margin-top:36px;padding:20px 22px;border-radius:var(--r);background:var(--surface);font-size:15px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px}
+.dane dt{color:var(--muted)}
+.dane dd{margin:0;font-variant-numeric:tabular-nums}
+.szybko{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
+
+/* ========== PATIČKA — budova z ploch ========== */
+.stopka{margin-top:var(--gap);background:var(--sky);padding:clamp(56px,7vw,96px) var(--m) 28px;overflow:hidden}
+.stopka-fasada{display:block;width:100%;height:auto;max-height:36svh}
+.stopka-fasada .zed{fill:var(--ink)}
+.stopka-fasada .riz{fill:#2a3550}
+.stopka-fasada .rimsa{fill:var(--ink)}
+.stopka-fasada .okno rect{fill:var(--sky-l)}
+.stopka-fasada .okno path{fill:none;stroke:var(--ink);stroke-width:.7}
+.stopka-cols{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col);margin-top:56px}
+.stopka-cols nav{grid-column:span 2;font-size:15px}
+.stopka-cols nav b{display:block;margin-bottom:10px}
+.stopka-cols nav li+li{margin-top:6px}
+.stopka-cols nav a{text-decoration:none}
+@media (hover:hover){.stopka-cols nav a:hover{text-decoration:underline}}
+.stopka-cols .adr{grid-column:9 / -1;font-size:15px}
+.stopka-cols .adr p+p{margin-top:10px}
+.stopka-dol{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:56px;font-size:15px}
+.kredyt{margin-top:22px;font-size:13px;line-height:1.5;max-width:110ch}
+.kredyt a{text-decoration:underline}
+
+/* ========== TABLET ========== */
+@media (max-width:1100px){
+  .nav .links{gap:20px}
+  .hist-txt{grid-column:7 / -1}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tile{aspect-ratio:auto;min-height:170px}
+}
+@media (max-width:980px){
+  .nav .links{display:none}
+  .menu-btn{display:inline-flex;align-items:center;min-height:48px;padding:0 16px;border:0;border-radius:6px;background:var(--surface);font-weight:700;font-size:16px;cursor:pointer}
+  .nav.open .links{display:flex;position:absolute;top:80px;left:0;right:0;flex-direction:column;gap:0;background:var(--ground);padding:8px var(--m) 24px}
+  .nav.open .links a{font-size:22px;padding:12px 0}
+}
+
+/* ========== MOBIL — samostatná kompozice ========== */
+@media (max-width:900px){
+  :root{--gap:104px}
+  .hero{display:block;min-height:0;padding:40px var(--m) 0}
+  .hero-copy{width:auto}
+  .hero h1{font-size:11.5vw}
+  .hero .lede{margin-top:28px}
+  .hero-cta{margin-top:32px}
+  .hero .adr{margin-top:28px}
+  .hero-okno{--fr:18px;position:relative;left:auto;top:auto;transform:none;height:auto;width:100%;aspect-ratio:.72;margin-top:40px;margin-bottom:-34vw}
+  .hero{overflow:hidden}
+  .dzien-in{display:block}
+  .dzien-fasada{margin:40px 0 0}
+  .zap-top{display:block}
+  .zap-top .zap-p{margin-top:20px}
+  .diag-h{display:none}
+  .diag-v{display:block;max-width:420px}
+  .diag-w{display:grid;grid-template-columns:1fr 38vw;gap:16px;align-items:stretch;margin-top:40px}
+  .kroki{display:flex;flex-direction:column;justify-content:space-between;margin:0}
+  .krok b{font-size:18px}
+  .krok p{font-size:15px}
+  .zap-dol{display:block;margin-top:48px}
+  .zap-akcje{margin-top:28px}
+  .ms{display:block;min-height:0}
+  .ms-wiz{position:relative;display:grid;place-items:center}
+  .ms-okno{width:86vw;max-width:420px}
+  .ms-logo{position:absolute;width:min(56vw,250px);transform:translateY(-22%)}
+  .ms-lista{margin-top:32px;padding:0}
+  .ms-lista ul{display:flex;gap:24px;overflow-x:auto;scrollbar-width:none;padding-bottom:6px;margin-right:calc(var(--m)*-1)}
+  .ms-lista ul::-webkit-scrollbar{display:none}
+  .ms-lista li{flex:none}
+  .ms-lista h2,.ms-lista button{font-size:26px}
+  .ms-fakt{margin-top:20px;max-width:none}
+  .po-dol{display:block;margin-top:40px}
+  .rozw{margin-top:32px}
+  .kupon{grid-template-columns:1fr;min-height:0;
+    -webkit-mask:radial-gradient(circle 14px at 0 var(--cut,190px),#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% var(--cut,190px),#0000 98%,#000) right/51% 100% no-repeat;
+    mask:radial-gradient(circle 14px at 0 var(--cut,190px),#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% var(--cut,190px),#0000 98%,#000) right/51% 100% no-repeat}
+  .kupon-l{border-right:0;border-bottom:5px dotted var(--ground);padding:32px 24px;min-height:190px}
+  .kupon-p{padding:24px}
+  .dwa{grid-template-columns:1fr}
+  .historia{padding:0 10px}
+  .panel{display:block;min-height:0;padding:36px 24px 0}
+  .panel h2{font-size:8.5vw}
+  .hist-txt{max-width:none;margin-top:36px;gap:36px}
+  .hist-foto{width:86%;margin:48px auto -18%}
+  .kontakt{display:block}
+  .kon-foto{position:relative;top:auto}
+  .kon-txt{margin-top:40px}
+  .osoby{grid-template-columns:1fr}
+  .stopka-cols{display:grid;grid-template-columns:1fr 1fr;row-gap:32px}
+  .stopka-cols nav{grid-column:auto}
+  .stopka-cols .adr{grid-column:1 / -1}
+}
+@media (max-width:560px){
+  :root{--s-h2:36px}
+  .nav{height:72px;gap:10px}
+  .nav.open .links{top:72px}
+  .logo{font-size:15px}
+  .logo .w2{display:none}
+  .nav .btn{display:none}
+  .lang button{min-width:40px}
+  .wpisy{grid-template-columns:1fr}
+  .tiles{grid-template-columns:1fr 1fr;gap:6px}
+  .tile{padding:18px;min-height:150px}
+  .tile.hl{grid-column:1 / -1}
+  .tile p{font-size:14px}
+  .dane{grid-template-columns:1fr}
+  .dane dd{margin-bottom:8px}
+  .ovl{grid-template-columns:1fr auto}
+  .dni span{padding:10px 12px}
+  .cas{grid-column:1 / -1}
+  .ribbon{font-size:14px;padding:8px 14px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ik" viewBox="0 0 12 14"><rect x="0" y="0" width="12" height="14" rx="2"/><path d="M0 4.8H12M6 4.8V14"/></symbol></svg>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#" data-intro-land data-aria-pl="Polska Szkoła w Karwinie – na początek strony" data-aria-cs="Polská škola v Karviné – na začátek stránky" aria-label="Polska Szkoła w Karwinie – na początek strony">
+    <svg class="znak" viewBox="0 0 60 44" aria-hidden="true"><g class="f"><rect x="9" y="12.5" width="5" height="7" rx="0.7"/><path d="M9 14.88H14M11.5 14.88V19.5"/></g><g class="f"><rect x="9" y="22.5" width="5" height="7" rx="0.7"/><path d="M9 24.88H14M11.5 24.88V29.5"/></g><g class="f"><rect x="9" y="32" width="5" height="6" rx="0.7"/><path d="M9 34.04H14M11.5 34.04V38"/></g><g class="f"><rect x="16" y="12.5" width="5" height="7" rx="0.7"/><path d="M16 14.88H21M18.5 14.88V19.5"/></g><g class="f"><rect x="16" y="22.5" width="5" height="7" rx="0.7"/><path d="M16 24.88H21M18.5 24.88V29.5"/></g><g class="f"><rect x="16" y="32" width="5" height="6" rx="0.7"/><path d="M16 34.04H21M18.5 34.04V38"/></g><g class="f"><rect x="39" y="12.5" width="5" height="7" rx="0.7"/><path d="M39 14.88H44M41.5 14.88V19.5"/></g><g class="f"><rect x="39" y="22.5" width="5" height="7" rx="0.7"/><path d="M39 24.88H44M41.5 24.88V29.5"/></g><g class="f"><rect x="39" y="32" width="5" height="6" rx="0.7"/><path d="M39 34.04H44M41.5 34.04V38"/></g><g class="f"><rect x="46" y="12.5" width="5" height="7" rx="0.7"/><path d="M46 14.88H51M48.5 14.88V19.5"/></g><g class="f"><rect x="46" y="22.5" width="5" height="7" rx="0.7"/><path d="M46 24.88H51M48.5 24.88V29.5"/></g><g class="f"><rect x="46" y="32" width="5" height="6" rx="0.7"/><path d="M46 34.04H51M48.5 34.04V38"/></g><g class="f"><rect x="27" y="12.5" width="6" height="7" rx="0.7"/><path d="M27 14.88H33M30 14.88V19.5"/></g><g class="f"><rect x="28" y="22.5" width="4" height="7" rx="0.7"/><path d="M28 24.88H32M30 24.88V29.5"/></g><g class="f"><rect x="27.5" y="31" width="5" height="9" rx="0.7"/><path d="M27.5 34.06H32.5M30 34.06V40"/></g><path class="d" d="M2 9.5H58" pathLength="1"/><path class="d" d="M5 9.5V40M55 40V9.5" pathLength="1"/><path class="d" d="M25 9.5V40M35 40V9.5" pathLength="1"/><path class="d" d="M1 40H59" pathLength="1"/></svg>
+    <span class="wm"><span class="w">Polska Szkoła</span><span class="w2">i Przedszkole · Karwina</span></span>
+  </a>
+  <nav class="links" id="links" aria-label="Strona">
+    <a href="#aktualnosci"><span lang="pl">Aktualności</span><span lang="cs">Aktuality</span></a>
+    <a href="#zapisy"><span lang="pl">Zapisy</span><span lang="cs">Zápis</span></a>
+    <a href="#przedszkole"><span lang="pl">Przedszkole</span><span lang="cs">Mateřská škola</span></a>
+    <a href="#kontakt"><span lang="pl">Kontakt</span><span lang="cs">Kontakt</span></a>
+  </nav>
+  <div class="nav-r">
+    <div class="lang" role="group" aria-label="Język / Jazyk">
+      <button type="button" data-set-lang="pl" aria-pressed="true" lang="">PL</button>
+      <button type="button" data-set-lang="cs" aria-pressed="false" lang="">CZ</button>
+    </div>
+    <a class="btn" href="#obiad"><span lang="pl">Odgłoś obiad</span><span lang="cs">Odhlásit oběd</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="links">Menu</button>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ ÚVOD ============ -->
+<section class="hero" aria-labelledby="hero-h">
+  <div class="hero-copy">
+    <h1 id="hero-h">
+      <span lang="pl"><span class="ln"><span>Polska szkoła</span></span><span class="ln"><span>w Karwinie</span></span></span>
+      <span lang="cs"><span class="ln"><span>Polská škola</span></span><span class="ln"><span>v Karviné</span></span></span>
+    </h1>
+    <p class="lede h-in" lang="pl">Szkoła podstawowa i przedszkole z polskim językiem nauczania we Frysztacie. Uczymy od 1918 roku.</p>
+    <p class="lede h-in" lang="cs">Základní a mateřská škola s polským jazykem vyučovacím ve Fryštátě. Učíme od roku 1918.</p>
+    <div class="hero-cta h-in">
+      <a class="btn" href="#zapisy"><span lang="pl">Zapisy do 1. klasy</span><span lang="cs">Zápis do 1. třídy</span></a>
+      <a class="odkaz" href="#dzien"><span lang="pl">Co dziś w szkole</span><span lang="cs">Co je dnes ve škole</span></a>
+    </div>
+    <p class="adr h-in"><span lang="pl">ul. Dr. Olszaka 156/2, Karwina-Frysztat · sekretariat </span><span lang="cs">Dr. Olszaka 156/2, Karviná-Fryštát · sekretariát </span><a href="tel:+420596317672">596 317 672</a></p>
+  </div>
+  <figure class="okno hero-okno">
+    <img src="img/szkola-960.jpg" srcset="img/szkola-640.jpg 640w, img/szkola-960.jpg 960w" sizes="(max-width:900px) 92vw, 56vw" width="960" height="720" alt="Budynek szkoły przy ulicy Dr. Olszaka we Frysztacie" data-alt-pl="Budynek szkoły przy ulicy Dr. Olszaka we Frysztacie" data-alt-cs="Budova školy v ulici Dr. Olszaka ve Fryštátě" fetchpriority="high">
+  </figure>
+</section>
+
+<!-- ============ DEN VE ŠKOLE (živá věc) ============ -->
+<section class="dzien sec" id="dzien" aria-labelledby="dzien-h">
+  <div class="dzien-in">
+    <div class="dzien-tekst">
+      <h2 id="dzien-h" class="h2" data-r><span lang="pl">Dzień w szkole</span><span lang="cs">Den ve škole</span></h2>
+      <p class="pod" lang="pl" data-r>Od 6:15 do 16:45 w budynku przy ulicy Dr. Olszaka. Okna świecą tam, gdzie właśnie coś się dzieje.</p>
+      <p class="pod" lang="cs" data-r>Od 6:15 do 16:45 v budově v ulici Dr. Olszaka. Okna svítí tam, kde se právě něco děje.</p>
+      <p class="zegar" aria-live="polite"><span class="zd" data-zd></span><output data-zc for="cas">7:30</output></p>
+      <div class="ovl" data-ovl hidden>
+        <fieldset class="dni">
+          <legend class="vh"><span lang="pl">Dzień tygodnia</span><span lang="cs">Den v týdnu</span></legend>
+          <label><input type="radio" name="den" value="2"><span><span lang="pl">Pon–czw</span><span lang="cs">Po–čt</span></span></label>
+          <label><input type="radio" name="den" value="5"><span><span lang="pl">Piątek</span><span lang="cs">Pátek</span></span></label>
+          <label><input type="radio" name="den" value="6"><span><span lang="pl">Weekend</span><span lang="cs">Víkend</span></span></label>
+        </fieldset>
+        <label class="cas"><span><span lang="pl">Godzina</span><span lang="cs">Čas</span></span><input id="cas" type="range" min="300" max="1080" step="5" value="450"></label>
+        <button class="teraz" type="button" data-teraz><span lang="pl">Teraz</span><span lang="cs">Teď</span></button>
+      </div>
+      <ul class="plan" data-plan>
+        <li data-od="375" data-do="465" data-dni="1-5"><svg class="ik" aria-hidden="true"><use href="#ik"/></svg><span class="co"><span lang="pl">Świetlica poranna</span><span lang="cs">Ranní družina</span></span><span class="kdy">6:15–7:45</span><span class="stan" data-stan></span></li>
+        <li data-od="450" data-do="930" data-dni="1-5"><svg class="ik" aria-hidden="true"><use href="#ik"/></svg><span class="co"><span lang="pl">Sekretariat</span><span lang="cs">Sekretariát</span></span><span class="kdy">7:30–15:30</span><span class="stan" data-stan></span></li>
+        <li data-od="480" data-do="870" data-dni="1-5"><svg class="ik" aria-hidden="true"><use href="#ik"/></svg><span class="co"><span lang="pl">Lekcje</span><span lang="cs">Vyučování</span></span><span class="kdy">8:00–14:30</span><span class="stan" data-stan></span></li>
+        <li data-od="660" data-do="675" data-dni="1-5"><svg class="ik" aria-hidden="true"><use href="#ik"/></svg><span class="co"><span lang="pl">Odbiór obiadu do domu</span><span lang="cs">Výdej oběda domů</span></span><span class="kdy">11:00–11:15</span><span class="stan" data-stan></span></li>
+        <li data-od="695" data-do="1005" data-dni="1-5"><svg class="ik" aria-hidden="true"><use href="#ik"/></svg><span class="co"><span lang="pl">Świetlica popołudniowa</span><span lang="cs">Odpolední družina</span></span><span class="kdy">11:35–16:45</span><span class="stan" data-stan></span></li>
+        <li data-od="855" data-do="900" data-dni="5"><svg class="ik" aria-hidden="true"><use href="#ik"/></svg><span class="co"><span lang="pl">Zuchy Wilczęta, piątek</span><span lang="cs">Vlčata, pátek</span></span><span class="kdy">14:15–15:00</span><span class="stan" data-stan></span></li>
+        <li data-od="900" data-do="990" data-dni="5"><svg class="ik" aria-hidden="true"><use href="#ik"/></svg><span class="co"><span lang="pl">Harcerze, piątek</span><span lang="cs">Skauti, pátek</span></span><span class="kdy">15:00–16:30</span><span class="stan" data-stan></span></li>
+      </ul>
+      <p class="oi" data-oi>
+        <span lang="pl">Obiad odgłosisz najpóźniej do 6:00 w dniu nieobecności. <a href="#obiad">Odgłoś obiad</a></span>
+        <span lang="cs">Oběd odhlásíte nejpozději do 6:00 v den nepřítomnosti. <a href="#obiad">Odhlásit oběd</a></span>
+      </p>
+    </div>
+    <figure class="dzien-fasada" data-r>
+      <svg class="fasada" viewBox="0 -15 72 57" role="img" aria-labelledby="fas-t"><title id="fas-t">Budynek szkoły, okna świecą według pory dnia</title><g class="nebe"><path class="spoj" d="M40 -6 L46 -8.5 L51 -9.2 L56 -8 L57 -3 L64 -3.5 L64.5 -9.5 L56 -8"/><circle cx="40" cy="-6" r=".75"/><circle cx="46" cy="-8.5" r=".75"/><circle cx="51" cy="-9.2" r=".75"/><circle cx="56" cy="-8" r=".75"/><circle cx="57" cy="-3" r=".75"/><circle cx="64" cy="-3.5" r=".75"/><circle cx="64.5" cy="-9.5" r=".75"/></g><rect class="zed" x="5" y="9.5" width="62" height="31.5"/><rect class="rizalit" x="30" y="9.5" width="12" height="31.5"/><g class="okna"><g class="okn" data-k="klasy"><rect x="8" y="12.5" width="5" height="7" rx="0.7"/><path d="M8 14.88H13M10.5 14.88V19.5"/></g><g class="okn" data-k="klasy"><rect x="8" y="22.5" width="5" height="7" rx="0.7"/><path d="M8 24.88H13M10.5 24.88V29.5"/></g><g class="okn" data-k="klasy"><rect x="15.5" y="12.5" width="5" height="7" rx="0.7"/><path d="M15.5 14.88H20.5M18 14.88V19.5"/></g><g class="okn" data-k="klasy"><rect x="15.5" y="22.5" width="5" height="7" rx="0.7"/><path d="M15.5 24.88H20.5M18 24.88V29.5"/></g><g class="okn" data-k="klasy"><rect x="23" y="12.5" width="5" height="7" rx="0.7"/><path d="M23 14.88H28M25.5 14.88V19.5"/></g><g class="okn" data-k="klasy"><rect x="23" y="22.5" width="5" height="7" rx="0.7"/><path d="M23 24.88H28M25.5 24.88V29.5"/></g><g class="okn" data-k="klasy"><rect x="44" y="12.5" width="5" height="7" rx="0.7"/><path d="M44 14.88H49M46.5 14.88V19.5"/></g><g class="okn" data-k="klasy"><rect x="44" y="22.5" width="5" height="7" rx="0.7"/><path d="M44 24.88H49M46.5 24.88V29.5"/></g><g class="okn" data-k="klasy"><rect x="51.5" y="12.5" width="5" height="7" rx="0.7"/><path d="M51.5 14.88H56.5M54 14.88V19.5"/></g><g class="okn" data-k="klasy"><rect x="51.5" y="22.5" width="5" height="7" rx="0.7"/><path d="M51.5 24.88H56.5M54 24.88V29.5"/></g><g class="okn" data-k="klasy"><rect x="59" y="12.5" width="5" height="7" rx="0.7"/><path d="M59 14.88H64M61.5 14.88V19.5"/></g><g class="okn" data-k="klasy"><rect x="59" y="22.5" width="5" height="7" rx="0.7"/><path d="M59 24.88H64M61.5 24.88V29.5"/></g><g class="okn" data-k="swietlica"><rect x="8" y="32.5" width="5" height="6.5" rx="0.7"/><path d="M8 34.71H13M10.5 34.71V39"/></g><g class="okn" data-k="swietlica"><rect x="15.5" y="32.5" width="5" height="6.5" rx="0.7"/><path d="M15.5 34.71H20.5M18 34.71V39"/></g><g class="okn" data-k="swietlica"><rect x="23" y="32.5" width="5" height="6.5" rx="0.7"/><path d="M23 34.71H28M25.5 34.71V39"/></g><g class="okn" data-k="stolowka"><rect x="44" y="32.5" width="5" height="6.5" rx="0.7"/><path d="M44 34.71H49M46.5 34.71V39"/></g><g class="okn" data-k="stolowka"><rect x="51.5" y="32.5" width="5" height="6.5" rx="0.7"/><path d="M51.5 34.71H56.5M54 34.71V39"/></g><g class="okn" data-k="stolowka"><rect x="59" y="32.5" width="5" height="6.5" rx="0.7"/><path d="M59 34.71H64M61.5 34.71V39"/></g><g class="okn" data-k="klasy"><rect x="32.5" y="12" width="7" height="7.5" rx="0.7"/><path d="M32.5 14.55H39.5M36 14.55V19.5"/></g><g class="okn" data-k="sekretariat"><rect x="34" y="22.5" width="4" height="7" rx="0.7"/><path d="M34 24.88H38M36 24.88V29.5"/></g><g class="okn" data-k="drzwi"><rect x="33.5" y="31.5" width="5" height="9.5" rx="0.7"/><path d="M33.5 34.73H38.5M36 34.73V41"/></g></g><g class="linie"><path class="dl" d="M3 9.5H69"/><path class="dl" d="M5 9.5V41M67 41V9.5"/><path class="dl" d="M30 9.5V41M42 41V9.5"/><path class="dl" d="M5 21H30M42 21H67M5 30.8H30M42 30.8H67"/><path class="dl" d="M1 41H71"/></g></svg>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ AKTUALITY ============ -->
+<section class="sec wrap" id="aktualnosci" aria-labelledby="akt-h">
+  <div class="akt-h">
+    <h2 id="akt-h" class="h2" data-r><span lang="pl">Aktualności</span><span lang="cs">Aktuality</span></h2>
+    <a class="odkaz" href="https://www.facebook.com/SPFrysztat/" data-r><span lang="pl">Więcej na Facebooku szkoły</span><span lang="cs">Více na Facebooku školy</span></a>
+  </div>
+
+  <div class="kat">
+    <div class="kat-h"><h3 class="mid" data-r><span lang="pl">Szkoła</span><span lang="cs">Škola</span></h3><span class="ile"><span lang="pl">7 wpisów</span><span lang="cs">7 zpráv</span></span></div>
+    <ul class="wpisy">
+      <li class="wpis" data-r><span class="mini foto"><img src="img/stadion-640.jpg" alt="" loading="lazy" width="640" height="475"></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/nowosc.asp?a=1480"><span lang="pl">Zapraszamy na festyn</span><span lang="cs">Zveme na festyn</span></a></h4><time datetime="2026-05-14">14. 5.</time></div><p lang="pl">Sobota 6.6. od 14:00 na stadionie zimowym i w ogrodzie szkoły. Program, dobra kuchnia i muzyka.</p><p lang="cs">Sobota 6. 6. od 14:00 na zimním stadionu a na školní zahradě. Program, dobré jídlo a hudba.</p></div></li>
+      <li class="wpis" data-r><span class="mini foto"><img src="img/nerki-160.jpg" alt="" loading="lazy" width="160" height="160"></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/nowosc.asp?a=1479"><span lang="pl">Dziewiątacy spisali się na medal</span><span lang="cs">Deváťáci zabodovali</span></a></h4><time datetime="2026-01-17">17. 1.</time></div><p lang="pl">W testach SCIO nasza szkoła znalazła się wśród 10 % najlepszych z matematyki i języka czeskiego.</p><p lang="cs">V testech SCIO patří škola mezi 10 % nejúspěšnějších v matematice a českém jazyce.</p></div></li>
+      <li class="wpis" data-r><span class="mini foto"><img src="img/klasa1-160.jpg" alt="" loading="lazy" width="160" height="160"></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/nowosc.asp?a=1477"><span lang="pl">Zapisy do klasy 1. – informacje</span><span lang="cs">Zápis do 1. třídy – informace</span></a></h4><time datetime="2026-01-05">5. 1.</time></div><p lang="pl">Zgłoszenie elektroniczne, potem jedna wizyta w szkole z dokumentami. Najlepiej razem z dzieckiem.</p><p lang="cs">Elektronická přihláška a pak jedna návštěva ve škole s doklady. Nejlépe i s dítětem.</p></div></li>
+      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">wrz</span><span lang="cs">zář</span></span><span class="dd">26</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/nowosc.asp?a=1475"><span lang="pl">Uwaga! Ćwiczenia Policji</span><span lang="cs">Pozor, cvičení policie</span></a></h4><time datetime="2025-09-26">26. 9. 2025</time></div><p lang="pl">16.10. od 8:00 do 12:00 zmiana organizacji ruchu koło szkoły i przedszkola.</p><p lang="cs">16. 10. od 8:00 do 12:00 změna dopravy u školy a školky.</p></div></li>
+      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">wrz</span><span lang="cs">zář</span></span><span class="dd">19</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/nowosc.asp?a=1474"><span lang="pl">Legitymacja ucznia 2025/2026</span><span lang="cs">Žákovský průkaz 2025/2026</span></a></h4><time datetime="2025-09-19">19. 9. 2025</time></div><p lang="pl">Dokumenty do przedłużenia ważności legitymacji oddajcie do 6.10.</p><p lang="cs">Podklady k prodloužení průkazu odevzdejte do 6. 10.</p></div></li>
+      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">wrz</span><span lang="cs">zář</span></span><span class="dd">9</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/nowosc.asp?a=1473"><span lang="pl">Nowości w nauczaniu matematyki</span><span lang="cs">Novinky ve výuce matematiky</span></a></h4><time datetime="2025-09-09">9. 9. 2025</time></div><p lang="pl">Klasy 4.–9. ćwiczą na fińskiej platformie Eduten, w szkole i w domu, każdy we własnym tempie.</p><p lang="cs">Třídy 4.–9. procvičují na finské platformě Eduten, ve škole i doma, každý svým tempem.</p></div></li>
+      <li class="wpis" data-r><span class="mini foto"><img src="img/niedzwiedzica-900.jpg" alt="" loading="lazy" width="900" height="689"></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/nowosc.asp?a=1472"><span lang="pl">Zuchy i harcerze zapraszają!</span><span lang="cs">Vlčata a skauti zvou!</span></a></h4><time datetime="2025-09-05">5. 9. 2025</time></div><p lang="pl">Zbiórki w piątki. Zgłoszenia z zeszłego roku są ważne do końca roku kalendarzowego.</p><p lang="cs">Schůzky v pátek. Loňské přihlášky platí do konce kalendářního roku.</p></div></li>
+    </ul>
+  </div>
+
+  <div class="kat">
+    <div class="kat-h"><h3 class="mid" data-r><span lang="pl">Przedszkole</span><span lang="cs">Mateřská škola</span></h3><span class="ile"><span lang="pl">7 wpisów</span><span lang="cs">7 zpráv</span></span></div>
+    <ul class="wpisy">
+      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">lis</span><span lang="cs">lis</span></span><span class="dd">10</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=984"><span lang="pl">Wizyta w szkole zdrowotnej</span><span lang="cs">Návštěva zdravotnické školy</span></a></h4><time datetime="2026-11-10">10. 11.</time></div><p lang="pl">W piątek 13.11. starszaki idą na pierwszą z trzech wizyt. Spakujcie pelerynę.</p><p lang="cs">V pátek 13. 11. jdou předškoláci na první ze tří návštěv. Přibalte pláštěnku.</p></div></li>
+      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">lis</span><span lang="cs">lis</span></span><span class="dd">10</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=985"><span lang="pl">Świąteczna sesja fotograficzna</span><span lang="cs">Vánoční focení</span></a></h4><time datetime="2026-11-10">10. 11.</time></div><p lang="pl">Wtorek 24.11. dla chętnych, także z rodzeństwem: 9:00–10:00 albo od 12:00.</p><p lang="cs">Úterý 24. 11. pro zájemce, i se sourozenci: 9:00–10:00 nebo od 12:00.</p></div></li>
+      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">paź</span><span lang="cs">říj</span></span><span class="dd">23</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=983"><span lang="pl">Diagnoza logopedyczna</span><span lang="cs">Logopedická depistáž</span></a></h4><time datetime="2026-10-23">23. 10.</time></div><p lang="pl">12.11. mgr Danuta Bogocz zbada mowę dzieci. Wyniki i zalecenia przekażemy rodzicom.</p><p lang="cs">12. 11. vyšetří Mgr. Danuta Bogocz řeč dětí. Výsledky a doporučení předáme rodičům.</p></div></li>
+      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">wrz</span><span lang="cs">zář</span></span><span class="dd">24</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=982"><span lang="pl">Wakacje jesienne</span><span lang="cs">Podzimní prázdniny</span></a></h4><time datetime="2026-09-24">24. 9.</time></div><p lang="pl">Obecność dziecka 29. i 30.10. zgłoście nauczycielkom do 29.9.</p><p lang="cs">Docházku dítěte 29. a 30. 10. nahlaste učitelkám do 29. 9.</p></div></li>
+      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">wrz</span><span lang="cs">zář</span></span><span class="dd">23</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=981"><span lang="pl">Ważne daty 2026/2027</span><span lang="cs">Důležitá data 2026/2027</span></a></h4><time datetime="2026-09-23">23. 9.</time></div><p lang="pl">Jasełka 16.12., Dzień Babci i Dziadka 26. i 27.1., festyn 5.6.2027.</p><p lang="cs">Jasełka 16. 12., Den babiček a dědečků 26. a 27. 1., festyn 5. 6. 2027.</p></div></li>
+      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">wrz</span><span lang="cs">zář</span></span><span class="dd">14</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=980"><span lang="pl">Wycieczka do ZOO w Ostrawie</span><span lang="cs">Výlet do ZOO Ostrava</span></a></h4><time datetime="2026-09-14">14. 9.</time></div><p lang="pl">Wtorek 22.9., odjazd 8:15, powrót ok. 12:30. Peleryna, przekąska i napój w plecaku.</p><p lang="cs">Úterý 22. 9., odjezd 8:15, návrat kolem 12:30. Pláštěnka, svačina a pití v batůžku.</p></div></li>
+      <li class="wpis" data-r><span class="mini data" aria-hidden="true"><span class="mc"><span lang="pl">wrz</span><span lang="cs">zář</span></span><span class="dd">8</span></span><div><div class="wpis-t"><h4><a href="https://www.pzskarvina.cz/przedszkole-nowosc.asp?a=978"><span lang="pl">Lekcje pływania</span><span lang="cs">Plavání</span></a></h4><time datetime="2026-09-08">8. 9.</time></div><p lang="pl">Starszaki w czwartki, średniaki w piątki, 8:00–8:45 na basenie StaRS. Autobus o 7:30.</p><p lang="cs">Předškoláci ve čtvrtek, střední děti v pátek, 8:00–8:45 v bazénu StaRS. Autobus v 7:30.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ ZÁPIS DO 1. TŘÍDY ============ -->
+<section class="sec wrap" id="zapisy" aria-labelledby="zap-h">
+  <div class="zap-top">
+    <h2 id="zap-h" class="h2" data-r><span lang="pl">Zapisy do 1. klasy</span><span lang="cs">Zápis do 1. třídy</span></h2>
+    <p class="zap-p" lang="pl" data-r>Zapraszamy dzieci, które do 31.8.2027 skończą 6 lat. Zapis zajmuje jedno popołudnie, a dziecko może przy tym poznać szkołę ze starszymi kolegami.</p>
+    <p class="zap-p" lang="cs" data-r>Zveme děti, kterým bude do 31. 8. 2027 šest let. Zápis zabere jedno odpoledne a dítě si při něm se staršími spolužáky projde školu.</p>
+  </div>
+  <div class="diag-w">
+    <svg class="diag diag-h" viewBox="0 0 1200 270" aria-hidden="true"><g class="g p2" transform="rotate(1.2 14.5 111.8)"><rect x="8.6" y="104.9" width="11.8" height="13.8" rx="2"/><path d="M8.6 109.6H20.4M14.5 109.6V118.6"/></g><g class="g p1" transform="rotate(-13.1 17.9 218.2)"><rect x="11.0" y="210.2" width="13.7" height="16.0" rx="2"/><path d="M11.0 215.6H24.7M17.9 215.6V226.2"/></g><g class="g p1" transform="rotate(-10.0 18.5 163.1)"><rect x="13.6" y="157.4" width="9.8" height="11.4" rx="2"/><path d="M13.6 161.3H23.4M18.5 161.3V168.8"/></g><g class="g p2" transform="rotate(8.8 33.0 140.9)"><rect x="27.9" y="135.0" width="10.1" height="11.8" rx="2"/><path d="M27.9 139.0H38.0M33.0 139.0V146.8"/></g><g class="g p2" transform="rotate(-7.8 38.4 61.5)"><rect x="32.1" y="54.2" width="12.5" height="14.6" rx="2"/><path d="M32.1 59.1H44.6M38.4 59.1V68.8"/></g><g class="g p1" transform="rotate(-9.0 44.4 105.4)"><rect x="39.5" y="99.7" width="9.8" height="11.4" rx="2"/><path d="M39.5 103.6H49.3M44.4 103.6V111.1"/></g><g class="g p1" transform="rotate(2.4 48.0 186.5)"><rect x="43.1" y="180.8" width="9.8" height="11.4" rx="2"/><path d="M43.1 184.7H52.9M48.0 184.7V192.2"/></g><g class="g p1" transform="rotate(-19.0 71.0 67.8)"><rect x="65.3" y="61.0" width="11.6" height="13.5" rx="2"/><path d="M65.3 65.6H76.8M71.0 65.6V74.6"/></g><g class="g p2" transform="rotate(-22.8 87.8 229.8)"><rect x="81.6" y="222.6" width="12.3" height="14.4" rx="2"/><path d="M81.6 227.5H94.0M87.8 227.5V237.0"/></g><g class="g p1" transform="rotate(-13.8 89.7 191.4)"><rect x="84.1" y="184.8" width="11.3" height="13.2" rx="2"/><path d="M84.1 189.3H95.4M89.7 189.3V198.0"/></g><g class="g p1" transform="rotate(1.7 93.2 114.1)"><rect x="87.2" y="107.1" width="12.1" height="14.1" rx="2"/><path d="M87.2 111.9H99.3M93.2 111.9V121.2"/></g><g class="g p2" transform="rotate(13.7 93.3 18.7)"><rect x="87.3" y="11.6" width="12.1" height="14.2" rx="2"/><path d="M87.3 16.5H99.4M93.3 16.5V25.8"/></g><g class="g p2" transform="rotate(-19.2 111.0 89.8)"><rect x="104.1" y="81.8" width="13.7" height="15.9" rx="2"/><path d="M104.1 87.3H117.8M111.0 87.3V97.8"/></g><g class="g p1" transform="rotate(-11.1 116.0 190.4)"><rect x="110.8" y="184.4" width="10.3" height="12.1" rx="2"/><path d="M110.8 188.5H121.2M116.0 188.5V196.4"/></g><g class="g p1" transform="rotate(-4.4 120.9 140.2)"><rect x="114.2" y="132.4" width="13.3" height="15.5" rx="2"/><path d="M114.2 137.7H127.6M120.9 137.7V147.9"/></g><g class="g p2" transform="rotate(-8.6 143.8 241.3)"><rect x="138.5" y="235.1" width="10.6" height="12.4" rx="2"/><path d="M138.5 239.3H149.1M143.8 239.3V247.5"/></g><g class="g p1" transform="rotate(7.6 147.4 200.2)"><rect x="141.7" y="193.6" width="11.4" height="13.3" rx="2"/><path d="M141.7 198.1H153.1M147.4 198.1V206.8"/></g><g class="g p2" transform="rotate(1.5 148.6 54.2)"><rect x="142.7" y="47.3" width="11.9" height="13.9" rx="2"/><path d="M142.7 52.0H154.6M148.6 52.0V61.2"/></g><g class="g p1" transform="rotate(12.8 150.7 99.6)"><rect x="145.2" y="93.2" width="10.9" height="12.8" rx="2"/><path d="M145.2 97.5H156.1M150.7 97.5V106.0"/></g><g class="g p2" transform="rotate(7.6 156.3 17.4)"><rect x="150.4" y="10.5" width="11.9" height="13.8" rx="2"/><path d="M150.4 15.2H162.2M156.3 15.2V24.3"/></g><g class="g p1" transform="rotate(17.7 168.2 142.0)"><rect x="162.2" y="134.9" width="12.1" height="14.1" rx="2"/><path d="M162.2 139.7H174.3M168.2 139.7V149.1"/></g><g class="g p1" transform="rotate(4.1 178.4 198.8)"><rect x="173.5" y="193.1" width="9.8" height="11.4" rx="2"/><path d="M173.5 197.0H183.3M178.4 197.0V204.6"/></g><g class="g p1" transform="rotate(-20.9 188.4 60.6)"><rect x="182.1" y="53.2" width="12.7" height="14.8" rx="2"/><path d="M182.1 58.2H194.8M188.4 58.2V68.0"/></g><g class="g p2" transform="rotate(0.1 187.8 25.5)"><rect x="182.8" y="19.7" width="10.0" height="11.7" rx="2"/><path d="M182.8 23.6H192.8M187.8 23.6V31.3"/></g><g class="g p1" transform="rotate(-27.4 190.9 122.5)"><rect x="184.6" y="115.2" width="12.6" height="14.7" rx="2"/><path d="M184.6 120.2H197.2M190.9 120.2V129.9"/></g><g class="g p2" transform="rotate(19.0 204.7 155.1)"><rect x="199.3" y="148.9" width="10.7" height="12.5" rx="2"/><path d="M199.3 153.1H210.0M204.7 153.1V161.4"/></g><g class="g p2" transform="rotate(26.5 207.9 238.1)"><rect x="203.1" y="232.5" width="9.7" height="11.3" rx="2"/><path d="M203.1 236.3H212.8M207.9 236.3V243.7"/></g><g class="g p2" transform="rotate(-16.5 211.4 186.4)"><rect x="206.1" y="180.2" width="10.6" height="12.3" rx="2"/><path d="M206.1 184.4H216.6M211.4 184.4V192.5"/></g><g class="g p1" transform="rotate(-8.2 219.7 65.5)"><rect x="213.9" y="58.7" width="11.5" height="13.5" rx="2"/><path d="M213.9 63.3H225.4M219.7 63.3V72.2"/></g><g class="g p2" transform="rotate(9.6 235.2 35.6)"><rect x="229.1" y="28.5" width="12.2" height="14.2" rx="2"/><path d="M229.1 33.3H241.3M235.2 33.3V42.7"/></g><g class="g p2" transform="rotate(-20.3 245.6 110.1)"><rect x="239.3" y="102.7" width="12.7" height="14.9" rx="2"/><path d="M239.3 107.7H252.0M245.6 107.7V117.5"/></g><g class="g p2" transform="rotate(-11.8 246.1 212.1)"><rect x="239.8" y="204.7" width="12.7" height="14.8" rx="2"/><path d="M239.8 209.7H252.5M246.1 209.7V219.5"/></g><g class="g p1" transform="rotate(-5.4 246.2 139.2)"><rect x="241.0" y="133.2" width="10.4" height="12.2" rx="2"/><path d="M241.0 137.3H251.4M246.2 137.3V145.3"/></g><g class="g p2" transform="rotate(11.5 258.3 54.6)"><rect x="252.5" y="47.8" width="11.7" height="13.6" rx="2"/><path d="M252.5 52.4H264.2M258.3 52.4V61.4"/></g><g class="g p2" transform="rotate(9.7 277.5 36.7)"><rect x="272.5" y="31.0" width="9.9" height="11.5" rx="2"/><path d="M272.5 34.9H282.4M277.5 34.9V42.5"/></g><g class="g p1" transform="rotate(21.0 280.7 240.1)"><rect x="274.8" y="233.3" width="11.7" height="13.7" rx="2"/><path d="M274.8 237.9H286.5M280.7 237.9V247.0"/></g><g class="g p2" transform="rotate(25.1 292.0 157.4)"><rect x="286.4" y="150.9" width="11.2" height="13.1" rx="2"/><path d="M286.4 155.3H297.6M292.0 155.3V163.9"/></g><g class="g p1" transform="rotate(16.1 303.9 84.8)"><rect x="298.5" y="78.5" width="10.8" height="12.6" rx="2"/><path d="M298.5 82.8H309.3M303.9 82.8V91.1"/></g><g class="g p1" transform="rotate(4.2 327.0 53.5)"><rect x="320.3" y="45.6" width="13.4" height="15.7" rx="2"/><path d="M320.3 51.0H333.7M327.0 51.0V61.3"/></g><g class="g p1" transform="rotate(-16.0 326.9 124.0)"><rect x="321.3" y="117.5" width="11.1" height="13.0" rx="2"/><path d="M321.3 121.9H332.5M326.9 121.9V130.5"/></g><g class="g p2" transform="rotate(9.4 333.3 14.4)"><rect x="328.2" y="8.5" width="10.0" height="11.7" rx="2"/><path d="M328.2 12.5H338.3M333.3 12.5V20.3"/></g><g class="g p2" transform="rotate(22.6 335.5 217.1)"><rect x="328.6" y="209.1" width="13.8" height="16.1" rx="2"/><path d="M328.6 214.5H342.4M335.5 214.5V225.1"/></g><g class="g p2" transform="rotate(-6.8 344.2 166.1)"><rect x="337.7" y="158.6" width="12.9" height="15.1" rx="2"/><path d="M337.7 163.7H350.7M344.2 163.7V173.7"/></g><g class="g p2" transform="rotate(-19.0 351.0 96.5)"><rect x="345.4" y="90.0" width="11.2" height="13.1" rx="2"/><path d="M345.4 94.4H356.6M351.0 94.4V103.1"/></g><g class="g p2" transform="rotate(2.8 361.3 235.0)"><rect x="356.0" y="228.8" width="10.6" height="12.4" rx="2"/><path d="M356.0 233.0H366.6M361.3 233.0V241.1"/></g><g class="g p2" transform="rotate(5.3 362.0 45.1)"><rect x="356.7" y="38.8" width="10.7" height="12.5" rx="2"/><path d="M356.7 43.1H367.4M362.0 43.1V51.3"/></g><g class="g p3"><rect x="430.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M430.0 115.8H442.0M436.0 115.8V125.0"/></g><g class="g p3"><rect x="430.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M430.0 132.8H442.0M436.0 132.8V142.0"/></g><g class="g p3"><rect x="430.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M430.0 149.8H442.0M436.0 149.8V159.0"/></g><g class="g p3"><rect x="452.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M452.0 115.8H464.0M458.0 115.8V125.0"/></g><g class="g p3"><rect x="452.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M452.0 132.8H464.0M458.0 132.8V142.0"/></g><g class="g p3"><rect x="452.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M452.0 149.8H464.0M458.0 149.8V159.0"/></g><g class="g p3"><rect x="474.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M474.0 115.8H486.0M480.0 115.8V125.0"/></g><g class="g p3"><rect x="474.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M474.0 132.8H486.0M480.0 132.8V142.0"/></g><g class="g p3"><rect x="474.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M474.0 149.8H486.0M480.0 149.8V159.0"/></g><g class="g p3"><rect x="496.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M496.0 115.8H508.0M502.0 115.8V125.0"/></g><g class="g p3"><rect x="496.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M496.0 132.8H508.0M502.0 132.8V142.0"/></g><g class="g p3"><rect x="496.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M496.0 149.8H508.0M502.0 149.8V159.0"/></g><g class="g p3"><rect x="518.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M518.0 115.8H530.0M524.0 115.8V125.0"/></g><g class="g p3"><rect x="518.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M518.0 132.8H530.0M524.0 132.8V142.0"/></g><g class="g p3"><rect x="518.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M518.0 149.8H530.0M524.0 149.8V159.0"/></g><g class="g p3"><rect x="540.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M540.0 115.8H552.0M546.0 115.8V125.0"/></g><g class="g p3"><rect x="540.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M540.0 132.8H552.0M546.0 132.8V142.0"/></g><g class="g p3"><rect x="540.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M540.0 149.8H552.0M546.0 149.8V159.0"/></g><g class="g p3"><rect x="562.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M562.0 115.8H574.0M568.0 115.8V125.0"/></g><g class="g p3"><rect x="562.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M562.0 132.8H574.0M568.0 132.8V142.0"/></g><g class="g p3"><rect x="562.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M562.0 149.8H574.0M568.0 149.8V159.0"/></g><g class="g p3"><rect x="584.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M584.0 115.8H596.0M590.0 115.8V125.0"/></g><g class="g p3"><rect x="584.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M584.0 132.8H596.0M590.0 132.8V142.0"/></g><g class="g p3"><rect x="584.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M584.0 149.8H596.0M590.0 149.8V159.0"/></g><g class="g p3"><rect x="606.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M606.0 115.8H618.0M612.0 115.8V125.0"/></g><g class="g p3"><rect x="606.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M606.0 132.8H618.0M612.0 132.8V142.0"/></g><g class="g p3"><rect x="606.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M606.0 149.8H618.0M612.0 149.8V159.0"/></g><g class="g p3"><rect x="628.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M628.0 115.8H640.0M634.0 115.8V125.0"/></g><g class="g p3"><rect x="628.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M628.0 132.8H640.0M634.0 132.8V142.0"/></g><g class="g p3"><rect x="628.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M628.0 149.8H640.0M634.0 149.8V159.0"/></g><g class="g p3"><rect x="650.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M650.0 115.8H662.0M656.0 115.8V125.0"/></g><g class="g p3"><rect x="650.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M650.0 132.8H662.0M656.0 132.8V142.0"/></g><g class="g p3"><rect x="650.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M650.0 149.8H662.0M656.0 149.8V159.0"/></g><g class="g p3"><rect x="672.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M672.0 115.8H684.0M678.0 115.8V125.0"/></g><g class="g p3"><rect x="672.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M672.0 132.8H684.0M678.0 132.8V142.0"/></g><g class="g p3"><rect x="672.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M672.0 149.8H684.0M678.0 149.8V159.0"/></g><g class="g p3"><rect x="694.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M694.0 115.8H706.0M700.0 115.8V125.0"/></g><g class="g p3"><rect x="694.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M694.0 132.8H706.0M700.0 132.8V142.0"/></g><g class="g p3"><rect x="694.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M694.0 149.8H706.0M700.0 149.8V159.0"/></g><g class="g p3"><rect x="716.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M716.0 115.8H728.0M722.0 115.8V125.0"/></g><g class="g p3"><rect x="716.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M716.0 132.8H728.0M722.0 132.8V142.0"/></g><g class="g p3"><rect x="716.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M716.0 149.8H728.0M722.0 149.8V159.0"/></g><g class="g p3"><rect x="738.0" y="111.0" width="12.0" height="14.0" rx="2"/><path d="M738.0 115.8H750.0M744.0 115.8V125.0"/></g><g class="g p3"><rect x="738.0" y="128.0" width="12.0" height="14.0" rx="2"/><path d="M738.0 132.8H750.0M744.0 132.8V142.0"/></g><g class="g p3"><rect x="738.0" y="145.0" width="12.0" height="14.0" rx="2"/><path d="M738.0 149.8H750.0M744.0 149.8V159.0"/></g><g class="g ac"><rect x="822.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M822.0 26.8H834.0M828.0 26.8V36.0"/></g><g class="g ac"><rect x="822.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M822.0 74.8H834.0M828.0 74.8V84.0"/></g><g class="g ac"><rect x="822.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M822.0 122.8H834.0M828.0 122.8V132.0"/></g><g class="g ac"><rect x="822.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M822.0 170.8H834.0M828.0 170.8V180.0"/></g><g class="g ac"><rect x="822.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M822.0 218.8H834.0M828.0 218.8V228.0"/></g><g class="g ac"><rect x="859.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M859.0 26.8H871.0M865.0 26.8V36.0"/></g><g class="g ac"><rect x="859.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M859.0 74.8H871.0M865.0 74.8V84.0"/></g><g class="g ac"><rect x="859.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M859.0 122.8H871.0M865.0 122.8V132.0"/></g><g class="g ac"><rect x="859.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M859.0 170.8H871.0M865.0 170.8V180.0"/></g><g class="g ac"><rect x="859.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M859.0 218.8H871.0M865.0 218.8V228.0"/></g><g class="g ac"><rect x="896.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M896.0 26.8H908.0M902.0 26.8V36.0"/></g><g class="g ac"><rect x="896.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M896.0 74.8H908.0M902.0 74.8V84.0"/></g><g class="g ac"><rect x="896.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M896.0 122.8H908.0M902.0 122.8V132.0"/></g><g class="g ac"><rect x="896.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M896.0 170.8H908.0M902.0 170.8V180.0"/></g><g class="g ac"><rect x="896.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M896.0 218.8H908.0M902.0 218.8V228.0"/></g><g class="g ac"><rect x="933.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M933.0 26.8H945.0M939.0 26.8V36.0"/></g><g class="g ac"><rect x="933.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M933.0 74.8H945.0M939.0 74.8V84.0"/></g><g class="g ac"><rect x="933.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M933.0 122.8H945.0M939.0 122.8V132.0"/></g><g class="g ac"><rect x="933.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M933.0 170.8H945.0M939.0 170.8V180.0"/></g><g class="g ac"><rect x="933.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M933.0 218.8H945.0M939.0 218.8V228.0"/></g><g class="g ac"><rect x="970.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M970.0 26.8H982.0M976.0 26.8V36.0"/></g><g class="g ac"><rect x="970.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M970.0 74.8H982.0M976.0 74.8V84.0"/></g><g class="g ac"><rect x="970.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M970.0 122.8H982.0M976.0 122.8V132.0"/></g><g class="g ac"><rect x="970.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M970.0 170.8H982.0M976.0 170.8V180.0"/></g><g class="g ac"><rect x="970.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M970.0 218.8H982.0M976.0 218.8V228.0"/></g><g class="g ac"><rect x="1007.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M1007.0 26.8H1019.0M1013.0 26.8V36.0"/></g><g class="g ac"><rect x="1007.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M1007.0 74.8H1019.0M1013.0 74.8V84.0"/></g><g class="g ac"><rect x="1007.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M1007.0 122.8H1019.0M1013.0 122.8V132.0"/></g><g class="g ac"><rect x="1007.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M1007.0 170.8H1019.0M1013.0 170.8V180.0"/></g><g class="g ac"><rect x="1007.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M1007.0 218.8H1019.0M1013.0 218.8V228.0"/></g><g class="g ac"><rect x="1044.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M1044.0 26.8H1056.0M1050.0 26.8V36.0"/></g><g class="g ac"><rect x="1044.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M1044.0 74.8H1056.0M1050.0 74.8V84.0"/></g><g class="g ac"><rect x="1044.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M1044.0 122.8H1056.0M1050.0 122.8V132.0"/></g><g class="g ac"><rect x="1044.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M1044.0 170.8H1056.0M1050.0 170.8V180.0"/></g><g class="g ac"><rect x="1044.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M1044.0 218.8H1056.0M1050.0 218.8V228.0"/></g><g class="g ac"><rect x="1081.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M1081.0 26.8H1093.0M1087.0 26.8V36.0"/></g><g class="g ac"><rect x="1081.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M1081.0 74.8H1093.0M1087.0 74.8V84.0"/></g><g class="g ac"><rect x="1081.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M1081.0 122.8H1093.0M1087.0 122.8V132.0"/></g><g class="g ac"><rect x="1081.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M1081.0 170.8H1093.0M1087.0 170.8V180.0"/></g><g class="g ac"><rect x="1081.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M1081.0 218.8H1093.0M1087.0 218.8V228.0"/></g><g class="g ac"><rect x="1118.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M1118.0 26.8H1130.0M1124.0 26.8V36.0"/></g><g class="g ac"><rect x="1118.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M1118.0 74.8H1130.0M1124.0 74.8V84.0"/></g><g class="g ac"><rect x="1118.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M1118.0 122.8H1130.0M1124.0 122.8V132.0"/></g><g class="g ac"><rect x="1118.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M1118.0 170.8H1130.0M1124.0 170.8V180.0"/></g><g class="g ac"><rect x="1118.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M1118.0 218.8H1130.0M1124.0 218.8V228.0"/></g><g class="g ac"><rect x="1155.0" y="22.0" width="12.0" height="14.0" rx="2"/><path d="M1155.0 26.8H1167.0M1161.0 26.8V36.0"/></g><g class="g ac"><rect x="1155.0" y="70.0" width="12.0" height="14.0" rx="2"/><path d="M1155.0 74.8H1167.0M1161.0 74.8V84.0"/></g><g class="g ac"><rect x="1155.0" y="118.0" width="12.0" height="14.0" rx="2"/><path d="M1155.0 122.8H1167.0M1161.0 122.8V132.0"/></g><g class="g ac"><rect x="1155.0" y="166.0" width="12.0" height="14.0" rx="2"/><path d="M1155.0 170.8H1167.0M1161.0 170.8V180.0"/></g><g class="g ac"><rect x="1155.0" y="214.0" width="12.0" height="14.0" rx="2"/><path d="M1155.0 218.8H1167.0M1161.0 218.8V228.0"/></g></svg>
+    <svg class="diag diag-v" viewBox="0 0 300 420" aria-hidden="true"><g class="g p1" transform="rotate(12.8 262.4 10.5)"><rect x="257.1" y="4.3" width="10.7" height="12.5" rx="2"/><path d="M257.1 8.5H267.8M262.4 8.5V16.8"/></g><g class="g p1" transform="rotate(2.4 122.2 10.9)"><rect x="117.4" y="5.2" width="9.7" height="11.4" rx="2"/><path d="M117.4 9.1H127.1M122.2 9.1V16.6"/></g><g class="g p1" transform="rotate(-11.4 73.3 12.1)"><rect x="67.8" y="5.8" width="10.9" height="12.7" rx="2"/><path d="M67.8 10.1H78.7M73.3 10.1V18.5"/></g><g class="g p1" transform="rotate(-13.1 235.5 23.6)"><rect x="229.0" y="15.9" width="13.1" height="15.3" rx="2"/><path d="M229.0 21.1H242.1M235.5 21.1V31.2"/></g><g class="g p2" transform="rotate(11.5 103.7 29.9)"><rect x="98.0" y="23.2" width="11.4" height="13.3" rx="2"/><path d="M98.0 27.8H109.4M103.7 27.8V36.5"/></g><g class="g p1" transform="rotate(-8.5 203.7 30.7)"><rect x="197.6" y="23.6" width="12.2" height="14.3" rx="2"/><path d="M197.6 28.4H209.8M203.7 28.4V37.8"/></g><g class="g p1" transform="rotate(-22.0 148.6 33.5)"><rect x="142.3" y="26.2" width="12.6" height="14.6" rx="2"/><path d="M142.3 31.2H154.8M148.6 31.2V40.9"/></g><g class="g p2" transform="rotate(15.5 31.0 34.3)"><rect x="24.5" y="26.7" width="13.1" height="15.2" rx="2"/><path d="M24.5 31.9H37.6M31.0 31.9V41.9"/></g><g class="g p2" transform="rotate(5.7 172.5 35.0)"><rect x="167.3" y="28.9" width="10.5" height="12.2" rx="2"/><path d="M167.3 33.1H177.7M172.5 33.1V41.1"/></g><g class="g p1" transform="rotate(-9.0 55.4 35.8)"><rect x="50.5" y="30.1" width="9.8" height="11.4" rx="2"/><path d="M50.5 34.0H60.3M55.4 34.0V41.5"/></g><g class="g p2" transform="rotate(15.2 238.8 44.5)"><rect x="233.7" y="38.6" width="10.1" height="11.7" rx="2"/><path d="M233.7 42.6H243.8M238.8 42.6V50.4"/></g><g class="g p2" transform="rotate(-23.3 87.2 47.4)"><rect x="81.1" y="40.3" width="12.2" height="14.2" rx="2"/><path d="M81.1 45.1H93.3M87.2 45.1V54.5"/></g><g class="g p1" transform="rotate(-20.9 276.7 51.5)"><rect x="270.5" y="44.3" width="12.2" height="14.3" rx="2"/><path d="M270.5 49.2H282.8M276.7 49.2V58.6"/></g><g class="g p2" transform="rotate(-12.6 119.9 53.6)"><rect x="113.3" y="45.9" width="13.2" height="15.4" rx="2"/><path d="M113.3 51.1H126.5M119.9 51.1V61.2"/></g><g class="g p2" transform="rotate(0.9 192.3 56.5)"><rect x="187.2" y="50.5" width="10.2" height="11.9" rx="2"/><path d="M187.2 54.6H197.3M192.3 54.6V62.4"/></g><g class="g p2" transform="rotate(-4.1 56.3 61.6)"><rect x="51.0" y="55.5" width="10.6" height="12.3" rx="2"/><path d="M51.0 59.7H61.6M56.3 59.7V67.8"/></g><g class="g p1" transform="rotate(16.1 256.9 64.0)"><rect x="251.6" y="57.8" width="10.6" height="12.4" rx="2"/><path d="M251.6 62.0H262.2M256.9 62.0V70.2"/></g><g class="g p2" transform="rotate(21.7 94.4 71.5)"><rect x="89.0" y="65.2" width="10.9" height="12.7" rx="2"/><path d="M89.0 69.5H99.9M94.4 69.5V77.8"/></g><g class="g p2" transform="rotate(19.0 131.9 72.5)"><rect x="126.6" y="66.4" width="10.5" height="12.3" rx="2"/><path d="M126.6 70.6H137.2M131.9 70.6V78.7"/></g><g class="g p2" transform="rotate(-6.5 26.0 72.1)"><rect x="21.2" y="66.4" width="9.7" height="11.3" rx="2"/><path d="M21.2 70.2H30.9M26.0 70.2V77.7"/></g><g class="g p2" transform="rotate(13.6 161.3 79.6)"><rect x="155.8" y="73.3" width="10.9" height="12.8" rx="2"/><path d="M155.8 77.6H166.7M161.3 77.6V86.0"/></g><g class="g p2" transform="rotate(-20.3 230.4 81.4)"><rect x="224.2" y="74.2" width="12.3" height="14.3" rx="2"/><path d="M224.2 79.1H236.5M230.4 79.1V88.6"/></g><g class="g p2" transform="rotate(-22.8 270.5 85.0)"><rect x="264.5" y="78.0" width="11.9" height="13.9" rx="2"/><path d="M264.5 82.8H276.5M270.5 82.8V92.0"/></g><g class="g p2" transform="rotate(13.7 63.4 93.7)"><rect x="57.5" y="86.9" width="11.8" height="13.7" rx="2"/><path d="M57.5 91.5H69.3M63.4 91.5V100.6"/></g><g class="g p1" transform="rotate(21.2 39.5 96.3)"><rect x="33.2" y="88.9" width="12.7" height="14.8" rx="2"/><path d="M33.2 94.0H45.8M39.5 94.0V103.7"/></g><g class="g p1" transform="rotate(-8.2 141.2 101.6)"><rect x="135.5" y="95.0" width="11.3" height="13.1" rx="2"/><path d="M135.5 99.5H146.8M141.2 99.5V108.1"/></g><g class="g p1" transform="rotate(24.8 194.1 108.2)"><rect x="187.6" y="100.7" width="12.9" height="15.1" rx="2"/><path d="M187.6 105.8H200.5M194.1 105.8V115.8"/></g><g class="g p1" transform="rotate(-4.4 263.8 110.3)"><rect x="257.4" y="102.8" width="12.8" height="14.9" rx="2"/><path d="M257.4 107.9H270.2M263.8 107.9V117.7"/></g><g class="g p1" transform="rotate(-28.0 13.7 110.1)"><rect x="7.9" y="103.4" width="11.5" height="13.4" rx="2"/><path d="M7.9 107.9H19.4M13.7 107.9V116.8"/></g><g class="g p1" transform="rotate(3.0 68.9 115.9)"><rect x="63.4" y="109.5" width="11.1" height="12.9" rx="2"/><path d="M63.4 113.9H74.5M68.9 113.9V122.4"/></g><g class="g p2" transform="rotate(8.8 283.9 118.4)"><rect x="278.8" y="112.5" width="10.1" height="11.7" rx="2"/><path d="M278.8 116.5H288.9M283.9 116.5V124.3"/></g><g class="g p1" transform="rotate(-2.1 164.3 120.7)"><rect x="158.8" y="114.3" width="11.0" height="12.8" rx="2"/><path d="M158.8 118.7H169.7M164.3 118.7V127.1"/></g><g class="g p2" transform="rotate(-11.8 221.2 121.9)"><rect x="215.1" y="114.7" width="12.2" height="14.3" rx="2"/><path d="M215.1 119.6H227.3M221.2 119.6V129.0"/></g><g class="g p2" transform="rotate(26.5 112.9 121.3)"><rect x="108.1" y="115.6" width="9.7" height="11.3" rx="2"/><path d="M108.1 119.5H117.8M112.9 119.5V126.9"/></g><g class="g p3"><rect x="126.0" y="146.0" width="10.2" height="11.9" rx="2"/><path d="M126.0 150.0H136.2M131.1 150.0V157.9"/></g><g class="g p3"><rect x="143.0" y="146.0" width="10.2" height="11.9" rx="2"/><path d="M143.0 150.0H153.2M148.1 150.0V157.9"/></g><g class="g p3"><rect x="160.0" y="146.0" width="10.2" height="11.9" rx="2"/><path d="M160.0 150.0H170.2M165.1 150.0V157.9"/></g><g class="g p3"><rect x="126.0" y="159.0" width="10.2" height="11.9" rx="2"/><path d="M126.0 163.0H136.2M131.1 163.0V170.9"/></g><g class="g p3"><rect x="143.0" y="159.0" width="10.2" height="11.9" rx="2"/><path d="M143.0 163.0H153.2M148.1 163.0V170.9"/></g><g class="g p3"><rect x="160.0" y="159.0" width="10.2" height="11.9" rx="2"/><path d="M160.0 163.0H170.2M165.1 163.0V170.9"/></g><g class="g p3"><rect x="126.0" y="172.0" width="10.2" height="11.9" rx="2"/><path d="M126.0 176.0H136.2M131.1 176.0V183.9"/></g><g class="g p3"><rect x="143.0" y="172.0" width="10.2" height="11.9" rx="2"/><path d="M143.0 176.0H153.2M148.1 176.0V183.9"/></g><g class="g p3"><rect x="160.0" y="172.0" width="10.2" height="11.9" rx="2"/><path d="M160.0 176.0H170.2M165.1 176.0V183.9"/></g><g class="g p3"><rect x="126.0" y="185.0" width="10.2" height="11.9" rx="2"/><path d="M126.0 189.0H136.2M131.1 189.0V196.9"/></g><g class="g p3"><rect x="143.0" y="185.0" width="10.2" height="11.9" rx="2"/><path d="M143.0 189.0H153.2M148.1 189.0V196.9"/></g><g class="g p3"><rect x="160.0" y="185.0" width="10.2" height="11.9" rx="2"/><path d="M160.0 189.0H170.2M165.1 189.0V196.9"/></g><g class="g p3"><rect x="126.0" y="198.0" width="10.2" height="11.9" rx="2"/><path d="M126.0 202.0H136.2M131.1 202.0V209.9"/></g><g class="g p3"><rect x="143.0" y="198.0" width="10.2" height="11.9" rx="2"/><path d="M143.0 202.0H153.2M148.1 202.0V209.9"/></g><g class="g p3"><rect x="160.0" y="198.0" width="10.2" height="11.9" rx="2"/><path d="M160.0 202.0H170.2M165.1 202.0V209.9"/></g><g class="g p3"><rect x="126.0" y="211.0" width="10.2" height="11.9" rx="2"/><path d="M126.0 215.0H136.2M131.1 215.0V222.9"/></g><g class="g p3"><rect x="143.0" y="211.0" width="10.2" height="11.9" rx="2"/><path d="M143.0 215.0H153.2M148.1 215.0V222.9"/></g><g class="g p3"><rect x="160.0" y="211.0" width="10.2" height="11.9" rx="2"/><path d="M160.0 215.0H170.2M165.1 215.0V222.9"/></g><g class="g p3"><rect x="126.0" y="224.0" width="10.2" height="11.9" rx="2"/><path d="M126.0 228.0H136.2M131.1 228.0V235.9"/></g><g class="g p3"><rect x="143.0" y="224.0" width="10.2" height="11.9" rx="2"/><path d="M143.0 228.0H153.2M148.1 228.0V235.9"/></g><g class="g p3"><rect x="160.0" y="224.0" width="10.2" height="11.9" rx="2"/><path d="M160.0 228.0H170.2M165.1 228.0V235.9"/></g><g class="g p3"><rect x="126.0" y="237.0" width="10.2" height="11.9" rx="2"/><path d="M126.0 241.0H136.2M131.1 241.0V248.9"/></g><g class="g p3"><rect x="143.0" y="237.0" width="10.2" height="11.9" rx="2"/><path d="M143.0 241.0H153.2M148.1 241.0V248.9"/></g><g class="g p3"><rect x="160.0" y="237.0" width="10.2" height="11.9" rx="2"/><path d="M160.0 241.0H170.2M165.1 241.0V248.9"/></g><g class="g p3"><rect x="126.0" y="250.0" width="10.2" height="11.9" rx="2"/><path d="M126.0 254.0H136.2M131.1 254.0V261.9"/></g><g class="g p3"><rect x="143.0" y="250.0" width="10.2" height="11.9" rx="2"/><path d="M143.0 254.0H153.2M148.1 254.0V261.9"/></g><g class="g p3"><rect x="160.0" y="250.0" width="10.2" height="11.9" rx="2"/><path d="M160.0 254.0H170.2M165.1 254.0V261.9"/></g><g class="g ac"><rect x="14.0" y="278.0" width="12.0" height="14.0" rx="2"/><path d="M14.0 282.8H26.0M20.0 282.8V292.0"/></g><g class="g ac"><rect x="54.0" y="278.0" width="12.0" height="14.0" rx="2"/><path d="M54.0 282.8H66.0M60.0 282.8V292.0"/></g><g class="g ac"><rect x="94.0" y="278.0" width="12.0" height="14.0" rx="2"/><path d="M94.0 282.8H106.0M100.0 282.8V292.0"/></g><g class="g ac"><rect x="134.0" y="278.0" width="12.0" height="14.0" rx="2"/><path d="M134.0 282.8H146.0M140.0 282.8V292.0"/></g><g class="g ac"><rect x="174.0" y="278.0" width="12.0" height="14.0" rx="2"/><path d="M174.0 282.8H186.0M180.0 282.8V292.0"/></g><g class="g ac"><rect x="214.0" y="278.0" width="12.0" height="14.0" rx="2"/><path d="M214.0 282.8H226.0M220.0 282.8V292.0"/></g><g class="g ac"><rect x="254.0" y="278.0" width="12.0" height="14.0" rx="2"/><path d="M254.0 282.8H266.0M260.0 282.8V292.0"/></g><g class="g ac"><rect x="14.0" y="314.0" width="12.0" height="14.0" rx="2"/><path d="M14.0 318.8H26.0M20.0 318.8V328.0"/></g><g class="g ac"><rect x="54.0" y="314.0" width="12.0" height="14.0" rx="2"/><path d="M54.0 318.8H66.0M60.0 318.8V328.0"/></g><g class="g ac"><rect x="94.0" y="314.0" width="12.0" height="14.0" rx="2"/><path d="M94.0 318.8H106.0M100.0 318.8V328.0"/></g><g class="g ac"><rect x="134.0" y="314.0" width="12.0" height="14.0" rx="2"/><path d="M134.0 318.8H146.0M140.0 318.8V328.0"/></g><g class="g ac"><rect x="174.0" y="314.0" width="12.0" height="14.0" rx="2"/><path d="M174.0 318.8H186.0M180.0 318.8V328.0"/></g><g class="g ac"><rect x="214.0" y="314.0" width="12.0" height="14.0" rx="2"/><path d="M214.0 318.8H226.0M220.0 318.8V328.0"/></g><g class="g ac"><rect x="254.0" y="314.0" width="12.0" height="14.0" rx="2"/><path d="M254.0 318.8H266.0M260.0 318.8V328.0"/></g><g class="g ac"><rect x="14.0" y="350.0" width="12.0" height="14.0" rx="2"/><path d="M14.0 354.8H26.0M20.0 354.8V364.0"/></g><g class="g ac"><rect x="54.0" y="350.0" width="12.0" height="14.0" rx="2"/><path d="M54.0 354.8H66.0M60.0 354.8V364.0"/></g><g class="g ac"><rect x="94.0" y="350.0" width="12.0" height="14.0" rx="2"/><path d="M94.0 354.8H106.0M100.0 354.8V364.0"/></g><g class="g ac"><rect x="134.0" y="350.0" width="12.0" height="14.0" rx="2"/><path d="M134.0 354.8H146.0M140.0 354.8V364.0"/></g><g class="g ac"><rect x="174.0" y="350.0" width="12.0" height="14.0" rx="2"/><path d="M174.0 354.8H186.0M180.0 354.8V364.0"/></g><g class="g ac"><rect x="214.0" y="350.0" width="12.0" height="14.0" rx="2"/><path d="M214.0 354.8H226.0M220.0 354.8V364.0"/></g><g class="g ac"><rect x="254.0" y="350.0" width="12.0" height="14.0" rx="2"/><path d="M254.0 354.8H266.0M260.0 354.8V364.0"/></g><g class="g ac"><rect x="14.0" y="386.0" width="12.0" height="14.0" rx="2"/><path d="M14.0 390.8H26.0M20.0 390.8V400.0"/></g><g class="g ac"><rect x="54.0" y="386.0" width="12.0" height="14.0" rx="2"/><path d="M54.0 390.8H66.0M60.0 390.8V400.0"/></g><g class="g ac"><rect x="94.0" y="386.0" width="12.0" height="14.0" rx="2"/><path d="M94.0 390.8H106.0M100.0 390.8V400.0"/></g><g class="g ac"><rect x="134.0" y="386.0" width="12.0" height="14.0" rx="2"/><path d="M134.0 390.8H146.0M140.0 390.8V400.0"/></g><g class="g ac"><rect x="174.0" y="386.0" width="12.0" height="14.0" rx="2"/><path d="M174.0 390.8H186.0M180.0 390.8V400.0"/></g><g class="g ac"><rect x="214.0" y="386.0" width="12.0" height="14.0" rx="2"/><path d="M214.0 390.8H226.0M220.0 390.8V400.0"/></g><g class="g ac"><rect x="254.0" y="386.0" width="12.0" height="14.0" rx="2"/><path d="M254.0 390.8H266.0M260.0 390.8V400.0"/></g></svg>
+    <div class="kroki">
+      <div class="krok" data-r><b><span lang="pl">Zgłoszenie</span><span lang="cs">Přihláška</span></b><p lang="pl">Wypełnij zgłoszenie elektroniczne między 11.1. a 8.2.2027.</p><p lang="cs">Vyplňte elektronickou přihlášku mezi 11. 1. a 8. 2. 2027.</p></div>
+      <div class="krok" data-r><b><span lang="pl">Zapis w szkole</span><span lang="cs">Zápis ve škole</span></b><p lang="pl">Czwartek 11.2.2027, 14:00–17:00. Akt urodzenia dziecka i Twój dowód osobisty. Rodzice czekają przy kawie.</p><p lang="cs">Čtvrtek 11. 2. 2027, 14:00–17:00. Rodný list dítěte a Váš občanský průkaz. Rodiče počkají u kávy.</p></div>
+      <div class="krok" data-r><b><span lang="pl">1 września</span><span lang="cs">1. září</span></b><p lang="pl">Pierwszak siada w ławce w szkole, którą już zna.</p><p lang="cs">Prvňáček usedne do lavice ve škole, kterou už zná.</p></div>
+    </div>
+  </div>
+  <div class="zap-dol">
+    <div class="scio" data-r>
+      <p lang="pl">W testach SCIO 2026 nasi dziewiątacy znaleźli się wśród 10 % najlepszych szkół z matematyki i czeskiego.</p>
+      <p lang="cs">V testech SCIO 2026 se naši deváťáci zařadili mezi 10 % nejúspěšnějších škol v matematice a češtině.</p>
+      <small><span lang="pl">Testy pisało ponad 20 000 uczniów z całej Republiki Czeskiej.</span><span lang="cs">Testy psalo přes 20 000 žáků z celé České republiky.</span></small>
+    </div>
+    <div class="zap-akcje" data-r>
+      <a class="btn tma" href="#zapisy"><span lang="pl">Zgłoszenie elektroniczne</span><span lang="cs">Elektronická přihláška</span></a>
+      <a class="odkaz" href="https://edu.gov.cz/methodology/informacni-letaky-k-zapisu-do-1-rocniku-zs-a-k-odkladum-povinne-skolni-dochazky/"><span lang="pl">Ulotki ministerstwa o zapisie i odroczeniu</span><span lang="cs">Letáky MŠMT k zápisu a odkladu</span></a>
+      <p><span lang="pl">Pytania: dyrektor mgr Tomasz Śmiłowski, </span><span lang="cs">Dotazy: ředitel Mgr. Tomasz Śmiłowski, </span><a href="tel:+420596317672">596 317 672</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MATEŘSKÁ ŠKOLA BAJLANDIA ============ -->
+<section class="sec wrap ms" id="przedszkole" aria-labelledby="ms-h">
+  <div class="ms-wiz">
+    <div class="okno ms-okno" data-msokno aria-hidden="true"><span class="ms-szyba"></span></div>
+    <img class="ms-logo" src="img/bajlandia.png" width="231" height="342" alt="Logo przedszkola Bajlandia: zamek z trojgiem dzieci i chorągiewkami" data-alt-pl="Logo przedszkola Bajlandia: zamek z trojgiem dzieci i chorągiewkami" data-alt-cs="Logo školky Bajlandia: hrad se třemi dětmi a praporky" loading="lazy">
+  </div>
+  <div class="ms-lista">
+    <h2 id="ms-h" data-r><span lang="pl">Przedszkole Bajlandia</span><span lang="cs">Školka Bajlandia</span></h2>
+    <ul data-mslist>
+      <li><button type="button" aria-pressed="true" data-i="0" data-kol="var(--k-z)"><span lang="pl">Zielone Królestwo</span><span lang="cs">Zelené království</span></button></li>
+      <li><button type="button" aria-pressed="false" data-i="1" data-kol="var(--k-c)"><span lang="pl">Czerwone Królestwo</span><span lang="cs">Červené království</span></button></li>
+      <li><button type="button" aria-pressed="false" data-i="2" data-kol="var(--k-n)"><span lang="pl">Niebieskie Królestwo</span><span lang="cs">Modré království</span></button></li>
+      <li><button type="button" aria-pressed="false" data-i="3" data-kol="var(--k-w)"><span lang="pl">Lekcje pływania</span><span lang="cs">Plavání</span></button></li>
+      <li><button type="button" aria-pressed="false" data-i="4" data-kol="var(--k-g)"><span lang="pl">Godziny i obiady</span><span lang="cs">Provoz a obědy</span></button></li>
+    </ul>
+  </div>
+  <div class="ms-fakt" aria-live="polite" data-msfakt>
+    <div data-f="0"><p lang="pl">Starszaki, 4,5–7 lat. Uczą mgr Dominika Bizoń i mgr Aleksandra Matkowska.</p><p lang="cs">Předškoláci, 4,5–7 let. Učí Mgr. Dominika Bizoń a Mgr. Aleksandra Matkowska.</p></div>
+    <div data-f="1" hidden><p lang="pl">Średniaki i maluchy, 2–4,5 roku. Uczą mgr Nela Szarowska i mgr Beata Vašková.</p><p lang="cs">Střední a nejmenší děti, 2–4,5 roku. Učí Mgr. Nela Szarowska a Mgr. Beata Vašková.</p></div>
+    <div data-f="2" hidden><p lang="pl">Maluchy i średniaki, 2–4,5 roku. Uczą mgr Barbara Ondruchová, kierowniczka przedszkola, i mgr Dominika Podczaska.</p><p lang="cs">Nejmenší a střední děti, 2–4,5 roku. Učí Mgr. Barbara Ondruchová, vedoucí školky, a Mgr. Dominika Podczaska.</p></div>
+    <div data-f="3" hidden><p lang="pl">Starszaki w czwartki, średniaki w piątki, 8:00–8:45 na basenie StaRS. Autobus odjeżdża z przedszkola o 7:30, wraca na śniadanie.</p><p lang="cs">Předškoláci ve čtvrtek, střední děti v pátek, 8:00–8:45 v bazénu StaRS. Autobus odjíždí ze školky v 7:30 a vrací se ke svačině.</p></div>
+    <div data-f="4" hidden><p lang="pl">Czynne od 6:15 do 16:45. Przedszkolaki jedzą bez zapisu, nieobecność zgłoś do 6:00. Telefon 596 311 292.</p><p lang="cs">Otevřeno od 6:15 do 16:45. Děti se stravují automaticky, nepřítomnost nahlaste do 6:00. Telefon 596 311 292.</p></div>
+    <p class="cyt" lang="pl">W Bajlandii dzieci uczą się przez bajki, baśnie i legendy.</p>
+    <p class="cyt" lang="cs">V Bajlandii se děti učí skrze pohádky, báje a pověsti.</p>
+  </div>
+</section>
+
+<!-- ============ PO VYUČOVÁNÍ ============ -->
+<section class="sec wrap" id="po-lekcjach" aria-labelledby="po-h">
+  <h2 id="po-h" class="vh"><span lang="pl">Po lekcjach</span><span lang="cs">Po vyučování</span></h2>
+  <p class="po-akapit" lang="pl" data-r>Po lekcjach dzieci czeka świetlica <span class="slot"><img src="img/swietlica-640.jpg" alt="świetlica na boisku ruchu drogowego" loading="lazy" width="640" height="360"></span> do 16:45, w&nbsp;piątki harcerze z&nbsp;Wielkiej Niedźwiedzicy <span class="nw"><span class="slot"><img src="img/niedzwiedzica-900.jpg" alt="gwiazdozbiór Wielkiej Niedźwiedzicy z atlasu Bayera" loading="lazy" width="900" height="689"></span>,</span> wycieczki z&nbsp;Macierzą Szkolną <span class="nw"><span class="slot"><img src="img/cieszyn-640.jpg" alt="klasa piąta przy rotundzie w Cieszynie" loading="lazy" width="640" height="445"></span>,</span> a&nbsp;w&nbsp;czerwcu festyn dla całej szkoły <span class="nw"><span class="slot"><img src="img/stadion-640.jpg" alt="stadion zimowy w Karwinie" loading="lazy" width="640" height="475"></span>.</span></p>
+  <p class="po-akapit" lang="cs" data-r>Po vyučování na děti čeká družina <span class="slot"><img src="img/swietlica-640.jpg" alt="družina na dopravním hřišti" loading="lazy" width="640" height="360"></span> do 16:45, v&nbsp;pátek skauti z&nbsp;oddílu Wielka Niedźwiedzica <span class="nw"><span class="slot"><img src="img/niedzwiedzica-900.jpg" alt="souhvězdí Velké medvědice z Bayerova atlasu" loading="lazy" width="900" height="689"></span>,</span> výlety se spolkem Macierz Szkolna <span class="slot"><img src="img/cieszyn-640.jpg" alt="pátá třída u rotundy v Těšíně" loading="lazy" width="640" height="445"></span> a&nbsp;v&nbsp;červnu festyn pro celou školu <span class="nw"><span class="slot"><img src="img/stadion-640.jpg" alt="zimní stadion v Karviné" loading="lazy" width="640" height="475"></span>.</span></p>
+  <div class="po-dol">
+    <div class="po-zdanie" data-r>
+      <p lang="pl">Świetlica kosztuje 200 Kč miesięcznie. Dziecko zapisujesz elektronicznym zgłoszeniem, płacisz przelewem albo inkasem.</p>
+      <p lang="cs">Družina stojí 200 Kč měsíčně. Dítě přihlásíte elektronickou přihláškou, platíte převodem nebo inkasem.</p>
+    </div>
+    <div class="rozw" data-r>
+      <details>
+        <summary><span lang="pl">Zasady świetlicy</span><span lang="cs">Pravidla družiny</span></summary>
+        <div class="in">
+          <ul lang="pl">
+            <li>Poranna 6:15–7:45, popołudniowa 11:35–16:45.</li>
+            <li>Do 7:30 wejście główne, dzwonek nr 7 (świetlica III). Od 7:30 tylko tylne wejście.</li>
+            <li>Pierwszaków odbieracie dzwonkiem nr 6 (świetlica II), klasy 2–5 dzwonkiem swojej świetlicy.</li>
+            <li>Odbierać mogą tylko osoby wpisane w zgłoszeniu.</li>
+            <li>Opłata: 800 Kč za wrzesień–grudzień do końca września, 1200 Kč za styczeń–czerwiec do końca stycznia. Konto 1721588339/0800, w tytule imię i nazwisko dziecka.</li>
+            <li>W świetlicy nie ma podwieczorków. Jeśli dziecko zostaje po 14:30, spakujcie mu coś do jedzenia.</li>
+          </ul>
+          <ul lang="cs">
+            <li>Ranní 6:15–7:45, odpolední 11:35–16:45.</li>
+            <li>Do 7:30 hlavní vchod, zvonek č. 7 (družina III). Od 7:30 jen zadní vchod.</li>
+            <li>Prvňáčky vyzvedáváte zvonkem č. 6 (družina II), třídy 2–5 zvonkem své družiny.</li>
+            <li>Vyzvednout dítě mohou jen osoby uvedené v přihlášce.</li>
+            <li>Platba: 800 Kč za září–prosinec do konce září, 1200 Kč za leden–červen do konce ledna. Účet 1721588339/0800, do zprávy jméno dítěte.</li>
+            <li>Svačiny v družině nejsou. Pokud dítě zůstává po 14:30, přibalte mu něco k jídlu.</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary><span lang="pl">Harcerstwo Wielka Niedźwiedzica</span><span lang="cs">Skautský oddíl Wielka Niedźwiedzica</span></summary>
+        <div class="in">
+          <p lang="pl">2. Karwińska Drużyna Harcerska działa w szkole od 1992 roku. Zbiórki w ogrodzie, parku, sali gimnastycznej albo w klasie.</p>
+          <p lang="cs">2. karvinský skautský oddíl působí ve škole od roku 1992. Schůzky na zahradě, v parku, v tělocvičně nebo ve třídě.</p>
+          <ul lang="pl"><li>Gromada zuchowa Wilczęta: piątek 14:15–15:00</li><li>Drużyna Wielka Niedźwiedzica: piątek 15:00–16:30</li><li>Drużynowy pwd. Filip Tomanek, <a href="mailto:2kdh.wn@gmail.com">2kdh.wn@gmail.com</a></li></ul>
+          <ul lang="cs"><li>Vlčata (Wilczęta): pátek 14:15–15:00</li><li>Oddíl Wielka Niedźwiedzica: pátek 15:00–16:30</li><li>Vedoucí pwd. Filip Tomanek, <a href="mailto:2kdh.wn@gmail.com">2kdh.wn@gmail.com</a></li></ul>
+        </div>
+      </details>
+      <details>
+        <summary><span lang="pl">Macierz Szkolna</span><span lang="cs">Spolek Macierz Szkolna</span></summary>
+        <div class="in">
+          <p lang="pl">Członkiem jest każda rodzina naszych uczniów. Co roku każde dziecko dostaje od Macierzy 200 Kč na wycieczkę klasową, a Koło współorganizuje festyn.</p>
+          <p lang="cs">Členem je každá rodina našich žáků. Každé dítě od spolku dostává ročně 200 Kč na třídní výlet a spolek spolupořádá festyn.</p>
+          <p><a class="odkaz" href="https://forms.gle/3zgWiXo4WH5dwtaK8"><span lang="pl">Deklaracja członkowska</span><span lang="cs">Členská přihláška</span></a></p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ODHLÁŠENÍ OBĚDA — kupon ============ -->
+<section class="sec wrap obiad" id="obiad" aria-labelledby="obiad-h">
+  <form class="kupon" data-r data-kupon action="mailto:kuchnia@pzskarvina.cz" method="post" enctype="text/plain">
+    <div class="kupon-l">
+      <div>
+        <h2 id="obiad-h" class="h2"><span lang="pl">Odgłoś obiad</span><span lang="cs">Odhlásit oběd</span></h2>
+        <p lang="pl" style="margin-top:20px">Najpóźniej do 6:00 w dniu nieobecności. Od drugiego dnia bez odgłoszenia obiad kosztuje pełną cenę.</p>
+        <p lang="cs" style="margin-top:20px">Nejpozději do 6:00 v den nepřítomnosti. Od druhého dne bez odhlášení stojí oběd plnou cenu.</p>
+      </div>
+      <p class="r" lang="pl">Pierwszego dnia choroby obiad odbierzesz do domu 11:00–11:15, jeśli dasz znać kuchni do 10:00.</p>
+      <p class="r" lang="cs">První den nemoci si oběd vyzvednete domů 11:00–11:15, pokud dáte kuchyni vědět do 10:00.</p>
+    </div>
+    <div class="kupon-p">
+      <label class="pole"><span><span lang="pl">Dziecko</span><span lang="cs">Dítě</span></span><input name="dziecko" autocomplete="off" required data-ph-pl="Imię i nazwisko" data-ph-cs="Jméno a příjmení" placeholder="Imię i nazwisko"></label>
+      <label class="pole"><span><span lang="pl">Klasa</span><span lang="cs">Třída</span></span>
+        <select name="klasa" required>
+          <option value="1.">1.</option><option value="2.">2.</option><option value="3.">3.</option><option value="4.">4.</option><option value="5.">5.</option><option value="6.">6.</option><option value="7.">7.</option><option value="8.">8.</option><option value="9.">9.</option>
+          <option value="Przedszkole" data-t-pl="Przedszkole" data-t-cs="Mateřská škola">Przedszkole</option>
+        </select>
+      </label>
+      <div class="dwa">
+        <label class="pole"><span><span lang="pl">Od</span><span lang="cs">Od</span></span><input type="date" name="od" required></label>
+        <label class="pole"><span><span lang="pl">Do</span><span lang="cs">Do</span></span><input type="date" name="do" required></label>
+      </div>
+      <button class="btn tma wyslij" type="submit"><span lang="pl">Wyślij do kuchni</span><span lang="cs">Odeslat do kuchyně</span></button>
+    </div>
+  </form>
+  <p class="obiad-pod" data-r>
+    <a class="odkaz" href="https://www.pzskarvina.cz/stolowka_szkolna.asp?m=5"><span lang="pl">Jadłospis</span><span lang="cs">Jídelníček</span></a>
+    <span><span lang="pl">Kuchnia: Jana Rigová, </span><span lang="cs">Kuchyně: Jana Rigová, </span><a href="tel:+420596317673">596 317 673</a>, <a href="mailto:kuchnia@pzskarvina.cz">kuchnia@pzskarvina.cz</a></span>
+  </p>
+</section>
+
+<!-- ============ OD ROKU 1918 ============ -->
+<section class="sec historia" id="historia" aria-labelledby="hist-h">
+  <div class="panel">
+    <h2 id="hist-h" class="h2" data-r><span lang="pl">Uczymy po polsku od 1918 roku</span><span lang="cs">Polsky učíme od roku 1918</span></h2>
+    <figure class="okno hist-foto" data-hist>
+      <img src="img/szkola-1918.jpg" width="368" height="243" alt="Dawna fotografia budynku szkoły" data-alt-pl="Dawna fotografia budynku szkoły" data-alt-cs="Stará fotografie budovy školy" loading="lazy">
+    </figure>
+    <div class="hist-txt">
+      <div data-r>
+        <h3><span lang="pl">Sto lat historii</span><span lang="cs">Sto let historie</span></h3>
+        <p lang="pl">W 1918 roku otwarto we Frysztacie Publiczną Polską Szkołę Wydziałową. Pierwszym dyrektorem był Józef Mucha. Okupacja zamknęła polskie szkoły na sześć lat.</p>
+        <p lang="cs">V roce 1918 byla ve Fryštátě otevřena Veřejná polská měšťanská škola. Prvním ředitelem byl Józef Mucha. Okupace zavřela polské školy na šest let.</p>
+        <ul class="lata">
+          <li style="display:contents"><b>1945</b><span><span lang="pl">do szkoły zapisuje się 137 uczniów</span><span lang="cs">do školy se zapisuje 137 žáků</span></span></li>
+          <li style="display:contents"><b>1961</b><span><span lang="pl">dziewięcioletnia szkoła, 402 uczniów</span><span lang="cs">devítiletá škola, 402 žáků</span></span></li>
+          <li style="display:contents"><b>2003</b><span><span lang="pl">szkoła i przedszkole tworzą jedną placówkę</span><span lang="cs">škola a školka tvoří jedno zařízení</span></span></li>
+          <li style="display:contents"><b>2018</b><span><span lang="pl">sto lat szkoły</span><span lang="cs">sto let školy</span></span></li>
+        </ul>
+      </div>
+      <div data-r>
+        <h3><span lang="pl">Ulica Dr. Olszaka</span><span lang="cs">Ulice Dr. Olszaka</span></h3>
+        <p lang="pl">Szkoła stoi przy ulicy nazwanej po Wacławie Olszaku (1868–1939), pierwszym polskim lekarzu górniczym w Karwinie.</p>
+        <p lang="cs">Škola stojí v ulici pojmenované po Wacławu Olszakovi (1868–1939), prvním polském horním lékaři v Karviné.</p>
+      </div>
+      <div data-r><a class="btn" href="https://youtu.be/h2csFFUlWm8"><span lang="pl">Film na 100-lecie szkoły</span><span lang="cs">Film ke 100 letům školy</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARTNEŘI ============ -->
+<section class="sec wrap" id="partnerzy" aria-labelledby="part-h">
+  <ul class="tiles">
+    <li class="tile hl" data-r><h2 id="part-h"><span lang="pl">Pomagają nam</span><span lang="cs">Pomáhají nám</span></h2><p lang="pl">Dzięki projektom pierwszaki i przedszkolaki dostają wyprawki, a szkoła ma przyrodniczy ogród.</p><p lang="cs">Díky projektům dostávají prvňáčci a předškoláci výbavu do školy a škola má přírodní zahradu.</p></li>
+    <li class="tile" data-r><b>Macierz Szkolna</b><p lang="pl">Koło rodziców przy szkole</p><p lang="cs">Spolek rodičů při škole</p></li>
+    <li class="tile" data-r><b><span lang="pl">Miasto Karwina</span><span lang="cs">Statutární město Karviná</span></b><p lang="pl">Organ prowadzący szkołę</p><p lang="cs">Zřizovatel školy</p></li>
+    <li class="tile" data-r><b>Instytut Rozwoju Języka Polskiego</b><p lang="pl">Bon Kolbego 2025: wyprawki dla 16 pierwszaków</p><p lang="cs">Bon Kolbego 2025: výbava pro 16 prvňáčků</p></li>
+    <li class="tile" data-r><b><span lang="pl">Fundacja „Pomoc Polakom na Wschodzie”</span><span lang="cs">Nadace „Pomoc Polakom na Wschodzie”</span></b><p lang="pl">Realizuje Bon Pierwszaka i Bon Przedszkolaka</p><p lang="cs">Realizuje Bon Pierwszaka a Bon Przedszkolaka</p></li>
+    <li class="tile" data-r><b><span lang="pl">Ministerstwo Środowiska RC</span><span lang="cs">Ministerstvo životního prostředí</span></b><p lang="pl">Projekt przyrodniczego ogrodu szkolnego</p><p lang="cs">Projekt přírodní školní zahrady</p></li>
+    <li class="tile" data-r><b><span lang="pl">Adopcja na odległość</span><span lang="cs">Adopce na dálku</span></b><p lang="pl">Wspieramy naukę Dickensa i Hadji w Afryce</p><p lang="cs">Podporujeme vzdělání Dickense a Hadji v Africe</p></li>
+  </ul>
+</section>
+
+<!-- ============ KONTAKT ============ -->
+<section class="sec wrap kontakt" id="kontakt" aria-labelledby="kon-h">
+  <figure class="okno kon-foto" data-r>
+    <img src="img/olszaka-1200.jpg" srcset="img/olszaka-720.jpg 700w, img/olszaka-1200.jpg 1100w" sizes="(max-width:900px) 92vw, 46vw" width="1100" height="1000" alt="Tabliczka z nazwą ulicy Dr. Olszaka" data-alt-pl="Tabliczka z nazwą ulicy Dr. Olszaka" data-alt-cs="Cedule s názvem ulice Dr. Olszaka" loading="lazy">
+  </figure>
+  <div class="kon-txt">
+    <h2 id="kon-h" class="h2" data-r>Kontakt</h2>
+    <p class="kon-adr" data-r>ul. Dr. Olszaka 156/2<br>733 01 <span lang="pl">Karwina-Frysztat</span><span lang="cs">Karviná-Fryštát</span></p>
+    <div class="kon-tel" data-r>
+      <a class="btn" href="tel:+420596317672">596 317 672</a>
+      <span><span lang="pl">Godziny urzędowe 7:30–15:30</span><span lang="cs">Úřední hodiny 7:30–15:30</span></span>
+    </div>
+    <ul class="osoby" data-r>
+      <li><b>mgr Tomasz Śmiłowski</b><span><span lang="pl">dyrektor</span><span lang="cs">ředitel</span></span><br><a href="mailto:smilowski@pzskarvina.cz">smilowski@pzskarvina.cz</a></li>
+      <li><b>mgr Renata Slowiková</b><span><span lang="pl">zastępca dyrektora, doradca</span><span lang="cs">zástupkyně ředitele, výchovná poradkyně</span></span><br><a href="mailto:slowik@pzskarvina.cz">slowik@pzskarvina.cz</a></li>
+      <li><b>Anna Zeisbergerová</b><span><span lang="pl">sekretariat</span><span lang="cs">sekretariát</span></span><br><a href="mailto:zeisbergerova@pzskarvina.cz">zeisbergerova@pzskarvina.cz</a></li>
+      <li><b>Gabriela Babczynská</b><span><span lang="pl">ekonomistka</span><span lang="cs">ekonomka</span></span><br><a href="mailto:skola@pzskarvina.cz">skola@pzskarvina.cz</a></li>
+      <li><b>mgr Barbara Ondruchová</b><span><span lang="pl">kierowniczka przedszkola, 596 311 292</span><span lang="cs">vedoucí školky, 596 311 292</span></span><br><a href="mailto:przedszkole@pzskarvina.cz">przedszkole@pzskarvina.cz</a></li>
+      <li><b>mgr Barbara Zemene</b><span><span lang="pl">psycholog szkolny</span><span lang="cs">školní psycholožka</span></span><br><a href="mailto:psycholog@pzskarvina.cz">psycholog@pzskarvina.cz</a></li>
+    </ul>
+    <dl class="dane" data-r>
+      <dt>IČ</dt><dd>64628680</dd>
+      <dt><span lang="pl">Skrzynka danych</span><span lang="cs">Datová schránka</span></dt><dd>whztxeh</dd>
+      <dt><span lang="pl">E-podatelna</span><span lang="cs">E-podatelna</span></dt><dd><a href="mailto:e-podatelna@pzskarvina.cz">e-podatelna@pzskarvina.cz</a></dd>
+      <dt><span lang="pl">Konto</span><span lang="cs">Účet</span></dt><dd>1721588339/0800</dd>
+    </dl>
+    <div class="szybko" data-r>
+      <a class="btn sv" href="https://pzskarvina.bakalari.cz/"><span lang="pl">Dziennik Bakaláři</span><span lang="cs">Bakaláři</span></a>
+      <a class="btn sv" href="https://nntb.cz/s/wmna1"><span lang="pl">Skrzynka zaufania</span><span lang="cs">Schránka důvěry</span></a>
+      <a class="btn sv" href="https://www.linkabezpeci.cz/">Linka bezpečí</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ PATIČKA ============ -->
+<footer class="stopka" data-stopka>
+  <svg class="stopka-fasada" viewBox="0 0 115 40" aria-hidden="true" preserveAspectRatio="xMidYMax meet"><g class="bloky"><rect class="b zed" x="4" y="8" width="47" height="32"/><rect class="b riz" x="51.5" y="5.5" width="12" height="34.5"/><rect class="b zed" x="64" y="8" width="47" height="32"/><rect class="b rimsa" x="2.5" y="6.2" width="48.5" height="1.3"/><rect class="b rimsa" x="64" y="6.2" width="48.5" height="1.3"/></g><g class="okna"><g class="b okno"><rect x="6.5" y="11" width="5" height="7" rx="0.5"/><path d="M6.5 13.38H11.5M9 13.38V18"/></g><g class="b okno"><rect x="6.5" y="21" width="5" height="7" rx="0.5"/><path d="M6.5 23.38H11.5M9 23.38V28"/></g><g class="b okno"><rect x="6.5" y="31" width="5" height="6.5" rx="0.5"/><path d="M6.5 33.21H11.5M9 33.21V37.5"/></g><g class="b okno"><rect x="14" y="11" width="5" height="7" rx="0.5"/><path d="M14 13.38H19M16.5 13.38V18"/></g><g class="b okno"><rect x="14" y="21" width="5" height="7" rx="0.5"/><path d="M14 23.38H19M16.5 23.38V28"/></g><g class="b okno"><rect x="14" y="31" width="5" height="6.5" rx="0.5"/><path d="M14 33.21H19M16.5 33.21V37.5"/></g><g class="b okno"><rect x="21.5" y="11" width="5" height="7" rx="0.5"/><path d="M21.5 13.38H26.5M24 13.38V18"/></g><g class="b okno"><rect x="21.5" y="21" width="5" height="7" rx="0.5"/><path d="M21.5 23.38H26.5M24 23.38V28"/></g><g class="b okno"><rect x="21.5" y="31" width="5" height="6.5" rx="0.5"/><path d="M21.5 33.21H26.5M24 33.21V37.5"/></g><g class="b okno"><rect x="29" y="11" width="5" height="7" rx="0.5"/><path d="M29 13.38H34M31.5 13.38V18"/></g><g class="b okno"><rect x="29" y="21" width="5" height="7" rx="0.5"/><path d="M29 23.38H34M31.5 23.38V28"/></g><g class="b okno"><rect x="29" y="31" width="5" height="6.5" rx="0.5"/><path d="M29 33.21H34M31.5 33.21V37.5"/></g><g class="b okno"><rect x="36.5" y="11" width="5" height="7" rx="0.5"/><path d="M36.5 13.38H41.5M39 13.38V18"/></g><g class="b okno"><rect x="36.5" y="21" width="5" height="7" rx="0.5"/><path d="M36.5 23.38H41.5M39 23.38V28"/></g><g class="b okno"><rect x="36.5" y="31" width="5" height="6.5" rx="0.5"/><path d="M36.5 33.21H41.5M39 33.21V37.5"/></g><g class="b okno"><rect x="44" y="11" width="5" height="7" rx="0.5"/><path d="M44 13.38H49M46.5 13.38V18"/></g><g class="b okno"><rect x="44" y="21" width="5" height="7" rx="0.5"/><path d="M44 23.38H49M46.5 23.38V28"/></g><g class="b okno"><rect x="44" y="31" width="5" height="6.5" rx="0.5"/><path d="M44 33.21H49M46.5 33.21V37.5"/></g><g class="b okno"><rect x="66.5" y="11" width="5" height="7" rx="0.5"/><path d="M66.5 13.38H71.5M69 13.38V18"/></g><g class="b okno"><rect x="66.5" y="21" width="5" height="7" rx="0.5"/><path d="M66.5 23.38H71.5M69 23.38V28"/></g><g class="b okno"><rect x="66.5" y="31" width="5" height="6.5" rx="0.5"/><path d="M66.5 33.21H71.5M69 33.21V37.5"/></g><g class="b okno"><rect x="74" y="11" width="5" height="7" rx="0.5"/><path d="M74 13.38H79M76.5 13.38V18"/></g><g class="b okno"><rect x="74" y="21" width="5" height="7" rx="0.5"/><path d="M74 23.38H79M76.5 23.38V28"/></g><g class="b okno"><rect x="74" y="31" width="5" height="6.5" rx="0.5"/><path d="M74 33.21H79M76.5 33.21V37.5"/></g><g class="b okno"><rect x="81.5" y="11" width="5" height="7" rx="0.5"/><path d="M81.5 13.38H86.5M84 13.38V18"/></g><g class="b okno"><rect x="81.5" y="21" width="5" height="7" rx="0.5"/><path d="M81.5 23.38H86.5M84 23.38V28"/></g><g class="b okno"><rect x="81.5" y="31" width="5" height="6.5" rx="0.5"/><path d="M81.5 33.21H86.5M84 33.21V37.5"/></g><g class="b okno"><rect x="89" y="11" width="5" height="7" rx="0.5"/><path d="M89 13.38H94M91.5 13.38V18"/></g><g class="b okno"><rect x="89" y="21" width="5" height="7" rx="0.5"/><path d="M89 23.38H94M91.5 23.38V28"/></g><g class="b okno"><rect x="89" y="31" width="5" height="6.5" rx="0.5"/><path d="M89 33.21H94M91.5 33.21V37.5"/></g><g class="b okno"><rect x="96.5" y="11" width="5" height="7" rx="0.5"/><path d="M96.5 13.38H101.5M99 13.38V18"/></g><g class="b okno"><rect x="96.5" y="21" width="5" height="7" rx="0.5"/><path d="M96.5 23.38H101.5M99 23.38V28"/></g><g class="b okno"><rect x="96.5" y="31" width="5" height="6.5" rx="0.5"/><path d="M96.5 33.21H101.5M99 33.21V37.5"/></g><g class="b okno"><rect x="104" y="11" width="5" height="7" rx="0.5"/><path d="M104 13.38H109M106.5 13.38V18"/></g><g class="b okno"><rect x="104" y="21" width="5" height="7" rx="0.5"/><path d="M104 23.38H109M106.5 23.38V28"/></g><g class="b okno"><rect x="104" y="31" width="5" height="6.5" rx="0.5"/><path d="M104 33.21H109M106.5 33.21V37.5"/></g><g class="b okno"><rect x="54" y="9.5" width="7" height="8" rx="0.5"/><path d="M54 12.22H61M57.5 12.22V17.5"/></g><g class="b okno"><rect x="55.5" y="20.5" width="4" height="7.5" rx="0.5"/><path d="M55.5 23.05H59.5M57.5 23.05V28"/></g><g class="b okno"><rect x="55" y="30.5" width="5" height="9.5" rx="0.5"/><path d="M55 33.73H60M57.5 33.73V40"/></g></g></svg>
+  <div class="stopka-cols">
+    <nav aria-label="Szkoła"><b><span lang="pl">Szkoła</span><span lang="cs">Škola</span></b><ul><li><a href="#aktualnosci"><span lang="pl">Aktualności</span><span lang="cs">Aktuality</span></a></li><li><a href="#dzien"><span lang="pl">Dzień w szkole</span><span lang="cs">Den ve škole</span></a></li><li><a href="#zapisy"><span lang="pl">Zapisy</span><span lang="cs">Zápis</span></a></li><li><a href="#historia"><span lang="pl">Historia</span><span lang="cs">Historie</span></a></li></ul></nav>
+    <nav aria-label="Rodzice"><b><span lang="pl">Rodzice</span><span lang="cs">Rodiče</span></b><ul><li><a href="#obiad"><span lang="pl">Odgłoś obiad</span><span lang="cs">Odhlásit oběd</span></a></li><li><a href="https://pzskarvina.bakalari.cz/">Bakaláři</a></li><li><a href="https://www.pzskarvina.cz/dokumenty.asp?m=3&amp;s=1"><span lang="pl">Dokumenty</span><span lang="cs">Dokumenty</span></a></li><li><a href="https://www.pzskarvina.cz/rada-szkoly.asp?m=12"><span lang="pl">Rada Szkoły</span><span lang="cs">Školská rada</span></a></li></ul></nav>
+    <nav aria-label="Przedszkole"><b><span lang="pl">Przedszkole</span><span lang="cs">Školka</span></b><ul><li><a href="#przedszkole">Bajlandia</a></li><li><a href="#po-lekcjach"><span lang="pl">Świetlica</span><span lang="cs">Družina</span></a></li><li><a href="https://www.facebook.com/SPFrysztat/">Facebook</a></li></ul></nav>
+    <nav aria-label="Pomoc"><b><span lang="pl">Pomoc</span><span lang="cs">Pomoc</span></b><ul><li><a href="mailto:psycholog@pzskarvina.cz"><span lang="pl">Psycholog</span><span lang="cs">Psycholožka</span></a></li><li><a href="https://nntb.cz/s/wmna1"><span lang="pl">Skrzynka zaufania</span><span lang="cs">Schránka důvěry</span></a></li><li><a href="https://www.linkabezpeci.cz/">Linka bezpečí</a></li></ul></nav>
+    <div class="adr">
+      <p><b>Szkoła Podstawowa i Przedszkole, Karviná</b><br><span lang="pl">Základní škola a mateřská škola s polským jazykem vyučovacím, příspěvková organizace</span><span lang="cs">Základní škola a mateřská škola s polským jazykem vyučovacím, příspěvková organizace</span></p>
+      <p>ul. Dr. Olszaka 156/2, 733 01 Karviná-Fryštát<br><a href="tel:+420596317672">596 317 672</a> · <a href="mailto:skola@pzskarvina.cz">skola@pzskarvina.cz</a></p>
+    </div>
+  </div>
+  <div class="stopka-dol">
+    <span>© 2026 Polska Szkoła Podstawowa i Przedszkole w Karwinie</span>
+    <a class="btn tma" href="#" data-nahoru><span lang="pl">Do góry</span><span lang="cs">Nahoru</span></a>
+  </div>
+  <p class="kredyt"><span lang="pl">Zdjęcia z Wikimedia Commons, kadrowane:</span><span lang="cs">Fotografie z Wikimedia Commons, oříznuté:</span>
+    <a href="https://commons.wikimedia.org/wiki/File:Polish_elementary_school_Karvin%C3%A1-Fry%C5%A1t%C3%A1t.jpg">budynek szkoły</a> – David Nierostek, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>;
+    <a href="https://commons.wikimedia.org/wiki/File:Frysztat_7369.jpg">ulica Dr. Olszaka</a> – Darwinek, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>;
+    <a href="https://commons.wikimedia.org/wiki/File:Ursa_Major_-_Johann_Bayer.jpg">Ursa Major</a> – Johann Bayer, 1624, public domain;
+    <a href="https://commons.wikimedia.org/wiki/File:Zimn%C3%AD_stadion_Karvin%C3%A1.JPG">stadion zimowy</a> – Hellooo, public domain.
+    <span lang="pl">Pozostałe zdjęcia i logo Bajlandii: archiwum szkoły.</span><span lang="cs">Ostatní fotografie a logo Bajlandie: archiv školy.</span></p>
+</footer>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script>
+/* úvod: po nakreslení fasády naskočí druhý řádek názvu */
+window.INTRO_EXTRA = function (tl, root, lock) {
+  var w2 = lock.querySelector('.w2');
+  if (w2) { gsap.set(w2, { opacity: 0, y: 8 }); tl.to(w2, { opacity: 1, y: 0, duration: .5 }, '-=.2'); }
+};
+</script>
+<script src="js/intro.js"></script>
+<script>
+(function () {
+  var html = document.documentElement;
+  var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function lang() { return html.getAttribute('data-lang') || 'pl'; }
+
+  /* ===== JAZYK ===== */
+  var TITLE = { pl: 'Polska Szkoła Podstawowa i Przedszkole w Karwinie', cs: 'Polská základní a mateřská škola v Karviné' };
+  var langInit = true;
+  function applyLang(L) {
+    html.setAttribute('data-lang', L); html.lang = L;
+    document.title = TITLE[L];
+    document.querySelectorAll('[data-set-lang]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.setLang === L)); });
+    document.querySelectorAll('[data-alt-' + L + ']').forEach(function (el) { el.alt = el.getAttribute('data-alt-' + L); });
+    document.querySelectorAll('[data-aria-' + L + ']').forEach(function (el) { el.setAttribute('aria-label', el.getAttribute('data-aria-' + L)); });
+    document.querySelectorAll('[data-ph-' + L + ']').forEach(function (el) { el.placeholder = el.getAttribute('data-ph-' + L); });
+    document.querySelectorAll('[data-t-' + L + ']').forEach(function (el) { el.textContent = el.getAttribute('data-t-' + L); });
+    try { localStorage.setItem('pzs-lang', L); } catch (e) {}
+    if (window.__dzien) window.__dzien();
+    if (!langInit && window.gsap && window.ScrollTrigger) {
+      /* prvky nového jazyka, které už jsou nad dolní hranou okna, ukaž hned */
+      document.querySelectorAll('[data-r]').forEach(function (el) { if (el.getClientRects().length && el.getBoundingClientRect().top < innerHeight) gsap.set(el, { opacity: 1, y: 0 }); });
+      ScrollTrigger.refresh();
+    }
+    langInit = false;
+  }
+  document.querySelectorAll('[data-set-lang]').forEach(function (b) { b.addEventListener('click', function () { applyLang(b.dataset.setLang); }); });
+  applyLang(lang());
+
+  /* ===== MENU (mobil) ===== */
+  var nav = document.getElementById('nav'), mb = nav.querySelector('.menu-btn');
+  mb.addEventListener('click', function () { var o = nav.classList.toggle('open'); mb.setAttribute('aria-expanded', String(o)); });
+  nav.querySelectorAll('.links a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); }); });
+
+  /* ===== DEN VE ŠKOLE — okna svítí podle času ===== */
+  var sec = document.getElementById('dzien');
+  var rows = [].slice.call(sec.querySelectorAll('[data-plan] li'));
+  var okna = [].slice.call(sec.querySelectorAll('.okn'));
+  var rng = document.getElementById('cas'), out = sec.querySelector('[data-zc]'), zd = sec.querySelector('[data-zd]');
+  var radios = [].slice.call(sec.querySelectorAll('input[name="den"]'));
+  var oi = sec.querySelector('[data-oi]');
+  sec.querySelector('[data-ovl]').hidden = false;
+  var DNI = { pl: ['niedziela', 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota'], cs: ['neděle', 'pondělí', 'úterý', 'středa', 'čtvrtek', 'pátek', 'sobota'] };
+  var T = {
+    pl: { teraz: 'teraz', do: 'do ', od: 'od ', otw: 'otwarte', trw: 'trwają', zamk: 'Szkoła zamknięta',
+      oiDzis: 'Obiad na dziś możesz jeszcze odgłosić, do 6:00.', oiJutro: 'Obiad na jutro odgłosisz do jutra, 6:00.', oiPon: 'Obiad na poniedziałek odgłosisz do poniedziałku, 6:00.',
+      oiChory: 'Dziecko zachorowało? Daj znać kuchni do 10:00, obiad odbierzesz 11:00–11:15.', link: 'Odgłoś obiad' },
+    cs: { teraz: 'teď', do: 'do ', od: 'od ', otw: 'otevřeno', trw: 'probíhá', zamk: 'Škola je zavřená',
+      oiDzis: 'Dnešní oběd ještě odhlásíte, do 6:00.', oiJutro: 'Zítřejší oběd odhlásíte do zítřka, 6:00.', oiPon: 'Pondělní oběd odhlásíte do pondělí, 6:00.',
+      oiChory: 'Dítě onemocnělo? Dejte kuchyni vědět do 10:00, oběd vyzvednete 11:00–11:15.', link: 'Odhlásit oběd' }
+  };
+  var live = true, den = new Date().getDay(), mins = 0;
+  function hm(m) { return Math.floor(m / 60) + ':' + ('0' + (m % 60)).slice(-2); }
+  function inDays(spec, d) { if (spec === '1-5') return d >= 1 && d <= 5; return spec.split(',').indexOf(String(d)) > -1; }
+  function nowMins() { var n = new Date(); return n.getHours() * 60 + n.getMinutes(); }
+  function render() {
+    var L = lang(), t = T[L];
+    if (live) { den = new Date().getDay(); mins = nowMins(); rng.value = Math.max(300, Math.min(1080, mins)); }
+    out.textContent = hm(mins);
+    zd.textContent = live ? DNI[L][den] : (den === 5 ? DNI[L][5] : den === 6 || den === 0 ? (L === 'pl' ? 'weekend' : 'víkend') : (L === 'pl' ? 'pon–czw' : 'po–čt'));
+    radios.forEach(function (r) { r.checked = (r.value === '2' && den >= 1 && den <= 4) || (r.value === '5' && den === 5) || (r.value === '6' && (den === 6 || den === 0)); });
+    var act = {};
+    rows.forEach(function (li) {
+      var od = +li.dataset.od, dd = +li.dataset.do, ok = inDays(li.dataset.dni, den);
+      var on = ok && mins >= od && mins < dd;
+      li.classList.toggle('on', on); li.classList.toggle('off', !on);
+      var st = li.querySelector('[data-stan]');
+      st.textContent = on ? (t.teraz + ' · ' + t.do + hm(dd)) : '';
+    });
+    var weekday = den >= 1 && den <= 5;
+    var open = weekday && mins >= 375 && mins < 1005;
+    act.drzwi = open;
+    act.klasy = weekday && mins >= 480 && mins < 870;
+    act.swietlica = weekday && ((mins >= 375 && mins < 465) || (mins >= 695 && mins < 1005));
+    act.stolowka = weekday && mins >= 630 && mins < 825;
+    act.sekretariat = weekday && mins >= 450 && mins < 930;
+    okna.forEach(function (o, i) {
+      var on = !!act[o.dataset.k];
+      if (on !== o.classList.contains('lit')) { o.firstChild.style.transitionDelay = (RM ? 0 : (i % 7) * 40) + 'ms'; o.classList.toggle('lit', on); }
+    });
+    sec.classList.toggle('noc', !open);
+    sec.classList.toggle('harc', den === 5 && mins >= 855 && mins < 990);
+    /* oběd */
+    var msg;
+    if (!weekday || (den === 5 && mins >= 360)) msg = t.oiPon;
+    else if (mins < 360) msg = t.oiDzis;
+    else msg = t.oiJutro;
+    if (weekday && mins >= 360 && mins < 600) msg += ' ' + t.oiChory;
+    oi.innerHTML = '';
+    var s = document.createElement('span'); s.textContent = msg + ' ';
+    var a = document.createElement('a'); a.href = '#obiad'; a.textContent = t.link;
+    oi.appendChild(s); oi.appendChild(a);
+  }
+  rng.addEventListener('input', function () { live = false; mins = +rng.value; render(); });
+  radios.forEach(function (r) { r.addEventListener('change', function () { live = false; den = +r.value; mins = +rng.value; render(); }); });
+  sec.querySelector('[data-teraz]').addEventListener('click', function () { live = true; render(); });
+  setInterval(function () { if (live) render(); }, 30000);
+  window.__dzien = render;
+  render();
+
+  /* ===== ŠKOLKA — výběr mění barvu okna a fakt ===== */
+  var msBtns = [].slice.call(document.querySelectorAll('[data-mslist] button'));
+  var msOkno = document.querySelector('[data-msokno]');
+  var facts = [].slice.call(document.querySelectorAll('[data-msfakt] [data-f]'));
+  function pick(i) {
+    msBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(+b.dataset.i === i)); });
+    msOkno.style.setProperty('--okno', msBtns[i].dataset.kol);
+    facts.forEach(function (f) { f.hidden = +f.dataset.f !== i; });
+    if (window.gsap && !RM) gsap.fromTo(facts[i], { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .4, ease: 'power2.out' });
+  }
+  msBtns.forEach(function (b) { b.addEventListener('click', function () { pick(+b.dataset.i); }); });
+
+  /* ===== KUPON — e-mail do kuchyně ===== */
+  var kupon = document.querySelector('[data-kupon]');
+  var today = new Date(); var iso = today.toISOString().slice(0, 10);
+  kupon.querySelectorAll('input[type="date"]').forEach(function (d) { d.value = iso; d.min = iso; });
+  kupon.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var L = lang(), f = kupon.elements;
+    function dm(v) { var p = v.split('-'); return +p[2] + '.' + +p[1] + '.'; }
+    var subj = (L === 'pl' ? 'Odgłoszenie obiadu: ' : 'Odhlášení oběda: ') + f.dziecko.value + ', ' + f.klasa.options[f.klasa.selectedIndex].text;
+    var body = L === 'pl'
+      ? 'Dzień dobry,\n\nodgłaszam obiady dla: ' + f.dziecko.value + ' (klasa ' + f.klasa.options[f.klasa.selectedIndex].text + ')\nw dniach od ' + dm(f.od.value) + ' do ' + dm(f.do.value) + '\n\nDziękuję.'
+      : 'Dobrý den,\n\nodhlašuji obědy pro: ' + f.dziecko.value + ' (třída ' + f.klasa.options[f.klasa.selectedIndex].text + ')\nve dnech od ' + dm(f.od.value) + ' do ' + dm(f.do.value) + '\n\nDěkuji.';
+    location.href = 'mailto:kuchnia@pzskarvina.cz?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body);
+  });
+  var kl = kupon.querySelector('.kupon-l');
+  function cut() { kupon.style.setProperty('--cut', (kl.offsetHeight - 2) + 'px'); }
+  cut(); addEventListener('resize', cut); if (document.fonts) document.fonts.ready.then(cut);
+  kupon.elements.od.addEventListener('change', function () { var d = kupon.elements.do; d.min = this.value; if (d.value < this.value) d.value = this.value; });
+
+  document.querySelector('[data-nahoru]').addEventListener('click', function (e) { e.preventDefault(); scrollTo({ top: 0, behavior: RM ? 'auto' : 'smooth' }); });
+
+  /* ===== POHYB — GSAP + ScrollTrigger ===== */
+  if (!window.gsap || !window.ScrollTrigger || RM) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* úvod: řádky titulku vyjedou zpoza účaří, okno se otevře závěrkou */
+  var hero = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+  var heroImg = document.querySelector('.hero-okno img'), heroOk = document.querySelector('.hero-okno');
+  hero.from('.hero h1 .ln > span', { yPercent: 105, duration: .9, stagger: .11 })
+      .from('.hero .h-in', { y: 24, opacity: 0, duration: .7, stagger: .08 }, '-=.55')
+      .fromTo(heroOk, { clipPath: 'inset(0 0 0 100% round 8px)' }, { clipPath: 'inset(0 0 0 0% round 8px)', duration: 1.1, ease: 'power3.inOut' }, 0.05)
+      .fromTo(heroImg, { scale: 1.12 }, { scale: 1, duration: 1.4, ease: 'power2.out' }, 0.05);
+  if (html.classList.contains('intro-on')) afterIntro(function () { hero.play(); }); else hero.progress(1);
+  /* fotka v okně se při rolování lehce posouvá */
+  gsap.to(heroImg, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+
+  /* vstupy částí sekcí: nadpis, text, obrázek s odstupem */
+  gsap.set('[data-r]', { opacity: 0, y: 26 });
+  ScrollTrigger.batch('[data-r]', { start: 'top 88%', once: true, onEnter: function (b) {
+    gsap.to(b, { opacity: 1, y: 0, duration: .8, ease: 'power3.out', stagger: .075, overwrite: true });
+  } });
+
+  /* fasáda dne: čáry se nakreslí podle rolování */
+  var dl = [].slice.call(document.querySelectorAll('.fasada .dl'));
+  dl.forEach(function (p) { var L = p.getTotalLength(); p.style.strokeDasharray = L + ' ' + L; p.style.strokeDashoffset = L; });
+  gsap.to(dl, { strokeDashoffset: 0, ease: 'none', stagger: .12, scrollTrigger: { trigger: '.dzien-fasada', start: 'top 85%', end: 'top 30%', scrub: .6 } });
+  gsap.from('.fasada .okn', { scale: .4, opacity: 0, transformOrigin: '50% 50%', duration: .5, ease: 'back.out(2)', stagger: { each: .025, from: 'center' }, scrollTrigger: { trigger: '.dzien-fasada', start: 'top 55%', once: true } });
+
+  /* diagram zápisu: vlna zleva doprava */
+  document.querySelectorAll('.diag').forEach(function (svg) {
+    gsap.from(svg.querySelectorAll('.g'), { opacity: 0, scale: .2, transformOrigin: '50% 50%', duration: .45, ease: 'back.out(1.8)', stagger: .006, scrollTrigger: { trigger: svg, start: 'top 80%', once: true } });
+  });
+
+  /* školka: okno vyroste, logo vystoupí */
+  gsap.from('.ms-okno', { scale: .86, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '#przedszkole', start: 'top 70%', once: true } });
+  gsap.from('.ms-logo', { yPercent: 18, opacity: 0, duration: 1, delay: .2, ease: 'power3.out', scrollTrigger: { trigger: '#przedszkole', start: 'top 70%', once: true } });
+  gsap.from('.ms-lista li', { x: -24, opacity: 0, duration: .6, stagger: .07, ease: 'power3.out', scrollTrigger: { trigger: '.ms-lista', start: 'top 90%', once: true } });
+
+  /* obrázky ve větě se otevřou jako okenice */
+  gsap.utils.toArray('.po-akapit').forEach(function (p) {
+    gsap.fromTo(p.querySelectorAll('.slot'), { clipPath: 'inset(0 50% 0 50% round .18em)' }, { clipPath: 'inset(0 0% 0 0% round .18em)', duration: .9, ease: 'power3.inOut', stagger: .16, scrollTrigger: { trigger: p, start: 'top 75%', once: true } });
+  });
+
+  /* panel historie: stará fotka stoupá s rolováním */
+  gsap.fromTo('[data-hist]', { y: 80 }, { y: -20, ease: 'none', scrollTrigger: { trigger: '.panel', start: 'top bottom', end: 'bottom 60%', scrub: true } });
+
+  /* patička: budova se poskládá z ploch */
+  gsap.from('.stopka-fasada .b', { yPercent: 60, opacity: 0, duration: .7, ease: 'power3.out', stagger: { each: .008, from: 'random' }, scrollTrigger: { trigger: '[data-stopka]', start: 'top 85%', once: true } });
+
+  addEventListener('load', function () { ScrollTrigger.refresh(); });
+})();
+</script>
+</body>
+</html>
