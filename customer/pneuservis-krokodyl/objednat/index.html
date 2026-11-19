@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Objednat termín – Pneuservis a autoservis u Krokodýla</title>
+<meta name="description" content="Objednejte si přezutí, opravu defektu nebo servis auta v AUTO-PNEUSERVISU u Krokodýla v Horním Těrlicku. Vyberte službu a den, objednávku pošlete SMS nebo e-mailem.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#151614">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' rx='10' fill='%23151614'/%3E%3Ccircle cx='28' cy='28' r='21' fill='none' stroke='%23f4c20d' stroke-width='4'/%3E%3Ccircle cx='28' cy='28' r='6' fill='%23f4c20d'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/archivo-100_900-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-kr') && !location.hash))) {
+      sessionStorage.setItem('intro-kr', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="AUTO-PNEUSERVIS u Krokodýla, úvod">
+      <svg viewBox="0 0 56 56" aria-hidden="true"><circle class="d" cx="28" cy="28" r="24.5"/><path class="d" d="M28.0 9.5 31.9 17.2 39.9 13.8 38.0 22.2 46.2 24.8 39.3 30.0 44.0 37.2 35.4 36.8 34.3 45.4 28.0 39.5 21.7 45.4 20.6 36.8 12.0 37.3 16.7 30.0 9.8 24.8 18.0 22.2 16.1 13.8 24.1 17.2Z"/><circle class="f" cx="28" cy="28" r="5"/></svg>
+      <span class="lt"><span class="w">u Krokodýla</span><small class="f">auto-pneuservis</small></span>
+    </a>
+    <nav aria-label="Hlavní"><a href="../#sluzby">Služby</a><a href="../#dezen">Dezén</a><a href="./" aria-current="page">Objednat</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn" href="tel:+420774900479"><span class="num">774 900 479</span></a>
+  </div>
+</header>
+
+<main>
+  <div class="o-hlava">
+    <div class="in wrap">
+      <div>
+        <h1 class="bok" data-vt-cil="objednat" data-h>Objednat termín</h1>
+        <p data-h>Vyberte, co potřebujete, a den, kdy se vám to hodí. Objednávku pošlete SMS nebo e-mailem a termín vám potvrdíme.</p>
+        <p class="stav" id="stav" data-h><i></i><span id="stav-t">Po–Čt 9–17, Pá 9–16, So 9–12</span></p>
+      </div>
+      <div class="o-fotky" data-h aria-hidden="true">
+        <img src="../img/snih-800.jpg" width="800" height="450" alt="" style="object-position:40% 60%">
+        <img src="../img/kolo-ruce-800.jpg" width="800" height="533" alt="">
+        <img src="../img/dezen-zimni-800.jpg" width="800" height="1198" alt="" style="object-position:50% 35%">
+      </div>
+    </div>
+  </div>
+
+  <div class="o-telo wrap">
+    <form class="o-form" id="objednavka" novalidate>
+      <fieldset class="pole" data-h>
+        <legend>Co potřebujete <small style="font-weight:400;color:var(--muted)">(můžete vybrat víc)</small></legend>
+        <div class="cipy" id="co">
+          <button type="button" class="cip" aria-pressed="false">Přezutí</button>
+          <button type="button" class="cip" aria-pressed="false">Vyvážení kol</button>
+          <button type="button" class="cip" aria-pressed="false">Oprava defektu</button>
+          <button type="button" class="cip" aria-pressed="false">Nové pneumatiky</button>
+          <button type="button" class="cip" aria-pressed="false">Servis a olej</button>
+          <button type="button" class="cip" aria-pressed="false">Brzdy</button>
+          <button type="button" class="cip" aria-pressed="false">Diagnostika</button>
+          <button type="button" class="cip" aria-pressed="false">Příprava na STK</button>
+        </div>
+      </fieldset>
+      <label class="pole vstup" data-r><span class="lbl">Auto</span><input id="auto" placeholder="Značka, model, případně rok" autocomplete="off"></label>
+      <fieldset class="pole" data-r>
+        <legend>Den</legend>
+        <div class="dny" id="dny"></div>
+      </fieldset>
+      <fieldset class="pole" data-r>
+        <legend>Část dne</legend>
+        <div class="cipy" id="cast">
+          <button type="button" class="cip" aria-pressed="false" data-v="dopoledne">Dopoledne</button>
+          <button type="button" class="cip" aria-pressed="false" data-v="odpoledne">Odpoledne</button>
+        </div>
+      </fieldset>
+      <label class="pole vstup" data-r><span class="lbl">Poznámka</span><textarea id="pozn" placeholder="Např. mám vlastní zimní pneumatiky na discích"></textarea></label>
+      <div class="dva" data-r>
+        <label class="vstup"><span>Jméno</span><input id="jmeno" autocomplete="name"></label>
+        <label class="vstup"><span>Telefon *</span><input id="tel" type="tel" inputmode="tel" autocomplete="tel"></label>
+      </div>
+      <div class="odeslat" data-r>
+        <button type="submit" class="btn tmavy" data-kanal="sms">Poslat SMS <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button type="submit" class="btn obrys-t" data-kanal="mail">Poslat e-mailem</button>
+      </div>
+    </form>
+
+    <aside class="listek" aria-label="Shrnutí objednávky" data-h>
+      <figure><img src="../img/zvedak-800.jpg" width="800" height="1200" alt="Auto na zvedáku v dílně" style="object-position:50% 40%"></figure>
+      <h2 class="bok">Zakázkový list</h2>
+      <dl id="listek">
+        <div><dt>Služba</dt><dd data-k="co" class="prazdne">vyberte</dd></div>
+        <div><dt>Auto</dt><dd data-k="auto" class="prazdne">nevyplněno</dd></div>
+        <div><dt>Den</dt><dd data-k="den" class="prazdne">vyberte</dd></div>
+        <div><dt>Část dne</dt><dd data-k="cast" class="prazdne">je mi to jedno</dd></div>
+        <div><dt>Telefon</dt><dd data-k="tel" class="prazdne">nevyplněno</dd></div>
+      </dl>
+      <p class="poz">Těšínská 141/44, Horní Těrlicko · <a class="odkaz num" href="tel:+420774900479">774 900 479</a></p>
+    </aside>
+  </div>
+</main>
+
+<footer class="pata">
+  <div class="wrap in">
+    <span>AUTO-PNEUSERVIS u Krokodýla · Těšínská 141/44, Horní Těrlicko</span>
+    <span>Ilustrační fotografie: Unsplash</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/objednat.js"></script>
+</body>
+</html>
