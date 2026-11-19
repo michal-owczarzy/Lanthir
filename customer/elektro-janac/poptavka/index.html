@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Poptávka – Elektroinstalace Janáč, Osoblaha</title>
+<meta name="description" content="Poptejte elektroinstalaci u Vítězslava Janáče z Osoblahy: vyberte, co potřebujete, a pošlete poptávku SMS nebo e-mailem.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#12161a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='9' fill='%2312161a'/%3E%3Ccircle cx='24' cy='24' r='11' fill='%23ffd27a'/%3E%3Cpath d='M16 16l16 16M32 16L16 32' stroke='%2312161a' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/saira-100_900-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/barlow-400-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-jn') && !location.hash))) {
+      sessionStorage.setItem('intro-jn', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Elektroinstalace Janáč, úvod">
+      <svg viewBox="0 0 64 32" aria-hidden="true"><circle class="zarovka" cx="52" cy="16" r="7.2"/><path class="d" d="M2 16h16"/><path class="d paka" d="M18 16l15 0"/><path class="d" d="M35 16h9"/><circle class="d" cx="52" cy="16" r="8"/><path class="d" d="M46.4 10.4l11.2 11.2M57.6 10.4L46.4 21.6"/></svg>
+      <span class="lt"><span class="w">Janáč</span><small class="f">elektroinstalace</small></span>
+    </a>
+    <nav aria-label="Hlavní"><a href="../#sluzby">Co dělám</a><a href="../#hlinik">Staré rozvody</a><a href="./" aria-current="page">Poptávka</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn num" href="tel:+420604726216">604 726 216</a>
+  </div>
+</header>
+
+<main>
+  <div class="p-hlava">
+    <div class="in wrap">
+      <div>
+        <h1 class="disp" data-vt-cil="poptat" data-h>Poptat práci</h1>
+        <p data-h>Zaškrtněte, co potřebujete, a napište pár slov. Poptávka odejde SMS nebo e-mailem a ozvu se vám zpátky.</p>
+      </div>
+      <div class="p-fotky" data-h aria-hidden="true">
+        <img src="../img/dum-v-noci-800.jpg" width="800" height="1066" alt="" style="object-position:50% 72%">
+        <img src="../img/vypinac-800.jpg" width="800" height="1066" alt="" style="object-position:50% 45%">
+        <img src="../img/kabel-800.jpg" width="800" height="533" alt="" style="object-position:60% 50%">
+      </div>
+    </div>
+  </div>
+
+  <div class="p-telo wrap">
+    <form class="p-form" id="poptavka" novalidate>
+      <fieldset class="pole" data-h>
+        <legend>Co potřebujete</legend>
+        <div class="cipy" id="co">
+          <button type="button" class="cip" aria-pressed="false" data-v="nova">Nová elektroinstalace</button>
+          <button type="button" class="cip" aria-pressed="false" data-v="rekonstrukce">Rekonstrukce rozvodů</button>
+          <button type="button" class="cip" aria-pressed="false">Zásuvky a vypínače</button>
+          <button type="button" class="cip" aria-pressed="false">Světla</button>
+          <button type="button" class="cip" aria-pressed="false">Rozvaděč a jističe</button>
+          <button type="button" class="cip" aria-pressed="false">Porucha</button>
+        </div>
+      </fieldset>
+      <fieldset class="pole" data-r>
+        <legend>Kde</legend>
+        <div class="cipy" id="kde">
+          <button type="button" class="cip" aria-pressed="false">Rodinný dům</button>
+          <button type="button" class="cip" aria-pressed="false">Byt</button>
+          <button type="button" class="cip" aria-pressed="false">Chata nebo chalupa</button>
+          <button type="button" class="cip" aria-pressed="false">Garáž nebo dílna</button>
+        </div>
+      </fieldset>
+      <fieldset class="pole" data-r>
+        <legend>Kdy</legend>
+        <div class="cipy" id="kdy">
+          <button type="button" class="cip" aria-pressed="false">Co nejdřív</button>
+          <button type="button" class="cip" aria-pressed="false">Do měsíce</button>
+          <button type="button" class="cip" aria-pressed="false">Plánuji později</button>
+        </div>
+      </fieldset>
+      <label class="pole vstup" data-r><span class="lbl">Popis</span><textarea id="popis" placeholder="Např. dům z roku 1978, chci vyměnit rozvody v kuchyni a koupelně"></textarea></label>
+      <div class="dva" data-r>
+        <label class="vstup"><span>Obec</span><input id="obec" autocomplete="address-level2"></label>
+        <label class="vstup"><span>Telefon *</span><input id="tel" type="tel" inputmode="tel" autocomplete="tel"></label>
+      </div>
+      <div class="odeslat" data-r>
+        <button type="submit" class="btn hneda" data-kanal="sms">Poslat SMS <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button type="submit" class="btn obrys-t" data-kanal="mail">Poslat e-mailem</button>
+      </div>
+    </form>
+
+    <aside class="bok" data-h>
+      <figure><img src="../img/jistice-800.jpg" width="800" height="600" alt="Jističe v rozvaděči"></figure>
+      <div class="karta">
+        <h2>Raději zavoláte?</h2>
+        <p><a class="odkaz num" href="tel:+420604726216">604 726 216</a><br><a class="odkaz" href="mailto:janac.vit@outlook.cz">janac.vit@outlook.cz</a></p>
+        <p style="color:var(--muted)">Zahradní 179, Osoblaha</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="pata">
+  <div class="wrap in">
+    <span>Elektroinstalace Janáč · Osoblaha</span>
+    <span>Ilustrační fotografie: Unsplash</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script>
+window.INTRO_EXTRA = function (tl, root, lock) {
+  var paka = lock.querySelector('.paka'), z = lock.querySelector('.zarovka');
+  gsap.set(paka, { rotation: -32, svgOrigin: '18 16' });
+  gsap.set(z, { opacity: 0 });
+  tl.to(paka, { rotation: 0, duration: .32, ease: 'back.in(2)' }, '-=.05')
+    .to(z, { opacity: 1, duration: .08, repeat: 3, yoyo: true, ease: 'none' })
+    .to(z, { opacity: 1, duration: .1 });
+};
+</script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/poptavka.js"></script>
+</body>
+</html>
