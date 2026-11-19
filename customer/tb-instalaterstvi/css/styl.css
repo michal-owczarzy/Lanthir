@@ -1,0 +1,317 @@
+@font-face{font-family:"Sofia Sans";font-style:normal;font-weight:400 700;font-display:swap;src:url(../fonts/sofia-sans-400_700-normal-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Sofia Sans";font-style:normal;font-weight:400 700;font-display:swap;src:url(../fonts/sofia-sans-400_700-normal-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Sofia Sans Extra Condensed";font-style:normal;font-weight:700 900;font-display:swap;src:url(../fonts/sofia-sans-extra-condensed-700_900-normal-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Sofia Sans Extra Condensed";font-style:normal;font-weight:700 900;font-display:swap;src:url(../fonts/sofia-sans-extra-condensed-700_900-normal-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+/* Tokeny z dodávky a cedule na dílně: žlutá dodávka, modrá „voda“, červená „topení“,
+   asfalt a omítka. Trubky: voda modrá, topení červená, plyn žlutá (plynovod se natírá žlutě). */
+:root{
+  --zluta:#f6c400; --zluta-2:#dfb000; --zluta-svetla:#fff3c2;
+  --modra:#1c4fa0; --modra-2:#143c7c; --cervena:#d9252b;
+  --ink:#1f2328; --muted:#555b63; --zed:#edeeeb; --zed-2:#dfe0dc; --bila:#ffffff;
+  --display:"Sofia Sans Extra Condensed","Arial Narrow",sans-serif; --text:"Sofia Sans",system-ui,sans-serif;
+  --s-small:clamp(.875rem,.85rem + .1vw,.9375rem);
+  --s-body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
+  --s-lead:clamp(1.25rem,1.1rem + .6vw,1.5625rem);
+  --s-head:clamp(3rem,1.8rem + 4.6vw,6.25rem);
+  --m:clamp(18px,4vw,56px); --riser:0px; --r:6px;
+  --ease:cubic-bezier(.16,1,.3,1); --ven:cubic-bezier(.4,0,1,1);
+}
+@media (min-width:1100px){:root{--riser:72px}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:110px}
+body{margin:0;background:var(--zed);color:var(--ink);font:400 var(--s-body)/1.55 var(--text);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3,p,ul,ol,dl,dd,figure,blockquote{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--modra);outline-offset:3px}
+.wrap{padding-left:calc(var(--m) + var(--riser));padding-right:calc(var(--m) + var(--riser))}
+.disp{font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:.005em;line-height:.92}
+.num{font-variant-numeric:tabular-nums}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.ribbon{background:#3a2ee0;color:#fff;font:400 15px/1.4 var(--text);text-align:center;padding:9px 16px}
+.ribbon a{font-weight:700;text-underline-offset:2px}
+
+/* ========== MIKROINTERAKCE: tlačítka ========== */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 26px;border:0;border-radius:var(--r);background:var(--zluta);color:var(--ink);font:700 var(--s-body)/1 var(--text);text-decoration:none;cursor:pointer;transition:transform .16s var(--ease),background-color .2s,color .2s}
+.btn:active{transform:scale(.96)}
+.btn svg{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.btn.modra{background:var(--modra);color:#fff}
+.btn.obrys{background:transparent;box-shadow:inset 0 0 0 2px currentColor} /* taste-skill-ignore: obrys tlačítka, ne stín */
+.btn .sip{transition:transform .2s var(--ease)}
+@media (hover:hover){
+  .btn:hover{background:var(--zluta-2);transform:translateY(-2px)}
+  .btn.modra:hover{background:var(--modra-2)}
+  .btn.obrys:hover{background:var(--ink);color:#fff;box-shadow:none}
+  .btn:hover .sip{transform:translateX(4px)}
+  .btn.tel:hover svg{animation:zvoni .5s ease-in-out}
+}
+@keyframes zvoni{20%{transform:rotate(-14deg)}40%{transform:rotate(12deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(4deg)}}
+
+/* ========== LOGO: kapka a plamen ========== */
+.logo{display:inline-flex;align-items:center;gap:.32em;font:900 27px/1 var(--display);text-transform:uppercase;letter-spacing:.01em;text-decoration:none;color:var(--ink)}
+.logo svg{width:1.3em;height:1.3em;flex:none;overflow:visible}
+.logo .kap{fill:var(--modra)}
+.logo .kap-o{fill:none;stroke:var(--modra);stroke-width:2.6;stroke-linejoin:round}
+.logo .pla{fill:var(--zluta)}
+.logo b{color:var(--modra);font-weight:900}
+
+/* ========== Úvodní animace: tři trubky a kapka ========== */
+.intro{display:none}
+html.intro-on .intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;pointer-events:none;animation:pojistka .3s linear 7s forwards}
+.intro-ground{position:absolute;inset:0;background:var(--zed);overflow:hidden}
+.intro-trubky{position:absolute;left:0;right:0;top:50%;width:100%;height:120px;margin-top:-60px}
+.intro-trubky path{fill:none;stroke-width:14;stroke-linecap:round}
+.intro-lock{position:relative;visibility:hidden;background:var(--zed);padding:.2em .4em;border-radius:6px}
+.intro.ready .intro-lock{visibility:visible}
+.intro-m{display:inline-block;overflow:hidden;vertical-align:top;padding:.14em 0 .06em;margin:-.14em 0 -.06em}
+.intro-m>span{display:inline-block}
+html.intro-on [data-intro-land]{opacity:0;animation:ukaz 0s 7.2s forwards}
+html.intro-on.intro-landed [data-intro-land]{opacity:1;transition:opacity .25s ease-out}
+@keyframes pojistka{to{opacity:0;visibility:hidden}}
+@keyframes ukaz{to{opacity:1}}
+
+/* ========== HLAVIČKA (při přechodu stránek zůstává na místě) ========== */
+.hlavicka{position:sticky;top:0;z-index:40;background:var(--bila);view-transition-name:hlavicka}
+.hlavicka .in{display:flex;align-items:center;gap:22px;height:80px}
+.hlavicka nav{display:flex;gap:26px;margin-left:auto}
+.hlavicka nav a{position:relative;text-decoration:none;font-weight:600;padding:8px 0}
+.hlavicka nav a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:3px;background:var(--cervena);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
+.hlavicka nav a[aria-current="page"]::after{transform:none}
+@media (hover:hover){.hlavicka nav a:hover::after{transform:none}}
+.stav{display:inline-flex;align-items:center;gap:8px;font-size:var(--s-small);font-weight:700;padding:7px 12px;border-radius:999px;background:var(--zed);white-space:nowrap}
+.stav i{width:9px;height:9px;border-radius:50%;background:var(--muted)}
+.stav.ok i{background:#1f9d55;animation:tep 2s ease-out infinite}
+@keyframes tep{0%{box-shadow:0 0 0 0 rgba(31,157,85,.55)}70%{box-shadow:0 0 0 8px rgba(31,157,85,0)}100%{box-shadow:0 0 0 0 rgba(31,157,85,0)}} /* taste-skill-ignore: pulz tečky „nonstop“ */
+.hlavicka .btn{min-height:48px;padding:0 18px}
+.tri{display:flex;height:9px}
+.tri i{flex:1}
+.tri i:nth-child(1){background:var(--modra)}
+.tri i:nth-child(2){background:var(--cervena)}
+.tri i:nth-child(3){background:var(--zluta)}
+
+/* ========== STOUPAČKA: tři trubky po levé straně, plní se při scrollu ========== */
+main{position:relative}
+.stoupacka{position:absolute;left:var(--m);top:0;width:56px;height:100%;pointer-events:none;overflow:visible;display:none}
+@media (min-width:1100px){.stoupacka{display:block}}
+.stoupacka .stopa{fill:none;stroke:var(--zed-2);stroke-width:11;stroke-linecap:round}
+.stoupacka .tok{fill:none;stroke-width:11;stroke-linecap:round}
+.stoupacka .ventil{transform-box:fill-box;transform-origin:50% 50%}
+
+/* ========== ÚVOD ========== */
+.hero{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;align-items:center;padding-top:clamp(36px,5vw,72px);padding-bottom:clamp(56px,7vw,104px)}
+.hero-copy{grid-column:1/8}
+.hero h1{font-size:clamp(3.5rem,1.6rem + 6.4vw,8.5rem)}
+.hero h1 .ln{display:block;overflow:hidden;padding:.06em 0 .02em;margin:-.06em 0 -.02em}
+.hero h1 .ln>span{display:inline-block}
+.hero h1 .v{color:var(--modra)}
+.hero h1 .t{color:var(--cervena)}
+.hero h1 .p{position:relative;z-index:0;padding:0 .12em;margin-left:-.04em;--natr:1}
+.hero h1 .p::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--zluta);transform:scaleX(var(--natr));transform-origin:left}
+.lede{margin-top:24px;font-size:var(--s-lead);line-height:1.45;max-width:36ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.duvera{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:30px;font-weight:600}
+.duvera li{display:flex;align-items:center;gap:8px}
+.duvera svg{width:22px;height:22px;flex:none}
+.hvezdy{display:inline-flex;gap:2px}
+.hvezdy svg{width:18px;height:18px;fill:var(--zluta);stroke:var(--ink);stroke-width:1.2}
+.hero-foto{grid-column:8/-1;position:relative}
+.hero-foto .ram{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:var(--zed-2)}
+.hero-foto img{width:100%;height:100%;object-fit:cover;object-position:8% 50%}
+.hero-foto figcaption{position:absolute;left:14px;bottom:14px;right:14px;background:var(--bila);border-radius:var(--r);padding:12px 14px;font-size:var(--s-small);font-weight:600;display:flex;gap:10px;align-items:center}
+.hero-foto figcaption i{width:12px;height:30px;flex:none;background:var(--zluta);border-radius:3px}
+
+/* ========== SLUŽBY (karty vedou na stránku služeb) ========== */
+.sluzby{padding-top:clamp(96px,10vw,150px)}
+.head2{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;align-items:end}
+.head2 h2{grid-column:1/8;font-size:var(--s-head)}
+.head2 p{grid-column:8/-1;font-size:var(--s-lead);line-height:1.45}
+.karty{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:44px}
+.karta{position:relative;display:flex;flex-direction:column;background:var(--bila);border-radius:var(--r);overflow:hidden;text-decoration:none;color:inherit;grid-column:span 2;transition:transform .25s var(--ease)}
+.karta.velka{grid-column:span 3}
+.karta .foto{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--zed-2)}
+.karta.velka .foto{aspect-ratio:16/9}
+.karta .foto img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.karta .txt{padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.karta h3{font:900 clamp(1.75rem,1.3rem + 1.2vw,2.5rem)/.95 var(--display);text-transform:uppercase;align-self:flex-start}
+.karta p{color:var(--ink)}
+.karta .dal{margin-top:auto;padding-top:10px;display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--modra)}
+.karta .dal svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s var(--ease)}
+.stitek{position:absolute;left:12px;top:12px;display:inline-flex;align-items:center;gap:6px;padding:5px 10px 5px 8px;border-radius:999px;background:var(--bila);font-size:13px;font-weight:700}
+.stitek i{width:10px;height:10px;border-radius:50%}
+.st-voda i{background:var(--modra)}.st-topeni i{background:var(--cervena)}.st-plyn i{background:var(--zluta);box-shadow:inset 0 0 0 1.5px var(--ink)} /* taste-skill-ignore: obrys žluté tečky */
+.karta.bez-foto{background:var(--zluta)}
+.karta.bez-foto .ikona{padding:22px 22px 0}
+.karta.bez-foto .ikona svg{width:72px;height:72px;fill:none;stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.karta.bez-foto .dal{color:var(--ink)}
+@media (hover:hover){.karta:hover{transform:translateY(-4px)}.karta:hover .foto img{transform:scale(1.05)}.karta:hover .dal svg{transform:translateX(5px)}}
+.karta:active{transform:scale(.985)}
+
+/* ========== HLÍDAČ SERVISU (živý prvek) ========== */
+.hlidac{margin-top:clamp(96px,10vw,150px);background:var(--zluta);padding-top:clamp(64px,7vw,104px);padding-bottom:clamp(64px,7vw,104px)}
+.hlidac .in{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;row-gap:32px;align-items:center}
+.hlidac-l{grid-column:1/6}
+.hlidac-l h2{font-size:var(--s-head)}
+.hlidac-l p{margin-top:20px;font-size:var(--s-lead);line-height:1.45;max-width:34ch}
+.hlidac-l small{display:block;margin-top:16px;font-size:var(--s-small);max-width:44ch}
+.nastroj{grid-column:7/-1;background:var(--bila);border-radius:var(--r);padding:clamp(20px,3vw,36px)}
+.prepinac{position:relative;display:grid;grid-template-columns:1fr 1fr;background:var(--zed);border-radius:999px;padding:5px;isolation:isolate}
+.prepinac button{position:relative;z-index:1;height:48px;border:0;border-radius:999px;background:transparent;font:700 var(--s-body)/1 var(--text);color:var(--ink);cursor:pointer;transition:color .2s}
+.prepinac button[aria-pressed="true"]{color:var(--ink)}
+.prepinac .jezdec{position:absolute;z-index:0;top:5px;bottom:5px;left:5px;width:calc(50% - 5px);border-radius:999px;background:var(--zluta);transition:transform .32s var(--ease)}
+.prepinac[data-i="1"] .jezdec{transform:translateX(100%)}
+.nastroj label{display:block;margin-top:24px;font-weight:700}
+.nastroj input[type=date]{margin-top:8px;width:100%;height:56px;border:2px solid var(--zed-2);border-radius:var(--r);padding:0 14px;font:600 var(--s-lead)/1 var(--text);color:var(--ink);background:var(--bila);transition:border-color .2s}
+.nastroj input[type=date]:focus{outline:none;border-color:var(--modra)}
+.vysledek{margin-top:24px;padding:20px;border-radius:var(--r);background:var(--zed);display:grid;gap:4px}
+.vysledek .kdy{font:900 clamp(2.5rem,1.8rem + 2.6vw,4rem)/.95 var(--display);text-transform:uppercase}
+.vysledek .datum{font-weight:600}
+.vysledek[data-stav="brzy"]{background:var(--zluta-svetla)}
+.vysledek[data-stav="proslo"]{background:#fde4e4}
+.vysledek[data-stav="proslo"] .kdy{color:var(--cervena)}
+.nastroj .akce{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.nastroj .akce .btn{flex:1 1 220px}
+.btn.hotovo{background:#1f9d55;color:#fff}
+
+/* ========== RECENZE ========== */
+.recenze{padding-top:clamp(96px,10vw,150px);display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;row-gap:36px;align-items:start}
+.recenze-l{grid-column:1/5;position:sticky;top:120px}
+.skore{display:flex;align-items:baseline;gap:14px}
+.skore b{font:900 clamp(6rem,3rem + 8vw,11rem)/.8 var(--display)}
+.skore span{font-size:var(--s-lead);font-weight:700;line-height:1.2}
+.recenze-l .hvezdy{margin-top:14px}
+.recenze-l .hvezdy svg{width:30px;height:30px}
+.recenze-l p{margin-top:18px;font-size:var(--s-lead);line-height:1.45}
+.recenze-l p cite{display:block;margin-top:8px;font-style:normal;font-size:var(--s-small);color:var(--muted)}
+.recenze-l .btn{margin-top:24px}
+.citaty{grid-column:6/-1;display:flex;flex-direction:column;gap:14px}
+.citat{background:var(--bila);border-radius:var(--r);padding:26px 28px;position:relative}
+.citat::before{content:"";position:absolute;left:0;top:24px;bottom:24px;width:5px;border-radius:0 4px 4px 0;background:var(--modra)}
+.citat:nth-child(2)::before{background:var(--cervena)}
+.citat:nth-child(3)::before{background:var(--zluta)}
+.citat blockquote{font-size:var(--s-lead);line-height:1.45}
+.citat footer{margin-top:12px;font-size:var(--s-small);font-weight:700}
+.citat footer span{font-weight:400;color:var(--muted)}
+
+/* ========== DODÁVKA ========== */
+.dodavka{padding-top:clamp(96px,10vw,150px);display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;row-gap:28px;align-items:center}
+.dodavka figure{grid-column:1/8;border-radius:var(--r);overflow:hidden}
+.dodavka figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.dodavka-t{grid-column:9/-1}
+.dodavka-t h2{font-size:clamp(2.5rem,1.6rem + 3vw,4.5rem)}
+.dodavka-t p{margin-top:18px;font-size:var(--s-lead);line-height:1.45}
+
+/* ========== KONTAKT ========== */
+.kontakt{margin-top:clamp(96px,10vw,150px);background:var(--ink);color:#fff;padding-top:clamp(72px,8vw,120px);padding-bottom:40px}
+.kontakt .in{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;row-gap:40px}
+.kontakt h2{grid-column:1/-1;font-size:var(--s-head)}
+.kontakt .tel-velky{grid-column:1/8;font:900 clamp(3.5rem,1.4rem + 7.4vw,9.5rem)/.9 var(--display);color:var(--zluta);text-decoration:none;white-space:nowrap}
+@media (hover:hover){.kontakt .tel-velky:hover{color:#fff}}
+.kontakt .akce{grid-column:1/8;display:flex;flex-wrap:wrap;gap:10px}
+.kontakt .akce .btn.obrys{color:#fff}
+.kontakt dl{grid-column:9/-1;grid-row:2/span 2;display:grid;gap:18px;align-content:start}
+.kontakt dt{font-size:var(--s-small);color:#c9ccd1}
+.kontakt dd{font-weight:600}
+.kontakt dd a{text-underline-offset:3px}
+.hodiny{display:grid;grid-template-columns:auto 1fr;gap:4px 18px}
+.hodiny .dnes{color:var(--zluta)}
+.paticka{grid-column:1/-1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px 32px;margin-top:40px;font-size:var(--s-small);color:#c9ccd1}
+
+/* ========== STRÁNKA SLUŽEB ========== */
+.sl-hlava{padding-top:clamp(40px,5vw,80px);padding-bottom:clamp(24px,3vw,40px)}
+.sl-hlava .zpet{display:inline-flex;align-items:center;gap:8px;font-weight:700;text-decoration:none;color:var(--modra)}
+.sl-hlava .zpet svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s var(--ease)}
+@media (hover:hover){.sl-hlava .zpet:hover svg{transform:translateX(-4px)}}
+.sl-hlava h1{margin-top:18px;font-size:clamp(4rem,2rem + 7vw,9rem)}
+.sl-hlava p{margin-top:18px;font-size:var(--s-lead);max-width:44ch;line-height:1.45}
+.sl-skok{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.sl-skok a{display:inline-flex;align-items:center;gap:8px;padding:9px 14px 9px 10px;border-radius:999px;background:var(--bila);font-weight:700;text-decoration:none;transition:transform .16s var(--ease),background-color .2s}
+.sl-skok a i{width:10px;height:10px;border-radius:50%}
+.sl-skok a:active{transform:scale(.95)}
+@media (hover:hover){.sl-skok a:hover{background:var(--zluta-svetla)}}
+.sluzba{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;row-gap:24px;align-items:center;padding-top:clamp(64px,7vw,112px)}
+.sluzba figure{grid-column:1/7;border-radius:var(--r);overflow:hidden;background:var(--zed-2)}
+.sluzba figure img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.sluzba .t{grid-column:8/-1}
+.sluzba:nth-of-type(even) figure{grid-column:7/-1;grid-row:1}
+.sluzba:nth-of-type(even) .t{grid-column:1/6;grid-row:1}
+.sluzba .stitek{position:static;margin-top:14px;width:fit-content}
+.sluzba h2{margin-top:14px;font-size:clamp(2.75rem,1.6rem + 3.6vw,5rem);align-self:flex-start;width:fit-content}
+.sluzba p{margin-top:16px;font-size:var(--s-lead);line-height:1.45}
+.sluzba ul{margin-top:18px;display:grid;gap:8px}
+.sluzba li{display:flex;gap:10px;align-items:baseline}
+.sluzba li::before{content:"";flex:none;width:9px;height:9px;border-radius:2px;background:var(--modra);transform:translateY(-2px)}
+.sluzba .btn{margin-top:24px}
+.sluzba .ikona-velka{grid-column:1/7;background:var(--zluta);border-radius:var(--r);aspect-ratio:4/3;display:grid;place-items:center}
+.sluzba .ikona-velka svg{width:40%;height:auto;fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sluzba:nth-of-type(even) .ikona-velka{grid-column:7/-1;grid-row:1}
+
+/* ========== TOAST ========== */
+.toast{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;background:var(--ink);color:#fff;font-weight:700;translate:-50% 0;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .2s var(--ven),transform .2s var(--ven)}
+.toast.on{opacity:1;transform:none;transition:opacity .25s var(--ease),transform .35s var(--ease)}
+.toast svg{width:22px;height:22px;fill:none;stroke:var(--zluta);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+
+/* ========== PŘECHODY STRÁNEK (View Transitions mezi stránkami) ========== */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:vt-ven .2s var(--ven) both}
+::view-transition-new(root){animation:vt-sem .42s var(--ease) both}
+::view-transition-group(sdileny){animation-duration:.5s;animation-timing-function:cubic-bezier(.2,.8,.2,1)}
+@keyframes vt-ven{to{opacity:0;transform:translateY(-14px)}}
+@keyframes vt-sem{from{opacity:0;transform:translateY(20px)}}
+
+/* ========== Pohyb: výchozí stavy pro GSAP (bez skriptu se nic neschová) ========== */
+.js [data-r]{opacity:0;transform:translateY(26px)}
+.js .hero h1 .ln>span{transform:translateY(105%)}
+.js [data-h]{opacity:0;transform:translateY(16px)}
+.js .hero-foto .ram{clip-path:inset(0% 0% 100% 0%)}
+.bump{animation:bump .35s var(--ease)}
+@keyframes bump{40%{transform:translateY(-4px) scale(1.03)}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js [data-r],.js [data-h],.js .hero h1 .ln>span{opacity:1;transform:none}
+  .js .hero-foto .ram{clip-path:none}
+  .btn,.karta,.karta .foto img,.prepinac .jezdec,.toast{transition:none}
+  .stav.ok i,.bump{animation:none}
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
+}
+
+/* ========== Tablet a telefon ========== */
+@media (max-width:1000px){
+  .hlavicka nav{display:none}
+  .hero{display:block}
+  .hero-foto{margin-top:40px}
+  .hero-foto .ram{aspect-ratio:4/3}
+  .head2{display:block}
+  .head2 p{margin-top:16px}
+  .karty{grid-template-columns:1fr 1fr}
+  .karta,.karta.velka{grid-column:span 1}
+  .hlidac .in{display:block}
+  .nastroj{margin-top:32px}
+  .recenze{display:block}
+  .recenze-l{position:static}
+  .citaty{margin-top:36px}
+  .dodavka{display:block}
+  .dodavka-t{margin-top:28px}
+  .kontakt .in{display:block}
+  .kontakt .tel-velky{display:block;margin-top:28px}
+  .kontakt .akce{margin-top:24px}
+  .kontakt dl{margin-top:36px}
+  .sluzba{display:block}
+  .sluzba .t{margin-top:24px}
+}
+@media (max-width:600px){
+  .ribbon{font-size:14px;padding:8px 14px}
+  .hlavicka .in{height:68px;gap:10px}
+  .logo{font-size:22px}
+  .stav{display:none}
+  .hlavicka .btn span{display:none}
+  .hlavicka .btn{width:48px;padding:0}
+  .hero h1{font-size:min(17vw,5rem)}
+  .hero-cta .btn{flex:1 1 100%}
+  .karty{grid-template-columns:1fr}
+  .kontakt .tel-velky{font-size:17vw}
+  .kontakt .akce .btn{flex:1 1 100%}
+  .toast{width:calc(100% - 24px);justify-content:center}
+}

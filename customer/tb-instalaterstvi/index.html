@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TB-Instalatérství Štítina – voda, topení, plyn | Tomáš Baar, Opava</title>
+<meta name="description" content="Instalatér, topenář a plynař ze Štítiny u Opavy. Montáž plynových kotlů, kotlů na tuhá paliva, tepelných čerpadel a klimatizací, servis a revize kotlů BRÖTJE, revize komínů. Po–Pá nonstop, tel. 724 462 489.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23f6c400'/%3E%3Cpath d='M20 5S9 17 9 25a11 11 0 0 0 22 0C31 17 20 5 20 5z' fill='%231c4fa0'/%3E%3Cpath d='M20 17c2.6 3.4 5 5.2 5 8.6a5 5 0 0 1-10 0c0-2.4 1.6-4 2.6-5.8.8 1.6 1.6 2.4 2.4 2.4.8-1.8 0-3.6 0-5.2z' fill='%23f6c400'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/sofia-sans-extra-condensed-700_900-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/sofia-sans-400_700-normal-latin.woff2" crossorigin>
+<script>
+  /* úvodní animace loga: jen první stránka v relaci, ne s omezeným pohybem, ne na kotvě */
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-tb') && !location.hash))) {
+      sessionStorage.setItem('intro-tb', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="js/vt.js"></script>
+<link rel="stylesheet" href="css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro-ground">
+    <svg class="intro-trubky" viewBox="0 0 1000 120" preserveAspectRatio="none"><path d="M-20 30H1020" stroke="#1c4fa0"/><path d="M-20 60H1020" stroke="#d9252b"/><path d="M-20 90H1020" stroke="#f6c400"/></svg>
+  </div>
+</div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="./" data-intro-land aria-label="TB-Instalatérství, úvod">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path class="kap f" d="M20 3S7 17 7 25a13 13 0 0 0 26 0C33 17 20 3 20 3z"/><path class="kap-o d" d="M20 3S7 17 7 25a13 13 0 0 0 26 0C33 17 20 3 20 3z" pathLength="1"/><path class="pla f" d="M20 16c3 4 6 6 6 10a6 6 0 0 1-12 0c0-3 2-5 3-7 1 2 2 3 3 3 1-2 0-4 0-6z"/></svg><span><b class="w">TB-</b><span class="w">Instalatérství</span></span>
+    </a>
+    <nav aria-label="Hlavní"><a href="sluzby/">Služby</a><a href="#servis">Hlídač servisu</a><a href="#recenze">Recenze</a><a href="#kontakt">Kontakt</a></nav>
+    <p class="stav" data-stav><i></i><span>Po–Pá nonstop</span></p>
+    <a class="btn tel" href="tel:+420724462489" aria-label="Zavolat 724 462 489"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg><span>724 462 489</span></a>
+  </div>
+  <div class="tri" aria-hidden="true"><i></i><i></i><i></i></div>
+</header>
+
+<main>
+<svg class="stoupacka" id="stoupacka" aria-hidden="true"></svg>
+
+<section class="hero wrap" aria-labelledby="hero-h">
+  <div class="hero-copy">
+    <h1 id="hero-h" class="disp"><span class="ln"><span class="v">Voda,</span> <span class="t">topení,</span></span><span class="ln"><span class="p">plyn</span></span></h1>
+    <p class="lede" data-h>Instalatér, topenář a plynař Tomáš Baar ze Štítiny u Opavy. Montáž kotlů a tepelných čerpadel, servis kotlů BRÖTJE a revize komínů.</p>
+    <div class="hero-cta" data-h>
+      <a class="btn tel" href="tel:+420724462489"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>Zavolat 724 462 489</a>
+      <a class="btn obrys" href="sluzby/">Co děláme <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <ul class="duvera" data-h>
+      <li><span class="hvezdy" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9z"/></svg></span>4,9 z 47 hodnocení na Firmy.cz</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="#1c4fa0" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Po–Pá nonstop</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="#1c4fa0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg>Platba kartou</li>
+    </ul>
+  </div>
+  <figure class="hero-foto" data-h>
+    <div class="ram"><img src="img/dodavka-1600.jpg" srcset="img/dodavka-800.jpg 800w, img/dodavka-1600.jpg 1600w" sizes="(max-width:1000px) 92vw, 38vw" width="1600" height="1066" alt="Žlutá dodávka TB-Instalatérství před dílnou ve Štítině" fetchpriority="high"></div>
+    <figcaption><i></i>Žlutá dodávka a dílna ve Štítině</figcaption>
+  </figure>
+</section>
+
+<section class="sluzby wrap" id="sluzby" aria-labelledby="sl-h">
+  <div class="head2">
+    <h2 id="sl-h" class="disp" data-r data-ventil="voda">Co pro Vás uděláme</h2>
+    <p data-r>Od výměny bojleru po nový kotel nebo tepelné čerpadlo. Kotle BRÖTJE servisujeme a revidujeme.</p>
+  </div>
+  <div class="karty">
+    <a class="karta velka" href="sluzby/#kotle" data-vt="kotle" data-r>
+      <div class="foto"><img src="img/radiator-800.jpg" srcset="img/radiator-800.jpg 800w, img/radiator-1600.jpg 1600w" sizes="(max-width:1000px) 46vw, 40vw" width="1600" height="1065" alt="Radiátor pod oknem v pokoji" loading="lazy"><span class="stitek st-topeni"><i></i>topení</span></div>
+      <div class="txt"><h3 data-vt-el>Kotle a tepelná čerpadla</h3><p>Montáž plynových kotlů, kotlů na tuhá paliva a tepelných čerpadel.</p><span class="dal">Více o službě <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </a>
+    <a class="karta velka" href="sluzby/#brotje" data-vt="brotje" data-r>
+      <div class="foto"><img src="img/kotelna-800.jpg" srcset="img/kotelna-800.jpg 800w, img/kotelna-1600.jpg 1600w" sizes="(max-width:1000px) 46vw, 40vw" width="1600" height="2406" alt="Kotelna s ventily, čerpadly a manometry" loading="lazy" style="object-position:50% 30%"><span class="stitek st-plyn"><i></i>plyn</span></div>
+      <div class="txt"><h3 data-vt-el>Servis a revize kotlů BRÖTJE</h3><p>Pravidelný servis a revize plynových kotlů značky BRÖTJE.</p><span class="dal">Více o službě <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </a>
+    <a class="karta" href="sluzby/#kominy" data-vt="kominy" data-r>
+      <div class="foto"><img src="img/komin-800.jpg" width="800" height="1200" alt="Kouř z komína rodinného domu za svítání" loading="lazy" style="object-position:50% 70%"><span class="stitek st-plyn"><i></i>plyn</span></div>
+      <div class="txt"><h3 data-vt-el>Revize komínů</h3><p>Revize kouřových cest, tedy komínů.</p><span class="dal">Více o službě <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </a>
+    <a class="karta" href="sluzby/#voda" data-vt="voda" data-r>
+      <div class="foto"><img src="img/odpad-800.jpg" width="800" height="600" alt="Instalatér opravuje odpad pod umyvadlem" loading="lazy"><span class="stitek st-voda"><i></i>voda</span></div>
+      <div class="txt"><h3 data-vt-el>Voda a bojlery</h3><p>Instalatérské práce a výměna bojleru.</p><span class="dal">Více o službě <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </a>
+    <a class="karta bez-foto" href="sluzby/#klimatizace" data-vt="klimatizace" data-r>
+      <div class="ikona"><svg viewBox="0 0 72 72" aria-hidden="true"><rect x="6" y="14" width="60" height="26" rx="5"/><path d="M14 32h44M22 48c0 6-4 6-4 12M36 48c0 6-4 6-4 12M50 48c0 6-4 6-4 12"/></svg></div>
+      <div class="txt"><h3 data-vt-el>Klimatizace</h3><p>Montáž klimatizací.</p><span class="dal">Více o službě <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </a>
+  </div>
+</section>
+
+<section class="hlidac" id="servis" aria-labelledby="hl-h">
+  <div class="in wrap">
+    <div class="hlidac-l">
+      <h2 id="hl-h" class="disp" data-r>Kdy je čas na servis?</h2>
+      <p data-r>Zadejte, kdy byl kotel naposledy na servisu nebo komín na kontrole. Uvidíte, kdy je čas na další, a připomínku si uložíte do kalendáře.</p>
+      <small data-r>Servis kotle i kontrola komína se obvykle dělají jednou za rok.</small>
+    </div>
+    <form class="nastroj" id="nastroj" data-r>
+      <div class="prepinac" role="group" aria-label="Co hlídat" data-i="0">
+        <span class="jezdec" aria-hidden="true"></span>
+        <button type="button" aria-pressed="true" data-co="Servis kotle">Servis kotle</button>
+        <button type="button" aria-pressed="false" data-co="Kontrola komína">Kontrola komína</button>
+      </div>
+      <label for="posledne">Kdy to bylo naposledy</label>
+      <input type="date" id="posledne" required>
+      <div class="vysledek" id="vysledek" aria-live="polite"><span class="kdy" id="kdy">—</span><span class="datum" id="datum">Zadejte datum</span></div>
+      <div class="akce">
+        <button class="btn modra" type="button" id="ics"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Uložit do kalendáře</span></button>
+        <a class="btn tel" href="tel:+420724462489"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>Objednat</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="recenze wrap" id="recenze" aria-labelledby="re-h">
+  <div class="recenze-l">
+    <h2 id="re-h" class="vh">Hodnocení zákazníků</h2>
+    <div class="skore" data-r data-ventil="topeni"><b class="num" id="skore">4,9</b><span>z 5<br><span class="num" id="pocet">47</span> hodnocení</span></div>
+    <div class="hvezdy" id="hvezdy" aria-hidden="true" data-r>
+      <svg viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9z"/></svg>
+    </div>
+    <p data-r>„Zákazníci chválí rychlou reakci, kvalitní práci a ochotu pomoci v nouzových situacích.“<cite>Souhrn hodnocení na Firmy.cz</cite></p>
+    <a class="btn obrys" href="https://www.firmy.cz/detail/13596289-tb-instalaterstvi-voda-topeni-plyn-stitina.html" target="_blank" rel="noopener" data-r>Všechna hodnocení <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+  <div class="citaty">
+    <figure class="citat" data-r><blockquote>Ve čtvrtek večer odešel elektr. bojler. Našla jsem na netu číslo na p. Baara. V pátek se stavil podívat co a jak, koupil bojler nový, v sobotu dopo už jsme měli zase teplou vodu. Precizní odvedená rychlá práce i s pomocí kolegy elektrikáře.</blockquote><footer>Bohunka B. <span>· Firmy.cz, červenec 2024</span></footer></figure>
+    <figure class="citat" data-r><blockquote>Pan Baar je skvělý profík. Práce rychlá, čistá, profi. Vřele doporučuji.</blockquote><footer>Petra B. <span>· Firmy.cz, srpen 2026</span></footer></figure>
+    <figure class="citat" data-r><blockquote>Pan Baar odvedl rychlou a profesionální práci při výměně boileru.</blockquote><footer>Vladimír Z. <span>· Firmy.cz, září 2024</span></footer></figure>
+  </div>
+</section>
+
+<section class="dodavka wrap" aria-labelledby="do-h">
+  <figure data-r data-parallax style="overflow:hidden"><img src="img/cerpadlo-1600.jpg" srcset="img/cerpadlo-800.jpg 800w, img/cerpadlo-1600.jpg 1600w" sizes="(max-width:1000px) 92vw, 55vw" width="1600" height="1200" alt="Nainstalované tepelné čerpadlo na dlažbě u rodinného domu" loading="lazy"></figure>
+  <div class="dodavka-t">
+    <h2 id="do-h" class="disp" data-r data-ventil="plyn">Ze Štítiny, od roku 2010</h2>
+    <p data-r>Tomáš Baar, instalatér, topenář a plynař ze Štítiny. Podniká od roku 2010 a poznáte ho podle žluté dodávky. V pracovní dny je k zastižení nonstop, o víkendu po telefonické domluvě.</p>
+  </div>
+</section>
+</main>
+
+<footer class="kontakt" id="kontakt">
+  <div class="in wrap">
+    <h2 class="disp" data-r>Zavolejte, domluvíme se</h2>
+    <a class="tel-velky num" href="tel:+420724462489" data-r>724 462 489</a>
+    <div class="akce" data-r>
+      <a class="btn tel" href="tel:+420724462489"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>Zavolat</a>
+      <a class="btn obrys" href="sms:+420724462489"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Poslat SMS</a>
+      <button class="btn obrys" type="button" data-kopirovat="724 462 489"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M4 16V4h12"/></svg><span>Kopírovat číslo</span></button>
+    </div>
+    <dl data-r>
+      <div><dt>E-mail</dt><dd><a href="mailto:tomasbaar@seznam.cz">tomasbaar@seznam.cz</a></dd></div>
+      <div><dt>Dílna</dt><dd>Ivana Kubince 2, 747 91 Štítina · <a href="https://mapy.cz/zakladni?q=Ivana%20Kubince%202%2C%20%C5%A0t%C3%ADtina" target="_blank" rel="noopener">mapa</a></dd></div>
+      <div><dt>Kdy volat</dt><dd class="hodiny"><span data-d="1">Po–Pá</span><span>nonstop</span><span data-d="6">So–Ne</span><span>po telefonické domluvě</span></dd></div>
+      <div><dt>Platba</dt><dd>Lze platit kartou</dd></div>
+    </dl>
+    <p class="paticka"><span>Tomáš Baar – TB-Instalatérství · IČO 75561387</span><span>Ilustrační fotografie: Unsplash · dodávka a tepelné čerpadlo: Firmy.cz</span></p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><span></span></div>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script>
+/* Úvod: přes obrazovku proběhnou tři trubky (voda, topení, plyn), kapka se nakreslí */
+window.INTRO_EXTRA = function(tl, root){
+  var p = root.querySelectorAll('.intro-trubky path');
+  p.forEach(function(el){ var L = Math.ceil(el.getTotalLength()) + 1; gsap.set(el, {strokeDasharray:L + ' ' + L, strokeDashoffset:L}); });
+  tl.to(p, {strokeDashoffset:0, duration:1.1, ease:'power2.inOut', stagger:.12}, 0);
+};
+</script>
+<script src="js/intro.js"></script>
+<script src="js/web.js"></script>
+<script>
+(function(){
+  var TB = window.TB || {}, RM = TB.RM, hasG = TB.hasG;
+  var $ = function(id){ return document.getElementById(id); };
+
+  /* ===== Hlídač servisu: poslední termín + 12 měsíců, připomínka do kalendáře ===== */
+  var co = 'Servis kotle', prep = document.querySelector('.prepinac'), inp = $('posledne'), dalsi = null;
+  var dny = function(n, pred){ n = Math.abs(n); if (pred) return n === 1 ? '1 dnem' : n + ' dny'; return n === 1 ? '1 den' : n < 5 ? n + ' dny' : n + ' dní'; };
+  var fmt = function(d){ return d.toLocaleDateString('cs-CZ', {day:'numeric', month:'numeric', year:'numeric'}); };
+  var iso = function(d){ return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); };
+  (function(){ var d = new Date(); d.setDate(d.getDate() - 320); inp.value = iso(d); inp.max = iso(new Date()); })();
+  function spocitej(){
+    var v = $('vysledek'), kdy = $('kdy'), dat = $('datum');
+    if (!inp.value){ kdy.textContent = '—'; dat.textContent = 'Zadejte datum'; v.dataset.stav = ''; dalsi = null; return; }
+    var p = new Date(inp.value + 'T12:00:00'); dalsi = new Date(p); dalsi.setFullYear(p.getFullYear() + 1);
+    var dnes = new Date(); dnes.setHours(12, 0, 0, 0);
+    var n = Math.round((dalsi - dnes) / 864e5);
+    if (n < 0){ v.dataset.stav = 'proslo'; kdy.textContent = 'Před ' + dny(n, true); dat.textContent = co + (co === 'Servis kotle' ? ' měl' : ' měla') + ' být ' + fmt(dalsi) + '. Zavolejte, domluvíme termín.'; }
+    else if (n <= 60){ v.dataset.stav = 'brzy'; kdy.textContent = n === 0 ? 'Dnes' : 'Za ' + dny(n); dat.textContent = co + ' do ' + fmt(dalsi) + '. Je čas se objednat.'; }
+    else { v.dataset.stav = 'ok'; kdy.textContent = 'Za ' + dny(n); dat.textContent = co + ' do ' + fmt(dalsi) + '.'; }
+    if (!RM){ kdy.classList.remove('bump'); void kdy.offsetWidth; kdy.classList.add('bump'); }
+  }
+  prep.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b) return;
+    prep.querySelectorAll('button').forEach(function(x, i){ var on = x === b; x.setAttribute('aria-pressed', on); if (on) prep.dataset.i = i; });
+    co = b.dataset.co; spocitej();
+  });
+  inp.addEventListener('input', spocitej);
+  spocitej();
+  $('ics').addEventListener('click', function(){
+    if (!dalsi){ inp.focus(); return; }
+    var d = iso(dalsi).replace(/-/g, ''), now = new Date().toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z';
+    var txt = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//TB-Instalaterstvi//Hlidac servisu//CS','BEGIN:VEVENT','UID:' + Date.now() + '@tb-instalaterstvi','DTSTAMP:' + now,'DTSTART;VALUE=DATE:' + d,'SUMMARY:' + co + ' (TB-Instalatérství)','DESCRIPTION:Objednat u TB-Instalatérství\\, tel. 724 462 489','BEGIN:VALARM','TRIGGER:-P14D','ACTION:DISPLAY','DESCRIPTION:' + co,'END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n');
+    var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([txt], {type:'text/calendar'})); a.download = 'pripominka-' + (co === 'Servis kotle' ? 'servis-kotle' : 'kontrola-kominu') + '.ics';
+    document.body.appendChild(a); a.click(); a.remove();
+    var b = this, s = b.querySelector('span'); b.classList.add('hotovo'); s.textContent = 'Uloženo';
+    if (TB.toast) TB.toast('Připomínka na ' + fmt(dalsi) + ' je stažená');
+    setTimeout(function(){ b.classList.remove('hotovo'); s.textContent = 'Uložit do kalendáře'; }, 2200);
+  });
+  $('nastroj').addEventListener('submit', function(e){ e.preventDefault(); });
+
+  if (!hasG) return;
+  var mm = gsap.matchMedia();
+  mm.add('(prefers-reduced-motion: no-preference)', function(){
+    /* úvod: slova vyjedou, fotka dodávky se odkryje shora, žlutý „plyn“ se natře */
+    var hero = gsap.timeline({paused:true, defaults:{ease:'power3.out'}});
+    hero.to('.hero h1 .ln>span', {y:0, duration:.85, stagger:.09})
+        .fromTo('.hero h1 .p', {'--natr':0}, {'--natr':1, duration:.6}, .35)
+        .to('[data-h]', {opacity:1, y:0, duration:.7, stagger:.08}, .2)
+        .to('.hero-foto .ram', {clipPath:'inset(0% 0% 0% 0%)', duration:1.1, ease:'power3.inOut'}, .15)
+        .fromTo('.hero-foto img', {scale:1.15}, {scale:1, duration:1.6, ease:'power2.out'}, .15);
+    afterIntro(function(){ hero.play(); });
+
+    /* hodnocení: čísla doběhnou, hvězdy se rozsvítí jedna po druhé */
+    var st = {trigger:'#recenze', start:'top 75%', once:true}, o = {s:0, p:0};
+    gsap.to(o, {s:4.9, p:47, duration:1.4, ease:'power2.out', scrollTrigger:st, onUpdate:function(){ $('skore').textContent = o.s.toFixed(1).replace('.', ','); $('pocet').textContent = Math.round(o.p); }});
+    gsap.from('#hvezdy svg', {scale:0, rotation:-90, transformOrigin:'50% 50%', duration:.5, stagger:.1, ease:'back.out(2.5)', scrollTrigger:st});
+
+    /* karty služeb: najedou po řadách, štítek trubky se „natočí“ */
+    gsap.from('.karta .stitek', {x:-16, opacity:0, duration:.5, stagger:.08, ease:'power3.out', scrollTrigger:{trigger:'.karty', start:'top 80%', once:true}});
+  });
+})();
+</script>
+</body>
+</html>
