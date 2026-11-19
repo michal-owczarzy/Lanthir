@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ceník – Mischel's salon Nový Jičín</title>
+<meta name="description" content="Ceník Mischel's salonu v Novém Jičíně: permanentní make-up, obočí a řasy, kosmetická péče, depilace cukrovou pastou a voskem, čištění pleti s Ella Baché, líčení a malování dětí.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#211c1d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 80'%3E%3Crect width='120' height='80' rx='14' fill='%23211c1d'/%3E%3Cpath d='M6 70C18 60 28 34 32 14 34 5 28 4 26 12 22 30 20 52 22 70 28 50 40 22 50 12 56 6 59 12 55 22 49 40 47 58 49 70 57 50 69 24 81 12 87 6 91 12 87 24 81 42 79 58 85 70 91 76 103 70 113 58' fill='none' stroke='%23ef86c3' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/josefin-sans-300_600-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/jost-400_600-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-ms') && !location.hash))) {
+      sessionStorage.setItem('intro-ms', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Mischel's salon, úvod">
+      <svg viewBox="0 0 120 80" aria-hidden="true"><path class="m d" d="M6 70C18 60 28 34 32 14 34 5 28 4 26 12 22 30 20 52 22 70 28 50 40 22 50 12 56 6 59 12 55 22 49 40 47 58 49 70 57 50 69 24 81 12 87 6 91 12 87 24 81 42 79 58 85 70 91 76 103 70 113 58" pathLength="1"/></svg><span><span class="w">Mischel's</span><small>Salon</small></span>
+    </a>
+    <nav aria-label="Hlavní"><a href="../#sluzby">Služby</a><a href="./" aria-current="page">Ceník</a><a href="../#o-mne">O mně</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn" href="../#rezervace"><span class="txt">Rezervovat</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="c-hlava">
+    <h1 class="disp" data-h>Ceník</h1>
+    <p data-h>Ceny jsou v Kč. Termín si rezervujete na úvodní stránce nebo na čísle 775 007 057.</p>
+    <a class="btn" href="../#rezervace" data-h>Rezervovat termín <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+  <div class="c-telo">
+    <nav class="c-index" id="c-index" aria-label="Části ceníku"></nav>
+    <div id="c-sekce"></div>
+  </div>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/data.js"></script>
+<script>
+/* sekce se vypíšou ještě před prvním vykreslením, aby na nadpis mohl „přetéct“ nadpis z úvodu */
+(function(){
+  var idx = document.getElementById('c-index'), sek = document.getElementById('c-sekce');
+  idx.innerHTML = MS.CENIK.map(function(k){ return '<a href="#' + k.id + '"><i></i>' + k.n + '</a>'; }).join('') + '<a class="btn obrys" href="../#rezervace">Rezervovat</a>';
+  sek.innerHTML = MS.CENIK.map(function(k){
+    return '<section class="c-sekce" id="' + k.id + '" aria-labelledby="h-' + k.id + '"><h2 class="disp" id="h-' + k.id + '" data-vt-cil="' + k.id + '">' + k.n + '</h2>' +
+      '<figure class="c-foto"><img src="../img/' + k.foto + '-800.jpg" width="800" height="800" alt="' + k.n + '" loading="lazy"></figure>' +
+      (k.uvod ? '<p class="uvod">' + k.uvod + '</p>' : '') +
+      '<div class="c-radky">' + k.p.map(function(p){ return '<div class="c-radek"><span>' + p[0] + (p[2] ? '<small>' + p[2] + '</small>' : '') + '</span><span class="c num">' + p[1] + (/\d/.test(p[1]) && !/h$/.test(p[1]) ? ' Kč' : (/h$/.test(p[1]) ? '' : '')) + '</span></div>'; }).join('') + '</div>' + '</section>';
+  }).join('');
+})();
+</script>
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script>
+(function(){
+  /* rejstřík vlevo sleduje, která část ceníku je zrovna vidět */
+  var odkazy = [].slice.call(document.querySelectorAll('#c-index a'));
+  function aktivni(id){ odkazy.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href') === '#' + id); }); }
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(en){ en.forEach(function(x){ if (x.isIntersecting) aktivni(x.target.id); }); }, {rootMargin:'-30% 0px -60% 0px'});
+    document.querySelectorAll('.c-sekce').forEach(function(s){ io.observe(s); });
+  }
+  aktivni((location.hash || '#permanent').slice(1));
+  if (!MS.hasG) return;
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', function(){
+    afterIntro(function(){ gsap.to('[data-h]', {opacity:1, y:0, duration:.8, stagger:.08, ease:'power3.out'}); });
+    document.querySelectorAll('.c-sekce').forEach(function(s){
+      gsap.from(s.querySelectorAll('.c-radek'), {opacity:0, x:-14, duration:.5, stagger:.03, ease:'power2.out', scrollTrigger:{trigger:s, start:'top 82%', once:true}});
+    });
+  });
+})();
+</script>
+</body>
+</html>
