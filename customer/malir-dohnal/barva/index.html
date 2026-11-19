@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zkouška barvy – Blahoslav Dohnal, malíř Krnov</title>
+<meta name="description" content="Vyzkoušejte si odstín na stěně pokoje, spočítejte plochu k vymalování a pošlete poptávku malíři Blahoslavu Dohnalovi z Krnova.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#23272d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='9' fill='%2323272d'/%3E%3Crect x='8' y='10' width='28' height='11' rx='3' fill='%23e0b25e'/%3E%3Cpath d='M36 15.5h4v10H23v13' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/epilogue-400_900-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/public-sans-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-dh') && !location.hash))) {
+      sessionStorage.setItem('intro-dh', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Blahoslav Dohnal, malíř a natěrač, úvod">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect class="f" x="7.5" y="9.5" width="28" height="11" rx="3"/><rect class="d" x="5.5" y="7.5" width="32" height="15" rx="4"/><path class="d" d="M37.5 15h4v10.5H23v15"/></svg>
+      <span class="lt"><span class="w">Dohnal</span><small class="f">malíř a natěrač · Krnov</small></span>
+    </a>
+    <nav aria-label="Hlavní"><a href="../#prace">Co děláme</a><a href="./" aria-current="page">Zkouška barvy</a><a href="../#postup">Jak to probíhá</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn num" href="tel:+420603907858">603 907 858</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="b-hlava">
+    <h1 class="disp" data-h>Zkouška <span class="pruh" id="pruh-h">barvy</span></h1>
+    <p data-h>Klikněte na odstín a pokoj se přemaluje. Pod ním zadejte rozměry místnosti a spočítáme plochu, kterou budete malovat.</p>
+  </div>
+
+  <div class="b-telo">
+    <figure class="mistnost" id="mistnost" data-h>
+      <svg id="pokoj" viewBox="0 0 800 520" role="img" aria-label="Pokoj s vybranou barvou stěn"></svg>
+      <figcaption class="popis"><span>Odstín: <b id="odstin-n">Okrová</b></span><span>Barva na monitoru se od skutečné liší, odstín doladíme na místě.</span></figcaption>
+    </figure>
+
+    <form class="panel" id="formular" novalidate>
+      <fieldset class="pole" data-h>
+        <legend>Odstín</legend>
+        <div class="vzorky" id="vzorky"></div>
+      </fieldset>
+      <fieldset class="pole" data-r>
+        <legend>Rozměry místnosti</legend>
+        <label class="prepinac" style="margin-bottom:16px"><input type="checkbox" id="strop" checked> Malovat i strop</label>
+        <div class="rozmery">
+          <label class="vstup"><span>Délka</span><span class="j" data-j="m"><input id="r-d" inputmode="decimal" value="4"></span></label>
+          <label class="vstup"><span>Šířka</span><span class="j" data-j="m"><input id="r-s" inputmode="decimal" value="3,5"></span></label>
+          <label class="vstup"><span>Výška</span><span class="j" data-j="m"><input id="r-v" inputmode="decimal" value="2,6"></span></label>
+          <label class="vstup"><span>Oken</span><input id="r-o" inputmode="numeric" value="1"></label>
+          <label class="vstup"><span>Dveří</span><input id="r-dv" inputmode="numeric" value="1"></label>
+        </div>
+      </fieldset>
+      <div class="vysledek" aria-live="polite" data-r>
+        <div class="m2 num" id="plocha">0 m²</div>
+        <p id="plocha-p"></p>
+      </div>
+      <div class="odeslat" data-r>
+        <button type="submit" class="btn" data-kanal="sms">Poslat SMS <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button type="submit" class="btn obrys" data-kanal="mail">Poslat e-mailem</button>
+      </div>
+    </form>
+  </div>
+
+  <section class="hotove" aria-labelledby="h-hotove">
+    <h2 class="disp" id="h-hotove" data-r>Hotové stěny z našich zakázek</h2>
+    <div class="rada">
+      <figure data-r><img src="../img/okrova-sterka-800.jpg" width="800" height="600" alt="Okrová dekorativní stěrka v pokoji" loading="lazy"><figcaption>Okrová stěrka</figcaption></figure>
+      <figure data-r><img src="../img/seda-sterka-800.jpg" width="800" height="600" alt="Šedá dekorativní stěrka v ložnici" loading="lazy"><figcaption>Šedá stěrka</figcaption></figure>
+      <figure data-r><img src="../img/fasada-800.jpg" width="800" height="600" alt="Nátěr fasády rodinného domu" loading="lazy"><figcaption>Nátěr fasády</figcaption></figure>
+      <figure data-r><img src="../img/valecek-zed-800.jpg" width="800" height="600" alt="Malování stěny válečkem" loading="lazy"><figcaption>Ilustrační foto</figcaption></figure>
+    </div>
+  </section>
+</main>
+
+<footer class="pata">
+  <div class="wrap in">
+    <span>Blahoslav Dohnal · malířské a natěračské práce · Krnov · <a class="odkaz num" href="tel:+420603907858">603 907 858</a></span>
+    <span>Stěrky na vzorcích: fotky z našich zakázek</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/data.js"></script>
+<script>
+/* cíl sdíleného přechodu: proužek z vějíře na úvodu „přeteče“ do pokoje */
+(function(){
+  var b = new URLSearchParams(location.search).get('b');
+  document.getElementById('mistnost').dataset.vtCil = DH.najdi(b) ? b : 'okr';
+})();
+</script>
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/barva.js"></script>
+</body>
+</html>
