@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Před STK – kontrolní seznam | Autoservis Korzonek, Karviná</title>
+<meta name="description" content="Projděte si orientační kontrolní seznam před STK a pošlete závady autoservisu Kamila Korzonka v Karviné-Novém Městě. Příprava na STK včetně karosářských prací.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#262828">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23262828'/%3E%3Cpath d='M6 6h28v28H6zM20 6v28M6 20h28' fill='none' stroke='%23fff' stroke-width='3'/%3E%3Crect x='22' y='22' width='10' height='10' fill='%238fd1ad'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/chivo-600_900-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/libre-franklin-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-kz') && !location.hash))) {
+      sessionStorage.setItem('intro-kz', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in">
+    <a class="logo" href="../" data-intro-land aria-label="Autoservis Kamil Korzonek, úvod">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><rect class="f" x="21.5" y="21.5" width="13" height="13"/><path class="d" d="M3.5 3.5h33v33h-33z"/><path class="d" d="M20 3.5v33M3.5 20h33"/></svg>
+      <span class="lt"><span class="w">Korzonek</span><small class="f">autoservis · pneuservis · STK</small></span>
+    </a>
+    <nav aria-label="Hlavní"><a href="../#sluzby">Služby</a><a href="./" aria-current="page">Před STK</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn num" href="tel:+420603448379">603 448 379</a>
+  </div>
+</header>
+
+<main class="fasada">
+  <section class="rada p-hlava" aria-labelledby="h-p">
+    <div class="panel">
+      <h1 class="disp" id="h-p" data-vt-cil="stk" data-h>Projde auto STK?</h1>
+      <p data-h>U každého bodu klikněte na OK, nebo na Závada. Seznam závad nám pak pošlete a auto připravíme. Jde o orientační seznam, ne o úplný protokol technické.</p>
+    </div>
+    <figure class="panel foto" data-h><img src="../img/svetlomet-800.jpg" width="800" height="1200" alt="Rozsvícený světlomet auta" style="object-position:50% 45%"></figure>
+  </section>
+  <section class="rada protokol" aria-label="Kontrolní seznam">
+    <div class="panel" id="seznam"></div>
+    <aside class="panel tmavy souhrn" aria-live="polite">
+      <h2>Výsledek</h2>
+      <div class="citac"><div><b class="num" id="c-ok">0</b><span>v pořádku</span></div><div><b class="num" id="c-zav">0</b><span>závad</span></div><div><b class="num" id="c-zb">0</b><span>zbývá projít</span></div></div>
+      <ul class="zavady" id="zavady"><li class="prazdne">Zatím žádná závada.</li></ul>
+      <label class="vstup"><span>Kdy máte STK</span><input type="date" id="termin"></label>
+      <p class="zbyva" id="zbyva"></p>
+      <label class="vstup"><span>Auto</span><input id="auto" placeholder="Např. Fabia 2009" autocomplete="off"></label>
+      <div class="akce">
+        <button type="button" class="btn" id="poslat">Poslat SMS <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <a class="btn svetly num" href="tel:+420603448379">Zavolat</a>
+      </div>
+    </aside>
+  </section>
+  <section class="rada sluzby" aria-label="Co pak opravíme">
+    <article class="panel sluzba" data-r><figure><img src="../img/pneu-800.jpg" width="800" height="533" alt="Mechanik nasazuje kolo" loading="lazy"></figure><div><h3>Pneumatiky</h3><p>Nové pneu, přezutí, vyvážení.</p></div></article>
+    <article class="panel sluzba" data-r><figure><img src="../img/karoserie-800.jpg" width="800" height="533" alt="Broušení tmelu na karoserii" loading="lazy"></figure><div><h3>Karoserie a rez</h3><p>Prahy, podlaha a poškozené díly.</p></div></article>
+    <article class="panel sluzba" data-r><figure><img src="../img/pod-autem-800.jpg" width="800" height="600" alt="Mechanik pracuje pod autem" loading="lazy"></figure><div><h3>Výfuk a brzdy</h3><p>Těsnost výfuku, brzdy, ruční brzda.</p></div></article>
+    <article class="panel sluzba" data-r><figure><img src="../img/naradi-800.jpg" width="800" height="600" alt="Stěna s nářadím v dílně" loading="lazy"></figure><div><h3>Světla a drobnosti</h3><p>Žárovky, stěrače, seřízení světel.</p></div></article>
+  </section>
+</main>
+
+<footer class="pata"><span>Autoservis Kamil Korzonek · Sportovní 2474/5, Karviná-Nové Město</span><span>Ilustrační fotografie: Unsplash</span></footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/stk.js"></script>
+</body>
+</html>
