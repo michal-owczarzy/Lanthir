@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kalkulace renovace – Petr Spiel, Ostrava-Svinov</title>
+<meta name="description" content="Pošlete poptávku na renovaci dveří, zárubní, kuchyňské linky nebo starožitného nábytku. Zaměření a kalkulace u vás. Petr Spiel, Ostrava-Svinov.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#23170f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 48'%3E%3Crect width='32' height='48' rx='4' fill='%2323170f'/%3E%3Cpath d='M6 44V6h20v38M10 10h12v13H10zM10 27h12v13H10z' fill='none' stroke='%23e8b677' stroke-width='2.4'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/newsreader-500_800-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/commissioner-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-sp') && !location.hash))) {
+      sessionStorage.setItem('intro-sp', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Petr Spiel, renovace dveří a nábytku, úvod">
+      <svg viewBox="0 0 32 48" aria-hidden="true"><path class="d" d="M3 46V2h26v44"/><path class="d" d="M8 7h16v15H8zM8 27h16v15H8z"/><circle class="f" cx="25.5" cy="25" r="1.8"/></svg>
+      <span class="lt"><span class="w">Spiel</span><small class="f">renovace dveří a nábytku</small></span>
+    </a>
+    <nav aria-label="Hlavní"><a href="../#louhovani">Louhování</a><a href="../#co">Co renovujeme</a><a href="../#postup">Jak to probíhá</a><a href="./" aria-current="page">Kalkulace</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn num" href="tel:+420721547065">721 547 065</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="k-hlava">
+    <h1 class="disp" data-vt-cil="kalk" data-h>Chci <em>kalkulaci</em></h1>
+    <p data-h>Napište, co chcete renovovat, kolik kusů a kde. Ozveme se a domluvíme zaměření, kalkulaci připravíme u vás.</p>
+  </div>
+  <div class="k-telo">
+    <form class="k-form" id="kalk" novalidate data-h>
+      <fieldset class="pole"><legend>Co renovovat</legend>
+        <div class="cipy" id="co">
+          <button type="button" class="cip" aria-pressed="false">Dveře</button>
+          <button type="button" class="cip" aria-pressed="false">Zárubně</button>
+          <button type="button" class="cip" aria-pressed="false">Kuchyňská linka</button>
+          <button type="button" class="cip" aria-pressed="false">Starožitný nábytek</button>
+          <button type="button" class="cip" aria-pressed="false">Nástěnné hodiny</button>
+          <button type="button" class="cip" aria-pressed="false">Něco jiného</button>
+        </div>
+      </fieldset>
+      <div class="pole"><span class="lbl">Kolik kusů</span>
+        <div class="pocet"><button type="button" id="minus" aria-label="Ubrat kus">−</button><output id="ks" class="num">1</output><button type="button" id="plus" aria-label="Přidat kus">+</button></div>
+      </div>
+      <fieldset class="pole"><legend>Jak vypadají teď</legend>
+        <div class="cipy" id="stav">
+          <button type="button" class="cip" aria-pressed="false">Natřené, barva se loupe</button>
+          <button type="button" class="cip" aria-pressed="false">Lakované, ošoupané</button>
+          <button type="button" class="cip" aria-pressed="false">Poškozené</button>
+          <button type="button" class="cip" aria-pressed="false">Nevím</button>
+        </div>
+      </fieldset>
+      <label class="pole vstup"><span class="lbl">Poznámka</span><textarea id="pozn" placeholder="Např. 5 kazetových dveří v činžáku, chceme je mít v přírodním dřevě"></textarea></label>
+      <div class="foto-up">
+        <input type="file" id="foto" accept="image/*" multiple>
+        <label for="foto"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"/><circle cx="12" cy="13" r="4"/></svg>Přidat fotky</label>
+        <span class="nahledy" id="nahledy"></span>
+      </div>
+      <div class="dva">
+        <label class="vstup"><span>Obec nebo část Ostravy</span><input id="obec" autocomplete="address-level2"></label>
+        <label class="vstup"><span>Telefon *</span><input id="tel" type="tel" inputmode="tel" autocomplete="tel"></label>
+      </div>
+      <div class="odeslat">
+        <button type="submit" class="btn" data-kanal="mail">Poslat e-mailem <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button type="submit" class="btn obrys" data-kanal="sms">Poslat SMS</button>
+      </div>
+    </form>
+    <aside class="bok" data-h>
+      <img src="../img/dvere-vyrezavane-800.jpg" width="800" height="1310" alt="Vyřezávané dřevěné dveře" style="object-position:50% 55%">
+      <div class="karta"><h2>Raději zavoláte?</h2><p><a class="odkaz num" href="tel:+420721547065">721 547 065</a><br><a class="odkaz" href="mailto:splpetr@seznam.cz">splpetr@seznam.cz</a></p><p>Lelkova 797/18, Ostrava-Svinov</p></div>
+      <img src="../img/komoda-800.jpg" width="800" height="533" alt="Starožitná komoda">
+      <img src="../img/dvirka-800.jpg" width="800" height="534" alt="Prosklená dvířka skříňky">
+      <img src="../img/hodiny-800.jpg" width="800" height="533" alt="Kyvadlové nástěnné hodiny" style="object-position:75% 50%">
+    </aside>
+  </div>
+</main>
+
+<footer class="pata">
+  <div class="wrap in">
+    <span>Petr Spiel · renovace dveří, zárubní a starožitností · Ostrava-Svinov</span>
+    <span>Ilustrační fotografie: Unsplash</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/kalk.js"></script>
+</body>
+</html>
