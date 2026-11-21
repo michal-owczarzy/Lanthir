@@ -1,4 +1,4 @@
-/* Odstíny pro zkoušku barvy. Dvě stěrky jsou fotky z jeho zakázek (Firmy.cz). */
+/* Odstíny pro zkoušku barvy. Stěrky jsou ilustrační textury (Unsplash). */
 window.DH = window.DH || {};
 DH.BARVY = [
   { id: 'krida', n: 'Bílá křída', c: '#f4f2ec' },
