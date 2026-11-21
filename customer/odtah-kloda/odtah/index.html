@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Odtah – Autoservis Kloda, Karviná-Louky</title>
+<meta name="description" content="Potřebujete odtah? Pošlete polohu SMS a zavolejte na 608 060 378. Autoservis Tomáš Kloda, Karviná-Louky.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#141618">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='9' fill='%23ff9a1f'/%3E%3Cpath d='M26 8v14a9 9 0 1 1-9 9' fill='none' stroke='%23141618' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/big-shoulders-display-600_900-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/atkinson-hyperlegible-400-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-kl') && !location.hash))) {
+      sessionStorage.setItem('intro-kl', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Odtah a autoservis Kloda, úvod">
+      <svg viewBox="0 0 28 42" aria-hidden="true"><rect class="d" x="10" y="1.6" width="8" height="10" rx="4"/><rect class="d" x="10" y="9.6" width="8" height="10" rx="4"/><path class="d" d="M14 19.6V27a8.5 8.5 0 1 1-8.5 8.5"/><circle class="f" cx="5.5" cy="35.5" r="2.4"/></svg>
+      <span class="lt"><span class="w">Kloda</span><small class="f">odtah a autoservis</small></span>
+    </a>
+    <nav aria-label="Hlavní"><a href="../#odtah">Odtah</a><a href="../#servis">Autoservis</a><a href="../#dilna">Z dílny</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn majak num" href="tel:+420608060378">608 060 378</a>
+  </div>
+</header>
+
+<main>
+  <div class="o-hlava">
+    <div class="in wrap">
+      <div>
+        <h1 class="disp" data-vt-cil="odtah" data-h>Odtah</h1>
+        <p data-h>Zjistěte polohu, vyberte, co se stalo, a pošlete SMS. Pak zavolejte, ať o vás víme hned.</p>
+      </div>
+      <a class="velke-cislo num" id="cislo" href="tel:+420608060378" aria-label="Zavolat 608 060 378"><span class="c">6</span><span class="c">0</span><span class="c">8</span> <span class="c">0</span><span class="c">6</span><span class="c">0</span> <span class="c">3</span><span class="c">7</span><span class="c">8</span></a>
+    </div>
+  </div>
+  <div class="o-telo wrap">
+    <form class="poloha" id="poloha" novalidate data-h>
+      <h2>Kde stojíte?</h2>
+      <div class="gps" id="gps" aria-live="polite">
+        <p class="stav-g"><i></i><span id="gps-t">Poloha zatím nezjištěna</span></p>
+        <p class="detail" id="gps-d">Poloha zůstane ve vašem telefonu a odejde jen v SMS, kterou sami odešlete.</p>
+        <button type="button" class="btn" id="gps-b"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="8"/></svg>Zjistit moji polohu</button>
+      </div>
+      <label class="vstup"><span>Nebo napište, kde stojíte</span><input id="misto" placeholder="Např. Havířov, Hlavní třída u Kauflandu" autocomplete="off"></label>
+      <fieldset class="pole">
+        <legend>Co se stalo</legend>
+        <div class="cipy" id="co">
+          <button type="button" class="cip" aria-pressed="false">Auto nestartuje</button>
+          <button type="button" class="cip" aria-pressed="false">Porucha za jízdy</button>
+          <button type="button" class="cip" aria-pressed="false">Nehoda</button>
+          <button type="button" class="cip" aria-pressed="false">Defekt</button>
+          <button type="button" class="cip" aria-pressed="false">Něco jiného</button>
+        </div>
+      </fieldset>
+      <div class="dva">
+        <label class="vstup"><span>Auto</span><input id="auto" placeholder="Např. Octavia kombi" autocomplete="off"></label>
+        <label class="vstup"><span>Váš telefon</span><input id="tel" type="tel" inputmode="tel" autocomplete="tel"></label>
+      </div>
+      <div class="odeslat">
+        <button type="submit" class="btn majak">Poslat SMS s polohou <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <a class="btn obrys num" href="tel:+420608060378">Zavolat</a>
+      </div>
+    </form>
+    <aside class="bok" data-h>
+      <img src="../img/dilna.jpg" width="809" height="607" alt="Dílna autoservisu Kloda se dvěma vraty">
+      <div class="karta">
+        <h2>Kam auto odvezeme</h2>
+        <p>Těšínská 424/17, Karviná-Louky.<br>Po–Pá 7:00–16:00, sobota po domluvě.</p>
+      </div>
+      <img src="../img/zvedak-passat.jpg" width="809" height="607" alt="Auto na zvedáku v dílně">
+      <img src="../img/rozvody.jpg" width="809" height="607" alt="Výměna rozvodů">
+      <img src="../img/spojka.jpg" width="455" height="607" alt="Výměna spojky" style="aspect-ratio:3/4">
+    </aside>
+  </div>
+</main>
+
+<footer class="pata">
+  <div class="wrap in">
+    <span>Odtah a autoservis Tomáš Kloda · Těšínská 424/17, Karviná-Louky</span>
+    <span>Fotky z dílny: autoservis Kloda</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/odtah.js"></script>
+</body>
+</html>
