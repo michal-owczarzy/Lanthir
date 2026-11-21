@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nezávazná poptávka – Marek Ožog</title>
+<meta name="description" content="Poptávka tepelného čerpadla, klimatizace, solárního systému, topení nebo servisu u Marka Ožoga.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#14202e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%2314202e'/%3E%3Ccircle cx='20' cy='20' r='11' fill='none' stroke='%23fff' stroke-width='2.4'/%3E%3Cpath d='M20 20c0-6 3-9 6-8-1 4-3 6-6 8zM20 20c0 6-3 9-6 8 1-4 3-6 6-8z' fill='%23cf2338'/%3E%3Cpath d='M20 20c6 0 9 3 8 6-4-1-6-3-8-6zM20 20c-6 0-9-3-8-6 4 1 6 3 8 6z' fill='%233d8bfd'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/sora-500_800-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/nunito-sans-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-mo') && !location.hash))) {
+      sessionStorage.setItem('intro-mo', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Marek Ožog, úvod">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><rect class="d" x="3" y="3" width="34" height="34" rx="6"/><circle class="d" cx="20" cy="20" r="10"/><path class="f" d="M20 20c0-6 3-9 6-8-1 4-3 6-6 8z"/><path class="f" d="M20 20c6 0 9 3 8 6-4-1-6-3-8-6z"/><path class="f" d="M20 20c0 6-3 9-6 8 1-4 3-6 6-8z"/><path class="f" d="M20 20c-6 0-9-3-8-6 4 1 6 3 8 6z"/></svg>
+      <span class="lt"><span class="w">Ožog</span><small class="f">tepelná čerpadla · klimatizace · topení</small></span>
+    </a>
+    <nav aria-label="Hlavní"><a href="../tepelna-cerpadla/">Tepelná čerpadla</a><a href="../klimatizace/">Klimatizace</a><a href="../#sluzby">Další služby</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="../poptavka/" aria-current="page" data-vt="poptavka"><span data-vt-el>Poptávka</span></a>
+  </div>
+</header>
+<main class="p-main wrap">
+  <div class="p-hlava">
+    <h1 data-vt-cil="poptavka" data-h>Nezávazná poptávka</h1>
+    <p class="lead" data-h>Napište mi, co potřebujete. Ozvu se Vám v pracovní dny mezi 8 a 16 hodinou.</p>
+    <figure class="p-foto" data-h><img src="../img/mrizka-800.jpg" srcset="../img/mrizka-800.jpg 800w, ../img/mrizka-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 36vw" width="1080" height="857" alt="Mřížka ventilátoru tepelného čerpadla" loading="lazy" decoding="async"></figure>
+  </div>
+  <form class="p-form" id="pform" novalidate data-h>
+    <fieldset><legend>O co jde</legend>
+      <div class="cipy" id="co">
+        <button type="button" class="cip" data-s="tc" aria-pressed="false">Tepelné čerpadlo</button>
+        <button type="button" class="cip" data-s="klima" aria-pressed="false">Klimatizace</button>
+        <button type="button" class="cip" data-s="solar" aria-pressed="false">Solární systém</button>
+        <button type="button" class="cip" data-s="topeni" aria-pressed="false">Voda a topení</button>
+        <button type="button" class="cip" data-s="plyn" aria-pressed="false">Plyn</button>
+        <button type="button" class="cip" data-s="servis" aria-pressed="false">Servis</button>
+      </div>
+    </fieldset>
+    <fieldset id="znacka-box" hidden><legend>Značka zařízení</legend>
+      <div class="cipy" id="znacka">
+        <button type="button" class="cip" aria-pressed="false">Daikin</button>
+        <button type="button" class="cip" aria-pressed="false">Viessmann</button>
+        <button type="button" class="cip" aria-pressed="false">Samsung</button>
+        <button type="button" class="cip" aria-pressed="false">Jiná</button>
+      </div>
+    </fieldset>
+    <fieldset><legend>Kde</legend>
+      <div class="cipy" id="kde">
+        <button type="button" class="cip" aria-pressed="true">Rodinný dům</button>
+        <button type="button" class="cip" aria-pressed="false">Byt</button>
+        <button type="button" class="cip" aria-pressed="false">Firma</button>
+      </div>
+    </fieldset>
+    <label class="pole"><span>Jméno</span><input id="jmeno" autocomplete="name"></label>
+    <label class="pole"><span>Telefon</span><input id="tel" type="tel" autocomplete="tel" inputmode="tel"></label>
+    <label class="pole"><span>Obec</span><input id="obec" autocomplete="address-level2"></label>
+    <label class="pole"><span>Popis</span><textarea id="popis" rows="4" placeholder="Např. rodinný dům 140 m², teď topíme plynem, chceme tepelné čerpadlo."></textarea></label>
+    <div class="odeslat">
+      <button class="btn" type="submit" data-kanal="mail">Odeslat e-mailem</button>
+      <button class="btn obrys" type="submit" data-kanal="sms">Poslat SMS</button>
+    </div>
+  </form>
+</main>
+
+<footer class="pata">
+  <div class="wrap in">
+    <p><b>Marek Ožog</b> · tepelná čerpadla, klimatizace, voda, topení, plyn · Klidná 550, 735 14 Orlová-Lutyně · IČO 64595161</p>
+    <p>Fotka tepelného čerpadla: Marek Ožog. Ostatní fotky jsou ilustrační (Unsplash).</p>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/ozog.js"></script>
+</body>
+</html>

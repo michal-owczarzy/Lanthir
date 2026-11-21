@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Objednat se – Kadeřnictví Andrea Šnytová</title>
+<meta name="description" content="Objednejte se ke kadeřnici Andree Šnytové ve Frýdku. Vyberte službu a termín a pošlete SMS.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2b2826">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%232b2826'/%3E%3Cpath d='M9 34V19a11 11 0 0 1 22 0v15' fill='none' stroke='%23c9a25c' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/gilda-display-400-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/manrope-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-as') && !location.hash))) {
+      sessionStorage.setItem('intro-as', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Kadeřnictví Andrea Šnytová, úvod">
+      <svg viewBox="0 0 40 44" aria-hidden="true"><path class="d" d="M6 42V20a14 14 0 0 1 28 0v22"/><path class="d" d="M12 42V22a8 8 0 0 1 16 0v20"/><rect class="f" x="17" y="24" width="6" height="14" rx="1"/></svg>
+      <span class="lt"><span class="w">Andrea Šnytová</span><small class="f">kadeřnictví · Řeznická 31, Frýdek</small></span>
+    </a>
+    <nav aria-label="Hlavní"><a href="../#sluzby">Služby</a><a href="../#barvy">Barvy</a><a href="../#salon">Salon</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="./" aria-current="page" data-vt="objednat"><span data-vt-el>Objednat se</span></a>
+  </div>
+</header>
+<main class="o-main wrap">
+  <div class="o-hlava">
+    <h1 data-vt-cil="objednat" data-h>Objednat se</h1>
+    <p class="lead" data-h>Vyberte, co chcete udělat, a kdy se Vám to hodí. Pošlete mi SMS a já Vám potvrdím přesný čas.</p>
+    <figure class="o-foto" data-h><img src="../img/kreslo-800.jpg" srcset="../img/kreslo-800.jpg 800w, ../img/kreslo-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 36vw" width="1080" height="840" alt="Kadeřnické křeslo a stolek v salonu Andrey Šnytové" loading="lazy" decoding="async"></figure>
+  </div>
+  <form class="o-form" id="oform" novalidate data-h>
+    <fieldset>
+      <legend>Co chcete udělat</legend>
+      <div class="cipy" id="co">
+        <button type="button" class="cip" aria-pressed="false">Dámský střih</button>
+        <button type="button" class="cip" aria-pressed="false">Pánský střih</button>
+        <button type="button" class="cip" aria-pressed="false">Barvení</button>
+        <button type="button" class="cip" aria-pressed="false">Melír</button>
+        <button type="button" class="cip" aria-pressed="false">Foukaná a účes</button>
+      </div>
+    </fieldset>
+    <p class="o-odstin" id="o-odstin" hidden><span class="vz-tecka" id="o-tecka"></span>Odstín: <b id="o-odstin-n"></b> <a class="odkaz" href="../#barvy">změnit</a></p>
+    <fieldset>
+      <legend>Který den</legend>
+      <div class="cipy" id="dny"></div>
+    </fieldset>
+    <fieldset>
+      <legend>V kolik zhruba</legend>
+      <div class="cipy" id="cas">
+        <button type="button" class="cip" aria-pressed="false">7–10 h</button>
+        <button type="button" class="cip" aria-pressed="false">10–13 h</button>
+        <button type="button" class="cip" aria-pressed="false">13–16 h</button>
+        <button type="button" class="cip" aria-pressed="false">16–19 h</button>
+      </div>
+    </fieldset>
+    <label class="pole"><span>Jméno</span><input id="jmeno" autocomplete="name"></label>
+    <label class="pole"><span>Telefon</span><input id="tel" type="tel" autocomplete="tel" inputmode="tel"></label>
+    <div class="odeslat">
+      <button class="btn" type="submit" data-kanal="sms">Poslat SMS</button>
+      <button class="btn obrys" type="submit" data-kanal="mail">Poslat e-mailem</button>
+    </div>
+  </form>
+</main>
+
+<footer class="pata">
+  <div class="wrap in">
+    <p><b>Andrea Šnytová</b> · kadeřnictví · Řeznická 31, 738 01 Frýdek-Místek · IČO 87448785</p>
+    <p>Fotky salonu: Andrea Šnytová. Ostatní fotky jsou ilustrační (Unsplash).</p>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/snytova.js"></script>
+</body>
+</html>

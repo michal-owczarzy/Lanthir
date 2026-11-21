@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Poptávka – Truhlářství Kopečný</title>
+<meta name="description" content="Poptávka kuchyně, skříně nebo pracovního stolu z lamina u truhláře Milana Kopečného.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2a2d31">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='4' fill='%232a2d31'/%3E%3Crect x='7' y='22' width='26' height='11' fill='%23c79d6c'/%3E%3Cpath d='M7 18h26M10 18V7h20v11M20 7v11' fill='none' stroke='%23fff' stroke-width='2.4'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/familjen-grotesk-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-tk') && !location.hash))) {
+      sessionStorage.setItem('intro-tk', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Truhlářství Kopečný, úvod">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><rect class="f" x="5" y="22" width="30" height="13" rx="1.5"/><path class="d" d="M5 18h30"/><path class="d" d="M8 18V5h24v13"/><path class="d" d="M20 5v13"/><path class="d" d="M16 11v3M24 11v3"/></svg>
+      <span class="lt"><span class="w">Kopečný</span><small class="f">truhlářství · Město Albrechtice</small></span>
+    </a>
+    <nav aria-label="Hlavní"><a href="../#navrh">Návrh kuchyně</a><a href="../#co-vyrabim">Co vyrábím</a><a href="../#reference">Reference</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="./" aria-current="page" data-vt="poptavka"><span data-vt-el>Poptávka</span></a>
+  </div>
+</header>
+<main class="p-main wrap">
+  <div class="p-hlava">
+    <h1 data-vt-cil="poptavka" data-h>Poptávka</h1>
+    <p class="lead" data-h>Napište mi, co potřebujete vyrobit. Ozvu se Vám a domluvíme rozměry, dekory i cenu.</p>
+    <div class="p-navrh" id="p-navrh" hidden data-h>
+      <p class="mono">Váš návrh</p>
+      <p id="p-navrh-text"></p>
+      <a class="odkaz" href="../#navrh">Upravit návrh</a>
+    </div>
+    <figure class="p-foto" data-h><img src="../img/pila-800.jpg" srcset="../img/pila-800.jpg 800w, ../img/pila-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 40vw" width="1600" height="1060" alt="Řezání desky z lamina na pokosové pile" loading="lazy" decoding="async"></figure>
+  </div>
+  <form class="p-form" id="pform" novalidate data-h>
+    <fieldset>
+      <legend>Co potřebujete vyrobit</legend>
+      <div class="cipy" id="co">
+        <button type="button" class="cip" aria-pressed="true">Kuchyň</button>
+        <button type="button" class="cip" aria-pressed="false">Skříň</button>
+        <button type="button" class="cip" aria-pressed="false">Pracovní stůl</button>
+        <button type="button" class="cip" aria-pressed="false">Něco jiného</button>
+      </div>
+    </fieldset>
+    <label class="pole"><span>Jméno</span><input id="jmeno" autocomplete="name"></label>
+    <label class="pole"><span>Telefon</span><input id="tel" type="tel" autocomplete="tel" inputmode="tel"></label>
+    <label class="pole"><span>Obec, kam se bude montovat</span><input id="obec" autocomplete="address-level2"></label>
+    <label class="pole"><span>Popis a rozměry</span><textarea id="popis" rows="5" placeholder="Např. kuchyň do panelového bytu, stěna 320 cm, chci myčku a vysokou lednici."></textarea></label>
+    <div class="odeslat">
+      <button class="btn" type="submit" data-kanal="mail">Odeslat e-mailem</button>
+      <button class="btn obrys" type="submit" data-kanal="sms">Poslat SMS</button>
+    </div>
+  </form>
+</main>
+
+<footer class="pata">
+  <div class="wrap in">
+    <p><b>Milan Kopečný – truhlářství</b> · Lázeňská 124/7, 793 95 Město Albrechtice · IČO 69574308</p>
+    <p>Fotka provozovny: Truhlářství Kopečný. Ostatní fotky jsou ilustrační (Unsplash).</p>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/kopecny.js"></script>
+</body>
+</html>

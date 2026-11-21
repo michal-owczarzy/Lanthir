@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Poptávka – Zámečnictví PF Havířov</title>
+<meta name="description" content="Poptávka brány, zábradlí, schodů nebo mříží u Zámečnictví PF v Havířově.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#17191c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='4' fill='%2317191c'/%3E%3Cpath d='M8 33V9M32 33V9M8 13h24M8 30h24M14 30V13M20 30V13M26 30V13' stroke='%23c9ced3' stroke-width='2.4'/%3E%3Cpath d='M14 6l2 4h-4zM20 6l2 4h-4zM26 6l2 4h-4z' fill='%23c2452c'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/oswald-500_700-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/work-sans-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-pf') && !location.hash))) {
+      sessionStorage.setItem('intro-pf', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Zámečnictví PF, úvod">
+      <svg viewBox="0 0 44 40" aria-hidden="true"><path class="d" d="M4 38V4M40 38V4"/><path class="d" d="M4 10h36M4 34h36"/><path class="d" d="M13 34V10M22 34V10M31 34V10"/><path class="f" d="M13 4l2.5 4h-5zM22 4l2.5 4h-5zM31 4l2.5 4h-5z"/></svg>
+      <span class="lt"><span class="w">Zámečnictví PF</span><small class="f">Havířov · Prostřední Suchá</small></span>
+    </a>
+    <nav aria-label="Hlavní"><a href="../#brana">Navrhnout bránu</a><a href="../#vyrobky">Co vyrábíme</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="./" aria-current="page" data-vt="poptavka"><span data-vt-el>Poptávka</span></a>
+  </div>
+</header>
+<main class="p-main wrap">
+  <div class="p-hlava">
+    <h1 data-vt-cil="poptavka" data-h>Poptávka</h1>
+    <p class="lead" data-h>Napište nám, co potřebujete vyrobit. Ozveme se, domluvíme zaměření a pošleme cenu.</p>
+    <div class="p-navrh" id="p-navrh" hidden data-h><p>Váš návrh brány</p><b id="p-navrh-t"></b><a class="odkaz" href="../#brana">Upravit</a></div>
+    <figure class="p-foto" data-h><img src="../img/kovani-detail-800.jpg" srcset="../img/kovani-detail-800.jpg 800w, ../img/kovani-detail-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 36vw" width="1600" height="1066" alt="Detail staré kované brány s kruhy" loading="lazy" decoding="async"></figure>
+  </div>
+  <form class="p-form" id="pform" novalidate data-h>
+    <fieldset><legend>Co potřebujete</legend>
+      <div class="cipy" id="co">
+        <button type="button" class="cip" aria-pressed="false">Brána</button>
+        <button type="button" class="cip" aria-pressed="false">Branka</button>
+        <button type="button" class="cip" aria-pressed="false">Zábradlí</button>
+        <button type="button" class="cip" aria-pressed="false">Schody</button>
+        <button type="button" class="cip" aria-pressed="false">Mříže</button>
+        <button type="button" class="cip" aria-pressed="false">Něco atypického</button>
+      </div>
+    </fieldset>
+    <label class="pole"><span>Jméno</span><input id="jmeno" autocomplete="name"></label>
+    <label class="pole"><span>Telefon</span><input id="tel" type="tel" autocomplete="tel" inputmode="tel"></label>
+    <label class="pole"><span>Obec</span><input id="obec" autocomplete="address-level2"></label>
+    <label class="pole"><span>Popis a rozměry</span><textarea id="popis" rows="4" placeholder="Např. zábradlí na terasu, délka 6 m, výška 1 m, pozinkované."></textarea></label>
+    <div class="odeslat">
+      <button class="btn" type="submit" data-kanal="mail">Odeslat e-mailem</button>
+      <button class="btn obrys" type="submit" data-kanal="sms">Poslat SMS</button>
+    </div>
+  </form>
+</main>
+
+<footer class="pata">
+  <div class="wrap in">
+    <p><b>Zámečnictví PF – František Pleticha</b> · Povoznická 1277/1a, 735 64 Havířov-Prostřední Suchá · IČO 64590682</p>
+    <p>Fotky jsou ilustrační (Unsplash).</p>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/pf.js"></script>
+</body>
+</html>

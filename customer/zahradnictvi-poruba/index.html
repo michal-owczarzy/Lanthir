@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zahradnictví Poruba – zelenina a sadba z vlastní produkce, Ostrava-Poruba</title>
+<meta name="description" content="Zahradnictví Ke Skalce v Ostravě-Porubě. Krouhané zelí, cibule, mrkev, petržel, celer a řepa z vlastní produkce, v sezóně sadba. Otevřeno út–pá 8–15, so 8–11.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1f6a34">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%231f6a34'/%3E%3Cpath d='M20 32V16M20 21c0-6-4-9-10-9 0 6 4 9 10 9zM20 17c0-5 3-9 10-10 1 7-3 10-10 10z' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/anton-400-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/figtree-400_800-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-zp') && !location.hash))) {
+      sessionStorage.setItem('intro-zp', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="js/vt.js"></script>
+<link rel="stylesheet" href="css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="./" data-intro-land aria-label="Zahradnictví Poruba, úvod">
+      <svg viewBox="0 0 40 44" aria-hidden="true"><path class="f" d="M6 40c4-5 9-7 14-7s10 2 14 7z"/><path class="d" d="M20 34V16"/><path class="d" d="M20 22c0-7-5-11-12-11 0 7 5 11 12 11z"/><path class="d" d="M20 17c0-6 4-11 12-12 1 8-4 12-12 12z"/></svg>
+      <span class="lt"><span class="w">Poruba</span><small class="f">zahradnictví Ke Skalce</small></span>
+    </a>
+    <nav aria-label="Hlavní"><a href="#nabidka">Nabídka</a><a href="#sadba">Sadba</a><a href="#oteviraci-doba">Otevírací doba</a></nav>
+    <a class="listek-btn" href="listek/" data-vt="listek"><span data-vt-el>Lístek</span> <b class="pocet num" id="pocet">0</b></a>
+    <a class="tel num" href="tel:+420596910947">596 910 947</a>
+  </div>
+</header>
+<main>
+  <section class="hero wrap" aria-labelledby="h-uvod">
+    <div class="hero-txt">
+      <h1 class="banner" id="h-uvod" data-h><span class="b1">Zahradnictví</span><span class="b2">Poruba</span></h1>
+      <p class="claim" data-h>zelenina a sadba z vlastní produkce</p>
+      <p class="lead" data-h>Prodáváme přímo v zahradnictví Ke Skalce v Porubě. Stále máme krouhané zelí, cibuli, mrkev, petržel, celer a řepu. V sezóně i sadbu.</p>
+      <div class="akce" data-h>
+        <a class="btn" href="#nabidka">Sestavit nákupní lístek <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn obrys num" href="tel:+420596910947">596 910 947</a>
+      </div>
+      <p class="stav" data-h style="margin-top:22px"><span class="tecka" aria-hidden="true"></span><span class="stav-text">Otevírací doba: út–pá 8–15, so 8–11</span></p>
+    </div>
+    <figure class="hero-foto" data-h>
+      <img src="img/stanek-800.jpg" srcset="img/stanek-800.jpg 800w, img/stanek-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 50vw" width="1600" height="1345" alt="Stánek Zahradnictví Poruba s cibulí, kedlubnami a sadbou v květináčích" fetchpriority="high">
+      <figcaption>Náš stánek. Na banneru: zelenina a sadba z vlastní produkce.</figcaption>
+    </figure>
+  </section>
+
+  <section class="nabidka wrap" id="nabidka" aria-labelledby="h-nabidka">
+    <div class="n-hlava" data-r>
+      <h2 class="disp" id="h-nabidka">Stále nabízíme</h2>
+      <p>Naklikejte si, kolik čeho chcete. Lístek nám pošlete SMS a zeleninu Vám připravíme k vyzvednutí.</p>
+    </div>
+    <div class="n-telo">
+      <ul class="polozky">
+      <li class="polozka" data-id="zeli" data-r>
+        <figure><img src="img/zeli-800.jpg" srcset="img/zeli-800.jpg 800w, img/zeli-1600.jpg 1600w" sizes="(max-width:680px) 92vw, 300px" width="1600" height="1608" alt="Hlávka zelí na prkénku" loading="lazy" decoding="async"></figure>
+        <div class="p-txt">
+          <h3>Krouhané zelí</h3>
+          <p>Na kysání doma.</p>
+        </div>
+        <div class="kroky" role="group" aria-label="Množství: Krouhané zelí">
+          <button type="button" class="minus" aria-label="Ubrat Krouhané zelí">−</button>
+          <output class="num" aria-live="polite">0 kg</output>
+          <button type="button" class="plus" aria-label="Přidat Krouhané zelí">+</button>
+        </div>
+      </li>
+      <li class="polozka" data-id="cibule" data-r>
+        <figure><img src="img/cibule-800.jpg" srcset="img/cibule-800.jpg 800w, img/cibule-1600.jpg 1600w" sizes="(max-width:680px) 92vw, 300px" width="1600" height="453" alt="Cibule a kedlubny na stánku Zahradnictví Poruba" loading="lazy" decoding="async"></figure>
+        <div class="p-txt">
+          <h3>Cibule</h3>
+          <p>Žlutá i červená, jak je zrovna sklizená.</p>
+        </div>
+        <div class="kroky" role="group" aria-label="Množství: Cibule">
+          <button type="button" class="minus" aria-label="Ubrat Cibule">−</button>
+          <output class="num" aria-live="polite">0 kg</output>
+          <button type="button" class="plus" aria-label="Přidat Cibule">+</button>
+        </div>
+      </li>
+      <li class="polozka" data-id="mrkev" data-r>
+        <figure><img src="img/mrkev-800.jpg" srcset="img/mrkev-800.jpg 800w, img/mrkev-1600.jpg 1600w" sizes="(max-width:680px) 92vw, 300px" width="1600" height="1066" alt="Svazky mrkve" loading="lazy" decoding="async"></figure>
+        <div class="p-txt">
+          <h3>Mrkev</h3>
+          <p>Do polévky i na zavařování.</p>
+        </div>
+        <div class="kroky" role="group" aria-label="Množství: Mrkev">
+          <button type="button" class="minus" aria-label="Ubrat Mrkev">−</button>
+          <output class="num" aria-live="polite">0 kg</output>
+          <button type="button" class="plus" aria-label="Přidat Mrkev">+</button>
+        </div>
+      </li>
+      <li class="polozka" data-id="petrzel" data-r>
+        <figure><img src="img/petrzel-800.jpg" srcset="img/petrzel-800.jpg 800w, img/petrzel-1600.jpg 1600w" sizes="(max-width:680px) 92vw, 300px" width="1040" height="774" alt="Kořenová petržel v bedýnce" loading="lazy" decoding="async"></figure>
+        <div class="p-txt">
+          <h3>Petržel</h3>
+          <p>Kořenová petržel.</p>
+        </div>
+        <div class="kroky" role="group" aria-label="Množství: Petržel">
+          <button type="button" class="minus" aria-label="Ubrat Petržel">−</button>
+          <output class="num" aria-live="polite">0 kg</output>
+          <button type="button" class="plus" aria-label="Přidat Petržel">+</button>
+        </div>
+      </li>
+      <li class="polozka" data-id="celer" data-r>
+        <figure><img src="img/celer-800.jpg" srcset="img/celer-800.jpg 800w, img/celer-1600.jpg 1600w" sizes="(max-width:680px) 92vw, 300px" width="520" height="1334" alt="Bulvy celeru v bedýnce" loading="lazy" decoding="async"></figure>
+        <div class="p-txt">
+          <h3>Celer</h3>
+          <p>Bulvy celeru.</p>
+        </div>
+        <div class="kroky" role="group" aria-label="Množství: Celer">
+          <button type="button" class="minus" aria-label="Ubrat Celer">−</button>
+          <output class="num" aria-live="polite">0 kg</output>
+          <button type="button" class="plus" aria-label="Přidat Celer">+</button>
+        </div>
+      </li>
+      <li class="polozka" data-id="repa" data-r>
+        <figure><img src="img/repa-800.jpg" srcset="img/repa-800.jpg 800w, img/repa-1600.jpg 1600w" sizes="(max-width:680px) 92vw, 300px" width="1600" height="1440" alt="Červená řepa s natí" loading="lazy" decoding="async"></figure>
+        <div class="p-txt">
+          <h3>Červená řepa</h3>
+          <p>Na saláty i do zavařovaček.</p>
+        </div>
+        <div class="kroky" role="group" aria-label="Množství: Červená řepa">
+          <button type="button" class="minus" aria-label="Ubrat Červená řepa">−</button>
+          <output class="num" aria-live="polite">0 kg</output>
+          <button type="button" class="plus" aria-label="Přidat Červená řepa">+</button>
+        </div>
+      </li>
+      <li class="polozka" data-id="krmna-repa" data-r>
+        <figure><img src="img/krmna-repa-800.jpg" srcset="img/krmna-repa-800.jpg 800w, img/krmna-repa-1600.jpg 1600w" sizes="(max-width:680px) 92vw, 300px" width="1600" height="1440" alt="Hromada řepy na trhu" loading="lazy" decoding="async"></figure>
+        <div class="p-txt">
+          <h3>Krmná řepa</h3>
+          <p>Pro králíky, kozy a další zvířata.</p>
+        </div>
+        <div class="kroky" role="group" aria-label="Množství: Krmná řepa">
+          <button type="button" class="minus" aria-label="Ubrat Krmná řepa">−</button>
+          <output class="num" aria-live="polite">0 kg</output>
+          <button type="button" class="plus" aria-label="Přidat Krmná řepa">+</button>
+        </div>
+      </li>
+        <li class="dlazdice-sadba" data-r><p class="disp">Sadba</p><p>Na jaře přidáváme sadbu zeleniny z vlastní produkce. Co zrovna je, zjistíte po telefonu.</p><a class="odkaz" href="#sadba">Více o sadbě</a></li>
+      </ul>
+      <aside class="vaha" aria-label="Váš nákupní lístek">
+        <p class="v-lbl">Na váze</p>
+        <p class="lcd num"><span id="kg">0</span><small>kg</small></p>
+        <ul class="v-seznam" id="v-seznam"><li class="prazdno">Zatím nic. Přidejte zeleninu tlačítkem +.</li></ul>
+        <a class="btn plny" href="listek/" data-vt="listek"><span data-vt-el>Dokončit lístek</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="sadba" id="sadba" aria-labelledby="h-sadba">
+    <div class="wrap in">
+      <div class="s-txt" data-r>
+        <h2 class="disp" id="h-sadba">Sadba z vlastní produkce</h2>
+        <p>Sadbu zeleniny a další rostliny pěstujeme sami. Prodáváme je v sezóně přímo v zahradnictví a na stánku.</p>
+        <p>Co zrovna máme, Vám řekneme po telefonu: <a class="odkaz num" href="tel:+420603584766">603 584 766</a>.</p>
+      </div>
+      <div class="s-fotky">
+        <figure class="sf1" data-r><img src="img/sadba-800.jpg" srcset="img/sadba-800.jpg 800w, img/sadba-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 40vw" width="1113" height="602" alt="Sadba bylinek a zeleniny v květináčích na stánku Zahradnictví Poruba" loading="lazy" decoding="async"><figcaption>Sadba na našem stánku</figcaption></figure>
+        <figure class="sf2" data-r><img src="img/sazenice-800.jpg" srcset="img/sazenice-800.jpg 800w, img/sazenice-1600.jpg 1600w" sizes="(max-width:900px) 46vw, 22vw" width="1600" height="1066" alt="Mladé sazenice v černých květináčích" loading="lazy" decoding="async"></figure>
+        <figure class="sf3" data-r><img src="img/sadba-okno-800.jpg" srcset="img/sadba-okno-800.jpg 800w, img/sadba-okno-1600.jpg 1600w" sizes="(max-width:900px) 46vw, 22vw" width="1600" height="1439" alt="Sazenice rajčat v kelímcích" loading="lazy" decoding="async"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="doba wrap" id="oteviraci-doba" aria-labelledby="h-doba">
+    <div class="d-hodiny" data-r>
+      <h2 class="disp" id="h-doba">Kdy máme otevřeno</h2>
+      <p class="stav velky"><span class="tecka" aria-hidden="true"></span><span class="stav-text">Út–pá 8–15, so 8–11</span></p>
+      <table class="tyden">
+        <tbody>
+          <tr data-d="1"><th>Pondělí</th><td>zavřeno</td></tr>
+          <tr data-d="2"><th>Úterý</th><td class="num">8:00–15:00</td></tr>
+          <tr data-d="3"><th>Středa</th><td class="num">8:00–15:00</td></tr>
+          <tr data-d="4"><th>Čtvrtek</th><td class="num">8:00–15:00</td></tr>
+          <tr data-d="5"><th>Pátek</th><td class="num">8:00–15:00</td></tr>
+          <tr data-d="6"><th>Sobota</th><td class="num">8:00–11:00</td></tr>
+          <tr data-d="0"><th>Neděle</th><td>zavřeno</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="d-kde" data-r>
+      <h3>Kde nás najdete</h3>
+      <p class="adresa">Ke Skalce 2184/23<br>708 00 Ostrava-Poruba</p>
+      <p><a class="odkaz" href="https://mapy.com/cs/?source=firm&amp;id=294112" target="_blank" rel="noopener">Otevřít v Mapy.com</a></p>
+      <ul class="kontakty">
+        <li><span>Telefon</span><a class="num" href="tel:+420596910947">596 910 947</a></li>
+        <li><span>Mobil (i SMS)</span><a class="num" href="tel:+420603584766">603 584 766</a></li>
+        <li><span>Telefon</span><a class="num" href="tel:+420603446283">603 446 283</a></li>
+        <li><span>E-mail</span><a href="mailto:zahradnictviporuba@seznam.cz">zahradnictviporuba@seznam.cz</a></li>
+      </ul>
+      <p class="pozn">Platí se v hotovosti. Přístup je bezbariérový. Novinky dáváme na <a class="odkaz" href="https://www.facebook.com/ZahradnictviKeSkalce/" target="_blank" rel="noopener">Facebook</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="pata">
+  <div class="wrap in">
+    <p><b>Zahradnictví Poruba spol. s r.o.</b><br>Ke Skalce 2184/23, 708 00 Ostrava-Poruba · IČO 46578366</p>
+    <p>Fotky stánku a sadby: Zahradnictví Poruba. Ostatní fotky jsou ilustrační (Unsplash).</p>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/intro.js"></script>
+<script src="js/web.js"></script>
+<script src="js/data.js"></script>
+<script src="js/poruba.js"></script>
+</body>
+</html>

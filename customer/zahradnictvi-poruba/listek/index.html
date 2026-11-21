@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nákupní lístek – Zahradnictví Poruba</title>
+<meta name="description" content="Sestavte si nákupní lístek zeleniny a pošlete ho Zahradnictví Poruba SMS nebo e-mailem.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1f6a34">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%231f6a34'/%3E%3Cpath d='M20 32V16M20 21c0-6-4-9-10-9 0 6 4 9 10 9zM20 17c0-5 3-9 10-10 1 7-3 10-10 10z' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/anton-400-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/figtree-400_800-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-zp') && !location.hash))) {
+      sessionStorage.setItem('intro-zp', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Zahradnictví Poruba, úvod">
+      <svg viewBox="0 0 40 44" aria-hidden="true"><path class="f" d="M6 40c4-5 9-7 14-7s10 2 14 7z"/><path class="d" d="M20 34V16"/><path class="d" d="M20 22c0-7-5-11-12-11 0 7 5 11 12 11z"/><path class="d" d="M20 17c0-6 4-11 12-12 1 8-4 12-12 12z"/></svg>
+      <span class="lt"><span class="w">Poruba</span><small class="f">zahradnictví Ke Skalce</small></span>
+    </a>
+    <nav aria-label="Hlavní"><a href="../#nabidka">Nabídka</a><a href="../#sadba">Sadba</a><a href="../#oteviraci-doba">Otevírací doba</a></nav>
+    <a class="listek-btn" href="./" aria-current="page" data-vt="listek"><span data-vt-el>Lístek</span> <b class="pocet num" id="pocet">0</b></a>
+    <a class="tel num" href="tel:+420596910947">596 910 947</a>
+  </div>
+</header>
+<main class="l-main wrap">
+  <div class="l-hlava">
+    <h1 class="disp" data-vt-cil="listek" data-h>Nákupní lístek</h1>
+    <p class="lead" data-h>Zkontrolujte množství a vyberte den, kdy si pro zeleninu přijdete. Lístek pošlete SMS nebo e-mailem, platíte až u nás v hotovosti.</p>
+    <figure class="l-foto" data-h><img src="../img/cibule-800.jpg" srcset="../img/cibule-800.jpg 800w, ../img/cibule-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 40vw" width="1600" height="453" alt="Cibule a kedlubny na stánku Zahradnictví Poruba" loading="lazy" decoding="async"><figcaption>Cibule a kedlubny na našem stánku</figcaption></figure>
+    <a class="zpet" href="../#nabidka">← Zpět na nabídku</a>
+  </div>
+  <form class="papir" id="lform" novalidate data-h>
+    <div class="zub" aria-hidden="true"></div>
+    <p class="p-hlava"><span>Zahradnictví Poruba</span><span class="num" id="datum"></span></p>
+    <ul class="l-seznam" id="l-seznam"></ul>
+    <p class="l-prazdno" id="l-prazdno">Lístek je zatím prázdný. Přidejte něco níže.</p>
+    <div class="pridat">
+      <p class="lbl">Přidat</p>
+      <div class="cipy" id="pridat"></div>
+    </div>
+    <fieldset class="den">
+      <legend class="lbl">Kdy si přijdu</legend>
+      <div class="cipy" id="dny"></div>
+    </fieldset>
+    <label class="pole"><span class="lbl">Jméno</span><input id="jmeno" autocomplete="name" placeholder="Jana Nováková"></label>
+    <p class="soucet"><span>Celkem</span><b class="num" id="soucet">0 kg</b></p>
+    <div class="odeslat">
+      <button class="btn plny" type="submit" data-kanal="sms">Poslat lístek SMS</button>
+      <button class="btn obrys" type="submit" data-kanal="mail">Poslat e-mailem</button>
+    </div>
+    <div class="zub dole" aria-hidden="true"></div>
+  </form>
+</main>
+
+<footer class="pata">
+  <div class="wrap in">
+    <p><b>Zahradnictví Poruba spol. s r.o.</b><br>Ke Skalce 2184/23, 708 00 Ostrava-Poruba · IČO 46578366</p>
+    <p>Fotky stánku a sadby: Zahradnictví Poruba. Ostatní fotky jsou ilustrační (Unsplash).</p>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/data.js"></script>
+<script src="../js/poruba.js"></script>
+</body>
+</html>
