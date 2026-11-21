@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Minerální náramky – Růžovka Beauty Rituals, Kopřivnice</title>
+<meta name="description" content="Ručně navlékané náramky z přírodních kamenů ze salonu Růžovka v Kopřivnici. Objednávka e-mailem, vyzvednutí v salonu nebo poštou.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1e3a32">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Crect width='36' height='36' rx='18' fill='%231e3a32'/%3E%3Ccircle cx='18' cy='18' r='8' fill='none' stroke='%23f2d8d6' stroke-width='2'/%3E%3Ccircle cx='18' cy='18' r='3' fill='%23c9707e'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/bodoni-moda-500_800-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/hanken-grotesk-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-rz') && !location.hash))) {
+      sessionStorage.setItem('intro-rz', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Růžovka Beauty Rituals, úvod">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><circle class="d" cx="18.0" cy="11.8" r="6.5"/><circle class="d" cx="23.9" cy="16.1" r="6.5"/><circle class="d" cx="21.6" cy="23.0" r="6.5"/><circle class="d" cx="14.4" cy="23.0" r="6.5"/><circle class="d" cx="12.1" cy="16.1" r="6.5"/><circle class="f" cx="18" cy="18" r="3"/></svg>
+      <span class="lt"><span class="w">Růžovka</span><small class="f">beauty rituals · Kopřivnice</small></span>
+    </a>
+    <nav aria-label="Hlavní"><a href="../#ritual">Rituál</a><a href="../#sluzby">Služby</a><a href="../#rezervace">Rezervace</a><a href="./" aria-current="page">Náramky</a><a href="../#kontakt">Kontakt</a></nav>
+    <button type="button" class="kosik-b" id="kosik-b" aria-label="Košík"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 11H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><b id="kosik-n">0</b></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="e-hlava">
+    <h1 class="disp" data-vt-cil="naramky" data-h>Minerální náramky</h1>
+    <p data-h>Ručně navlékané náramky z přírodních kamenů. Vyberte velikost, přidejte do košíku a objednávku pošlete e-mailem. Vyzvednete si je v salonu, nebo vám je pošleme.<small>Ukázkový sortiment a ceny, upravíme podle skutečných náramků.</small></p>
+  </div>
+  <div class="e-fotky" aria-hidden="true">
+    <img src="../img/naramek-ruzenin-800.jpg" width="800" height="1200" alt="" style="object-position:50% 60%">
+    <img src="../img/naramek-ametyst-800.jpg" width="800" height="800" alt="">
+    <img src="../img/naramek-modry-800.jpg" width="800" height="533" alt="">
+    <img src="../img/osetreni-800.jpg" width="800" height="1200" alt="" style="object-position:50% 35%">
+  </div>
+  <div class="katalog" id="katalog"></div>
+  <div class="obvod" data-r><img src="../img/serum-800.jpg" width="800" height="1000" alt="Sérum na hřbetu ruky"><h2>Jakou velikost?</h2><p>Změřte zápěstí krejčovským metrem a přičtěte asi centimetr. S = 15 cm, M = 17 cm, L = 19 cm. Náramky si můžete vyzvednout při ošetření v salonu.</p></div>
+</main>
+<div class="zavoj" id="zavoj"></div>
+<aside class="kosik" id="kosik" aria-label="Košík" aria-hidden="true">
+  <div class="hl"><h2>Košík</h2><button type="button" class="zav" id="kosik-zav" aria-label="Zavřít košík">×</button></div>
+  <div class="polozky" id="polozky"></div>
+  <div class="pata-k">
+    <p class="soucet"><span>Celkem</span><span class="num" id="soucet">0 Kč</span></p>
+    <fieldset class="pole"><div class="cipy" id="doruceni"><button type="button" class="cip" aria-pressed="true">Vyzvednu v salonu</button><button type="button" class="cip" aria-pressed="false">Pošlete poštou</button></div></fieldset>
+    <button type="button" class="btn ruze" id="objednat">Objednat e-mailem <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+  </div>
+</aside>
+
+<footer class="pata">
+  <div class="wrap in">
+    <span>Růžovka Beauty Rituals · Romana Hozlárová · Sportovní 1522/1b, Kopřivnice</span>
+    <span>Ilustrační fotografie: Unsplash</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/data.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/obchod.js"></script>
+</body>
+</html>
