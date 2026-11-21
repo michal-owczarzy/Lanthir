@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dotaz na opravu – Autoservis BOLSONCAR, Karviná-Hranice</title>
+<meta name="description" content="Zeptejte se autoservisu BOLSONCAR v Karviné-Hranicích na opravu brzd, výfuku, řízení, spojky nebo rozvodů. Dotaz pošlete SMS nebo e-mailem.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1c1e21">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='9' fill='%231c1e21'/%3E%3Ccircle cx='24' cy='24' r='16' fill='none' stroke='%23fff' stroke-width='3'/%3E%3Ccircle cx='24' cy='24' r='5' fill='%23fff'/%3E%3Cpath d='M38 13a18 18 0 0 1 0 22l-6-4a11 11 0 0 0 0-14z' fill='%23c3262f'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/red-hat-display-500_900-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/red-hat-text-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-bc') && !location.hash))) {
+      sessionStorage.setItem('intro-bc', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Autoservis BOLSONCAR, úvod">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><circle class="d" cx="24" cy="24" r="20"/><circle class="d" cx="24" cy="24" r="7"/><circle class="f" cx="24" cy="10.5" r="1.8"/><circle class="f" cx="12.3" cy="17.3" r="1.8"/><circle class="f" cx="12.3" cy="30.7" r="1.8"/><circle class="f" cx="24" cy="37.5" r="1.8"/><path class="trmen" d="M42.8 10.8A23 23 0 0 1 42.8 37.2L35.5 32A14 14 0 0 0 35.5 16Z"/></svg>
+      <span class="lt"><span class="w">BOLSONCAR</span><small class="f">autoservis Karviná-Hranice</small></span>
+    </a>
+    <nav aria-label="Hlavní"><a href="../#brzdy">Brzdy</a><a href="../#draha">Brzdná dráha</a><a href="../#sluzby">Služby</a><a href="./" aria-current="page">Dotaz</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn num" href="tel:+420777620373">777 620 373</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="d-hlava">
+    <div>
+      <h1 class="disp" data-vt-cil="dotaz" data-h>Zeptejte se na opravu</h1>
+      <p data-h>Napište, co se s autem děje a o jaké auto jde. Odpověď dostanete na telefon, termín pak domluvíme.</p>
+    </div>
+    <div class="d-fotky" data-h aria-hidden="true">
+      <img src="../img/oprava-zvedak-800.jpg" width="800" height="533" alt="" style="object-position:62% 50%">
+      <img src="../img/mechanik-pod-autem-800.jpg" width="800" height="1200" alt="" style="object-position:50% 40%">
+      <img src="../img/vrtany-kotouc-800.jpg" width="800" height="535" alt="">
+    </div>
+  </div>
+
+  <div class="d-telo">
+    <form class="d-form" id="dotaz" novalidate>
+      <div class="tri" data-h>
+        <label class="vstup"><span>Auto (značka a model)</span><input id="auto" placeholder="Např. Škoda Octavia" autocomplete="off"></label>
+        <label class="vstup"><span>Rok výroby</span><input id="rok" inputmode="numeric" maxlength="4" autocomplete="off"></label>
+        <label class="vstup"><span>Motor</span><input id="motor" placeholder="Např. 1.9 TDI" autocomplete="off"></label>
+      </div>
+      <fieldset class="pole" data-r>
+        <legend>Čeho se dotaz týká</legend>
+        <div class="cipy" id="co">
+          <button type="button" class="cip" aria-pressed="false">Brzdy</button>
+          <button type="button" class="cip" aria-pressed="false">Výfuk</button>
+          <button type="button" class="cip" aria-pressed="false">Řízení</button>
+          <button type="button" class="cip" aria-pressed="false">Spojka</button>
+          <button type="button" class="cip" aria-pressed="false">Rozvody</button>
+          <button type="button" class="cip" aria-pressed="false">Diagnostika</button>
+          <button type="button" class="cip" aria-pressed="false">Tažné zařízení</button>
+          <button type="button" class="cip" aria-pressed="false">Geometrie</button>
+          <button type="button" class="cip" aria-pressed="false">Něco jiného</button>
+        </div>
+      </fieldset>
+      <label class="pole vstup" data-r><span class="lbl">Co se děje</span><textarea id="popis" placeholder="Např. při brzdění pískají přední brzdy a volant se chvěje"></textarea></label>
+      <label class="vstup" data-r><span>Telefon *</span><input id="tel" type="tel" inputmode="tel" autocomplete="tel"></label>
+      <div class="odeslat" data-r>
+        <button type="submit" class="btn" data-kanal="sms">Poslat SMS <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button type="submit" class="btn obrys" data-kanal="mail">Poslat e-mailem</button>
+      </div>
+    </form>
+    <aside class="bok" data-h>
+      <figure><img src="../img/kotouc-trmen-800.jpg" width="800" height="533" alt="Brzdový kotouč s třmenem" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r)"></figure>
+      <div class="karta">
+        <h2>Raději zavoláte?</h2>
+        <a class="tel num" href="tel:+420777620373">777 620 373</a>
+        <p>Termín podle telefonické domluvy.<br>Mickiewiczova 141/66, Karviná-Hranice</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="pata">
+  <div class="wrap in">
+    <span>Autoservis BOLSONCAR · Karviná-Hranice</span>
+    <span>Ilustrační fotografie: Unsplash</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script>
+/* logo: třmen v úvodu přijede a sevře kotouč */
+window.INTRO_EXTRA = function (tl, root, lock) {
+  var t = lock.querySelector('.trmen');
+  gsap.set(t, { opacity: 0, x: 10 });
+  tl.to(t, { opacity: 1, x: 0, duration: .45, ease: 'back.out(2.2)' }, '-=.1');
+};
+</script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/dotaz.js"></script>
+</body>
+</html>
