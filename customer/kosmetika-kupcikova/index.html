@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kosmetika Lenka Kupčíková – Frenštát pod Radhoštěm</title>
+<meta name="description" content="Kosmetický salon Lenky Kupčíkové na náměstí Míru ve Frenštátě: ošetření pleti kosmetikou Essenté, masáž obličeje, trvalá na řasy, barvení, depilace.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1f2a25">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='20' fill='%232f6b5a'/%3E%3Cpath d='M20 8c-7 0-10 6-10 12 0 7 5 12 10 12s10-5 10-12c0-6-3-12-10-12z' fill='none' stroke='%23fff' stroke-width='2.2'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/alegreya-400_700-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/alegreya-sans-400-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-lk') && !location.hash))) {
+      sessionStorage.setItem('intro-lk', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="js/vt.js"></script>
+<link rel="stylesheet" href="css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="./" data-intro-land aria-label="Kosmetika Lenka, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="d" d="M20 4C11 4 7 12 7 20c0 9 6 16 13 16s13-7 13-16c0-8-4-16-13-16z"/><path class="d" d="M13 18q3-3 6 0M21 18q3-3 6 0"/><circle class="f" cx="20" cy="27" r="2.6"/></svg><span class="lt"><span class="w">Kosmetika Lenka</span><small class="f">Lenka Kupčíková · Frenštát</small></span></a>
+    <nav aria-label="Hlavní"><a href="#osetreni">Moje ošetření</a><a href="#essente">Kosmetika Essenté</a><a href="#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="objednat/" data-vt="objednat"><span data-vt-el>Objednat se</span></a>
+  </div>
+</header>
+<main>
+  <section class="hero wrap" aria-labelledby="h-uvod">
+    <div class="hero-txt">
+      <h1 id="h-uvod" data-h>Péče o pleť ve&nbsp;Frenštátě</h1>
+      <p class="lead" data-h>Lenka Kupčíková, nám. Míru 18. Ošetření pleti profesionální kosmetikou Essenté, peelingy, masky, masáž obličeje a dekoltu, trvalá na řasy, barvení a depilace.</p>
+      <div class="akce" data-h><a class="btn" href="#osetreni">Poskládat ošetření <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn obrys num" href="tel:+420774965007">774 965 007</a></div>
+    </div>
+    <figure class="hero-foto" data-h><img src="img/salon-800.jpg" srcset="img/salon-800.jpg 800w, img/salon-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 50vw" width="1200" height="800" alt="Kosmetické lehátko s růžovým přehozem, lampa a kosmetika Essenté u okna" fetchpriority="high"><figcaption>Kosmetický salon na náměstí Míru</figcaption></figure>
+  </section>
+
+  <section class="osetreni" id="osetreni" aria-labelledby="h-os">
+    <div class="wrap in">
+      <div class="os-txt" data-r>
+        <h2 id="h-os">Poskládejte si ošetření</h2>
+        <form id="osform">
+          <fieldset><legend>Ošetření pleti</legend><div class="volby"><label class="volba"><input type="radio" name="zaklad" value="zakladni" checked><span><b>Základní ošetření pleti</b><small>cca 60 minut</small></span></label><label class="volba"><input type="radio" name="zaklad" value="kompletni"><span><b>Kompletní ošetření pleti</b><small>cca 90 minut</small></span></label></div></fieldset>
+          <fieldset><legend>Navíc</legend><div class="volby dopl"><label class="volba mala"><input type="checkbox" value="masaz" data-z="krk"><span><b>Masáž obličeje, krku a dekoltu</b></span></label><label class="volba mala"><input type="checkbox" value="ocni" data-z="oci"><span><b>Mikromasáž očního okolí</b></span></label><label class="volba mala"><input type="checkbox" value="trvala" data-z="oci"><span><b>Trvalá na řasy</b></span></label><label class="volba mala"><input type="checkbox" value="barveni" data-z="oboci"><span><b>Barvení řas a obočí</b></span></label><label class="volba mala"><input type="checkbox" value="depilace" data-z="plet"><span><b>Depilace</b></span></label></div></fieldset>
+        </form>
+        <p class="os-souhrn" id="os-souhrn" aria-live="polite"></p>
+        <a class="btn" id="os-obj" href="objednat/" data-vt="objednat"><span data-vt-el>Objednat toto ošetření</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="os-obr" data-r><svg class="tvar" id="tvar" viewBox="0 0 300 380" role="img" aria-label="Kresba obličeje s místy ošetření">
+  <path class="z z-krk" d="M110 300c0 30-30 40-80 60h240c-50-20-80-30-80-60"/>
+  <path class="z z-plet" d="M150 30c-62 0-90 50-90 120 0 80 45 150 90 150s90-70 90-150c0-70-28-120-90-120z"/>
+  <path class="z z-oboci" d="M92 128q22-16 44-4M164 124q22-12 44 4"/>
+  <path class="z z-oci" d="M96 152q20-14 40 0q-20 12-40 0zM164 152q20-14 40 0q-20 12-40 0z"/>
+  <path class="vlasy" d="M58 170c-14-96 30-150 92-150s108 54 92 150c-8-60-30-96-92-104C88 74 66 110 58 170z"/>
+  <path class="linka" d="M150 30c-62 0-90 50-90 120 0 80 45 150 90 150s90-70 90-150c0-70-28-120-90-120zM110 300c0 30-30 40-80 60M190 300c0 30 30 40 80 60M140 200q10 8 20 0M128 240q22 14 44 0"/>
+</svg></div>
+    </div>
+  </section>
+
+  <section class="sekce wrap" id="essente" aria-labelledby="h-es">
+    <div class="sek-hlava" data-r><h2 id="h-es">Ošetření s kosmetikou Essenté</h2><p class="sek-lead">Základní ošetření trvá zhruba hodinu, kompletní hodinu a půl. Pleti vybereme peeling, masku a booster podle toho, co zrovna potřebuje.</p></div>
+    <div class="es">
+      <figure class="e1" data-r><img src="img/kosmetika-800.jpg" srcset="img/kosmetika-800.jpg 800w, img/kosmetika-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 36vw" width="600" height="520" alt="Kosmetika Essenté na stolku v salonu" loading="lazy" decoding="async"><figcaption>Kosmetika Essenté v našem salonu</figcaption></figure>
+      <figure data-r><img src="img/maska-800.jpg" srcset="img/maska-800.jpg 800w, img/maska-1600.jpg 1600w" sizes="(max-width:900px) 46vw, 26vw" width="1600" height="1066" alt="Pleťová maska při ošetření" loading="lazy" decoding="async"><figcaption>Peelingy a masky</figcaption></figure>
+      <figure data-r><img src="img/masaz-800.jpg" srcset="img/masaz-800.jpg 800w, img/masaz-1600.jpg 1600w" sizes="(max-width:900px) 46vw, 26vw" width="1600" height="1438" alt="Masáž obličeje" loading="lazy" decoding="async"><figcaption>Masáž obličeje a dekoltu</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="kontakt" id="kontakt" aria-labelledby="h-kontakt">
+    <div class="wrap in">
+      <div data-r><h2 id="h-kontakt">Kontakt</h2><p class="k-tel"><a class="num" href="tel:+420774965007">774 965 007</a></p><p><a class="odkaz" href="mailto:lenkahorutova@seznam.cz">lenkahorutova@seznam.cz</a></p></div>
+      <dl class="udaje" data-r><div><dt>Adresa</dt><dd>nám. Míru 18, Frenštát pod Radhoštěm</dd></div><div><dt>Termíny</dt><dd>po domluvě</dd></div><div><dt>Facebook</dt><dd><a class="odkaz" href="https://www.facebook.com/profile.php?id=100034855279129" target="_blank" rel="noopener">Kosmetika Lenka</a></dd></div><div><dt>Mapa</dt><dd><a class="odkaz" href="https://mapy.com/cs/?source=firm&amp;id=13281163" target="_blank" rel="noopener">Otevřít v Mapy.com</a></dd></div></dl>
+    </div>
+  </section>
+</main>
+
+<footer class="pata">
+  <div class="wrap in"><p><b>Kosmetika Lenka Kupčíková</b> · nám. Míru 18, 744 01 Frenštát pod Radhoštěm · IČO 06215041</p><p>Fotky salonu: Kosmetika Lenka. Ostatní fotky jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/intro.js"></script>
+<script src="js/web.js"></script>
+<script src="js/kupcikova.js"></script>
+</body>
+</html>

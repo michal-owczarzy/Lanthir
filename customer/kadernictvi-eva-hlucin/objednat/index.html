@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Objednat se – Kadeřnictví Eva Hlučín</title>
+<meta name="description" content="Objednejte se do Kadeřnictví Eva v Hlučíně.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2a1a24">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='20' fill='%23a1155f'/%3E%3Cpath d='M13 30C6 22 10 8 22 7c9 0 13 8 9 15M31 22c-2 5-8 8-13 5' fill='none' stroke='%23fff' stroke-width='2.4'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/dm-serif-display-400-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/urbanist-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-ke') && !location.hash))) {
+      sessionStorage.setItem('intro-ke', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Kadeřnictví Eva, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="d" d="M13 30C6 22 10 8 22 7c9 0 13 8 9 15"/><path class="d" d="M31 22c-2 5-8 8-13 5"/><circle class="f" cx="27" cy="11" r="4"/></svg><span class="lt"><span class="w">Kadeřnictví Eva</span><small class="f">Ostravská 28 · Hlučín</small></span></a>
+    <nav aria-label="Hlavní"><a href="../#velky-den">Velký den</a><a href="../#sluzby">Služby</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="./" aria-current="page" data-vt="objednat"><span data-vt-el>Objednat se</span></a>
+  </div>
+</header>
+<main class="p-main wrap">
+  <div class="p-hlava">
+    <h1 data-vt-cil="objednat" data-h>Objednat se</h1>
+    <p class="lead" data-h>Vyberte, co chcete udělat, a napište, kdy se Vám to hodí. Ozvu se a domluvíme přesný čas.</p>
+    <p class="p-navrh" id="p-navrh" hidden data-h></p>
+    <figure class="p-foto" data-h><img src="../img/tvorba-800.jpg" srcset="../img/tvorba-800.jpg 800w, ../img/tvorba-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 36vw" width="1600" height="1066" alt="Kadeřník češe zrzavé vlasy do účesu" loading="lazy" decoding="async"></figure>
+  </div>
+  <form class="p-form" id="pform" novalidate data-h data-multi="1">
+    <fieldset><legend>Co chcete udělat</legend><div class="cipy" id="co"><button type="button" class="cip" data-v="strih" aria-pressed="false">Střih</button><button type="button" class="cip" data-v="barva" aria-pressed="false">Barvení nebo melír</button><button type="button" class="cip" data-v="foukana" aria-pressed="false">Foukaná</button><button type="button" class="cip" data-v="svatba" aria-pressed="false">Svatební účes</button><button type="button" class="cip" data-v="ples" aria-pressed="false">Plesový účes</button><button type="button" class="cip" data-v="maturita" aria-pressed="false">Účes na maturitu</button></div></fieldset>
+    <label class="pole"><span>Kdy se Vám to hodí</span><input id="kdy" placeholder="Např. v sobotu 12. 12. ráno"></label>
+    <label class="pole"><span>Jméno</span><input id="jmeno" autocomplete="name"></label>
+    <label class="pole"><span>Telefon</span><input id="tel" type="tel" autocomplete="tel" inputmode="tel"></label>
+    <label class="pole"><span>Popis</span><textarea id="popis" rows="4" placeholder="Např. délka vlasů, barva, fotka účesu, který se Vám líbí."></textarea></label>
+    <div class="odeslat"><button class="btn" type="submit" data-kanal="sms">Poslat SMS</button><button class="btn obrys" type="submit" data-kanal="mail">Poslat e-mailem</button></div>
+  </form>
+</main>
+<footer class="pata">
+  <div class="wrap in"><p><b>Kadeřnictví Eva – Eva Tűrke</b> · Ostravská 103/28, 748 01 Hlučín · IČO 07882700</p><p>Fotka účesu: Kadeřnictví Eva. Ostatní fotky jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/eva.js"></script>
+</body>
+</html>

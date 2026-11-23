@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kadeřnictví Eva – Hlučín, Ostravská 28</title>
+<meta name="description" content="Kadeřnictví Eva v Hlučíně: dámské střihy, barvení, foukaná, svatební a plesové účesy. Přes 20 let praxe.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2a1a24">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='20' fill='%23a1155f'/%3E%3Cpath d='M13 30C6 22 10 8 22 7c9 0 13 8 9 15M31 22c-2 5-8 8-13 5' fill='none' stroke='%23fff' stroke-width='2.4'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/dm-serif-display-400-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/urbanist-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-ke') && !location.hash))) {
+      sessionStorage.setItem('intro-ke', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="js/vt.js"></script>
+<link rel="stylesheet" href="css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="./" data-intro-land aria-label="Kadeřnictví Eva, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="d" d="M13 30C6 22 10 8 22 7c9 0 13 8 9 15"/><path class="d" d="M31 22c-2 5-8 8-13 5"/><circle class="f" cx="27" cy="11" r="4"/></svg><span class="lt"><span class="w">Kadeřnictví Eva</span><small class="f">Ostravská 28 · Hlučín</small></span></a>
+    <nav aria-label="Hlavní"><a href="#velky-den">Velký den</a><a href="#sluzby">Služby</a><a href="#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="objednat/" data-vt="objednat"><span data-vt-el>Objednat se</span></a>
+  </div>
+</header>
+<main>
+  <section class="hero wrap" aria-labelledby="h-uvod">
+    <div class="hero-txt">
+      <h1 id="h-uvod" data-h>Účesy, které vydrží celý večer</h1>
+      <p class="lead" data-h>Kadeřnictví Eva na Ostravské ulici v Hlučíně. Stříhám, barvím a češu přes dvacet let, svatební i plesové účesy, foukané i střihy na každý den.</p>
+      <div class="akce" data-h><a class="btn" href="objednat/" data-vt="objednat"><span data-vt-el>Objednat se</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn obrys num" href="tel:+420606278288">606 278 288</a></div>
+    </div>
+    <figure class="hero-foto" data-h><img src="img/uces-800.jpg" srcset="img/uces-800.jpg 800w, img/uces-1600.jpg 1600w" sizes="(max-width:900px) 80vw, 40vw" width="1440" height="1910" alt="Společenský účes z blond vlasů se zlatou ozdobou" fetchpriority="high"><figcaption>Společenský účes z našeho salonu</figcaption></figure>
+  </section>
+
+  <section class="den" id="velky-den" aria-labelledby="h-den">
+    <div class="wrap in">
+      <div class="den-txt" data-r>
+        <h2 id="h-den">Kdy je Váš velký den?</h2>
+        <div class="cipy" id="udalost"><button type="button" class="cip" data-u="svatba" aria-pressed="true">Svatba</button><button type="button" class="cip" data-u="ples" aria-pressed="false">Ples</button><button type="button" class="cip" data-u="maturita" aria-pressed="false">Maturita</button><button type="button" class="cip" data-u="oslava" aria-pressed="false">Jiná oslava</button></div>
+        <label class="pole datum"><span>Datum</span><input type="date" id="datum"></label>
+      </div>
+      <div class="den-panel" data-r aria-live="polite">
+        <p class="odpocet"><b class="num" id="dni">–</b><span id="dni-t">vyberte datum</span></p>
+        <p class="rada" id="rada">Na svatbu se vyplatí zkouška účesu. Domluvíme ji pár týdnů předem, ať je čas na úpravy.</p>
+        <a class="btn" id="den-obj" href="objednat/?co=svatba" data-vt="objednat"><span data-vt-el>Objednat účes</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sekce wrap" id="sluzby" aria-labelledby="h-sl">
+    <div class="sek-hlava" data-r><h2 id="h-sl">S čím Vám pomůžu</h2><p class="sek-lead">Dámské střihy, barvení a melír, foukaná a společenské účesy.</p></div>
+    <div class="galerie">
+      <figure class="g1" data-r><span class="ram"><img src="img/svatebni-800.jpg" srcset="img/svatebni-800.jpg 800w, img/svatebni-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 44vw" width="1600" height="1066" alt="Kadeřnice dolaďuje svatební účes lakem" loading="lazy" decoding="async"></span><figcaption>Svatební účesy</figcaption></figure>
+      <figure data-r><span class="ram"><img src="img/kudrny-800.jpg" srcset="img/kudrny-800.jpg 800w, img/kudrny-1600.jpg 1600w" sizes="(max-width:900px) 46vw, 26vw" width="1600" height="1066" alt="Natočené vlasy se sponou" loading="lazy" decoding="async"></span><figcaption>Plesové účesy</figcaption></figure>
+      <figure data-r><span class="ram"><img src="img/melir-800.jpg" srcset="img/melir-800.jpg 800w, img/melir-1600.jpg 1600w" sizes="(max-width:900px) 46vw, 26vw" width="1600" height="1066" alt="Melír ve fóliích" loading="lazy" decoding="async"></span><figcaption>Barvení a melír</figcaption></figure>
+      <figure data-r><span class="ram"><img src="img/foukana-800.jpg" srcset="img/foukana-800.jpg 800w, img/foukana-1600.jpg 1600w" sizes="(max-width:900px) 46vw, 26vw" width="1600" height="1068" alt="Foukaná v kadeřnictví" loading="lazy" decoding="async"></span><figcaption>Střih a foukaná</figcaption></figure>
+      <figure data-r><span class="ram"><img src="img/drdol-800.jpg" srcset="img/drdol-800.jpg 800w, img/drdol-1600.jpg 1600w" sizes="(max-width:900px) 46vw, 26vw" width="1600" height="1696" alt="Uhlazený drdol" loading="lazy" decoding="async"></span><figcaption>Drdoly a culíky</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="praxe" aria-labelledby="h-praxe">
+    <div class="wrap in">
+      <p class="cislo num" data-r>20+</p>
+      <div data-r><h2 id="h-praxe">Let u kadeřnického křesla</h2><p>Víc než dvacet let praxe znamená, že vím, co vlasům sedí a co vydrží celý den i noc na parketu.</p></div>
+    </div>
+  </section>
+
+  <section class="kontakt" id="kontakt" aria-labelledby="h-kontakt">
+    <div class="wrap in">
+      <div data-r><h2 id="h-kontakt">Kontakt</h2><p class="k-tel"><a class="num" href="tel:+420606278288">606 278 288</a></p><p><a class="odkaz" href="mailto:eva.turke@seznam.cz">eva.turke@seznam.cz</a></p></div>
+      <dl class="udaje" data-r><div><dt>Adresa</dt><dd>Ostravská 103/28, Hlučín</dd></div><div><dt>Termíny</dt><dd>po domluvě</dd></div><div><dt>Mapa</dt><dd><a class="odkaz" href="https://mapy.com/cs/?source=firm&amp;id=13195415" target="_blank" rel="noopener">Otevřít v Mapy.com</a></dd></div></dl>
+    </div>
+  </section>
+</main>
+
+<footer class="pata">
+  <div class="wrap in"><p><b>Kadeřnictví Eva – Eva Tűrke</b> · Ostravská 103/28, 748 01 Hlučín · IČO 07882700</p><p>Fotka účesu: Kadeřnictví Eva. Ostatní fotky jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/intro.js"></script>
+<script src="js/web.js"></script>
+<script src="js/eva.js"></script>
+</body>
+</html>

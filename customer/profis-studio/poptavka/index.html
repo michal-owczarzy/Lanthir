@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Poptávka – Profis studio Příbor</title>
+<meta name="description" content="Poptávka malby, nátěru, tapety nebo dekorační techniky OIKOS u Profis studia v Příboru.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2b2422">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='6' fill='%232b2422'/%3E%3Crect x='7' y='8' width='22' height='10' rx='3' fill='none' stroke='%23fff' stroke-width='2.4'/%3E%3Cpath d='M29 13h4v8H19v5' fill='none' stroke='%23fff' stroke-width='2.4'/%3E%3Crect x='16' y='25' width='6' height='9' rx='2' fill='%23b9a2a0'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/literata-400_700-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/inter-tight-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-pf5') && !location.hash))) {
+      sessionStorage.setItem('intro-pf5', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Profis studio, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="d" x="4" y="4" width="26" height="12" rx="3"/><path class="d" d="M30 10h5v10H19v6"/><rect class="f" x="16" y="26" width="6" height="11" rx="2"/></svg><span class="lt"><span class="w">Profis studio</span><small class="f">malby · nátěry · OIKOS · Příbor</small></span></a>
+    <nav aria-label="Hlavní"><a href="../#vyzkouset">Vyzkoušet stěnu</a><a href="../#co-delam">Co dělám</a><a href="../#postup">Jak pracuji</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="./" aria-current="page" data-vt="poptavka"><span data-vt-el>Poptávka</span></a>
+  </div>
+</header>
+<main class="p-main wrap">
+  <div class="p-hlava">
+    <h1 data-vt-cil="poptavka" data-h>Poptávka</h1>
+    <p class="lead" data-h>Napište mi, co chcete udělat. Ozvu se, přijedu se podívat a připravím rozpočet.</p>
+    <p class="p-navrh" id="p-navrh" hidden data-h></p>
+    <figure class="p-foto" data-h><img src="../img/valecek-800.jpg" srcset="../img/valecek-800.jpg 800w, ../img/valecek-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 36vw" width="1600" height="1118" alt="Váleček s barvou na stěně" loading="lazy" decoding="async"></figure>
+  </div>
+  <form class="p-form" id="pform" novalidate data-h data-multi="1">
+    <fieldset><legend>O co jde</legend><div class="cipy" id="co"><button type="button" class="cip" data-v="malba" aria-pressed="false">Malba</button><button type="button" class="cip" data-v="oikos" aria-pressed="false">OIKOS stěrka</button><button type="button" class="cip" data-v="tapeta" aria-pressed="false">Tapeta</button><button type="button" class="cip" data-v="folie" aria-pressed="false">Folie</button><button type="button" class="cip" data-v="lak" aria-pressed="false">Nátěr nebo lakování</button><button type="button" class="cip" data-v="navrh" aria-pressed="false">Návrh barev</button></div></fieldset>
+    <label class="pole"><span>Kolik místností</span><input id="mistnosti" inputmode="numeric" placeholder="Např. 3"></label>
+    <label class="pole"><span>Jméno</span><input id="jmeno" autocomplete="name"></label>
+    <label class="pole"><span>Telefon</span><input id="tel" type="tel" autocomplete="tel" inputmode="tel"></label>
+    <label class="pole"><span>Popis</span><textarea id="popis" rows="4" placeholder="Např. obývák a ložnice, jedna stěna v OIKOS stěrce."></textarea></label>
+    <div class="odeslat"><button class="btn" type="submit" data-kanal="sms">Poslat SMS</button><button class="btn obrys" type="submit" data-kanal="mail">Poslat e-mailem</button></div>
+  </form>
+</main>
+<footer class="pata">
+  <div class="wrap in"><p><b>Ing. Lubomír Fuňák – Profis studio</b> · Fučíkova 1333, 742 58 Příbor · IČO 43628222</p><p>Fotky stěny: Profis studio. Ostatní fotky jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/profis.js"></script>
+</body>
+</html>

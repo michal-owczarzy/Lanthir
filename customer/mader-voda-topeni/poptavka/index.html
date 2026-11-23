@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Poptávka – Dominik Mader, Vítkov</title>
+<meta name="description" content="Poptávka instalatérských a topenářských prací u Dominika Madera.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#18191b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='4' fill='%2318191b'/%3E%3Cpath d='M6 12h16a6 6 0 0 1 6 6v16' fill='none' stroke='%23f2c200' stroke-width='3'/%3E%3Cpath d='M6 21h10a4 4 0 0 1 4 4v9' fill='none' stroke='%232d7fd3' stroke-width='3'/%3E%3Cpath d='M6 30h3a2 2 0 0 1 2 2v2' fill='none' stroke='%23d0202e' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/antonio-500_700-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/be-vietnam-pro-400-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-dm') && !location.hash))) {
+      sessionStorage.setItem('intro-dm', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Dominik Mader, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="d t1" d="M4 10h20a6 6 0 0 1 6 6v20"/><path class="d t2" d="M4 20h12a4 4 0 0 1 4 4v12"/><path class="d t3" d="M4 30h4a2 2 0 0 1 2 2v4"/><circle class="f" cx="30" cy="8" r="3"/></svg><span class="lt"><span class="w">Mader</span><small class="f">voda · topení · plyn · Vítkov</small></span></a>
+    <nav aria-label="Hlavní"><a href="../#pudorys">Co potřebujete</a><a href="../#prace">Práce</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="./" aria-current="page" data-vt="poptavka"><span data-vt-el>Poptávka</span></a>
+  </div>
+</header>
+<main class="p-main wrap">
+  <div class="p-hlava">
+    <h1 data-vt-cil="poptavka" data-h>Poptávka</h1>
+    <p class="lead" data-h>Napište mi, co potřebujete udělat. Ozvu se a domluvíme se, kdy se přijedu podívat.</p>
+    <p class="p-navrh" id="p-navrh" hidden data-h></p>
+    <figure class="p-foto" data-h><img src="../img/potrubi-800.jpg" srcset="../img/potrubi-800.jpg 800w, ../img/potrubi-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 36vw" width="1600" height="1066" alt="Vodovodní potrubí s uzávěrem" loading="lazy" decoding="async"></figure>
+  </div>
+  <form class="p-form" id="pform" novalidate data-h data-multi="1">
+    <fieldset><legend>O co jde</legend><div class="cipy" id="co"><button type="button" class="cip" data-v="voda" aria-pressed="false">Voda a odpady</button><button type="button" class="cip" data-v="topeni" aria-pressed="false">Topení</button><button type="button" class="cip" data-v="plyn" aria-pressed="false">Plyn</button><button type="button" class="cip" data-v="kotel" aria-pressed="false">Kotel</button><button type="button" class="cip" data-v="oprava" aria-pressed="false">Oprava</button></div></fieldset>
+    <label class="pole"><span>Obec</span><input id="obec" autocomplete="address-level2"></label>
+    <label class="pole"><span>Jméno</span><input id="jmeno" autocomplete="name"></label>
+    <label class="pole"><span>Telefon</span><input id="tel" type="tel" autocomplete="tel" inputmode="tel"></label>
+    <label class="pole"><span>Popis</span><textarea id="popis" rows="4" placeholder="Např. nové rozvody v koupelně a výměna radiátorů."></textarea></label>
+    <div class="odeslat"><button class="btn" type="submit" data-kanal="sms">Poslat SMS</button><button class="btn obrys" type="submit" data-kanal="mail">Poslat e-mailem</button></div>
+  </form>
+</main>
+<footer class="pata">
+  <div class="wrap in"><p><b>Voda – topení – plyn Dominik Mader</b> · Klokočov 41, 747 47 Vítkov · IČO 19573774</p><p>Fotka radiátorů: Dominik Mader. Ostatní fotky jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/mader.js"></script>
+</body>
+</html>

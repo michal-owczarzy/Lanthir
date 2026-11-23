@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Martin Plášek – servis nákladních aut a pneuservis, Velká Štáhle</title>
+<meta name="description" content="Autoservis nákladních vozidel Martin Plášek, Velká Štáhle u Rýmařova: opravy, servis, diagnostika, pneuservis, prodej náhradních dílů a pneumatik. Po–pá 7–15.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1d2024">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='4' fill='%231d2024'/%3E%3Cpath d='M5 27V12h18v15M23 17h7l5 6v4' fill='none' stroke='%23fff' stroke-width='2.4'/%3E%3Ccircle cx='12' cy='29' r='3.5' fill='%23ff6a00'/%3E%3Ccircle cx='29' cy='29' r='3.5' fill='%23ff6a00'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/teko-500_700-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/source-sans-3-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-mp') && !location.hash))) {
+      sessionStorage.setItem('intro-mp', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="js/vt.js"></script>
+<link rel="stylesheet" href="css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="./" data-intro-land aria-label="Martin Plášek, úvod"><svg viewBox="0 0 44 40" aria-hidden="true"><path class="d" d="M3 28V10h22v18M25 16h9l6 7v5"/><circle class="d" cx="12" cy="31" r="4"/><circle class="d" cx="33" cy="31" r="4"/><path class="f" d="M29 19h4l3 4h-7z"/></svg><span class="lt"><span class="w">Plášek</span><small class="f">servis nákladních aut · Velká Štáhle</small></span></a>
+    <nav aria-label="Hlavní"><a href="#pneu">Pneumatiky</a><a href="#sluzby">Služby</a><a href="#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="objednat/" data-vt="objednat"><span data-vt-el>Objednat vůz</span></a>
+  </div>
+</header>
+<main>
+  <section class="hero" aria-labelledby="h-uvod">
+    <figure class="hero-foto"><img src="img/tahac-800.jpg" srcset="img/tahac-800.jpg 800w, img/tahac-1600.jpg 1600w" sizes="100vw" width="1600" height="1198" alt="Červený tahač na silnici" fetchpriority="high"></figure>
+    <div class="wrap hero-in">
+      <h1 id="h-uvod" data-h>Servis nákladních aut</h1>
+      <p class="lead" data-h>Martin Plášek, Velká Štáhle u Rýmařova. Opravy, servis a údržba nákladních automobilů, diagnostika, pneuservis, pneumatiky a náhradní díly.</p>
+      <div class="akce" data-h><a class="btn" href="objednat/" data-vt="objednat"><span data-vt-el>Objednat vůz</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn svetly num" href="tel:+420739054177">739 054 177</a></div>
+      <p class="stav" data-h><span class="tecka"></span><span class="stav-text">Po–pá 7–15</span></p>
+    </div>
+  </section>
+
+  <section class="pneu" id="pneu" aria-labelledby="h-pneu">
+    <div class="wrap in">
+      <div class="pn-txt" data-r>
+        <h2 id="h-pneu">Jaký rozměr hledáte?</h2>
+        <p class="sek-lead">Napište rozměr z boku pneumatiky. Ukážeme, co čísla znamenají, a rozměr nám rovnou pošlete s poptávkou.</p>
+        <label class="pole rozmer"><span>Rozměr</span><input id="rozmer" value="315/80 R22.5" autocomplete="off" spellcheck="false"></label>
+        <div class="cipy" id="presety"><button type="button" class="cip" data-r="315/80 R22.5">315/80 R22.5</button><button type="button" class="cip" data-r="385/65 R22.5">385/65 R22.5</button><button type="button" class="cip" data-r="315/70 R22.5">315/70 R22.5</button><button type="button" class="cip" data-r="295/80 R22.5">295/80 R22.5</button><button type="button" class="cip" data-r="215/75 R17.5">215/75 R17.5</button></div>
+        <dl class="cisla" aria-live="polite">
+          <div><dt>Šířka</dt><dd class="num" id="c-sirka">315 mm</dd></div>
+          <div><dt>Výška bočnice</dt><dd class="num" id="c-bok">252 mm</dd></div>
+          <div><dt>Ráfek</dt><dd class="num" id="c-rafek">22,5″</dd></div>
+          <div><dt>Průměr kola</dt><dd class="num" id="c-prumer">1 076 mm</dd></div>
+        </dl>
+        <a class="btn" id="pn-poslat" href="objednat/?co=pneu" data-vt="objednat"><span data-vt-el>Poptat pneumatiky</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="pn-obr" data-r><svg class="pneu-svg" id="pneu-svg" viewBox="-20 0 620 550" role="img" aria-label="Pneumatika s vyznačenými rozměry">
+  <circle class="p-gum" id="p-gum" cx="260" cy="260" r="230"/>
+  <circle class="p-disk" id="p-disk" cx="260" cy="260" r="122"/>
+  <circle class="p-stred" cx="260" cy="260" r="34"/>
+  <g class="p-sroub" id="p-sroub"></g>
+  <g class="p-kota"><path id="k-prumer" d="M30 500H490"/><text id="t-prumer" x="260" y="538" text-anchor="middle"></text>
+  <path id="k-bok" d="M500 30V138"/><text id="t-bok" x="508" y="90"></text></g>
+</svg></div>
+    </div>
+  </section>
+
+  <section class="sekce wrap" id="sluzby" aria-labelledby="h-sl">
+    <div class="sek-hlava" data-r><h2 id="h-sl">Pro dopravce</h2><p class="sek-lead">Auto má vydělávat, ne stát v dílně. Servis, opravy a pneumatiky na jednom místě.</p></div>
+    <div class="pas">
+      <article data-r><figure><img src="img/ridic-800.jpg" srcset="img/ridic-800.jpg 800w, img/ridic-1600.jpg 1600w" sizes="(max-width:680px) 92vw, 30vw" width="1600" height="1440" alt="Řidič u nákladního auta" loading="lazy" decoding="async"></figure><h3>Servis a opravy</h3><p>Pravidelná údržba, brzdy, podvozek a opravy nákladních automobilů.</p></article>
+      <article data-r><figure><img src="img/kontrola-800.jpg" srcset="img/kontrola-800.jpg 800w, img/kontrola-1600.jpg 1600w" sizes="(max-width:680px) 92vw, 30vw" width="1600" height="1440" alt="Kontrola tahače" loading="lazy" decoding="async"></figure><h3>Diagnostika</h3><p>Najdeme závadu dřív, než vůz zastaví na cestě.</p></article>
+      <article data-r><figure><img src="img/pneu-sklad-800.jpg" srcset="img/pneu-sklad-800.jpg 800w, img/pneu-sklad-1600.jpg 1600w" sizes="(max-width:680px) 92vw, 30vw" width="1600" height="1200" alt="Pneumatiky na skladě" loading="lazy" decoding="async"></figure><h3>Pneuservis a díly</h3><p>Prodej a montáž pneumatik, náhradní díly.</p></article>
+    </div>
+  </section>
+
+  <section class="kontakt" id="kontakt" aria-labelledby="h-kontakt">
+    <div class="wrap in">
+      <div data-r><h2 id="h-kontakt">Kontakt</h2><p class="k-tel"><a class="num" href="tel:+420739054177">739 054 177</a></p><p><a class="odkaz" href="mailto:matesplasek@seznam.cz">matesplasek@seznam.cz</a></p></div>
+      <dl class="udaje" data-r><div><dt>Adresa</dt><dd>Velká Štáhle 73</dd></div><div><dt>Otevřeno</dt><dd>po–pá 7:00–15:00</dd></div><div><dt>Mapa</dt><dd><a class="odkaz" href="https://mapy.com/cs/?source=firm&amp;id=12858915" target="_blank" rel="noopener">Otevřít v Mapy.com</a></dd></div></dl>
+    </div>
+  </section>
+</main>
+
+<footer class="pata">
+  <div class="wrap in"><p><b>Martin Plášek – autoservis nákladních vozidel</b> · Velká Štáhle 73, 793 51 · IČO 87467828</p><p>Fotky jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/intro.js"></script>
+<script src="js/web.js"></script>
+<script src="js/plasek.js"></script>
+</body>
+</html>

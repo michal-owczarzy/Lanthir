@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stolařství Jan Hajchel – nábytek na zakázku, Velké Albrechtice</title>
+<meta name="description" content="Stolařství Jan Hajchel z Velkých Albrechtic: zakázková výroba nábytku, koupelnový nábytek, skříně a atypické kusy na míru.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1f1c19">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='4' fill='%2324533f'/%3E%3Cpath d='M9 32 20 9l11 23M13 24h14' fill='none' stroke='%23fff' stroke-width='2.6'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/crimson-pro-400_700-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/hind-400-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-jh') && !location.hash))) {
+      sessionStorage.setItem('intro-jh', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="js/vt.js"></script>
+<link rel="stylesheet" href="css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="./" data-intro-land aria-label="Stolařství Hajchel, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="d" d="M6 34 20 6l14 28"/><path class="d" d="M11 24h18"/><circle class="f" cx="20" cy="6" r="3"/></svg><span class="lt"><span class="w">Hajchel</span><small class="f">stolařství · Velké Albrechtice</small></span></a>
+    <nav aria-label="Hlavní"><a href="#skrinka">Skříňka na míru</a><a href="#co-vyrabim">Co vyrábím</a><a href="#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="poptavka/" data-vt="poptavka"><span data-vt-el>Poptávka</span></a>
+  </div>
+</header>
+<main>
+  <section class="hero wrap" aria-labelledby="h-uvod">
+    <div class="hero-txt">
+      <h1 id="h-uvod" data-h>Nábytek na&nbsp;zakázku</h1>
+      <p class="lead" data-h>Stolařství Jan Hajchel z Velkých Albrechtic. Vyrábím nábytek přesně podle Vašich rozměrů, od skříněk do koupelny po celé sestavy.</p>
+      <div class="akce" data-h><a class="btn" href="#skrinka">Navrhnout skříňku <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn obrys num" href="tel:+420739050101">739 050 101</a></div>
+      <blockquote class="hero-cit" data-h><p>„Od začátku do konce proběhlo vše hladce, kvalitně a s důrazem na detail.“</p><cite>hodnocení zakázky do koupelen na Firmy.cz</cite></blockquote>
+    </div>
+    <figure class="hero-foto" data-h><img src="img/koupelna-800.jpg" srcset="img/koupelna-800.jpg 800w, img/koupelna-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 50vw" width="1600" height="1067" alt="Dvě dřevěné skříňky pod umyvadla s oválnými zrcadly" fetchpriority="high"></figure>
+  </section>
+
+  <section class="skrinka" id="skrinka" aria-labelledby="h-skr">
+    <div class="wrap in">
+      <div class="sk-txt" data-r>
+        <h2 id="h-skr">Skříňka pod umyvadlo na míru</h2>
+        <p class="sek-lead">Vyberte dřevo a šířku. Skříňka se překreslí a návrh mi pošlete s poptávkou.</p>
+        <fieldset><legend>Dřevo</legend><div class="dreva" id="dreva"><button type="button" class="drevo" data-d="dub" aria-pressed="true"><span style="background:#b8925f"></span>Dub</button><button type="button" class="drevo" data-d="buk" aria-pressed="false"><span style="background:#d7aa82"></span>Buk</button><button type="button" class="drevo" data-d="jasan" aria-pressed="false"><span style="background:#dcc6a2"></span>Jasan</button><button type="button" class="drevo" data-d="orech" aria-pressed="false"><span style="background:#6e4a32"></span>Ořech</button><button type="button" class="drevo" data-d="smrk" aria-pressed="false"><span style="background:#e6cf9f"></span>Smrk</button></div></fieldset>
+        <p class="dr-popis" id="dr-popis">Tvrdý a odolný, s výraznou kresbou. Do koupelny se hodí, když je dobře ošetřený.</p>
+        <label class="pole sirka"><span>Šířka <b class="num" id="s-v">80 cm</b></span><input type="range" id="sirka" min="40" max="160" step="10" value="80"></label>
+        <a class="btn" id="sk-poslat" href="poptavka/" data-vt="poptavka"><span data-vt-el>Poptat tuto skříňku</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="sk-obr" data-r><svg class="skr" id="skr" viewBox="0 0 640 380" role="img" aria-label="Skříňka pod umyvadlo">
+  <defs><filter id="kresba" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".004 .09" numOctaves="3" seed="11"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .5"/></feComponentTransfer></filter></defs>
+  <rect class="zed" x="0" y="0" width="640" height="300"/><rect class="podlaha" x="0" y="300" width="640" height="80"/>
+  <g id="skr-g"></g>
+</svg><p class="sk-souhrn num" id="sk-souhrn"></p></div>
+    </div>
+  </section>
+
+  <section class="sekce wrap" id="co-vyrabim" aria-labelledby="h-co">
+    <div class="sek-hlava" data-r><h2 id="h-co">Co vyrábím</h2><p class="sek-lead">Nábytek na zakázku, od návrhu po montáž.</p></div>
+    <div class="co">
+      <article data-r><figure><img src="img/koupelna-dub-800.jpg" srcset="img/koupelna-dub-800.jpg 800w, img/koupelna-dub-1600.jpg 1600w" sizes="(max-width:680px) 92vw, 30vw" width="1600" height="1440" alt="Koupelna s dřevěnou skříňkou pod umyvadlem" loading="lazy" decoding="async"></figure><h3>Koupelnový nábytek</h3><p>Skříňky pod umyvadla, vysoké skříně a police do koupelny.</p></article>
+      <article data-r><figure><img src="img/zasuvka-800.jpg" srcset="img/zasuvka-800.jpg 800w, img/zasuvka-1600.jpg 1600w" sizes="(max-width:680px) 92vw, 30vw" width="1600" height="1066" alt="Dřevěná skříňka s otevřenou zásuvkou" loading="lazy" decoding="async"></figure><h3>Skříně a skříňky</h3><p>Do předsíně, ložnice i obýváku, přesně do výklenku.</p></article>
+      <article data-r><figure><img src="img/rysovani-800.jpg" srcset="img/rysovani-800.jpg 800w, img/rysovani-1600.jpg 1600w" sizes="(max-width:680px) 92vw, 30vw" width="1600" height="1066" alt="Stolař rýsuje na dřevěné desce" loading="lazy" decoding="async"></figure><h3>Atypické kusy</h3><p>Když potřebujete něco, co se v obchodě nedá koupit.</p></article>
+    </div>
+  </section>
+
+  <section class="dilna" aria-labelledby="h-dilna">
+    <div class="wrap in">
+      <figure data-r><img src="img/hoblovani-800.jpg" srcset="img/hoblovani-800.jpg 800w, img/hoblovani-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 50vw" width="1600" height="1066" alt="Stolař opracovává dřevo v dílně" loading="lazy" decoding="async"></figure>
+      <div data-r><h2 id="h-dilna">Od výkresu po montáž</h2><ol class="kroky"><li><b>Zaměření</b><span>Přijedu změřit a probereme, co chcete.</span></li><li><b>Návrh</b><span>Připravím návrh s rozměry a dřevem.</span></li><li><b>Výroba</b><span>Vyrobím v dílně, s důrazem na detail.</span></li><li><b>Montáž</b><span>Přivezu a smontuji u Vás.</span></li></ol></div>
+    </div>
+  </section>
+
+  <section class="kontakt" id="kontakt" aria-labelledby="h-kontakt">
+    <div class="wrap in">
+      <div data-r><h2 id="h-kontakt">Kontakt</h2><p class="k-tel"><a class="num" href="tel:+420739050101">739 050 101</a></p><p><a class="odkaz" href="mailto:stolarstvi.hajchel@gmail.com">stolarstvi.hajchel@gmail.com</a></p></div>
+      <dl class="udaje" data-r><div><dt>Dílna</dt><dd>Velké Albrechtice</dd></div><div><dt>Kdy volat</dt><dd>po–pá 8:00–16:00</dd></div><div><dt>Mapa</dt><dd><a class="odkaz" href="https://mapy.com/cs/?source=firm&amp;id=13750720" target="_blank" rel="noopener">Otevřít v Mapy.com</a></dd></div></dl>
+    </div>
+  </section>
+</main>
+
+<footer class="pata">
+  <div class="wrap in"><p><b>Stolařství Jan Hajchel</b> · Velké Albrechtice · IČO 22336290</p><p>Fotky jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/intro.js"></script>
+<script src="js/web.js"></script>
+<script src="js/hajchel.js"></script>
+</body>
+</html>
