@@ -57,7 +57,7 @@ html.intro-on.intro-landed [data-intro-land]{opacity:1;transition:opacity .25s e
 }
 @media (max-width:680px){.ribbon{font-size:14px;padding:8px 14px}}
 
-:root{--bg:#eef3f6;--bila:#ffffff;--ink:#1f2a33;--muted:#4d5a64;--line:#d3dde3;--tmava:#1f2a33;--acc:#e2703f;--acc-2:#c85b2c;--na-acc:#ffffff;--acc-svetly:#f5a47f;--intro:#1f2a33;--display:"DM Serif Display",Georgia,serif;--text:"DM Sans",system-ui,sans-serif;--r-btn:6px;--r-box:4px;--r-img:4px;--w-disp:400;--tr-disp:-.015em;--s-small:clamp(.9375rem,.9rem + .1vw,1rem);--s-body:clamp(1.0625rem,1rem + .2vw,1.1875rem);--s-lead:clamp(1.1875rem,1.05rem + .5vw,1.375rem);--m:clamp(16px,4vw,60px);--ease:cubic-bezier(.16,1,.3,1);--ven:cubic-bezier(.4,0,1,1);--pruz:cubic-bezier(.34,1.56,.64,1);}
+:root{--bg:#eef3f6;--bila:#ffffff;--ink:#1f2a33;--muted:#4d5a64;--line:#d3dde3;--tmava:#1f2a33;--acc:#c2255c;--acc-2:#a01d4b;--na-acc:#ffffff;--acc-svetly:#f39abd;--intro:#1f2a33;--display:"DM Serif Display",Georgia,serif;--text:"DM Sans",system-ui,sans-serif;--r-btn:6px;--r-box:4px;--r-img:4px;--w-disp:400;--tr-disp:-.015em;--s-small:clamp(.9375rem,.9rem + .1vw,1rem);--s-body:clamp(1.0625rem,1rem + .2vw,1.1875rem);--s-lead:clamp(1.1875rem,1.05rem + .5vw,1.375rem);--m:clamp(16px,4vw,60px);--ease:cubic-bezier(.16,1,.3,1);--ven:cubic-bezier(.4,0,1,1);--pruz:cubic-bezier(.34,1.56,.64,1);}
 
 .rod{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(20px,3vw,40px);margin-top:clamp(28px,4vw,48px)}
 .osoby{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:start}
@@ -72,7 +72,7 @@ html.intro-on.intro-landed [data-intro-land]{opacity:1;transition:opacity .25s e
 .rv-cas{font:400 clamp(2.8rem,2rem + 3vw,4.6rem)/1 var(--display)}
 .rv-osa{display:flex;gap:4px;min-height:64px}
 .rv-osa li{display:grid;align-content:center;min-width:56px;padding:8px 10px;border-radius:3px;background:var(--acc);font-size:14px;line-height:1.2;overflow:hidden}
-.rv-osa li:nth-child(even){background:#f5a47f;color:var(--ink)}
+.rv-osa li:nth-child(even){background:#f39abd;color:var(--ink)}
 .rv-osa span{opacity:.85}
 .rv-pozn{font-size:var(--s-small);opacity:.75}
 .rod-vysl .btn{justify-self:start}
