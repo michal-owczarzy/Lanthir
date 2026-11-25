@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jiří Kašpárek – revize kotlů, topenář, Lichnov</title>
+<meta name="description" content="Revize kotlů na tuhá paliva, výměna kotlů pro kotlíkové dotace, plynové kotle a přípojky. Jiří Kašpárek, Lichnov u Frenštátu.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1f1b18">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%231f1b18'/%3E%3Cpath d='M20 8c4 6 8 9 8 15a8 8 0 0 1-16 0c0-4 3-6 4-10 2 3 3 4 4 5 1-4 0-7 0-10z' fill='%23f76707'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/rethink-sans-400_800-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-jk') && !location.hash))) {
+      sessionStorage.setItem('intro-jk', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="js/vt.js"></script>
+<link rel="stylesheet" href="css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="./" data-intro-land aria-label="Jiří Kašpárek, instalatérské a topenářské práce, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="d" pathLength="1" x="9" y="6" width="22" height="28" rx="3"/><path class="d" pathLength="1" d="M9 16h22M14 34v3M26 34v3"/><path class="f" d="M20 20c2 3 4 4 4 7a4 4 0 0 1-8 0c0-2 1-3 2-5 1 1 1 2 2 2 0-2 0-3 0-4z"/></svg><span class="lt"><span class="w">Jiří Kašpárek</span><small class="f">instalatér a topenář · Lichnov</small></span></a>
+    <nav aria-label="Hlavní"><a href="#kotel">Smí kotel topit?</a><a href="#prace">Co dělám</a><a href="#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="poptavka/" data-vt="poptavka"><span data-vt-el>Objednat revizi</span></a>
+  </div>
+</header><main>
+  <section class="hero v-split" aria-labelledby="h-uvod">
+    <div class="wrap in">
+      <div class="hero-txt"><h1 id="h-uvod" data-h>Revize kotlů a&nbsp;topení</h1><p class="lead" data-h>Jiří Kašpárek, instalatér a topenář z Lichnova. Revize kotlů na tuhá paliva, montáž kotlů splňujících podmínky kotlíkových dotací, plynové kotle a přípojky.</p><div class="akce" data-h><a class="btn" href="poptavka/" data-vt="poptavka"><span data-vt-el>Objednat revizi</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn obrys num" href="tel:+420739179622">739 179 622</a></div></div>
+      <figure class="hero-foto" data-h><img src="img/kotelna-800.jpg" srcset="img/kotelna-800.jpg 800w, img/kotelna-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 50vw" width="1600" height="1064" alt="Kotelna s potrubím a ventily" fetchpriority="high"></figure>
+    </div>
+  </section>
+  <section class="kotel sekce wrap" id="kotel" aria-labelledby="h-kot">
+    <div class="sek-hlava" data-r><h2 id="h-kot">Smí Váš kotel ještě topit?</h2><p class="sek-lead">Kotel na tuhá paliva musí mít aspoň 3. emisní třídu a revizi jednou za tři roky. Vyberte třídu ze štítku a datum poslední revize.</p></div>
+    <div class="kot-box" data-r>
+      <div class="kot-ovl">
+        <fieldset><legend>Emisní třída kotle</legend><div class="cipy" id="k-tridy"><button type="button" class="cip tr" data-t="1" aria-pressed="false">1. emisní třída</button><button type="button" class="cip tr" data-t="2" aria-pressed="false">2. emisní třída</button><button type="button" class="cip tr" data-t="3" aria-pressed="true">3. emisní třída</button><button type="button" class="cip tr" data-t="4" aria-pressed="false">4. emisní třída</button><button type="button" class="cip tr" data-t="5" aria-pressed="false">5. třída nebo ekodesign</button><button type="button" class="cip tr" data-t="x" aria-pressed="false">Nevím / bez štítku</button></div></fieldset>
+        <label class="pole"><span>Poslední revize</span><input type="month" id="k-rev"></label>
+      </div>
+      <div class="kot-vysl" id="k-vysl" aria-live="polite">
+        <p class="kv-stav" id="kv-stav">Může topit</p>
+        <p id="kv-t">Kotel 3. třídy smí topit. Hlídejte revizi.</p>
+        <p class="kv-rev" id="kv-rev"></p>
+        <a class="btn" id="kv-obj" href="poptavka/?co=revize" data-vt="poptavka"><span data-vt-el>Objednat revizi</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+<section class="sekce wrap" id="prace" aria-labelledby="h-pr"><div class="sek-hlava" data-r><h2 id="h-pr">Co dělám</h2><p class="sek-lead">Topení, voda a plyn pro rodinné domy i provozy.</p></div><div class="sl-mriz n4"><article class="s1" data-r><figure><img src="img/manometr-800.jpg" srcset="img/manometr-800.jpg 800w, img/manometr-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 44vw" width="1600" height="2400" alt="Manometr na kotli" loading="lazy" decoding="async"></figure><h3>Revize kotlů na tuhá paliva</h3><p>Opop, Atmos, Attack i kotle bez štítku. Revize, kterou kotel podle zákona potřebuje jednou za tři roky.</p></article><article data-r><figure><img src="img/plamen-800.jpg" srcset="img/plamen-800.jpg 800w, img/plamen-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 26vw" width="1600" height="1066" alt="Modrý plamen plynového hořáku" loading="lazy" decoding="async"></figure><h3>Plynové kotle a přípojky</h3><p>Instalace plynových kotlů, plynové přípojky, opravy plynovodů.</p></article><article data-r><figure><img src="img/rozvody-800.jpg" srcset="img/rozvody-800.jpg 800w, img/rozvody-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 26vw" width="1600" height="2262" alt="Rozvody topení a vody" loading="lazy" decoding="async"></figure><h3>Výměna kotle</h3><p>Montáž kotlů, které splňují podmínky kotlíkových dotací.</p></article><article data-r><figure><img src="img/voda-800.jpg" srcset="img/voda-800.jpg 800w, img/voda-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 26vw" width="1600" height="1200" alt="Instalatérské práce" loading="lazy" decoding="async"></figure><h3>Voda a topení</h3><p>Rozvody vody a topení, instalatérské a topenářské práce.</p></article></div></section>
+  <section class="recenze" aria-labelledby="h-rec">
+    <div class="wrap in"><h2 id="h-rec" data-r>5,0 ze 2 hodnocení</h2><blockquote data-r class="r1"><p>„Profesionálové každým coulem, pět hvězd málo.“</p><cite>zákazník na Firmy.cz</cite></blockquote></div>
+  </section>
+  <section class="kontakt" id="kontakt" aria-labelledby="h-kontakt">
+    <div class="wrap in">
+      <div data-r><h2 id="h-kontakt">Kontakt</h2><p class="k-tel"><a class="num" href="tel:+420739179622">739 179 622</a></p><p><a class="odkaz" href="mailto:helena156@seznam.cz">helena156@seznam.cz</a></p></div>
+      <dl class="udaje" data-r><div><dt>Sídlo</dt><dd>Lichnov, u Frenštátu pod Radhoštěm</dd></div><div><dt>Revize</dt><dd>kotle na tuhá paliva</dd></div><div><dt>Objednání</dt><dd>telefonem nebo SMS</dd></div><div><dt>Mapa</dt><dd><a class="odkaz" href="https://mapy.com/cs/?source=firm&amp;id=13034528" target="_blank" rel="noopener">Otevřít v Mapy.com</a></dd></div></dl>
+    </div>
+  </section>
+</main>
+
+<footer class="pata">
+  <div class="wrap in"><p><b>Jiří Kašpárek – instalatérské a topenářské práce</b> · Lichnov 742 75, u Frenštátu pod Radhoštěm</p><p>Fotky jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/intro.js"></script>
+<script src="js/web.js"></script>
+<script src="js/kasparek.js"></script>
+</body>
+</html>

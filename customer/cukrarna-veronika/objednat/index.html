@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Objednat dort – Cukrárna Veronika Bílovec</title>
+<meta name="description" content="Objednejte dort nebo koláčky v Cukrárně Veronika v Bílovci.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#23163a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%2323163a'/%3E%3Cpath d='M10 28h20v4H10zM12 22h16v6H12zM15 16h10v6H15z' fill='%23f6b8cd'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/fraunces-400_800-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/outfit-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-cv') && !location.hash))) {
+      sessionStorage.setItem('intro-cv', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Cukrárna Veronika, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="d" pathLength="1" d="M8 31h24M10 31v-7h20v7M13 24v-6h14v6M16 18v-5h8v5"/><circle class="f" cx="20" cy="10" r="2.6"/></svg><span class="lt"><span class="w">Veronika</span><small class="f">cukrárna · Bílovec</small></span></a>
+    <nav aria-label="Hlavní"><a href="../#velikost">Jak velký dort</a><a href="../#nabidka">Nabídka</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="./" aria-current="page" data-vt="objednat"><span data-vt-el>Objednat dort</span></a>
+  </div>
+</header>
+<main class="p-main wrap">
+  <div class="p-hlava">
+    <h1 data-vt-cil="objednat" data-h>Objednat dort</h1>
+    <p class="lead" data-h>Napište, na jakou příležitost a pro kolik lidí. Ozveme se, domluvíme příchuť, vzhled a cenu.</p>
+    
+    <figure class="p-foto" data-h><img src="../img/patra-800.jpg" srcset="../img/patra-800.jpg 800w, ../img/patra-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 36vw" width="1600" height="2400" alt="Patrový dort s květinami" loading="lazy" decoding="async"></figure>
+  </div>
+  <form class="p-form" id="pform" novalidate data-h data-multi="1">
+    <fieldset><legend>Co objednáváte</legend><div class="cipy" id="co"><button type="button" class="cip" data-v="dort" aria-pressed="false">Dort</button><button type="button" class="cip" data-v="svatba" aria-pressed="false">Svatební dort</button><button type="button" class="cip" data-v="kolace" aria-pressed="false">Koláčky a řezy</button><button type="button" class="cip" data-v="chlebicky" aria-pressed="false">Chlebíčky</button><button type="button" class="cip" data-v="cukrovi" aria-pressed="false">Cukroví</button></div></fieldset>
+    <div class="pole-2"><label class="pole"><span>Pro kolik lidí</span><input id="o-hoste" type="number" min="1" inputmode="numeric"></label><label class="pole"><span>Na kdy</span><input id="o-datum" type="date"></label></div>
+    <label class="pole"><span>Jméno</span><input id="jmeno" autocomplete="name"></label>
+    <label class="pole"><span>Telefon</span><input id="tel" type="tel" autocomplete="tel" inputmode="tel"></label>
+    <label class="pole"><span>Popis</span><textarea id="popis" rows="4" placeholder="Příchuť, téma, barvy, nápis…"></textarea></label>
+    <div class="odeslat"><button class="btn" type="submit" data-kanal="sms">Poslat SMS</button><button class="btn obrys" type="submit" data-kanal="mail">Poslat e-mailem</button></div>
+  </form>
+</main>
+<footer class="pata">
+  <div class="wrap in"><p><b>Cukrárna Veronika</b> · 17. listopadu 538/57, 743 01 Bílovec</p><p>Dort s kabelkou je z profilu cukrárny, ostatní fotky jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/veronika.js"></script>
+</body>
+</html>

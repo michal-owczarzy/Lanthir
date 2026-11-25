@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Poptat střechu – Aleš Novotný Nový Jičín</title>
+<meta name="description" content="Poptejte střechu, opravu nebo klempířské práce v Novém Jičíně a okolí.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1b232b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%231b232b'/%3E%3Cpath d='M6 24L20 11l14 13' stroke='%23d08a4c' stroke-width='3' fill='none' stroke-linejoin='round'/%3E%3Cpath d='M11 24v8h18v-8' stroke='%23fff' stroke-width='2.4' fill='none'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/barlow-400-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/barlow-500-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-an') && !location.hash))) {
+      sessionStorage.setItem('intro-an', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Aleš Novotný, pokrývačství a klempířství, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="d" pathLength="1" d="M3 22L20 6l17 16"/><path class="d" pathLength="1" d="M9 18v16h22V18"/><path class="d" pathLength="1" d="M28 9v-4h4v8"/><rect class="f" x="17" y="25" width="6" height="9"/></svg><span class="lt"><span class="w">Aleš Novotný</span><small class="f">pokrývač a klempíř · Nový Jičín</small></span></a>
+    <nav aria-label="Hlavní"><a href="../#plocha">Plocha střechy</a><a href="../#prace">Co dělám</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="./" aria-current="page" data-vt="poptavka"><span data-vt-el>Poptat střechu</span></a>
+  </div>
+</header>
+<main class="p-main wrap">
+  <div class="p-hlava">
+    <h1 data-vt-cil="poptavka" data-h>Poptat střechu</h1>
+    <p class="lead" data-h>Napište, co potřebujete a kde. Ozvu se, přijedu se podívat a domluvíme cenu.</p>
+    <p class="p-navrh" id="p-navrh" hidden data-h></p>
+    <figure class="p-foto" data-h><img src="../img/zebrik-800.jpg" srcset="../img/zebrik-800.jpg 800w, ../img/zebrik-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 36vw" width="1600" height="1066" alt="Pokrývač na střeše" loading="lazy" decoding="async"></figure>
+  </div>
+  <form class="p-form" id="pform" novalidate data-h data-multi="1">
+    <fieldset><legend>Co potřebujete</legend><div class="cipy" id="co"><button type="button" class="cip" data-v="nova" aria-pressed="false">Nová střecha</button><button type="button" class="cip" data-v="vymena" aria-pressed="false">Výměna krytiny</button><button type="button" class="cip" data-v="oprava" aria-pressed="false">Oprava, zatéká</button><button type="button" class="cip" data-v="okapy" aria-pressed="false">Okapy a svody</button><button type="button" class="cip" data-v="oplechovani" aria-pressed="false">Oplechování</button><button type="button" class="cip" data-v="izolace" aria-pressed="false">Izolace</button></div></fieldset>
+    <label class="pole"><span>Místo stavby</span><input id="o-kde" placeholder="Obec, ulice"></label>
+    <label class="pole"><span>Jméno</span><input id="jmeno" autocomplete="name"></label>
+    <label class="pole"><span>Telefon</span><input id="tel" type="tel" autocomplete="tel" inputmode="tel"></label>
+    <label class="pole"><span>Popis</span><textarea id="popis" rows="4" placeholder="Typ střechy, rozměry, co se děje…"></textarea></label>
+    <div class="odeslat"><button class="btn" type="submit" data-kanal="sms">Poslat SMS</button><button class="btn obrys" type="submit" data-kanal="mail">Poslat e-mailem</button></div>
+  </form>
+</main>
+<footer class="pata">
+  <div class="wrap in"><p><b>Aleš Novotný – pokrývačství a klempířství</b> · Mendelova 1649/8, 741 01 Nový Jičín</p><p>Fotky jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/novotny.js"></script>
+</body>
+</html>

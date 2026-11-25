@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Objednat servis – Moto Bartko Nový Jičín</title>
+<meta name="description" content="Objednejte motorku do servisu nebo na přezutí pneu.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#141414">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%23c92a2a'/%3E%3Ccircle cx='12' cy='26' r='6' fill='none' stroke='%23fff' stroke-width='2.6'/%3E%3Ccircle cx='29' cy='26' r='6' fill='none' stroke='%23fff' stroke-width='2.6'/%3E%3Cpath d='M12 26l7-10h7l3 10' stroke='%23fff' stroke-width='2.4' fill='none'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/exo-2-500_900-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/inter-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-pb') && !location.hash))) {
+      sessionStorage.setItem('intro-pb', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Moto Bartko, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="d" pathLength="1" cx="9" cy="28" r="6"/><circle class="d" pathLength="1" cx="31" cy="28" r="6"/><path class="d" pathLength="1" d="M9 28l8-12h9l5 12M17 16l-3-5h-4M24 16l3-6h4"/><circle class="f" cx="20" cy="22" r="2.4"/></svg><span class="lt"><span class="w">Moto Bartko</span><small class="f">prodej a servis motocyklů · Nový Jičín</small></span></a>
+    <nav aria-label="Hlavní"><a href="../#dot">Stáří pneu</a><a href="../#sluzby">Služby</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="./" aria-current="page" data-vt="objednat"><span data-vt-el>Objednat servis</span></a>
+  </div>
+</header>
+<main class="p-main wrap">
+  <div class="p-hlava">
+    <h1 data-vt-cil="objednat" data-h>Objednat servis</h1>
+    <p class="lead" data-h>Napište, jakou máte motorku a co potřebuje. Ozveme se a domluvíme termín.</p>
+    <p class="p-navrh" id="p-navrh" hidden data-h></p>
+    <figure class="p-foto" data-h><img src="../img/garaz-800.jpg" srcset="../img/garaz-800.jpg 800w, ../img/garaz-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 36vw" width="1600" height="2400" alt="Motorky v garáži" loading="lazy" decoding="async"></figure>
+  </div>
+  <form class="p-form" id="pform" novalidate data-h data-multi="1">
+    <fieldset><legend>Co potřebujete</legend><div class="cipy" id="co"><button type="button" class="cip" data-v="servis" aria-pressed="false">Servis</button><button type="button" class="cip" data-v="oprava" aria-pressed="false">Oprava</button><button type="button" class="cip" data-v="pneu" aria-pressed="false">Přezutí pneu</button><button type="button" class="cip" data-v="dily" aria-pressed="false">Náhradní díly</button><button type="button" class="cip" data-v="obleceni" aria-pressed="false">Oblečení a doplňky</button></div></fieldset>
+    <label class="pole"><span>Motorka</span><input id="o-moto" placeholder="Značka, model, rok"></label>
+    <label class="pole"><span>Jméno</span><input id="jmeno" autocomplete="name"></label>
+    <label class="pole"><span>Telefon</span><input id="tel" type="tel" autocomplete="tel" inputmode="tel"></label>
+    <label class="pole"><span>Popis</span><textarea id="popis" rows="4" placeholder="Co se děje, kdy se Vám to hodí…"></textarea></label>
+    <div class="odeslat"><button class="btn" type="submit" data-kanal="sms">Poslat SMS</button><button class="btn obrys" type="submit" data-kanal="mail">Poslat e-mailem</button></div>
+  </form>
+</main>
+<footer class="pata">
+  <div class="wrap in"><p><b>Pavel Bartko – Moto Bartko</b> · V Kútě 189, 741 01 Nový Jičín-Loučka</p><p>Fotky jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/bartko.js"></script>
+</body>
+</html>

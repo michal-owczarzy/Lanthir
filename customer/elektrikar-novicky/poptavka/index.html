@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nabídka zdarma – elektrikář Novický Nový Jičín</title>
+<meta name="description" content="Požádejte o cenovou nabídku na elektroinstalaci zdarma.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0f2236">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%230f2236'/%3E%3Cpath d='M22 6L11 22h8l-2 12 12-17h-8z' fill='%23ffd23f'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/chakra-petch-500-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/chakra-petch-600-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-ln') && !location.hash))) {
+      sessionStorage.setItem('intro-ln', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Elektrikář Ladislav Novický, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="d" pathLength="1" d="M23 3L9 22h10l-3 15 16-21H22z"/><circle class="f" cx="33" cy="7" r="2.4"/></svg><span class="lt"><span class="w">Ladislav Novický</span><small class="f">elektrikář · Nový Jičín</small></span></a>
+    <nav aria-label="Hlavní"><a href="../#stari">Stará elektřina</a><a href="../#prace">Co dělám</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="./" aria-current="page" data-vt="poptavka"><span data-vt-el>Nabídka zdarma</span></a>
+  </div>
+</header>
+<main class="p-main wrap">
+  <div class="p-hlava">
+    <h1 data-vt-cil="poptavka" data-h>Nabídka zdarma</h1>
+    <p class="lead" data-h>Napište, co potřebujete a kde. Ozvu se, podívám se na to a pošlu cenovou nabídku zdarma.</p>
+    
+    <figure class="p-foto" data-h><img src="../img/zasuvka-800.jpg" srcset="../img/zasuvka-800.jpg 800w, ../img/zasuvka-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 36vw" width="1600" height="1068" alt="Elektrikář montuje zásuvku" loading="lazy" decoding="async"></figure>
+  </div>
+  <form class="p-form" id="pform" novalidate data-h data-multi="1">
+    <fieldset><legend>Co potřebujete</legend><div class="cipy" id="co"><button type="button" class="cip" data-v="nova" aria-pressed="false">Nová elektroinstalace</button><button type="button" class="cip" data-v="rekonstrukce" aria-pressed="false">Rekonstrukce</button><button type="button" class="cip" data-v="oprava" aria-pressed="false">Oprava</button><button type="button" class="cip" data-v="revize" aria-pressed="false">Kontrola staré elektřiny</button><button type="button" class="cip" data-v="kamery" aria-pressed="false">Kamerový systém</button><button type="button" class="cip" data-v="hromosvod" aria-pressed="false">Hromosvod</button></div></fieldset>
+    <label class="pole"><span>Kde</span><input id="o-kde" placeholder="Obec, byt nebo dům"></label>
+    <label class="pole"><span>Jméno</span><input id="jmeno" autocomplete="name"></label>
+    <label class="pole"><span>Telefon</span><input id="tel" type="tel" autocomplete="tel" inputmode="tel"></label>
+    <label class="pole"><span>Popis</span><textarea id="popis" rows="4" placeholder="Co se děje, jak velký byt nebo dům…"></textarea></label>
+    <div class="odeslat"><button class="btn" type="submit" data-kanal="sms">Poslat SMS</button><button class="btn obrys" type="submit" data-kanal="mail">Poslat e-mailem</button></div>
+  </form>
+</main>
+<footer class="pata">
+  <div class="wrap in"><p><b>Ladislav Novický – elektrikář</b> · Novellara 1920/7, 741 01 Nový Jičín</p><p>Fotka rozvaděče je z katalogu Firmy.cz, ostatní jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/novicky.js"></script>
+</body>
+</html>

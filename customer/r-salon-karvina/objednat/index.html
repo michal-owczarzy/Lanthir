@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Objednat se – R-salon Karviná</title>
+<meta name="description" content="Objednejte se do R-salonu v Karviné-Fryštátě.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#b3121f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%23b3121f'/%3E%3Ctext x='20' y='28' font-family='Georgia' font-size='22' font-weight='700' fill='%23fff' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/bodoni-moda-400_800-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/jost-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-rs') && !location.hash))) {
+      sessionStorage.setItem('intro-rs', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="R-salon, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="d" pathLength="1" d="M12 32V8h10a7 7 0 0 1 0 14H12M20 22l10 10"/><circle class="f" cx="31" cy="9" r="3"/></svg><span class="lt"><span class="w">R-salon</span><small class="f">kadeřnictví · Karviná-Fryštát</small></span></a>
+    <nav aria-label="Hlavní"><a href="../#barva">Barvení</a><a href="../#sluzby">Služby</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="./" aria-current="page" data-vt="objednat"><span data-vt-el>Objednat se</span></a>
+  </div>
+</header>
+<main class="p-main wrap">
+  <div class="p-hlava">
+    <h1 data-vt-cil="objednat" data-h>Objednat se</h1>
+    <p class="lead" data-h>Napište, co chcete udělat a kdy se Vám to hodí. Ozveme se a domluvíme termín.</p>
+    
+    <figure class="p-foto" data-h><img src="../img/barveni-800.jpg" srcset="../img/barveni-800.jpg 800w, ../img/barveni-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 36vw" width="1600" height="1066" alt="Barvení vlasů v salonu" loading="lazy" decoding="async"></figure>
+  </div>
+  <form class="p-form" id="pform" novalidate data-h data-multi="1">
+    <fieldset><legend>Co chcete udělat</legend><div class="cipy" id="co"><button type="button" class="cip" data-v="strih" aria-pressed="false">Střih</button><button type="button" class="cip" data-v="cela" aria-pressed="false">Celá barva</button><button type="button" class="cip" data-v="melir" aria-pressed="false">Melír</button><button type="button" class="cip" data-v="ombre" aria-pressed="false">Ombré</button><button type="button" class="cip" data-v="balayage" aria-pressed="false">Balayage</button><button type="button" class="cip" data-v="ucess" aria-pressed="false">Společenský účes</button><button type="button" class="cip" data-v="svatba" aria-pressed="false">Svatební účes</button><button type="button" class="cip" data-v="pansky" aria-pressed="false">Pánský střih</button></div></fieldset>
+    <label class="pole"><span>Kdy se Vám to hodí</span><input id="o-kdy" placeholder="Např. čtvrtek po 15:00"></label>
+    <label class="pole"><span>Jméno</span><input id="jmeno" autocomplete="name"></label>
+    <label class="pole"><span>Telefon</span><input id="tel" type="tel" autocomplete="tel" inputmode="tel"></label>
+    <label class="pole"><span>Popis</span><textarea id="popis" rows="4" placeholder="Délka vlasů, současná barva, termín akce…"></textarea></label>
+    <div class="odeslat"><button class="btn" type="submit" data-kanal="sms">Poslat SMS</button><button class="btn obrys" type="submit" data-kanal="mail">Poslat e-mailem</button></div>
+  </form>
+</main>
+<footer class="pata">
+  <div class="wrap in"><p><b>R-salon</b> · Fryštátská 2059/55, 733 01 Karviná-Fryštát</p><p>Fotka salonu je z katalogu Firmy.cz, ostatní jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/rsalon.js"></script>
+</body>
+</html>

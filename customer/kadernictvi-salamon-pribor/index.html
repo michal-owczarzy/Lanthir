@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kadeřnictví Kateřina Salamon – Příbor</title>
+<meta name="description" content="Kadeřnictví Kateřina Salamon, Jičínská 14, Příbor: dámské, pánské a dětské střihy, prodlužování vlasů, svatební účesy.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#24364f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%2324364f'/%3E%3Cpath d='M14 8c-4 8-4 18 0 26M20 8c-3 8-3 18 0 26M26 8c-4 8-4 18 0 26' stroke='%23f2b8a0' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/hanken-grotesk-400_700-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/instrument-serif-400-italic-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-ks') && !location.hash))) {
+      sessionStorage.setItem('intro-ks', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="js/vt.js"></script>
+<link rel="stylesheet" href="css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="./" data-intro-land aria-label="Kadeřnictví Kateřina Salamon, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="d" pathLength="1" d="M13 6c-5 10-5 20 0 30M20 6c-4 10-4 20 0 30M27 6c-5 10-5 20 0 30"/><circle class="f" cx="20" cy="21" r="2.6"/></svg><span class="lt"><span class="w">Kateřina Salamon</span><small class="f">kadeřnictví · Příbor</small></span></a>
+    <nav aria-label="Hlavní"><a href="#delka">Prodloužení</a><a href="#sluzby">Služby</a><a href="#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="objednat/" data-vt="objednat"><span data-vt-el>Objednat se</span></a>
+  </div>
+</header><main>
+  <section class="hero v-split" aria-labelledby="h-uvod">
+    <div class="wrap in">
+      <div class="hero-txt"><h1 id="h-uvod" data-h>Vlasy, jaké chcete mít</h1><p class="lead" data-h>Kadeřnictví Kateřina Salamon na Jičínské 14 v Příboře. Dámské, pánské i dětské střihy, prodlužování vlasů, svatební a společenské účesy.</p><div class="akce" data-h><a class="btn" href="objednat/" data-vt="objednat"><span data-vt-el>Objednat se</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn obrys num" href="tel:+420732265343">732 265 343</a></div><p class="stav" data-h><span class="tecka"></span><span class="stav-text">Po–čt 7:30–18, pá 7:30–17</span></p></div>
+      <figure class="hero-foto" data-h><img src="img/prodluzovani-800.jpg" srcset="img/prodluzovani-800.jpg 800w, img/prodluzovani-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 50vw" width="1600" height="1066" alt="Kadeřnice prodlužuje vlasy" fetchpriority="high"></figure>
+    </div>
+  </section>
+  <section class="delka sekce wrap" id="delka" aria-labelledby="h-del">
+    <div class="sek-hlava" data-r><h2 id="h-del">Kolik prodloužit?</h2><p class="sek-lead">Vyberte, jak dlouhé vlasy máte teď a jaké byste chtěla. Ukážeme, o kolik je prodloužíme.</p></div>
+    <div class="del-box" data-r>
+      <svg class="silueta" viewBox="0 0 240 420" role="img" aria-label="Silueta s délkou vlasů">
+        <path class="s-telo" d="M120 40c-30 0-46 24-46 54 0 26 12 46 28 54v18c-40 6-70 26-80 60l-8 194h212l-8-194c-10-34-40-54-80-60v-18c16-8 28-28 28-54 0-30-16-54-46-54z"/>
+        <path class="s-ted" id="s-ted" d=""/><path class="s-cil" id="s-cil" d=""/>
+      </svg>
+      <div class="del-ovl">
+        <fieldset><legend>Teď mám</legend><div class="cipy" id="d-ted"><button type="button" class="cip" data-i="0" aria-pressed="true">K bradě</button><button type="button" class="cip" data-i="1" aria-pressed="false">Na ramena</button><button type="button" class="cip" data-i="2" aria-pressed="false">Pod lopatky</button></div></fieldset>
+        <fieldset><legend>Chtěla bych</legend><div class="cipy" id="d-cil"><button type="button" class="cip" data-i="1" aria-pressed="false">Na ramena</button><button type="button" class="cip" data-i="2" aria-pressed="true">Pod lopatky</button><button type="button" class="cip" data-i="3" aria-pressed="false">Do pasu</button></div></fieldset>
+        <p class="d-vysl"><b class="num" id="d-cm">+23 cm</b> prodloužení</p>
+        <p class="d-pozn">Přesnou délku, odstín a počet pramenů domluvíme na konzultaci.</p>
+        <a class="btn" id="d-obj" href="objednat/?co=prodluzovani" data-vt="objednat"><span data-vt-el>Domluvit konzultaci</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+<section class="sekce wrap" id="sluzby" aria-labelledby="h-sl"><div class="sek-hlava" data-r><h2 id="h-sl">Co u mě uděláte</h2><p class="sek-lead">Pro celou rodinu, od dětí po svatební účes.</p></div><div class="sl-mriz n4"><article class="s1" data-r><figure><img src="img/dlouhe-800.jpg" srcset="img/dlouhe-800.jpg 800w, img/dlouhe-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 44vw" width="1600" height="2847" alt="Dlouhé vlasy" loading="lazy" decoding="async"></figure><h3>Prodlužování vlasů</h3><p>Delší a hustší vlasy, které vypadají jako Vaše vlastní.</p></article><article data-r><figure><img src="img/svatebni-800.jpg" srcset="img/svatebni-800.jpg 800w, img/svatebni-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 26vw" width="1600" height="2400" alt="Účes s vlasovými doplňky" loading="lazy" decoding="async"></figure><h3>Svatební a společenské účesy</h3><p>Zkouška účesu předem, ať je v den D všechno v klidu.</p></article><article data-r><figure><img src="img/strih-800.jpg" srcset="img/strih-800.jpg 800w, img/strih-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 26vw" width="1600" height="2400" alt="Kadeřnice stříhá" loading="lazy" decoding="async"></figure><h3>Dámské a pánské střihy</h3><p>Střih, barva, foukaná.</p></article><article data-r><figure><img src="img/dite-800.jpg" srcset="img/dite-800.jpg 800w, img/dite-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 26vw" width="1600" height="2400" alt="Chlapec při stříhání" loading="lazy" decoding="async"></figure><h3>Dětské střihy</h3><p>Rychle a s trpělivostí.</p></article></div></section><section class="hodn wrap" data-r><p><b class="num" data-count="4.8">4,8</b> z 5</p><p>hodnocení zákazníků na Firmy.cz</p></section>
+  <section class="kontakt" id="kontakt" aria-labelledby="h-kontakt">
+    <div class="wrap in">
+      <div data-r><h2 id="h-kontakt">Kontakt</h2><p class="k-tel"><a class="num" href="tel:+420732265343">732 265 343</a></p><p><a class="odkaz" href="mailto:kach.luk@seznam.cz">kach.luk@seznam.cz</a></p></div>
+      <dl class="udaje" data-r><div><dt>Adresa</dt><dd>Jičínská 14, Příbor</dd></div><div><dt>Otevřeno</dt><dd>po–čt 7:30–18, pá 7:30–17</dd></div><div><dt>Objednání</dt><dd>telefonem nebo SMS</dd></div><div><dt>Mapa</dt><dd><a class="odkaz" href="https://mapy.com/cs/?source=firm&amp;id=746187" target="_blank" rel="noopener">Otevřít v Mapy.com</a></dd></div></dl>
+    </div>
+  </section>
+</main>
+
+<footer class="pata">
+  <div class="wrap in"><p><b>Kadeřnictví Kateřina Salamon</b> · Jičínská 14, 742 58 Příbor</p><p>Fotky jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/intro.js"></script>
+<script src="js/web.js"></script>
+<script src="js/salamon.js"></script>
+</body>
+</html>

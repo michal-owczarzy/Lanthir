@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JL-AUTO – autoservis a STK, Orlová-Lutyně</title>
+<meta name="description" content="JL-AUTO, Na Olmovci 638, Orlová-Lutyně: servis aut všech značek, příprava a provedení STK, pneumatiky.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1d1d1b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%235c940d'/%3E%3Ccircle cx='20' cy='20' r='11' fill='none' stroke='%23fff' stroke-width='2.6'/%3E%3Cpath d='M15 20l4 4 7-8' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-jl') && !location.hash))) {
+      sessionStorage.setItem('intro-jl', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="js/vt.js"></script>
+<link rel="stylesheet" href="css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="./" data-intro-land aria-label="JL-AUTO, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="d" pathLength="1" cx="20" cy="20" r="15"/><path class="d" pathLength="1" d="M13 20l5 5 9-10"/><circle class="f" cx="32" cy="8" r="2.4"/></svg><span class="lt"><span class="w">JL-AUTO</span><small class="f">autoservis a STK · Orlová-Lutyně</small></span></a>
+    <nav aria-label="Hlavní"><a href="#stk">Kdy na STK</a><a href="#sluzby">Služby</a><a href="#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="objednat/" data-vt="objednat"><span data-vt-el>Objednat auto</span></a>
+  </div>
+</header><main>
+  <section class="hero v-banner" aria-labelledby="h-uvod">
+    <div class="wrap hb-txt"><h1 id="h-uvod" data-h>Autoservis a&nbsp;STK v&nbsp;Lutyni</h1><p class="lead" data-h>JL-AUTO na Olmovci 638. Servis aut všech značek, příprava na technickou a její provedení. Po–pá 8–16, polední pauza 12–12:30.</p><div class="akce" data-h><a class="btn" href="objednat/" data-vt="objednat"><span data-vt-el>Objednat auto</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn obrys num" href="tel:+420603846717">603 846 717</a></div><p class="stav" data-h><span class="tecka"></span><span class="stav-text">Po–pá 8–12 a 12:30–16</span></p></div>
+    <figure class="hero-foto wrap" data-h><img src="img/dilna-800.jpg" srcset="img/dilna-800.jpg 800w, img/dilna-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 100vw" width="1600" height="807" alt="Světlá dílna autoservisu s auty na zvedácích" fetchpriority="high"></figure>
+  </section>
+  <section class="stk sekce wrap" id="stk" aria-labelledby="h-stk">
+    <div class="sek-hlava" data-r><h2 id="h-stk">Kdy Vám propadá technická?</h2><p class="sek-lead">Zadejte datum první registrace z velkého techničáku. Nové osobní auto jede na první STK po čtyřech letech, pak každé dva roky.</p></div>
+    <div class="stk-box" data-r>
+      <div class="stk-ovl">
+        <label class="pole"><span>První registrace</span><input type="month" id="s-reg"></label>
+        <label class="pole"><span>Poslední STK (nepovinné)</span><input type="month" id="s-pos"></label>
+      </div>
+      <div class="stk-vysl" aria-live="polite">
+        <div class="znamka"><span id="s-rok">2027</span><b id="s-mes">5</b></div>
+        <div><p class="sv-n">Příští STK</p><p class="sv-d" id="s-dat">květen 2027</p><p id="s-zbyva"></p>
+          <a class="btn" id="s-obj" href="objednat/?co=stk" data-vt="objednat"><span data-vt-el>Objednat přípravu na STK</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </div>
+    </div>
+  </section>
+<section class="sekce wrap sl-rady" id="sluzby" aria-labelledby="h-sl"><div class="sek-hlava" data-r><h2 id="h-sl">Co u nás uděláme</h2></div><div class="rady"><article class="rada" data-r><figure data-par><img src="img/motor-800.jpg" srcset="img/motor-800.jpg 800w, img/motor-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 44vw" width="1600" height="1066" alt="Mechanik u otevřené kapoty" loading="lazy" decoding="async"></figure><div><h3>Servis všech značek</h3><p>Pravidelný servis, oleje, filtry, brzdy a opravy, které auto zrovna potřebuje.</p></div></article><article class="rada" data-r><figure data-par><img src="img/budiky-800.jpg" srcset="img/budiky-800.jpg 800w, img/budiky-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 44vw" width="1600" height="1068" alt="Budíky na palubní desce" loading="lazy" decoding="async"></figure><div><h3>Příprava a provedení STK</h3><p>Auto prohlédneme, opravíme, co by neprošlo, a technickou zařídíme.</p></div></article><article class="rada" data-r><figure data-par><img src="img/servis-800.jpg" srcset="img/servis-800.jpg 800w, img/servis-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 44vw" width="1600" height="1066" alt="Mechanik pracuje na autě" loading="lazy" decoding="async"></figure><div><h3>Pneumatiky</h3><p>Přezutí a vyvážení, vybavení na to máme.</p></div></article></div></section>
+  <section class="recenze" aria-labelledby="h-rec">
+    <div class="wrap in"><h2 id="h-rec" data-r>4,7 ze 4 hodnocení</h2><blockquote data-r class="r1"><p>„Profi vybavení servisu včetně pneu, žádné sliby, chyby, vždy je vše podle domluvy a za solidní cenu.“</p><cite>zákazník na Firmy.cz</cite></blockquote></div>
+  </section>
+  <section class="kontakt" id="kontakt" aria-labelledby="h-kontakt">
+    <div class="wrap in">
+      <div data-r><h2 id="h-kontakt">Kontakt</h2><p class="k-tel"><a class="num" href="tel:+420603846717">603 846 717</a></p><p><a class="odkaz" href="mailto:jlauto@email.cz">jlauto@email.cz</a></p></div>
+      <dl class="udaje" data-r><div><dt>Adresa</dt><dd>Na Olmovci 638, Orlová-Lutyně</dd></div><div><dt>Otevřeno</dt><dd>po–pá 8–12 a 12:30–16</dd></div><div><dt>Značky</dt><dd>všechny</dd></div><div><dt>Mapa</dt><dd><a class="odkaz" href="https://mapy.com/cs/?source=firm&amp;id=711863" target="_blank" rel="noopener">Otevřít v Mapy.com</a></dd></div></dl>
+    </div>
+  </section>
+</main>
+
+<footer class="pata">
+  <div class="wrap in"><p><b>JL-AUTO</b> · Na Olmovci 638, 735 14 Orlová-Lutyně</p><p>Fotky jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/intro.js"></script>
+<script src="js/web.js"></script>
+<script src="js/jlauto.js"></script>
+</body>
+</html>

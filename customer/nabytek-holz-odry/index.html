@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nábytek na míru Bronislav Holz – Odry</title>
+<meta name="description" content="Zakázková výroba nábytku, Odry: kuchyně na míru, vestavěné skříně, ložnice, dětské pokoje, altány a pergoly. Zaměření a kalkulace zdarma.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#232019">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%23232019'/%3E%3Crect x='9' y='9' width='22' height='22' fill='none' stroke='%23c08a4f' stroke-width='2.6'/%3E%3Cpath d='M20 9v22M9 20h11' stroke='%23fff' stroke-width='2.4'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/gelasio-400_700-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/public-sans-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-bh') && !location.hash))) {
+      sessionStorage.setItem('intro-bh', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="js/vt.js"></script>
+<link rel="stylesheet" href="css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="./" data-intro-land aria-label="Zakázková výroba nábytku Bronislav Holz, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="d" pathLength="1" x="6" y="6" width="28" height="28"/><path class="d" pathLength="1" d="M20 6v28M6 18h14M23 13v3M17 24v3"/><rect class="f" x="23" y="22" width="8" height="9"/></svg><span class="lt"><span class="w">Bronislav Holz</span><small class="f">nábytek na míru · Odry</small></span></a>
+    <nav aria-label="Hlavní"><a href="#kuchyn">Kuchyň na míru</a><a href="#vyrabime">Co vyrábíme</a><a href="#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="poptavka/" data-vt="poptavka"><span data-vt-el>Poptat nábytek</span></a>
+  </div>
+</header><main>
+  <section class="hero v-card" aria-labelledby="h-uvod">
+    <div class="wrap in">
+      <div class="hero-txt"><h1 id="h-uvod" data-h>Nábytek na&nbsp;míru</h1><p class="lead" data-h>Bronislav Holz, výroba nábytku v Odrách. Kuchyně, vestavěné skříně, ložnice, dětské pokoje i altány a pergoly. Konzultace, zaměření a kalkulace jsou zdarma.</p><div class="akce" data-h><a class="btn" href="poptavka/" data-vt="poptavka"><span data-vt-el>Poptat nábytek</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn obrys num" href="tel:+420737500749">737 500 749</a></div><p class="stav" data-h><span class="tecka"></span><span class="stav-text">Po–pá 8–16</span></p></div>
+      <figure class="hero-foto" data-h><img src="img/kuchyne-800.jpg" srcset="img/kuchyne-800.jpg 800w, img/kuchyne-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 50vw" width="1600" height="1066" alt="Kuchyňská linka s ostrůvkem a dřevěnou pracovní deskou" fetchpriority="high"></figure>
+    </div>
+  </section>
+  <section class="kuchyn sekce wrap" id="kuchyn" aria-labelledby="h-ku">
+    <div class="sek-hlava" data-r><h2 id="h-ku">Načrtněte si kuchyň</h2><p class="sek-lead">Vyberte tvar a délky stěn. Uvidíte, kolik se vejde skříněk. Zaměření a návrh pak uděláme u Vás zdarma.</p></div>
+    <div class="ku-box" data-r>
+      <div class="ku-ovl">
+        <div class="cipy" role="group" aria-label="Tvar kuchyně" id="ku-tvar"><button type="button" class="cip" data-t="I" aria-pressed="false">Rovná</button><button type="button" class="cip" data-t="L" aria-pressed="true">Do L</button><button type="button" class="cip" data-t="U" aria-pressed="false">Do U</button></div>
+        <label class="pole"><span>Stěna A: <b id="ku-a-v">340</b> cm</span><input type="range" id="ku-a" min="180" max="600" step="10" value="340"></label>
+        <label class="pole" id="ku-b-p"><span>Stěna B: <b id="ku-b-v">240</b> cm</span><input type="range" id="ku-b" min="120" max="400" step="10" value="240"></label>
+        <fieldset><legend>Dvířka</legend><div class="cipy" id="ku-mat"><button type="button" class="cip mat" data-m="lamino" aria-pressed="true">Lamino</button><button type="button" class="cip mat" data-m="dyha" aria-pressed="false">Dýha</button><button type="button" class="cip mat" data-m="masiv" aria-pressed="false">Masiv</button></div></fieldset>
+        <p class="ku-vysl"><b class="num" id="ku-n">8</b> spodních skříněk po 60 cm</p>
+        <a class="btn" id="ku-obj" href="poptavka/?co=kuchyne" data-vt="poptavka"><span data-vt-el>Poptat tuto kuchyň</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <svg class="pudorys" viewBox="0 0 420 320" role="img" aria-label="Půdorys kuchyně se skříňkami"><rect class="pd-mist" x="10" y="10" width="400" height="300"/><g id="ku-g"></g></svg>
+    </div>
+  </section>
+<section class="sekce wrap sl-rady" id="vyrabime" aria-labelledby="h-vy"><div class="sek-hlava" data-r><h2 id="h-vy">Co vyrábíme</h2><p class="sek-lead">Z laminované a dýhované DTD i z masivu.</p></div><div class="rady"><article class="rada" data-r><figure data-par><img src="img/bila-800.jpg" srcset="img/bila-800.jpg 800w, img/bila-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 44vw" width="1600" height="1066" alt="Bílá kuchyňská linka" loading="lazy" decoding="async"></figure><div><h3>Kuchyně na míru</h3><p>Linka přesně do Vaší místnosti, včetně spotřebičů a pracovní desky.</p></div></article><article class="rada" data-r><figure data-par><img src="img/skrin-800.jpg" srcset="img/skrin-800.jpg 800w, img/skrin-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 44vw" width="1600" height="1066" alt="Vestavěná skříň" loading="lazy" decoding="async"></figure><div><h3>Vestavěné skříně a ložnice</h3><p>Skříně s posuvnými dveřmi, šatny, ložnice a dětské pokoje.</p></div></article><article class="rada" data-r><figure data-par><img src="img/pergola-800.jpg" srcset="img/pergola-800.jpg 800w, img/pergola-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 44vw" width="1600" height="1067" alt="Dřevěná pergola na zahradě" loading="lazy" decoding="async"></figure><div><h3>Altány a pergoly</h3><p>Dřevěné konstrukce na zahradu, na kterých se dá sedět celé léto.</p></div></article></div></section>
+  <section class="recenze" aria-labelledby="h-rec">
+    <div class="wrap in"><h2 id="h-rec" data-r>5,0 ze 2 hodnocení</h2><blockquote data-r class="r1"><p>„Skvělá komunikace, kvalitní a krásný nábytek, dovoz až do Prahy.“</p><cite>zákaznice na Firmy.cz</cite></blockquote><blockquote data-r><p>„Doporučuji, spolehlivé jednání.“</p><cite>zákaznice na Firmy.cz</cite></blockquote></div>
+  </section>
+  <section class="kontakt" id="kontakt" aria-labelledby="h-kontakt">
+    <div class="wrap in">
+      <div data-r><h2 id="h-kontakt">Kontakt</h2><p class="k-tel"><a class="num" href="tel:+420737500749">737 500 749</a></p><p><a class="odkaz" href="mailto:bronaholz@centrum.cz">bronaholz@centrum.cz</a></p></div>
+      <dl class="udaje" data-r><div><dt>Dílna</dt><dd>Dělnická 107/13, Odry</dd></div><div><dt>Otevřeno</dt><dd>po–pá 8–16</dd></div><div><dt>Zdarma</dt><dd>konzultace, zaměření a kalkulace</dd></div><div><dt>Mapa</dt><dd><a class="odkaz" href="https://mapy.com/cs/?source=firm&amp;id=13093654" target="_blank" rel="noopener">Otevřít v Mapy.com</a></dd></div></dl>
+    </div>
+  </section>
+</main>
+
+<footer class="pata">
+  <div class="wrap in"><p><b>Zakázková výroba nábytku – Bronislav Holz</b> · Dělnická 107/13, 742 35 Odry</p><p>Fotky jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/intro.js"></script>
+<script src="js/web.js"></script>
+<script src="js/holz.js"></script>
+</body>
+</html>

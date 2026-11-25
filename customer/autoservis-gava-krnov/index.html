@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Autoservis GAVA – přestavby na LPG, Krnov</title>
+<meta name="description" content="Autoservis GAVA, Mikulášská 53, Krnov: přestavby na LPG, opravy aut, příprava na STK, pneuservis, autoelektrika. Po–pá 7–17.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#13261f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%232f9e44'/%3E%3Cpath d='M13 30V15a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v15z' fill='%23fff'/%3E%3Cpath d='M27 17h3v8' stroke='%23fff' stroke-width='2.4' fill='none'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/inter-400_700-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/kanit-500-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-ga') && !location.hash))) {
+      sessionStorage.setItem('intro-ga', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="js/vt.js"></script>
+<link rel="stylesheet" href="css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="./" data-intro-land aria-label="Autoservis GAVA, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="d" pathLength="1" d="M10 34V10a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v24M6 34h24M26 15h4l3 4v10a2 2 0 0 1-4 0v-6"/><rect class="f" x="13" y="11" width="10" height="7" rx="1"/></svg><span class="lt"><span class="w">Autoservis GAVA</span><small class="f">Krnov · LPG, STK, pneu</small></span></a>
+    <nav aria-label="Hlavní"><a href="#lpg">Úspora s LPG</a><a href="#sluzby">Služby</a><a href="#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="objednat/" data-vt="objednat"><span data-vt-el>Objednat auto</span></a>
+  </div>
+</header><main>
+  <section class="hero v-split" aria-labelledby="h-uvod">
+    <div class="wrap in">
+      <div class="hero-txt"><h1 id="h-uvod" data-h>Přestavby na&nbsp;LPG v&nbsp;Krnově</h1><p class="lead" data-h>Autoservis GAVA na Mikulášské 53. Opravy osobních aut, přestavby na LPG, příprava na STK, pneuservis, diagnostika podvozku a autoelektrika. Po–pá 7–17.</p><div class="akce" data-h><a class="btn" href="objednat/" data-vt="objednat"><span data-vt-el>Objednat auto</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn obrys num" href="tel:+420603805823">603 805 823</a></div><p class="stav" data-h><span class="tecka"></span><span class="stav-text">Po–pá 7–17</span></p></div>
+      <figure class="hero-foto" data-h><img src="img/dvur-800.jpg" srcset="img/dvur-800.jpg 800w, img/dvur-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 50vw" width="1600" height="1067" alt="Areál autoservisu GAVA na Mikulášské ulici" fetchpriority="high"></figure>
+    </div>
+  </section>
+  <section class="lpg sekce wrap" id="lpg" aria-labelledby="h-lpg">
+    <div class="sek-hlava" data-r><h2 id="h-lpg">Kolik ušetříte na plynu?</h2><p class="sek-lead">Zadejte, kolik najezdíte a kolik auto žere. Ceny paliv si upravte podle pumpy, kde tankujete.</p></div>
+    <div class="lpg-box" data-r>
+      <div class="lpg-ovl">
+        <label class="pole"><span>Najedu za rok: <b id="l-km-v">20 000</b> km</span><input type="range" id="l-km" min="5000" max="60000" step="1000" value="20000"></label>
+        <label class="pole"><span>Spotřeba benzínu: <b id="l-sp-v">7</b> l/100 km</span><input type="range" id="l-sp" min="4" max="14" step=".5" value="7"></label>
+        <div class="pole-2"><label class="pole"><span>Benzín Kč/l</span><input id="l-cb" type="number" step=".1" value="37" inputmode="decimal"></label><label class="pole"><span>LPG Kč/l</span><input id="l-cl" type="number" step=".1" value="18" inputmode="decimal"></label></div>
+      </div>
+      <div class="lpg-vysl" aria-live="polite">
+        <p class="lv-n">Ročně ušetříte asi</p><p class="lv-c num" id="l-uspora">0 Kč</p>
+        <div class="lv-sloupce"><div><span id="l-b-bar"></span><b id="l-b">0 Kč</b><small>benzín</small></div><div><span id="l-l-bar"></span><b id="l-l">0 Kč</b><small>LPG</small></div></div>
+        <p class="lv-pozn">Počítáme s tím, že na LPG auto spotřebuje asi o pětinu víc litrů než na benzín.</p>
+        <a class="btn" id="l-obj" href="objednat/?co=lpg" data-vt="objednat"><span data-vt-el>Chci nabídku na přestavbu</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+<section class="sekce wrap" id="sluzby" aria-labelledby="h-sl"><div class="sek-hlava" data-r><h2 id="h-sl">Co u nás uděláme</h2><p class="sek-lead">Náhradní díly zajistíme.</p></div><div class="sl-mriz n4"><article class="s1" data-r><figure><img src="img/motor-800.jpg" srcset="img/motor-800.jpg 800w, img/motor-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 44vw" width="1600" height="1066" alt="Mechanik dolévá olej do motoru" loading="lazy" decoding="async"></figure><h3>Opravy a servis</h3><p>Pravidelný servis i opravy osobních aut.</p></article><article data-r><figure><img src="img/dilna-800.jpg" srcset="img/dilna-800.jpg 800w, img/dilna-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 26vw" width="1600" height="1066" alt="Auta v dílně na zvedácích" loading="lazy" decoding="async"></figure><h3>Příprava na STK</h3><p>Prohlédneme auto a opravíme, co by na STK neprošlo.</p></article><article data-r><figure><img src="img/kufr-800.jpg" srcset="img/kufr-800.jpg 800w, img/kufr-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 26vw" width="1600" height="1066" alt="Rezervní kolo v kufru" loading="lazy" decoding="async"></figure><h3>Pneuservis a podvozek</h3><p>Přezutí, vyvážení a diagnostika podvozku.</p></article><article data-r><figure><img src="img/elektro-800.jpg" srcset="img/elektro-800.jpg 800w, img/elektro-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 26vw" width="1600" height="1066" alt="Práce na elektroinstalaci auta" loading="lazy" decoding="async"></figure><h3>Autoelektrika</h3><p>Elektrika, světla, startování a dobíjení.</p></article></div></section><section class="hodn wrap" data-r><p><b class="num" data-count="5.0">5,0</b> z 5</p><p>hodnocení zákazníků na Firmy.cz</p></section>
+  <section class="kontakt" id="kontakt" aria-labelledby="h-kontakt">
+    <div class="wrap in">
+      <div data-r><h2 id="h-kontakt">Kontakt</h2><p class="k-tel"><a class="num" href="tel:+420603805823">603 805 823</a></p><p><a class="odkaz" href="mailto:autoservisgava@seznam.cz">autoservisgava@seznam.cz</a></p></div>
+      <dl class="udaje" data-r><div><dt>Adresa</dt><dd>Mikulášská 896/53, Krnov</dd></div><div><dt>Otevřeno</dt><dd>po–pá 7–17</dd></div><div><dt>Specialita</dt><dd>přestavby na LPG</dd></div><div><dt>Mapa</dt><dd><a class="odkaz" href="https://mapy.com/cs/?source=firm&amp;id=1992103" target="_blank" rel="noopener">Otevřít v Mapy.com</a></dd></div></dl>
+    </div>
+  </section>
+</main>
+
+<footer class="pata">
+  <div class="wrap in"><p><b>Autoservis GAVA</b> · Mikulášská 896/53, 794 01 Krnov</p><p>Fotka areálu je z katalogu Firmy.cz, ostatní jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/intro.js"></script>
+<script src="js/web.js"></script>
+<script src="js/gava.js"></script>
+</body>
+</html>

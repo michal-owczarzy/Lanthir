@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Moto Bartko – prodej a servis motocyklů, Nový Jičín</title>
+<meta name="description" content="Prodej a servis motocyklů, náhradní díly, doplňky, oblečení a pneuservis. Pavel Bartko, Nový Jičín-Loučka. Po–pá 8–16:30.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#141414">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%23c92a2a'/%3E%3Ccircle cx='12' cy='26' r='6' fill='none' stroke='%23fff' stroke-width='2.6'/%3E%3Ccircle cx='29' cy='26' r='6' fill='none' stroke='%23fff' stroke-width='2.6'/%3E%3Cpath d='M12 26l7-10h7l3 10' stroke='%23fff' stroke-width='2.4' fill='none'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/exo-2-500_900-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/inter-400_700-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-pb') && !location.hash))) {
+      sessionStorage.setItem('intro-pb', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="js/vt.js"></script>
+<link rel="stylesheet" href="css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="./" data-intro-land aria-label="Moto Bartko, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="d" pathLength="1" cx="9" cy="28" r="6"/><circle class="d" pathLength="1" cx="31" cy="28" r="6"/><path class="d" pathLength="1" d="M9 28l8-12h9l5 12M17 16l-3-5h-4M24 16l3-6h4"/><circle class="f" cx="20" cy="22" r="2.4"/></svg><span class="lt"><span class="w">Moto Bartko</span><small class="f">prodej a servis motocyklů · Nový Jičín</small></span></a>
+    <nav aria-label="Hlavní"><a href="#dot">Stáří pneu</a><a href="#sluzby">Služby</a><a href="#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="objednat/" data-vt="objednat"><span data-vt-el>Objednat servis</span></a>
+  </div>
+</header><main>
+  <section class="hero v-banner" aria-labelledby="h-uvod">
+    <div class="wrap hb-txt"><h1 id="h-uvod" data-h>Motorky, servis a&nbsp;pneu</h1><p class="lead" data-h>Pavel Bartko, Nový Jičín-Loučka. Prodej a servis motocyklů, náhradní díly, doplňky, oblečení i kosmetika. A pneumatiky přezujeme na počkání. Po–pá 8–16:30.</p><div class="akce" data-h><a class="btn" href="objednat/" data-vt="objednat"><span data-vt-el>Objednat servis</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn obrys num" href="tel:+420737707409">737 707 409</a></div><p class="stav" data-h><span class="tecka"></span><span class="stav-text">Po–pá 8–16:30</span></p></div>
+    <figure class="hero-foto wrap" data-h><img src="img/dilna-800.jpg" srcset="img/dilna-800.jpg 800w, img/dilna-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 100vw" width="1600" height="1351" alt="Mechanik v motodílně u motorky" fetchpriority="high"></figure>
+  </section>
+  <section class="dot sekce wrap" id="dot" aria-labelledby="h-dot">
+    <div class="sek-hlava" data-r><h2 id="h-dot">Jak staré máte pneumatiky?</h2><p class="sek-lead">Na boku pneumatiky najděte kód DOT. Poslední čtyři číslice jsou týden a rok výroby. Zadejte je a řekneme, jestli je čas na nové.</p></div>
+    <div class="dot-box" data-r>
+      <div class="bok" aria-hidden="true"><span>DOT</span><span>XX</span><span>XXXX</span><b id="d-vid">2221</b></div>
+      <div class="dot-ovl">
+        <label class="pole"><span>Poslední 4 číslice DOT</span><input id="d-kod" inputmode="numeric" maxlength="4" value="2221" autocomplete="off"></label>
+        <p class="d-vysl" id="d-vysl"></p><p id="d-t"></p>
+        <a class="btn" id="d-obj" href="objednat/?co=pneu" data-vt="objednat"><span data-vt-el>Objednat přezutí</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+<section class="sl-pas" id="sluzby" aria-labelledby="h-sl"><div class="wrap"><div class="sek-hlava" data-r><h2 id="h-sl">Co u nás najdete</h2><p class="sek-lead">Před sezónou se objednejte včas, na jaře je plno.</p></div></div><div class="pas-okno"><div class="pas wrap"><article class="pk"><figure><img src="img/servis-800.jpg" srcset="img/servis-800.jpg 800w, img/servis-1600.jpg 1600w" sizes="(max-width:900px) 80vw, 30vw" width="1600" height="1066" alt="Mechanik u motorky" loading="lazy" decoding="async"></figure><h3>Servis motocyklů</h3><p>Pravidelný servis i opravy, příprava na sezónu.</p></article><article class="pk"><figure><img src="img/motor-800.jpg" srcset="img/motor-800.jpg 800w, img/motor-1600.jpg 1600w" sizes="(max-width:900px) 80vw, 30vw" width="1600" height="1134" alt="Rozebraný motor motocyklu" loading="lazy" decoding="async"></figure><h3>Náhradní díly</h3><p>Díly na objednávku i skladem.</p></article><article class="pk"><figure><img src="img/enduro-800.jpg" srcset="img/enduro-800.jpg 800w, img/enduro-1600.jpg 1600w" sizes="(max-width:900px) 80vw, 30vw" width="1600" height="1066" alt="Motorky v dílně" loading="lazy" decoding="async"></figure><h3>Pneuservis</h3><p>Přezutí pneumatik motorek na počkání.</p></article><article class="pk"><figure><img src="img/cruiser-800.jpg" srcset="img/cruiser-800.jpg 800w, img/cruiser-1600.jpg 1600w" sizes="(max-width:900px) 80vw, 30vw" width="1600" height="2400" alt="Motorka v garáži" loading="lazy" decoding="async"></figure><h3>Doplňky, oblečení a kosmetika</h3><p>Vše, co k motorce potřebujete.</p></article></div></div></section>
+  <section class="recenze" aria-labelledby="h-rec">
+    <div class="wrap in"><h2 id="h-rec" data-r>5,0 ze 4 hodnocení</h2><blockquote data-r class="r1"><p>„Oba pánové velmi vstřícní a ochotní, pneumatiky přezuli na počkání a opravdu rychle.“</p><cite>zákaznice na Firmy.cz</cite></blockquote><blockquote data-r><p>„Kvalitu služeb poznáte nejlépe, když udeří krize. Jediní měli otevřeno, když ostatní na to hodili bobek. Super!“</p><cite>zákazník na Firmy.cz</cite></blockquote><blockquote data-r><p>„Pánové super služby. Doporučuji všem.“</p><cite>zákazník na Firmy.cz</cite></blockquote></div>
+  </section>
+  <section class="kontakt" id="kontakt" aria-labelledby="h-kontakt">
+    <div class="wrap in">
+      <div data-r><h2 id="h-kontakt">Kontakt</h2><p class="k-tel"><a class="num" href="tel:+420737707409">737 707 409</a></p><p><a class="odkaz" href="mailto:bartkopavel@seznam.cz">bartkopavel@seznam.cz</a></p></div>
+      <dl class="udaje" data-r><div><dt>Adresa</dt><dd>V Kútě 189, Nový Jičín-Loučka</dd></div><div><dt>Otevřeno</dt><dd>po–pá 8–16:30</dd></div><div><dt>Prodej</dt><dd>díly, doplňky, oblečení, kosmetika</dd></div><div><dt>Mapa</dt><dd><a class="odkaz" href="https://mapy.com/cs/?source=firm&amp;id=1446441" target="_blank" rel="noopener">Otevřít v Mapy.com</a></dd></div></dl>
+    </div>
+  </section>
+</main>
+
+<footer class="pata">
+  <div class="wrap in"><p><b>Pavel Bartko – Moto Bartko</b> · V Kútě 189, 741 01 Nový Jičín-Loučka</p><p>Fotky jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/intro.js"></script>
+<script src="js/web.js"></script>
+<script src="js/bartko.js"></script>
+</body>
+</html>

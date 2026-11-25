@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Objednat – Foto Fojtíková Havířov</title>
+<meta name="description" content="Objednejte tisk fotek, plátno nebo převod VHS ve fotoateliéru v Havířově.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1d2433">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%23e94e1b'/%3E%3Crect x='9' y='13' width='22' height='16' rx='3' fill='none' stroke='%23fff' stroke-width='2.4'/%3E%3Ccircle cx='20' cy='21' r='4.5' fill='none' stroke='%23fff' stroke-width='2.4'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/sora-400_800-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-zf') && !location.hash))) {
+      sessionStorage.setItem('intro-zf', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Foto Fojtíková, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="d" pathLength="1" x="5" y="12" width="30" height="21" rx="4"/><path class="d" pathLength="1" d="M14 12l3-5h6l3 5"/><circle class="d" pathLength="1" cx="20" cy="22.5" r="6"/><circle class="f" cx="30" cy="17" r="1.8"/></svg><span class="lt"><span class="w">Foto Fojtíková</span><small class="f">fotoateliér · Havířov</small></span></a>
+    <nav aria-label="Hlavní"><a href="../#obraz">Obraz na zeď</a><a href="../#sluzby">Služby</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="./" aria-current="page" data-vt="objednat"><span data-vt-el>Objednat</span></a>
+  </div>
+</header>
+<main class="p-main wrap">
+  <div class="p-hlava">
+    <h1 data-vt-cil="objednat" data-h>Objednat</h1>
+    <p class="lead" data-h>Napište, co potřebujete. Ozveme se, kdy si to můžete vyzvednout a kolik to bude stát.</p>
+    <p class="p-navrh" id="p-navrh" hidden data-h></p>
+    <figure class="p-foto" data-h><img src="../img/polaroid-800.jpg" srcset="../img/polaroid-800.jpg 800w, ../img/polaroid-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 36vw" width="1600" height="2400" alt="Ruka drží fotografie" loading="lazy" decoding="async"></figure>
+  </div>
+  <form class="p-form" id="pform" novalidate data-h data-multi="1">
+    <fieldset><legend>Co potřebujete</legend><div class="cipy" id="co"><button type="button" class="cip" data-v="fotky" aria-pressed="false">Tisk fotek</button><button type="button" class="cip" data-v="prukazovky" aria-pressed="false">Průkazovky</button><button type="button" class="cip" data-v="ateliér" aria-pressed="false">Ateliérové focení</button><button type="button" class="cip" data-v="platno" aria-pressed="false">Fotka na plátno</button><button type="button" class="cip" data-v="vhs" aria-pressed="false">VHS na DVD</button><button type="button" class="cip" data-v="keramika" aria-pressed="false">Fotokeramika</button><button type="button" class="cip" data-v="darky" aria-pressed="false">Fotodárky</button></div></fieldset>
+    
+    <label class="pole"><span>Jméno</span><input id="jmeno" autocomplete="name"></label>
+    <label class="pole"><span>Telefon</span><input id="tel" type="tel" autocomplete="tel" inputmode="tel"></label>
+    <label class="pole"><span>Popis</span><textarea id="popis" rows="4" placeholder="Kolik fotek, jaký formát, počet kazet…"></textarea></label>
+    <div class="odeslat"><button class="btn" type="submit" data-kanal="sms">Poslat SMS</button><button class="btn obrys" type="submit" data-kanal="mail">Poslat e-mailem</button></div>
+  </form>
+</main>
+<footer class="pata">
+  <div class="wrap in"><p><b>Zdeňka Fojtíková – fotoateliér</b> · Dlouhá třída 470/17, 736 01 Havířov-Město</p><p>Fotky jsou ilustrační (Unsplash).</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/fojtikova.js"></script>
+</body>
+</html>

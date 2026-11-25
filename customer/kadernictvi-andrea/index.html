@@ -1,210 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kadeřnictví Andrea – Karviná-Ráj</title>
+<meta name="description" content="Kadeřnictví Andrea v Karviné-Ráji, Ciolkovského 29: dámské, pánské a dětské střihy, barvení, melír. Po–pá 8–17, so 8–12.">
 <meta name="robots" content="noindex, nofollow">
-<title>Kadeřnictví Andrea — Karviná | Dámské, pánské i dětské účesy</title>
-<meta name="description" content="Kadeřnictví Andrea v Karviné-Ráji. Střihy, barvení, melír, svatební a společenské účesy. Objednejte se telefonicky na 731 471 405.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#faf6f2; --ink:#2a2320; --soft:#6f6058; --line:rgba(42,35,32,.12);
-    --rose:#b76e79; --rose-dk:#9a5560; --gold:#c9a24b; --cream:#f3e9e1;
-    --serif:'Cormorant Garamond',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
-    --max:1140px;
-  }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:var(--sans);font-weight:300;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
-  img{display:block;max-width:100%}
-  a{color:inherit;text-decoration:none}
-  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.1}
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:999px;background:var(--rose);color:#fff;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;transition:.3s}
-  .btn:hover{background:var(--rose-dk);transform:translateY(-2px)}
-  .btn-out{background:transparent;color:var(--ink);border:1px solid var(--line)}
-  .btn-out:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-  .eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:600}
-
-  /* demo ribbon */
-  .demo-ribbon{position:fixed;top:0;left:0;right:0;z-index:100;background:linear-gradient(90deg,#3a2ee0,#1fcded);color:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.04em;text-align:center;padding:7px 16px;font-weight:500}
-  .demo-ribbon a{text-decoration:underline;font-weight:600}
-
-  /* nav */
-  header.nav{position:sticky;top:0;z-index:90;background:rgba(250,246,242,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
-  .logo{font-family:var(--serif);font-size:26px;font-weight:600;letter-spacing:.01em}
-  .logo span{color:var(--rose)}
-  .nav-links{display:flex;gap:34px;list-style:none;font-size:14px;letter-spacing:.04em}
-  .nav-links a{color:var(--soft);transition:.2s}
-  .nav-links a:hover{color:var(--ink)}
-  .nav-cta{font-size:13px;padding:11px 22px}
-  .burger{display:none;background:none;border:0;font-size:26px;cursor:pointer;color:var(--ink)}
-
-  /* hero */
-  .hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden}
-  .hero-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,35,32,.45),rgba(42,35,32,.62)),url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1600&q=80') center/cover;background-color:#3a302b}
-  .hero-in{position:relative;color:#fff;max-width:640px;padding:80px 0}
-  .hero h1{font-size:clamp(44px,7vw,80px);margin:18px 0 20px;font-weight:500}
-  .hero p{font-size:19px;font-weight:300;color:#f0e6df;max-width:500px;margin-bottom:34px}
-  .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
-  .hero .btn-out{color:#fff;border-color:rgba(255,255,255,.5)}
-  .hero .btn-out:hover{background:#fff;color:var(--ink)}
-
-  /* strip */
-  .strip{background:var(--ink);color:var(--cream);text-align:center;padding:26px 24px;font-family:var(--serif);font-size:clamp(20px,3vw,30px);font-style:italic}
-
-  /* section */
-  section{padding:clamp(64px,9vw,110px) 0}
-  .sec-head{text-align:center;max-width:640px;margin:0 auto 60px}
-  .sec-head h2{font-size:clamp(34px,5vw,52px);margin:14px 0 16px}
-  .sec-head p{color:var(--soft);font-size:17px}
-
-  /* services */
-  .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2px;background:var(--line);border:1px solid var(--line)}
-  .svc{background:var(--bg);padding:38px 32px;transition:.3s}
-  .svc:hover{background:var(--cream)}
-  .svc h3{font-size:26px;margin-bottom:8px}
-  .svc .price{color:var(--rose);font-weight:600;font-family:var(--sans);font-size:15px;letter-spacing:.02em}
-  .svc p{color:var(--soft);font-size:15px;margin-top:10px}
-
-  /* about split */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-  .split img{border-radius:6px;height:100%;object-fit:cover;min-height:360px;width:100%}
-  .split h2{font-size:clamp(30px,4.5vw,46px);margin:14px 0 20px}
-  .split p{color:var(--soft);margin-bottom:16px}
-  .about{background:var(--cream)}
-  .feats{list-style:none;margin-top:24px;display:grid;gap:12px}
-  .feats li{padding-left:28px;position:relative;color:var(--ink)}
-  .feats li::before{content:'✦';position:absolute;left:0;color:var(--gold)}
-
-  /* hours + contact */
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
-  .hours{list-style:none;font-size:16px}
-  .hours li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);color:var(--soft)}
-  .hours li b{color:var(--ink);font-weight:500}
-  .cbox{background:var(--ink);color:var(--cream);padding:40px;border-radius:8px}
-  .cbox h3{font-size:30px;color:#fff;margin-bottom:20px}
-  .cbox a.big{display:block;font-family:var(--serif);font-size:34px;color:var(--gold);margin:6px 0 20px}
-  .cbox .row{margin-bottom:14px;font-size:15px;color:#d8cdc4}
-  .cbox .row span{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#9a8b80;margin-bottom:3px}
-
-  footer{background:var(--ink);color:#a99c92;text-align:center;padding:40px 24px;font-size:13px;border-top:1px solid rgba(255,255,255,.08)}
-  footer .logo{color:#fff;margin-bottom:8px}
-  footer .made{margin-top:14px;opacity:.7}
-  footer .made a{color:#cbb7ff;text-decoration:underline}
-
-  @media(max-width:800px){
-    .nav-links,.nav-cta{display:none}
-    .burger{display:block}
-    .split,.contact-grid{grid-template-columns:1fr;gap:34px}
-    .nav-links.open{display:flex;position:absolute;top:74px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px 24px;gap:18px;border-bottom:1px solid var(--line)}
-  }
-</style>
+<meta name="theme-color" content="#1f2a33">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%231f2a33'/%3E%3Cpath d='M12 12l16 16M28 12L12 28' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='12' cy='12' r='4' fill='none' stroke='%23f08a5d' stroke-width='2.4'/%3E%3Ccircle cx='28' cy='12' r='4' fill='none' stroke='%23f08a5d' stroke-width='2.4'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/dm-sans-400_700-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/dm-serif-display-400-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-ka') && !location.hash))) {
+      sessionStorage.setItem('intro-ka', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="js/vt.js"></script>
+<link rel="stylesheet" href="css/styl.css">
 </head>
 <body>
-<div class="demo-ribbon">✨ Nezávazný náhled webu připravený studiem <b>Lanthir</b> — líbí se vám? <a href="mailto:kontakt@lanthir.cz">Napište nám</a> a spustíme ho.</div>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
 
-<header class="nav">
-  <div class="wrap nav-in">
-    <a href="#" class="logo">Kadeřnictví <span>Andrea</span></a>
-    <ul class="nav-links" id="menu">
-      <li><a href="#sluzby">Služby</a></li>
-      <li><a href="#osalonu">O salonu</a></li>
-      <li><a href="#hodiny">Otevírací doba</a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
-    </ul>
-    <a href="tel:+420731471405" class="btn nav-cta">Objednat se</a>
-    <button class="burger" id="burger" aria-label="Menu">☰</button>
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="./" data-intro-land aria-label="Kadeřnictví Andrea, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="d" pathLength="1" cx="11" cy="11" r="5"/><circle class="d" pathLength="1" cx="11" cy="29" r="5"/><path class="d" pathLength="1" d="M15 14l19 14M15 26l19-14"/><circle class="f" cx="20" cy="20" r="2.2"/></svg><span class="lt"><span class="w">Kadeřnictví Andrea</span><small class="f">Karviná-Ráj</small></span></a>
+    <nav aria-label="Hlavní"><a href="#rodina">Celá rodina</a><a href="#sluzby">Služby</a><a href="#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="objednat/" data-vt="objednat"><span data-vt-el>Objednat se</span></a>
   </div>
-</header>
-
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="wrap hero-in">
-    <span class="eyebrow">Karviná · Ráj</span>
-    <h1>Vlasy, které vám sluší</h1>
-    <p>Dámské, pánské i dětské kadeřnictví s osobním přístupem. Střih, barva a péče přesně podle vás.</p>
-    <div class="hero-actions">
-      <a href="tel:+420731471405" class="btn">Objednat termín</a>
-      <a href="#sluzby" class="btn btn-out">Naše služby</a>
+</header><main>
+  <section class="hero v-poster" aria-labelledby="h-uvod">
+    <div class="wrap in">
+      <div class="hero-txt"><h1 id="h-uvod" data-h>Kadeřnictví v&nbsp;Ráji</h1><p class="lead" data-h>Kadeřnictví Andrea, Ciolkovského 29 v Karviné-Ráji. Stříháme dámy, pány i děti, barvíme a foukáme. Po–pá 8–17, v sobotu 8–12.</p><div class="akce" data-h><a class="btn" href="objednat/" data-vt="objednat"><span data-vt-el>Objednat se</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn obrys num" href="tel:+420731471405">731 471 405</a></div><p class="stav" data-h><span class="tecka"></span><span class="stav-text">Po–pá 8–17, so 8–12</span></p></div>
+      <figure class="hero-foto" data-h><img src="img/strih-800.jpg" srcset="img/strih-800.jpg 800w, img/strih-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 50vw" width="1600" height="1066" alt="Kadeřnice stříhá vlasy" fetchpriority="high"></figure>
     </div>
-  </div>
-</section>
-
-<div class="strip">„Krása začíná ve chvíli, kdy se rozhodnete být sami sebou.“</div>
-
-<section id="sluzby">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Ceník</span>
-      <h2>Naše služby</h2>
-      <p>Kvalitní vlasová kosmetika a pravidelné školení nových trendů. Ceny jsou orientační — přesnou vám rádi řekneme na místě.</p>
+  </section>
+  <section class="rodina sekce wrap" id="rodina" aria-labelledby="h-rod">
+    <div class="sek-hlava" data-r><h2 id="h-rod">Objednejte celou rodinu najednou</h2><p class="sek-lead">Klepněte, kdo půjde. Spočítáme, jak dlouho to zabere, a pošlete jednu zprávu místo tří.</p></div>
+    <div class="rod" data-r>
+      <div class="osoby" role="group" aria-label="Kdo půjde"><button type="button" class="osoba" data-i="0" aria-pressed="false"><b>Dáma</b><span>střih a foukaná</span><em class="num">+</em></button><button type="button" class="osoba" data-i="1" aria-pressed="false"><b>Pán</b><span>střih</span><em class="num">+</em></button><button type="button" class="osoba" data-i="2" aria-pressed="false"><b>Dítě</b><span>střih</span><em class="num">+</em></button><button type="button" class="osoba" data-i="3" aria-pressed="false"><b>Dáma</b><span>barvení a střih</span><em class="num">+</em></button><button type="button" class="osoba" data-i="4" aria-pressed="false"><b>Babička</b><span>trvalá nebo vodová</span><em class="num">+</em></button></div>
+      <div class="rod-vysl" aria-live="polite">
+        <p class="rv-n">Celkem asi</p>
+        <p class="rv-cas num" id="rv-cas">0 min</p>
+        <ol class="rv-osa" id="rv-osa"></ol>
+        <p class="rv-pozn">Časy jsou orientační. Termín domluvíme po telefonu nebo SMS.</p>
+        <a class="btn" id="rv-obj" href="objednat/" data-vt="objednat"><span data-vt-el>Objednat všechny</span> <svg class="sip" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
     </div>
-    <div class="svc-grid">
-      <div class="svc"><h3>Dámský střih</h3><div class="price">od 350 Kč</div><p>Mytí, střih, foukaná a styling podle typu vlasů.</p></div>
-      <div class="svc"><h3>Barvení &amp; melír</h3><div class="price">od 690 Kč</div><p>Barva, melír, balayage i ombré s profesionální kosmetikou.</p></div>
-      <div class="svc"><h3>Pánský střih</h3><div class="price">od 220 Kč</div><p>Klasické i moderní pánské střihy včetně úpravy vousů.</p></div>
-      <div class="svc"><h3>Dětský střih</h3><div class="price">od 150 Kč</div><p>Trpělivý přístup k dětem každého věku.</p></div>
-      <div class="svc"><h3>Společenské účesy</h3><div class="price">od 590 Kč</div><p>Svatby, plesy a slavnostní příležitosti.</p></div>
-      <div class="svc"><h3>Péče o vlasy</h3><div class="price">od 250 Kč</div><p>Regenerace, keratin a výživné kúry pro zdravé vlasy.</p></div>
+  </section>
+<section class="sekce wrap" id="sluzby" aria-labelledby="h-sl"><div class="sek-hlava" data-r><h2 id="h-sl">Co u nás uděláme</h2><p class="sek-lead">Střih, barva i úprava na oslavu.</p></div><div class="sl-mriz n4"><article class="s1" data-r><figure><img src="img/vlny-800.jpg" srcset="img/vlny-800.jpg 800w, img/vlny-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 44vw" width="1600" height="1646" alt="Dlouhé vlnité vlasy" loading="lazy" decoding="async"></figure><h3>Dámské střihy a foukaná</h3><p>Střih podle Vás, foukaná nebo žehlička na rovno.</p></article><article data-r><figure><img src="img/blond-800.jpg" srcset="img/blond-800.jpg 800w, img/blond-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 26vw" width="1600" height="1600" alt="Blond vlasy ve vlnách" loading="lazy" decoding="async"></figure><h3>Barvení a melír</h3><p>Celá barva, odrost i melír.</p></article><article data-r><figure><img src="img/pansky-800.jpg" srcset="img/pansky-800.jpg 800w, img/pansky-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 26vw" width="1600" height="2400" alt="Pánský střih" loading="lazy" decoding="async"></figure><h3>Pánské střihy</h3><p>Rychle a pořádně.</p></article><article data-r><figure><img src="img/kluk-800.jpg" srcset="img/kluk-800.jpg 800w, img/kluk-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 26vw" width="1600" height="2000" alt="Chlapec po ostříhání" loading="lazy" decoding="async"></figure><h3>Dětské střihy</h3><p>Děti stříháme s trpělivostí.</p></article></div></section>
+  <section class="recenze" aria-labelledby="h-rec">
+    <div class="wrap in"><h2 id="h-rec" data-r>4,9 z 8 hodnocení</h2><blockquote data-r class="r1"><p>„Byli jsme moc se synem spokojení, moc milá paní kadeřnice. Doporučuji.“</p><cite>zákaznice na Firmy.cz</cite></blockquote><blockquote data-r><p>„Moc příjemná a šikovná paní kadeřnice. Určitě zde budu chodit častěji.“</p><cite>zákazník na Firmy.cz</cite></blockquote><blockquote data-r><p>„Super.“</p><cite>zákazník na Firmy.cz</cite></blockquote></div>
+  </section>
+  <section class="kontakt" id="kontakt" aria-labelledby="h-kontakt">
+    <div class="wrap in">
+      <div data-r><h2 id="h-kontakt">Kontakt</h2><p class="k-tel"><a class="num" href="tel:+420731471405">731 471 405</a></p><p><a class="odkaz" href="mailto:kadernictvi.andrea@email.cz">kadernictvi.andrea@email.cz</a></p></div>
+      <dl class="udaje" data-r><div><dt>Adresa</dt><dd>Ciolkovského 454/29, Karviná-Ráj</dd></div><div><dt>Otevřeno</dt><dd>po–pá 8–17, so 8–12</dd></div><div><dt>Objednání</dt><dd>telefonem nebo SMS</dd></div><div><dt>Mapa</dt><dd><a class="odkaz" href="https://mapy.com/cs/?source=firm&amp;id=13336369" target="_blank" rel="noopener">Otevřít v Mapy.com</a></dd></div></dl>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
-<section class="about" id="osalonu">
-  <div class="wrap split">
-    <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=900&q=80" alt="Interiér salonu">
-    <div>
-      <span class="eyebrow">O salonu</span>
-      <h2>Místo, kam se budete těšit</h2>
-      <p>Kadeřnictví Andrea najdete v srdci Karviné-Ráje. Věříme, že návštěva kadeřnictví má být odpočinkem — proto si na každého klienta vyhradíme dostatek času a poradíme účes, který vám opravdu sedne.</p>
-      <p>Máme hodnocení 4,9 z 5 od našich zákazníků. Pracujeme s prémiovou vlasovou kosmetikou a neustále se vzděláváme v nových trendech.</p>
-      <ul class="feats">
-        <li>Osobní konzultace před každou proměnou</li>
-        <li>Prémiová vlasová kosmetika</li>
-        <li>Příjemné a čisté prostředí</li>
-        <li>Objednání telefonicky bez čekání</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="hodiny">
-  <div class="wrap contact-grid">
-    <div>
-      <span class="eyebrow">Otevírací doba</span>
-      <h2 style="font-size:38px;margin:12px 0 24px">Kdy máme otevřeno</h2>
-      <ul class="hours">
-        <li><b>Pondělí – Pátek</b><span>8:00 – 17:00</span></li>
-        <li><b>Sobota</b><span>8:00 – 12:00</span></li>
-        <li><b>Neděle</b><span>Zavřeno</span></li>
-      </ul>
-      <p style="margin-top:20px;color:var(--soft)">Doporučujeme objednat se předem telefonicky — vyhnete se čekání.</p>
-    </div>
-    <div class="cbox" id="kontakt">
-      <h3>Objednejte se</h3>
-      <div class="row"><span>Telefon</span></div>
-      <a href="tel:+420731471405" class="big">731 471 405</a>
-      <div class="row"><span>E-mail</span>kadernictvi.andrea@email.cz</div>
-      <div class="row"><span>Kde nás najdete</span>Ciolkovského 454/29, 734 01 Karviná-Ráj</div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="logo" style="font-size:22px">Kadeřnictví Andrea</div>
-  <div>Ciolkovského 454/29, 734 01 Karviná-Ráj · 731 471 405</div>
-  <div class="made">Ukázkový web zdarma připravilo studio <a href="mailto:kontakt@lanthir.cz">Lanthir</a>. Chcete ho spustit naostro? Ozvěte se.</div>
+<footer class="pata">
+  <div class="wrap in"><p><b>Kadeřnictví Andrea</b> · Ciolkovského 454/29, 734 01 Karviná-Ráj</p><p>Fotky jsou ilustrační (Unsplash).</p></div>
 </footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script>
-  const b=document.getElementById('burger'),m=document.getElementById('menu');
-  b.addEventListener('click',()=>m.classList.toggle('open'));
-  m.addEventListener('click',e=>{if(e.target.tagName==='A')m.classList.remove('open')});
-</script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/intro.js"></script>
+<script src="js/web.js"></script>
+<script src="js/andrea.js"></script>
 </body>
 </html>

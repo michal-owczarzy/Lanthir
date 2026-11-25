@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rezervovat focení – Jana Feilhauerová Photography</title>
+<meta name="description" content="Rezervujte si focení v ateliéru Jany Feilhauerové v Ostravě.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#141414">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%23141414'/%3E%3Ctext x='20' y='27' font-family='Georgia' font-size='17' fill='%23fff' text-anchor='middle'%3Ejf%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="../fonts/albert-sans-400_700-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/gloock-400-normal-latin.woff2" crossorigin>
+<script>
+  try {
+    var q = location.search;
+    if (!/[?&]nointro/.test(q) && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (/[?&]intro=1/.test(q) || (!sessionStorage.getItem('intro-jf') && !location.hash))) {
+      sessionStorage.setItem('intro-jf', '1');
+      document.documentElement.classList.add('intro-on');
+    }
+  } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+<script src="../js/vt.js"></script>
+<link rel="stylesheet" href="../css/styl.css">
+</head>
+<body>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-ground"></div></div>
+
+<div class="ribbon">Nezávazný náhled nového webu od studia <b>Lanthir</b>. Líbí se Vám? <a href="mailto:michal.owczarzy@lanthir.cz">Napište nám</a></div>
+
+<header class="hlavicka">
+  <div class="in wrap">
+    <a class="logo" href="../" data-intro-land aria-label="Jana Feilhauerová Photography, úvod"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="d" pathLength="1" cx="20" cy="20" r="15"/><path class="d" pathLength="1" d="M17 12v12c0 4-2 6-5 6M22 12h7M22 19h5"/><circle class="f" cx="31" cy="9" r="2.4"/></svg><span class="lt"><span class="w">Jana Feilhauerová</span><small class="f">photography · Ostrava</small></span></a>
+    <nav aria-label="Hlavní"><a href="../#foceni">Focení</a><a href="../#portfolio">Portfolio</a><a href="../#kontakt">Kontakt</a></nav>
+    <a class="btn mini" href="./" aria-current="page" data-vt="rezervace"><span data-vt-el>Rezervovat focení</span></a>
+  </div>
+</header>
+<main class="p-main wrap">
+  <div class="p-hlava">
+    <h1 data-vt-cil="rezervace" data-h>Rezervovat focení</h1>
+    <p class="lead" data-h>Napište, jaké focení chcete a kdy se Vám to hodí. Ozvu se a domluvíme termín i podrobnosti.</p>
+    
+    <figure class="p-foto" data-h><img src="../img/tehu0-800.jpg" srcset="../img/tehu0-800.jpg 800w, ../img/tehu0-1600.jpg 1600w" sizes="(max-width:900px) 92vw, 36vw" width="452" height="681" alt="Těhotenské focení v ateliéru" loading="lazy" decoding="async"></figure>
+  </div>
+  <form class="p-form" id="pform" novalidate data-h data-multi="0">
+    <fieldset><legend>Jaké focení</legend><div class="cipy" id="co"><button type="button" class="cip" data-v="tehotenske" aria-pressed="false">Těhotenské</button><button type="button" class="cip" data-v="novorozenci" aria-pressed="false">Novorozenci</button><button type="button" class="cip" data-v="rodinne" aria-pressed="false">Rodinné</button><button type="button" class="cip" data-v="pary" aria-pressed="false">Páry</button><button type="button" class="cip" data-v="portret" aria-pressed="false">Portrét a glamour</button><button type="button" class="cip" data-v="svatba" aria-pressed="false">Svatební</button></div></fieldset>
+    <label class="pole"><span>Kdy se Vám to hodí</span><input id="o-kdy" placeholder="Např. termín porodu 20. 2. nebo víkend v březnu"></label>
+    <label class="pole"><span>Jméno</span><input id="jmeno" autocomplete="name"></label>
+    <label class="pole"><span>Telefon</span><input id="tel" type="tel" autocomplete="tel" inputmode="tel"></label>
+    <label class="pole"><span>Popis</span><textarea id="popis" rows="4" placeholder="Kolik osob, nápady, přání…"></textarea></label>
+    <div class="odeslat"><button class="btn" type="submit" data-kanal="sms">Poslat SMS</button><button class="btn obrys" type="submit" data-kanal="mail">Poslat e-mailem</button></div>
+  </form>
+</main>
+<footer class="pata">
+  <div class="wrap in"><p><b>Jana Feilhauerová Photography</b> · Daliborova 483/10, 709 00 Ostrava-Mariánské Hory</p><p>Fotky v portfoliu jsou ukázky práce Jany Feilhauerové z katalogu Firmy.cz.</p></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/intro.js"></script>
+<script src="../js/web.js"></script>
+<script src="../js/feil.js"></script>
+</body>
+</html>
