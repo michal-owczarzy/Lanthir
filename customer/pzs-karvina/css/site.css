@@ -297,6 +297,79 @@ html.menu-open{overflow:hidden}
 .kredyt{margin-top:22px;font-size:13px;line-height:1.5;max-width:120ch}
 .kredyt a{text-decoration:underline}
 
+/* ---------- BARVY ŠKOLY: tmavě modrá plocha, nebeská modrá, školní žlutá ---------- */
+:root{--navy:#15315f;--navy-2:#1e3e74;--ink:#0f1b33;--ink-2:#33405a;--yel:#ffc013;--yel-d:#f2b200;--sky-l:#dcebf6;--sky-m:#c3d9ec;--surface:#eef4fa;--surface-2:#dde9f4;--link:#1f5fa6}
+.ribbon{background:#0a1326}
+.gnav{background:var(--navy);-webkit-backdrop-filter:none;backdrop-filter:none}
+.gnav .logo,.intro .logo{color:#fff}
+.gnav .logo .znak .d,.intro .logo .znak .d{stroke:#fff}
+.gnav .logo .w2,.intro .logo .w2{color:var(--sky-m)}
+.gnav .links a{color:rgba(255,255,255,.84)}
+.gnav .links a[aria-current]{color:#fff;background:rgba(255,255,255,.14)}
+@media (hover:hover){.gnav .links a:hover{color:#fff;background:rgba(255,255,255,.1)}}
+.gnav .lang{background:rgba(255,255,255,.12)}
+.gnav .lang button{color:rgba(255,255,255,.82)}
+.gnav .lang button[aria-pressed="true"]{background:#fff;color:var(--navy);box-shadow:none}
+.gnav .e-dz{background:var(--yel);color:var(--ink)}
+@media (hover:hover){.gnav .e-dz:hover{background:var(--yel-d)}}
+.gnav .menu-btn{background:rgba(255,255,255,.14);color:#fff}
+.sheet{background:var(--navy);color:#fff;-webkit-backdrop-filter:none;backdrop-filter:none}
+.sheet-sk li a{color:var(--sky-m)}
+.intro-ground{background:var(--navy)}
+.lnav{background:var(--sky-l);-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}
+.lnav li a{color:var(--ink-2)}
+.lnav li a[aria-current]{background:#fff;color:var(--ink)}
+/* úvod a hlavičky stránek: plocha v barvě školy */
+.hero,.ph{background:var(--navy);color:#fff}
+.hero{padding-bottom:clamp(48px,6vw,88px)}
+.hero .lede,.ph .lede{color:#d4e2f2}
+.hero-info{color:#b8cce3}
+.hero-info a{color:#fff}
+.hero .btn,.ph .btn{background:var(--yel);color:var(--ink)}
+.hero .btn.sv{background:rgba(255,255,255,.14);color:#fff}
+@media (hover:hover){.hero .btn:hover{background:var(--yel-d)}.hero .btn.sv:hover{background:rgba(255,255,255,.24)}}
+.ph-f,.hero-f{background:var(--navy-2)}
+.ph-f.logo-f{background:#fff}
+.btn{background:var(--navy)}
+@media (hover:hover){.btn:hover{background:var(--navy-2)}}
+/* aktuality na nebeské ploše, kalendář v barvě školy */
+.start2{background:var(--sky-l);padding:clamp(64px,8vw,120px) 0}
+.start2 .feed{background:#fff;border-radius:var(--r-l);padding:clamp(18px,2.4vw,36px) clamp(18px,2.6vw,40px)}
+.news-top{background:var(--yel)}
+.news-top .kat-l{color:var(--ink-2)}
+.kal-box{background:var(--navy);color:#fff}
+.kal-box .ev-gdzie{color:#c9daee}
+.kal-box .ics{color:#fff}
+.kal-box .ev-tile{color:var(--ink)}
+.kal-box .ev-tile .m{background:var(--yel)}
+.kal-box .ev-tile::after{background:var(--navy)}
+.kal-box .kal-wiecej{background:var(--yel);color:var(--ink)}
+@media (hover:hover){.kal-box .kal-wiecej:hover{background:var(--yel-d)}}
+/* rozcestník a pás SCIO */
+.t-zap{background:var(--yel)}
+.t-rod{background:var(--sky-l)}
+.pas{background:var(--yel)}
+.pas small{color:var(--ink)}
+/* bloky podstránek: střídání bílé a nebeské plochy */
+.blok{padding:clamp(56px,7vw,104px) 0}
+main>.blok:nth-of-type(even){background:var(--sky-l)}
+main>.blok:nth-of-type(even) .fakt,main>.blok:nth-of-type(even) .os,main>.blok:nth-of-type(even) .dane{background:#fff}
+.fakt.sky{background:var(--yel)!important}
+.ph+.blok,.ph+.start2,.ph+section{padding-top:clamp(48px,6vw,88px)!important}
+.kal-lista .ev-tile{background:#fff}
+.kal-lista .ev-tile .m{background:var(--yel)}
+.kal-lista .ev-tile::after{background:var(--navy)}
+.album .a-img{background:var(--navy)}
+.album .a-img .a-rok{color:var(--yel)}
+/* patička: budova v noci, okna svítí */
+.stopka{margin-top:0;background:var(--navy);color:#fff}
+.stopka-fasada .zed,.stopka-fasada .rimsa{fill:#0c2148}
+.stopka-fasada .riz{fill:#091a39}
+.stopka-fasada .okno rect{fill:var(--yel)}
+.stopka-fasada .okno path{stroke:#0c2148}
+.mapa nav a,.mapa .adr,.kredyt{color:#d4e2f2}
+.stopka .btn{background:var(--yel);color:var(--ink)}
+
 /* ---------- tablet ---------- */
 @media (max-width:1180px){
   .gnav .links,.gnav .e-dz{display:none}
